@@ -30,8 +30,3 @@ void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QCo
     EventViews::setResourceColor(collection, color, KOPrefs::instance()->eventViewsPreferences());
     KOPrefs::instance()->eventViewsPreferences()->writeConfig();
 }
-
-bool KOHelper::isStandardCalendar(Akonadi::Collection::Id id)
-{
-    return id == CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId();
-}

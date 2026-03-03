@@ -15,6 +15,15 @@ WhatsNewTranslations::~WhatsNewTranslations() = default;
 QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
     const QList<KLazyLocalizedString> info{
+        kli18n("A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. "
+               "Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar"),
+    };
+    return info;
+}
+
+QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures67() const
+{
+    const QList<KLazyLocalizedString> info{
         kli18n("Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings "
                "Time&Date->Default Values tab"),
         kli18n("Month view: no longer display the month year header to save vertical space and remove redundancy"),
@@ -108,18 +117,31 @@ QList<TextAddonsWidgets::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo(
         info66.setBugFixings({i18n("Incidence editor: the tags are sorted alphabetically in the tags editor")});
         listInfo.append(std::move(info66));
 
-        // Version 6.7.0 (Current)
+        // Version 6.7.0
         TextAddonsWidgets::WhatsNewInfo info67;
         info67.setVersion(QStringLiteral("6.7.0"));
         QStringList lst67;
-        const auto newFeatureStrings67 = lastNewFeatures();
+        const auto newFeatureStrings67 = lastNewFeatures67();
         for (const KLazyLocalizedString &l : newFeatureStrings67) {
             lst67 += l.toString();
         }
         info67.setNewFeatures(lst67);
         // info67.setChanges({i18n()});
-        // info66.setBugFixings({i18n());
+        // info67.setBugFixings({i18n());
         listInfo.append(std::move(info67));
+
+        // Version 6.8.0 (Current)
+        TextAddonsWidgets::WhatsNewInfo info68;
+        info68.setVersion(QStringLiteral("6.8.0"));
+        QStringList lst68;
+        const auto newFeatureStrings68 = lastNewFeatures();
+        for (const KLazyLocalizedString &l : newFeatureStrings68) {
+            lst68 += l.toString();
+        }
+        info68.setNewFeatures(lst68);
+        // info68.setChanges({i18n()});
+        // info68.setBugFixings({i18n());
+        listInfo.append(std::move(info68));
     }
 
     return listInfo;

@@ -2676,7 +2676,11 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1StringView &mim
     }
 
     // 2. Try the configured default collection
-    collection = mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId());
+    if (mimeType == KCalendarCore::Event::eventMimeType()) {
+        collection = mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId());
+    } else if (mimeType == KCalendarCore::Todo::todoMimeType()) {
+        collection = mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultTodoCalendarId());
+    }
     supportsMimeType = collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1StringView("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
@@ -2783,11 +2787,18 @@ Akonadi::Collection::List CalendarView::checkedCollections() const
 
     // If the default calendar is here, it should be first.
     int const count = collections.count();
-    Akonadi::Collection::Id const id = CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId();
+    Akonadi::Collection::Id id;
     for (int i = 0; i < count; ++i) {
-        if (id == collections[i].id()) {
-            const Akonadi::Collection col = collections.takeAt(i);
-            collections.insert(0, col);
+        const Akonadi::Collection col = collections[i];
+        id = -1;
+        if (col.contentMimeTypes().contains(KCalendarCore::Event::eventMimeType())) {
+            id = CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId();
+        } else if (col.contentMimeTypes().contains(KCalendarCore::Todo::todoMimeType())) {
+            id = CalendarSupport::KCalPrefs::instance()->defaultTodoCalendarId();
+        }
+        if (id == col.id()) {
+            const Akonadi::Collection takeCol = collections.takeAt(i);
+            collections.insert(0, takeCol);
             break;
         }
     }

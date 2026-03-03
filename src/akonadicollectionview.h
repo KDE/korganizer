@@ -97,12 +97,16 @@ private Q_SLOTS:
 private:
     Akonadi::EntityTreeModel *entityTreeModel() const;
     // Returns the display name for the current default calendar
-    [[nodiscard]] QString defaultCalendarDisplayName() const;
+    [[nodiscard]] QString defaultCalendarDisplayName(const Akonadi::Collection::Id) const;
     // Returns true if the specified collection contains the default collection, in the non-folder case.
     // Also returns true if the specified collection is the default collection.
     [[nodiscard]] bool collectionContainsDefaultCalendar(const Akonadi::Collection &collection) const;
+    [[nodiscard]] bool collectionContainsDefaultEventCalendar(const Akonadi::Collection &collection) const;
+    [[nodiscard]] bool collectionContainsDefaultTodoCalendar(const Akonadi::Collection &collection) const;
     // Returns true if the specified collection is the default collection.
     [[nodiscard]] bool collectionIsDefaultCalendar(const Akonadi::Collection &collection) const;
+    [[nodiscard]] bool collectionIsDefaultEventCalendar(const Akonadi::Collection &collection) const;
+    [[nodiscard]] bool collectionIsDefaultTodoCalendar(const Akonadi::Collection &collection) const;
     // Returns true if the specified collection is a calendar folder, else it is a directory of collections.
     [[nodiscard]] bool isCalendarFolder(const Akonadi::Collection &collection) const;
     // Returns true if the specified collection for the mimetype can be marked as the default calendar folder.
@@ -113,6 +117,14 @@ private:
     void requestDefaultCalendar(const QString &mimeType);
     // Resets the default event calendar folder.
     void resetDefaultEventCalendar();
+    // Resets the default todo calendar folder.
+    void resetDefaultTodoCalendar();
+    // Returns a string with the calendar type
+    [[nodiscard]] QString calendarTypeString(const Akonadi::Collection &collection) const;
+    [[nodiscard]] QString calendarTypeString(const QString &mimeType) const;
+    // Returns the collection ID
+    [[nodiscard]] Akonadi::Collection::Id defaultCalendarCollectionId(const Akonadi::Collection &collection) const;
+    [[nodiscard]] Akonadi::Collection::Id defaultCalendarCollectionId(const QString &mimeType) const;
 
     CalendarView *mCalendarView = nullptr;
     Akonadi::StandardCalendarActionManager *mActionManager = nullptr;
@@ -122,7 +134,8 @@ private:
     QAction *mAssignColor = nullptr;
     QAction *mDefaultCalendar = nullptr;
     bool mNotSendAddRemoveSignal = false;
-    bool mWasDefaultCalendar = false;
+    bool mWasDefaultEventCalendar = false;
+    bool mWasDefaultTodoCalendar = false;
     const bool mHasContextMenu;
     NewNodeExpander *mNewNodeExpander = nullptr;
     ManageShowCollectionProperties *mManagerShowCollectionProperties = nullptr;
