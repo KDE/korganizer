@@ -278,7 +278,7 @@ public:
                 font.setBold(true);
                 if (!mInitDefaultCalendar) {
                     mInitDefaultCalendar = true;
-                    CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(collection.id());
+                    CalendarSupport::KCalPrefs::instance()->setDefaultEventCalendarId(collection.id());
                 }
                 return font;
             }
@@ -289,7 +289,7 @@ public:
             if (!instance.isOnline() && !collection.isVirtual()) {
                 return i18nc("@item this calendar is offline", "%1 (Offline)", collection.displayName());
             }
-            if (colId == CalendarSupport::KCalPrefs::instance()->defaultCalendarId()) {
+            if (colId == CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId()) {
                 return i18nc("@item this is the default calendar", "%1 (Default)", collection.displayName());
             }
         }
@@ -513,7 +513,7 @@ Akonadi::Collection AkonadiCollectionView::currentCalendar() const
 QString AkonadiCollectionView::defaultCalendarDisplayName() const
 {
     QString displayName;
-    const Akonadi::Collection::Id calendarId = CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
+    const Akonadi::Collection::Id calendarId = CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId();
     if (calendarId != -1) {
         const Akonadi::Collection defaultCollection(calendarId);
         if (defaultCollection.isValid()) {
@@ -546,7 +546,7 @@ void AkonadiCollectionView::setDefaultCalendar()
         continueCancelMsg = xi18nc("@info", "Do you really want to set <filename>%1</filename> as your default calendar folder?", displayName);
     }
 
-    const Akonadi::Collection defaultCol(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    const Akonadi::Collection defaultCol(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId());
     if (defaultCol.isValid()
         && KMessageBox::warningContinueCancel(this, continueCancelMsg, i18nc("@title:window", "Replace Default Calendar?")) != KMessageBox::Continue) {
         return;
@@ -554,7 +554,7 @@ void AkonadiCollectionView::setDefaultCalendar()
 
     mCalendarView->showMessage(xi18nc("@info", "<filename>%1</filename> is now your default event calendar", displayName), KMessageWidget::Information);
 
-    CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(collection.id());
+    CalendarSupport::KCalPrefs::instance()->setDefaultEventCalendarId(collection.id());
     CalendarSupport::KCalPrefs::instance()->usrSave();
     updateMenu();
     updateView();
@@ -748,7 +748,7 @@ bool AkonadiCollectionView::collectionContainsDefaultCalendar(const Akonadi::Col
         return true;
     }
 
-    const Akonadi::Collection defaultCollection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    const Akonadi::Collection defaultCollection(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId());
     if (!defaultCollection.isValid()) {
         return false;
     }
@@ -896,7 +896,7 @@ void AkonadiCollectionView::deleteCalendar()
 
 bool AkonadiCollectionView::collectionIsDefaultCalendar(const Akonadi::Collection &collection) const
 {
-    const Akonadi::Collection defaultCollection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    const Akonadi::Collection defaultCollection(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId());
     if (defaultCollection.isValid() && (collection == defaultCollection)) {
         return true;
     }
@@ -935,7 +935,7 @@ void AkonadiCollectionView::requestDefaultCalendar(const QString &mimeType)
         }
     }
 
-    CalendarSupport::KCalPrefs::instance()->setDefaultCalendarId(defaultCollectionId);
+    CalendarSupport::KCalPrefs::instance()->setDefaultEventCalendarId(defaultCollectionId);
     CalendarSupport::KCalPrefs::instance()->usrSave();
 }
 

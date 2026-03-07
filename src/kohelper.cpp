@@ -33,5 +33,5 @@ void KOHelper::setResourceColor(const Akonadi::Collection &collection, const QCo
 
 bool KOHelper::isStandardCalendar(Akonadi::Collection::Id id)
 {
-    return id == CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
+    return id == CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId();
 }

@@ -98,7 +98,7 @@ CalendarView::CalendarView(QWidget *parent)
 {
     Akonadi::ControlGui::widgetNeedsAkonadi(this);
     mChanger = new Akonadi::IncidenceChanger(new IncidenceEditorNG::IndividualMailComponentFactory(this), this);
-    mChanger->setDefaultCollection(Akonadi::Collection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId()));
+    mChanger->setDefaultCollection(Akonadi::Collection(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId()));
 
     mChanger->setDestinationPolicy(static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(KOPrefs ::instance()->destination()));
 
@@ -2676,7 +2676,7 @@ Akonadi::Collection CalendarView::defaultCollection(const QLatin1StringView &mim
     }
 
     // 2. Try the configured default collection
-    collection = mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultCalendarId());
+    collection = mCalendar->collection(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId());
     supportsMimeType = collection.contentMimeTypes().contains(mimeType) || mimeType == QLatin1StringView("");
     hasRights = collection.rights() & Akonadi::Collection::CanCreateItem;
     if (collection.isValid() && supportsMimeType && hasRights) {
@@ -2783,7 +2783,7 @@ Akonadi::Collection::List CalendarView::checkedCollections() const
 
     // If the default calendar is here, it should be first.
     int const count = collections.count();
-    Akonadi::Collection::Id const id = CalendarSupport::KCalPrefs::instance()->defaultCalendarId();
+    Akonadi::Collection::Id const id = CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId();
     for (int i = 0; i < count; ++i) {
         if (id == collections[i].id()) {
             const Akonadi::Collection col = collections.takeAt(i);
