@@ -3186,6 +3186,17 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Ajanda görünümü ögelerinde olay açıklamalarını göster</guilabel
+></term>
+  <listitem
+><para
+>Ajanda görünümü ögelerinde olay açıklamalarını görüntülemek için bu kutuyu işaretleyin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Yapılacakları göster</guilabel
@@ -3483,6 +3494,19 @@
 >Bu düğme, gecikmiş yapılacak işin rengini seçmenize olanak tanıyan <guilabel
 >Renk Seç</guilabel
 > iletişim kutusunu açar.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Ay görünümünde bugünün arka plan rengi</guilabel
+></term>
+  <listitem
+><para
+>Bu düğme, <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar ve Ay görünümünde bugünün tarihinin arka plan rengini seçmenize olanak tanır.</para
 ></listitem>
 </varlistentry>
 
