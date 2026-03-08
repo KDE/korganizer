@@ -56,7 +56,7 @@ public Q_SLOTS:
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog(QList<KCalendarCore::CalFilter *> *filters);
+    void showFilterEditDialog(QList<KCalendarCore::CalFilter *> *filters); // clazy:exclude=fully-qualified-moc-types
 
 private:
     void slotHelp();
