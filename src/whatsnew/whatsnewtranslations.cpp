@@ -16,7 +16,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
 {
     const QList<KLazyLocalizedString> info{
         kli18n("A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. "
-               "Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar"),
+               "Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar\""),
     };
     return info;
 }
