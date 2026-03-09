@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-26 00:43+0000\n"
+"POT-Creation-Date: 2026-03-09 00:44+0000\n"
 "PO-Revision-Date: 2026-01-26 10:18+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -1518,104 +1518,160 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Afig com a calendari nou"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:299
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (desconnectat)"
 
-#: akonadicollectionview.cpp:293
-#, kde-format
-msgctxt "@item this is the default calendar"
-msgid "%1 (Default)"
+#: akonadicollectionview.cpp:302
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default event calendar"
+msgid "%1 (Default Event)"
 msgstr "%1 (Predeterminat)"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:304
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default todo calendar"
+msgid "%1 (Default Todo)"
+msgstr "%1 (Predeterminat)"
+
+#: akonadicollectionview.cpp:392
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Busca del calendari"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:393
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Comenceu a escriure per a buscar un calendari dins de la col·lecció."
 
-#: akonadicollectionview.cpp:387
+#: akonadicollectionview.cpp:395
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Busca de calendari…"
 
-#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Propietats de la carpeta de calendari %1"
 
-#: akonadicollectionview.cpp:485
+#: akonadicollectionview.cpp:493
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "E&stablix el color de la carpeta…"
 
-#: akonadicollectionview.cpp:491
-#, kde-format
+#: akonadicollectionview.cpp:499
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
 msgctxt "@action:inmenu"
-msgid "Set as &Default Folder"
+msgid "Set as &Default Calendar"
 msgstr "Establix com a carpeta pre&determinada"
 
-#: akonadicollectionview.cpp:541
-#, kde-kuit-format
+#: akonadicollectionview.cpp:537
+#, fuzzy, kde-format
+#| msgid "&Events"
+msgctxt "@info/plain the calendar contains events"
+msgid "Event"
+msgstr "&Esdeveniments"
+
+#: akonadicollectionview.cpp:540
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Todo View"
+msgctxt "@info/plain the calendar contains todos"
+msgid "Todo"
+msgstr "Vista de les tasques pendents"
+
+#: akonadicollectionview.cpp:603
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to set <filename>%1</filename> as your default "
+#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
+#| "default calendar folder.</para>"
 msgctxt "@info"
 msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?<para>This will replace <filename>%2</filename> as the default "
-"calendar folder.</para>"
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?<para>This will replace <filename>%3</filename> as the "
+"default %4 calendar folder.</para>"
 msgstr ""
 "Segur que voleu establir <filename>%1</filename> com a carpeta del calendari "
 "predeterminat?<para>Açò substituirà <filename>%2</filename> com a carpeta "
 "del calendari predeterminat.</para>"
 
-#: akonadicollectionview.cpp:546
-#, kde-kuit-format
+#: akonadicollectionview.cpp:610
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to set <filename>%1</filename> as your default "
+#| "calendar folder?"
 msgctxt "@info"
 msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?"
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?"
 msgstr ""
 "Segur que voleu establir <filename>%1</filename> com a carpeta del calendari "
 "predeterminat?"
 
-#: akonadicollectionview.cpp:551
-#, kde-format
+#: akonadicollectionview.cpp:613
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Replace Default Calendar?"
 msgctxt "@title:window"
-msgid "Replace Default Calendar?"
+msgid "Replace Default %1 Calendar?"
 msgstr "Voleu substituir el calendari predeterminat?"
 
-#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
-#, kde-kuit-format
+#: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<filename>%1</filename> is now your default event calendar"
 msgctxt "@info"
-msgid "<filename>%1</filename> is now your default event calendar"
+msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr ""
 "<filename>%1</filename> ara és el calendari predeterminat d'esdeveniments"
 
-#: akonadicollectionview.cpp:711
+#: akonadicollectionview.cpp:770
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Event Calendar"
+msgstr "Establix com a carpeta pre&determinada"
+
+#: akonadicollectionview.cpp:773
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Todo Calendar"
+msgstr "Establix com a carpeta pre&determinada"
+
+#: akonadicollectionview.cpp:791
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Afig un calendari"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:810
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Ha fallat mentre s'afegia un calendari nou: <message>%1</message>"
 
 # skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:787
+#: akonadicollectionview.cpp:892
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1630,37 +1686,24 @@ msgstr ""
 "nou en qualsevol moment.</note></para>"
 
 # skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:797
-#, kde-kuit-format
+#: akonadicollectionview.cpp:900
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> calendar?"
+#| "<para><note>The calendar data will not be deleted, nor will the calendar "
+#| "be removed from its remote resource. The <filename>%1</filename> calendar "
+#| "can be added again at any time.</note></para><para><warning>This calendar "
+#| "contains your default calendar folder. If you delete it you may be "
+#| "prompted to select a new default calendar folder.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder <filename>%2</filename>. If you delete "
-"it you may be prompted to select a new default calendar folder.</warning></"
-"para>"
-msgstr ""
-"Segur que voleu suprimir el calendari <filename>%1</filename>?<para> "
-"<note>Les dades del calendari no s'eliminaran, ni s'eliminarà el calendari "
-"del seu recurs remot. El calendari <filename>%1</filename> es pot afegir de "
-"nou en qualsevol moment.</note></para><para><warning>Este calendari conté la "
-"carpeta del calendari predeterminat <filename>%2</filename>. Si la suprimiu "
-"se us demanarà que seleccioneu una carpeta nova de calendari predeterminat.</"
-"warning></para>"
-
-# skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:808
-#, kde-kuit-format
-msgctxt "@info"
-msgid ""
-"Do you really want to delete the <filename>%1</filename> calendar?"
-"<para><note>The calendar data will not be deleted, nor will the calendar be "
-"removed from its remote resource. The <filename>%1</filename> calendar can "
-"be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder. If you delete it you may be prompted "
-"to select a new default calendar folder.</warning></para>"
+"contains a default calendar folder. If you delete it you may be prompted to "
+"select a new default calendar folder.</warning></para>"
 msgstr ""
 "Segur que voleu suprimir el calendari <filename>%1</filename>?<para> "
 "<note>Les dades del calendari no s'eliminaran, ni s'eliminarà el calendari "
@@ -1670,15 +1713,23 @@ msgstr ""
 "seleccioneu una carpeta nova de calendari predeterminat.</warning></para>"
 
 # skip-rule: tags-spaces-end
-#: akonadicollectionview.cpp:818
-#, kde-kuit-format
+#: akonadicollectionview.cpp:910
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> calendar?"
+#| "<para><note>The calendar data will not be deleted, nor will the calendar "
+#| "be removed from its remote resource. The <filename>%1</filename> calendar "
+#| "can be added again at any time.</note></para><para><warning>This is your "
+#| "default calendar. If you delete it you may be prompted to select a new "
+#| "default calendar.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This is your default "
-"calendar. If you delete it you may be prompted to select a new default "
+"%2 calendar. If you delete it you may be prompted to select a new %2 default "
 "calendar.</warning></para>"
 msgstr ""
 "Segur que voleu suprimir el calendari <filename>%1</filename>?<para> "
@@ -1688,7 +1739,7 @@ msgstr ""
 "calendari predeterminat. Si el suprimiu se us demanarà que seleccioneu una "
 "carpeta nova de calendari predeterminat.</warning></para>"
 
-#: akonadicollectionview.cpp:830
+#: akonadicollectionview.cpp:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1700,28 +1751,35 @@ msgstr ""
 "<para><warning>Açò no es podrà desfer. Reflexioneu atentament abans de "
 "prémer el botó «%2».</warning></para>"
 
-#: akonadicollectionview.cpp:837
-#, kde-kuit-format
+#: akonadicollectionview.cpp:931
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> folder?"
+#| "<para><warning>This cannot be undone. Please consider carefully before "
+#| "pressing the %2 button.</warning></para><para><warning>This is your "
+#| "default calendar folder. If you delete it you may be prompted to select a "
+#| "new default calendar.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
 "<para><warning>This cannot be undone. Please consider carefully before "
 "pressing the %2 button.</warning></para><para><warning>This is your default "
-"calendar folder. If you delete it you may be prompted to select a new "
-"default calendar.</warning></para>"
+"%3 calendar folder. If you delete it you may be prompted to select a new "
+"default %4 calendar.</warning></para>"
 msgstr ""
 "Segur que voleu suprimir el calendari <filename>%1</filename>?<para> "
 "<warning>Açò no es podrà desfer. Reflexioneu atentament abans de prémer el "
 "botó «%2».</warning></para><para><warning>Si el suprimiu se us demanarà que "
 "seleccioneu una carpeta nova de calendari predeterminat.</warning></para>"
 
-#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
+#: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Suprimix el calendari"
 
-#: akonadicollectionview.cpp:874
+#: akonadicollectionview.cpp:970
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1734,7 +1792,7 @@ msgstr ""
 "s'eliminaran les dades del calendari. <para><warning>Açò no es podrà desfer. "
 "Penseu-ho bé abans de prémer el botó «%1».</warning></para>"
 
-#: akonadicollectionview.cpp:889
+#: akonadicollectionview.cpp:985
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1743,20 +1801,24 @@ msgstr ""
 "Ha fallat mentre se suprimia el calendari: <message>Instància no vàlida de "
 "l'agent d'Akonadi</message>"
 
-#: akonadicollectionview.cpp:932
-#, kde-format
+#: akonadicollectionview.cpp:1055
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Consider setting a default calendar for new events"
 msgctxt "@info"
-msgid "Consider setting a default calendar for new events"
+msgid "Consider setting a default %1 calendar"
 msgstr ""
 "Considereu establir un calendari predeterminat per a esdeveniments nous"
 
-#: akonadicollectionview.cpp:934
-#, kde-format
+#: akonadicollectionview.cpp:1057
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Consider adding a write-enabled events calendar"
 msgctxt "@info"
-msgid "Consider adding a write-enabled events calendar"
+msgid "Consider adding a write-enabled %1 calendar"
 msgstr "Considereu afegir un calendari d'esdeveniments amb permís d'escriptura"
 
-#: akonadicollectionview.cpp:956
+#: akonadicollectionview.cpp:1091
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -2142,7 +2204,7 @@ msgstr ""
 "Tots els calendaris en el gestor de calendaris estan sense marcar. No s'ha "
 "purgat cap tasca pendent."
 
-#: calendarview.cpp:2470 calendarview.cpp:2748
+#: calendarview.cpp:2470 calendarview.cpp:2752
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2180,13 +2242,13 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "No s'ha pogut moure l'element <resource>%1</resource>."
 
-#: calendarview.cpp:2740
+#: calendarview.cpp:2744
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "S'han purgat zero tasques pendents finalitzades.<nl/>"
 
-#: calendarview.cpp:2742 calendarview.cpp:2753
+#: calendarview.cpp:2746 calendarview.cpp:2757
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2199,7 +2261,7 @@ msgstr[1] ""
 "S'han ignorat %1 tasques pendents perquè tenia fills incomplets o de només "
 "lectura."
 
-#: calendarview.cpp:2746 calendarview.cpp:2751
+#: calendarview.cpp:2750 calendarview.cpp:2755
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2207,7 +2269,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "S'ha purgat %1 tasca pendent finalitzada."
 msgstr[1] "S'han purgat %1 tasques pendents finalitzades."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2762
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2215,7 +2277,7 @@ msgstr ""
 "S'ha produït un error mentre es purgaven les tasques pendents finalitzades: "
 "<message>%1</message>"
 
-#: calendarview.cpp:2812
+#: calendarview.cpp:2823
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2227,7 +2289,7 @@ msgstr ""
 "<para>Per a veure la incidència creada recentment, activeu el seu calendari "
 "al gestor de calendaris.</para>"
 
-#: calendarview.cpp:2816
+#: calendarview.cpp:2827
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -6422,6 +6484,14 @@ msgstr "Calendaris seleccionats"
 
 #: whatsnew/whatsnewtranslations.cpp:18
 msgid ""
+"A default To-do calendar can be specified to make creating new to-dos faster "
+"and easier with less chance of filing them into the wrong folder. Setting a "
+"default Event calendar has been supported for a long time.  See the Calendar "
+"Manager context menu \"Set as Default Todo Calendar\""
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:27
+msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
@@ -6431,7 +6501,7 @@ msgstr ""
 "desmarqueu les opcions Habilita els recordatoris a la pestanya de "
 "configuració Data i hora->Valors predeterminats"
 
-#: whatsnew/whatsnewtranslations.cpp:20
+#: whatsnew/whatsnewtranslations.cpp:29
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6439,7 +6509,7 @@ msgstr ""
 "Vista mensual: ja no mostra la capçalera de mes any per a estalviar espai "
 "vertical i eliminar redundància"
 
-#: whatsnew/whatsnewtranslations.cpp:21
+#: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6447,7 +6517,7 @@ msgstr ""
 "Vista mensual: utilitza un color lleugerament diferent per a dibuixar les "
 "capçaleres dels dies fora del mes seleccionat"
 
-#: whatsnew/whatsnewtranslations.cpp:22
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6455,7 +6525,7 @@ msgstr ""
 "Vista mensual: s'eliminen els controls de navegació a favor de la barra del "
 "navegador millorada de l'aplicació"
 
-#: whatsnew/whatsnewtranslations.cpp:23
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6465,7 +6535,7 @@ msgstr ""
 "d'hui. Per a configurar el color, establiu el «Color de fons d'hui de la "
 "vista d'hui» en la configuració de colors i lletres"
 
-#: whatsnew/whatsnewtranslations.cpp:25
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6473,13 +6543,13 @@ msgstr ""
 "Barra del navegador: s'ha millorat afegint el desplaçament setmanal i "
 "mostrant/ocultant la barra lateral en funció de la vista"
 
-#: whatsnew/whatsnewtranslations.cpp:26
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 "Barra de navegació: s'ha afegit un botó per a desplaçar la vista fins a la "
 "data actual"
 
-#: whatsnew/whatsnewtranslations.cpp:27
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6487,7 +6557,7 @@ msgstr ""
 "Vista d'agenda: els esdeveniments amb una duració curta es mostren amb la "
 "seua hora d'inici a més del resum"
 
-#: whatsnew/whatsnewtranslations.cpp:28
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6498,11 +6568,11 @@ msgstr ""
 "«Mostra les descripcions de les incidències als elements de la vista "
 "d'agenda» a la pestanya Visualitza->Vista d'agenda"
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Search: the search settings are saved/restored"
 msgstr "Busca: la configuració de la busca es guarda/restaura"
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6511,29 +6581,29 @@ msgstr ""
 "a mostrar/ocultar les etiquetes prompte per a la zona horària del sistema a "
 "la part dreta (o esquerra)"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Editor d'incidències: detecta i avisa de la creació d'incidències en el "
 "passat"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Incidence editor: add emoji support"
 msgstr "Editor d'incidències: afig la implementació d'emoji"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Add What's New menu"
 msgstr "Afig el menú Què hi ha de nou"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "The current view is remembered"
 msgstr "Es recordarà la vista actual"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Afig un diàleg selector de dates disponible en el menú Ves"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6541,7 +6611,7 @@ msgstr ""
 "Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies "
 "següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6549,29 +6619,29 @@ msgstr ""
 "Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de temps "
 "per a canviar un rellotge de 24 hores (estil militar)"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Vista d'agenda: s'ha afegit el menú contextual per a crear un esdeveniment o "
 "tasca pendent nova"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Vista de les tasques pendents: s'han afegit opcions del menú contextual per "
 "a canviar la compleció i els recordatoris"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Vista de les tasques pendents: guarda/restaura l'opció de vista completa"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "To-do view: save/restore flatview setting"
 msgstr "Vista de les tasques pendents: guarda/restaura l'opció de vista plana"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6579,7 +6649,7 @@ msgstr ""
 "Navegador de dates: s'ha afegit una opció dins de la configuració de "
 "Configura->Vistes per a ocultar els números de setmana"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:69
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6587,56 +6657,56 @@ msgstr ""
 "Navegador de dates: l'opció «Els números de setmana seleccionen una setmana "
 "feinera en el mode de setmana laboral» és certa de manera predeterminada"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:70
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Editor d'incidències: recorda/restaura la geometria del gestor de plantilles"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:71
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Editor d'incidències: permet arrossegar i deixar anar adjunts"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "El diàleg d'exportació de calendari recorda la seua última ubicació de la "
 "carpeta d'exportació"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "El diàleg d'importació de calendari recorda la seua última ubicació de la "
 "carpeta d'importació"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Get Hot New Stuff removed"
 msgstr "S'ha eliminat «Obtín les novetats candents»"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Afegir un fitxer de calendari: els calendaris remots sempre són de només "
 "lectura"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Afegir un fitxer de calendari: no es permet un camí buit de fitxer"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Configuració DAV: el diàleg permet veure la contrasenya del compte en editar"
 
-#: whatsnew/whatsnewtranslations.cpp:69
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Configuració DAV: l'assistent mostra icones de diversos proveïdors"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Configuració DAV: llista actualitza de proveïdors de l'assistent"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:97
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6645,19 +6715,19 @@ msgstr ""
 "La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari "
 "setmanal» per a admetre els usuaris no treballadors"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:98
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les "
 "vistes"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:99
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Millora de la gestió del calendari predeterminat d'esdeveniments"
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:101
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6665,14 +6735,14 @@ msgstr ""
 "Les incidències amb una llista llarga de dates excloses ja no creen consells "
 "enormes"
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:102
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "S'ha corregit l'adreça de correu electrònic de l'organitzador per a les "
 "incidències amb els assistents"
 
-#: whatsnew/whatsnewtranslations.cpp:94
+#: whatsnew/whatsnewtranslations.cpp:103
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6682,7 +6752,7 @@ msgstr ""
 "de 30 minuts (en lloc de 15 minuts)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:117
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
@@ -6917,3 +6987,22 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+# skip-rule: tags-spaces-end
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you really want to delete the <filename>%1</filename> calendar?"
+#~ "<para><note>The calendar data will not be deleted, nor will the calendar "
+#~ "be removed from its remote resource. The <filename>%1</filename> calendar "
+#~ "can be added again at any time.</note></para><para><warning>This calendar "
+#~ "contains your default calendar folder <filename>%2</filename>. If you "
+#~ "delete it you may be prompted to select a new default calendar folder.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "Segur que voleu suprimir el calendari <filename>%1</filename>?<para> "
+#~ "<note>Les dades del calendari no s'eliminaran, ni s'eliminarà el "
+#~ "calendari del seu recurs remot. El calendari <filename>%1</filename> es "
+#~ "pot afegir de nou en qualsevol moment.</note></para><para><warning>Este "
+#~ "calendari conté la carpeta del calendari predeterminat <filename>%2</"
+#~ "filename>. Si la suprimiu se us demanarà que seleccioneu una carpeta nova "
+#~ "de calendari predeterminat.</warning></para>"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-26 00:43+0000\n"
+"POT-Creation-Date: 2026-03-09 00:44+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -1611,7 +1611,7 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "नूतनं पञ्चाङ्गरूपेण योजयन्तु"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:299
 #, fuzzy, kde-format
 #| msgctxt "@item this is the default calendar"
 #| msgid "%1 (Offline)"
@@ -1619,13 +1619,23 @@ msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (अफलाइन)"
 
-#: akonadicollectionview.cpp:293
-#, kde-format
-msgctxt "@item this is the default calendar"
-msgid "%1 (Default)"
+#: akonadicollectionview.cpp:302
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default event calendar"
+msgid "%1 (Default Event)"
 msgstr "%1 (पूर्वनिर्धारितम्) ."
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:304
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default todo calendar"
+msgid "%1 (Default Todo)"
+msgstr "%1 (पूर्वनिर्धारितम्) ."
+
+#: akonadicollectionview.cpp:392
 #, fuzzy, kde-format
 #| msgctxt "@title:tab calendar account settings"
 #| msgid "Calendars"
@@ -1633,13 +1643,13 @@ msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "पञ्चाङ्गाः"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:393
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
-#: akonadicollectionview.cpp:387
+#: akonadicollectionview.cpp:395
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Send as iCalendar…"
@@ -1648,71 +1658,116 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "iCalendar इति रूपेण प्रेषयन्तु…"
 
-#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Calendar Folder %1 इत्यस्य गुणाः"
 
-#: akonadicollectionview.cpp:485
+#: akonadicollectionview.cpp:493
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "&फोल्डर रङ्ग सेट् कुर्वन्तु…"
 
-#: akonadicollectionview.cpp:491
-#, kde-format
+#: akonadicollectionview.cpp:499
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
 msgctxt "@action:inmenu"
-msgid "Set as &Default Folder"
+msgid "Set as &Default Calendar"
 msgstr "&Default Folder इति सेट् कुर्वन्तु"
 
-#: akonadicollectionview.cpp:541
-#, kde-kuit-format
-msgctxt "@info"
-msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?<para>This will replace <filename>%2</filename> as the default "
-"calendar folder.</para>"
-msgstr ""
+#: akonadicollectionview.cpp:537
+#, fuzzy, kde-format
+#| msgid "&Events"
+msgctxt "@info/plain the calendar contains events"
+msgid "Event"
+msgstr "&घटना"
 
-#: akonadicollectionview.cpp:546
+#: akonadicollectionview.cpp:540
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Todo View"
+msgctxt "@info/plain the calendar contains todos"
+msgid "Todo"
+msgstr "सर्वं दृश्यम्"
+
+#: akonadicollectionview.cpp:603
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
 #| "Do you really want replace your current default calendar with \"%1\"?"
 msgctxt "@info"
 msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?"
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?<para>This will replace <filename>%3</filename> as the "
+"default %4 calendar folder.</para>"
 msgstr ""
 "किं भवान् वास्तवमेव स्वस्य वर्तमानं पूर्वनिर्धारितं पञ्चाङ्गं \"%1\" इत्यनेन प्रतिस्थापयितुम् "
 "इच्छति?"
 
-#: akonadicollectionview.cpp:551
-#, kde-format
+#: akonadicollectionview.cpp:610
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want replace your current default calendar with \"%1\"?"
+msgctxt "@info"
+msgid ""
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?"
+msgstr ""
+"किं भवान् वास्तवमेव स्वस्य वर्तमानं पूर्वनिर्धारितं पञ्चाङ्गं \"%1\" इत्यनेन प्रतिस्थापयितुम् "
+"इच्छति?"
+
+#: akonadicollectionview.cpp:613
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Replace Default Calendar?"
 msgctxt "@title:window"
-msgid "Replace Default Calendar?"
+msgid "Replace Default %1 Calendar?"
 msgstr "पूर्वनिर्धारितं पञ्चाङ्गं प्रतिस्थापयन्तु?"
 
-#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
-#, kde-kuit-format
+#: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want replace your current default calendar with \"%1\"?"
 msgctxt "@info"
-msgid "<filename>%1</filename> is now your default event calendar"
+msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr ""
+"किं भवान् वास्तवमेव स्वस्य वर्तमानं पूर्वनिर्धारितं पञ्चाङ्गं \"%1\" इत्यनेन प्रतिस्थापयितुम् "
+"इच्छति?"
 
-#: akonadicollectionview.cpp:711
+#: akonadicollectionview.cpp:770
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Event Calendar"
+msgstr "&Default Folder इति सेट् कुर्वन्तु"
+
+#: akonadicollectionview.cpp:773
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Todo Calendar"
+msgstr "&Default Folder इति सेट् कुर्वन्तु"
+
+#: akonadicollectionview.cpp:791
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "पञ्चाङ्गं योजयतु"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:810
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:787
+#: akonadicollectionview.cpp:892
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1722,7 +1777,7 @@ msgid ""
 "be added again at any time.</note></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:797
+#: akonadicollectionview.cpp:900
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1730,24 +1785,11 @@ msgid ""
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder <filename>%2</filename>. If you delete "
-"it you may be prompted to select a new default calendar folder.</warning></"
-"para>"
+"contains a default calendar folder. If you delete it you may be prompted to "
+"select a new default calendar folder.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:808
-#, kde-kuit-format
-msgctxt "@info"
-msgid ""
-"Do you really want to delete the <filename>%1</filename> calendar?"
-"<para><note>The calendar data will not be deleted, nor will the calendar be "
-"removed from its remote resource. The <filename>%1</filename> calendar can "
-"be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder. If you delete it you may be prompted "
-"to select a new default calendar folder.</warning></para>"
-msgstr ""
-
-#: akonadicollectionview.cpp:818
+#: akonadicollectionview.cpp:910
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1755,11 +1797,11 @@ msgid ""
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This is your default "
-"calendar. If you delete it you may be prompted to select a new default "
+"%2 calendar. If you delete it you may be prompted to select a new %2 default "
 "calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:830
+#: akonadicollectionview.cpp:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1768,24 +1810,24 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:837
+#: akonadicollectionview.cpp:931
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
 "<para><warning>This cannot be undone. Please consider carefully before "
 "pressing the %2 button.</warning></para><para><warning>This is your default "
-"calendar folder. If you delete it you may be prompted to select a new "
-"default calendar.</warning></para>"
+"%3 calendar folder. If you delete it you may be prompted to select a new "
+"default %4 calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
+#: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "पञ्चाङ्गं विलोपयन्तु"
 
-#: akonadicollectionview.cpp:874
+#: akonadicollectionview.cpp:970
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1795,26 +1837,27 @@ msgid ""
 "para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:889
+#: akonadicollectionview.cpp:985
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:932
+#: akonadicollectionview.cpp:1055
+#, fuzzy, kde-format
+#| msgid "Be added to the default calendar"
+msgctxt "@info"
+msgid "Consider setting a default %1 calendar"
+msgstr "पूर्वनिर्धारितपञ्चाङ्गे योजितं भवतु"
+
+#: akonadicollectionview.cpp:1057
 #, kde-format
 msgctxt "@info"
-msgid "Consider setting a default calendar for new events"
+msgid "Consider adding a write-enabled %1 calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:934
-#, kde-format
-msgctxt "@info"
-msgid "Consider adding a write-enabled events calendar"
-msgstr ""
-
-#: akonadicollectionview.cpp:956
+#: akonadicollectionview.cpp:1091
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -2247,7 +2290,7 @@ msgid ""
 msgstr ""
 "पञ्चाङ्गप्रबन्धके सर्वाणि पञ्चाङ्गानि अनिरीक्षितानि सन्ति । न कोऽपि कर्तव्यः शुद्धः अभवत् ।"
 
-#: calendarview.cpp:2470 calendarview.cpp:2748
+#: calendarview.cpp:2470 calendarview.cpp:2752
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
@@ -2287,14 +2330,14 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "%1 - मध्ये द्रव्यं स्थानान्तरयितुं असमर्थः ।"
 
-#: calendarview.cpp:2740
+#: calendarview.cpp:2744
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "० सम्पन्नं टू-डोस् शुद्धं कृतम् ।"
 
-#: calendarview.cpp:2742 calendarview.cpp:2753
+#: calendarview.cpp:2746 calendarview.cpp:2757
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2309,7 +2352,7 @@ msgstr[0] "%1 to-do उपेक्षितम् यतः अस्य अप
 msgstr[1] ""
 "%1 to-dos इत्यस्य अवहेलना कृता यतः तेषां अपूर्णाः अथवा केवलं पठनीयाः बालकाः सन्ति ।"
 
-#: calendarview.cpp:2746 calendarview.cpp:2751
+#: calendarview.cpp:2750 calendarview.cpp:2755
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2319,14 +2362,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 सम्पन्नं कर्तव्यं शुद्धं कृतम् ।"
 msgstr[1] "%1 सम्पन्नं to-dos शुद्धं कृतम्।"
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2762
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "सम्पूर्णं कार्यं शुद्धं कुर्वन् त्रुटिः अभवत्: %1"
 
-#: calendarview.cpp:2812
+#: calendarview.cpp:2823
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2341,7 +2384,7 @@ msgstr ""
 "भवान् एकस्मिन् पञ्चाङ्गे एकं घटनां निर्मितवान् यत् सम्प्रति छानितम् अस्ति ।\n"
 "वामपार्श्वपट्टिकायां, पञ्चाङ्गप्रबन्धके घटनां द्रष्टुं सक्षमं कुर्वन्तु ।"
 
-#: calendarview.cpp:2816
+#: calendarview.cpp:2827
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -6434,130 +6477,138 @@ msgstr "चयनित पञ्चाङ्ग"
 
 #: whatsnew/whatsnewtranslations.cpp:18
 msgid ""
+"A default To-do calendar can be specified to make creating new to-dos faster "
+"and easier with less chance of filing them into the wrong folder. Setting a "
+"default Event calendar has been supported for a long time.  See the Calendar "
+"Manager context menu \"Set as Default Todo Calendar\""
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:27
+msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:20
+#: whatsnew/whatsnewtranslations.cpp:29
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:21
+#: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:22
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:23
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:25
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:26
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:27
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:28
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Search: the search settings are saved/restored"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Incidence editor: add emoji support"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:59
 #, fuzzy
 #| msgctxt "@action:button"
 #| msgid "Add as new calendar"
 msgid "Add What's New menu"
 msgstr "नूतनं पञ्चाङ्गरूपेण योजयन्तु"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "The current view is remembered"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:66
 #, fuzzy
 #| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
 msgstr "कार्यसूचीदृश्यं पूर्णविण्डो इत्यस्य उपयोगं करोति"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:69
 #, fuzzy
 #| msgid "Week numbers select a work week when in work week mode"
 msgid ""
@@ -6565,76 +6616,76 @@ msgid ""
 "\" setting is true by default"
 msgstr "सप्ताहसङ्ख्याः कार्यसप्ताहस्य मोडे सति कार्यसप्ताहं चिनोति"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:70
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:71
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Get Hot New Stuff removed"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid "Add calendar file: will not permit an empty file path"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:69
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "DAV configuration: wizard updated list of providers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:97
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:98
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:99
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:101
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:102
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:94
+#: whatsnew/whatsnewtranslations.cpp:103
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6642,7 +6693,7 @@ msgid ""
 msgstr ""
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:117
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""

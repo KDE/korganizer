@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-26 00:43+0000\n"
+"POT-Creation-Date: 2026-03-09 00:44+0000\n"
 "PO-Revision-Date: 2026-01-25 13:57+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -1510,102 +1510,158 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Gehitu egutegi berri gisa"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:299
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (lerroz kanpo)"
 
-#: akonadicollectionview.cpp:293
-#, kde-format
-msgctxt "@item this is the default calendar"
-msgid "%1 (Default)"
+#: akonadicollectionview.cpp:302
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default event calendar"
+msgid "%1 (Default Event)"
 msgstr "%1 (Lehenetsia)"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:304
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default todo calendar"
+msgid "%1 (Default Todo)"
+msgstr "%1 (Lehenetsia)"
+
+#: akonadicollectionview.cpp:392
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Egutegi-bilaketa"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:393
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Hasi tekleatzen bildumaren barruan egutegi bat bilatzeko."
 
-#: akonadicollectionview.cpp:387
+#: akonadicollectionview.cpp:395
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Bilatu egutegia…"
 
-#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 egutegi-karpetaren propietateak"
 
-#: akonadicollectionview.cpp:485
+#: akonadicollectionview.cpp:493
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "E&zarri karpetaren kolorea…"
 
-#: akonadicollectionview.cpp:491
-#, kde-format
+#: akonadicollectionview.cpp:499
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
 msgctxt "@action:inmenu"
-msgid "Set as &Default Folder"
+msgid "Set as &Default Calendar"
 msgstr "Ezarri karpeta &lehenetsi gisa"
 
-#: akonadicollectionview.cpp:541
-#, kde-kuit-format
+#: akonadicollectionview.cpp:537
+#, fuzzy, kde-format
+#| msgid "Events"
+msgctxt "@info/plain the calendar contains events"
+msgid "Event"
+msgstr "Gertaerak"
+
+#: akonadicollectionview.cpp:540
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Todo View"
+msgctxt "@info/plain the calendar contains todos"
+msgid "Todo"
+msgstr "Egitekoen ikuspegia"
+
+#: akonadicollectionview.cpp:603
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to set <filename>%1</filename> as your default "
+#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
+#| "default calendar folder.</para>"
 msgctxt "@info"
 msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?<para>This will replace <filename>%2</filename> as the default "
-"calendar folder.</para>"
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?<para>This will replace <filename>%3</filename> as the "
+"default %4 calendar folder.</para>"
 msgstr ""
 "Benetan ezarri nahi duzu <filename>%1</filename> zure egutegi-karpeta "
 "lehenetsi gisa?<para>Honek <filename>%2</filename> egutegi-karpeta lehenetsi "
 "gisa ordezkatuko du.</para>"
 
-#: akonadicollectionview.cpp:546
-#, kde-kuit-format
+#: akonadicollectionview.cpp:610
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to set <filename>%1</filename> as your default "
+#| "calendar folder?"
 msgctxt "@info"
 msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?"
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?"
 msgstr ""
 "Benetan ezarri nahi duzu <filename>%1</filename> zure egutegi-karpeta "
 "lehenetsia gisa?"
 
-#: akonadicollectionview.cpp:551
-#, kde-format
+#: akonadicollectionview.cpp:613
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Replace Default Calendar?"
 msgctxt "@title:window"
-msgid "Replace Default Calendar?"
+msgid "Replace Default %1 Calendar?"
 msgstr "Egutegi lehenetsia ordezkatu?"
 
-#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
-#, kde-kuit-format
+#: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<filename>%1</filename> is now your default event calendar"
 msgctxt "@info"
-msgid "<filename>%1</filename> is now your default event calendar"
+msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "<filename>%1</filename> da orain zure ekitaldi-egutegi lehenetsia"
 
-#: akonadicollectionview.cpp:711
+#: akonadicollectionview.cpp:770
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Event Calendar"
+msgstr "Ezarri karpeta &lehenetsi gisa"
+
+#: akonadicollectionview.cpp:773
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Todo Calendar"
+msgstr "Ezarri karpeta &lehenetsi gisa"
+
+#: akonadicollectionview.cpp:791
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Gehitu egutegia"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:810
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Egutegi berria gehitzea huts egin du: <message>%1</message>"
 
-#: akonadicollectionview.cpp:787
+#: akonadicollectionview.cpp:892
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1619,36 +1675,24 @@ msgstr ""
 "urruneko baliabidetik kenduko ere. <filename>%1</filename> egutegia nahi "
 "duzuenean berriz gehitu daiteke.</note></para>"
 
-#: akonadicollectionview.cpp:797
-#, kde-kuit-format
+#: akonadicollectionview.cpp:900
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> calendar?"
+#| "<para><note>The calendar data will not be deleted, nor will the calendar "
+#| "be removed from its remote resource. The <filename>%1</filename> calendar "
+#| "can be added again at any time.</note></para><para><warning>This calendar "
+#| "contains your default calendar folder. If you delete it you may be "
+#| "prompted to select a new default calendar folder.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder <filename>%2</filename>. If you delete "
-"it you may be prompted to select a new default calendar folder.</warning></"
-"para>"
-msgstr ""
-"<filename>%1</filename> egutegia benetan ezabatu nahi duzu? "
-"<para><note>Egutegiko datuak ez dira ezabatuko, eta egutegia ez da bere "
-"urruneko baliabidetik kenduko ere. <filename>%1</filename> egutegia nahi "
-"duzuenean berriz gehitu daiteke.</note></para><para><warning>Egutegi honek "
-"zure egutegi karpeta lehenetsia <filename>%2</filename> du. Hura ezabatzen "
-"baduzu egutegi-karpeta lehenetsi berri bat hautatzea eskatuko zaizu.</"
-"warning></para>"
-
-#: akonadicollectionview.cpp:808
-#, kde-kuit-format
-msgctxt "@info"
-msgid ""
-"Do you really want to delete the <filename>%1</filename> calendar?"
-"<para><note>The calendar data will not be deleted, nor will the calendar be "
-"removed from its remote resource. The <filename>%1</filename> calendar can "
-"be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder. If you delete it you may be prompted "
-"to select a new default calendar folder.</warning></para>"
+"contains a default calendar folder. If you delete it you may be prompted to "
+"select a new default calendar folder.</warning></para>"
 msgstr ""
 "<filename>%1</filename> egutegia benetan ezabatu nahi duzu? "
 "<para><note>Egutegiko datuak ez dira ezabatuko, eta egutegia ez da bere "
@@ -1657,15 +1701,23 @@ msgstr ""
 "zure egutegi karpeta lehenetsia du. Hura ezabatzen baduzu baliteke egutegi-"
 "karpeta lehenetsi berri bat hautatzea eskatzea.</warning></para>"
 
-#: akonadicollectionview.cpp:818
-#, kde-kuit-format
+#: akonadicollectionview.cpp:910
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> calendar?"
+#| "<para><note>The calendar data will not be deleted, nor will the calendar "
+#| "be removed from its remote resource. The <filename>%1</filename> calendar "
+#| "can be added again at any time.</note></para><para><warning>This is your "
+#| "default calendar. If you delete it you may be prompted to select a new "
+#| "default calendar.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This is your default "
-"calendar. If you delete it you may be prompted to select a new default "
+"%2 calendar. If you delete it you may be prompted to select a new %2 default "
 "calendar.</warning></para>"
 msgstr ""
 "<filename>%1</filename> egutegia benetan ezabatu nahi duzu? "
@@ -1675,7 +1727,7 @@ msgstr ""
 "egutegi lehenetsia. Hura ezabatzen baduzu baliteke beste egutegi lehenetsi "
 "berri bat hautatzea eskatzea.</warning></para>"
 
-#: akonadicollectionview.cpp:830
+#: akonadicollectionview.cpp:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1687,15 +1739,22 @@ msgstr ""
 "<para><warning>Hau ezin da desegin. Mesedez, %2 botoia sakatu aurretik "
 "arretaz hausnartu.</warning></para>"
 
-#: akonadicollectionview.cpp:837
-#, kde-kuit-format
+#: akonadicollectionview.cpp:931
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> folder?"
+#| "<para><warning>This cannot be undone. Please consider carefully before "
+#| "pressing the %2 button.</warning></para><para><warning>This is your "
+#| "default calendar folder. If you delete it you may be prompted to select a "
+#| "new default calendar.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
 "<para><warning>This cannot be undone. Please consider carefully before "
 "pressing the %2 button.</warning></para><para><warning>This is your default "
-"calendar folder. If you delete it you may be prompted to select a new "
-"default calendar.</warning></para>"
+"%3 calendar folder. If you delete it you may be prompted to select a new "
+"default %4 calendar.</warning></para>"
 msgstr ""
 "Benetan ezabatu nahi duzu <filename>%1</filename> karpeta? "
 "<para><warning>Hau ezin da desegin. Mesedez, %2 botoia sakatu aurretik "
@@ -1703,13 +1762,13 @@ msgstr ""
 "karpeta lehenetsia. Hura ezabatzen baduzu, baliteke karpeta-lehenetsi berri "
 "bat hautatzea eskatzea.</warning></para>"
 
-#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
+#: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Ezabatu egutegia"
 
-#: akonadicollectionview.cpp:874
+#: akonadicollectionview.cpp:970
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1723,7 +1782,7 @@ msgstr ""
 "desegin. Mesedez, %1 botoia sakatu aurretik arretaz hausnartu.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:889
+#: akonadicollectionview.cpp:985
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1732,21 +1791,25 @@ msgstr ""
 "Egutegia ezabatzea huts egin du: <message>Akonadi agente instantzia "
 "baliogabea</message>"
 
-#: akonadicollectionview.cpp:932
-#, kde-format
+#: akonadicollectionview.cpp:1055
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Consider setting a default calendar for new events"
 msgctxt "@info"
-msgid "Consider setting a default calendar for new events"
+msgid "Consider setting a default %1 calendar"
 msgstr ""
 "Kontuan hartu ekitaldi berrietarako egutegi lehenetsia bat ezartzeko aukera"
 
-#: akonadicollectionview.cpp:934
-#, kde-format
+#: akonadicollectionview.cpp:1057
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Consider adding a write-enabled events calendar"
 msgctxt "@info"
-msgid "Consider adding a write-enabled events calendar"
+msgid "Consider adding a write-enabled %1 calendar"
 msgstr ""
 "Kontuan hartu idazteko gaitutako ekitaldien egutegi bat gehitzeko aukera"
 
-#: akonadicollectionview.cpp:956
+#: akonadicollectionview.cpp:1091
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -2131,7 +2194,7 @@ msgstr ""
 "Egutegi kudeatzaileko egutegi guztiak markatu gabe daude. Ez dago betiko "
 "ezabatu den zereginik."
 
-#: calendarview.cpp:2470 calendarview.cpp:2748
+#: calendarview.cpp:2470 calendarview.cpp:2752
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2167,13 +2230,13 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ez da <resource>%1</resource> elementua mugitzeko gai."
 
-#: calendarview.cpp:2740
+#: calendarview.cpp:2744
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Osatutako 0 zeregin betiko ezabatu dira.<nl/>"
 
-#: calendarview.cpp:2742 calendarview.cpp:2753
+#: calendarview.cpp:2746 calendarview.cpp:2757
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2186,7 +2249,7 @@ msgstr[1] ""
 "%1 zeregini ezikusi egin zaio osatu gabeko edo soilik irakurtzeko umeak "
 "dituelako."
 
-#: calendarview.cpp:2746 calendarview.cpp:2751
+#: calendarview.cpp:2750 calendarview.cpp:2755
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2194,7 +2257,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Osatutako zeregin %1 betiko ezabatu da."
 msgstr[1] "Osatutako %1 zeregin betiko ezabatu dira."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2762
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2202,7 +2265,7 @@ msgstr ""
 "Errore bat gertatu da osatutako zereginak betiko ezabatzean: <message>%1</"
 "message>"
 
-#: calendarview.cpp:2812
+#: calendarview.cpp:2823
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2214,7 +2277,7 @@ msgstr ""
 "batean.<para>Gertakizun sortu berria ikusteko, mesedez, gaitu bere egutegia "
 "egutegi-kudeatzailean.</para>"
 
-#: calendarview.cpp:2816
+#: calendarview.cpp:2827
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -6354,6 +6417,14 @@ msgstr "Hautatutako egutegiak"
 
 #: whatsnew/whatsnewtranslations.cpp:18
 msgid ""
+"A default To-do calendar can be specified to make creating new to-dos faster "
+"and easier with less chance of filing them into the wrong folder. Setting a "
+"default Event calendar has been supported for a long time.  See the Calendar "
+"Manager context menu \"Set as Default Todo Calendar\""
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:27
+msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
@@ -6362,7 +6433,7 @@ msgstr ""
 "guztietarako. Jokabide hori ezgaitzeko, marka kendu ezarpenetako Ordua eta "
 "data->Balio lehenetsiak fitxako Gaitu oroigarriak aukerei"
 
-#: whatsnew/whatsnewtranslations.cpp:20
+#: whatsnew/whatsnewtranslations.cpp:29
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6370,7 +6441,7 @@ msgstr ""
 "Hilabeteko ikuspegia: aurrerantzean ez erakutsi hilabetearen urte-goiburua "
 "bertikalean lekua aurrezteko eta bikoizketa kentzeko"
 
-#: whatsnew/whatsnewtranslations.cpp:21
+#: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6378,7 +6449,7 @@ msgstr ""
 "Hilabeteko ikuspegia: erabili kolore pixka bat ezberdina unean hautatutako "
 "hilabetetik kanpoko egunen goiburuak marrazteko"
 
-#: whatsnew/whatsnewtranslations.cpp:22
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6386,14 +6457,14 @@ msgstr ""
 "Hilabeteko ikuspegia: beheko eskuineko nabigatzeko aginteak kendu dira "
 "aplikazioaren nabigatzeko barra hobetuaren alde"
 
-#: whatsnew/whatsnewtranslations.cpp:23
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:25
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6401,11 +6472,11 @@ msgstr ""
 "Nabigatzeko barra: asteka kiribiltzea eta ikuspegiko alboko barra erakustea/"
 "ezkutatzea gehituz hobetua"
 
-#: whatsnew/whatsnewtranslations.cpp:26
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:27
+#: whatsnew/whatsnewtranslations.cpp:36
 #, fuzzy
 #| msgid ""
 #| "Agenda view: events without a duration are displayed as 30 long (rather "
@@ -6417,18 +6488,18 @@ msgstr ""
 "Agenda ikuspegia: iraupenik gabeko ekitaldiak 30 minutuko luzerarekin "
 "erakusten dira (15 minutuko luzeraren ordez)"
 
-#: whatsnew/whatsnewtranslations.cpp:28
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Search: the search settings are saved/restored"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6437,29 +6508,29 @@ msgstr ""
 "eremurako denbora-etiketak eskuin (edo ezker) aldean ere erakusteko/"
 "ezkutatzeko."
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Intzidentzia editorea: intzidentziak iraganean sortzea antzeman eta abisatu"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Incidence editor: add emoji support"
 msgstr "Intzidentzia editorea: emotikonoen euskarria gehitu"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Add What's New menu"
 msgstr "Gehitu Zer berri menua"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "The current view is remembered"
 msgstr "Uneko ikuspegia gogoratzen da"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 "Gehitu Data hautatzeko elkarrizketa-koadro bat, Joan menuan erabilgarri"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6467,7 +6538,7 @@ msgstr ""
 "Agenda ikuspegia: \"Eguna\", \"Hurrengo X egunak\", \"Lan-ordutegia\", "
 "\"Astea\" denbora-tarteak Agendaren tresna-botoian bateratu dira"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6475,27 +6546,27 @@ msgstr ""
 "Agenda ikuspegia: 24 orduko erlojura aldatzeko, testuinguru-menuan ordu-"
 "etiketak aukera gehitu da"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Agenda ikuspegia: Ekitaldi/Zeregin berria sortzeko testuingurua gehitu da"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Zeregin ikuspegia: osatzea eta oroigarriak txandakatzeko testuinguru-"
 "menuetan aukerak gehitu dira"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid "To-do view: save/restore fullview setting"
 msgstr "Zeregin ikuspegia: gorde/lehengoratu ikuspegi osoaren ezarpenak"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "To-do view: save/restore flatview setting"
 msgstr "Zeregin ikuspegia: ikuspegi lauaren ezarpenak gorde/lehengoratu"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6503,7 +6574,7 @@ msgstr ""
 "Data nabigatzailea: Konfiguratu->Ikuspegi-ezarpenak menuan asteko zenbakiak "
 "ezkutatzeko aukera bat gehitu da"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:69
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6511,59 +6582,59 @@ msgstr ""
 "Data nabigatzailea: \"Asteko zenbakiek, lan-astea moduan, lan-aste bat "
 "hautatzen dute\" ezarpena era lehenetsian egia da"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:70
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Intzidentzia editorea: gogoratu/lehengoratu txantiloi-kudeatzailearen "
 "geometria"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:71
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Intzidentzia editorea: eranskinak arrastatzea eta jaregitea onartzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Esportatu egutegia elkarrizketa-koadroak esportatzeko bere azken karpeta "
 "gogoratzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Inportatu egutegia elkarrizketa-koadroak inportatzeko bere azken karpeta "
 "gogoratzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Get Hot New Stuff removed"
 msgstr "Berrikuntzak eskuratzeko aukera kendu da"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Gehitu egutegi-fitxategia: urruneko egutegiak beti soilik irakurtzeko dira"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Gehitu egutegi-fitxategia: ez du utziko fitxategi bide-izen hutsa"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "DAV konfigurazioa: editatzean, elkarrizketa-koadroak kontuaren pasahitza "
 "ikusten uzten du"
 
-#: whatsnew/whatsnewtranslations.cpp:69
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "DAV konfigurazioa: morroiak hornitzaile ezberdinen ikonoak erakusten ditu"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV konfigurazioa: morroiak hornitzaileen zerrenda eguneratua du"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:97
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6572,19 +6643,19 @@ msgstr ""
 "Lanik egiten ez duten erabiltzaileetara egokitzeko semantika aldatu da, "
 "\"lan ordutegia\" kontzeptutik \"asteko ordutegia\" kontzeptura"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:98
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "\"Ekitaldi berria\"ren hasierako hasiera orduak ikuspegi guztien artean "
 "koherenteak dira"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:99
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Ekitaldi-egutegi lehenetsiaren erabilpen hobetua"
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:101
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6592,14 +6663,14 @@ msgstr ""
 "Baztertutako daten zerrenda luzea duten intzidentziek jada ez dute tresna-"
 "argibide erraldoirik sortzen"
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:102
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Partaideak dituzten intzidentzietarako, antolatzailearen e-posta helbidea "
 "konpondu da"
 
-#: whatsnew/whatsnewtranslations.cpp:94
+#: whatsnew/whatsnewtranslations.cpp:103
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6609,7 +6680,7 @@ msgstr ""
 "erakusten dira (15 minutuko luzeraren ordez)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:117
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
@@ -6846,6 +6917,24 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you really want to delete the <filename>%1</filename> calendar?"
+#~ "<para><note>The calendar data will not be deleted, nor will the calendar "
+#~ "be removed from its remote resource. The <filename>%1</filename> calendar "
+#~ "can be added again at any time.</note></para><para><warning>This calendar "
+#~ "contains your default calendar folder <filename>%2</filename>. If you "
+#~ "delete it you may be prompted to select a new default calendar folder.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "<filename>%1</filename> egutegia benetan ezabatu nahi duzu? "
+#~ "<para><note>Egutegiko datuak ez dira ezabatuko, eta egutegia ez da bere "
+#~ "urruneko baliabidetik kenduko ere. <filename>%1</filename> egutegia nahi "
+#~ "duzuenean berriz gehitu daiteke.</note></para><para><warning>Egutegi "
+#~ "honek zure egutegi karpeta lehenetsia <filename>%2</filename> du. Hura "
+#~ "ezabatzen baduzu egutegi-karpeta lehenetsi berri bat hautatzea eskatuko "
+#~ "zaizu.</warning></para>"
 
 #~ msgid "Scroll backward to the previous year"
 #~ msgstr "Kiribildu atzerantz, aurreko urtera"
@@ -7678,12 +7767,6 @@ msgstr "%1"
 #~ msgctxt "@title:column event end time"
 #~ msgid "End Time"
 #~ msgstr "Amaierako ordua"
-
-#, fuzzy
-#~| msgid "Events"
-#~ msgctxt "@title:column event description"
-#~ msgid "Event"
-#~ msgstr "Gertaerak"
 
 #, fuzzy
 #~ msgctxt "@title:column event locatin"

@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1728488 $
+# Version: $Revision: 1731844 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-26 00:43+0000\n"
+"POT-Creation-Date: 2026-03-09 00:44+0000\n"
 "PO-Revision-Date: 2025-12-24 16:15+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -1516,103 +1516,160 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Dodaj jako nowy kalendarz"
 
-#: akonadicollectionview.cpp:290
+#: akonadicollectionview.cpp:299
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (Niedostępny)"
 
-#: akonadicollectionview.cpp:293
-#, kde-format
-msgctxt "@item this is the default calendar"
-msgid "%1 (Default)"
+#: akonadicollectionview.cpp:302
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default event calendar"
+msgid "%1 (Default Event)"
 msgstr "%1 (domyślny)"
 
-#: akonadicollectionview.cpp:384
+#: akonadicollectionview.cpp:304
+#, fuzzy, kde-format
+#| msgctxt "@item this is the default calendar"
+#| msgid "%1 (Default)"
+msgctxt "@item this is the default todo calendar"
+msgid "%1 (Default Todo)"
+msgstr "%1 (domyślny)"
+
+#: akonadicollectionview.cpp:392
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Szukanie kalendarzy"
 
-#: akonadicollectionview.cpp:385
+#: akonadicollectionview.cpp:393
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Zacznij pisać, aby zacząć szukać kalendarza w zbiorze."
 
-#: akonadicollectionview.cpp:387
+#: akonadicollectionview.cpp:395
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Przeszukaj kalendarza…"
 
-#: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Właściwości katalogu kalendarza %1"
 
-#: akonadicollectionview.cpp:485
+#: akonadicollectionview.cpp:493
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "U&staw kolor katalogu…"
 
-#: akonadicollectionview.cpp:491
-#, kde-format
+#: akonadicollectionview.cpp:499
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
 msgctxt "@action:inmenu"
-msgid "Set as &Default Folder"
+msgid "Set as &Default Calendar"
 msgstr "Ustaw jako &domyślny katalog"
 
-#: akonadicollectionview.cpp:541
-#, kde-kuit-format
+#: akonadicollectionview.cpp:537
+#, fuzzy, kde-format
+#| msgctxt "@title:column event description"
+#| msgid "Event"
+msgctxt "@info/plain the calendar contains events"
+msgid "Event"
+msgstr "Wydarzenie"
+
+#: akonadicollectionview.cpp:540
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Todo View"
+msgctxt "@info/plain the calendar contains todos"
+msgid "Todo"
+msgstr "Widok zadań"
+
+#: akonadicollectionview.cpp:603
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to set <filename>%1</filename> as your default "
+#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
+#| "default calendar folder.</para>"
 msgctxt "@info"
 msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?<para>This will replace <filename>%2</filename> as the default "
-"calendar folder.</para>"
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?<para>This will replace <filename>%3</filename> as the "
+"default %4 calendar folder.</para>"
 msgstr ""
 "Czy na pewno ustawić <filename>%1</filename> jako katalog swojego domyślnego "
 "kalendarza?<para>Zastąpi to <filename>%2</filename> jako katalog twojego "
 "domyślnego kalendarza.</para>"
 
-#: akonadicollectionview.cpp:546
-#, kde-kuit-format
+#: akonadicollectionview.cpp:610
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to set <filename>%1</filename> as your default "
+#| "calendar folder?"
 msgctxt "@info"
 msgid ""
-"Do you really want to set <filename>%1</filename> as your default calendar "
-"folder?"
+"Do you really want to set <filename>%1</filename> as your default %2 "
+"calendar folder?"
 msgstr ""
 "Czy na pewno chcesz ustawić <filename>%1</filename> jako katalog swojego "
 "domyślnego kalendarza?"
 
-#: akonadicollectionview.cpp:551
-#, kde-format
+#: akonadicollectionview.cpp:613
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Replace Default Calendar?"
 msgctxt "@title:window"
-msgid "Replace Default Calendar?"
+msgid "Replace Default %1 Calendar?"
 msgstr "Czy zastąpić domyślny kalendarz?"
 
-#: akonadicollectionview.cpp:555 akonadicollectionview.cpp:927
-#, kde-kuit-format
+#: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<filename>%1</filename> is now your default event calendar"
 msgctxt "@info"
-msgid "<filename>%1</filename> is now your default event calendar"
+msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr ""
 "<filename>%1</filename> jest teraz twoim domyślnym kalendarzem na wydarzenia"
 
-#: akonadicollectionview.cpp:711
+#: akonadicollectionview.cpp:770
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Event Calendar"
+msgstr "Ustaw jako &domyślny katalog"
+
+#: akonadicollectionview.cpp:773
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Set as &Default Folder"
+msgctxt "@action:inmenu"
+msgid "Set as &Default Todo Calendar"
+msgstr "Ustaw jako &domyślny katalog"
+
+#: akonadicollectionview.cpp:791
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Dodaj kalendarz"
 
-#: akonadicollectionview.cpp:730
+#: akonadicollectionview.cpp:810
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Nie udało się dodać nowego kalendarza: <message>%1</message>"
 
-#: akonadicollectionview.cpp:787
+#: akonadicollectionview.cpp:892
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1626,35 +1683,24 @@ msgstr ""
 "zasobu zdalnego. Kalendarz <filename>%1</filename> będzie można dodać "
 "ponownie w każdej chwili.</note></para>"
 
-#: akonadicollectionview.cpp:797
-#, kde-kuit-format
+#: akonadicollectionview.cpp:900
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> calendar?"
+#| "<para><note>The calendar data will not be deleted, nor will the calendar "
+#| "be removed from its remote resource. The <filename>%1</filename> calendar "
+#| "can be added again at any time.</note></para><para><warning>This calendar "
+#| "contains your default calendar folder. If you delete it you may be "
+#| "prompted to select a new default calendar folder.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder <filename>%2</filename>. If you delete "
-"it you may be prompted to select a new default calendar folder.</warning></"
-"para>"
-msgstr ""
-"Czy na pewno usunąć kalendarz <filename>%1</filename>?<para><note>Dane "
-"kalendarza nie zostaną usunięte, ani sam kalendarz nie zostanie usunięty z "
-"zasobu zdalnego. Kalendarz <filename>%1</filename> będzie można dodać "
-"ponownie w każdej chwili.</note></para><para><warning>Ten kalendarz zawiera "
-"katalog twojego domyślnego kalendarza <filename>%2</filename>. Jeśli go "
-"usuniesz, to będziesz musiał wskazać nowy katalog.</warning></para>"
-
-#: akonadicollectionview.cpp:808
-#, kde-kuit-format
-msgctxt "@info"
-msgid ""
-"Do you really want to delete the <filename>%1</filename> calendar?"
-"<para><note>The calendar data will not be deleted, nor will the calendar be "
-"removed from its remote resource. The <filename>%1</filename> calendar can "
-"be added again at any time.</note></para><para><warning>This calendar "
-"contains your default calendar folder. If you delete it you may be prompted "
-"to select a new default calendar folder.</warning></para>"
+"contains a default calendar folder. If you delete it you may be prompted to "
+"select a new default calendar folder.</warning></para>"
 msgstr ""
 "Czy na pewno usunąć kalendarz <filename>%1</filename>?<para><note>Dane "
 "kalendarza nie zostaną usunięte, ani sam kalendarz nie zostanie usunięty z "
@@ -1663,15 +1709,23 @@ msgstr ""
 "katalog twojego domyślnego kalendarza. Jeśli go usuniesz, to będziesz musiał "
 "wskazać nowy katalog.</warning></para>"
 
-#: akonadicollectionview.cpp:818
-#, kde-kuit-format
+#: akonadicollectionview.cpp:910
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> calendar?"
+#| "<para><note>The calendar data will not be deleted, nor will the calendar "
+#| "be removed from its remote resource. The <filename>%1</filename> calendar "
+#| "can be added again at any time.</note></para><para><warning>This is your "
+#| "default calendar. If you delete it you may be prompted to select a new "
+#| "default calendar.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
 "<para><note>The calendar data will not be deleted, nor will the calendar be "
 "removed from its remote resource. The <filename>%1</filename> calendar can "
 "be added again at any time.</note></para><para><warning>This is your default "
-"calendar. If you delete it you may be prompted to select a new default "
+"%2 calendar. If you delete it you may be prompted to select a new %2 default "
 "calendar.</warning></para>"
 msgstr ""
 "Czy na pewno usunąć kalendarz <filename>%1</filename>?<para><note>Dane "
@@ -1681,7 +1735,7 @@ msgstr ""
 "kalendarz. Jeśli go usuniesz, to będziesz musiał wskazać nowy domyślny "
 "kalendarz.</warning></para>"
 
-#: akonadicollectionview.cpp:830
+#: akonadicollectionview.cpp:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1693,15 +1747,22 @@ msgstr ""
 "<para><warning>Nie będzie można tego cofnąć. Upewnij się zanim naciśniesz "
 "przycisk %2.</warning></para>"
 
-#: akonadicollectionview.cpp:837
-#, kde-kuit-format
+#: akonadicollectionview.cpp:931
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "Do you really want to delete the <filename>%1</filename> folder?"
+#| "<para><warning>This cannot be undone. Please consider carefully before "
+#| "pressing the %2 button.</warning></para><para><warning>This is your "
+#| "default calendar folder. If you delete it you may be prompted to select a "
+#| "new default calendar.</warning></para>"
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
 "<para><warning>This cannot be undone. Please consider carefully before "
 "pressing the %2 button.</warning></para><para><warning>This is your default "
-"calendar folder. If you delete it you may be prompted to select a new "
-"default calendar.</warning></para>"
+"%3 calendar folder. If you delete it you may be prompted to select a new "
+"default %4 calendar.</warning></para>"
 msgstr ""
 "Czy na pewno usunąć katalog <filename>%1</filename>?<para><warning>Nie "
 "będzie można tego cofnąć. Upewnij się zanim naciśniesz przycisk %2.</"
@@ -1709,13 +1770,13 @@ msgstr ""
 "usuniesz, to będziesz musiał wskazać nowy domyślny kalendarz.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:848 akonadicollectionview.cpp:879
+#: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Usunąć kalendarz"
 
-#: akonadicollectionview.cpp:874
+#: akonadicollectionview.cpp:970
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1728,7 +1789,7 @@ msgstr ""
 "przejdziesz dalej, to jego dane zostaną usunięte. <para><warning>Nie będzie "
 "można tego cofnąć. Upewnij się zanim naciśniesz przycisk %1.</warning></para>"
 
-#: akonadicollectionview.cpp:889
+#: akonadicollectionview.cpp:985
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1737,19 +1798,23 @@ msgstr ""
 "Nie udało się usunąć kalendarza: <message>Nieprawidłowe wystąpienie usługi "
 "Akonadi</message>"
 
-#: akonadicollectionview.cpp:932
-#, kde-format
+#: akonadicollectionview.cpp:1055
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Consider setting a default calendar for new events"
 msgctxt "@info"
-msgid "Consider setting a default calendar for new events"
+msgid "Consider setting a default %1 calendar"
 msgstr "Rozważ ustawienie domyślnego kalendarza dla nowych wydarzeń"
 
-#: akonadicollectionview.cpp:934
-#, kde-format
+#: akonadicollectionview.cpp:1057
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Consider adding a write-enabled events calendar"
 msgctxt "@info"
-msgid "Consider adding a write-enabled events calendar"
+msgid "Consider adding a write-enabled %1 calendar"
 msgstr "Rozważ dodane kalendarza z wydarzeniami z możliwością zapisu"
 
-#: akonadicollectionview.cpp:956
+#: akonadicollectionview.cpp:1091
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -2132,7 +2197,7 @@ msgstr ""
 "Wszystkie kalendarze są odznaczone w Zarządzaniu Kalendarzami. Żadne zadanie "
 "nie zostało wyczyszczone."
 
-#: calendarview.cpp:2470 calendarview.cpp:2748
+#: calendarview.cpp:2470 calendarview.cpp:2752
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
@@ -2168,13 +2233,13 @@ msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Nie można przenieść elementu <resource>%1</resource>."
 
-#: calendarview.cpp:2740
+#: calendarview.cpp:2744
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 ukończonych zadania zostało wyczyszczonych.<nl/>"
 
-#: calendarview.cpp:2742 calendarview.cpp:2753
+#: calendarview.cpp:2746 calendarview.cpp:2757
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2190,7 +2255,7 @@ msgstr[2] ""
 "%1 zadań zostało pominiętych, bo mają zadanie podrzędne nieukończone lub "
 "tylko-do-odczytu."
 
-#: calendarview.cpp:2746 calendarview.cpp:2751
+#: calendarview.cpp:2750 calendarview.cpp:2755
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2199,14 +2264,14 @@ msgstr[0] "%1 ukończone zadanie zostało wyczyszczone."
 msgstr[1] "%1 ukończone zadania zostały wyczyszczone."
 msgstr[2] "%1 ukończonych zadań zostało wyczyszczonych."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2762
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 "Wystąpił błąd, przy czyszczeniu ukończonych zadań: <message>%1</message>"
 
-#: calendarview.cpp:2812
+#: calendarview.cpp:2823
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2218,7 +2283,7 @@ msgstr ""
 "<para>Aby zobaczyć nowoutworzone wystąpienie, włącz jego kalendarz w "
 "zarządzaniu kalendarzami.</para> "
 
-#: calendarview.cpp:2816
+#: calendarview.cpp:2827
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -6342,6 +6407,14 @@ msgstr "Wybrane kalendarze"
 
 #: whatsnew/whatsnewtranslations.cpp:18
 msgid ""
+"A default To-do calendar can be specified to make creating new to-dos faster "
+"and easier with less chance of filing them into the wrong folder. Setting a "
+"default Event calendar has been supported for a long time.  See the Calendar "
+"Manager context menu \"Set as Default Todo Calendar\""
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:27
+msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
@@ -6350,7 +6423,7 @@ msgstr ""
 "Aby wyłączyć to zachowanie, odznacz pole włączania przypomnień na karcie "
 "ustawień Data i Czas->Domyślne wartości"
 
-#: whatsnew/whatsnewtranslations.cpp:20
+#: whatsnew/whatsnewtranslations.cpp:29
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6358,7 +6431,7 @@ msgstr ""
 "Widok miesiąca: zaprzestano pokazywania nagłówka miesiąca i roku, aby "
 "zaoszczędzić przestrzeń w pionie i nie powtarzać się"
 
-#: whatsnew/whatsnewtranslations.cpp:21
+#: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6366,30 +6439,30 @@ msgstr ""
 "Widok miesiąca: użyto nieznacznie innego koloru do rysowania nagłówków dni "
 "dla dni spoza obecnie zaznaczonego miesiąca"
 
-#: whatsnew/whatsnewtranslations.cpp:22
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:23
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:25
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:26
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:27
+#: whatsnew/whatsnewtranslations.cpp:36
 #, fuzzy
 #| msgid ""
 #| "Agenda view: events without a duration are displayed as 30 long (rather "
@@ -6401,18 +6474,18 @@ msgstr ""
 "Widok planu: wydarzenia bez czasu trwania są wyświetlane jakby trwały 30 "
 "(zamiast 15) minut"
 
-#: whatsnew/whatsnewtranslations.cpp:28
+#: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:30
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Search: the search settings are saved/restored"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6421,28 +6494,28 @@ msgstr ""
 "pokazywania etykiet czasowych dla systemowej strefy czasowej także po prawej "
 "(lub lewej) stronie"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Edytor wystąpienia: wykryj i ostrzeż o tworzeniu wystąpień w przeszłości"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid "Incidence editor: add emoji support"
 msgstr "Edytor wystąpień: dodano obsługę emoji"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:59
 msgid "Add What's New menu"
 msgstr "Dodaj menu co nowego"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "The current view is remembered"
 msgstr "Bieżący widok został zapamiętany"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Dodano okno wyboru daty w menu Idź"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6450,7 +6523,7 @@ msgstr ""
 "Widok planu: skonsolidowano przedziały czasowe \"Dzień\", \"Następne X dni"
 "\", \"Plan pracy\", \"Tydzień\" w przycisku planu"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6458,26 +6531,26 @@ msgstr ""
 "Widok planu: dodano pole w menu podręcznym do etykiet czasowych do "
 "przełączania trybu zegara w 24-godzinny (wygląd wojskowy)"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Widok planu: dodano menu podręczne do tworzenia nowego wydarzenia lub zadania"
 
-#: whatsnew/whatsnewtranslations.cpp:56
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Widok zadań: dodano menu podręczne do przełączania ukończenia i przypomnień"
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid "To-do view: save/restore fullview setting"
 msgstr "Widok zadań: ustawienie zachowania/przywrócenia pełnego widoku"
 
-#: whatsnew/whatsnewtranslations.cpp:58
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "To-do view: save/restore flatview setting"
 msgstr "Widok zadań: ustawienie zachowania/przywrócenia płaskiego widoku"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6485,7 +6558,7 @@ msgstr ""
 "Wybór daty: dodano pole w Ustawienia->Ustawienia widoków do ukrywania "
 "numerów tygodni"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:69
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6493,48 +6566,48 @@ msgstr ""
 "Wybór daty: Ustawienie \"Numery tygodni wybierają tydzień roboczy w trybie "
 "tygodnia roboczego\" jest domyślnie włączone"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:70
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr "Edytor wystąpienia: zapamiętaj/przywróć geometrię zarządzania wzorcami"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:71
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Edytor wystąpienia: obsługa załączników przeciągnij i upuść"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr "Okno eksportowania kalendarzy pamięta swój ostatni katalog"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr "Okno importowania kalendarzy pamięta swój ostatni katalog"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Get Hot New Stuff removed"
 msgstr "Usunięto Get Hot New Stuff"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "Dodaj plik kalendarza: kalendarze zdalne są zawsze tylko-do-odczytu"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Dodaj plik kalendarza: nie zezwoli na pustą ścieżkę do pliku"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr "Ustawienia DAV: okno umożliwia widzenie hasła konta przy edytowaniu"
 
-#: whatsnew/whatsnewtranslations.cpp:69
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Ustawienia DAV: pomocnik pokazuje ikony dla różnych dostawców"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Ustawienia DAV: pomocnik uaktualnia listę dostawców"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:97
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6543,31 +6616,31 @@ msgstr ""
 "Zmieniono semantykę z \"plan pracy\" na \"plan tygodniowy\", aby ułatwić "
 "użytkownikom niepracującym"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:98
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Początkowe czasy rozpoczęcia \"Nowego wydarzenia\" są zgodne we wszystkich "
 "widokach"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:99
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Usprawniono obsługę domyślnego kalendarza na wydarzenia"
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:101
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 "Wystąpienia z długą listą wykluczonych dat już nie tworzą ogromnych dymków"
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:102
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr "Naprawiono adres pocztowy organizatora dla wystąpień z uczestnikami"
 
-#: whatsnew/whatsnewtranslations.cpp:94
+#: whatsnew/whatsnewtranslations.cpp:103
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6577,7 +6650,7 @@ msgstr ""
 "(zamiast 15) minut"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:117
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
@@ -6835,6 +6908,24 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@info"
+#~ msgid ""
+#~ "Do you really want to delete the <filename>%1</filename> calendar?"
+#~ "<para><note>The calendar data will not be deleted, nor will the calendar "
+#~ "be removed from its remote resource. The <filename>%1</filename> calendar "
+#~ "can be added again at any time.</note></para><para><warning>This calendar "
+#~ "contains your default calendar folder <filename>%2</filename>. If you "
+#~ "delete it you may be prompted to select a new default calendar folder.</"
+#~ "warning></para>"
+#~ msgstr ""
+#~ "Czy na pewno usunąć kalendarz <filename>%1</filename>?<para><note>Dane "
+#~ "kalendarza nie zostaną usunięte, ani sam kalendarz nie zostanie usunięty "
+#~ "z zasobu zdalnego. Kalendarz <filename>%1</filename> będzie można dodać "
+#~ "ponownie w każdej chwili.</note></para><para><warning>Ten kalendarz "
+#~ "zawiera katalog twojego domyślnego kalendarza <filename>%2</filename>. "
+#~ "Jeśli go usuniesz, to będziesz musiał wskazać nowy katalog.</warning></"
+#~ "para>"
 
 #~ msgid "Scroll backward to the previous year"
 #~ msgstr "Przewiń do poprzedniego roku"
@@ -7717,10 +7808,6 @@ msgstr "%1"
 #~ msgctxt "@title:column event end time"
 #~ msgid "End Time"
 #~ msgstr "Czas zakończenia"
-
-#~ msgctxt "@title:column event description"
-#~ msgid "Event"
-#~ msgstr "Wydarzenie"
 
 #~ msgctxt "@title:column event locatin"
 #~ msgid "Location"
