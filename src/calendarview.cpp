@@ -1346,26 +1346,27 @@ void CalendarView::toggleAlarm(const Akonadi::Item &item)
         qCCritical(KORGANIZER_LOG) << "Null incidence";
         return;
     }
+
     KCalendarCore::Incidence::Ptr const oldincidence(incidence->clone());
 
     const KCalendarCore::Alarm::List alarms = incidence->alarms();
-    KCalendarCore::Alarm::List::ConstIterator it;
-    KCalendarCore::Alarm::List::ConstIterator const end(alarms.constEnd());
-    for (it = alarms.constBegin(); it != end; ++it) {
-        (*it)->toggleAlarm();
-    }
     if (alarms.isEmpty()) {
-        // Add an alarm if it didn't have one
         KCalendarCore::Alarm::Ptr const alm = incidence->newAlarm();
         CalendarSupport::createAlarmReminder(alm, incidence->type());
+    } else {
+        incidence->clearAlarms();
     }
     mChanger->startAtomicOperation(i18nc("@info/plain", "Toggle Reminder"));
-    (void)mChanger->modifyIncidence(item, oldincidence, this);
+    const int modifyResult = mChanger->modifyIncidence(item, oldincidence, this);
     mChanger->endAtomicOperation();
-    if (incidence->hasEnabledAlarms()) {
-        showMessage(xi18nc("@info alarm enabled", "<message>%1</message> reminder is enabled", incidence->summary()), KMessageWidget::Information);
+    if (modifyResult != -1) {
+        if (incidence->hasEnabledAlarms()) {
+            showMessage(xi18nc("@info alarm enabled", "<message>%1</message> reminder is enabled", incidence->summary()), KMessageWidget::Information);
+        } else {
+            showMessage(xi18nc("@info alarm disabled", "<message>%1</message> reminder is disabled", incidence->summary()), KMessageWidget::Information);
+        }
     } else {
-        showMessage(xi18nc("@info alarm disabled", "<message>%1</message> reminder is disabled", incidence->summary()), KMessageWidget::Information);
+        showMessage(xi18nc("@info alarm toggle failed", "<message>%1</message> reminder toggle failed", incidence->summary()), KMessageWidget::Information);
     }
 }
 
@@ -1397,10 +1398,14 @@ void CalendarView::toggleTodoCompleted(const Akonadi::Item &item)
     }
 
     mChanger->startAtomicOperation(i18nc("@info/plain", "Toggle To-do Completed"));
-    (void)mChanger->modifyIncidence(item, oldtodo, this);
+    const int modifyResult = mChanger->modifyIncidence(item, oldtodo, this);
     mChanger->endAtomicOperation();
-    showMessage(xi18nc("@info percentage completed", "To-do <message>%1</message> %2 percent completed", todo->summary(), todo->percentComplete()),
-                KMessageWidget::Information);
+    if (modifyResult != -1) {
+        showMessage(xi18nc("@info percentage completed", "To-do <message>%1</message> %2 percent completed", todo->summary(), todo->percentComplete()),
+                    KMessageWidget::Information);
+    } else {
+        showMessage(xi18nc("@info completed", "To-do <message>%1</message> failed to change completion", todo->summary()), KMessageWidget::Information);
+    }
 }
 
 void CalendarView::toggleCompleted(const KCalendarCore::Todo::Ptr &todo, const QDate &occurrenceDate)
