@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-09 00:44+0000\n"
+"POT-Creation-Date: 2026-03-10 00:44+0000\n"
 "PO-Revision-Date: 2026-02-06 15:02+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -1872,61 +1872,77 @@ msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Padarīt apakšdarbus neatkarīgus"
 
-#: calendarview.cpp:1362
+#: calendarview.cpp:1359
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Pārslēgt atgādināšanu"
 
-#: calendarview.cpp:1366
+#: calendarview.cpp:1364
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "„<message>%1</message>“ atgādinājums ir ieslēgts"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1366
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "„<message>%1</message>“ atgādinājums ir izslēgts"
 
-#: calendarview.cpp:1399 calendarview.cpp:1453
+#: calendarview.cpp:1369
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info alarm enabled"
+#| msgid "<message>%1</message> reminder is enabled"
+msgctxt "@info alarm toggle failed"
+msgid "<message>%1</message> reminder toggle failed"
+msgstr "„<message>%1</message>“ atgādinājums ir ieslēgts"
+
+#: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Pārslēgt uzdevuma pabeigtību"
 
-#: calendarview.cpp:1402
+#: calendarview.cpp:1404
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Ir pabeigti %2 procenti no uzdevuma „<message>%1</message>“"
 
-#: calendarview.cpp:1505
+#: calendarview.cpp:1407
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info percentage completed"
+#| msgid "To-do <message>%1</message> %2 percent completed"
+msgctxt "@info completed"
+msgid "To-do <message>%1</message> failed to change completion"
+msgstr "Ir pabeigti %2 procenti no uzdevuma „<message>%1</message>“"
+
+#: calendarview.cpp:1510
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "„%1“ veiksmīgi nokopēts uz „%2“."
 
-#: calendarview.cpp:1506
+#: calendarview.cpp:1511
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopēšana veiksmīga"
 
-#: calendarview.cpp:1510
+#: calendarview.cpp:1515
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Neizdevās kopēt ierakstu „%1“ uz „%2“."
 
-#: calendarview.cpp:1511 calendarview.cpp:2487
+#: calendarview.cpp:1516 calendarview.cpp:2492
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopēšana neizdevās"
 
-#: calendarview.cpp:1570
+#: calendarview.cpp:1575
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1936,51 +1952,51 @@ msgstr ""
 "Neizdevās no sākotnējā kalendāra noņemt ierakstu „%1“. Tomēr šī ieraksta "
 "kopija ir pievienota „%2“."
 
-#: calendarview.cpp:1574 calendarview.cpp:1590 calendarview.cpp:2522
+#: calendarview.cpp:1579 calendarview.cpp:1595 calendarview.cpp:2527
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Neizdevās pārvietot"
 
-#: calendarview.cpp:1579
+#: calendarview.cpp:1584
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "„%1“ ir veiksmīgi pārvietots no „%2“ uz „%3“."
 
-#: calendarview.cpp:1580
+#: calendarview.cpp:1585
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Pārvietošana ir veiksmīga"
 
-#: calendarview.cpp:1586
+#: calendarview.cpp:1591
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Neizdevās pievienot ierakstu „%1“ pie „%2“. Ieraksts nav pārvietots."
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1630
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 "Vai vēlaties nošķirt šo atkārtošanos %1 no pārējām atkārtošanās reizēm?"
 
-#: calendarview.cpp:1629 calendarview.cpp:1642 calendarview.cpp:2303
-#: calendarview.cpp:2362 calendarview.cpp:2392
+#: calendarview.cpp:1634 calendarview.cpp:1647 calendarview.cpp:2308
+#: calendarview.cpp:2367 calendarview.cpp:2397
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "„KOrganizer“ apstiprinājums"
 
-#: calendarview.cpp:1630
+#: calendarview.cpp:1635
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Nošķirt"
 
-#: calendarview.cpp:1637
+#: calendarview.cpp:1642
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1990,79 +2006,79 @@ msgstr ""
 "Vai vēlaties nošķirt šo atkārtošanos %1 no pārējām atkārtošanās reizēm vai "
 "nošķirt arī nākotnē notiekošās?"
 
-#: calendarview.cpp:1643
+#: calendarview.cpp:1648
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "&Nošķirt tikai šo"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1649
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "N&ošķirt arī nākotnes"
 
-#: calendarview.cpp:1662
+#: calendarview.cpp:1667
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Nošķirt nākotnes atkātošanās reizes"
 
-#: calendarview.cpp:1664
+#: calendarview.cpp:1669
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Nošķirt atkārtošanos"
 
-#: calendarview.cpp:1671
+#: calendarview.cpp:1676
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Neizdevās nošķirt nākotnes atkārtošanās reizes."
 
-#: calendarview.cpp:1671 calendarview.cpp:1673
+#: calendarview.cpp:1676 calendarview.cpp:1678
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Neizdevās nošķirt"
 
-#: calendarview.cpp:1673
+#: calendarview.cpp:1678
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Neizdevās nošķirt atkārtošanos."
 
-#: calendarview.cpp:1817
+#: calendarview.cpp:1822
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1836
+#: calendarview.cpp:1841
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Eksportēt kalendāru uz datni"
 
-#: calendarview.cpp:1849
+#: calendarview.cpp:1854
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Vai vēlaties pārrakstīt <filename>%1</filename>?"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1855
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Eksportēt kalendāru"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1869
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Nezināms iemesls"
 
-#: calendarview.cpp:1866
+#: calendarview.cpp:1871
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2071,13 +2087,13 @@ msgstr ""
 "Neizdevās ierakstīt „iCalendar“ datnē <filename>%1</filename>: <message>%2</"
 "message>"
 
-#: calendarview.cpp:1975 calendarview.cpp:2020
+#: calendarview.cpp:1980 calendarview.cpp:2025
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Nav filtra"
 
-#: calendarview.cpp:2298
+#: calendarview.cpp:2303
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2089,19 +2105,19 @@ msgstr ""
 "tikai šo ierakstu un padarīt tā apakšuzdevumus neatkarīgus, vai arī dzēst šo "
 "ierakstu un visus tā apakšuzdevumus?"
 
-#: calendarview.cpp:2304
+#: calendarview.cpp:2309
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Dzēst tikai šo"
 
-#: calendarview.cpp:2305 calendarview.cpp:2363
+#: calendarview.cpp:2310 calendarview.cpp:2368
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Dzēst visu"
 
-#: calendarview.cpp:2337
+#: calendarview.cpp:2342
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2111,13 +2127,13 @@ msgstr ""
 "Ieraksts <resource>%1</resource> ir atzīmēts kā tikai lasāms un to nevar "
 "izdzēst. Iespējams, tas pieder tikai lasāmam kalendāram."
 
-#: calendarview.cpp:2340
+#: calendarview.cpp:2345
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Noņemšana nav iespējama"
 
-#: calendarview.cpp:2359
+#: calendarview.cpp:2364
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2127,13 +2143,13 @@ msgstr ""
 "Kalendāra ieraksts <resource>%1</resource> atkārtojas vairākas reizes. Vai "
 "tiešām vēlaties dzēst visas tā atkārtošanās reizes?"
 
-#: calendarview.cpp:2370
+#: calendarview.cpp:2375
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Dzēst arī &nākotnes"
 
-#: calendarview.cpp:2374
+#: calendarview.cpp:2379
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2145,7 +2161,7 @@ msgstr ""
 "vēlaties dzēst tikai aktīvo (%2) vai tikai nākotnes reizes, vai arī visas "
 "reizes?"
 
-#: calendarview.cpp:2381
+#: calendarview.cpp:2386
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2155,25 +2171,25 @@ msgstr ""
 "Kalendāra ieraksts <resource>%1</resource> atkārtojas vairākas reizes. Vai "
 "vēlaties dzēst tikai aktīvo (%2) vai visas reizes?"
 
-#: calendarview.cpp:2393
+#: calendarview.cpp:2398
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Dzēst pašreizēj&o"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2400
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Dzēst &visas"
 
-#: calendarview.cpp:2426 calendarview.cpp:2433
+#: calendarview.cpp:2431 calendarview.cpp:2438
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Dzēst „%1“"
 
-#: calendarview.cpp:2465
+#: calendarview.cpp:2470
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2182,49 +2198,49 @@ msgstr ""
 "Kalendāru pārvaldniekā visiem kalendāriem ir noņemtas atzīmes. Neviens "
 "uzdevums netika izmests."
 
-#: calendarview.cpp:2470 calendarview.cpp:2752
+#: calendarview.cpp:2475 calendarview.cpp:2757
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Nav neviena pabeigta uzdevuma, ko izmest."
 
-#: calendarview.cpp:2475
+#: calendarview.cpp:2480
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Vai no atzīmētajiem kalendāriem dzēst visus pabeigtos uzdevumus?"
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2481
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Izmest uzdevumus"
 
-#: calendarview.cpp:2477
+#: calendarview.cpp:2482
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Izmest"
 
-#: calendarview.cpp:2487
+#: calendarview.cpp:2492
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Neizdodas kopēt ierakstu <resource>%1</resource>."
 
-#: calendarview.cpp:2522
+#: calendarview.cpp:2527
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Neizdevās pārvietot ierakstu <resource>%1</resource>."
 
-#: calendarview.cpp:2744
+#: calendarview.cpp:2749
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Neviens pabeigts uzdevums netika izmests.<nl/>"
 
-#: calendarview.cpp:2746 calendarview.cpp:2757
+#: calendarview.cpp:2751 calendarview.cpp:2762
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2239,7 +2255,7 @@ msgstr[2] ""
 "%1 uzdevumu ir ignorēts, jo tiem ir nepabeigti vai tikai lasāmi "
 "apakšuzdevumi."
 
-#: calendarview.cpp:2750 calendarview.cpp:2755
+#: calendarview.cpp:2755 calendarview.cpp:2760
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2248,14 +2264,14 @@ msgstr[0] "Izmests %1 pabeigts uzdevums."
 msgstr[1] "Izmesti %1 pabeigti uzdevumi."
 msgstr[2] "Izmests %1 pabeigtu uzdevumu."
 
-#: calendarview.cpp:2762
+#: calendarview.cpp:2767
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 "Notika kļūda, mēģinot izmest pabeigtus uzdevumus: <message>%1</message>"
 
-#: calendarview.cpp:2823
+#: calendarview.cpp:2828
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2267,7 +2283,7 @@ msgstr ""
 "redzētu jauno ierakstu, kalendāru pārvaldniekā ieslēdziet tā kalendāru.</"
 "para>"
 
-#: calendarview.cpp:2827
+#: calendarview.cpp:2832
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-09 00:44+0000\n"
+"POT-Creation-Date: 2026-03-10 00:44+0000\n"
 "PO-Revision-Date: 2019-11-05 20:02+0100\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -1976,63 +1976,75 @@ msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Urobiť podúlohu &nezávislú"
 
-#: calendarview.cpp:1362
+#: calendarview.cpp:1359
 #, fuzzy, kde-format
 #| msgid "Toggle Reminder"
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Prepnúť pripomienkovač"
 
-#: calendarview.cpp:1366
+#: calendarview.cpp:1364
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr ""
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1366
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr ""
 
-#: calendarview.cpp:1399 calendarview.cpp:1453
+#: calendarview.cpp:1369
+#, kde-kuit-format
+msgctxt "@info alarm toggle failed"
+msgid "<message>%1</message> reminder toggle failed"
+msgstr ""
+
+#: calendarview.cpp:1400 calendarview.cpp:1458
 #, fuzzy, kde-format
 #| msgid "Toggle To-do Completed"
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Prepnúť dokončené úlohy"
 
-#: calendarview.cpp:1402
+#: calendarview.cpp:1404
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr ""
 
-#: calendarview.cpp:1505
+#: calendarview.cpp:1407
+#, kde-kuit-format
+msgctxt "@info completed"
+msgid "To-do <message>%1</message> failed to change completion"
+msgstr ""
+
+#: calendarview.cpp:1510
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" bolo úspešne skopírované do %2."
 
-#: calendarview.cpp:1506
+#: calendarview.cpp:1511
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopírovanie úspešné"
 
-#: calendarview.cpp:1510
+#: calendarview.cpp:1515
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Nepodarilo sa skopírovať položku \"%1\" do %2."
 
-#: calendarview.cpp:1511 calendarview.cpp:2487
+#: calendarview.cpp:1516 calendarview.cpp:2492
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Plánovanie zlyhalo"
 
-#: calendarview.cpp:1570
+#: calendarview.cpp:1575
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid ""
@@ -2046,53 +2058,53 @@ msgstr ""
 "Nemožno odstrániť položku \"%1\" z %2. Avšak, kópia tejto položky bola "
 "uložená do %3."
 
-#: calendarview.cpp:1574 calendarview.cpp:1590 calendarview.cpp:2522
+#: calendarview.cpp:1579 calendarview.cpp:1595 calendarview.cpp:2527
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Plánovanie zlyhalo"
 
-#: calendarview.cpp:1579
+#: calendarview.cpp:1584
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" bolo úspešne presunuté z %2 do %3."
 
-#: calendarview.cpp:1580
+#: calendarview.cpp:1585
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Presun úspešný"
 
-#: calendarview.cpp:1586
+#: calendarview.cpp:1591
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Nemožno pridať položku \"%1\" do %2. Táto položka nebola presunutá."
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1630
 #, fuzzy, kde-format
 #| msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Chcete oddeliť výskyt na %1 z opakovania?"
 
-#: calendarview.cpp:1629 calendarview.cpp:1642 calendarview.cpp:2303
-#: calendarview.cpp:2362 calendarview.cpp:2392
+#: calendarview.cpp:1634 calendarview.cpp:1647 calendarview.cpp:2308
+#: calendarview.cpp:2367 calendarview.cpp:2397
 #, fuzzy, kde-format
 #| msgid "KOrganizer Confirmation"
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer Potvrdenie"
 
-#: calendarview.cpp:1630
+#: calendarview.cpp:1635
 #, fuzzy, kde-format
 #| msgid "&Dissociate"
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "O&ddeliť"
 
-#: calendarview.cpp:1637
+#: calendarview.cpp:1642
 #, fuzzy, kde-format
 #| msgid ""
 #| "Do you want to dissociate the occurrence on %1 from the recurrence or "
@@ -2103,63 +2115,63 @@ msgid ""
 "dissociate future ones?"
 msgstr "Chcete oddeliť výskyt na %1 z opakovania alebo takisto oddeliť budúce?"
 
-#: calendarview.cpp:1643
+#: calendarview.cpp:1648
 #, fuzzy, kde-format
 #| msgid "&Only Dissociate This One"
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "&Oddeliť iba toto jedno"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1649
 #, fuzzy, kde-format
 #| msgid "&Also Dissociate Future Ones"
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "T&aktiež oddeliť budúce"
 
-#: calendarview.cpp:1662
+#: calendarview.cpp:1667
 #, fuzzy, kde-format
 #| msgid "Dissociate future occurrences"
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Zrušiť asociáciu udalosti od opakovania"
 
-#: calendarview.cpp:1664
+#: calendarview.cpp:1669
 #, fuzzy, kde-format
 #| msgid "Dissociate occurrence"
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Zrušiť asociáciu udalosti od opakovania"
 
-#: calendarview.cpp:1671
+#: calendarview.cpp:1676
 #, fuzzy, kde-format
 #| msgid "Dissociating the future occurrences failed."
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Zrušiť asociáciu udalosti od opakovania"
 
-#: calendarview.cpp:1671 calendarview.cpp:1673
+#: calendarview.cpp:1676 calendarview.cpp:1678
 #, fuzzy, kde-format
 #| msgid "Dissociating Failed"
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Inštalácia zlyhala."
 
-#: calendarview.cpp:1673
+#: calendarview.cpp:1678
 #, fuzzy, kde-format
 #| msgid "Dissociating the occurrence failed."
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Zrušiť asociáciu udalosti od opakovania"
 
-#: calendarview.cpp:1817
+#: calendarview.cpp:1822
 #, fuzzy, kde-format
 #| msgid "KOrganizer"
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1836
+#: calendarview.cpp:1841
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Exporting Calendar"
@@ -2167,14 +2179,14 @@ msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Exportujem kalendár"
 
-#: calendarview.cpp:1849
+#: calendarview.cpp:1854
 #, fuzzy, kde-kuit-format
 #| msgid "Do you want to overwrite file \"%1\"?"
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Chcete prepísať súbor \"%1\"?"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1855
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Import Calendar"
@@ -2182,7 +2194,7 @@ msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Importovať kalendár"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1869
 #, fuzzy, kde-format
 #| msgctxt "save failure cause unknown"
 #| msgid "Reason unknown"
@@ -2190,7 +2202,7 @@ msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Neznámy dôvod"
 
-#: calendarview.cpp:1866
+#: calendarview.cpp:1871
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Cannot write iCalendar file %1. %2"
@@ -2199,14 +2211,14 @@ msgid ""
 "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>"
 msgstr "Nie je možné zapísať súbor iCalendar %1. %2"
 
-#: calendarview.cpp:1975 calendarview.cpp:2020
+#: calendarview.cpp:1980 calendarview.cpp:2025
 #, fuzzy, kde-format
 #| msgid "No filter"
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Zobraziť filter"
 
-#: calendarview.cpp:2298
+#: calendarview.cpp:2303
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -2221,21 +2233,21 @@ msgstr ""
 "Položka \"%1\" má podúlohy. Chcete zmazať len túto položku a podúlohy "
 "označit ako nezávislé alebo zmazať celú úlohu i so všetkými podúlohami?"
 
-#: calendarview.cpp:2304
+#: calendarview.cpp:2309
 #, fuzzy, kde-format
 #| msgid "Delete Only This"
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Zmazať staré udalosti"
 
-#: calendarview.cpp:2305 calendarview.cpp:2363
+#: calendarview.cpp:2310 calendarview.cpp:2368
 #, fuzzy, kde-format
 #| msgid "Delete All"
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Odstrániť všetko"
 
-#: calendarview.cpp:2337
+#: calendarview.cpp:2342
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -2248,14 +2260,14 @@ msgstr ""
 "Položka \"%1\" je len na čítanie a nemôže byť odstránená; pravdepodobne "
 "patrí ku kalendáru, ktorý je len na čítanie."
 
-#: calendarview.cpp:2340
+#: calendarview.cpp:2345
 #, fuzzy, kde-format
 #| msgid "Removing not possible"
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Odstránenie nie je možné"
 
-#: calendarview.cpp:2359
+#: calendarview.cpp:2364
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
@@ -2268,14 +2280,14 @@ msgstr ""
 "Položka kalendára  \"%1\" je naplánovaná na viaceré dátumy. Ste si istý, že "
 "ju chcete zmazať a aj všetky jej opakovania?"
 
-#: calendarview.cpp:2370
+#: calendarview.cpp:2375
 #, fuzzy, kde-format
 #| msgid "Also Delete &Future"
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Vymazať aj budúce"
 
-#: calendarview.cpp:2374
+#: calendarview.cpp:2379
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2290,7 +2302,7 @@ msgstr ""
 "Položka kalendára  \"%1\" je naplánovaná na viaceré dátumy. Chcete odstrániť "
 "iba aktuálny deň %2 alebo aj všetky jej opakovania?"
 
-#: calendarview.cpp:2381
+#: calendarview.cpp:2386
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2303,28 +2315,28 @@ msgstr ""
 "Položka kalendára  \"%1\" je naplánovaná na viaceré dátumy. Chcete odstrániť "
 "iba aktuálny dátum %2 alebo všetky jej výskyty?"
 
-#: calendarview.cpp:2393
+#: calendarview.cpp:2398
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Odstrániť aktuálny"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2400
 #, fuzzy, kde-format
 #| msgid "Delete &All"
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Odstrániť vš&etko"
 
-#: calendarview.cpp:2426 calendarview.cpp:2433
+#: calendarview.cpp:2431 calendarview.cpp:2438
 #, fuzzy, kde-format
 #| msgid "Delete All"
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Odstrániť všetko"
 
-#: calendarview.cpp:2465
+#: calendarview.cpp:2470
 #, fuzzy, kde-format
 #| msgid ""
 #| "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -2335,56 +2347,56 @@ msgstr ""
 "Všetky kalendáre sú odznačené v správcovi kalendárov. Žiadna úloha nebola "
 "vyčistená."
 
-#: calendarview.cpp:2470 calendarview.cpp:2752
+#: calendarview.cpp:2475 calendarview.cpp:2757
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Nie sú žiadne ukončené úlohy na vyčistenie."
 
-#: calendarview.cpp:2475
+#: calendarview.cpp:2480
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos from checked calendars?"
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Odstrániť všetky dokončené úlohy z označených kalendárov?"
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2481
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Vyčistiť úlohy"
 
-#: calendarview.cpp:2477
+#: calendarview.cpp:2482
 #, fuzzy, kde-format
 #| msgid "Purge"
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Vyčistiť"
 
-#: calendarview.cpp:2487
+#: calendarview.cpp:2492
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to copy the item to %1."
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Nepodarilo sa skopírovať položku do %1."
 
-#: calendarview.cpp:2522
+#: calendarview.cpp:2527
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to move the item to  %1."
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Nemôžem presunúť položku do %1."
 
-#: calendarview.cpp:2744
+#: calendarview.cpp:2749
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 ukončených úloh bolo vyčistených."
 
-#: calendarview.cpp:2746 calendarview.cpp:2757
+#: calendarview.cpp:2751 calendarview.cpp:2762
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2405,7 +2417,7 @@ msgstr[2] ""
 "%1 úloh bolo ignorovaných, pretože majú neukončené alebo iba na čítanie "
 "podúlohy."
 
-#: calendarview.cpp:2750 calendarview.cpp:2755
+#: calendarview.cpp:2755 calendarview.cpp:2760
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2416,14 +2428,14 @@ msgstr[0] "%1 ukončená úloha bola vyčistená."
 msgstr[1] "%1 ukončené úlohy boli vyčistené."
 msgstr[2] "%1 ukončených úloh bolo vyčistených."
 
-#: calendarview.cpp:2762
+#: calendarview.cpp:2767
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Nastala chyba počas čistenia ukončených úloh: %1"
 
-#: calendarview.cpp:2823
+#: calendarview.cpp:2828
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2438,7 +2450,7 @@ msgstr ""
 "Vytvorili ste výskyt v kalendári, ktorý je práve odfiltrovaný.\n"
 "V ľavom bočnom paneli ho povoľte v správcovi kalendára, aby ste to videli."
 
-#: calendarview.cpp:2827
+#: calendarview.cpp:2832
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
