@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-26 15:09+0100\n"
+"PO-Revision-Date: 2026-03-09 11:11+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -1727,7 +1727,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default calendar for new events"
-msgstr "Considera assignar un calndario predefinite pernove eventos"
+msgstr "Considera assignar un calendario predefinite per nove eventos"
 
 #: akonadicollectionview.cpp:934
 #, kde-format
@@ -2234,7 +2234,7 @@ msgstr "Fixa le nomine de dossier"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
-msgstr "Inserta hic un nomine pro fixar le nomine de iste dossier."
+msgstr "Inserta hic un nomine pro assignar le nomine de iste dossier."
 
 #: collectiongeneralpage.cpp:47
 #, kde-format
@@ -2281,7 +2281,7 @@ msgstr "Fixa un icone personalisate:"
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
 msgstr ""
-"marca iste box si tu vole fixar un icone personalisate per iste dossier."
+"marca iste box si tu vole assignar un icone personalisate per iste dossier."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:6
