@@ -142,6 +142,7 @@ IncidenceEditorNG::IncidenceDialog *KODialogManager::createDialog(const Akonadi:
     return dialog;
 }
 
+/* cppcheck-suppress functionStatic */
 void KODialogManager::connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialog, KOEventView *view)
 {
     if (dialog && view) {

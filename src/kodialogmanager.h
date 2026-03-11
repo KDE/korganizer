@@ -49,6 +49,7 @@ public:
 
     [[nodiscard]] IncidenceEditorNG::IncidenceDialog *createDialog(const Akonadi::Item &item);
 
+    /* cppcheck-suppress functionStatic */
     void connectTypeAhead(IncidenceEditorNG::IncidenceDialog *dialog, KOEventView *view);
 
 public Q_SLOTS:
