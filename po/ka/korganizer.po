@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-10 00:44+0000\n"
-"PO-Revision-Date: 2026-03-09 06:12+0100\n"
+"PO-Revision-Date: 2026-03-10 02:50+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1832,12 +1832,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> შეხსენება გამორთულია"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> შეხსენება ჩართულია"
+msgstr "<message>%1</message> შეხსენების გადართვა ჩავარდა"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1852,12 +1850,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "გეგმა <message>%1</message> %2 პროცენტით დასრულებულია"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "გეგმა <message>%1</message> %2 პროცენტით დასრულებულია"
+msgstr "გეგმის <message>%1</message> დასრულების შეცვლა ჩავარდა"
 
 #: calendarview.cpp:1510
 #, kde-format

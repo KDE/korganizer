@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-10 00:44+0000\n"
-"PO-Revision-Date: 2026-03-09 10:06+0200\n"
+"PO-Revision-Date: 2026-03-10 14:36+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1858,12 +1858,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "Вимкнено нагадування <message>%1</message>"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "Увімкнено нагадування <message>%1</message>"
+msgstr "Не вдалося перемкнути нагадування <message>%1</message>"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1878,12 +1876,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Завдання <message>%1</message> виконано на %2 відсотків"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "Завдання <message>%1</message> виконано на %2 відсотків"
+msgstr "Не вдалося перемкнути стан завершеності завдання <message>%1</message>"
 
 #: calendarview.cpp:1510
 #, kde-format

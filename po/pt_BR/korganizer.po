@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-10 00:44+0000\n"
-"PO-Revision-Date: 2026-03-09 08:07-0300\n"
+"PO-Revision-Date: 2026-03-10 09:18-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1854,12 +1854,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "Lembrete <message>%1</message> foi desativado"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "Lembre <message>%1</message> está ativo"
+msgstr "Falha ao alternar lembrete <message>%1</message>"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1874,12 +1872,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "%2 por cento da tarefa <message>%1</message> completado"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "%2 por cento da tarefa <message>%1</message> completado"
+msgstr "Falha ao alterar o completamento da tarefa <message>%1</message>"
 
 #: calendarview.cpp:1510
 #, kde-format

@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-10 00:44+0000\n"
-"PO-Revision-Date: 2026-03-09 15:01+0100\n"
+"PO-Revision-Date: 2026-03-10 11:14+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -1854,12 +1854,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> herinnering is uitgeschakeld"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> herinnering is ingeschakeld"
+msgstr "<message>%1</message> herinnering omschakelen is mislukt"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1874,12 +1872,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Taak <message>%1</message> %2 procent voltooid"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "Taak <message>%1</message> %2 procent voltooid"
+msgstr "Taak <message>%1</message> wijzigen naar voltooien is mislukt"
 
 #: calendarview.cpp:1510
 #, kde-format

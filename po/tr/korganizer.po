@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-10 00:44+0000\n"
-"PO-Revision-Date: 2026-03-09 22:05+0300\n"
+"PO-Revision-Date: 2026-03-10 13:53+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1846,12 +1846,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> anımsatıcısı devre dışı"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> anımsatıcısı etkin"
+msgstr "<message>%1</message> anımsatıcısını açma/kapatma başarısız"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1866,12 +1864,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "<message>%1</message> yapılacağı %2 tamamlandı"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "<message>%1</message> yapılacağı %2 tamamlandı"
+msgstr "<message>%1</message> yapılacağının durumu değiştirilemedi"
 
 #: calendarview.cpp:1510
 #, kde-format
