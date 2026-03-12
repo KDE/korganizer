@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-10 00:44+0000\n"
-"PO-Revision-Date: 2026-01-27 21:26+0200\n"
+"PO-Revision-Date: 2026-03-10 12:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1555,12 +1555,10 @@ msgid "Event"
 msgstr "&אירועים"
 
 #: akonadicollectionview.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "תצוגת מטלות"
+msgstr "מטלה"
 
 #: akonadicollectionview.cpp:603
 #, fuzzy, kde-kuit-format
@@ -1592,12 +1590,10 @@ msgid ""
 msgstr "להגדיר את <filename>%1</filename> כתיקיית ברירת המחדל שלך ללוחות שנה?"
 
 #: akonadicollectionview.cpp:613
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Replace Default Calendar?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "להחליף את לוח השנה כברירת המחדל?"
+msgstr "להחליף את לוח השנה כברירת המחדל עבור %1?"
 
 #: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
 #, fuzzy, kde-kuit-format
@@ -1882,12 +1878,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "%2 אחוזים הושלמו מהמטלה <message>%1</message>"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "%2 אחוזים הושלמו מהמטלה <message>%1</message>"
+msgstr "החלפת מצב ההשלמה של המטלה <message>%1</message> נכשלה"
 
 #: calendarview.cpp:1510
 #, kde-format
