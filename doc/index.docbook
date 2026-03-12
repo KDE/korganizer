@@ -62,6 +62,12 @@
 <contrib>Developer</contrib>
 </othercredit>
 
+<othercredit role="developer">
+  <firstname>Allen</firstname>
+  <surname>Winter</surname>
+  <contrib>Developer</contrib>
+</othercredit>
+
 <othercredit role="reviewer">
 <firstname>Lauri</firstname>
 <surname>Watts</surname>
@@ -743,6 +749,16 @@ clicked.</para></listitem>
 writing the summary of the event.  &korganizer; will automatically set the
 duration and start time as defined by the selection area in the Agenda
 view.</para></listitem>
+</itemizedlist>
+</para></tip>
+
+<tip><para>Tips for improved event viewing:
+<itemizedlist>
+<listitem><para>Use the shift-wheel shortcut for growing/shrinking the hourly grid row height.
+This is useful for seeing event details if you have several events occurring in the same time interval.
+clicked.</para></listitem>
+<listitem><para>Show the timelabels on both sides of the hourly grid by selecting Show/Hide Right-side
+Time Labels on the timelabels context menu.</para></listitem>
 </itemizedlist>
 </para></tip>
 
