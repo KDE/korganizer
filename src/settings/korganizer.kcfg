@@ -120,6 +120,12 @@
       <tooltip>Display icons in agenda view items</tooltip>
       <default>true</default>
     </entry>
+    <entry type="Bool" key="Draw Bold Even Hour Grid Lines" name="EnableAgendaBoldEvenHours">
+      <label>Draw bold horizontal grid lines for the even hours</label>
+      <whatsthis>Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc).</whatsthis>
+      <tooltip>Draw bolder even hour grid lines</tooltip>
+      <default>false</default>
+    </entry>
     <entry type="Bool" key="Show Incidence Descriptions in Agenda View" name="EnableAgendaItemDesc">
       <label>Show incidence descriptions in agenda view items</label>
       <whatsthis>Check this box to display the incidence descriptions in agenda view items.</whatsthis>

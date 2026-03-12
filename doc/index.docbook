@@ -2226,6 +2226,11 @@ in Agenda view items</para></listitem>
 </varlistentry>
 
 <varlistentry>
+  <term><guilabel>Draw bold horizontal grid lines for the even hours</guilabel></term>
+  <listitem><para>Check this box to draw bolder/fatter horizontal grid lines for the even hours (12am, 2am, 4am, etc).</para></listitem>
+</varlistentry>
+
+<varlistentry>
   <term><guilabel>Show incidence descriptions in agenda view items</guilabel></term>
   <listitem><para>Check this box to display the incidence descriptions in agenda view items.</para></listitem>
 </varlistentry>
