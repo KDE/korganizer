@@ -756,7 +756,7 @@ view.</para></listitem>
 <itemizedlist>
 <listitem><para>Use the shift-wheel shortcut for growing/shrinking the hourly grid row height.
 This is useful for seeing event details if you have several events occurring in the same time interval.
-clicked.</para></listitem>
+</para></listitem>
 <listitem><para>Show the timelabels on both sides of the hourly grid by selecting Show/Hide Right-side
 Time Labels on the timelabels context menu.</para></listitem>
 </itemizedlist>
