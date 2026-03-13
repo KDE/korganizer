@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-10 00:44+0000\n"
-"PO-Revision-Date: 2026-03-10 12:39+0200\n"
+"PO-Revision-Date: 2026-03-12 13:59+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1493,20 +1493,16 @@ msgid "%1 (Offline)"
 msgstr "%1 (לא מקוון)"
 
 #: akonadicollectionview.cpp:302
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1 (ברירת מחדל)"
+msgstr "%1 (ברירת מחדל לאירועים)"
 
 #: akonadicollectionview.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1 (ברירת מחדל)"
+msgstr "%1 (ברירת מחדל למטלות)"
 
 #: akonadicollectionview.cpp:392
 #, kde-format
@@ -1540,19 +1536,16 @@ msgid "&Set Folder Color…"
 msgstr "ה&גדרת צבע תיקייה…"
 
 #: akonadicollectionview.cpp:499
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "הגדרה כתיקיית &ברירת מחדל"
+msgstr "הגדרת לוח השנה כ&ברירת מחדל"
 
 #: akonadicollectionview.cpp:537
-#, fuzzy, kde-format
-#| msgid "&Events"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
-msgstr "&אירועים"
+msgstr "אירוע"
 
 #: akonadicollectionview.cpp:540
 #, kde-format
