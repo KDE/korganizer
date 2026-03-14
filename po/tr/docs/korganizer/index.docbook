@@ -92,6 +92,15 @@
 >Geliştirici</contrib>
 </othercredit>
 
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>Geliştirici</contrib>
+</othercredit>
+
 <othercredit role="reviewer"
 ><firstname
 >Lauri</firstname
@@ -1096,6 +1105,21 @@
 <listitem
 ><para
 >Herhangi bir açık zaman bölgesini seçin ve çift tıklayın veya etkinliğin özetini yazmaya başlayın. &korganizer;, Ajanda görünümündeki seçim alanı tarafından tanımlanan süreyi ve başlangıç zamanını kendiliğinden ayarlayacaktır.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>Geliştirilmiş etkinlik görüntüleme için ipuçları: <itemizedlist>
+<listitem
+><para
+>Use the shift-wheel shortcut for growing/shrinking the hourly grid row height. This is useful for seeing event details if you have several events occurring in the same time interval. </para
+></listitem>
+<listitem
+><para
+>Saatlik tablonun her iki tarafında da zaman etiketlerini göstermek için zaman etiketleri bağlam menüsünden “Sağdaki Zaman Etiketlerini Göster/Gizle” seçeneğini belirleyin.</para
 ></listitem>
 </itemizedlist>
 </para
@@ -3182,6 +3206,17 @@
 <listitem
 ><para
 >Ajanda görünümü ögelerinde simgeleri (anımsatıcı, yineleme vb.) görüntülemek için bu kutuyu işaretleyin.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Draw bold horizontal grid lines for the even hours</guilabel
+></term>
+  <listitem
+><para
+>Check this box to draw bolder/fatter horizontal grid lines for the even hours (12am, 2am, 4am, etc).</para
 ></listitem>
 </varlistentry>
 

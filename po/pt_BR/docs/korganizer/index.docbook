@@ -92,6 +92,15 @@
 >Desenvolvimento</contrib>
 </othercredit>
 
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>Desenvolvimento</contrib>
+</othercredit>
+
 <othercredit role="reviewer"
 ><firstname
 >Lauri</firstname
@@ -1110,6 +1119,21 @@
 <listitem
 ><para
 >Selecione qualquer região aberta de tempo e faça duplo-clique nela ou comece a escrever o resumo do evento. O &korganizer; irá definir automaticamente a duração e a hora de início, tal como foi definido na área de seleção da vista da Agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>Dicas para uma melhor visualização de eventos: <itemizedlist>
+<listitem
+><para
+>Use the shift-wheel shortcut for growing/shrinking the hourly grid row height. This is useful for seeing event details if you have several events occurring in the same time interval. </para
+></listitem>
+<listitem
+><para
+>Exiba os rótulos de tempo em ambos os lados da grade horária selecionando "Mostrar/Ocultar rótulos de tempo do lado direito" no menu de contexto dos rótulos de tempo.</para
 ></listitem>
 </itemizedlist>
 </para
@@ -3196,6 +3220,17 @@
 <listitem
 ><para
 >Marque esta opção para exibir os ícones (lembrete, recorrência, &etc;) nos itens da vista de Agenda</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Mostrar descrições de ocorrência nos itens da visão de agenda</guilabel
+></term>
+  <listitem
+><para
+>Marque esta caixa para exibir as descrições das ocorrências nos itens da visão de agenda.</para
 ></listitem>
 </varlistentry>
 

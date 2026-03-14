@@ -92,6 +92,15 @@
 >Desenvolupador</contrib>
 </othercredit>
 
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>Desenvolupador</contrib>
+</othercredit>
+
 <othercredit role="reviewer"
 ><firstname
 >Lauri</firstname
@@ -1076,6 +1085,21 @@
 <listitem
 ><para
 >Seleccioneu qualsevol regió d'hora oberta i feu doble clic sobre seu per a començar a escriure el resum de l'esdeveniment. El &korganizer; establirà automàticament la durada i l'hora d'inici segons l'àrea seleccionada a la vista d'agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>Consells per a una visualització millorada d'esdeveniments: <itemizedlist>
+<listitem
+><para
+>Use the shift-wheel shortcut for growing/shrinking the hourly grid row height. This is useful for seeing event details if you have several events occurring in the same time interval. </para
+></listitem>
+<listitem
+><para
+>Mostreu les etiquetes de temps a banda i banda de la quadrícula horària seleccionant Mostra/Oculta les etiquetes de temps del costat dret al menú contextual de les etiquetes de temps.</para
 ></listitem>
 </itemizedlist>
 </para
