@@ -1,6 +1,6 @@
 # translation of korganizer.po to
-# Version: $Revision: 1728488 $
-# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# Version: $Revision: 1732231 $
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003, 2004.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2025-12-24 16:15+0100\n"
+"PO-Revision-Date: 2026-03-14 07:53+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -55,14 +55,7 @@ msgid "A Personal Organizer"
 msgstr "Osobisty organizator"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -75,7 +68,7 @@ msgstr ""
 "Prawa autorskie © 2000–2004, 2007 Cornelius Schumacher\n"
 "Prawa autorskie © 2004–2005 Reinhold Kainhofer\n"
 "Prawa autorskie © 2006–2012 Allen Winter\n"
-"Prawa autorskie © 2012–2025 Autorzy KOrganizer"
+"Prawa autorskie © 2012–2026 Autorzy KOrganizer"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -784,9 +777,7 @@ msgid "Scroll the view to today"
 msgstr "Przewiń widok do dzisiejszego dnia"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Przewija bieżący widok do dzisiejszej daty."
@@ -1545,7 +1536,7 @@ msgstr "Zacznij pisać, aby zacząć szukać kalendarza w zbiorze."
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Przeszukaj kalendarza…"
+msgstr "Poszukaj kalendarza…"
 
 #: akonadicollectionview.cpp:473 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -4526,29 +4517,23 @@ msgstr "Pokaż ikony w elementach planu zajęć"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:124
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Pokaż ikony w elementach planu zajęć"
+msgstr "Pokaż opisy wystąpień na elementach widoku planu"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Zaznacz tę opcję by pokazać ikony (alarm, powtarzanie, itd.) w elementach "
-"planu zajęć."
+"Zaznacz to pole, aby wyświetlić opis wystąpienia w widoku elementów planu."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Pokaż ikony w elementach planu zajęć"
+msgstr "Pokaż opisy wystąpień na elementach widoku planu"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5204,23 +5189,21 @@ msgstr "Kolor zadania, dla których minął termin wykonania."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:329
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Kolor tła widoku miesiąca"
+msgstr "Kolor tła dnia dzisiejszego na widoku miesiąca"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:330
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Wybierz kolor tła godzin pracy w widoku miesiąca."
+msgstr "Ustaw kolor tła dla dzisiejszej daty w widoku miesiąca"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:331
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "W widoku miesiąca, wybierze kolor tła dla dnia dzisiejszego."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:338
@@ -6390,16 +6373,12 @@ msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Widok planu: wydarzenia bez czasu trwania są wyświetlane jakby trwały 30 "
-"(zamiast 15) minut"
+"Widok planu: wydarzenia o krótkim czasie trwania zostaną wyświetlone wraz z "
+"ich czasem rozpoczęcia w dodatku do ich podsumowania"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6407,10 +6386,13 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Widok planu: pokaż opisy wystąpień na elementach widoku planu. Aby włączyć "
+"to zachowanie, zaznacz \"Pokaż opisy wystąpień na elementach widoku planu\" "
+"na karcie Widok->Widok planu"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
-msgstr ""
+msgstr "Szukanie: ustawienia wyszukiwania zostały zapisane/przywrócone"
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
@@ -6674,11 +6656,10 @@ msgid "Icons to use"
 msgstr "Używane ikony"
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Pokaż czas w elementach widoku miesiąca"
+msgstr "Pokaż/ukryj pasek boczny na tym widoku"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6689,128 +6670,98 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Przewija bieżący widok do dzisiejszej daty."
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Przewiń wstecz"
+msgstr "Przewiń wstecz o rok"
 
 #: widgets/navigatorbar.cpp:44
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the previous year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w zeszłym roku (w "
-"przybliżeniu)."
+"Naciśnij ten przycisk, aby przewinąć widok w przybliżeniu do tego samego "
+"dnia, ale w zeszłym roku"
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Przewiń wstecz"
+msgstr "Przewiń wstecz o miesiąc"
 
 #: widgets/navigatorbar.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the previous month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w zeszłym miesiącu"
+"Naciśnij ten przycisk, aby przewinąć widok w przybliżeniu do tego samego "
+"dnia, ale w zeszłym miesiącu"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Przewiń wstecz"
+msgstr "Przewiń wstecz o tydzień"
 
 #: widgets/navigatorbar.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym miesiącu"
+msgstr "Naciśnij ten przycisk, aby przewinąć widok wstecz o 1 tydzień"
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgid "Go forward one week"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Przejdź jeden tydzień do przodu"
+msgstr "Przewiń wprzód o tydzień"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym roku (w "
-"przybliżeniu)."
+msgstr "Naciśnij ten przycisk, aby przewinąć widok wprzód o 1 tydzień"
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Przewiń do następnego miesiąca"
+msgstr "Przewiń wprzód o miesiąc"
 
 #: widgets/navigatorbar.cpp:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym miesiącu"
+"Naciśnij ten przycisk, aby przewinąć widok w przybliżeniu do tego samego "
+"dnia, ale w przyszłym miesiącu"
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Przewiń do następnego roku"
+msgstr "Przewiń wprzód o rok"
 
 #: widgets/navigatorbar.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym roku (w "
-"przybliżeniu)."
+"Naciśnij ten przycisk, aby przewinąć wyświetlanie w przybliżeniu do tego "
+"samego dnia, ale w przyszłym roku"
 
 #: widgets/navigatorbar.cpp:77
 #, kde-format
