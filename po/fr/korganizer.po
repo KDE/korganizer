@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-01-27 18:36+0100\n"
+"PO-Revision-Date: 2026-03-13 20:55+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -1565,20 +1565,16 @@ msgid "%1 (Offline)"
 msgstr "%1 (Déconnecté)"
 
 #: akonadicollectionview.cpp:302
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1 (par défaut)"
+msgstr "%1 (Évènement par défaut)"
 
 #: akonadicollectionview.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1 (par défaut)"
+msgstr "%1 (Tâche à faire par défaut)"
 
 #: akonadicollectionview.cpp:392
 #, kde-format
@@ -1614,30 +1610,24 @@ msgid "&Set Folder Color…"
 msgstr "Définir la couleur du do&ssier..."
 
 #: akonadicollectionview.cpp:499
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Définir comme &dossier par défaut"
+msgstr "Définir comme agenda par &défaut"
 
 # unreviewed-context
 #: akonadicollectionview.cpp:537
-#, fuzzy, kde-format
-#| msgctxt "@title:column event description"
-#| msgid "Event"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Évènement"
 
 # unreviewed-context
 #: akonadicollectionview.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "Vue des tâches"
+msgstr "Tâche à faire"
 
 #: akonadicollectionview.cpp:603
 #, fuzzy, kde-kuit-format
@@ -1671,37 +1661,30 @@ msgstr ""
 "défaut d'agenda ?"
 
 #: akonadicollectionview.cpp:613
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Replace Default Calendar?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "Remplacer l'agenda par défaut ?"
+msgstr "Remplacer l'agenda par défaut %1 ?"
 
 #: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1</filename> is now your default event calendar"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr ""
-"<filename>%1</filename> est maintenant votre agenda d'évènements par défaut"
+"<filename>%1</filename> est maintenant votre agenda d'évènements %2 par "
+"défaut"
 
 #: akonadicollectionview.cpp:770
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Définir comme &dossier par défaut"
+msgstr "Définir comme agenda par &défaut d'évènements"
 
 #: akonadicollectionview.cpp:773
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Définir comme &dossier par défaut"
+msgstr "Définir comme agenda par &défaut pour les tâches à faire"
 
 #: akonadicollectionview.cpp:791
 #, kde-format
@@ -1849,23 +1832,17 @@ msgstr ""
 "valable</message>"
 
 #: akonadicollectionview.cpp:1055
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider setting a default calendar for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr ""
-"Veuillez envisager la définition d'un agenda par défaut pour les nouveaux "
-"évènements"
+msgstr "Veuillez envisager la définition d'un agenda par défaut %1"
 
 #: akonadicollectionview.cpp:1057
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider adding a write-enabled events calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr ""
-"Veuillez envisager l'ajout d'un agenda des évènements avec accès en écriture"
+"Veuillez envisager l'ajout d'un agenda %1 d'évènements avec accès en écriture"
 
 #: akonadicollectionview.cpp:1091
 #, kde-kuit-format

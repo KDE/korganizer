@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1732221 2026-03-14 01:28:00Z scripty $
+# $Id: korganizer.po 1732285 2026-03-15 01:29:36Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 07:06+0100\n"
+"PO-Revision-Date: 2026-03-14 07:33+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -4567,7 +4567,7 @@ msgstr "Pokaži ikone v predmetih v prikazu dnevnega reda"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Nariši krepke vodoravne mrežne črte za sode ure"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4575,12 +4575,13 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Nariši krepkejšo vodoravno mrežo za sode ure (12:00, 14:00, 16:00 itd.)"
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Nariši krepkejše črte mreže za sode ure"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6404,20 +6405,15 @@ msgstr ""
 "opravil\"."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Pogled dnevnega reda: po želji prikažite opise incidence znotraj elementov "
-"dnevnega reda. Če želite omogočiti to delovanje, v zavihku Pogled->Pogled "
-"dnevnega reda označite možnost »Prikaži opise incidence v elementih pogleda "
-"dnevnega reda«"
+"Pogled dnevnega reda: po želji lahko vsaki dve uri nariše krepkejše/"
+"debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, v zavihku "
+"Pogled->Pogled dnevnega reda označite možnost »Nariši krepke vodoravne "
+"mrežne črte za sode ure«."
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

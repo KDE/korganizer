@@ -1095,7 +1095,7 @@
 >Consells per a una visualització millorada d'esdeveniments: <itemizedlist>
 <listitem
 ><para
->Use the shift-wheel shortcut for growing/shrinking the hourly grid row height. This is useful for seeing event details if you have several events occurring in the same time interval. </para
+>Utilitzeu la drecera de la roda de desplaçament per a augmentar/reduir l'alçada de les files de la quadrícula horària. Això és útil per a veure els detalls de l'esdeveniment si teniu diversos esdeveniments que es produeixen en el mateix interval de temps. </para
 ></listitem>
 <listitem
 ><para
@@ -3158,6 +3158,17 @@
 <listitem
 ><para
 >Marqueu aquesta casella per a mostrar les icones (recordatori, repetició, &etc;) en els elements a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells</guilabel
+></term>
+  <listitem
+><para
+>Marqueu aquesta casella per a dibuixar una línia de quadrícula horitzontal en negreta/gruixuda per a les hores parells (12:00, 2:00, 4:00, etc.).</para
 ></listitem>
 </varlistentry>
 

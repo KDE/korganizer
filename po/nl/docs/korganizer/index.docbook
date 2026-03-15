@@ -92,6 +92,15 @@
 >Ontwikkelaar</contrib>
 </othercredit>
 
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>Ontwikkelaar</contrib>
+</othercredit>
+
 <othercredit role="reviewer"
 ><firstname
 >Lauri</firstname
@@ -1092,6 +1101,21 @@
 <listitem
 ><para
 >Selecteer een tijdstip waarop nog niets is gepland, en dubbelklik er op, of begin met het invoeren van de samenvatting van de nieuwe afspraak. &korganizer; stelt dan automatisch de tijdsduur in, en de starttijd zoals die is gedefinieerd door het geselecteerde gebiedje in de agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>Tips voor een betere kijkervaring tijdens evenementen: <itemizedlist>
+<listitem
+><para
+>Gebruik de Shift-wiel sneltoets om de hoogte van de rij in het uurraster te vergroten/verkleinen. Dit is handig om details van evenementen te bekijken als er meerdere evenementen in hetzelfde tijdsinterval plaatsvinden. </para
+></listitem>
+<listitem
+><para
+>Toon de tijdlabels aan beide zijden van het uurraster door 'Weergeven/Verbergen' te selecteren in het contextmenu van de tijdlabels.</para
 ></listitem>
 </itemizedlist>
 </para
@@ -3176,6 +3200,28 @@
 <listitem
 ><para
 >Plaats hier een vinkje voor het tonen van pictogrammen (herinneringen, herhalingen &etc;) in de agendaweergave </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Teken dikke horizontale rasterlijnen voor de even uren</guilabel
+></term>
+  <listitem
+><para
+>Activeer dit vakje om dikkere horizontale rasterlijnen te tekenen voor de even uren (00:00, 02:00, 04:00, enz.).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Incidentbeschrijvingen tonen in de agendaweergave</guilabel
+></term>
+  <listitem
+><para
+>Activeer dit vakje voor het tonen van incidentbeschrijvingen in de items van de agendaweergave.</para
 ></listitem>
 </varlistentry>
 

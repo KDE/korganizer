@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 13:53+0300\n"
+"PO-Revision-Date: 2026-03-14 12:46+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -4542,7 +4542,7 @@ msgstr "Ajanda görünümü ögelerinde simgeleri görüntüle"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Çift saatler için kalın yatay ızgara çizgileri çiz"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4550,12 +4550,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Çift saatler (00:00, 02:00, 04:00 vb.) için daha kalın yatay ızgara "
+"çizgileri çizin."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Çift saatler için daha kalın ızgara çizgileri çiz"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6373,19 +6375,15 @@ msgstr ""
 "menüsündeki “Öntanımlı Yapılacaklar Takvimi Olarak Ayarla” seçeneğine bakın."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Ajanda görünümü: Ajanda ögelerinde olay açıklamalarını göstermeye olanak "
-"tanı. Bu davranışı etkinleştirmek için Görüntü → Ajanda Görünümü sekmesinde "
-"“Ajanda görünümü ögelerinde olay açıklamalarını göster” kutusunu işaretleyin."
+"Ajanda görünümü: İsteğe bağlı olarak, her iki saatte bir daha kalın yatay "
+"kılavuz çizgileri çizebilirsiniz. Bu özelliği etkinleştirmek için, “Görünüm "
+"→ Ajanda Görünümü” sekmesinde \"Çift saatler için kalın yatay ızgara "
+"çizgileri çiz\" seçeneğini işaretleyin."
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

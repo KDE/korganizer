@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 10:42+0100\n"
+"PO-Revision-Date: 2026-03-14 09:28+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -4584,6 +4584,7 @@ msgstr "Mostra les icones dels elements en la vista d'agenda"
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
 msgstr ""
+"Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4591,12 +4592,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Dibuixa una línia de quadrícula horitzontal en negreta per a les hores "
+"parells (12:00, 2:00, 4:00, etc.)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Dibuixa línies de quadrícula d'hores parell en negreta"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6476,20 +6479,15 @@ msgstr ""
 "predeterminada de tasques pendents»"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins "
-"dels elements d'agenda. Per a activar este comportament, marqueu l'opció "
-"«Mostra les descripcions de les incidències als elements de la vista "
-"d'agenda» a la pestanya Visualitza->Vista d'agenda"
+"Vista d'agenda: de manera opcional mostra línies de quadrícula horitzontals "
+"en negreta/més gruixudes cada dues hores. Per a activar este comportament, "
+"marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a "
+"les hores parells» a la pestanya Visualitza->Vista d'agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

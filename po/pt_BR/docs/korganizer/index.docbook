@@ -1129,7 +1129,7 @@
 >Dicas para uma melhor visualização de eventos: <itemizedlist>
 <listitem
 ><para
->Use the shift-wheel shortcut for growing/shrinking the hourly grid row height. This is useful for seeing event details if you have several events occurring in the same time interval. </para
+>Use o atalho Shift + roda do mouse para aumentar/diminuir a altura da linha da grade horária. Isso é útil para visualizar detalhes de eventos se você tiver vários eventos ocorrendo no mesmo intervalo de tempo. </para
 ></listitem>
 <listitem
 ><para
@@ -3220,6 +3220,17 @@
 <listitem
 ><para
 >Marque esta opção para exibir os ícones (lembrete, recorrência, &etc;) nos itens da vista de Agenda</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Desenhar linhas de grade horizontais em negrito para as horas pares</guilabel
+></term>
+  <listitem
+><para
+>Marque esta caixa para desenhar linhas de grade horizontais mais grossas/espessas para as horas pares (meia-noite, 2h da manhã, 4h da manhã, etc.).</para
 ></listitem>
 </varlistentry>
 

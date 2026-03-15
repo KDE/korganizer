@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-12 13:59+0200\n"
+"PO-Revision-Date: 2026-03-14 13:05+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1589,28 +1589,22 @@ msgid "Replace Default %1 Calendar?"
 msgstr "להחליף את לוח השנה כברירת המחדל עבור %1?"
 
 #: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1</filename> is now your default event calendar"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
-msgstr "<filename>%1</filename> הוא לוח אירועי ברירת המחדל שלך מעתה"
+msgstr "<filename>%1</filename> הוא לוח השנה כברירת המחדל שלך לתיעוד %2"
 
 #: akonadicollectionview.cpp:770
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "הגדרה כתיקיית &ברירת מחדל"
+msgstr "הגדרה כלוח שנה כ&ברירת מחדל לאירועים"
 
 #: akonadicollectionview.cpp:773
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "הגדרה כתיקיית &ברירת מחדל"
+msgstr "הגדרת לוח השנה כ&ברירת מחדל למטלות"
 
 #: akonadicollectionview.cpp:791
 #, kde-format
@@ -1747,20 +1741,16 @@ msgid ""
 msgstr "מחיקת לוח השנה נכשלה: <message>מופע שגוי של סוכן Akonadi</message>"
 
 #: akonadicollectionview.cpp:1055
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider setting a default calendar for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr "כדאי להגדיר לוח שנה כברירת מחדל לאירועים חדשים"
+msgstr "כדאי להגדיר לוח שנה כברירת מחדל עבור %1"
 
 #: akonadicollectionview.cpp:1057
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider adding a write-enabled events calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
-msgstr "כדאי להוסיף לוח שנה לאירועים שניתן לערוך"
+msgstr "כדאי להוסיף לוח שנה עבור %1 שניתן לערוך"
 
 #: akonadicollectionview.cpp:1091
 #, kde-kuit-format
@@ -1851,12 +1841,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "תזכורת <message>%1</message> כבויה"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "תזכורת <message>%1</message> פעילה"
+msgstr "שינוי מצב תזכורת <message>%1</message> נכשל"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -4511,7 +4499,7 @@ msgstr "הצגת סמלים בפריטי תצוגת סדר היום"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "ציור קווי רשת אופקיים מודגשים לשעות הזוגיות"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4519,12 +4507,13 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"ציור קו רשת אופקי מודגש יותר לשעות זוגיות (חצות, 2 בלילה, 4 לפנות בוקר ועוד)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "ציור קווי רשת מודגשים יותר לשעות זוגיות"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130

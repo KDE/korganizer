@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 23:50+0100\n"
+"PO-Revision-Date: 2026-03-14 11:51+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -4587,6 +4587,7 @@ msgstr "Mostrar iconos en los elementos de la vista de agenda"
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
 msgstr ""
+"Dibujar líneas horizontales gruesas en la cuadrícula para las horas pares"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4594,12 +4595,15 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Dibujar una línea horizontal más gruesa en la cuadrícula para las horas "
+"pares (12 am, 2 am, 4 am, etc.)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
 msgstr ""
+"Dibujar líneas horizontales más gruesas en la cuadrícula para las horas pares"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6484,20 +6488,15 @@ msgstr ""
 "pendientes predeterminado» del gestor de calendarios."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Vista de agenda: mostrar opcionalmente las descripciones de las incidencias "
-"dentro de los elementos de la agenda. Para activar este comportamiento, "
-"marque la opción «Mostrar descripciones de incidencias en los elementos de "
-"la vista de agenda» en la pestaña «Vista->Vista de agenda»."
+"Vista de agenda: dibujar opcionalmente líneas horizontales más gruesas cada "
+"dos horas. Para activar este comportamiento, marque la opción «Dibujar "
+"líneas horizontales gruesas en la cuadrícula para las horas pares» en la "
+"pestaña «Vista->Vista de agenda»."
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

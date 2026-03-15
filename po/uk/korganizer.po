@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 14:36+0200\n"
+"PO-Revision-Date: 2026-03-14 13:31+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -4593,7 +4593,7 @@ msgstr "Показувати піктограми для пунктів пере
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Малювати жирні лінії горизонтальної сітки для парних годин"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4601,12 +4601,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Малювати жирніші/товстіші лінії горизонтальної сітки для парних годин (12 до "
+"півдня, 2 до півдня, 4 до півдня тощо)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Малювати жирніші лінії сітки для парних годин"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6443,20 +6445,16 @@ msgstr ""
 "календарем записів Завдання»."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Панель порядку денного: якщо потрібно, програма може показувати описи "
-"зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати описи "
-"зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -> "
-"Перегляд порядку денного»."
+"Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/"
+"товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути цю "
+"можливість, поставте позначку навпроти пукнту «Малювати жирні горизонтальні "
+"лінії сітки для парних годин» на вкладці «Перегляд->Перегляд порядку "
+"денного»."
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

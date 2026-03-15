@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 11:14+0100\n"
+"PO-Revision-Date: 2026-03-14 11:48+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -4554,7 +4554,7 @@ msgstr "Pictogrammen tonen in agendaweergaven"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Teken dikke horizontale rasterlijnen voor de even uren"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4562,12 +4562,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Teken een dikkere horizontale rasterlijn voor de even uren (00:00, 02:00, "
+"04:00, etc)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Teken dikkere rasterlijnen voor even uren"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6414,19 +6416,15 @@ msgstr ""
 "'Instellen als standaard takenkalender' in Agendabeheer."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Agendaweergave: toon optioneel de incidentbeschrijvingen in de agenda-items. "
-"Om dit gedrag in te schakelen, activeer de optie \"Incidentbeschrijvingen "
-"tonen in de items in de agenda\" in het weergavetabblad Beeld->Agenda"
+"Agendaweergave: optioneel dikkere horizontale rasterlijnen tekenen om de "
+"twee uur. Om dit in te schakelen, activeert u de optie 'Dikke horizontale "
+"rasterlijnen tekenen voor de even uren' aan in het tabblad Beeld-"
+">Agendaweergave."
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

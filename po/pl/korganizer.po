@@ -1,6 +1,6 @@
 # translation of korganizer.po to
-# Version: $Revision: 1732221 $
-# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# Version: $Revision: 1732231 $
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2003, 2004.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2025-12-24 16:15+0100\n"
+"PO-Revision-Date: 2026-03-14 07:53+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -55,14 +55,7 @@ msgid "A Personal Organizer"
 msgstr "Osobisty organizator"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -75,7 +68,7 @@ msgstr ""
 "Prawa autorskie © 2000–2004, 2007 Cornelius Schumacher\n"
 "Prawa autorskie © 2004–2005 Reinhold Kainhofer\n"
 "Prawa autorskie © 2006–2012 Allen Winter\n"
-"Prawa autorskie © 2012–2025 Autorzy KOrganizer"
+"Prawa autorskie © 2012–2026 Autorzy KOrganizer"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -784,9 +777,7 @@ msgid "Scroll the view to today"
 msgstr "Przewiń widok do dzisiejszego dnia"
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Przewija bieżący widok do dzisiejszej daty."
@@ -1523,20 +1514,16 @@ msgid "%1 (Offline)"
 msgstr "%1 (Niedostępny)"
 
 #: akonadicollectionview.cpp:302
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1 (domyślny)"
+msgstr "%1 (domyślne wydarzenie)"
 
 #: akonadicollectionview.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1 (domyślny)"
+msgstr "%1 (domyślne zadanie)"
 
 #: akonadicollectionview.cpp:392
 #, kde-format
@@ -1555,7 +1542,7 @@ msgstr "Zacznij pisać, aby zacząć szukać kalendarza w zbiorze."
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Przeszukaj kalendarza…"
+msgstr "Poszukaj kalendarza…"
 
 #: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:76
 #, kde-format
@@ -1570,36 +1557,25 @@ msgid "&Set Folder Color…"
 msgstr "U&staw kolor katalogu…"
 
 #: akonadicollectionview.cpp:499
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Ustaw jako &domyślny katalog"
+msgstr "Ustaw jako &domyślny kalendarz"
 
 #: akonadicollectionview.cpp:537
-#, fuzzy, kde-format
-#| msgctxt "@title:column event description"
-#| msgid "Event"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Wydarzenie"
 
 #: akonadicollectionview.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "Widok zadań"
+msgstr "Zadanie"
 
 #: akonadicollectionview.cpp:603
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
-#| "default calendar folder.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
@@ -1607,55 +1583,42 @@ msgid ""
 "default %4 calendar folder.</para>"
 msgstr ""
 "Czy na pewno ustawić <filename>%1</filename> jako katalog swojego domyślnego "
-"kalendarza?<para>Zastąpi to <filename>%2</filename> jako katalog twojego "
-"domyślnego kalendarza.</para>"
+"kalendarza %2?<para>Zastąpi to <filename>%3</filename> jako katalog twojego "
+"domyślnego kalendarza %4.</para>"
 
 #: akonadicollectionview.cpp:610
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
 msgstr ""
 "Czy na pewno chcesz ustawić <filename>%1</filename> jako katalog swojego "
-"domyślnego kalendarza?"
+"domyślnego kalendarza %2?"
 
 #: akonadicollectionview.cpp:613
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Replace Default Calendar?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "Czy zastąpić domyślny kalendarz?"
+msgstr "Czy zastąpić domyślny kalendarz %1?"
 
 #: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1</filename> is now your default event calendar"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
-msgstr ""
-"<filename>%1</filename> jest teraz twoim domyślnym kalendarzem na wydarzenia"
+msgstr "<filename>%1</filename> jest teraz twoim domyślnym kalendarzem %2"
 
 #: akonadicollectionview.cpp:770
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Ustaw jako &domyślny katalog"
+msgstr "Ustaw jako &domyślny katalog dla wydarzeń"
 
 #: akonadicollectionview.cpp:773
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Ustaw jako &domyślny katalog"
+msgstr "Ustaw jako &domyślny katalog dla zadań"
 
 #: akonadicollectionview.cpp:791
 #, kde-format
@@ -1684,15 +1647,7 @@ msgstr ""
 "ponownie w każdej chwili.</note></para>"
 
 #: akonadicollectionview.cpp:900
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This calendar "
-#| "contains your default calendar folder. If you delete it you may be "
-#| "prompted to select a new default calendar folder.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1706,19 +1661,11 @@ msgstr ""
 "kalendarza nie zostaną usunięte, ani sam kalendarz nie zostanie usunięty z "
 "zasobu zdalnego. Kalendarz <filename>%1</filename> będzie można dodać "
 "ponownie w każdej chwili.</note></para><para><warning>Ten kalendarz zawiera "
-"katalog twojego domyślnego kalendarza. Jeśli go usuniesz, to będziesz musiał "
-"wskazać nowy katalog.</warning></para>"
+"katalog domyślnego kalendarza. Jeśli go usuniesz, to będziesz musiał wskazać "
+"nowy katalog.</warning></para>"
 
 #: akonadicollectionview.cpp:910
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This is your "
-#| "default calendar. If you delete it you may be prompted to select a new "
-#| "default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1731,9 +1678,9 @@ msgstr ""
 "Czy na pewno usunąć kalendarz <filename>%1</filename>?<para><note>Dane "
 "kalendarza nie zostaną usunięte, ani sam kalendarz nie zostanie usunięty z "
 "zasobu zdalnego Kalendarz <filename>%1</filename> będzie można dodać "
-"ponownie w każdej chwili</note></para><para><warning>To jest twój domyślny "
-"kalendarz. Jeśli go usuniesz, to będziesz musiał wskazać nowy domyślny "
-"kalendarz.</warning></para>"
+"ponownie w każdej chwili</note></para><para><warning>To jest domyślny "
+"kalendarz %2. Jeśli go usuniesz, to będziesz musiał wskazać nowy domyślny "
+"kalendarz %2.</warning></para>"
 
 #: akonadicollectionview.cpp:923
 #, kde-kuit-format
@@ -1748,14 +1695,7 @@ msgstr ""
 "przycisk %2.</warning></para>"
 
 #: akonadicollectionview.cpp:931
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para><para><warning>This is your "
-#| "default calendar folder. If you delete it you may be prompted to select a "
-#| "new default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1766,9 +1706,9 @@ msgid ""
 msgstr ""
 "Czy na pewno usunąć katalog <filename>%1</filename>?<para><warning>Nie "
 "będzie można tego cofnąć. Upewnij się zanim naciśniesz przycisk %2.</"
-"warning></para><para><warning>To jest twój domyślny kalendarz. Jeśli go "
-"usuniesz, to będziesz musiał wskazać nowy domyślny kalendarz.</warning></"
-"para>"
+"warning></para><para><warning>To jest katalog twojego domyślnego kalendarza "
+"%3. Jeśli go usuniesz, to będziesz musiał wskazać nowy domyślny kalendarz %4."
+"</warning></para>"
 
 #: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
@@ -1799,20 +1739,16 @@ msgstr ""
 "Akonadi</message>"
 
 #: akonadicollectionview.cpp:1055
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider setting a default calendar for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr "Rozważ ustawienie domyślnego kalendarza dla nowych wydarzeń"
+msgstr "Rozważ ustawienie domyślnego kalendarza %1"
 
 #: akonadicollectionview.cpp:1057
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider adding a write-enabled events calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
-msgstr "Rozważ dodane kalendarza z wydarzeniami z możliwością zapisu"
+msgstr "Rozważ dodane kalendarza z możliwością zapisu %1"
 
 #: akonadicollectionview.cpp:1091
 #, kde-kuit-format
@@ -1906,12 +1842,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "Przypomnienie <message>%1</message> jest wyłączone"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "Przypomnienie <message>%1</message> jest włączone"
+msgstr "Nie udało się przestawić przypomnienia <message>%1</message>"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1926,12 +1860,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Zadanie <message>%1</message> ukończone w %2 procentach"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "Zadanie <message>%1</message> ukończone w %2 procentach"
+msgstr "Nie udało się zmienić ukończenia zadania <message>%1</message>"
 
 #: calendarview.cpp:1510
 #, kde-format
@@ -4626,29 +4558,23 @@ msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Pokaż ikony w elementach planu zajęć"
+msgstr "Pokaż opisy wystąpień na elementach widoku planu"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Zaznacz tę opcję by pokazać ikony (alarm, powtarzanie, itd.) w elementach "
-"planu zajęć."
+"Zaznacz to pole, aby wyświetlić opis wystąpienia w widoku elementów planu."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:132
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Pokaż ikony w elementach planu zajęć"
+msgstr "Pokaż opisy wystąpień na elementach widoku planu"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5304,23 +5230,21 @@ msgstr "Kolor zadania, dla których minął termin wykonania."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:335
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Kolor tła widoku miesiąca"
+msgstr "Kolor tła dnia dzisiejszego na widoku miesiąca"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:336
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Wybierz kolor tła godzin pracy w widoku miesiąca."
+msgstr "Ustaw kolor tła dla dzisiejszej daty w widoku miesiąca"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:337
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "W widoku miesiąca, wybierze kolor tła dla dnia dzisiejszego."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:344
@@ -6447,6 +6371,10 @@ msgid ""
 "default Event calendar has been supported for a long time.  See the Calendar "
 "Manager context menu \"Set as Default Todo Calendar\""
 msgstr ""
+"Można wskazać domyślny kalendarz dla zadań, aby przyspieszyć ich tworzenie i "
+"uniknąć ich tworzenia w złym katalogu. Ustawianie domyślnego katalogu dla "
+"wydarzeń jest obsługiwane od dłuższego czasu. Zajrzyj do wpisu \"Ustaw jako "
+"domyślny kalendarz dla zadań\" w menu podręcznym Zarządzania Kalendarzem"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
@@ -6505,16 +6433,12 @@ msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:38
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Widok planu: wydarzenia bez czasu trwania są wyświetlane jakby trwały 30 "
-"(zamiast 15) minut"
+"Widok planu: wydarzenia o krótkim czasie trwania zostaną wyświetlone wraz z "
+"ich czasem rozpoczęcia w dodatku do ich podsumowania"
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
@@ -6522,10 +6446,13 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Widok planu: pokaż opisy wystąpień na elementach widoku planu. Aby włączyć "
+"to zachowanie, zaznacz \"Pokaż opisy wystąpień na elementach widoku planu\" "
+"na karcie Widok->Widok planu"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid "Search: the search settings are saved/restored"
-msgstr ""
+msgstr "Szukanie: ustawienia wyszukiwania zostały zapisane/przywrócone"
 
 #: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
@@ -6789,11 +6716,10 @@ msgid "Icons to use"
 msgstr "Używane ikony"
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Pokaż czas w elementach widoku miesiąca"
+msgstr "Pokaż/ukryj pasek boczny na tym widoku"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6804,128 +6730,98 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Przewija bieżący widok do dzisiejszej daty."
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Przewiń wstecz"
+msgstr "Przewiń wstecz o rok"
 
 #: widgets/navigatorbar.cpp:44
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the previous year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w zeszłym roku (w "
-"przybliżeniu)."
+"Naciśnij ten przycisk, aby przewinąć widok w przybliżeniu do tego samego "
+"dnia, ale w zeszłym roku"
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Przewiń wstecz"
+msgstr "Przewiń wstecz o miesiąc"
 
 #: widgets/navigatorbar.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the previous month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w zeszłym miesiącu"
+"Naciśnij ten przycisk, aby przewinąć widok w przybliżeniu do tego samego "
+"dnia, ale w zeszłym miesiącu"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Przewiń wstecz"
+msgstr "Przewiń wstecz o tydzień"
 
 #: widgets/navigatorbar.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym miesiącu"
+msgstr "Naciśnij ten przycisk, aby przewinąć widok wstecz o 1 tydzień"
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgid "Go forward one week"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Przejdź jeden tydzień do przodu"
+msgstr "Przewiń wprzód o tydzień"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym roku (w "
-"przybliżeniu)."
+msgstr "Naciśnij ten przycisk, aby przewinąć widok wprzód o 1 tydzień"
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Przewiń do następnego miesiąca"
+msgstr "Przewiń wprzód o miesiąc"
 
 #: widgets/navigatorbar.cpp:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym miesiącu"
+"Naciśnij ten przycisk, aby przewinąć widok w przybliżeniu do tego samego "
+"dnia, ale w przyszłym miesiącu"
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Przewiń do następnego roku"
+msgstr "Przewiń wprzód o rok"
 
 #: widgets/navigatorbar.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Kliknij przycisk by przewinąć ekran do tego samego dnia w przyszłym roku (w "
-"przybliżeniu)."
+"Naciśnij ten przycisk, aby przewinąć wyświetlanie w przybliżeniu do tego "
+"samego dnia, ale w przyszłym roku"
 
 #: widgets/navigatorbar.cpp:77
 #, kde-format

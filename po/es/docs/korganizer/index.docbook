@@ -92,6 +92,15 @@
 >Desarrollador</contrib>
 </othercredit>
 
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>Desarrollador</contrib>
+</othercredit>
+
 <othercredit role="reviewer"
 ><firstname
 >Lauri</firstname
@@ -1106,6 +1115,21 @@
 <listitem
 ><para
 >Seleccione cualquier región de hora abierta y haga doble clic sobre ella para comenzar a escribir el resumen del evento. &korganizer; define automáticamente la duración y la hora de comienzo según el área seleccionada en la vista de agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>Consejos para mejorar la visualización de eventos: <itemizedlist>
+<listitem
+><para
+>Use el acceso Mayúsculas+rueda para agrandar/encoger la altura de la fila de la cuadrícula horaria. Resulta de utilidad para ver los detalles de los eventos si hay varios que coinciden en el mismo intervalo de tiempo. </para
+></listitem>
+<listitem
+><para
+>Muestre las etiquetas de tiempos en ambos lados de la cuadrícula horaria seleccionando «Mostrar/ocultar etiquetas horarias en el lado derecho» en el menú de contexto de las etiquetas de tiempo.</para
 ></listitem>
 </itemizedlist>
 </para
@@ -3192,6 +3216,28 @@
 <listitem
 ><para
 >Marque esta casilla para mostrar iconos (recordatorios, repeticiones, &etc;) en los elementos de la vista de agenda</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Dibujar líneas horizontales gruesas en la cuadrícula para las horas pares</guilabel
+></term>
+  <listitem
+><para
+>Marque esta casilla para dibujar líneas horizontales gruesas en la cuadrícula para las horas pares (12 am, 2 am, 4 am, etc.).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Mostrar descripciones de incidencias en los elementos de la vista de agenda</guilabel
+></term>
+  <listitem
+><para
+>Marque esta casilla para mostrar las descripciones de las incidencias en los elementos de la vista de agenda.</para
 ></listitem>
 </varlistentry>
 

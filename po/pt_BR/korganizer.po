@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 09:18-0300\n"
+"PO-Revision-Date: 2026-03-14 09:57-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -4562,7 +4562,7 @@ msgstr "Exibir ícones nos itens da visão de agenda"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Desenhar linhas de grade horizontais em negrito para as horas pares"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4570,12 +4570,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Desenhar uma linha de grade horizontal mais grossa para as horas pares (meia-"
+"noite, 2h da manhã, 4h da manhã, etc.)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Desenhar linhas de grade mais grossas em horas pares"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6425,20 +6427,15 @@ msgstr ""
 "Calendários, na opção \"Definir como calendário de tarefas padrão\"."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Visão de Agenda: opcionalmente, mostre as descrições das ocorrências dentro "
-"dos itens da agenda. Para ativar esse comportamento, marque a opção "
-"\"Mostrar descrições de ocorrências nos itens da visão de agenda\" na aba "
-"Exibir -> Visão da Agenda."
+"Visualização de Agenda: opcionalmente, desenhe linhas de grade horizontais "
+"mais grossas a cada duas horas. Para ativar esse comportamento, marque a "
+"opção \"Desenhar linhas de grade horizontais grossas para as horas pares\" "
+"na aba Exibir -> Visualização de Agenda."
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

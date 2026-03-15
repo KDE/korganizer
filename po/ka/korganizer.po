@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 02:50+0100\n"
+"PO-Revision-Date: 2026-03-14 06:40+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4515,7 +4515,7 @@ msgstr "დღის წესრიგის ხედის ელემენ
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "სქელი ჰორიზონტალური ბადის ხაზების დახაზვა ლუწი საათებისთვის"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4523,12 +4523,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"სქელი ჰორიზონტალური ბადის ხაზების დახაზვა ლუწი საათებისთვის (12am, 2am, 4am "
+"და ა.შ.)"
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "ლუწი საათებისთვის სქელი ბადის ხაზების დახაზვა"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6365,19 +6367,14 @@ msgstr ""
 "დაყენება'"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
 "დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის წესრიგის "
-"ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის აღწერების ჩვენება "
-"დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი -> დღის წესრიგის ხედის "
+"ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"სქელი ჰორიზონტალური ბადის "
+"ხაზების დახაზვა ლუწი საათებისთვის\" მენიუდან ხედი -> დღის წესრიგის ხედის "
 "ჩანართი"
 
 #: whatsnew/whatsnewtranslations.cpp:29
