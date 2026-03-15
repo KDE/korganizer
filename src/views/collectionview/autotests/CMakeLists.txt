@@ -5,7 +5,7 @@ include_directories(
     ${korganizer_SOURCE_DIR}/
 )
 
-add_executable(reparentingmodeltest ${reparentingmodeltest_SRCS})
+add_executable(reparentingmodeltest)
 target_sources(
     reparentingmodeltest
     PRIVATE
