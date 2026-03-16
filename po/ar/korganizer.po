@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-10 22:57+0400\n"
+"PO-Revision-Date: 2026-03-15 09:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -4508,7 +4508,7 @@ msgstr "اعرض الأيقونات في عناصر منظور جدول الأع
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "ارسم خطوطًا أفقية سميكة للساعات الزوجية"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4516,12 +4516,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"ارسم خطًا أفقيًا أكثر سمكًا على الشبكة للإشارة إلى الساعات الزوجية (12 صباحًا، 2 "
+"صباحًا، 4 صباحًا، إلخ)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "ارسم خطوطًا أكثر سمكًا لشبكة الساعات"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6284,19 +6286,14 @@ msgstr ""
 "راجع قائمة السياق لمدير التقويم \"تعيين كتقويم مهام مبدئي\"."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"عرض جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. "
-"لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود عرض جدول الأعمال” في "
-"لسان عرض->عرض جدول الأعمال."
+"عرض جدول الأعمال: يمكنك اختيارياً رسم خطوط شبكية أفقية أكثر سمكاً كل ساعتين. "
+"لتمكين هذه الميزة، حدد الخيار ”ارسم خطوطًا أفقية سميكة للساعات الزوجية“ في "
+"علامة التبويب ”عرض->عرض جدول الأعمال“"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

@@ -1115,7 +1115,7 @@
 >Geliştirilmiş etkinlik görüntüleme için ipuçları: <itemizedlist>
 <listitem
 ><para
->Use the shift-wheel shortcut for growing/shrinking the hourly grid row height. This is useful for seeing event details if you have several events occurring in the same time interval. </para
+>Saatlik tablo satır yüksekliğini artırmak/azaltmak için Üst Karakter+Tekerlek kısayolunu kullanın. Bu, aynı zaman aralığında birden fazla etkinlik gerçekleşiyorsa etkinlik ayrıntılarını görmek için kullanışlıdır. </para
 ></listitem>
 <listitem
 ><para
@@ -3212,11 +3212,11 @@
 <varlistentry>
   <term
 ><guilabel
->Draw bold horizontal grid lines for the even hours</guilabel
+>Çift saatler için kalın yatay ızgara çizgileri çiz</guilabel
 ></term>
   <listitem
 ><para
->Check this box to draw bolder/fatter horizontal grid lines for the even hours (12am, 2am, 4am, etc).</para
+>Çift saatler (00:00, 02:00, 04:00 vb.) için daha kalın yatay ızgara çizgileri çizin.</para
 ></listitem>
 </varlistentry>
 

@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-13 20:55+0100\n"
+"PO-Revision-Date: 2026-03-14 16:38+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -1630,35 +1630,26 @@ msgid "Todo"
 msgstr "Tâche à faire"
 
 #: akonadicollectionview.cpp:603
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
-#| "default calendar folder.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?<para>This will replace <filename>%3</filename> as the "
 "default %4 calendar folder.</para>"
 msgstr ""
-"Voulez-vous vraiment définir <filename>%1</filename> comme dossier d'agenda "
-"par défaut ?<para>Cela remplacera <filename>%2</filename> comme dossier "
-"d'agenda par défaut.</para>"
+"Voulez-vous vraiment définir <filename>%1</filename> comme dossier %2 "
+"d'agenda par défaut ?<para>Cela remplacera <filename>%3</filename> comme "
+"dossier d'agenda par défaut %4.</para>"
 
 #: akonadicollectionview.cpp:610
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
 msgstr ""
-"Voulez-vous vraiment définir <filename>%1</filename> comme votre dossier par "
-"défaut d'agenda ?"
+"Voulez-vous vraiment définir <filename>%1</filename> comme votre dossier "
+"d'agenda par défaut%2 ?"
 
 #: akonadicollectionview.cpp:613
 #, kde-format
@@ -1713,15 +1704,7 @@ msgstr ""
 "filename> peut être ajouté à nouveau à tout moment.</note></para>"
 
 #: akonadicollectionview.cpp:900
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This calendar "
-#| "contains your default calendar folder. If you delete it you may be "
-#| "prompted to select a new default calendar folder.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1735,20 +1718,12 @@ msgstr ""
 "<para><note>Les données de l'agenda ne seront pas supprimées, pas plus que "
 "l'agenda ne sera supprimé de sa ressource distante. L'agenda <filename>%1</"
 "filename> peut être ajouté à nouveau à tout moment.</note></"
-"para><para><warning>Cet agenda contient votre dossier par défaut d'agenda. "
+"para><para><warning>Cet agenda contient votre dossier d'agenda par défaut. "
 "Si vous le supprimez, il vous sera demandé de sélectionner un nouveau "
-"dossier par défaut d'agenda.</warning></para> "
+"dossier d'agenda par défaut.</warning></para>"
 
 #: akonadicollectionview.cpp:910
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This is your "
-#| "default calendar. If you delete it you may be prompted to select a new "
-#| "default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1762,9 +1737,9 @@ msgstr ""
 "<para><note>Les données d'agenda ne seront pas supprimées, pas plus que "
 "l'agenda ne sera supprimé de sa ressource distante. L'agenda <filename>%1</"
 "filename> peut être ajouté à nouveau à tout moment. </note></"
-"para><para><warning>Cet agenda contient votre dossier par défaut d'agenda. "
-"Si vous le supprimez, il vous sera demandé de sélectionner un nouveau "
-"dossier par défaut d'agenda.</warning></para> "
+"para><para><warning>Cet agenda contient votre dossier d'agenda par défaut "
+"%2. Si vous le supprimez, il vous sera demandé de sélectionner un nouveau "
+"dossier par défaut d'agenda %2.</warning></para>"
 
 #: akonadicollectionview.cpp:923
 #, kde-kuit-format
@@ -1779,14 +1754,7 @@ msgstr ""
 "attentivement avant d'appuyer sur le bouton %2.</warning></para>"
 
 #: akonadicollectionview.cpp:931
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para><para><warning>This is your "
-#| "default calendar folder. If you delete it you may be prompted to select a "
-#| "new default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1798,9 +1766,9 @@ msgstr ""
 "Voulez-vous vraiment supprimer le dossier de <filename>%1</filename> ?"
 "<para><warning>Il est impossible d'annuler cette action. Veuillez réfléchir "
 "attentivement avant d'appuyer sur le bouton %2</warning></"
-"para><para><warning>Ceci est votre dossier par défaut d'agenda. Si vous le "
-"supprimez, il vous sera demandé de sélectionner un nouvel agenda par défaut."
-"</warning></para>"
+"para><para><warning>Ceci est votre dossier d'agenda par défaut %3. Si vous "
+"le supprimez, il vous sera demandé de sélectionner un nouvel agenda %4 par "
+"défaut.</warning></para>"
 
 #: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
@@ -1941,12 +1909,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "Le rappel de <message>%1</message> est désactivé."
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "Le rappel de <message>%1</message> est activé."
+msgstr "Il a été impossible de basculer le rappel de <message>%1</message>."
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1962,13 +1928,12 @@ msgstr ""
 "L'avancement de la tâche à faire <message>%1</message> est à %2 pourcent. "
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr ""
-"L'avancement de la tâche à faire <message>%1</message> est à %2 pourcent. "
+"Il a été impossible de modifier l'avancement de la tâche à faire <message>"
+"%1</message>. "
 
 #: calendarview.cpp:1510
 #, kde-format
@@ -6649,6 +6614,12 @@ msgid ""
 "default Event calendar has been supported for a long time.  See the Calendar "
 "Manager context menu \"Set as Default Todo Calendar\""
 msgstr ""
+"Un agenda de tâches par défaut peut être spécifié pour rendre la création de "
+"nouvelles tâches plus rapide et plus facile, avec moins de risques de les "
+"classer dans le mauvais dossier. La définition d'un agenda d'évènements par "
+"défaut est prise en charge depuis longtemps. Veuillez consulter le menu "
+"contextuel « Gestionnaire d'agenda » avec « Définir comme agenda de tâches "
+"par défaut »"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 #, fuzzy
