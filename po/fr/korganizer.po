@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-14 16:38+0100\n"
+"PO-Revision-Date: 2026-03-15 18:26+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -4701,6 +4701,7 @@ msgstr "Afficher les icônes dans la vue agenda"
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
 msgstr ""
+"Tracez des lignes horizontales épaisses dans la grille pour les heures paires"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4708,12 +4709,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Tracez une ligne horizontale plus épaisse dans la grille pour les heures "
+"paires (Midi, 2 h, 4 h, etc.)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Tracez des lignes plus épaisses dans la grille pour les heures paires"
 
 # unreviewed-context
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
@@ -6622,20 +6625,16 @@ msgstr ""
 "par défaut »"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Vue d'agenda : afficher éventuellement les descriptions de récurrence dans  "
-"les éléments de l'agenda. Pour activer ce comportement, veuillez cocher "
-"l'option « Afficher les descriptions de récurrence dans les éléments de la "
-"vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
+"Vue d'agenda : affichage optionnel du dessin des lignes de grille "
+"horizontales plus en gras / plus épaisses toutes les deux heures.  Pour "
+"activer ce comportement, veuillez cocher l'option « Dessiner des lignes de "
+"grille horizontales plus en gras / plus épaisses toutes les deux heures » "
+"dans l'onglet « Affichage / Vue d'agenda »"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""
