@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-01-27 11:31+0100\n"
+"PO-Revision-Date: 2026-03-17 23:31+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1526,20 +1526,16 @@ msgid "%1 (Offline)"
 msgstr "%1 (non in linea)"
 
 #: akonadicollectionview.cpp:302
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1 (predefinito)"
+msgstr "%1 (evento predefinito)"
 
 #: akonadicollectionview.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1 (predefinito)"
+msgstr "%1 (cosa da fare predefinita)"
 
 #: akonadicollectionview.cpp:392
 #, kde-format
@@ -1573,36 +1569,25 @@ msgid "&Set Folder Color…"
 msgstr "Impo&sta colore della cartella…"
 
 #: akonadicollectionview.cpp:499
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Imposta come cartella pre&definita"
+msgstr "Imposta come calen&dario predefinito"
 
 #: akonadicollectionview.cpp:537
-#, fuzzy, kde-format
-#| msgctxt "@title:column event description"
-#| msgid "Event"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Evento"
 
 #: akonadicollectionview.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "Vista delle cose da fare"
+msgstr "Cosa da fare"
 
 #: akonadicollectionview.cpp:603
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
-#| "default calendar folder.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
@@ -1610,55 +1595,43 @@ msgid ""
 "default %4 calendar folder.</para>"
 msgstr ""
 "Vuoi veramente impostare <filename>%1</filename> come cartella di calendario "
-"predefinita?<para>Questa sostituirà <filename>%2</filename> come cartella di "
-"calendario predefinita.</para>"
+"%2 predefinita?<para>Questa sostituirà <filename>%3</filename> come cartella "
+"di calendario %4 predefinita.</para>"
 
 #: akonadicollectionview.cpp:610
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
 msgstr ""
 "Vuoi veramente impostare <filename>%1</filename> come cartella di calendario "
-"predefinita?"
+"%2 predefinita?"
 
 #: akonadicollectionview.cpp:613
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Replace Default Calendar?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "Sostituisci il calendario predefinito?"
+msgstr "Sostituisci il calendario predefinito %1?"
 
 #: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1</filename> is now your default event calendar"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr ""
-"Adesso <filename>%1</filename> è il calendario degli eventi predefinito"
+"Adesso <filename>%1</filename> è il calendario degli eventi predefinito %2"
 
 #: akonadicollectionview.cpp:770
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Imposta come cartella pre&definita"
+msgstr "Imposta come calen&dario predefinito degli eventi"
 
 #: akonadicollectionview.cpp:773
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Imposta come cartella pre&definita"
+msgstr "Imposta come calen&dario predefinito delle cose da fare"
 
 #: akonadicollectionview.cpp:791
 #, kde-format
@@ -1687,15 +1660,7 @@ msgstr ""
 "aggiunto nuovamente in qualsiasi momento.</note></para>"
 
 #: akonadicollectionview.cpp:900
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This calendar "
-#| "contains your default calendar folder. If you delete it you may be "
-#| "prompted to select a new default calendar folder.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1709,20 +1674,12 @@ msgstr ""
 "dati del calendario non sarano eliminati, né il calendario sarà rimosso "
 "dalla sua risorsa remota. Il calendario <filename>%1</filename> può essere "
 "aggiunto nuovamente in qualsiasi momento.</note></para><para><warning>Questo "
-"calendario contiene la cartella di calendario predefinita. Se viene "
+"calendario contiene una cartella di calendario predefinita. Se viene "
 "eliminata potrebbe venire richiesto di selezionare una nuova cartella "
 "predefinita di calendario.</warning></para>"
 
 #: akonadicollectionview.cpp:910
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This is your "
-#| "default calendar. If you delete it you may be prompted to select a new "
-#| "default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1736,8 +1693,8 @@ msgstr ""
 "dati del calendario non sarano eliminati, né il calendario sarà rimosso "
 "dalla sua risorsa remota. Il calendario <filename>%1</filename> può essere "
 "aggiunto nuovamente in qualsiasi momento.</note></para><para><warning>Questo "
-"è il calendario predefinito. Se viene eliminato potrebbe venire richiesto di "
-"selezionare un nuovo calendario predefinito.</warning></para>"
+"è il calendario predefinito %2. Se viene eliminato potrebbe venire richiesto "
+"di selezionare un nuovo calendario predefinito %2.</warning></para>"
 
 #: akonadicollectionview.cpp:923
 #, kde-kuit-format
@@ -1752,14 +1709,7 @@ msgstr ""
 "attenzione prima di premere il tasto %2.</warning></para>"
 
 #: akonadicollectionview.cpp:931
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para><para><warning>This is your "
-#| "default calendar folder. If you delete it you may be prompted to select a "
-#| "new default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1771,9 +1721,9 @@ msgstr ""
 "Vuoi davvero eliminare la cartella <filename>%1</filename>?"
 "<para><warning>Questa operazione non può essere annullata. Bisogna fare "
 "attenzione prima di premere il tasto %2.</warning></"
-"para><para><warning>Questa è la cartella di calendario predefinita. Se viene "
-"eliminata potrebbe venire richiesto di selezionare una nuova cartella "
-"predefinita di calendario.</warning></para>"
+"para><para><warning>Questa è la cartella di calendario %3 predefinita. Se "
+"viene eliminata potrebbe venire richiesto di selezionare una nuova cartella "
+"predefinita %4 di calendario.</warning></para>"
 
 #: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
@@ -1805,22 +1755,16 @@ msgstr ""
 "Akonadi non valida</message>"
 
 #: akonadicollectionview.cpp:1055
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider setting a default calendar for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr ""
-"Valutare l'impostazione di un calendario predefinito per i nuovi eventi"
+msgstr "Valutare l'impostazione di un calendario predefinito %1"
 
 #: akonadicollectionview.cpp:1057
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider adding a write-enabled events calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
-msgstr ""
-"Valutare l'aggiunta di un calendario per gli eventi aperto in scrittura"
+msgstr "Valutare l'aggiunta di un calendario %1 aperto in scrittura"
 
 #: akonadicollectionview.cpp:1091
 #, kde-kuit-format
@@ -1915,12 +1859,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "Il promemoria <message>%1</message> è disabilitato"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "Il promemoria <message>%1</message> è abilitato"
+msgstr "Cambio stato non riuscito per il promemoria <message>%1</message>"
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1935,12 +1877,11 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Cosa da fare <message>%1</message> completata al %2 percento"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "Cosa da fare <message>%1</message> completata al %2 percento"
+msgstr ""
+"Impossibile cambiare il completamento della cosa da fre <message>%1</message>"
 
 #: calendarview.cpp:1510
 #, kde-format
@@ -4630,7 +4571,7 @@ msgstr "Mostra icone nelle voci della vista agenda."
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Disegna linee della griglia orizzontali spesse per le ore pari"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4638,12 +4579,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Disegna una linea della griglia orizzontale più spessa per le ore pari "
+"(mezzanotte, 2, 4, ecc)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Disegna linee della griglia delle ore pari più spesse"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6491,22 +6434,23 @@ msgid ""
 "default Event calendar has been supported for a long time.  See the Calendar "
 "Manager context menu \"Set as Default Todo Calendar\""
 msgstr ""
+"Può essere specificato un calendario predefinito delle cose da fare per "
+"creare più velocemente e più facilmente nuove cose da fare con meno "
+"possibilità di inserirle nella cartella sbgliata. Impostare un calendario "
+"degli eventi predefinito è un'operazione supportata da tanto tempo. "
+"Controllare il menu contestuale  «Imposta come calen&dario predefinito delle "
+"cose da fare« del gestore di calendario."
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Vista agenda: opzionalmente mostra le descrizioni delle occorrenze nelle "
-"voci dell'agenda. Per abilitare questo comportamento, selezionare l'opzione "
-"«Mostra descrizioni delle occorrenze nelle voci della vista agenda» nella "
-"scheda Visualizza->Vista agenda"
+"Vista agenda: opzionalmente disegna linee della griglia orizzontali più "
+"spesse/grosse ogni due ore. Per abilitare questo comportamento, selezionare "
+"l'opzione «Disegna linee della griglia orizzontali spesse per le ore pari» "
+"nella scheda Visualizza->Vista agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""

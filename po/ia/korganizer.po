@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-11 19:26+0100\n"
+"PO-Revision-Date: 2026-03-17 11:22+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -4557,7 +4557,7 @@ msgstr "Monstra icones in elementos de vista de agenda"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Designa lineas grasse de grillia horizontal per le horas par "
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4565,12 +4565,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Designa un linea plus grasse de grillia horizontal per le horas par (12am, "
+"2am, 4am, etc)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Designa lineas de grillia plus grasse de hora par"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6433,20 +6435,15 @@ msgstr ""
 "Predefinite\""
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"Vista de Agenda: monstra optionalmente le descriptiones de incidentia intra "
-"le elementos del agenda. Per habilitar iste comportamento,marca le option  "
-"\"Monstra desctiptiones de incidentia in elementos de vista de agenda\" in "
-"le scheda Vista->Vista de Agenda "
+"Vista de Agenda: designa optionalmente lineas de grillia horizontal plus "
+"grasse cataduo horas. Per habilitar iste comportamento, marca le option "
+"\"DesignaLineas gressa de grillia horizontal perhoras par\" in le scheda "
+"Vista->Vista de Agenda "
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""
