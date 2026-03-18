@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-03-13 11:00+0100\n"
+"PO-Revision-Date: 2026-03-16 12:07+0100\n"
 "Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -24,14 +24,15 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Lukáš Tinkl,Petr Kania,Ivo Jánský,Klára Cihlářová,Milan Šádek"
+msgstr ""
+"Lukáš Tinkl,Petr Kania,Ivo Jánský,Klára Cihlářová,Milan Šádek,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "lukas@kde.org,kania@inv.cz,Ivo.Jansky@seznam.cz,koty@seznam.cz,milan."
-"sadek@atlas.cz"
+"sadek@atlas.cz,libor.filipek@gmail.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
@@ -58,6 +59,11 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2026 KOrganizer authors"
 msgstr ""
+"Autorská práva © 1997–1999 Preston Brown\n"
+"Autorská práva © 2000–2004, 2007 Cornelius Schumacher\n"
+"Autorská práva © 2004–2005 Reinhold Kainhofer\n"
+"Autorská práva © 2006–2012 Allen Winter\n"
+"Autorská práva © 2012–2026 KOrganizer authors"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -770,7 +776,7 @@ msgstr "Přejít na dnešní datum"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr ""
+msgstr "Posune aktuální zobrazení na dnešní datum."
 
 #: actionmanager.cpp:474
 #, kde-format
@@ -1836,7 +1842,7 @@ msgstr "Přepnout úkoly na hotové"
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
-msgstr "Úkol <message>%1</message> %2 procentně dokončen"
+msgstr "Úkol <message>%1</message> z %2 procent dokončen"
 
 #: calendarview.cpp:1505
 #, kde-format
@@ -4506,26 +4512,22 @@ msgstr "Zobrazit ikony v položkách zobrazení agendy"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr ""
+msgstr "Zobrazit popisy položek v zobrazení agendy"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:125
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Zaškrtněte, pokud si přejete nechat zobrazovat žádost o potvrzení smazání "
-"položek."
+"Zaškrtněte toto políčko, chcete-li zobrazit popisy položek v zobrazení "
+"agendy."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:126
-#, fuzzy, kde-format
-#| msgid "Check this box to display a confirmation dialog when deleting items."
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr ""
-"Zaškrtněte, pokud si přejete nechat zobrazovat žádost o potvrzení smazání "
-"položek."
+msgstr "Zobrazit popisy položek v zobrazení agendy"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5186,22 +5188,21 @@ msgstr "Zde zvolte barvu pro prošlé úkoly."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:329
-#, fuzzy, kde-format
-#| msgid "Agenda view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "Barva pozadí pohledu na agendu"
+msgstr "Barva pozadí dnešku v měsíčním zobrazení"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:330
 #, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr ""
+msgstr "Nastavit barvu pozadí pro dnešní datum v měsíčním zobrazení"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:331
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "V zobrazení měsíce vyberte barvu pozadí pro dnešní datum."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:338
@@ -6333,24 +6334,33 @@ msgid ""
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
 msgstr ""
+"Připomenutí jsou ve výchozím nastavení povolena pro všechny nové události a "
+"úkoly. Chcete-li toto chování zakázat, zrušte zaškrtnutí políčka povolující "
+"připomenutí v nastavení na kartě Datum a čas->Výchozí hodnoty."
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
 msgstr ""
+"Zobrazení měsíce: již se nezobrazuje záhlaví měsíce a roku, aby se ušetřilo "
+"svislé místo a odstranila nadbytečnost"
 
 #: whatsnew/whatsnewtranslations.cpp:21
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
+"Měsíční zobrazení: pro vykreslení záhlaví dnů mimo aktuálně vybraný měsíc "
+"byla použita mírně odlišná barva"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
+"Zobrazení měsíce: ovládací prvky navigace v pravém dolním rohu byly "
+"odstraněny a nahrazeny vylepšenou navigační lištou aplikace"
 
 #: whatsnew/whatsnewtranslations.cpp:23
 msgid ""
@@ -6358,22 +6368,30 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
+"Měsíční zobrazení: barvu pozadí buňky s dnešním datem lze změnit. Chcete-li "
+"barvu nastavit,  zvolte „Barvu pozadí dnešku v měsíčním zobrazení“ v "
+"nastavení barev a písma."
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
+"Navigační lišta: vylepšena přidáním posouvání týdnů a zobrazením/skrytím "
+"postranní lišty pro jednotlivé zobrazení"
 
 #: whatsnew/whatsnewtranslations.cpp:26
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
+"Navigační lišta: přidáno tlačítko pro posun zobrazení na aktuální datum"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
+"Zobrazení agendy: události s krátkou dobou trvání se zobrazují s časem "
+"zahájení a jejich shrnutím"
 
 #: whatsnew/whatsnewtranslations.cpp:28
 msgid ""
@@ -6381,10 +6399,13 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
+"Zobrazení agendy: volitelné zobrazení popisů položek v zobrazení agendy. "
+"Chcete-li tuto funkci povolit, zaškrtněte možnost „Zobrazit popisy položek v "
+"zobrazení agendy“ na kartě Zobrazení->Zobrazení agendy."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
-msgstr ""
+msgstr "Hledání: nastavení hledání se ukládá/obnovuje"
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid ""
@@ -6653,7 +6674,7 @@ msgstr "Ikony k použití"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr ""
+msgstr "Zobrazit/skrýt postranní panel v tomto zobrazení"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6662,20 +6683,20 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"Kliknutím na toto tlačítko zobrazíte/skryjete postranní panel v aktuálním "
+"zobrazení. Každé zobrazení může postranní panel zobrazit/skrýt samostatně."
 
 #: widgets/navigatorbar.cpp:39
 #, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr ""
+msgstr "Posune aktuální zobrazení na dnešní datum."
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Přejít zpět"
+msgstr "Přejít zpět o rok"
 
 #: widgets/navigatorbar.cpp:44
 #, kde-format
@@ -6684,14 +6705,14 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
+"Kliknutím na toto tlačítko posunete zobrazení na přibližně stejný den "
+"předchozího roku"
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Přejít zpět"
+msgstr "Přejít zpět o měsíc"
 
 #: widgets/navigatorbar.cpp:50
 #, kde-format
@@ -6700,42 +6721,38 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
+"Kliknutím na toto tlačítko posunete zobrazení na přibližně stejné datum "
+"předchozího měsíce"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Přejít zpět"
+msgstr "Přejít zpět o týden"
 
 #: widgets/navigatorbar.cpp:55
 #, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr ""
+msgstr "Kliknutím na toto tlačítko posunete zobrazení o 1 týden zpět"
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Přejít vpřed"
+msgstr "Přejít vpřed o týden"
 
 #: widgets/navigatorbar.cpp:59
 #, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr ""
+msgstr "Kliknutím na toto tlačítko posunete zobrazení o 1 týden dopředu"
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Přejít vpřed"
+msgstr "Přejít vpřed o měsíc"
 
 #: widgets/navigatorbar.cpp:64
 #, kde-format
@@ -6744,14 +6761,14 @@ msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
+"Kliknutím na toto tlačítko posunete zobrazení na přibližně stejné datum "
+"následujícího měsíce."
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Přejít vpřed"
+msgstr "Přejít vpřed o rok"
 
 #: widgets/navigatorbar.cpp:70
 #, kde-format
@@ -6760,6 +6777,8 @@ msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
+"Kliknutím na toto tlačítko posunete zobrazení na přibližně stejný den "
+"příštího roku"
 
 #: widgets/navigatorbar.cpp:77
 #, kde-format
