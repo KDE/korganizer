@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-14 13:05+0200\n"
+"PO-Revision-Date: 2026-03-25 09:37+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1554,33 +1554,25 @@ msgid "Todo"
 msgstr "מטלה"
 
 #: akonadicollectionview.cpp:603
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
-#| "default calendar folder.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?<para>This will replace <filename>%3</filename> as the "
 "default %4 calendar folder.</para>"
 msgstr ""
-"להגדיר את <filename>%1</filename> כתיקיית ברירת המחדל שלך ללוחות שנה?"
-"<para>ההגדרה תחליף את <filename>%2</filename> כתיקיית ברירת המחדל ללוחות שנה."
-"</para>"
+"להגדיר את <filename>%1</filename> כלוח השנה לברירת מחדל עבור %2?<para>הפעולה "
+"הזאת תחליף את <filename>%3</filename> כתיקיית ברירת המחדל ללוח שנה עבור %4.</"
+"para>"
 
 #: akonadicollectionview.cpp:610
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
-msgstr "להגדיר את <filename>%1</filename> כתיקיית ברירת המחדל שלך ללוחות שנה?"
+msgstr ""
+"להגדיר את <filename>%1</filename> כתיקיית לוח השנה כברירת מחדל עבור %2?"
 
 #: akonadicollectionview.cpp:613
 #, kde-format
@@ -1632,15 +1624,7 @@ msgstr ""
 "<filename>%1</filename> שוב בכל עת.</note></para>"
 
 #: akonadicollectionview.cpp:900
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This calendar "
-#| "contains your default calendar folder. If you delete it you may be "
-#| "prompted to select a new default calendar folder.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1653,8 +1637,8 @@ msgstr ""
 "למחוק את לוח השנה <filename>%1</filename>?<para><note>נתוני לוח השנה לא "
 "יימחקו, או שלוח השנה יוסר ממקורותיו המרוחקים. לוח השנה <filename>%1</"
 "filename> שוב בכל עת.</note></para><para><warning>לוח השנה הזה מכיל את "
-"תיקיית לוחות השנה שלך כברירת מחדל. מחיקתו תציג בקשה לבחירת תיקיית לוחות שנה "
-"חדשה כברירת מחדל.</warning></para>"
+"תיקיית לוחות השנה כברירת מחדל. מחיקתו תציג בקשה לבחירת תיקיית לוחות שנה חדשה "
+"כברירת מחדל.</warning></para>"
 
 #: akonadicollectionview.cpp:910
 #, fuzzy, kde-kuit-format
@@ -6268,21 +6252,20 @@ msgid ""
 "default Event calendar has been supported for a long time.  See the Calendar "
 "Manager context menu \"Set as Default Todo Calendar\""
 msgstr ""
+"אפשר להגדיר לוח שנה כברירת מחדל למטלות כדי להקל על יצירת מטלות חדשות ולצמצם "
+"את האפשרות למילוי שלהן בתיקייה הלא נכונה. הגדרת לוח שנה כברירת מחדל לאירועים "
+"כבר נתמך זמן רב. אפשר לגשת אל תפריט ההקשר במנהל לוחות השנה „הגדרה כלוח שנה "
+"כברירת מחדל למשימות”"
 
 #: whatsnew/whatsnewtranslations.cpp:20
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"תצוגת סדר יום: להציג את תיאורי החזרות בתוך פריטי סדר היום כרשות. כדי להפעיל "
-"את ההתנהגות הזאת יש לסמן את האפשרות „להציג תיאורי חזרות בפריטי תצוגת סדר "
-"יום” בלשונית תצוגה->תצוגת סדר יום"
+"תצוגת סדר יום: אפשר לצייר קווי רשת אופקיים בולטים/עבים יותר כל שעתיים. כדי "
+"לאפשר את ההתנהגות הזאת, יש לסמן את האפשרות „לצייר קווי רשת מודגשים לשעות "
+"זוגיות” בלשונית תצוגה->סדר יום"
 
 #: whatsnew/whatsnewtranslations.cpp:29
 msgid ""
