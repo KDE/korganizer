@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-25 09:37+0200\n"
+"PO-Revision-Date: 2026-03-26 09:31+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1641,15 +1641,7 @@ msgstr ""
 "כברירת מחדל.</warning></para>"
 
 #: akonadicollectionview.cpp:910
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This is your "
-#| "default calendar. If you delete it you may be prompted to select a new "
-#| "default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1662,8 +1654,8 @@ msgstr ""
 "למחוק את לוח השנה <filename>%1</filename>?<para><note>נתוני לוח השנה לא "
 "יימחקו, או שלוח השנה יוסר מהמקור המרוחק שלו. לוח השנה <filename>%1</"
 "filename> שוב בכל עת.</note></para><para><warning>זה לוח השנה שלך שמכהן "
-"כברירת מחדל. מחיקתו עשויה להציג חלונית לבחירת לוח שנה חדש כברירת מחדל.</"
-"warning></para>"
+"כברירת מחדל עבור %2. מחיקתו עשויה להציג חלונית לבחירת לוח שנה חדש כברירת "
+"מחדל עבור %2.</warning></para>"
 
 #: akonadicollectionview.cpp:923
 #, kde-kuit-format
@@ -1677,14 +1669,7 @@ msgstr ""
 "הפיכה. נא לשקול בכובד ראש בטרם לחיצה על הכפתור %2.</warning></para>"
 
 #: akonadicollectionview.cpp:931
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para><para><warning>This is your "
-#| "default calendar folder. If you delete it you may be prompted to select a "
-#| "new default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1695,8 +1680,8 @@ msgid ""
 msgstr ""
 "למחוק את התיקייה <filename>%1</filename>?<para><warning>זאת פעולה בלתי "
 "הפיכה. נא לשקול בכובד ראש בטרם לחיצה על הכפתור %2.</warning></"
-"para><para><warning>זאת תיקיית ברירת המחדל שלך ללוחות שנה. מחיקתה תקפיץ "
-"חלונית לבחירת ברירת מחדל חדשה ללוח שנה.</warning></para>"
+"para><para><warning>זאת תיקיית ברירת המחדל שלך ללוחות שנה עבור %3. מחיקתה "
+"תקפיץ חלונית לבחירת ברירת מחדל חדשה ללוח שנה עבור %4.</warning></para>"
 
 #: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
