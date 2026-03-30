@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-03-14 09:28+0100\n"
+"PO-Revision-Date: 2026-03-29 13:05+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -4276,9 +4276,9 @@ msgid ""
 "your city is not listed, select one which shares the same timezone. "
 "KOrganizer will automatically adjust for daylight savings."
 msgstr ""
-"Seleccioneu la vostra zona horària de la llista d'ubicacions d'aquesta "
-"llista desplegable. Si la vostra ciutat no hi és, seleccioneu-ne una amb la "
-"mateixa zona horària. El KOrganizer ajustarà automàticament el canvi d'hora."
+"Seleccioneu el vostre fus horari de la llista d'ubicacions d'aquesta llista "
+"desplegable. Si la vostra ciutat no hi és, seleccioneu-ne una amb el mateix "
+"fus horari. El KOrganizer ajustarà automàticament el canvi d'hora."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:35
@@ -4673,7 +4673,7 @@ msgstr "Mostra l'indicador de l'hora actual"
 #, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr ""
-"Mostra els segons i la zona horària a la línia de temps actual (Marcus Bains)"
+"Mostra els segons i el fus horari a la línia de temps actual (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:149
@@ -4684,7 +4684,7 @@ msgid ""
 msgstr ""
 "Activeu aquesta casella si voleu mostrar els segons a la línia de temps "
 "actual (Marcus Bains). Depenent de la configuració regional, també es "
-"mostrarà la zona horària."
+"mostrarà el fus horari."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:150
@@ -4692,7 +4692,7 @@ msgstr ""
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
 msgstr ""
-"Mostra els segons (possiblement amb la zona horària) amb l'indicador d'hora "
+"Mostra els segons (possiblement amb el fus horari) amb l'indicador d'hora "
 "actual"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
@@ -6586,8 +6586,8 @@ msgid ""
 "system timezone on the right (or left) side as well"
 msgstr ""
 "Vista d'agenda: s'ha afegit el menú contextual de les etiquetes d'hora per a "
-"mostrar/ocultar les etiquetes d'hora per a la zona horària del sistema a la "
-"part dreta (o esquerra)"
+"mostrar/ocultar les etiquetes d'hora per al fus horari del sistema a la part "
+"dreta (o esquerra)"
 
 #: whatsnew/whatsnewtranslations.cpp:51
 msgid "Incidence editor: detect and warn about creating incidences in the past"
