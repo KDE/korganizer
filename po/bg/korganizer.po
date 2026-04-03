@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-14 00:45+0000\n"
-"PO-Revision-Date: 2026-02-12 21:23+0100\n"
+"PO-Revision-Date: 2026-04-03 02:42+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1560,19 +1560,16 @@ msgid "Set as &Default Calendar"
 msgstr "Задаване като &папка по подразбиране"
 
 #: akonadicollectionview.cpp:537
-#, fuzzy, kde-format
-#| msgid "&Events"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
-msgstr "&Събития"
+msgstr "Събитие"
 
 #: akonadicollectionview.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "Изглед списък със задачи"
+msgstr "Задачи"
 
 #: akonadicollectionview.cpp:603
 #, fuzzy, kde-kuit-format
@@ -1731,14 +1728,7 @@ msgstr ""
 "внимателно, преди да натиснете бутона %2.</warning></para>"
 
 #: akonadicollectionview.cpp:931
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para><para><warning>This is your "
-#| "default calendar folder. If you delete it you may be prompted to select a "
-#| "new default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1750,9 +1740,9 @@ msgstr ""
 "Наистина ли искате да изтриете папката <filename>%1</filename>?"
 "<para><warning>Това действие не може да бъде върнато. Моля, помислете "
 "внимателно, преди да натиснете бутона %2.</warning></"
-"para><para><warning>Това е вашата папка на календара по подразбиране. Ако я "
-"изтриете, ще бъдете подканени да изберете нов календар по подразбиране.</"
-"warning></para>"
+"para><para><warning>Това е вашата папка на календара по подразбиране %3. Ако "
+"я изтриете, ще бъдете подканени да изберете нов календар по подразбиране %4."
+"</warning></para>"
 
 #: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
@@ -1784,20 +1774,16 @@ msgstr ""
 "Akonadi</message>"
 
 #: akonadicollectionview.cpp:1055
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider setting a default calendar for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr "Помислете за задаване на календар по подразбиране за нови събития"
+msgstr "Помислете за задаване на календар по подразбиране %1"
 
 #: akonadicollectionview.cpp:1057
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider adding a write-enabled events calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
-msgstr "Помислете за добавяне на календар за събития с възможност за запис"
+msgstr "Помислете за добавяне на календар за събития %1 с възможност за запис"
 
 #: akonadicollectionview.cpp:1091
 #, kde-kuit-format
@@ -1890,12 +1876,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> напомняне е деактивиран"
 
 #: calendarview.cpp:1369
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> напомняне е включено"
+msgstr ""
 
 #: calendarview.cpp:1400 calendarview.cpp:1458
 #, kde-format
@@ -1910,12 +1894,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Задача <message>%1</message> в завършена на %2%"
 
 #: calendarview.cpp:1407
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "Задача <message>%1</message> в завършена на %2%"
+msgstr ""
 
 #: calendarview.cpp:1510
 #, kde-format
@@ -4596,7 +4578,7 @@ msgstr "Показване на икони в елементи от изглед
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Изчертаване на удебелени хоризонтални линии за четните часове"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4604,12 +4586,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Изчертава се по-удебелена хоризонтална линия за четните часове (00:00, "
+"02:00, 04:00 и т.н.)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Удебеляване на линиите за четните часове"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -6456,6 +6440,11 @@ msgid ""
 "default Event calendar has been supported for a long time.  See the Calendar "
 "Manager context menu \"Set as Default Todo Calendar\""
 msgstr ""
+"Може да се зададе календар със задачи по подразбиране, за да се ускори "
+"създаването на нови задачи и да се намали вероятността те да попаднат в "
+"грешната папка. Задаването на календар за събития по подразбиране се "
+"поддържа от дълго време. Вижте контекстното меню „Задаване като календар със "
+"задачи по подразбиране“ в настройките на календарите."
 
 #: whatsnew/whatsnewtranslations.cpp:20
 #, fuzzy
