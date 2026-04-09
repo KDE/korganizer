@@ -26,6 +26,7 @@
         "Description[pt_BR]": "Para cada dia este plugin mostra seu número de dia do ano no topo da visualização da agenda. Por exemplo, 1º de fevereiro é o dia 32 do ano.",
         "Description[ru]": "Этот модуль показывает номер дня в году для каждой даты. Например, для 1 февраля будет показан номер 32.",
         "Description[sa]": "प्रत्येकं दिवसस्य कृते एतत् प्लगिन् एजेण्डा दृश्यस्य उपरि वर्षस्य स्वस्य दिवससङ्ख्यां दर्शयति । यथा - फेब्रुवरी-मासस्य १ दिनाङ्कः वर्षस्य ३२ तमः दिवसः ।",
+        "Description[sk]": "Tento modul pre každý deň zobrazí jeho číslo dňa v roku navrchu pohľadu agendy. Napríklad 1. február je deň číslo 32 v roku.",
         "Description[sl]": "Za vsak dan ta vstavek prikazuje številko dneva v letu na vrhu prikaza dnevnega reda. Npr., 1. februar je 32. dan v letu.",
         "Description[sv]": "Insticksprogrammet visar dagens nummer under året för varje dag längst upp i agendavyn. Till exempel är 1:a februari den 32:e dagen under året.",
         "Description[tr]": "Bu eklenti her gün için ajanda görünümünün en üstünde yılın gün numarasını gösterir. Örneğin 1 Şubat, yılın 32. günüdür.",
