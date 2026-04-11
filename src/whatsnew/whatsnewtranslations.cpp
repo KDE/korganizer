@@ -21,6 +21,9 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
                "grid lines for the even hours\" option in the View->Agenda View tab"),
         kli18n("It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in "
                "the Holidays section of the Time&Date->Regional tab"),
+        kli18n("Month view: for the sake of consistency, holidays that land on a workday are no longer hidden"),
+        kli18n("Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option "
+               "in the Views->Month View tab"),
     };
     return info;
 }
