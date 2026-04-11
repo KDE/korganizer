@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-14 00:45+0000\n"
+"POT-Creation-Date: 2026-04-11 00:47+0000\n"
 "PO-Revision-Date: 2026-03-26 09:31+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -2930,7 +2930,7 @@ msgstr "מחר"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:207
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:487
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -2966,7 +2966,7 @@ msgstr[2] "%1 דקות"
 msgstr[3] "%1 דקות"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:483
+#: kontactplugin/specialdates/sdsummarywidget.cpp:485
 #, kde-format
 msgid "now"
 msgstr "עכשיו"
@@ -3517,49 +3517,49 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr "הצגת ימי &שנה"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:101
+#: kontactplugin/specialdates/sdsummarywidget.cpp:102
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr "תאריכים מיוחדים בקרוב"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:448
+#: kontactplugin/specialdates/sdsummarywidget.cpp:450
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "היום"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:452
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "מחר"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:496
+#: kontactplugin/specialdates/sdsummarywidget.cpp:498
 #, kde-format
 msgid "Birthday"
 msgstr "יום הולדת"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:499
+#: kontactplugin/specialdates/sdsummarywidget.cpp:501
 #, kde-format
 msgid "Anniversary"
 msgstr "יום שנה"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:502
+#: kontactplugin/specialdates/sdsummarywidget.cpp:504
 #, kde-format
 msgid "Holiday"
 msgstr "חג"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:505
+#: kontactplugin/specialdates/sdsummarywidget.cpp:507
 #, kde-format
 msgid "Change of Seasons"
 msgstr "החלפת עונות"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:508
+#: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
 msgid "Special Occasion"
 msgstr "אירוע מיוחד"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:550
+#: kontactplugin/specialdates/sdsummarywidget.cpp:552
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
@@ -3568,7 +3568,7 @@ msgstr[1] "שנתיים"
 msgstr[2] "%1 שנים"
 msgstr[3] "%1 שנים"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:560
+#: kontactplugin/specialdates/sdsummarywidget.cpp:562
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3577,17 +3577,17 @@ msgstr[1] "אין תאריכים מיוחדים במהלך היומיים הקר
 msgstr[2] "אין תאריכים מיוחדים במהלך %1 הימים הקרובים"
 msgstr[3] "אין תאריכים מיוחדים במהלך %1 הימים הקרובים"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:654
+#: kontactplugin/specialdates/sdsummarywidget.cpp:656
 #, kde-format
 msgid "Send &Mail"
 msgstr "&שליחת דוא״ל"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:655
+#: kontactplugin/specialdates/sdsummarywidget.cpp:657
 #, kde-format
 msgid "View &Contact"
 msgstr "ה&צגת פרטי קשר"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:670
+#: kontactplugin/specialdates/sdsummarywidget.cpp:672
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "דוא״ל אל:„%1”"
@@ -3788,7 +3788,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "הגדרות דוא״ל"
 
-#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:194
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:237
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3861,55 +3861,71 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "לא ניתן להגדיר את התוסף הזה"
 
-#: prefs/koprefsdialogtime.cpp:43
+#: prefs/koprefsdialogtime.cpp:46
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "אזורי"
 
-#: prefs/koprefsdialogtime.cpp:47
+#: prefs/koprefsdialogtime.cpp:50
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "שעה ותאריך כלליים"
 
-#: prefs/koprefsdialogtime.cpp:56
+#: prefs/koprefsdialogtime.cpp:59
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "חגים"
 
-#: prefs/koprefsdialogtime.cpp:67
-#, kde-format
+#: prefs/koprefsdialogtime.cpp:70
+#, fuzzy, kde-format
+#| msgid "Use holiday regions:"
 msgctxt "@label"
-msgid "Use holiday region:"
+msgid "Use holiday regions:"
 msgstr "להשתמש באזור חגים:"
 
-#: prefs/koprefsdialogtime.cpp:90
+#: prefs/koprefsdialogtime.cpp:94
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:99
+#: prefs/koprefsdialogtime.cpp:103
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "בחירת אזורי חגים"
 
-#: prefs/koprefsdialogtime.cpp:111
+#: prefs/koprefsdialogtime.cpp:121
+#, fuzzy, kde-format
+#| msgid "Use holiday regions:"
+msgctxt "@label"
+msgid "Use holiday categories:"
+msgstr "להשתמש באזור חגים:"
+
+#: prefs/koprefsdialogtime.cpp:135
+#, fuzzy, kde-format
+#| msgctxt "@item:inlistbox"
+#| msgid "Select Holiday Regions"
+msgctxt "@item:inlistbox"
+msgid "Select Holiday Categories"
+msgstr "בחירת אזורי חגים"
+
+#: prefs/koprefsdialogtime.cpp:154
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "תזמון שבועי"
 
-#: prefs/koprefsdialogtime.cpp:126
+#: prefs/koprefsdialogtime.cpp:169
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "לכלול את %1 כחלק מהלו״ז השבועי שלך"
 
-#: prefs/koprefsdialogtime.cpp:128
+#: prefs/koprefsdialogtime.cpp:171
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3924,55 +3940,55 @@ msgstr ""
 "התיבה הזאת אם %1 נכלל כחלק מהלו״ז השבועי הקבוע שלך (אפילו ללא עבודה). בדרך "
 "כלל, ימי סוף השבוע לא אמורים להיות מסומנים."
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:185
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "יום שני"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:185
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "יום שלישי"
 
-#: prefs/koprefsdialogtime.cpp:142
+#: prefs/koprefsdialogtime.cpp:185
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "יום רביעי"
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "יום חמישי"
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "יום שישי"
 
-#: prefs/koprefsdialogtime.cpp:143
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "שבת"
 
-#: prefs/koprefsdialogtime.cpp:144
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "יום ראשון"
 
-#: prefs/koprefsdialogtime.cpp:167
+#: prefs/koprefsdialogtime.cpp:210
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "להדגיש חגים בשונה מהלו״ז הקבוע שלך"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:212
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3981,43 +3997,43 @@ msgid ""
 msgstr ""
 "יש לסמן את התיבה הזאת כדי להדגיש חגים בשונה מימים שנכללים בלו״ז הקבוע שלך."
 
-#: prefs/koprefsdialogtime.cpp:176
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "ערכי ברירת מחדל"
 
-#: prefs/koprefsdialogtime.cpp:179
+#: prefs/koprefsdialogtime.cpp:222
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "פגישות"
 
-#: prefs/koprefsdialogtime.cpp:199
+#: prefs/koprefsdialogtime.cpp:242
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "זמן ברירת מחדל לתזכורת:"
 
-#: prefs/koprefsdialogtime.cpp:212
+#: prefs/koprefsdialogtime.cpp:255
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "דקה/דקות"
 
-#: prefs/koprefsdialogtime.cpp:213
+#: prefs/koprefsdialogtime.cpp:256
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "שעה/שעות"
 
-#: prefs/koprefsdialogtime.cpp:214
+#: prefs/koprefsdialogtime.cpp:257
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "יום/ימים"
 
-#: prefs/koprefsdialogtime.cpp:224
+#: prefs/koprefsdialogtime.cpp:267
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
@@ -6252,7 +6268,14 @@ msgstr ""
 "לאפשר את ההתנהגות הזאת, יש לסמן את האפשרות „לצייר קווי רשת מודגשים לשעות "
 "זוגיות” בלשונית תצוגה->סדר יום"
 
-#: whatsnew/whatsnewtranslations.cpp:29
+#: whatsnew/whatsnewtranslations.cpp:22
+msgid ""
+"It is now possible to hide holidays that belong to specific categories, for "
+"example to hide religious holidays. See the Categories combobox in the "
+"Holidays section of the Time&Date->Regional tab"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:31
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6262,7 +6285,7 @@ msgstr ""
 "ההתנהגות הזאת, יש לבטל את האפשרויות להפעלת תזכורות בהגדרות בלשונית שעה "
 "ותאריך->ערכי ברירת מחדל"
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6270,20 +6293,20 @@ msgstr ""
 "תצוגת חודש: כותרת חודש שנה לא מופיעה עוד כדי לחסוך בשטח מסך אנכי ולהסיר את "
 "היתירות."
 
-#: whatsnew/whatsnewtranslations.cpp:32
+#: whatsnew/whatsnewtranslations.cpp:34
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
 "תצוגת חודש: להשתמש בצבע קצת שונה לציור כותרות הימים לימים שמחוץ לחודש הנבחר"
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr "תצוגת חודש: פקדי הניווט בצד השמאלי לטובת סרגל ניווט היישום המשופר"
 
-#: whatsnew/whatsnewtranslations.cpp:34
+#: whatsnew/whatsnewtranslations.cpp:36
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6292,24 +6315,24 @@ msgstr ""
 "תצוגת חודש: אפשר לשנות את צבע הרקע לתא של היום. כדי להגדיר את הצבע, יש "
 "להגדיר את „צבע רקע היום בתצוגת חודש” בהגדרות צבעים וגופנים"
 
-#: whatsnew/whatsnewtranslations.cpp:36
+#: whatsnew/whatsnewtranslations.cpp:38
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
 "סרגל ניווט: שופר על ידי הוספת גלילת שבוע והצגת/הסתרת סרגל הצד לפני תצוגה"
 
-#: whatsnew/whatsnewtranslations.cpp:37
+#: whatsnew/whatsnewtranslations.cpp:39
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "סרגל ניווט: נוסף כפתור לגלילת התצוגה לתאריך הנוכחי"
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr "תצוגת סדר יום: אירועים קצרים מוצגים עם זמן ההתחלה שלהם בנוסף לתקציר"
 
-#: whatsnew/whatsnewtranslations.cpp:39
+#: whatsnew/whatsnewtranslations.cpp:41
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6319,11 +6342,11 @@ msgstr ""
 "את ההתנהגות הזאת יש לסמן את האפשרות „להציג תיאורי חזרות בפריטי תצוגת סדר "
 "יום” בלשונית תצוגה->תצוגת סדר יום"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid "Search: the search settings are saved/restored"
 msgstr "חיפוש: הגדרות החיפוש נשמרות/משוחזרות"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6331,27 +6354,27 @@ msgstr ""
 "תצוגת סדר יום: נוסף תפריט הקשר תוויות זמן להצגת/הסתרת תוויות זמן לאזור הזמן "
 "של המערכת מצד ימין (או שמאל) בנוסף"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr "עורך מופעים: זיהוי ואזהרה בנוגע ליצירת מופעים בעבר"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid "Incidence editor: add emoji support"
 msgstr "עורך מופעים: הוספת תמיכה באמוג׳י"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Add What's New menu"
 msgstr "הוספת תפריט מה חדש"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid "The current view is remembered"
 msgstr "התצוגה הנוכחית נשמרת"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "נוספה חלונית בורר תאריכים שזמינה מתפריט המעבר"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6359,37 +6382,37 @@ msgstr ""
 "תצוגת סדר יום: טווחי הזמנים „יום”, „X הימים הקרובים”, „לו״ז עבודה”, „שבוע” "
 "אוחדו לתוך כפתור כלי סדר היום"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr ""
 "תצוגת סדר יום: נוספה אפשרות תפריט הקשר תוויות זמן להפעלת/כיבוי שעון 24 שעות"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr "תצוגת סדר יום: נוסף תפקיט הקשר ליצירת אירוע או מטלה חדשים"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:69
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr "תצוגת מטלות: נוספו אפשרויות תפריט הקשר להפעלת/כיבוי השלמה ותזכורות"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:70
 msgid "To-do view: save/restore fullview setting"
 msgstr "תצוגת מטלות: שמירת/שחזור הגדרות תצוגה מלאה"
 
-#: whatsnew/whatsnewtranslations.cpp:69
+#: whatsnew/whatsnewtranslations.cpp:71
 msgid "To-do view: save/restore flatview setting"
 msgstr "תצוגת מטלות: שמירת/שחזור הגדרות תצוגה שטוחה"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr "נווטן תאריכים: נוספה אפשרות בהגדרות->תצוגות להסתרת מספרי השבועות"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6397,48 +6420,48 @@ msgstr ""
 "נווטן תאריכים: ההגדרה „מספרי השבועות בוחרים מספר שבוע כאשר נמצאים במצב שבוע "
 "עבודה” פעילה כברירת מחדל"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr "עורך מופעים: שמירת/שחזור צורת מנהל התבניות"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "עורך מופעים: תמיכה בגרירה של קבצים מצורפים"
 
-#: whatsnew/whatsnewtranslations.cpp:74
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr "חלונית ייצוא לוח השנה זוכרת את מקום התיקייה האחרונה שיוצאה"
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr "חלונית ייבוא לוח השנה זוכרת את מקום התיקייה האחרונה שיובאה"
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid "Get Hot New Stuff removed"
 msgstr "הסרת דברים חדשים ולוהטים"
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "הוספת קובץ לוח שנה: לוחות שנה מרוחקים הם תמיד לקריאה בלבד"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "הוספת קובץ לוח שנה: לא יורשה נתיב קובץ ריק"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr "הגדרות DAV: החלונית מאפשרת לראות את סיסמת החשבון בזמן העריכה"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "הגדרות DAV: האשף מציג סמלים לספקים השונים"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "הגדרות DAV: רשימת הספקים באשף עודכנה"
 
-#: whatsnew/whatsnewtranslations.cpp:99
+#: whatsnew/whatsnewtranslations.cpp:101
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6447,28 +6470,28 @@ msgstr ""
 "הסמנטיקה הוחלפה מעקרון של „לו״ז עבודה” ל„לו״ז שבועי” כדי להתאים למשתמשים "
 "שאינם עובדים"
 
-#: whatsnew/whatsnewtranslations.cpp:100
+#: whatsnew/whatsnewtranslations.cpp:102
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr "זמני התחלת „אירוע חדש” עקביים על פני כל התצוגות"
 
-#: whatsnew/whatsnewtranslations.cpp:101
+#: whatsnew/whatsnewtranslations.cpp:103
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "טיפול משפול בלוח שנה כברירת מחדל לאירועים"
 
-#: whatsnew/whatsnewtranslations.cpp:103
+#: whatsnew/whatsnewtranslations.cpp:105
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr "מופעים עם תאריכים מוחרגים ממושכים לא יוצרים עוד חלוניות צצות ענקיות"
 
-#: whatsnew/whatsnewtranslations.cpp:104
+#: whatsnew/whatsnewtranslations.cpp:106
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr "כתובת הדוא״ל של המארגן/ת תוקנה במופעים עם משתתפים"
 
-#: whatsnew/whatsnewtranslations.cpp:105
+#: whatsnew/whatsnewtranslations.cpp:107
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6478,7 +6501,7 @@ msgstr ""
 "דקות)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:119
+#: whatsnew/whatsnewtranslations.cpp:121
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr "עורך מופעים: התגיות מסודרות לפי האלפבית בעורך התגיות"
@@ -6698,6 +6721,10 @@ msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@label"
+#~ msgid "Use holiday region:"
+#~ msgstr "להשתמש באזור חגים:"
+
 #~ msgctxt "@info"
 #~ msgid ""
 #~ "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -6909,9 +6936,6 @@ msgstr "%1"
 #~ msgstr ""
 #~ "נא למלא כאן את זמן ההתחלה לאירועים. השעה הזאת צריכה להות השעה המוקדמת "
 #~ "ביותר לאירועים, כיוון שתוצג למעלה."
-
-#~ msgid "Use holiday regions:"
-#~ msgstr "להשתמש באזור חגים:"
 
 #~ msgid ""
 #~ "Select which regions you want to use the holidays here. Defined holidays "
