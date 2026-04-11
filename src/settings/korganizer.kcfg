@@ -512,8 +512,9 @@
       <default>255, 100, 100</default>
     </entry>
     <entry type="Bool" key="Use System Color">
-      <label>Use system color</label>
-      <whatsthis>Use system color instead of user defined color. If enabled will ignore all other color settings</whatsthis>
+      <label>Use system colors for some background colors</label>
+      <tooltip>Use system colors instead of custom colors for some background colors</tooltip>
+      <whatsthis>Use system colors instead of user defined colors for the "Agenda view background color", "Busy days background color" and the "Working hours color" (and possibly others).</whatsthis>
       <default>true</default>
     </entry>
     <entry key="Agenda Holidays Background Image" type="String">
