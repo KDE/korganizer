@@ -24,7 +24,11 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Month view: for the sake of consistency, holidays that land on a workday are no longer hidden"),
         kli18n("Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option "
                "in the Views->Month View tab"),
+        kli18n("Month view: An option was added to allow using the custom holiday color as the date box background color if a at least one holiday lands on "
+               "that date. To enable this behavior, check the \"Use the Holiday background color when at least on holiday lands on a date\" option "
+               "in the Views->Month View tab"),
     };
+
     return info;
 }
 
