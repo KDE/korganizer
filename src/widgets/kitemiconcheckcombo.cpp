@@ -31,6 +31,13 @@ KItemIconCheckCombo::KItemIconCheckCombo(ViewType viewType, QWidget *parent)
     setItemEnabled(EventViews::EventView::TentativeIcon, viewType == ViewType::AgendaType);
     setItemEnabled(EventViews::EventView::OrganizerIcon, viewType == ViewType::AgendaType);
 
+    // Month view doesn't support journals yet
+    setItemEnabled(EventViews::EventView::JournalIcon, viewType != ViewType::MonthType);
+    setItemEnabled(EventViews::EventView::ReplyIcon, viewType == ViewType::MonthType);
+    setItemEnabled(EventViews::EventView::AttendingIcon, viewType == ViewType::MonthType);
+    setItemEnabled(EventViews::EventView::TentativeIcon, viewType == ViewType::MonthType);
+    setItemEnabled(EventViews::EventView::OrganizerIcon, viewType == ViewType::MonthType);
+
     setDefaultText(i18nc("@item:inlistbox", "Icons to use"));
     setAlwaysShowDefaultText(true);
 }
