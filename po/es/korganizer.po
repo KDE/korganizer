@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-26 00:43+0000\n"
-"PO-Revision-Date: 2026-01-27 00:45+0100\n"
+"PO-Revision-Date: 2026-04-11 11:48+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -3611,7 +3611,7 @@ msgstr "Aniversario"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:502
 #, kde-format
 msgid "Holiday"
-msgstr "Vacaciones"
+msgstr "Día festivo"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:505
 #, kde-format
@@ -5150,7 +5150,7 @@ msgstr ""
 #: settings/korganizer.kcfg:605
 #, kde-format
 msgid "Holiday color"
-msgstr "Color para vacaciones"
+msgstr "Color para días festivos"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
@@ -5162,8 +5162,8 @@ msgid ""
 "Select the holiday color here. The holiday color will be used for the "
 "holiday name in the month view and the holiday number in the date navigator."
 msgstr ""
-"Seleccione aquí el color de las vacaciones. El color de las vacaciones se "
-"usa para el nombre de la fiesta en la vista de mes y para el número en el "
+"Seleccione aquí el color de los días festivos. El color de los días festivos "
+"se usa para el nombre de la fiesta en la vista de mes y para el número en el "
 "navegador de fechas."
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
