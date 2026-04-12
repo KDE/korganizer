@@ -2952,13 +2952,22 @@
 <varlistentry>
 <term
 ><guilabel
->Tatiller</guilabel
+>Tatil bölgeleri</guilabel
 ></term>
 <listitem
 ><para
->Açılır listeden ülkenizi veya listede yoksa <guilabel
->(Yok)</guilabel
->’u seçin. Ülkenizi seçtiyseniz &korganizer;,takvim görünümünde önemli günleri ve tatilleri tanır ve görüntüler.</para
+>Açılır listeden tatil bölgelerini seçin. Seçilen her bölge için, &korganizer;, ajanda ve ay görünümlerinde önemli tarihleri ve tatilleri tanıyacak ve gösterecektir. Tatil Kategorileri açılır listesiyle (bir sonraki girdiye bakın) görüntülenecek tatil türlerini yapılandırabilirsiniz. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Tatil kategorileri</guilabel
+></term>
+<listitem
+><para
+>Açılır listeden tatil kategorilerini seçin. Öntanımlı olarak tüm tatil türleri etkindir. Gizlemek istediğiniz tatil kategorilerini seçin; örneğin, bazı kişiler dinî bayramlarla ilgilenmez. </para
 ></listitem>
 </varlistentry>
 

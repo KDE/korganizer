@@ -2904,13 +2904,22 @@
 <varlistentry>
 <term
 ><guilabel
->Dies festius</guilabel
+>Regions de dies festius</guilabel
 ></term>
 <listitem
 ><para
->Seleccioneu el vostre país de la llista desplegable, o si no es troba en la llista, seleccioneu <guilabel
->(Cap)</guilabel
->. Si està seleccionat el vostre país, el &korganizer; reconeixerà i mostrarà les seves dates i festivitats importants en la vista de calendari.</para
+>Seleccioneu les regions de festius de la llista desplegable. Per a cada regió seleccionada, el &korganizer; reconeixerà i mostrarà les seves dates i festius importants a la vista d'agenda i la mensual. Podeu configurar els tipus de festius a mostrar amb la llista desplegable de Categories de festius (vegeu l'entrada següent). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Categories dels dies festius</guilabel
+></term>
+<listitem
+><para
+>Seleccioneu les categories de dies festius de la llista desplegable. De manera predeterminada, estan activats tots els tipus de festius. Seleccioneu les categories de festius que voleu ocultar, per exemple, algunes persones no estan interessades en les festes religioses. </para
 ></listitem>
 </varlistentry>
 

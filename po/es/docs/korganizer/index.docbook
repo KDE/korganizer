@@ -2962,13 +2962,22 @@
 <varlistentry>
 <term
 ><guilabel
->Vacaciones</guilabel
+>Regiones de festividades</guilabel
 ></term>
 <listitem
 ><para
->Seleccione su país en el menú desplegable o, si no está en la lista, seleccione <guilabel
->(Ninguno)</guilabel
->. Si su país está seleccionado, &korganizer; reconocerá y mostrará sus fechas y vacaciones importantes en la vista del calendario.</para
+>Seleccione regiones de festividades en la lista desplegable. Para cada región seleccionada, &korganizer; reconocerá y mostrará sus fechas importantes y las festividades en las vistas de agenda y mensual. Puede configurar los tipos de festividades que se deben mostrar en la lista desplegable «Categorías de festividades» (consulte la siguiente entrada). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Categorías de festividades</guilabel
+></term>
+<listitem
+><para
+>Seleccione las categorías de festividades en la lista desplegable. De forma predeterminada, están activos todos los tipos de festividades. Seleccione las categorías de festividades que quiera ocultar (por ejemplo, algunas personas no tienen interés en las festividades religiosas). </para
 ></listitem>
 </varlistentry>
 

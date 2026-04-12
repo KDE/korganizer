@@ -2966,13 +2966,22 @@
 <varlistentry>
 <term
 ><guilabel
->Feriados</guilabel
+>Feriados da região</guilabel
 ></term>
 <listitem
 ><para
->Selecione o seu país na lista ou, se não estiver listado, selecione <guilabel
->(Nenhum)</guilabel
->. Se o seu país estiver selecionado, o &korganizer; irá reconhecer e mostrar as suas datas importantes e feriados na área do calendário.</para
+>Selecione as regiões com feriados na lista suspensa. Para cada região selecionada, o &korganizer; reconhecerá e exibirá suas datas e feriados importantes nas visualizações de agenda e mês. Você pode configurar os tipos de feriados a serem exibidos na lista suspensa Categorias de Feriados (veja a próxima entrada). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Categorias de feriados</guilabel
+></term>
+<listitem
+><para
+>Selecione as categorias de feriados na lista suspensa. Por padrão, todos os tipos de feriados estão ativados. Selecione as categorias de feriados que deseja ocultar. Por exemplo, algumas pessoas não têm interesse em feriados religiosos. </para
 ></listitem>
 </varlistentry>
 
