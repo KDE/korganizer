@@ -27,6 +27,8 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on "
                "that date. To enable this behavior, check the \"Use the Holiday background color when at least on holiday lands on a date\" option "
                "in the Views->Month View tab"),
+        kli18n("Agenda view: underline today's column header date"),
+
     };
 
     return info;
@@ -151,7 +153,10 @@ QList<TextAddonsWidgets::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo(
         }
         info68.setNewFeatures(lst68);
         // info68.setChanges({i18n()});
-        // info68.setBugFixings({i18n());
+        info68.setBugFixings({
+            i18n("Fixed reminder toggling from menus"),
+            i18n("Agenda view: improved timelabel vertical alignment with grid"),
+        });
         listInfo.append(std::move(info68));
     }
 
