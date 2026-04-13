@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1734139 2026-04-12 01:27:49Z scripty $
+# $Id: korganizer.po 1734246 2026-04-13 01:27:50Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-12 00:45+0000\n"
-"PO-Revision-Date: 2026-04-11 07:11+0200\n"
+"POT-Creation-Date: 2026-04-13 00:44+0000\n"
+"PO-Revision-Date: 2026-04-12 08:13+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -4988,25 +4988,23 @@ msgstr "Pokaži dnevnike v mesečnem prikazu"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
 msgstr "Pokaži praznike"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "Označite to polje, da bodo v mesečnem prikazu prikazana opravila."
+msgstr ""
+"Označite to polje, če želite, da se prazniki prikažejo v mesečnem pogledu."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Pokaži opravila v mesečnem prikazu"
+msgstr "Pokaži praznike v mesečnem prikazu"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5014,6 +5012,8 @@ msgstr "Pokaži opravila v mesečnem prikazu"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Uporabi barvo ozadja za praznike, vsaj kadar prazniki pristanejo na določen "
+"datum"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -5022,6 +5022,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Uporabi barvo praznika po meri kot barvo ozadja datuma, če praznik pade na "
+"ta datum"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5031,6 +5033,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Označite to polje, če želite, da se praznik po meri uporabi kot barva ozadja "
+"datuma, ko na določen datum pade vsaj en praznik. Barvo praznika "
+"konfigurirajte v Nastavitve->Barve in pisave."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5453,21 +5458,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Barva ozadja dni, ko sem zaposlen/-a"
+msgstr "Uporabi sistemske barve za nekatere barve ozadja"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
-msgstr ""
-"Uporabite sistemsko barvo namesto uporabniško določene barve. Če je "
-"omogočeno, bo prezrl vse druge barvne nastavitve"
+msgstr "Uporabi sistemske barve namesto barv po meri za nekatere barve ozadja"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5477,6 +5476,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Uporabi sistemske barve namesto uporabniško določenih barv za \"Barvo ozadja "
+"pogleda dnevnega reda\", \"Barvo ozadja zasedenih dni\" in »\"Barvo "
+"delovnega časa\" (in morebiti tudi druge)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6499,32 +6501,43 @@ msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Mesečni pogled: zaradi doslednosti prazniki, ki padejo na delovni dan, niso "
+"več skriti"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Pogled dnevnega reda: po želji lahko vsaki dve uri narišete krepkejše/"
-"debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, označite "
-"možnost \"Za sode ure nariši krepke vodoravne mrežne črte\" v zavihku Pogled-"
-">Pogled dnevnega reda."
+"Mesečni pogled: Dodana je bila možnost, ki omogoča skrivanje praznikov. Če "
+"želite omogočiti to delovanje, počistite možnost \"Prikaži praznike v "
+"mesečnem pogledu\" na zavihku Pogledi->Mesečni pogled"
 
 #: whatsnew/whatsnewtranslations.cpp:27
+#, fuzzy
+#| msgid ""
+#| "Month view: An option was added to allow using the custom holiday color "
+#| "as the date box background color if a at least one holiday lands on that "
+#| "date. To enable this behavior, check the \"Use the Holiday background "
+#| "color when at least on holiday lands on a date\" option in the Views-"
+#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if a at least one holiday lands on that date. "
-"To enable this behavior, check the \"Use the Holiday background color when "
-"at least on holiday lands on a date\" option in the Views->Month View tab"
+"the date box background color if at least one holiday lands on that date. To "
+"enable this behavior, check the \"Use the Holiday background color when at "
+"least on holiday lands on a date\" option in the Views->Month View tab"
+msgstr ""
+"Mesečni pogled: Dodana je bila možnost, ki omogoča uporabo barve praznika po "
+"meri kot barve ozadja datumskega polja, če na ta datum pade vsaj en praznik. "
+"Če želite omogočiti to delovanje, v zavihku Pogledi->Mesec označite možnost "
+"\"Uporabi barvo ozadja praznika, če na določen datum pade vsaj en praznik\"."
+
+#: whatsnew/whatsnewtranslations.cpp:30
+msgid "Agenda view: underline today's column header date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6534,7 +6547,7 @@ msgstr ""
 "delovanje onemogočiti, počistite polje pri možnosti Omogoči opomnike v "
 "nastavitvah zavihka Čas in datum -> Privzete vrednosti"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6542,7 +6555,7 @@ msgstr ""
 "Mesečni pogled: glave meseca in leta nista več prikazani, da se prihrani "
 "navpični prostor in odstrani viške informacij"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6550,7 +6563,7 @@ msgstr ""
 "Mesečni pogled: za risanje glav za dneve zunaj trenutno izbranega meseca "
 "uporabi malo drugačno barvo"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6558,7 +6571,7 @@ msgstr ""
 "Mesečni pogled: navigacijski gumbi v spodnjem desnem kotu so odstranjeni v "
 "korist izboljšane navigacijske vrstice aplikacij"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6568,7 +6581,7 @@ msgstr ""
 "spremeniti. Če želite konfigurirati barvo, v nastavitvah Barve in pisave "
 "nastavite \"Barva ozadja današnjega mesečnega pogleda\""
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6576,11 +6589,11 @@ msgstr ""
 "Navigacijska vrstica: izboljšana z dodajanjem tedenskega drsenja in "
 "prikazovanjem/skrivanjem stranske vrstice za vsak pogled posebej"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "Navigacijska vrstica: dodan gumb za pomik pogleda na trenutni datum"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6588,7 +6601,7 @@ msgstr ""
 "Pogled dnevnega reda: dogodki s kratkim trajanjem so prikazani skupaj z "
 "njihovim začetnim časom in povzetkom"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6599,11 +6612,11 @@ msgstr ""
 "dnevnega reda označite možnost »Prikaži opise incidence v elementih pogleda "
 "dnevnega reda«"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid "Search: the search settings are saved/restored"
 msgstr "Iskanje: nastavitve iskanja so shranjene/obnovljene"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6612,29 +6625,29 @@ msgstr ""
 "skrivanje časovnih oznak za sistemski časovni pas tudi na desni (ali levi) "
 "strani"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Urejevalnik incidenc: zaznavanje in opozarjanje na nastanek incidenc v "
 "preteklosti"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Incidence editor: add emoji support"
 msgstr "Urejevalnik pojavnosti: dodaj podporo za čustvenčke"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "Add What's New menu"
 msgstr "Dodaj meni Kaj je novega"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The current view is remembered"
 msgstr "Trenutni pogled je zapomnjen"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Dodaj pogovorno okno za izbiro datuma, ki je na voljo v meniju Pojdi"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6642,7 +6655,7 @@ msgstr ""
 "Pogled dnevnega reda: časovni razponi \"Dan\", \"Naslednjih X dn\", "
 "\"Delovni urnik\" in \"Teden\" so združeni v gumb orodja Dnevni red"
 
-#: whatsnew/whatsnewtranslations.cpp:74
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6650,28 +6663,28 @@ msgstr ""
 "Pogled dnevnega reda: dodana možnost kontekstnega menija časovnih oznak za "
 "preklop med 24-urnim (vojaškim) formatom časa"
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Pogled dnevnega reda: dodan kontekstni meni za ustvarjanje novega dogodka "
 "ali opravila"
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Pogled opravil: dodane možnosti kontekstnega menija za preklapljanje med "
 "dokončanjem in opomniki"
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "To-do view: save/restore fullview setting"
 msgstr "Pogled opravil: shranjevanje/obnovitev nastavitve celotnega pogleda"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "To-do view: save/restore flatview setting"
 msgstr "Pogled opravil: shranjevanje/obnovitev nastavitev pogleda seznama"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6679,7 +6692,7 @@ msgstr ""
 "Krmar po datumih: v nastavitvah Konfiguriraj->Pogledi dodana možnost za "
 "skrivanje številk tednov"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6687,53 +6700,53 @@ msgstr ""
 "Krmar po datumih: nastavitev \"Številke tednov izberejo delovni teden v "
 "načinu delovnega tedna\" je privzeto nastavljena na true"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Urejevalnik incidence: zapomni si/obnovi geometrijo upravljalnika predlog"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Urejevalnik incidence: podpora za priloge z zmožnostjo »povleci in spusti«"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Pogovorno okno za izvoz koledarja si zapomni zadnjo lokacijo mape za izvoz"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Pogovorno okno za uvoz koledarja si zapomni zadnjo lokacijo mape za uvoz"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid "Get Hot New Stuff removed"
 msgstr "Odstrani vroče nove stvari"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "Dodaj datoteko koledarja: oddaljeni koledarji so vedno samo za branje"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Dodaj datoteko koledarja: prazna pot datoteke ne bo dovoljena"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Konfiguracija DAV: pogovorno okno omogoča ogled gesla računa med urejanjem"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Konfiguracija DAV: čarovnik prikazuje ikone za različne ponudnike"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Konfiguracija DAV: čarovnik je posodobil seznam ponudnikov"
 
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:110
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6742,18 +6755,18 @@ msgstr ""
 "Semantika se spremeni iz koncepta \"delovnega urnika\" v koncept "
 "\"tedenskega urnika\", da se prilagodi nedelujočim uporabnikom"
 
-#: whatsnew/whatsnewtranslations.cpp:109
+#: whatsnew/whatsnewtranslations.cpp:111
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Začetni časi začetka \"Novega dogodka\" so konsistentni v vseh pogledih"
 
-#: whatsnew/whatsnewtranslations.cpp:110
+#: whatsnew/whatsnewtranslations.cpp:112
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Izboljšano upravljanje privzetega koledarja dogodkov"
 
-#: whatsnew/whatsnewtranslations.cpp:112
+#: whatsnew/whatsnewtranslations.cpp:114
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6761,13 +6774,13 @@ msgstr ""
 "Incidenti z dolgim ​​seznamom izključenih datumov ne ustvarjajo več ogromnih "
 "namigov orodij"
 
-#: whatsnew/whatsnewtranslations.cpp:113
+#: whatsnew/whatsnewtranslations.cpp:115
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Popravljen je bil e-poštni naslov organizatorja za incidence z udeleženci"
 
-#: whatsnew/whatsnewtranslations.cpp:114
+#: whatsnew/whatsnewtranslations.cpp:116
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6777,11 +6790,21 @@ msgstr ""
 "(namesto 15 minut)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:128
+#: whatsnew/whatsnewtranslations.cpp:130
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Urejevalnik incidenc: oznake so razvrščene po abecedi v urejevalniku oznak"
+
+#: whatsnew/whatsnewtranslations.cpp:157
+#, kde-format
+msgid "Fixed reminder toggling from menus"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:158
+#, kde-format
+msgid "Agenda view: improved timelabel vertical alignment with grid"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -6867,7 +6890,7 @@ msgstr "Morebitni udeleženec"
 msgid "Organizer"
 msgstr "Organizator"
 
-#: widgets/kitemiconcheckcombo.cpp:34
+#: widgets/kitemiconcheckcombo.cpp:41
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

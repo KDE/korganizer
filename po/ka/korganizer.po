@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-12 00:45+0000\n"
-"PO-Revision-Date: 2026-04-11 04:30+0200\n"
+"POT-Creation-Date: 2026-04-13 00:44+0000\n"
+"PO-Revision-Date: 2026-04-12 04:41+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3484,7 +3484,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
 #, kde-format
 msgid "Show &holidays"
-msgstr "&დასვენებების ჩვენება"
+msgstr "დღესას&წაულების ჩვენება"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
@@ -4941,25 +4941,22 @@ msgstr "თვის ხედში ჟურნალის ჩვენებ
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "&დასვენებების ჩვენება"
+msgstr "დღესასწაულების ჩვენება"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "ჩართეთ ეს თოლია თვის ხედის ელემენტებში გასაკეთებლების საჩვენებლად."
+msgstr "ჩართეთ ეს თოლია თვის ხედში დღესასწაულების საჩვენებლად."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "თვის ხედში გასაკეთებლების ჩვენება"
+msgstr "დღესასწაულების ჩვენება თვის ხედში"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -4967,6 +4964,8 @@ msgstr "თვის ხედში გასაკეთებლების 
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"დღესასწაულის ფონის ფერის გამოყენება, როცა თარიღზე, სულ ცოტა, ერთი "
+"დღესასწაულია"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -4975,6 +4974,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"მორგებული დღესასწაულის ფონის ფერის გამოყენება, როცა თარიღზე, სულ ცოტა, ერთი "
+"დღესასწაულია"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -4984,6 +4985,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"დასვით ეს თოლია, რომ თარიღის ფონის ფერად გამოყენებული იყოს მორგებული "
+"დღესასწაულის ფერი, როცა ამ თარიღზე, სულ ცოტა, ერთი დღესასწაულია. "
+"დღესასწაულის ფერის მორგება შეგიძლიათ ფანჯარაში მორგება->ფერები და ფონტები."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5406,21 +5410,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "დაკავებული დღეების ფონის ფერი"
+msgstr "სისტემური ფერების გამოყენება ზოგიერთი ფონის ფერისთვის"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"მომხმარებლის მიერ მითითებული ფერის მაგიერ სისტემური ფერის გამოყენება. თუ "
-"ჩართულია, ის ყველა სხვა ფერის პარამეტრს გადაფარავს"
+"სისტემური ფერების გამოყენება მორგებული ფერების მაგიერ ზოგიერთი ფონის "
+"ფერისთვის"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5430,6 +5430,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"სისტემური ფერების გამოყენება მომხმარებლის მითითებულის მაგიერ \"გეგმის ხედის "
+"ფონის ფერისთვის\", \"დაკავებული დღეების ფონის ფერისთვის\" და \"სამუშაო "
+"საათების ფერისთვის\" (და, შესაძლოა, სხვებისთვის)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6461,32 +6464,43 @@ msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"თვის ხედი: იმისათვის რომ ყველაფერი ერთნაირი იყოს, დღესასწაულები, რომლებიც "
+"სამუშაო დღეს ემთხვევა, დამალული აღარ იქნება"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის წესრიგის "
-"ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"სქელი ჰორიზონტალური ბადის "
-"ხაზების დახაზვა ლუწი საათებისთვის\" მენიუდან ხედი -> დღის წესრიგის ხედის "
-"ჩანართი"
+"თვის ხედი: დაემატა დღესასწაულების დამალვის პარამეტრი. ამ ქცევის ჩასართავად "
+"მოხსენით თოლია \"დღესასწაულების ჩვენება თვის ხედში\" ჩანართში ხედები->თვის "
+"ხედი"
 
 #: whatsnew/whatsnewtranslations.cpp:27
+#, fuzzy
+#| msgid ""
+#| "Month view: An option was added to allow using the custom holiday color "
+#| "as the date box background color if a at least one holiday lands on that "
+#| "date. To enable this behavior, check the \"Use the Holiday background "
+#| "color when at least on holiday lands on a date\" option in the Views-"
+#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if a at least one holiday lands on that date. "
-"To enable this behavior, check the \"Use the Holiday background color when "
-"at least on holiday lands on a date\" option in the Views->Month View tab"
+"the date box background color if at least one holiday lands on that date. To "
+"enable this behavior, check the \"Use the Holiday background color when at "
+"least on holiday lands on a date\" option in the Views->Month View tab"
+msgstr ""
+"თვის ხედი: დაემატა არჩევანი, რომ შეძლოთ მორგებული დღესასწაულის ფერის "
+"გამოყენება თარიღის ველის ფერად, თუ ამ თარიღზე, სულ ცოტა, ერთი დღესასწაულია. "
+"ამ ქცევის ჩასართავად დასვით თოლია \"დღესასწაულის ფონის ფერის გამოყენება, "
+"როცა თარიღზე, სულ ცოტა, ერთი დღესასწაულია\" ჩანართში ხედები->თვის ხედი"
+
+#: whatsnew/whatsnewtranslations.cpp:30
+msgid "Agenda view: underline today's column header date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6496,7 +6510,7 @@ msgstr ""
 "გასათიშად მოხსენით შეხსენებების ჩართვის თოლია მენიუში მორგება -> "
 "დრო&თარიღი>ნაგულისხმევი მნიშვნელობების ჩანართი"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6504,7 +6518,7 @@ msgstr ""
 "თვის ხედი: აღარ იქნება ნაჩვენები თვის წლის თავსართი ვერტიკალური სივრცის "
 "დასაზოგად და ზედმეტობის ამოსაღებად"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6512,7 +6526,7 @@ msgstr ""
 "თვის ხედი: ოდნავ განსხვავებული ფერის გამოყენება დღის სათაურების დასახატად იმ "
 "დღეებისთვის, რომლებიც ამჟამად მონიშნული თვის გარეთაა"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6520,7 +6534,7 @@ msgstr ""
 "თვის ხედი: ნავიგაციის კონტროლის ელემენტები ქვედა მარჯვენა მხარეს მოშორდა. "
 "დაემატა გაუმჯობესებული აპლიკაციის ნავიგაციის ზოლი"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6530,7 +6544,7 @@ msgstr ""
 "კონფიგურაციისთვის, დააყენეთ \"თვის ხედი დღეს ფონის ფერი\" ფერებისა და "
 "ფონტების პარამეტრებში"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6538,11 +6552,11 @@ msgstr ""
 "ნავიგაციის ზოლი: გაუმჯობესდა კვირის გადახვევისა და გვერდითი პანელის თითოეული "
 "ხედისთვის ჩვენება/დამალვის დამატებით"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "ნავიგაციის ზოლი: დაემატა ღილაკი ხედის მიმდინარე თარიღამდე გადასახვევად"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6550,7 +6564,7 @@ msgstr ""
 "დღის წესრიგი: მოვლენები მოკლე ხანგრძლივობით ნაჩვენებია მათი დაწყების დროით, "
 "მათი შეჯამების გარდა"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6561,11 +6575,11 @@ msgstr ""
 "დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი -> დღის წესრიგის ხედის "
 "ჩანართი"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid "Search: the search settings are saved/restored"
 msgstr "ძებნა: ხდება ძებნის პარამეტრების შენახვა/აღდგენა"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6573,27 +6587,27 @@ msgstr ""
 "გეგმის ხედი: დაემატა დროის ჭდეების კონტექსტური მენიუ დროის ჭდეების სისტემური "
 "დროის სარტყლისთვის მარჯვენა (ან მარცხენა) მხარესაც საჩვენებლად/დასამალად"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr "რედაქტორი: წარსულში ინციდენტების შექმნის აღმოჩენა და გაფრთხილება"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Incidence editor: add emoji support"
 msgstr "ინციდენტების რედაქტორი: დაემატა ემოციების მხარდაჭერა"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "Add What's New menu"
 msgstr "დაემატა მენიუ 'რა არის ახალი'"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The current view is remembered"
 msgstr "მიმდინარე ხედი გახსენებულია"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "დაემატა თარიღის ამრჩევი დიალოგი. ხელმისაწვდომია გადასვლის მენიუდან"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6601,7 +6615,7 @@ msgstr ""
 "გეგის ხედი: გაერთიანებული \"დღის\", \"შემდეგი X დღის\", \"სამუშაოს გეგმის, "
 "\"კვირის\" დროის შუალედების გადატანა გეგმის ხელსაწყოს ღილაკში"
 
-#: whatsnew/whatsnewtranslations.cpp:74
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6609,28 +6623,28 @@ msgstr ""
 "გეგმის ხედი: დაემატა კონტექსტური მენიუს პუნქტი დროის ჭდეების 24-საათიან "
 "(სამხედრო)საათზე გადართვა"
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "გეგმის ხედი: დაემატა კონტექსტური მენიუს პუქტი ახალი მოვლენების/გეგმების "
 "დასამატებლად"
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "გეგმების ხედი: დაემატა კონტექსტური მენიუს პარამეტრები დასრულებების და "
 "შეხსენებების გადასართავად"
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "To-do view: save/restore fullview setting"
 msgstr "გასაკეთებლების ხედი: სრული ხედის პარამეტრის შენახვა/აღდგენა"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "To-do view: save/restore flatview setting"
 msgstr "გეგმის ხედი: ბრტყელი ხედის პარამეტრის შენახვა/აღდგენა"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6638,7 +6652,7 @@ msgstr ""
 "თარიღის ნავიგატორი: დაემატა პარამეტრი მენიუში მორგება->ხედის მორგება კვირის "
 "ნომრების დასამალად"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6646,55 +6660,55 @@ msgstr ""
 "თარიღის ნავიგატორი: \"კვირის ნომრები აირჩევენ სამუშაო კვირას, როცა სამუშაო "
 "კვირის რეჟიმია ჩართული\" პარამეტრი ნაგულისხმევად ჭეშმარიტია"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "ინციდენტების რედაქტორი: შაბლონების მმართველის გეომეტრიის დამახსოვრება/აღდგენა"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "ინციდენტების რედაქტორი: მიმაგრებული ფაილების გადათრევა-დაგდების მხარდაჭერა"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "კალენდრის გატანის დიალოგი იმახსოვრებს ბოლო გატანის საქაღალდის მდებარეობას"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "კალენდრის შემოტანის დიალოგი იმახსოვრებს ბოლო შემოტანის საქაღალდის მდებარეობას"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid "Get Hot New Stuff removed"
 msgstr "ახალი &რამერუმეების წაშლა"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "კალენდრის ფაილის დამატება: დაშორებული კალენდრები ყოველთვის მხოლოდ წაკითხვადია"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "კალენდრის ფაილის დამატება: ცარიელი ფაილის ბილიკი დაშვებული არაა"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "DAV-ის მორგება: დიალოგი საშუალებას გაძლევთ, დაინახოთ ანგარიშის პაროლი მისი "
 "ჩასწორებისას"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "DAV-ის მორგება: ოსტატი სხვადასხვა პროვაიდერების ხატულებს გაჩვენებთ"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია"
 
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:110
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6703,30 +6717,30 @@ msgstr ""
 "სემანტიკა შეიცვალა \"სამუშაო გრაფიკის\" კონცეპტიდან \"კვირის გრაფიკის\" "
 "კონცეპტზე, რომ უმუშევარი მომხმარებლებიც დაფაროს"
 
-#: whatsnew/whatsnewtranslations.cpp:109
+#: whatsnew/whatsnewtranslations.cpp:111
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr "საწყისი \"ახალი მოვლენის\" დაწყების თარიღები მუდმივია ყველა ხედისთვის"
 
-#: whatsnew/whatsnewtranslations.cpp:110
+#: whatsnew/whatsnewtranslations.cpp:112
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა"
 
-#: whatsnew/whatsnewtranslations.cpp:112
+#: whatsnew/whatsnewtranslations.cpp:114
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 "ინციდენტები გრძელი ამოღებული თარიღებით აღარ ქმნიან უზარმაზარ მინიშნებებს"
 
-#: whatsnew/whatsnewtranslations.cpp:113
+#: whatsnew/whatsnewtranslations.cpp:115
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "გასწორდა ორგანიზატორის ელფოსტის მისამართი დამსწრეების მქონე ინციტენდებისთვის"
 
-#: whatsnew/whatsnewtranslations.cpp:114
+#: whatsnew/whatsnewtranslations.cpp:116
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6736,10 +6750,20 @@ msgstr ""
 "როგორც 30 წთ (15 წუთის მაგიერ)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:128
+#: whatsnew/whatsnewtranslations.cpp:130
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr "რედაქტორი: ჭდეების რედაქტორში ისინი ანბანის მიხედვითაა დალაგებული"
+
+#: whatsnew/whatsnewtranslations.cpp:157
+#, kde-format
+msgid "Fixed reminder toggling from menus"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:158
+#, kde-format
+msgid "Agenda view: improved timelabel vertical alignment with grid"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -6826,7 +6850,7 @@ msgstr "შეიძლება ესწრება"
 msgid "Organizer"
 msgstr "ორგანიზატორი"
 
-#: widgets/kitemiconcheckcombo.cpp:34
+#: widgets/kitemiconcheckcombo.cpp:41
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

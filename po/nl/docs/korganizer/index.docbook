@@ -2946,13 +2946,22 @@
 <varlistentry>
 <term
 ><guilabel
->Feestdagen</guilabel
+>Vakantieregio's</guilabel
 ></term>
 <listitem
 ><para
->Selecteer uw land in het neerklapmenu (voor ons meestal Nederland of België Nederlands), of, als het land hierin niet voorkomt, selecteert u <guilabel
->(Geen)</guilabel
->. Als uw land is geselecteerd, zal &korganizer; in de agendaweergave alle in uw land belangrijke data en vakanties tonen.</para
+>Selecteer vakantieregio's uit de afrollijst. Voor elke geselecteerde regio herkent en toont &korganizer; de belangrijke data en vakantiedagen in de agenda- en maandweergave. U kunt de soorten vakantiedagen die u wilt weergeven configureren met de vervolgkeuzelijst Vakantiecategorieën (zie volgende item). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Vakantiecategorieën</guilabel
+></term>
+<listitem
+><para
+>Selecteer de vakantiecategorieën uit de afrollijst. Standaard zijn alle vakantietypen ingeschakeld. Selecteer de vakantiecategorieën die u wilt verbergen, bijvoorbeeld: sommige mensen zijn niet geïnteresseerd in religieuze vakantiedagen. </para
 ></listitem>
 </varlistentry>
 

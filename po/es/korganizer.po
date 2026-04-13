@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-12 00:45+0000\n"
-"PO-Revision-Date: 2026-04-11 11:48+0100\n"
+"POT-Creation-Date: 2026-04-13 00:44+0000\n"
+"PO-Revision-Date: 2026-04-12 21:55+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -5027,26 +5027,22 @@ msgstr "Mostrar entradas de diario en la vista de mes"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Mostrar &días festivos"
+msgstr "Mostrar días festivos"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr ""
-"Marque esta casilla para mostrar tareas pendientes en la vista mensual."
+msgstr "Marque esta casilla para mostrar días festivos en la vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Mostrar tareas pendientes en la vista de mes"
+msgstr "Mostrar días festivos en la vista de mes"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5054,6 +5050,8 @@ msgstr "Mostrar tareas pendientes en la vista de mes"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Usar el color de fondo para días festivos cuando coincida al menos un día "
+"festivo en una fecha"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -5062,6 +5060,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Usar el color personalizado para días festivos como color de fondo de la "
+"fecha si coincide algún día festivo en dicha fecha"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5071,6 +5071,10 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Marque esta casilla para usar el color personalizado de los días festivos "
+"como color de fondo para la fecha cuando coincide al menos un día festivo "
+"con dicha fecha. Configure el color de los días festivos en «Preferencias-"
+">Colores y tipos de letra»."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5506,21 +5510,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Color de fondo para días ocupados"
+msgstr "Usar los colores del sistema para algunos colores de fondo"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Usar el color del sistema en lugar del definido por el usuario. Si está "
-"activado, ignorará el resto de preferencias de color"
+"Usar los colores del sistema en lugar de los colores personalizados para "
+"algunos colores de fondo"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5530,6 +5530,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Usar los colores del sistema en lugar de los colores definidos por el "
+"usuario para el «Color de fondo de la vista de agenda», «Color de fondo de "
+"los días ocupados» y «Color de fondo de las horas de trabajo» (entre otros)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6584,32 +6587,45 @@ msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Vista mensual: para una mejor coherencia, ya no se ocultan los días festivos "
+"que caen en un día laborable."
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Vista de agenda: dibujar opcionalmente líneas horizontales más gruesas cada "
-"dos horas. Para activar este comportamiento, marque la opción «Dibujar "
-"líneas horizontales gruesas en la cuadrícula para las horas pares» en la "
-"pestaña «Vista->Vista de agenda»."
+"Vista mensual: Se ha añadido una opción para permitir ocultar días festivos. "
+"Para activar este comportamiento, desmarque la opción «Mostrar días festivos "
+"en la vista mensual» en la pestaña «Vistas->Vista mensual»."
 
 #: whatsnew/whatsnewtranslations.cpp:27
+#, fuzzy
+#| msgid ""
+#| "Month view: An option was added to allow using the custom holiday color "
+#| "as the date box background color if a at least one holiday lands on that "
+#| "date. To enable this behavior, check the \"Use the Holiday background "
+#| "color when at least on holiday lands on a date\" option in the Views-"
+#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if a at least one holiday lands on that date. "
-"To enable this behavior, check the \"Use the Holiday background color when "
-"at least on holiday lands on a date\" option in the Views->Month View tab"
+"the date box background color if at least one holiday lands on that date. To "
+"enable this behavior, check the \"Use the Holiday background color when at "
+"least on holiday lands on a date\" option in the Views->Month View tab"
+msgstr ""
+"Vista mensual: Se ha añadido una opción para permitir el uso de colores "
+"personalizados de los días festivos como color de fondo del cuadro de la "
+"fecha si coincide al menos un día festivo con dicha fecha. Para activar este "
+"comportamiento, marque la opción «Usar el color de fondo de los días "
+"festivos cuando coincida al menos un día festivo con una fecha» en la "
+"pestaña «Vistas->Vista mensual»."
+
+#: whatsnew/whatsnewtranslations.cpp:30
+msgid "Agenda view: underline today's column header date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6620,7 +6636,7 @@ msgstr ""
 "desmarque las opciones «Activar recordatorios» de la pestaña «Fecha y hora -"
 "> Valores predeterminados» de las preferencias."
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6628,7 +6644,7 @@ msgstr ""
 "Vista mensual: ya no se muestra la cabecera de mes y año para ahorrar "
 "espacio vertical y eliminar redundancia."
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6636,7 +6652,7 @@ msgstr ""
 "Vista mensual: se usa un color ligeramente distinto para dibujar la cabecera "
 "de los días que caigan fuera del mes seleccionado."
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6644,7 +6660,7 @@ msgstr ""
 "Vista mensual: los controles de navegación de la parte inferior derecha se "
 "eliminan en favor de la barra de navegación mejorada de la aplicación."
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6654,7 +6670,7 @@ msgstr ""
 "cambiar. Para configurar el color, marque «Color de fondo para hoy en la "
 "vista mensual» en las preferencias de «Colores y tipos de letra»."
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6662,13 +6678,13 @@ msgstr ""
 "Barra del navegador: se ha mejorado añadiendo desplazamiento semanal y "
 "mostrando/ocultando la barra lateral para cada vista."
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 "Barra del navegador: se ha añadido un botón para desplazar la vista hasta la "
 "fecha actual."
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6676,7 +6692,7 @@ msgstr ""
 "Vista de agenda: los eventos con duración corta se muestran con su hora de "
 "inicio además de su resumen"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6687,11 +6703,11 @@ msgstr ""
 "marque la opción «Mostrar descripciones de incidencias en los elementos de "
 "la vista de agenda» en la pestaña «Vista->Vista de agenda»."
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid "Search: the search settings are saved/restored"
 msgstr "Búsqueda: los ajustes de la búsqueda se guardan/recuperan"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6700,29 +6716,29 @@ msgstr ""
 "para mostrar/ocultar estas etiquetas en la zona horaria del sistema en el "
 "lado derecho (o izquierdo) también."
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Editor de incidencias: detectar y avisar de la creación de incidencias en el "
 "pasado"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Incidence editor: add emoji support"
 msgstr "Editor de incidencias: añadir compatibilidad con emojis"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "Add What's New menu"
 msgstr "Añadir el menú Novedades"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The current view is remembered"
 msgstr "Se recuerda la vista actual"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Añadir un diálogo de selección de fecha disponible en el menú Ir."
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6731,7 +6747,7 @@ msgstr ""
 "«Próximos X días», «Horario de trabajo» y «Semana» en el botón de la "
 "herramienta Agenda."
 
-#: whatsnew/whatsnewtranslations.cpp:74
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6739,32 +6755,32 @@ msgstr ""
 "Vista de agenda: se ha añadido la opción de menú de contexto de etiquetas de "
 "tiempo para cambiar a un reloj de 24 horas (de estilo militar)."
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Vista de agenda: se ha añadido un menú de contexto para crear un nuevo "
 "evento o tarea pendiente."
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Vista de tareas pendientes: se han añadido opciones al menú de contexto para "
 "conmutar el estado de compleción y los recordatorios."
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Vista de tareas pendientes: guardar/restaurar la configuración de vista "
 "completa."
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 "Vista de tareas pendientes: guardar/restaurar la configuración de vista "
 "plana."
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6772,7 +6788,7 @@ msgstr ""
 "Navegador de fechas: se ha añadido una opción a las preferencias de "
 "«Configurar->Vistas» para ocultar los números de las semanas."
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6780,62 +6796,62 @@ msgstr ""
 "Navegador de fechas: el ajuste «Los números de semana seleccionan una semana "
 "de trabajo en el modo de trabajo semanal» es cierto de forma predeterminada."
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Editor de incidencias: recordar/restaurar la geometría del gestor de "
 "plantillas."
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Editor de incidencias: permitir arrastrar y soltar adjuntos"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "El diálogo de exportación de calendario recuerda la ubicación de la última "
 "carpeta de exportación usada."
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "El diálogo de importación de calendario recuerda la ubicación de la última "
 "carpeta de importación usada."
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid "Get Hot New Stuff removed"
 msgstr "Se ha eliminado la opción de obtener novedades."
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Añadir archivo de calendario: los calendarios remotos son siempre de solo "
 "lectura."
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Añadir archivo de calendario: no se permite una ruta de archivo vacía."
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Configuración de DAV: el diálogo permite ver la contraseña de la cuenta "
 "cuando se modifica."
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "Configuración de DAV: el asistente muestra iconos para los distintos "
 "proveedores."
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "DAV configuration: wizard updated list of providers"
 msgstr ""
 "Configuración de DAV: se ha actualizado la lista de proveedores del "
 "asistente."
 
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:110
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6844,19 +6860,19 @@ msgstr ""
 "Se ha cambiado la semántica del concepto de «horario laboral» a la de "
 "«horario semanal» para adaptarse a los usuarios que no trabajan."
 
-#: whatsnew/whatsnewtranslations.cpp:109
+#: whatsnew/whatsnewtranslations.cpp:111
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Las horas de inicio predeterminadas de «Nuevo evento» son consistentes en "
 "todas las vistas."
 
-#: whatsnew/whatsnewtranslations.cpp:110
+#: whatsnew/whatsnewtranslations.cpp:112
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Se ha mejorado la gestión del calendario de eventos predeterminado."
 
-#: whatsnew/whatsnewtranslations.cpp:112
+#: whatsnew/whatsnewtranslations.cpp:114
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6864,14 +6880,14 @@ msgstr ""
 "Las incidencias con una larga lista de fechas excluidas ya no generan "
 "enormes ayudas emergentes."
 
-#: whatsnew/whatsnewtranslations.cpp:113
+#: whatsnew/whatsnewtranslations.cpp:115
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Se ha corregido la dirección de correo electrónico del organizador para "
 "incidencias con asistentes."
 
-#: whatsnew/whatsnewtranslations.cpp:114
+#: whatsnew/whatsnewtranslations.cpp:116
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6881,12 +6897,22 @@ msgstr ""
 "minutos (en lugar de 15)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:128
+#: whatsnew/whatsnewtranslations.cpp:130
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Editor de incidencias: las etiquetas se ordenan alfabéticamente en el editor "
 "de etiquetas"
+
+#: whatsnew/whatsnewtranslations.cpp:157
+#, kde-format
+msgid "Fixed reminder toggling from menus"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:158
+#, kde-format
+msgid "Agenda view: improved timelabel vertical alignment with grid"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -6973,7 +6999,7 @@ msgstr "Puede que asistan"
 msgid "Organizer"
 msgstr "Organizador"
 
-#: widgets/kitemiconcheckcombo.cpp:34
+#: widgets/kitemiconcheckcombo.cpp:41
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"
@@ -7112,6 +7138,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Use system color"
-#~ msgstr "Usar color del sistema"

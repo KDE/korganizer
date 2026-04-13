@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-12 00:45+0000\n"
+"POT-Creation-Date: 2026-04-13 00:44+0000\n"
 "PO-Revision-Date: 2026-04-02 23:07+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -6560,12 +6560,16 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if a at least one holiday lands on that date. "
-"To enable this behavior, check the \"Use the Holiday background color when "
-"at least on holiday lands on a date\" option in the Views->Month View tab"
+"the date box background color if at least one holiday lands on that date. To "
+"enable this behavior, check the \"Use the Holiday background color when at "
+"least on holiday lands on a date\" option in the Views->Month View tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:30
+msgid "Agenda view: underline today's column header date"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6575,7 +6579,7 @@ msgstr ""
 "guztietarako. Jokabide hori ezgaitzeko, marka kendu ezarpenetako Ordua eta "
 "data->Balio lehenetsiak fitxako Gaitu oroigarriak aukerei"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6583,7 +6587,7 @@ msgstr ""
 "Hilabeteko ikuspegia: aurrerantzean ez erakutsi hilabetearen urte-goiburua "
 "bertikalean lekua aurrezteko eta bikoizketa kentzeko"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6591,7 +6595,7 @@ msgstr ""
 "Hilabeteko ikuspegia: erabili kolore pixka bat ezberdina unean hautatutako "
 "hilabetetik kanpoko egunen goiburuak marrazteko"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6599,14 +6603,14 @@ msgstr ""
 "Hilabeteko ikuspegia: beheko eskuineko nabigatzeko aginteak kendu dira "
 "aplikazioaren nabigatzeko barra hobetuaren alde"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6614,11 +6618,11 @@ msgstr ""
 "Nabigatzeko barra: asteka kiribiltzea eta ikuspegiko alboko barra erakustea/"
 "ezkutatzea gehituz hobetua"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 #, fuzzy
 #| msgid ""
 #| "Agenda view: events without a duration are displayed as 30 long (rather "
@@ -6630,18 +6634,18 @@ msgstr ""
 "Agenda ikuspegia: iraupenik gabeko ekitaldiak 30 minutuko luzerarekin "
 "erakusten dira (15 minutuko luzeraren ordez)"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid "Search: the search settings are saved/restored"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6650,29 +6654,29 @@ msgstr ""
 "eremurako denbora-etiketak eskuin (edo ezker) aldean ere erakusteko/"
 "ezkutatzeko."
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Intzidentzia editorea: intzidentziak iraganean sortzea antzeman eta abisatu"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Incidence editor: add emoji support"
 msgstr "Intzidentzia editorea: emotikonoen euskarria gehitu"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "Add What's New menu"
 msgstr "Gehitu Zer berri menua"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The current view is remembered"
 msgstr "Uneko ikuspegia gogoratzen da"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 "Gehitu Data hautatzeko elkarrizketa-koadro bat, Joan menuan erabilgarri"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6680,7 +6684,7 @@ msgstr ""
 "Agenda ikuspegia: \"Eguna\", \"Hurrengo X egunak\", \"Lan-ordutegia\", "
 "\"Astea\" denbora-tarteak Agendaren tresna-botoian bateratu dira"
 
-#: whatsnew/whatsnewtranslations.cpp:74
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6688,27 +6692,27 @@ msgstr ""
 "Agenda ikuspegia: 24 orduko erlojura aldatzeko, testuinguru-menuan ordu-"
 "etiketak aukera gehitu da"
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Agenda ikuspegia: Ekitaldi/Zeregin berria sortzeko testuingurua gehitu da"
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Zeregin ikuspegia: osatzea eta oroigarriak txandakatzeko testuinguru-"
 "menuetan aukerak gehitu dira"
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "To-do view: save/restore fullview setting"
 msgstr "Zeregin ikuspegia: gorde/lehengoratu ikuspegi osoaren ezarpenak"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "To-do view: save/restore flatview setting"
 msgstr "Zeregin ikuspegia: ikuspegi lauaren ezarpenak gorde/lehengoratu"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6716,7 +6720,7 @@ msgstr ""
 "Data nabigatzailea: Konfiguratu->Ikuspegi-ezarpenak menuan asteko zenbakiak "
 "ezkutatzeko aukera bat gehitu da"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6724,59 +6728,59 @@ msgstr ""
 "Data nabigatzailea: \"Asteko zenbakiek, lan-astea moduan, lan-aste bat "
 "hautatzen dute\" ezarpena era lehenetsian egia da"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Intzidentzia editorea: gogoratu/lehengoratu txantiloi-kudeatzailearen "
 "geometria"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Intzidentzia editorea: eranskinak arrastatzea eta jaregitea onartzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Esportatu egutegia elkarrizketa-koadroak esportatzeko bere azken karpeta "
 "gogoratzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Inportatu egutegia elkarrizketa-koadroak inportatzeko bere azken karpeta "
 "gogoratzen du"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid "Get Hot New Stuff removed"
 msgstr "Berrikuntzak eskuratzeko aukera kendu da"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Gehitu egutegi-fitxategia: urruneko egutegiak beti soilik irakurtzeko dira"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Gehitu egutegi-fitxategia: ez du utziko fitxategi bide-izen hutsa"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "DAV konfigurazioa: editatzean, elkarrizketa-koadroak kontuaren pasahitza "
 "ikusten uzten du"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "DAV konfigurazioa: morroiak hornitzaile ezberdinen ikonoak erakusten ditu"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV konfigurazioa: morroiak hornitzaileen zerrenda eguneratua du"
 
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:110
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6785,19 +6789,19 @@ msgstr ""
 "Lanik egiten ez duten erabiltzaileetara egokitzeko semantika aldatu da, "
 "\"lan ordutegia\" kontzeptutik \"asteko ordutegia\" kontzeptura"
 
-#: whatsnew/whatsnewtranslations.cpp:109
+#: whatsnew/whatsnewtranslations.cpp:111
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "\"Ekitaldi berria\"ren hasierako hasiera orduak ikuspegi guztien artean "
 "koherenteak dira"
 
-#: whatsnew/whatsnewtranslations.cpp:110
+#: whatsnew/whatsnewtranslations.cpp:112
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Ekitaldi-egutegi lehenetsiaren erabilpen hobetua"
 
-#: whatsnew/whatsnewtranslations.cpp:112
+#: whatsnew/whatsnewtranslations.cpp:114
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6805,14 +6809,14 @@ msgstr ""
 "Baztertutako daten zerrenda luzea duten intzidentziek jada ez dute tresna-"
 "argibide erraldoirik sortzen"
 
-#: whatsnew/whatsnewtranslations.cpp:113
+#: whatsnew/whatsnewtranslations.cpp:115
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Partaideak dituzten intzidentzietarako, antolatzailearen e-posta helbidea "
 "konpondu da"
 
-#: whatsnew/whatsnewtranslations.cpp:114
+#: whatsnew/whatsnewtranslations.cpp:116
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6822,12 +6826,22 @@ msgstr ""
 "erakusten dira (15 minutuko luzeraren ordez)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:128
+#: whatsnew/whatsnewtranslations.cpp:130
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Intzidentzia editorea: etiketa editorean etiketak alfabetikoki sailkatuta "
 "daude"
+
+#: whatsnew/whatsnewtranslations.cpp:157
+#, kde-format
+msgid "Fixed reminder toggling from menus"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:158
+#, kde-format
+msgid "Agenda view: improved timelabel vertical alignment with grid"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -6914,7 +6928,7 @@ msgstr "Agian agertuko da"
 msgid "Organizer"
 msgstr "Antolatzailea"
 
-#: widgets/kitemiconcheckcombo.cpp:34
+#: widgets/kitemiconcheckcombo.cpp:41
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

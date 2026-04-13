@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-12 00:45+0000\n"
-"PO-Revision-Date: 2026-04-11 09:47+0200\n"
+"POT-Creation-Date: 2026-04-13 00:44+0000\n"
+"PO-Revision-Date: 2026-04-12 11:57+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -5028,27 +5028,22 @@ msgstr "Mostra els diaris a la vista mensual"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Mostra els &festius"
+msgstr "Mostra els festius"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr ""
-"Activeu aquesta casella per a mostrar les tasques pendents a la vista "
-"mensual."
+msgstr "Activeu aquesta casella per a mostrar els festius a la vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Mostra les tasques pendents a la vista mensual"
+msgstr "Mostra els festius a la vista mensual"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5056,6 +5051,7 @@ msgstr "Mostra les tasques pendents a la vista mensual"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Usa el color de fons de festius quan almenys un festiu caigui en una data"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -5064,6 +5060,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Usa el color de dia festiu personalitzat com a color de fons de la data si "
+"un dia festiu cau a la data"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5073,6 +5071,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Marqueu aquesta casella per a utilitzar el dia festiu personalitzat com a "
+"color de fons de la data quan almenys un dia festiu caigui en una data. "
+"Configureu el color dels festius a Arranjament->Colors i lletres."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5506,21 +5507,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Color de fons dels dies ocupats"
+msgstr "Usa els colors del sistema per a alguns colors de fons"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Usa el color del sistema en lloc del color definit per l'usuari. Si està "
-"activada, s'ignorarà qualsevol configuració del color"
+"Usa colors del sistema en lloc de colors personalitzats per a alguns colors "
+"de fons"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5530,6 +5527,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Usa colors del sistema en lloc dels colors definits per l'usuari per al "
+"«Color de fons de la vista d'agenda», «Color de fons per als dies ocupats» i "
+"el «Color de les hores laborables» (i possiblement d'altres)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6585,32 +6585,44 @@ msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Vista mensual: en nom de la coherència, els festius que cauen en una jornada "
+"laboral ja no s'oculten"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Vista d'agenda: opcionalment mostra línies de quadrícula horitzontals en "
-"negreta/més gruixudes cada dues hores. Per a activar aquest comportament, "
-"marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a "
-"les hores parells» a la pestanya Visualitza->Vista d'agenda"
+"Vista mensual: s'ha afegit una opció per a permetre ocultar els dies "
+"festius. Per a activar aquest comportament, desmarqueu l'opció «Mostra els "
+"festius a la vista mensual» a la pestanya Vistes->Vista mensual"
 
 #: whatsnew/whatsnewtranslations.cpp:27
+#, fuzzy
+#| msgid ""
+#| "Month view: An option was added to allow using the custom holiday color "
+#| "as the date box background color if a at least one holiday lands on that "
+#| "date. To enable this behavior, check the \"Use the Holiday background "
+#| "color when at least on holiday lands on a date\" option in the Views-"
+#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if a at least one holiday lands on that date. "
-"To enable this behavior, check the \"Use the Holiday background color when "
-"at least on holiday lands on a date\" option in the Views->Month View tab"
+"the date box background color if at least one holiday lands on that date. To "
+"enable this behavior, check the \"Use the Holiday background color when at "
+"least on holiday lands on a date\" option in the Views->Month View tab"
+msgstr ""
+"Vista mensual: s'ha afegit una opció per a permetre l'ús del color "
+"personalitzat de festiu com a color de fons del quadre de dates si almenys "
+"un dels festius cau en aquesta data. Per a activar aquest comportament, "
+"marqueu l'opció «Usa el color de fons de festius quan almenys un festiu "
+"caigui en una data» a la pestanya Vistes->Vista mensual"
+
+#: whatsnew/whatsnewtranslations.cpp:30
+msgid "Agenda view: underline today's column header date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:38
+#: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6621,7 +6633,7 @@ msgstr ""
 "comportament, desmarqueu les opcions Habilita els recordatoris a la pestanya "
 "de configuració Data i hora->Valors predeterminats"
 
-#: whatsnew/whatsnewtranslations.cpp:40
+#: whatsnew/whatsnewtranslations.cpp:42
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6629,7 +6641,7 @@ msgstr ""
 "Vista mensual: ja no mostra la capçalera de mes any per a estalviar espai "
 "vertical i eliminar redundància"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6637,7 +6649,7 @@ msgstr ""
 "Vista mensual: usa un color lleugerament diferent per a dibuixar les "
 "capçaleres dels dies fora del mes seleccionat"
 
-#: whatsnew/whatsnewtranslations.cpp:42
+#: whatsnew/whatsnewtranslations.cpp:44
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6645,7 +6657,7 @@ msgstr ""
 "Vista mensual: s'eliminen els controls de navegació a favor de la barra del "
 "navegador millorada de l'aplicació"
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6655,7 +6667,7 @@ msgstr ""
 "d'avui. Per a configurar el color, establiu el «Color de fons d'avui de la "
 "vista d'avui» a la configuració de colors i lletres"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6663,13 +6675,13 @@ msgstr ""
 "Barra del navegador: s'ha millorat afegint el desplaçament setmanal i "
 "mostrant/ocultant la barra lateral en funció de la vista"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 "Barra de navegació: s'ha afegit un botó per a desplaçar la vista a la data "
 "actual"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6677,7 +6689,7 @@ msgstr ""
 "Vista d'agenda: els esdeveniments amb una durada curta es mostren amb la "
 "seva hora d'inici a més del resum"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6688,11 +6700,11 @@ msgstr ""
 "«Mostra les descripcions de les incidències als elements de la vista "
 "d'agenda» a la pestanya Visualitza->Vista d'agenda"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid "Search: the search settings are saved/restored"
 msgstr "Cerca: la configuració de la cerca es desa/restaura"
 
-#: whatsnew/whatsnewtranslations.cpp:59
+#: whatsnew/whatsnewtranslations.cpp:61
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6701,29 +6713,29 @@ msgstr ""
 "mostrar/ocultar les etiquetes d'hora per al fus horari del sistema a la part "
 "dreta (o esquerra)"
 
-#: whatsnew/whatsnewtranslations.cpp:60
+#: whatsnew/whatsnewtranslations.cpp:62
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Editor d'incidències: detecta i avisa de la creació d'incidències en el "
 "passat"
 
-#: whatsnew/whatsnewtranslations.cpp:61
+#: whatsnew/whatsnewtranslations.cpp:63
 msgid "Incidence editor: add emoji support"
 msgstr "Editor d'incidències: afegeix la implementació d'emojis"
 
-#: whatsnew/whatsnewtranslations.cpp:70
+#: whatsnew/whatsnewtranslations.cpp:72
 msgid "Add What's New menu"
 msgstr "Afegeix el menú Què hi ha de nou"
 
-#: whatsnew/whatsnewtranslations.cpp:71
+#: whatsnew/whatsnewtranslations.cpp:73
 msgid "The current view is remembered"
 msgstr "Es recordarà la vista actual"
 
-#: whatsnew/whatsnewtranslations.cpp:72
+#: whatsnew/whatsnewtranslations.cpp:74
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Afegeix un diàleg selector de dates disponible al menú Ves"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6731,7 +6743,7 @@ msgstr ""
 "Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies "
 "següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda"
 
-#: whatsnew/whatsnewtranslations.cpp:74
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6739,28 +6751,28 @@ msgstr ""
 "Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de temps "
 "per a commutar un rellotge de 24 hores (estil militar)"
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Vista d'agenda: s'ha afegit el menú contextual per a crear un esdeveniment o "
 "tasca pendent nova"
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Vista de les tasques pendents: s'han afegit opcions del menú contextual per "
 "a commutar la compleció i els recordatoris"
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "To-do view: save/restore fullview setting"
 msgstr "Vista de les tasques pendents: desa/restaura l'opció de vista completa"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "To-do view: save/restore flatview setting"
 msgstr "Vista de les tasques pendents: desa/restaura l'opció de vista plana"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6768,7 +6780,7 @@ msgstr ""
 "Navegador de dates: s'ha afegit una opció dins de la configuració de "
 "Configura->Vistes per ocultar els números de setmana"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6776,56 +6788,56 @@ msgstr ""
 "Navegador de dates: l'opció «Els números de setmana seleccionen una setmana "
 "feinera en el mode de setmana laboral» és certa de manera predeterminada"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Editor d'incidències: recorda/restaura la geometria del gestor de plantilles"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Editor d'incidències: permet arrossegar i deixar anar adjunts"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "El diàleg d'exportació de calendari recorda la seva última ubicació de la "
 "carpeta d'exportació"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "El diàleg d'importació de calendari recorda la seva última ubicació de la "
 "carpeta d'importació"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid "Get Hot New Stuff removed"
 msgstr "S'ha eliminat «Obtén les novetats candents»"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Afegir un fitxer de calendari: els calendaris remots sempre són de només "
 "lectura"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Afegir un fitxer de calendari: no es permet un camí buit de fitxer"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Configuració DAV: el diàleg permet veure la contrasenya del compte en editar"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Configuració DAV: l'assistent mostra icones de diversos proveïdors"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Configuració DAV: llista actualitza de proveïdors de l'assistent"
 
-#: whatsnew/whatsnewtranslations.cpp:108
+#: whatsnew/whatsnewtranslations.cpp:110
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6834,19 +6846,19 @@ msgstr ""
 "La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari "
 "setmanal» per admetre els usuaris no treballadors"
 
-#: whatsnew/whatsnewtranslations.cpp:109
+#: whatsnew/whatsnewtranslations.cpp:111
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les "
 "vistes"
 
-#: whatsnew/whatsnewtranslations.cpp:110
+#: whatsnew/whatsnewtranslations.cpp:112
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Millora de la gestió del calendari predeterminat d'esdeveniments"
 
-#: whatsnew/whatsnewtranslations.cpp:112
+#: whatsnew/whatsnewtranslations.cpp:114
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6854,14 +6866,14 @@ msgstr ""
 "Les incidències amb una llista llarga de dates excloses ja no creen consells "
 "enormes"
 
-#: whatsnew/whatsnewtranslations.cpp:113
+#: whatsnew/whatsnewtranslations.cpp:115
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "S'ha corregit l'adreça de correu electrònic de l'organitzador per a les "
 "incidències amb els assistents"
 
-#: whatsnew/whatsnewtranslations.cpp:114
+#: whatsnew/whatsnewtranslations.cpp:116
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6871,12 +6883,22 @@ msgstr ""
 "30 minuts (en lloc de 15 minuts)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:128
+#: whatsnew/whatsnewtranslations.cpp:130
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Editor d'incidències: les etiquetes s'ordenen alfabèticament a l'editor "
 "d'etiquetes"
+
+#: whatsnew/whatsnewtranslations.cpp:157
+#, kde-format
+msgid "Fixed reminder toggling from menus"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:158
+#, kde-format
+msgid "Agenda view: improved timelabel vertical alignment with grid"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -6963,7 +6985,7 @@ msgstr "Possible participació"
 msgid "Organizer"
 msgstr "Organitzador"
 
-#: widgets/kitemiconcheckcombo.cpp:34
+#: widgets/kitemiconcheckcombo.cpp:41
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"
