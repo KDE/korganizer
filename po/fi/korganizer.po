@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-26 00:43+0000\n"
+"POT-Creation-Date: 2026-04-13 02:39+0000\n"
 "PO-Revision-Date: 2026-01-05 17:25+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -6619,7 +6619,7 @@ msgstr "Ehkä osallistuu"
 msgid "Organizer"
 msgstr "Järjestäjä"
 
-#: widgets/kitemiconcheckcombo.cpp:34
+#: widgets/kitemiconcheckcombo.cpp:41
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"

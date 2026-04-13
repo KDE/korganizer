@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-26 00:43+0000\n"
+"POT-Creation-Date: 2026-04-13 02:39+0000\n"
 "PO-Revision-Date: 2024-11-23 12:12+0000\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -6800,7 +6800,7 @@ msgstr "Maybe Attending"
 msgid "Organizer"
 msgstr "Organiser"
 
-#: widgets/kitemiconcheckcombo.cpp:34
+#: widgets/kitemiconcheckcombo.cpp:41
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Icons to use"
