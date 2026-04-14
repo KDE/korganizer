@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-12 12:00+0200\n"
+"PO-Revision-Date: 2026-04-13 12:00+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -6452,13 +6452,6 @@ msgstr ""
 "Pohľady->Mesačný pohľad"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if a at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6472,7 +6465,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
-msgstr ""
+msgstr "Pohľad agendy: podčiarknuť dátum v hlavičke stĺpca dnešného dňa"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6721,12 +6714,12 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "Opravené prepínanie pripomienok z ponúk"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
+msgstr "Pohľad agendy: vylepšené zvislé zarovnanie popiskov času so mriežkou"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

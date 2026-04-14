@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-12 04:41+0200\n"
+"PO-Revision-Date: 2026-04-13 05:19+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -6478,13 +6478,6 @@ msgstr ""
 "ხედი"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if a at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6498,7 +6491,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
-msgstr ""
+msgstr "გეგმის ხედი: დღევანდელი სვეტის თავსართის თარიღის ხაზგასმა"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6758,12 +6751,12 @@ msgstr "რედაქტორი: ჭდეების რედაქტო
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "გასწორდა შეხსენების გადართვა მენიუებიდან"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
+msgstr "გეგმის ხედი: გაუმჯობესდა დროის ჭდის ვერტიკალური სწორება ბადესთან"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

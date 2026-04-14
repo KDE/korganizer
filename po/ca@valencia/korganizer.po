@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-03-29 13:05+0200\n"
+"PO-Revision-Date: 2026-04-13 09:00+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -3966,12 +3966,10 @@ msgid "Holidays"
 msgstr "Dies festius"
 
 #: prefs/koprefsdialogtime.cpp:70
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
-msgstr "Utilitza la regió de dies festius:"
+msgstr "Utilitza les regions de dies festius:"
 
 #: prefs/koprefsdialogtime.cpp:94
 #, kde-format
@@ -3986,20 +3984,16 @@ msgid "Select Holiday Regions"
 msgstr "Trieu les regions de dies festius"
 
 #: prefs/koprefsdialogtime.cpp:121
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "Utilitza la regió de dies festius:"
+msgstr "Utilitza la categoria de dies festius:"
 
 #: prefs/koprefsdialogtime.cpp:135
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Holiday Regions"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "Trieu les regions de dies festius"
+msgstr "Trieu les categories de dies festius"
 
 #: prefs/koprefsdialogtime.cpp:154
 #, kde-format
@@ -5027,26 +5021,22 @@ msgstr "Mostra els diaris en la vista mensual"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Mostra els &festius"
+msgstr "Mostra els festius"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr ""
-"Marqueu esta casella per a mostrar les tasques pendents en la vista mensual."
+msgstr "Marqueu esta casella per a mostrar els festius a la vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Mostra les tasques pendents en la vista mensual"
+msgstr "Mostra els festius a la vista mensual"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5054,6 +5044,7 @@ msgstr "Mostra les tasques pendents en la vista mensual"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Utilitza el color de fons de festius quan almenys un festiu caiga en una data"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -5062,6 +5053,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Utilitza el color de dia festiu personalitzat com a color de fons de la data "
+"si un dia festiu cau a la data"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5071,6 +5064,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Marqueu esta casella per a utilitzar el dia festiu personalitzat com a color "
+"de fons de la data quan almenys un dia festiu caiga en una data. Configureu "
+"el color dels festius a Configuració->Colors i lletres."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5506,21 +5502,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Color de fons dels dies ocupats"
+msgstr "Utilitza els colors del sistema per a alguns colors de fons"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Utilitza el color del sistema en lloc del color definit per l'usuari. Si "
-"està marcada, s'ignorarà qualsevol configuració del color"
+"Utilitza colors del sistema en lloc de colors personalitzats per a alguns "
+"colors de fons"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5530,6 +5522,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Utilitza colors del sistema en lloc dels colors definits per l'usuari per al "
+"«Color de fons de la vista d'agenda», «Color de fons per als dies ocupats» i "
+"el «Color de les hores laborables» (i possiblement d'altres)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6570,49 +6565,46 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
+"Ara és possible ocultar els dies festius que pertanyen a categories "
+"específiques, per exemple, ocultar festes religioses. Vegeu el quadro "
+"combinat Categories a la secció Dies festius de la pestanya Data i hora → "
+"Regional"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Vista mensual: en nom de la coherència, els festius que cauen en una jornada "
+"laboral ja no s'oculten"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Vista d'agenda: de manera opcional mostra línies de quadrícula horitzontals "
-"en negreta/més gruixudes cada dues hores. Per a activar este comportament, "
-"marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a "
-"les hores parells» a la pestanya Visualitza->Vista d'agenda"
+"Vista mensual: s'ha afegit una opció per a permetre ocultar els dies "
+"festius. Per a activar este comportament, desmarqueu l'opció «Mostra els "
+"festius a la vista mensual» a la pestanya Vistes->Vista mensual"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
 "enable this behavior, check the \"Use the Holiday background color when at "
 "least on holiday lands on a date\" option in the Views->Month View tab"
 msgstr ""
-"Vista d'agenda: de manera opcional mostra línies de quadrícula horitzontals "
-"en negreta/més gruixudes cada dues hores. Per a activar este comportament, "
-"marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a "
-"les hores parells» a la pestanya Visualitza->Vista d'agenda"
+"Vista mensual: s'ha afegit una opció per a permetre l'ús del color "
+"personalitzat de festiu com a color de fons del quadro de dates si almenys "
+"un dels festius cau en esta data. Per a activar este comportament, marqueu "
+"l'opció «Utilitza el color de fons de festius quan almenys un festiu caiga "
+"en una data» a la pestanya Vistes->Vista mensual"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
 msgstr ""
+"Vista d'agenda: subratlla la data d'hui a la capçalera de la columna de dates"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6886,12 +6878,14 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "S'ha corregit el canvi de recordatoris des dels menús"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
+"Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb "
+"la quadrícula"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -7121,6 +7115,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Use system color"
-#~ msgstr "Utilitza el color del sistema"

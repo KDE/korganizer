@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-12 11:57+0200\n"
+"PO-Revision-Date: 2026-04-13 09:00+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -6599,13 +6599,6 @@ msgstr ""
 "festius a la vista mensual» a la pestanya Vistes->Vista mensual"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if a at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6621,6 +6614,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
 msgstr ""
+"Vista d'agenda: subratlla la data d'avui a la capçalera de la columna de "
+"dates"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6893,12 +6888,14 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "S'ha corregit el canvi de recordatoris des dels menús"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
+"Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb "
+"la quadrícula"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

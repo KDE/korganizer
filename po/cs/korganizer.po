@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-03 16:45+0200\n"
+"PO-Revision-Date: 2026-04-12 21:28+0200\n"
 "Last-Translator: Libor Filípek <filipek.libor@protonmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -3934,12 +3934,10 @@ msgid "Holidays"
 msgstr "Svátky"
 
 #: prefs/koprefsdialogtime.cpp:70
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
-msgstr "Použít region svátků:"
+msgstr "Použít regiony svátků:"
 
 #: prefs/koprefsdialogtime.cpp:94
 #, kde-format
@@ -3954,20 +3952,16 @@ msgid "Select Holiday Regions"
 msgstr "Zvolte regiony svátků"
 
 #: prefs/koprefsdialogtime.cpp:121
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "Použít region svátků:"
+msgstr "Použít kategorie svátků:"
 
 #: prefs/koprefsdialogtime.cpp:135
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Holiday Regions"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "Zvolte regiony svátků"
+msgstr "Zvolte kategorie svátků"
 
 #: prefs/koprefsdialogtime.cpp:154
 #, kde-format
@@ -4968,26 +4962,23 @@ msgstr "Zobrazit deníky v měsíčním zobrazení"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Zobrazovat &svátky"
+msgstr "Zobrazit svátky"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
 msgstr ""
-"Zaškrtněte toto políčko, chcete-li zobrazit úkoly v měsíčním zobrazení."
+"Zaškrtněte toto políčko, chcete-li zobrazit svátky v měsíčním zobrazení."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Zobrazit úkoly v měsíčním zobrazení"
+msgstr "Zobrazit svátky v měsíčním zobrazení"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -4995,6 +4986,7 @@ msgstr "Zobrazit úkoly v měsíčním zobrazení"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Použít barvu pozadí svátku, pokud na daný den připadá alespoň jeden svátek"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -5003,6 +4995,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Použít vlastní barvu svátku jako pozadí data, pokud na daný den připadá "
+"alespoň jeden svátek"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5012,6 +5006,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Zaškrtněte toto políčko, chcete-li použít vlastní barvu svátku jako barvu "
+"pozadí daného data, pokud na toto datum připadá alespoň jeden svátek. Barvu "
+"svátku nastavíte v nabídce Nastavení -> Barvy a písma."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5435,21 +5432,16 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Barva pozadí zaneprázdněných dnů"
+msgstr "Pro některé barvy pozadí použít systémové barvy"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Použít systémovou barvu namísto barvy definované uživatelem. Pokud je tato "
-"možnost povolena, budou ignorována všechna ostatní nastavení barev."
+"Pro některé barvy pozadí použít systémové barvy namísto vlastních barev"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5459,6 +5451,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Pro \"Barvu pozadí zobrazení agendy\", \"Barvu pozadí zaneprázdněných dnů\" "
+"a \"Barvu pracovních hodin\" (a případně i další) použít systémové barvy "
+"namísto barev definovaných uživatelem."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6478,28 +6473,27 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
+"Nyní je možné skrýt svátky, které patří do určitých kategorií, například "
+"náboženské svátky. Viz rozevírací seznam Kategorie v sekci Svátky na záložce "
+"Datum a čas -> Regionální."
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Měsíční zobrazení: z důvodu jednotnosti se již nezobrazují svátky, které "
+"připadají na pracovní den"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Zobrazení agendy: volitelně lze každé dvě hodiny vykreslovat tučnější/"
-"silnější vodorovné čáry mřížky. Chcete-li tuto funkci zapnout, zaškrtněte "
-"možnost \"Nakreslit výrazné vodorovné čáry mřížky pro sudé hodiny\" na kartě "
-"Zobrazení -> Zobrazení agendy"
+"Měsíční zobrazení: Byla přidána možnost skrýt svátky. Chcete-li tuto funkci "
+"aktivovat, zrušte zaškrtnutí políčka \"Zobrazit svátky v měsíčním zobrazení"
+"\" na kartě Zobrazení -> Měsíční zobrazení"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 #, fuzzy

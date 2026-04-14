@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-11 21:07+0300\n"
+"PO-Revision-Date: 2026-04-13 21:16+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -4963,32 +4963,29 @@ msgstr "Ay görünümünde günceleri görüntüle"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "&Tatilleri göster"
+msgstr "Tatilleri göster"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "Ay görünümünde yapılacakları görüntülemek için bu kutuyu işaretleyin."
+msgstr "Ay görünümünde tatilleri görüntülemek için bu kutuyu işaretleyin."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Ay görünümünde yapılacak ögeleri görüntüle"
+msgstr "Ay görünümünde tatilleri görüntüle"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
 #, kde-format
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
-msgstr ""
+msgstr "Tatil bir tarihe denk geliyorsa tatil arka plan rengini kullan"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -4997,6 +4994,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Tatil bir tarihe denk geliyorsa tarihin arka plan rengi olarak özel tatil "
+"rengini kullan"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5006,6 +5005,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"En az bir tatil bir tarihin üzerine denk geliyorsa tarihin arka plan rengi "
+"olarak özel tatil rengini kullanmak için bu kutuyu işaretleyin. Tatil "
+"rengini özelleştirmek için “Ayarlar → Renkler ve Yazıtipleri” bölümüne gidin."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5428,21 +5430,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Meşgul gün arka plan rengi"
+msgstr "Bazı arka plan renkleri için sistem renklerini kullan"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Kullanıcı tanımlı renk yerine sistem rengini kullan. Etkinleştirilmişse tüm "
-"diğer renk ayarlarını yok sayar"
+"Bazı arka plan renkleri için kullanıcı tanımlı renkler yerine sistem "
+"renklerini kullanın."
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5452,6 +5450,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"“Ajanda görünümü arka plan rengi”, “Meşgul günler arka plan rengi” ve "
+"“Çalışma saatleri rengi” (ve olası birkaç tane daha için) kullanıcı tanımlı "
+"renkler yerine sistem renklerini kullanın."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6450,9 +6451,9 @@ msgid ""
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
 "Ajanda görünümü: İsteğe bağlı olarak, her iki saatte bir daha kalın yatay "
-"kılavuz çizgileri çizebilirsiniz. Bu özelliği etkinleştirmek için, “Görünüm "
-"→ Ajanda Görünümü” sekmesinde \"Çift saatler için kalın yatay ızgara "
-"çizgileri çiz\" seçeneğini işaretleyin."
+"kılavuz çizgileri çizebilirsiniz. Bu özelliği etkinleştirmek için “Görünüm → "
+"Ajanda Görünümü” sekmesinde “Çift saatler için kalın yatay ızgara çizgileri "
+"çiz” seçeneğini işaretleyin."
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
@@ -6469,43 +6470,35 @@ msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Ay görünümü: Tutarlılık adına bir iş gününe denk gelen tatiller artık "
+"gizlenmiyor."
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Ajanda görünümü: İsteğe bağlı olarak, her iki saatte bir daha kalın yatay "
-"kılavuz çizgileri çizebilirsiniz. Bu özelliği etkinleştirmek için, “Görünüm "
-"→ Ajanda Görünümü” sekmesinde \"Çift saatler için kalın yatay ızgara "
-"çizgileri çiz\" seçeneğini işaretleyin."
+"Ay görünümü: Tatilleri gizlemek için bir onay kutusu eklendi. Bu davranışı "
+"etkinleştirmek için “Görünümler → Ay Görünümü” sekmesinde “Ay görünümünde "
+"tatilleri görüntüle” onay kutusunun işaretini kaldırın."
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
 "enable this behavior, check the \"Use the Holiday background color when at "
 "least on holiday lands on a date\" option in the Views->Month View tab"
 msgstr ""
-"Ajanda görünümü: İsteğe bağlı olarak, her iki saatte bir daha kalın yatay "
-"kılavuz çizgileri çizebilirsiniz. Bu özelliği etkinleştirmek için, “Görünüm "
-"→ Ajanda Görünümü” sekmesinde \"Çift saatler için kalın yatay ızgara "
-"çizgileri çiz\" seçeneğini işaretleyin."
+"Ay görünümü: En azından bir tatil o tarihe denk geliyorsa özel tatil rengini "
+"tarih kutusunun arka plan rengi olarak kullanmak için bir seçenek eklendi. "
+"Bu davranışı etkinleştirmek için “Görünüm → Ay Görünümü” sekmesinde “Tatil "
+"bir tarihe denk geliyorsa tatil arka plan rengini kullan” seçeneğini "
+"işaretleyin."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
-msgstr ""
+msgstr "Ajanda görünümü: Bugünün sütun başlığı tarihinin altını çiz"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6756,12 +6749,13 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "Anımsatıcıların menülerden açılıp kapatılmasını onar"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
+"Ajanda görünümü: Izgara ile iyileştirilmiş zaman etiketi dikey hizalaması"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

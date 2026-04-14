@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1734246 2026-04-13 01:27:50Z scripty $
+# $Id: korganizer.po 1734335 2026-04-14 01:27:48Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-12 08:13+0200\n"
+"PO-Revision-Date: 2026-04-13 06:46+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6515,13 +6515,6 @@ msgstr ""
 "mesečnem pogledu\" na zavihku Pogledi->Mesečni pogled"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if a at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6530,12 +6523,12 @@ msgid ""
 msgstr ""
 "Mesečni pogled: Dodana je bila možnost, ki omogoča uporabo barve praznika po "
 "meri kot barve ozadja datumskega polja, če na ta datum pade vsaj en praznik. "
-"Če želite omogočiti to delovanje, v zavihku Pogledi->Mesec označite možnost "
-"\"Uporabi barvo ozadja praznika, če na določen datum pade vsaj en praznik\"."
+"Če želite omogočiti to delovanje, označite možnost \"Uporabi barvo ozadja "
+"praznika, če na določen datum pade vsaj en praznik\" v zavihku Pogledi->Mesec"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
-msgstr ""
+msgstr "Pogled dnevnega reda: podčrtaj današnji datum v glavi stolpca"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6799,12 +6792,13 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "Popravljeno preklapljanje opomnikov iz menijev"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
+"Pogled dnevnega reda: izboljšana navpična poravnava časovnih oznak z mrežo"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

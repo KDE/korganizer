@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-03-26 09:31+0200\n"
+"PO-Revision-Date: 2026-04-13 22:23+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3880,11 +3880,10 @@ msgid "Holidays"
 msgstr "חגים"
 
 #: prefs/koprefsdialogtime.cpp:70
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
-msgstr "להשתמש באזור חגים:"
+msgstr "להשתמש באזורי חגים:"
 
 #: prefs/koprefsdialogtime.cpp:94
 #, kde-format
@@ -3899,19 +3898,16 @@ msgid "Select Holiday Regions"
 msgstr "בחירת אזורי חגים"
 
 #: prefs/koprefsdialogtime.cpp:121
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "להשתמש באזור חגים:"
+msgstr "להשתמש בקטגוריות חגים:"
 
 #: prefs/koprefsdialogtime.cpp:135
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Holiday Regions"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "בחירת אזורי חגים"
+msgstr "בחירת קטגוריות חגים"
 
 #: prefs/koprefsdialogtime.cpp:154
 #, kde-format
@@ -4878,25 +4874,22 @@ msgstr "הצגת יומנים בתצוגת החודש"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "הצגת &חגים"
+msgstr "הצגת חגים"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "יש לסמן את התיבה הזאת כדי להציג מטלות בתצוגת החודש."
+msgstr "יש לסמן את התיבה הזאת כדי להציג חגים בתצוגת החודש."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "הצגת מטלות בתצוגת החודש"
+msgstr "הצגת חגים בתצוגת חודש"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5327,10 +5320,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "צבע רקע לימים עסוקים"
+msgstr "להשתמש בצבעי המערכת לחלק מצבעי הרקע"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
@@ -6331,6 +6323,8 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
+"מעתה ניתן להסתיר חגים ששייכים לקטגוריות מסוימות, למשל להסתיר חגים דתיים. "
+"אפשר לגשת אל תיבת בחירת הקטגוריות בסעיף החגים תחת שעה ותאריך->לשונית אזורי"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""

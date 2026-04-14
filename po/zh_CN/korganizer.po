@@ -3724,12 +3724,10 @@ msgid "Holidays"
 msgstr "假日"
 
 #: prefs/koprefsdialogtime.cpp:70
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
-msgstr "使用假日区域："
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:94
 #, kde-format
@@ -3744,20 +3742,16 @@ msgid "Select Holiday Regions"
 msgstr "选择假日区域"
 
 #: prefs/koprefsdialogtime.cpp:121
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "使用假日区域："
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:135
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Holiday Regions"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "选择假日区域"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:154
 #, kde-format
@@ -4679,25 +4673,22 @@ msgstr "在月视图中显示日记"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "显示假日(&H)"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "选中此项会在月视图中显示待办事项。"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "在月视图中显示待办事项"
+msgstr ""
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5114,19 +5105,15 @@ msgstr "在此选择突出显示的颜色。此颜色用于在日程和日期导
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "忙碌日的背景色"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
-msgstr "使用系统配色方案，而不使用用户定义配色。启用后会忽略其他颜色设置"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -6538,6 +6525,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Use system color"
-#~ msgstr "使用系统配色方案"

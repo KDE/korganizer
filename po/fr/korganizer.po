@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-12 08:33+0200\n"
+"PO-Revision-Date: 2026-04-12 16:25+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -5150,27 +5150,24 @@ msgstr "Afficher les journaux dans la vue mensuelle"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Afficher les &vacances"
+msgstr "Afficher les jours fériés"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
 msgstr ""
-"Cochez cette case si vous souhaitez afficher les tâches dans la vue "
-"mensuelle."
+"Veuillez cocher cette case pour afficher les jours fériés dans la vue en "
+"mois."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Afficher les tâches dans la vue mensuelle"
+msgstr "Afficher les jours fériés dans la vue en mois"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5178,6 +5175,8 @@ msgstr "Afficher les tâches dans la vue mensuelle"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Utilisez la couleur d'arrière-plan pour les jours fériés lorsqu'au moins un "
+"jour férié se place sur une date"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -5186,6 +5185,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Utilisez la couleur personnalisée de jours fériés comme couleur d'arrière-"
+"plan de date si un jour férié se place à cette date"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5195,6 +5196,10 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Veuillez cocher cette case pour utiliser le jour férié personnalisé comme "
+"couleur d'arrière-plan de date lorsqu'au moins un jour férié se place à "
+"cette date. Veuillez configurer la couleur du jour férié dans "
+"« Configuration / Couleurs et polices »."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5633,21 +5638,18 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Couleur de l'arrière-plan pour les jours occupés"
+msgstr ""
+"Utilisez les couleurs du système pour certaines couleurs d'arrière-plan"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Utiliser les couleurs du système plutôt que les couleurs personnalisées. En "
-"activant cette option, tous les autres paramètres de couleur seront ignorés"
+"Utilisez les couleurs du système plutôt que des couleurs personnalisées pour "
+"certaines couleurs d'arrière-plan"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5657,6 +5659,10 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Utilisez les couleurs du système plutôt que les couleurs définies pour la "
+"« Couleur d'arrière-plan pour l'affichage de l'agenda », la « Couleur "
+"d'arrière-plan pour les jours travaillés » et la « Couleur des heures "
+"travaillées » (Et éventuellement d'autres)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6722,23 +6728,19 @@ msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Vue en moins : pour des raisons de cohérence, les jours fériés qui se "
+"placent sur un jour de travail ne sont plus masqués"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Vue d'agenda : affichage optionnel du dessin des lignes de grille "
-"horizontales plus en gras / plus épaisses toutes les deux heures.  Pour "
-"activer ce comportement, veuillez cocher l'option « Dessiner des lignes de "
-"grille horizontales plus en gras / plus épaisses toutes les deux heures » "
-"dans l'onglet « Affichage / Vue d'agenda »"
+"Vue en moins : une option a été ajouté afin d'autoriser le masquage des "
+"jours fériés. Pour activer ce comportement, veuillez cocher l'option "
+"« Afficher les jours fériés » dans l'onglet « Affichage /Onglet de vue par "
+"mois »"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 #, fuzzy
