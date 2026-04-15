@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-03-17 11:22+0100\n"
+"PO-Revision-Date: 2026-04-14 12:32+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3946,8 +3946,7 @@ msgid "Holidays"
 msgstr "Dies feriate"
 
 #: prefs/koprefsdialogtime.cpp:70
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Usa regiones de die feriate:"
@@ -3965,19 +3964,16 @@ msgid "Select Holiday Regions"
 msgstr "Selige regiones de die feriate"
 
 #: prefs/koprefsdialogtime.cpp:121
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "Usa regiones de die feriate:"
+msgstr "Usa categorias de die feriate:"
 
 #: prefs/koprefsdialogtime.cpp:135
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Categories"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "Seòoge categorias"
+msgstr "Selige categorias  de die feriate:"
 
 #: prefs/koprefsdialogtime.cpp:154
 #, kde-format
@@ -4993,25 +4989,22 @@ msgstr "Marca  jornales in le vista de mense"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Monstra dies &feriate"
+msgstr "Monstra dies feriate"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "Marca iste quadrato pro monstrar actiones de facer in vista de mense."
+msgstr "Marca iste quadrato pro monstrar dies feriate in vista de mense."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:241 settings/korganizer.kcfg:248
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Monstra cosas de facer in le vista de mense"
+msgstr "Monstra dies feriate in le vista de mense"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -5019,6 +5012,8 @@ msgstr "Monstra cosas de facer in le vista de mense"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Usa Color de fundo de die feriate quando al minus un die feriate cade sur un "
+"data"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -5027,6 +5022,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Usa le color de die feriate personalisate como le color de fundo del data si "
+"un die festive cade super un data."
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -5036,6 +5033,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Marca iste quadrato pro usar le die feriate personalisate como le color de "
+"fundo del data quando al minus un die feriate cade in un data. Configura le "
+"color del  die feriate in Preferentias->Colores e Fonts."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5473,21 +5473,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:522
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Color de fundo de dies occupate"
+msgstr "Usa colores de fundo de systema per alcun colores de fundo"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Usa color de systema in loco del color definite per le usator. Si habilitate "
-"il ignorara omne altere preferentias de color"
+"Usa color de systema in loco del colores personalisate per alcun colores de "
+"fundo "
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5497,6 +5493,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Usa colores del systema in loco de colores definite per le usator pro le  "
+"\"color de fundo del vista de agenda\", \"color de fundo del dies occupate\" "
+"e le \"color del horas de travalio\" (e possibilemente alteres)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6524,49 +6523,44 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
+"l es ora possibile celar dies feriate que pertine a categorias specific, per "
+"exemplo  pro celar dies feriate religiose. Vide le lista combinate "
+"Categorias in le section Dies feriate del scheda Tempore e Data -> Regional."
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Vista mensual: pro le causa de consistentia, le dies feriate que cade in  un "
+"die de labor non es plus celate."
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Vista de Agenda: designa optionalmente lineas de grillia horizontal plus "
-"grasse cataduo horas. Per habilitar iste comportamento, marca le option "
-"\"DesignaLineas gressa de grillia horizontal perhoras par\" in le scheda "
-"Vista->Vista de Agenda "
+"Vista mensual: Un option esseva addite pro permitter celar le dies feriate.  "
+"Pro activar iste comportamento, de-marca le option \"Monstrar dies feriate  "
+"in le vista de mense\" in le scheda Vistas->Vista mensual."
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
 "enable this behavior, check the \"Use the Holiday background color when at "
 "least on holiday lands on a date\" option in the Views->Month View tab"
 msgstr ""
-"Vista de Agenda: designa optionalmente lineas de grillia horizontal plus "
-"grasse cataduo horas. Per habilitar iste comportamento, marca le option "
-"\"DesignaLineas gressa de grillia horizontal perhoras par\" in le scheda "
-"Vista->Vista de Agenda "
+"Vista de mense: Un option esseva addite pro permitter le uso del color de "
+"die feriate personalisate como le color de fundo del quadrato de data si  al "
+"minus un die feriate cade sur ille data. Pro activar iste comportamento,  "
+"marca le option \"Usar le color de fundo de die feriate quando al minus un  "
+"die feriate cade sur un data\" in le scheda Vistas->Vista de mense."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
-msgstr ""
+msgstr "Vista de agenda: sublinea le data del capite del columna de hodie"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6842,12 +6836,14 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "Corrigite le commutation de mementos ab menus"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
+"Vista de agenda: meliorate alineamento vertical del etiquetta  de tempore "
+"con le grillia."
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

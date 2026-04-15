@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-13 22:23+0300\n"
+"PO-Revision-Date: 2026-04-14 21:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4896,7 +4896,7 @@ msgstr "הצגת חגים בתצוגת חודש"
 #, kde-format
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
-msgstr ""
+msgstr "להשתמש בצבע הרקע של החג כאשר לפחות חג אחד יוצא על תאריך"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
@@ -4905,6 +4905,7 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"להשתמש בצבע החג כברירת מחדל בתור צבע הרקע של התאריך אם חג יוצא על התאריך"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247
@@ -4914,6 +4915,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"יש לסמן את התיבה הזאת כדי להשתמש בחג שמותאם אישית בתור צבע הרקע של התאריך "
+"כאשר לפחות חג אחד יוצא על תאריך. אפשר להגדיר את צבע החג דרך הגדרות -> צבעים "
+"וגופנים."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5326,14 +5330,9 @@ msgstr "להשתמש בצבעי המערכת לחלק מצבעי הרקע"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:523
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
-msgstr ""
-"להשתמש בצבע המערכת במקום בצבע המוגדר. אם האפשרות פעילה להתעלם מכל הגדרות "
-"הצבע האחרות"
+msgstr "להשתמש בצבעי המערכת במקום בצבעים המוגדרים לחלק מצבעי הרקע"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:524
@@ -5343,6 +5342,8 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"להשתמש בצבעי המערכת במקום צבעים שהוגדרו על ידי המשתמש עבור „צבע רקע לתצוגת "
+"סדר יום”, „צבע רקע לימים עמוסים” ו„צבע שעות עבודה” (ואולי עוד כמה)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:534
@@ -6330,7 +6331,7 @@ msgstr ""
 msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
-msgstr ""
+msgstr "תצוגת חודש: לטובת האחידות, חגים שיוצאים על ימי עבודה לא מוסתרים יותר"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 #, fuzzy
@@ -6365,7 +6366,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
-msgstr ""
+msgstr "תצוגת סדר יום: לסמן בקו תחתון את תאריך כותרת העמודה של היום"
 
 #: whatsnew/whatsnewtranslations.cpp:40
 msgid ""
@@ -6601,12 +6602,12 @@ msgstr "עורך מופעים: התגיות מסודרות לפי האלפבית
 #: whatsnew/whatsnewtranslations.cpp:157
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "תוקנו הפעלה/כיבוי של תזכורות מתפריטים"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
+msgstr "תצוגת סדר יום: יישור אנכי של תווית זמין עם הרשת השתפר"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
