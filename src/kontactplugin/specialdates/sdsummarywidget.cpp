@@ -356,7 +356,9 @@ void SDSummaryWidget::createLabels()
     if (mShowHolidays) {
         if (initHolidays()) {
             for (dt = QDate::currentDate(); dt <= QDate::currentDate().addDays(mDaysAhead - 1); dt = dt.addDays(1)) {
+#if KHOLIDAYS_VERSION >= QT_VERSION_CHECK(6, 26, 0)
                 mHolidays->setCategories(CalendarSupport::KCalPrefs::instance()->holidayCategories());
+#endif
                 QList<Holiday> const holidays = mHolidays->rawHolidaysWithAstroSeasons(dt);
                 QList<Holiday>::ConstIterator it = holidays.constBegin();
                 for (; it != holidays.constEnd(); ++it) {
