@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 00:44+0000\n"
-"PO-Revision-Date: 2026-04-14 21:53+0300\n"
+"POT-Creation-Date: 2026-04-17 00:45+0000\n"
+"PO-Revision-Date: 2026-04-16 09:41+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2930,7 +2930,7 @@ msgstr "מחר"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:207
-#: kontactplugin/specialdates/sdsummarywidget.cpp:487
+#: kontactplugin/specialdates/sdsummarywidget.cpp:489
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -2966,7 +2966,7 @@ msgstr[2] "%1 דקות"
 msgstr[3] "%1 דקות"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:487
 #, kde-format
 msgid "now"
 msgstr "עכשיו"
@@ -3522,44 +3522,44 @@ msgstr "הצגת ימי &שנה"
 msgid "Upcoming Special Dates"
 msgstr "תאריכים מיוחדים בקרוב"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:452
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "היום"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:452
+#: kontactplugin/specialdates/sdsummarywidget.cpp:454
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "מחר"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:498
+#: kontactplugin/specialdates/sdsummarywidget.cpp:500
 #, kde-format
 msgid "Birthday"
 msgstr "יום הולדת"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:501
+#: kontactplugin/specialdates/sdsummarywidget.cpp:503
 #, kde-format
 msgid "Anniversary"
 msgstr "יום שנה"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:504
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgid "Holiday"
 msgstr "חג"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:509
 #, kde-format
 msgid "Change of Seasons"
 msgstr "החלפת עונות"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:512
 #, kde-format
 msgid "Special Occasion"
 msgstr "אירוע מיוחד"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:552
+#: kontactplugin/specialdates/sdsummarywidget.cpp:554
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
@@ -3568,7 +3568,7 @@ msgstr[1] "שנתיים"
 msgstr[2] "%1 שנים"
 msgstr[3] "%1 שנים"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:562
+#: kontactplugin/specialdates/sdsummarywidget.cpp:564
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3577,17 +3577,17 @@ msgstr[1] "אין תאריכים מיוחדים במהלך היומיים הקר
 msgstr[2] "אין תאריכים מיוחדים במהלך %1 הימים הקרובים"
 msgstr[3] "אין תאריכים מיוחדים במהלך %1 הימים הקרובים"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#: kontactplugin/specialdates/sdsummarywidget.cpp:658
 #, kde-format
 msgid "Send &Mail"
 msgstr "&שליחת דוא״ל"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:657
+#: kontactplugin/specialdates/sdsummarywidget.cpp:659
 #, kde-format
 msgid "View &Contact"
 msgstr "ה&צגת פרטי קשר"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:672
+#: kontactplugin/specialdates/sdsummarywidget.cpp:674
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "דוא״ל אל:„%1”"
@@ -3788,7 +3788,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "הגדרות דוא״ל"
 
-#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:237
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:242
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3861,67 +3861,67 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "לא ניתן להגדיר את התוסף הזה"
 
-#: prefs/koprefsdialogtime.cpp:46
+#: prefs/koprefsdialogtime.cpp:48
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "אזורי"
 
-#: prefs/koprefsdialogtime.cpp:50
+#: prefs/koprefsdialogtime.cpp:52
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "שעה ותאריך כלליים"
 
-#: prefs/koprefsdialogtime.cpp:59
+#: prefs/koprefsdialogtime.cpp:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "חגים"
 
-#: prefs/koprefsdialogtime.cpp:70
+#: prefs/koprefsdialogtime.cpp:72
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "להשתמש באזורי חגים:"
 
-#: prefs/koprefsdialogtime.cpp:94
+#: prefs/koprefsdialogtime.cpp:96
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:103
+#: prefs/koprefsdialogtime.cpp:105
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "בחירת אזורי חגים"
 
-#: prefs/koprefsdialogtime.cpp:121
+#: prefs/koprefsdialogtime.cpp:123
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "להשתמש בקטגוריות חגים:"
 
-#: prefs/koprefsdialogtime.cpp:135
+#: prefs/koprefsdialogtime.cpp:137
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "בחירת קטגוריות חגים"
 
-#: prefs/koprefsdialogtime.cpp:154
+#: prefs/koprefsdialogtime.cpp:159
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "תזמון שבועי"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "לכלול את %1 כחלק מהלו״ז השבועי שלך"
 
-#: prefs/koprefsdialogtime.cpp:171
+#: prefs/koprefsdialogtime.cpp:176
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3936,55 +3936,55 @@ msgstr ""
 "התיבה הזאת אם %1 נכלל כחלק מהלו״ז השבועי הקבוע שלך (אפילו ללא עבודה). בדרך "
 "כלל, ימי סוף השבוע לא אמורים להיות מסומנים."
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "יום שני"
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "יום שלישי"
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "יום רביעי"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "יום חמישי"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "יום שישי"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "שבת"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:192
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "יום ראשון"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "להדגיש חגים בשונה מהלו״ז הקבוע שלך"
 
-#: prefs/koprefsdialogtime.cpp:212
+#: prefs/koprefsdialogtime.cpp:217
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3993,43 +3993,43 @@ msgid ""
 msgstr ""
 "יש לסמן את התיבה הזאת כדי להדגיש חגים בשונה מימים שנכללים בלו״ז הקבוע שלך."
 
-#: prefs/koprefsdialogtime.cpp:219
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "ערכי ברירת מחדל"
 
-#: prefs/koprefsdialogtime.cpp:222
+#: prefs/koprefsdialogtime.cpp:227
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "פגישות"
 
-#: prefs/koprefsdialogtime.cpp:242
+#: prefs/koprefsdialogtime.cpp:247
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "זמן ברירת מחדל לתזכורת:"
 
-#: prefs/koprefsdialogtime.cpp:255
+#: prefs/koprefsdialogtime.cpp:260
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "דקה/דקות"
 
-#: prefs/koprefsdialogtime.cpp:256
+#: prefs/koprefsdialogtime.cpp:261
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "שעה/שעות"
 
-#: prefs/koprefsdialogtime.cpp:257
+#: prefs/koprefsdialogtime.cpp:262
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "יום/ימים"
 
-#: prefs/koprefsdialogtime.cpp:267
+#: prefs/koprefsdialogtime.cpp:272
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
@@ -6334,35 +6334,25 @@ msgid ""
 msgstr "תצוגת חודש: לטובת האחידות, חגים שיוצאים על ימי עבודה לא מוסתרים יותר"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"תצוגת סדר יום: אפשר לצייר קווי רשת אופקיים בולטים/עבים יותר כל שעתיים. כדי "
-"לאפשר את ההתנהגות הזאת, יש לסמן את האפשרות „לצייר קווי רשת מודגשים לשעות "
-"זוגיות” בלשונית תצוגה->סדר יום"
+"תצוגת חודש: נוספה אפשרות לאפשר הסתרת חגים. כדי לאפשר את ההתנהגות הזאת, יש "
+"לבטל את הסימון מהאפשרות „הצגת חגים בתצוגת חודש” בלשונית תצוגות->תצוגת חודש"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
 "enable this behavior, check the \"Use the Holiday background color when at "
 "least on holiday lands on a date\" option in the Views->Month View tab"
 msgstr ""
-"תצוגת סדר יום: אפשר לצייר קווי רשת אופקיים בולטים/עבים יותר כל שעתיים. כדי "
-"לאפשר את ההתנהגות הזאת, יש לסמן את האפשרות „לצייר קווי רשת מודגשים לשעות "
-"זוגיות” בלשונית תצוגה->סדר יום"
+"תצוגת חודש: נוספה אפשרות לאפשר שימוש בצבע החג המותאם אישית בתור צבע הרקע של "
+"תיבת התאריך אם לפחות חג אחד יוצר בתאריך הזה. כדי להפעיל את ההתנהגות הזאת, יש "
+"לסמן את האפשרות „להשתמש בצבע הרקע של החג כאשר לפחות חג אחד יוצא על תאריך” "
+"תחת הלשונית תצוגות->תצוגת חודש"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"

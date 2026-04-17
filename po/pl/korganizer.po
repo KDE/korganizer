@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1734246 $
+# Version: $Revision: 1734566 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 00:44+0000\n"
+"POT-Creation-Date: 2026-04-17 00:45+0000\n"
 "PO-Revision-Date: 2026-03-14 07:53+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -2984,7 +2984,7 @@ msgstr "Jutro"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:207
-#: kontactplugin/specialdates/sdsummarywidget.cpp:487
+#: kontactplugin/specialdates/sdsummarywidget.cpp:489
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -3017,7 +3017,7 @@ msgstr[1] "%1 minuty"
 msgstr[2] "%1 minut"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:487
 #, kde-format
 msgid "now"
 msgstr "teraz"
@@ -3582,44 +3582,44 @@ msgstr "Pokaż &rocznice"
 msgid "Upcoming Special Dates"
 msgstr "Nadchodzące wyjątkowe daty"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:452
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "Dzisiaj"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:452
+#: kontactplugin/specialdates/sdsummarywidget.cpp:454
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "Jutro"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:498
+#: kontactplugin/specialdates/sdsummarywidget.cpp:500
 #, kde-format
 msgid "Birthday"
 msgstr "Urodziny"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:501
+#: kontactplugin/specialdates/sdsummarywidget.cpp:503
 #, kde-format
 msgid "Anniversary"
 msgstr "Rocznica"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:504
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgid "Holiday"
 msgstr "Dni wolne"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:509
 #, kde-format
 msgid "Change of Seasons"
 msgstr "Zmian pór roku"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:512
 #, kde-format
 msgid "Special Occasion"
 msgstr "Specjalna okazja"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:552
+#: kontactplugin/specialdates/sdsummarywidget.cpp:554
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
@@ -3627,7 +3627,7 @@ msgstr[0] "jeden rok"
 msgstr[1] "%1 lata"
 msgstr[2] "%1 lat"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:562
+#: kontactplugin/specialdates/sdsummarywidget.cpp:564
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3635,17 +3635,17 @@ msgstr[0] "Brak wyjątkowych dat na jutro"
 msgstr[1] "Brak wyjątkowych dat w ciągu najbliższych %1 dni"
 msgstr[2] "Brak wyjątkowych dat w ciągu najbliższych %1 dni"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#: kontactplugin/specialdates/sdsummarywidget.cpp:658
 #, kde-format
 msgid "Send &Mail"
 msgstr "Wyślij e-&mail"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:657
+#: kontactplugin/specialdates/sdsummarywidget.cpp:659
 #, kde-format
 msgid "View &Contact"
 msgstr "Obejrzyj &kontakt"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:672
+#: kontactplugin/specialdates/sdsummarywidget.cpp:674
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "E-mail do: \"%1\""
@@ -3848,7 +3848,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Ustawienia poczty"
 
-#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:237
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:242
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3921,51 +3921,51 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Nie można ustawić tej wtyczki"
 
-#: prefs/koprefsdialogtime.cpp:46
+#: prefs/koprefsdialogtime.cpp:48
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Regionalne"
 
-#: prefs/koprefsdialogtime.cpp:50
+#: prefs/koprefsdialogtime.cpp:52
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Ogólny czas i data"
 
-#: prefs/koprefsdialogtime.cpp:59
+#: prefs/koprefsdialogtime.cpp:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Święta"
 
-#: prefs/koprefsdialogtime.cpp:70
+#: prefs/koprefsdialogtime.cpp:72
 #, fuzzy, kde-format
 #| msgid "Use holiday regions:"
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Użyj regionu świąt:"
 
-#: prefs/koprefsdialogtime.cpp:94
+#: prefs/koprefsdialogtime.cpp:96
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:103
+#: prefs/koprefsdialogtime.cpp:105
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Wybierz regiony świąt"
 
-#: prefs/koprefsdialogtime.cpp:121
+#: prefs/koprefsdialogtime.cpp:123
 #, fuzzy, kde-format
 #| msgid "Use holiday regions:"
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "Użyj regionu świąt:"
 
-#: prefs/koprefsdialogtime.cpp:135
+#: prefs/koprefsdialogtime.cpp:137
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "Select Categories"
@@ -3973,19 +3973,19 @@ msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "Wybierz kategorie"
 
-#: prefs/koprefsdialogtime.cpp:154
+#: prefs/koprefsdialogtime.cpp:159
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "Rozkład tygodniowy"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "Uwzględnij %1 jako część swojego planu tygodniowego"
 
-#: prefs/koprefsdialogtime.cpp:171
+#: prefs/koprefsdialogtime.cpp:176
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4001,55 +4001,55 @@ msgstr ""
 "twojego zwyczajowego planu tygodniowego (nawet gdy nie pracujesz). Weekendy "
 "są zazwyczaj odznaczone."
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Poniedziałku"
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Wtorku"
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Środy"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Czwartku"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Piątku"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Soboty"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:192
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Niedzieli"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "Podświetl święta odmiennie od twojego zwyczajowego planu"
 
-#: prefs/koprefsdialogtime.cpp:212
+#: prefs/koprefsdialogtime.cpp:217
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4059,43 +4059,43 @@ msgstr ""
 "Zaznacz to pole, aby podświetlić święta odmiennie od twojego zwyczajowego "
 "planu."
 
-#: prefs/koprefsdialogtime.cpp:219
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Wartości domyślne"
 
-#: prefs/koprefsdialogtime.cpp:222
+#: prefs/koprefsdialogtime.cpp:227
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Spotkania"
 
-#: prefs/koprefsdialogtime.cpp:242
+#: prefs/koprefsdialogtime.cpp:247
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Domyślny czas przypomnienia:"
 
-#: prefs/koprefsdialogtime.cpp:255
+#: prefs/koprefsdialogtime.cpp:260
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minut"
 
-#: prefs/koprefsdialogtime.cpp:256
+#: prefs/koprefsdialogtime.cpp:261
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "godzin"
 
-#: prefs/koprefsdialogtime.cpp:257
+#: prefs/koprefsdialogtime.cpp:262
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dni"
 
-#: prefs/koprefsdialogtime.cpp:267
+#: prefs/koprefsdialogtime.cpp:272
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"

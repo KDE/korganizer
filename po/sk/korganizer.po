@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 00:44+0000\n"
+"POT-Creation-Date: 2026-04-17 00:45+0000\n"
 "PO-Revision-Date: 2026-04-13 12:00+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
@@ -2958,7 +2958,7 @@ msgstr "Zajtra"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:207
-#: kontactplugin/specialdates/sdsummarywidget.cpp:487
+#: kontactplugin/specialdates/sdsummarywidget.cpp:489
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -2991,7 +2991,7 @@ msgstr[1] "%1 min"
 msgstr[2] "%1 min"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:487
 #, kde-format
 msgid "now"
 msgstr "teraz"
@@ -3556,44 +3556,44 @@ msgstr "Ukázať &výročia"
 msgid "Upcoming Special Dates"
 msgstr "Nadchádzajúce mimoriadne termíny"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:452
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "Dnes"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:452
+#: kontactplugin/specialdates/sdsummarywidget.cpp:454
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "Zajtra"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:498
+#: kontactplugin/specialdates/sdsummarywidget.cpp:500
 #, kde-format
 msgid "Birthday"
 msgstr "Narodeniny"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:501
+#: kontactplugin/specialdates/sdsummarywidget.cpp:503
 #, kde-format
 msgid "Anniversary"
 msgstr "Výročie"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:504
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgid "Holiday"
 msgstr "Sviatok"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:509
 #, kde-format
 msgid "Change of Seasons"
 msgstr "Zmena ročného obdobia"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:512
 #, kde-format
 msgid "Special Occasion"
 msgstr "Špeciálna udalosť"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:552
+#: kontactplugin/specialdates/sdsummarywidget.cpp:554
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
@@ -3601,7 +3601,7 @@ msgstr[0] "jeden rok"
 msgstr[1] "%1 roky"
 msgstr[2] "%1 rokov"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:562
+#: kontactplugin/specialdates/sdsummarywidget.cpp:564
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3609,17 +3609,17 @@ msgstr[0] "Najbližší 1 deň nie sú žiadne špeciálne dátumy"
 msgstr[1] "Najbližšie %1 dni nie sú žiadne špeciálne dátumy"
 msgstr[2] "Najbližších %1 dní nie sú žiadne špeciálne dátumy"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#: kontactplugin/specialdates/sdsummarywidget.cpp:658
 #, kde-format
 msgid "Send &Mail"
 msgstr "Poslať &poštu"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:657
+#: kontactplugin/specialdates/sdsummarywidget.cpp:659
 #, kde-format
 msgid "View &Contact"
 msgstr "Zobraziť &kontakt"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:672
+#: kontactplugin/specialdates/sdsummarywidget.cpp:674
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "Poslať poštu na: \"%1\""
@@ -3825,7 +3825,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Nastavenia emailu"
 
-#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:237
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:242
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3898,67 +3898,67 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Nemôžem nastaviť tento plugin"
 
-#: prefs/koprefsdialogtime.cpp:46
+#: prefs/koprefsdialogtime.cpp:48
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Miestne"
 
-#: prefs/koprefsdialogtime.cpp:50
+#: prefs/koprefsdialogtime.cpp:52
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Všeobecný čas a dátum"
 
-#: prefs/koprefsdialogtime.cpp:59
+#: prefs/koprefsdialogtime.cpp:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Prázdniny"
 
-#: prefs/koprefsdialogtime.cpp:70
+#: prefs/koprefsdialogtime.cpp:72
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Použiť sviatky z regiónov:"
 
-#: prefs/koprefsdialogtime.cpp:94
+#: prefs/koprefsdialogtime.cpp:96
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:103
+#: prefs/koprefsdialogtime.cpp:105
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Vybrať regionálne sviatky"
 
-#: prefs/koprefsdialogtime.cpp:121
+#: prefs/koprefsdialogtime.cpp:123
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "Použiť kategórie sviatkov:"
 
-#: prefs/koprefsdialogtime.cpp:135
+#: prefs/koprefsdialogtime.cpp:137
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "Vybrať kategórie sviatkov"
 
-#: prefs/koprefsdialogtime.cpp:154
+#: prefs/koprefsdialogtime.cpp:159
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "Plánovať"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "Include %1 as súčasť your weekly schedule"
 
-#: prefs/koprefsdialogtime.cpp:171
+#: prefs/koprefsdialogtime.cpp:176
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3974,55 +3974,55 @@ msgstr ""
 "súčasť your regular weekly schedule (even ak don't work). Typically, weekend "
 "days should be unchecked."
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Pondelok"
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Utorok"
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Streda"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Štvrtok"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Piatok"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Sobota"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:192
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Nedeľa"
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "Highlight holidays differently from your regular schedule"
 
-#: prefs/koprefsdialogtime.cpp:212
+#: prefs/koprefsdialogtime.cpp:217
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4032,43 +4032,43 @@ msgstr ""
 "Zaškrtnite toto políčko to highlight holidays differently than days included "
 "with your regular schedule."
 
-#: prefs/koprefsdialogtime.cpp:219
+#: prefs/koprefsdialogtime.cpp:224
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Predvolené hodnoty"
 
-#: prefs/koprefsdialogtime.cpp:222
+#: prefs/koprefsdialogtime.cpp:227
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Schôdzky"
 
-#: prefs/koprefsdialogtime.cpp:242
+#: prefs/koprefsdialogtime.cpp:247
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Predvolený čas pripomienky:"
 
-#: prefs/koprefsdialogtime.cpp:255
+#: prefs/koprefsdialogtime.cpp:260
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minúta(y)"
 
-#: prefs/koprefsdialogtime.cpp:256
+#: prefs/koprefsdialogtime.cpp:261
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "hodina(y)"
 
-#: prefs/koprefsdialogtime.cpp:257
+#: prefs/koprefsdialogtime.cpp:262
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dní"
 
-#: prefs/koprefsdialogtime.cpp:267
+#: prefs/koprefsdialogtime.cpp:272
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"

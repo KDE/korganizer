@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 00:44+0000\n"
+"POT-Creation-Date: 2026-04-17 00:45+0000\n"
 "PO-Revision-Date: 2009-07-28 20:21+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -3039,7 +3039,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:207
-#: kontactplugin/specialdates/sdsummarywidget.cpp:487
+#: kontactplugin/specialdates/sdsummarywidget.cpp:489
 #, fuzzy, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -3069,7 +3069,7 @@ msgstr[0] "Ein mínúta"
 msgstr[1] "%1 mínútur"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:485
+#: kontactplugin/specialdates/sdsummarywidget.cpp:487
 #, kde-format
 msgid "now"
 msgstr ""
@@ -3628,47 +3628,47 @@ msgstr ""
 msgid "Upcoming Special Dates"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:450
+#: kontactplugin/specialdates/sdsummarywidget.cpp:452
 #, fuzzy, kde-format
 #| msgid "day"
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "daginn"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:452
+#: kontactplugin/specialdates/sdsummarywidget.cpp:454
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:498
+#: kontactplugin/specialdates/sdsummarywidget.cpp:500
 #, fuzzy, kde-format
 #| msgid "Birthday"
 msgid "Birthday"
 msgstr "Afmælisdagur"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:501
+#: kontactplugin/specialdates/sdsummarywidget.cpp:503
 #, kde-format
 msgid "Anniversary"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:504
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgid "Holiday"
 msgstr "Hátíðardagur"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:509
 #, kde-format
 msgid "Change of Seasons"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:512
 #, fuzzy, kde-format
 #| msgid "Special Occasion"
 msgid "Special Occasion"
 msgstr "Sérstakt tilefni"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:552
+#: kontactplugin/specialdates/sdsummarywidget.cpp:554
 #, fuzzy, kde-format
 #| msgctxt "part after NNN of 'Recur on day #NNN of the year', short version"
 #| msgid " of the year"
@@ -3677,25 +3677,25 @@ msgid_plural "%1 years"
 msgstr[0] " degi ársins"
 msgstr[1] " degi ársins"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:562
+#: kontactplugin/specialdates/sdsummarywidget.cpp:564
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:656
+#: kontactplugin/specialdates/sdsummarywidget.cpp:658
 #, fuzzy, kde-format
 #| msgid "Send Email"
 msgid "Send &Mail"
 msgstr "Senda tölvupóst"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:657
+#: kontactplugin/specialdates/sdsummarywidget.cpp:659
 #, fuzzy, kde-format
 msgid "View &Contact"
 msgstr "Leita í"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:672
+#: kontactplugin/specialdates/sdsummarywidget.cpp:674
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr ""
@@ -3895,7 +3895,7 @@ msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Fundur"
 
-#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:237
+#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:242
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3977,34 +3977,34 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Get ekki stillt þetta íforrit"
 
-#: prefs/koprefsdialogtime.cpp:46
+#: prefs/koprefsdialogtime.cpp:48
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Persónulegt"
 
-#: prefs/koprefsdialogtime.cpp:50
+#: prefs/koprefsdialogtime.cpp:52
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:59
+#: prefs/koprefsdialogtime.cpp:61
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Hátíðardagur"
 
-#: prefs/koprefsdialogtime.cpp:70
+#: prefs/koprefsdialogtime.cpp:72
 #, fuzzy, kde-format
 #| msgid "Use holiday region:"
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Nota hátíðardagasvæði:"
 
-#: prefs/koprefsdialogtime.cpp:94
+#: prefs/koprefsdialogtime.cpp:96
 #, fuzzy, kde-format
 #| msgctxt "short_weekday date (e.g. Mon 13)"
 #| msgid "%1 %2"
@@ -4012,41 +4012,41 @@ msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 %2."
 
-#: prefs/koprefsdialogtime.cpp:103
+#: prefs/koprefsdialogtime.cpp:105
 #, fuzzy, kde-format
 #| msgid "Use holiday region:"
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Nota hátíðardagasvæði:"
 
-#: prefs/koprefsdialogtime.cpp:121
+#: prefs/koprefsdialogtime.cpp:123
 #, fuzzy, kde-format
 #| msgid "Use holiday region:"
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "Nota hátíðardagasvæði:"
 
-#: prefs/koprefsdialogtime.cpp:135
+#: prefs/koprefsdialogtime.cpp:137
 #, fuzzy, kde-format
 #| msgid "Select Cate&gories..."
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "Veldu &flokka..."
 
-#: prefs/koprefsdialogtime.cpp:154
+#: prefs/koprefsdialogtime.cpp:159
 #, fuzzy, kde-format
 #| msgid "Schedule"
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "Vinnuáætlun"
 
-#: prefs/koprefsdialogtime.cpp:169
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:171
+#: prefs/koprefsdialogtime.cpp:176
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4057,56 +4057,56 @@ msgid ""
 "unchecked."
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:185
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Hátíðardagur"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:192
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:210
+#: prefs/koprefsdialogtime.cpp:215
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:212
+#: prefs/koprefsdialogtime.cpp:217
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4114,49 +4114,49 @@ msgid ""
 "your regular schedule."
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:219
+#: prefs/koprefsdialogtime.cpp:224
 #, fuzzy, kde-format
 #| msgid "Default Calendar"
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Sjálfgefið dagatal"
 
-#: prefs/koprefsdialogtime.cpp:222
+#: prefs/koprefsdialogtime.cpp:227
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Tími"
 
-#: prefs/koprefsdialogtime.cpp:242
+#: prefs/koprefsdialogtime.cpp:247
 #, fuzzy, kde-format
 #| msgid "Default reminder time:"
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Sjálfgefinn áminningartími:"
 
-#: prefs/koprefsdialogtime.cpp:255
+#: prefs/koprefsdialogtime.cpp:260
 #, fuzzy, kde-format
 #| msgid "minute(s)"
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "mínúta(ur)"
 
-#: prefs/koprefsdialogtime.cpp:256
+#: prefs/koprefsdialogtime.cpp:261
 #, fuzzy, kde-format
 #| msgid "hour(s)"
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "klukkustund(ir)"
 
-#: prefs/koprefsdialogtime.cpp:257
+#: prefs/koprefsdialogtime.cpp:262
 #, fuzzy, kde-format
 #| msgid "day(s)"
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dag(a) fresti"
 
-#: prefs/koprefsdialogtime.cpp:267
+#: prefs/koprefsdialogtime.cpp:272
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
