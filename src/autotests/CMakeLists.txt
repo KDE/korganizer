@@ -49,7 +49,7 @@ set(koeventpopupmenutest_LIBS
     Qt::Test
     Qt::Gui
     Qt::Core
-    KPim6::Mime
+    KF6::Mime
     KPim6::AkonadiWidgets
     KPim6::AkonadiCore
     KPim6::AkonadiCalendar

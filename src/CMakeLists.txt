@@ -478,7 +478,7 @@ target_link_libraries(
         KF6::CalendarCore
         KPim6::CalendarUtils
         KF6::Holidays
-        KPim6::Mime
+        KF6::Mime
         KPim6::IdentityManagementCore
         KF6::KCMUtils
         KPim6::LdapWidgets
