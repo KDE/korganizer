@@ -100,6 +100,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableAgendaItemIconsItem())->checkBox());
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableAgendaBoldEvenHoursItem())->checkBox());
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableAgendaItemDescItem())->checkBox());
+    adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableAgendaItemLocationItem())->checkBox());
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showTodosAgendaViewItem())->checkBox());
     Korganizer::KPrefsWidBool *marcusBainsEnabled = addWidBool(KOPrefs::instance()->marcusBainsEnabledItem());
     adisplayLayout->addWidget(marcusBainsEnabled->checkBox());

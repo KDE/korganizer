@@ -28,7 +28,8 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
                "that date. To enable this behavior, check the \"Use the Holiday background color when at least on holiday lands on a date\" option "
                "in the Views->Month View tab"),
         kli18n("Agenda view: underline today's column header date"),
-
+        kli18n("Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence "
+               "locations in agenda view items\" option in the View->Agenda View tab"),
     };
 
     return info;
