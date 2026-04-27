@@ -1075,18 +1075,24 @@ void CalendarView::newTodo(const QString &summary,
                            const QStringList &attachmentMimetypes,
                            bool inlineAttachment)
 {
-    Akonadi::Collection const defaultCol = defaultCollection(KCalendarCore::Todo::todoMimeType());
+    /* If the summary is empty then use the newTodo() method that expects all empty properties.
+     * ie. create a new to-do from scratch. */
+    if (summary.isEmpty()) {
+        newTodo();
+    } else {
+        Akonadi::Collection const defaultCol = defaultCollection(KCalendarCore::Todo::todoMimeType());
 
-    IncidenceEditorNG::IncidenceDialogFactory::createTodoEditor(summary,
-                                                                description,
-                                                                attachments,
-                                                                attendees,
-                                                                attachmentMimetypes,
-                                                                QStringList() /* attachment labels */,
-                                                                inlineAttachment,
-                                                                defaultCol,
-                                                                true /* cleanupAttachmentTempFiles */,
-                                                                this /* parent */);
+        IncidenceEditorNG::IncidenceDialogFactory::createTodoEditor(summary,
+                                                                    description,
+                                                                    attachments,
+                                                                    attendees,
+                                                                    attachmentMimetypes,
+                                                                    QStringList() /* attachment labels */,
+                                                                    inlineAttachment,
+                                                                    defaultCol,
+                                                                    true /* cleanupAttachmentTempFiles */,
+                                                                    this /* parent */);
+    }
 }
 
 void CalendarView::newTodo()
