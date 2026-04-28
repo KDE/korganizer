@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-13 02:39+0000\n"
+"POT-Creation-Date: 2026-04-28 02:50+0000\n"
 "PO-Revision-Date: 2026-01-27 11:31+0100\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1826,67 +1826,67 @@ msgstr ""
 "Impossibile incollare: non è stato possibile determinare una data di "
 "destinazione valida."
 
-#: calendarview.cpp:1305
+#: calendarview.cpp:1311
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Rendi indipendenti le cose da fare secondarie"
 
-#: calendarview.cpp:1362
+#: calendarview.cpp:1368
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Attiva/disattiva promemoria"
 
-#: calendarview.cpp:1366
+#: calendarview.cpp:1372
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "Il promemoria <message>%1</message> è abilitato"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1374
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "Il promemoria <message>%1</message> è disabilitato"
 
-#: calendarview.cpp:1399 calendarview.cpp:1453
+#: calendarview.cpp:1405 calendarview.cpp:1459
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Mostra/nascondi cose da fare completate"
 
-#: calendarview.cpp:1402
+#: calendarview.cpp:1408
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Cosa da fare <message>%1</message> completata al %2 percento"
 
-#: calendarview.cpp:1505
+#: calendarview.cpp:1511
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "«%1» è stato copiato con successo in %2."
 
-#: calendarview.cpp:1506
+#: calendarview.cpp:1512
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Copia riuscita"
 
-#: calendarview.cpp:1510
+#: calendarview.cpp:1516
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Impossibile copiare la voce «%1» in %2."
 
-#: calendarview.cpp:1511 calendarview.cpp:2487
+#: calendarview.cpp:1517 calendarview.cpp:2493
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Copia non riuscita"
 
-#: calendarview.cpp:1570
+#: calendarview.cpp:1576
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1896,51 +1896,51 @@ msgstr ""
 "Impossibile rimuovere la voce «%1» dal calendario originale. Tuttavia, una "
 "sua copia è stata inserita in %2"
 
-#: calendarview.cpp:1574 calendarview.cpp:1590 calendarview.cpp:2522
+#: calendarview.cpp:1580 calendarview.cpp:1596 calendarview.cpp:2528
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Spostamento non riuscito"
 
-#: calendarview.cpp:1579
+#: calendarview.cpp:1585
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "«%1» è stato spostato con successo da %2 a %3."
 
-#: calendarview.cpp:1580
+#: calendarview.cpp:1586
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Spostamento riuscito"
 
-#: calendarview.cpp:1586
+#: calendarview.cpp:1592
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "Impossibile aggiungere la voce «%1» in %2. Questa voce non è stata spostata."
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1631
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Vuoi dissociare l'occorrenza in %1 dalla ricorrenza?"
 
-#: calendarview.cpp:1629 calendarview.cpp:1642 calendarview.cpp:2303
-#: calendarview.cpp:2362 calendarview.cpp:2392
+#: calendarview.cpp:1635 calendarview.cpp:1648 calendarview.cpp:2309
+#: calendarview.cpp:2368 calendarview.cpp:2398
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Conferma - KOrganizer"
 
-#: calendarview.cpp:1630
+#: calendarview.cpp:1636
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Dissocia"
 
-#: calendarview.cpp:1637
+#: calendarview.cpp:1643
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1950,79 +1950,79 @@ msgstr ""
 "Vuoi dissociare solo l'occorrenza in %1 dalla ricorrenza o anche quelle "
 "future?"
 
-#: calendarview.cpp:1643
+#: calendarview.cpp:1649
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Dissocia s&olo questo evento"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1650
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Dissocia &anche gli eventi futuri"
 
-#: calendarview.cpp:1662
+#: calendarview.cpp:1668
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Dissocia le ricorrenze future"
 
-#: calendarview.cpp:1664
+#: calendarview.cpp:1670
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Dissocia ricorrenza"
 
-#: calendarview.cpp:1671
+#: calendarview.cpp:1677
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Dissociazione delle ricorrenze future non riuscita."
 
-#: calendarview.cpp:1671 calendarview.cpp:1673
+#: calendarview.cpp:1677 calendarview.cpp:1679
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Dissociazione non riuscita"
 
-#: calendarview.cpp:1673
+#: calendarview.cpp:1679
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Dissociazione della ricorrenza non riuscita."
 
-#: calendarview.cpp:1817
+#: calendarview.cpp:1823
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1836
+#: calendarview.cpp:1842
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Esporta calendario su file"
 
-#: calendarview.cpp:1849
+#: calendarview.cpp:1855
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Vuoi sovrascrivere il file <filename>%1</filename>?"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1856
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Esporta calendario"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1870
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Motivo sconosciuto"
 
-#: calendarview.cpp:1866
+#: calendarview.cpp:1872
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2031,13 +2031,13 @@ msgstr ""
 "Impossibile scrivere il file iCalendar <filename>%1</filename>: <message>%2</"
 "message>"
 
-#: calendarview.cpp:1975 calendarview.cpp:2020
+#: calendarview.cpp:1981 calendarview.cpp:2026
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Nessun filtro"
 
-#: calendarview.cpp:2298
+#: calendarview.cpp:2304
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2049,19 +2049,19 @@ msgstr ""
 "solo questa voce e rendere indipendenti tutte le cose da fare secondarie "
 "oppure vuoi eliminare anche tutte le cose da fare secondarie?"
 
-#: calendarview.cpp:2304
+#: calendarview.cpp:2310
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Elimina solo questa"
 
-#: calendarview.cpp:2305 calendarview.cpp:2363
+#: calendarview.cpp:2311 calendarview.cpp:2369
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Elimina tutti"
 
-#: calendarview.cpp:2337
+#: calendarview.cpp:2343
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2072,13 +2072,13 @@ msgstr ""
 "eliminata; probabilmente appartiene ad un calendario accessibile in sola "
 "lettura."
 
-#: calendarview.cpp:2340
+#: calendarview.cpp:2346
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Rimozione impossibile"
 
-#: calendarview.cpp:2359
+#: calendarview.cpp:2365
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2088,13 +2088,13 @@ msgstr ""
 "La voce di calendario <resource>%1</resource> ricorre in diverse date. Sei "
 "sicuro di volerla eliminare con tutte le sue ricorrenze?"
 
-#: calendarview.cpp:2370
+#: calendarview.cpp:2376
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Elimina anche quelle &future"
 
-#: calendarview.cpp:2374
+#: calendarview.cpp:2380
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2106,7 +2106,7 @@ msgstr ""
 "eliminare solamente quella attuale del %2, anche quelle future o tutte le "
 "sue ricorrenze?"
 
-#: calendarview.cpp:2381
+#: calendarview.cpp:2387
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2116,25 +2116,25 @@ msgstr ""
 "La voce di calendario <resource>%1</resource> ricorre in diverse date. Vuoi "
 "eliminare solamente quella attuale del %2 o tutte le sue ricorrenze?"
 
-#: calendarview.cpp:2393
+#: calendarview.cpp:2399
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Elimina att&uale"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2401
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Elimina &tutte"
 
-#: calendarview.cpp:2426 calendarview.cpp:2433
+#: calendarview.cpp:2432 calendarview.cpp:2439
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Elimina «%1»"
 
-#: calendarview.cpp:2465
+#: calendarview.cpp:2471
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2143,49 +2143,49 @@ msgstr ""
 "Tutti i calendari sono deselezionati nel gestore dei calendari. Nessuna cosa "
 "da fare è stata eliminata."
 
-#: calendarview.cpp:2470 calendarview.cpp:2748
+#: calendarview.cpp:2476 calendarview.cpp:2754
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Non ci sono cose da fare completate da eliminare."
 
-#: calendarview.cpp:2475
+#: calendarview.cpp:2481
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Elimino tutte le cose da fare completate dai calendari selezionati?"
 
-#: calendarview.cpp:2476
+#: calendarview.cpp:2482
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Elimina cose da fare"
 
-#: calendarview.cpp:2477
+#: calendarview.cpp:2483
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Elimina"
 
-#: calendarview.cpp:2487
+#: calendarview.cpp:2493
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Impossibile copiare la voce in <resource>%1</resource>."
 
-#: calendarview.cpp:2522
+#: calendarview.cpp:2528
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Impossibile spostare la voce in <resource>%1</resource>."
 
-#: calendarview.cpp:2740
+#: calendarview.cpp:2746
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Sono state rimosse 0 cose da fare completate<nl/>"
 
-#: calendarview.cpp:2742 calendarview.cpp:2753
+#: calendarview.cpp:2748 calendarview.cpp:2759
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2198,7 +2198,7 @@ msgstr[1] ""
 "%1 cose da fare sono state ignorate perché hanno sotto-cose da fare "
 "incomplete o in sola lettura."
 
-#: calendarview.cpp:2746 calendarview.cpp:2751
+#: calendarview.cpp:2752 calendarview.cpp:2757
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2206,7 +2206,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "È state eliminata una cosa da fare completata."
 msgstr[1] "Sono state eliminate %1 cose da fare completate."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2764
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2214,7 +2214,7 @@ msgstr ""
 "Si è verificato un errore durante l'eliminazione delle cose da fare "
 "completate: <message>%1</message>"
 
-#: calendarview.cpp:2812
+#: calendarview.cpp:2818
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2226,7 +2226,7 @@ msgstr ""
 "<para>Per vedere l'occorrenza appena creata, abilitarne il calendario nel "
 "gestore del calendario.</para>"
 
-#: calendarview.cpp:2816
+#: calendarview.cpp:2822
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
