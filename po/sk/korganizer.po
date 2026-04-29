@@ -420,9 +420,9 @@ msgid ""
 "dos that you can archive into an iCalendar file.  They will be removed from "
 "your existing calendar collection."
 msgstr ""
-"This menu entry opens a dialog that allows you to select old events and to-"
-"dos that môžete archive into an iCalendar file.  They will be removed from "
-"your existing calendar collection."
+"Táto položka ponuky otvorí dialóg, ktorý vám umožní vybrať staré udalosti a "
+"úlohy, ktoré môžete archivovať do súboru iCalendar. Budú odstránené z vašej "
+"existujúcej kolekcie kalendárov."
 
 #: actionmanager.cpp:275
 #, kde-format
@@ -516,8 +516,8 @@ msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
 msgstr ""
-"Switches to the Month View, which shows all the events and kvôli-dos in a "
-"familiar monthly calendar layout."
+"Prepne na zobrazenie mesiaca, ktoré zobrazuje všetky udalosti a splatné "
+"úlohy v bežnom rozložení mesačného kalendára."
 
 #: actionmanager.cpp:355
 #, kde-format
@@ -545,9 +545,9 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
-"Switches to the Agenda View, which presents your events or kvôli-dos for one "
-"or more days, sorted chronologically.  Môžete also see the length of each "
-"event in the day timetable."
+"Prepne na zobrazenie programu, ktoré zobrazuje vaše udalosti alebo splatné "
+"úlohy na jeden alebo viac dní, zoradené chronologicky. Môžete tiež vidieť "
+"dĺžku každej udalosti v dennom rozvrhu."
 
 #: actionmanager.cpp:368
 #, kde-format
@@ -658,8 +658,9 @@ msgid ""
 "Switches to the Timeline View, which shows all events for the selected "
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
-"Switches to the Timeline View, which shows all events for vybraný timespan "
-"in a Gantt view. Each calendar is displayed in a separate line."
+"Prepne na zobrazenie časovej osi, ktoré zobrazuje všetky udalosti za vybrané "
+"časové obdobie v Ganttovom zobrazení. Každý kalendár je zobrazený na "
+"samostatnom riadku."
 
 #: actionmanager.cpp:411
 #, kde-format
@@ -686,8 +687,8 @@ msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
 msgstr ""
-"This action will refresh and redraw aktuálny calendar view. It does not sync "
-"or update any calendar folders."
+"Táto akcia obnoví a prekreslí aktuálne zobrazenie kalendára. Nesynchronizuje "
+"ani neaktualizuje žiadne priečinky kalendára."
 
 #: actionmanager.cpp:424
 #, kde-format
@@ -802,8 +803,8 @@ msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
-"Scrolls backward by a day, week, month or year, depending on aktuálny "
-"calendar view."
+"Posúva dozadu o deň, týždeň, mesiac alebo rok v závislosti od aktuálneho "
+"zobrazenia kalendára."
 
 #: actionmanager.cpp:487
 #, kde-format
@@ -836,8 +837,8 @@ msgid ""
 "Scrolls forward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
-"Scrolls forward by a day, week, month or year, depending on aktuálny "
-"calendar view."
+"Posúva dopredu o deň, týždeň, mesiac alebo rok v závislosti od aktuálneho "
+"zobrazenia kalendára."
 
 #: actionmanager.cpp:499
 #, kde-format
@@ -896,10 +897,10 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
-"Select táto voľba to show the next few days at a time in Agenda View. "
-"Configure the <placeholder>Next X Days</placeholder> setting in the "
-"<interface>Views->General</interface> settings page to adjust the počet days "
-"shown."
+"Vyberte túto možnosť na zobrazenie nasledujúcich niekoľkých dní v zobrazení "
+"programu. Nakonfigurujte nastavenie <placeholder>Nasledujúcich X dní</"
+"placeholder> na stránke nastavení <interface>Zobrazenia->Všeobecné</"
+"interface>, aby ste upravili počet zobrazených dní."
 
 #: actionmanager.cpp:522
 #, kde-format
@@ -943,11 +944,11 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<para>Typically this "
 "view is intended for showing the week without weekend days.</para>"
 msgstr ""
-"Select táto voľba to show a week at a time, excluding the days that are not "
-"included in your weekly schedule. Configure your schedule by selecting days "
-"in the <placeholder>Weekly Schedule</placeholder> setting in the "
-"<interface>Time and Date->Regional</interface> page.<para>Typically this "
-"view is intended for showing the week without weekend days.</para>"
+"Vyberte túto možnosť na zobrazenie jedného týždňa, bez dní, ktoré nie sú "
+"zahrnuté vo vašom týždennom rozvrhu. Nakonfigurujte svoj rozvrh výberom dní "
+"v nastavení <placeholder>Týždenný rozvrh</placeholder> na stránke "
+"<interface>Čas a dátum->Regionálne</interface>.<para>Typicky je toto "
+"zobrazenie určené na zobrazenie týždňa bez víkendových dní.</para>"
 
 #: actionmanager.cpp:538
 #, kde-format
@@ -1881,8 +1882,8 @@ msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Unschopný remove the item \"%1\" from the original calendar. However, a copy "
-"of this item has been put into %2"
+"Položku \"%1\" sa nepodarilo odstrániť z pôvodného kalendára. Avšak kópia "
+"tejto položky bola vložená do %2"
 
 #: calendarview.cpp:1585 calendarview.cpp:1601 calendarview.cpp:2533
 #, kde-format
@@ -3968,11 +3969,11 @@ msgid ""
 "weekly schedule (even if you don't work). Typically, weekend days should be "
 "unchecked."
 msgstr ""
-"Zaškrtnite toto políčko to consider %1 a súčasť your regular weekly "
-"schedule. Any %1 daily hours will be shown with different colors than times "
-"outside your regular schedule. Zaškrtnite toto políčko if %1 is included as "
-"súčasť your regular weekly schedule (even ak don't work). Typically, weekend "
-"days should be unchecked."
+"Zaškrtnite toto políčko, ak chcete považovať %1 za súčasť svojho "
+"pravidelného týždenného rozvrhu. Všetky denné hodiny %1 budú zobrazené inými "
+"farbami ako časy mimo vášho pravidelného rozvrhu. Zaškrtnite toto políčko, "
+"ak je %1 zahrnutý ako súčasť vášho pravidelného týždenného rozvrhu (aj keď "
+"nepracujete). Víkendové dni by zvyčajne mali byť nezaškrtnuté."
 
 #: prefs/koprefsdialogtime.cpp:190
 #, kde-format
@@ -4029,8 +4030,8 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
-"Zaškrtnite toto políčko to highlight holidays differently than days included "
-"with your regular schedule."
+"Zaškrtnite toto políčko, ak chcete zvýrazniť sviatky inak ako dni zahrnuté "
+"vo vašom pravidelnom rozvrhu."
 
 #: prefs/koprefsdialogtime.cpp:224
 #, kde-format
@@ -4570,27 +4571,23 @@ msgstr "Zobraziť ikony v položkách pohľadu programu"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Zobraziť ikony v položkách pohľadu agendy"
+msgstr "Zobraziť umiestnenia udalostí v položkách pohľadu agendy"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Zaškrtnúť toto pole pre zobrazenie ikon (alarm, rekurzia, atď.) v položkách "
-"pohľadu programu."
+"Zaškrtnúť toto pole pre zobrazenie umiestnení udalostí v položkách pohľadu "
+"programu."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Zobraziť ikony v položkách pohľadu programu"
+msgstr "Zobraziť umiestnenia udalostí v položkách pohľadu programu"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5990,11 +5987,11 @@ msgid ""
 "For example, the search pattern “meet*boss” matches “Meeting with boss”. The "
 "pattern “c?t” would match “cat”, “cot”, and so on."
 msgstr ""
-"Examine various fields to see if they contain the search pattern: The "
-"pattern “meet” would match “kick-off meeting”. Wildcards “*” (matches any "
-"počet characters) and “?” (matches any single character) are supported.  "
-"Napríklad, the search pattern “meet*boss” matches “Meeting with boss”. The "
-"pattern “c?t” would match “cat”, “cot”, a tak ďalej."
+"Skúmajte rôzne polia, aby ste zistili, či obsahujú vzor vyhľadávania: Vzor "
+"„meet“ by zodpovedal „kick-off meeting“. Podporované sú zástupné znaky "
+"„*“ (zodpovedá ľubovoľnému počtu znakov) a „?“ (zodpovedá ľubovoľnému "
+"jednému znaku). Napríklad vzor vyhľadávania „meet*boss“ zodpovedá „Meeting "
+"with boss“. Vzor „c?t“ by zodpovedal „cat“, „cot“ a tak ďalej."
 
 #. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:55
@@ -6203,8 +6200,8 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
-"Zaškrtnite toto políčko to search for events within a specified date range. "
-"If the box is unchecked, all events will be searched."
+"Zaškrtnite toto políčko, ak chcete vyhľadávať udalosti v zadanom rozsahu "
+"dátumov. Ak políčko nie je zaškrtnuté, budú prehľadané všetky udalosti."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
@@ -6305,10 +6302,11 @@ msgid ""
 "nor an end date.  If the box is unchecked, only to-dos that have a due date "
 "in the date range will be displayed."
 msgstr ""
-"Zaškrtnite toto políčko to search for to-dos that have a start date, due "
-"date, or completion date in the date range specified, or have neither a "
-"start date nor an end date.  If the box is unchecked, only to-dos that have "
-"a due date in the date range will be displayed."
+"Zaškrtnite toto políčko, ak chcete vyhľadávať úlohy, ktoré majú dátum "
+"začiatku, dátum splatnosti alebo dátum dokončenia v zadanom rozsahu dátumov, "
+"alebo nemajú ani dátum začiatku, ani dátum ukončenia. Ak políčko nie je "
+"zaškrtnuté, zobrazia sa iba úlohy, ktoré majú dátum splatnosti v danom "
+"rozsahu dátumov."
 
 #. i18n: ectx: property (text), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:315
@@ -6331,8 +6329,9 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
-"When this box is checked all incidences will be considered in the search, "
-"even those that aren't displayed according aktuálnyly selected view filter"
+"Keď je toto políčko zaškrtnuté, všetky udalosti budú zohľadnené pri "
+"vyhľadávaní, dokonca aj tie, ktoré nie sú zobrazené podľa aktuálne zvoleného "
+"filtra zobrazenia"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
@@ -6492,19 +6491,14 @@ msgid "Agenda view: underline today's column header date"
 msgstr "Pohľad agendy: podčiarknuť dátum v hlavičke stĺpca dnešného dňa"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Agenda view: optionally show the incidence descriptions inside the agenda "
-"items. To enable this behavior, check the \"Show incidence descriptions in "
-"agenda view items\" option in the View->Agenda View tab"
+"Pohľad agendy: voliteľne zobraziť umiestnenia výskytov v položkách agendy. "
+"Pre povolenie tohto správania zaškrtnite voľbu \"Zobraziť umiestnenia "
+"výskytov v položkách pohľadu agendy\" na karte Pohľad->Pohľad agendy"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""
@@ -6529,8 +6523,8 @@ msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
-"Month view: use a slightly different color for drawing the day headers for "
-"days outside of aktuálnyly selected month"
+"Zobrazenie mesiaca: použiť mierne odlišnú farbu na kreslenie hlavičiek dní "
+"pre dni mimo aktuálne zvoleného mesiaca"
 
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
@@ -6568,8 +6562,8 @@ msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"Agenda view: events with short durations are displayed with their starting "
-"time navyše to their summary"
+"Zobrazenie programu: udalosti s krátkou dobou trvania sa zobrazujú s časom "
+"začiatku navyše k ich zhrnutiu"
 
 #: whatsnew/whatsnewtranslations.cpp:51
 msgid ""
@@ -6590,8 +6584,9 @@ msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"Agenda view: added timelabels context menu to show/hide time labels for the "
-"system timezone vpravo (or left) side tiež"
+"Zobrazenie programu: pridané kontextové menu časových popiskov na zobrazenie/"
+"skrytie časových popiskov pre systémové časové pásmo tiež na pravej (alebo "
+"ľavej) strane"
 
 #: whatsnew/whatsnewtranslations.cpp:63
 msgid "Incidence editor: detect and warn about creating incidences in the past"
@@ -6864,8 +6859,8 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
-"Click this button to show/hide the sidebar in aktuálny view. Each view can "
-"show/hide the sidebar independently."
+"Kliknite na toto tlačidlo na zobrazenie/skrytie bočného panela v aktuálnom "
+"zobrazení. Každé zobrazenie môže zobrazovať/skrývať bočný panel nezávisle."
 
 #: widgets/navigatorbar.cpp:39
 #, kde-format

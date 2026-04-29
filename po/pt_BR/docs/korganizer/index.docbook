@@ -3255,6 +3255,17 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Mostrar localizações de incidência nos itens da visão de agenda</guilabel
+></term>
+  <listitem
+><para
+>Marque esta caixa para exibir as localizações das incidências nos itens da visão de agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostrar tarefas</guilabel

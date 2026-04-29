@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-13 21:16+0300\n"
+"PO-Revision-Date: 2026-04-28 13:18+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 25.12.3\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -4594,27 +4594,23 @@ msgstr "Ajanda görünümü ögelerinde olay açıklamalarını görüntüle"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Ajanda görünümü ögelerinde olay açıklamalarını göster"
+msgstr "Ajanda görünümü ögelerinde olay konumlarını göster"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Ay görünümü ögelerinde olay açıklamalarını görüntülemek için bu kutuyu "
+"Ay görünümü ögelerinde olay konumlarını görüntülemek için bu kutuyu "
 "işaretleyin."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Ajanda görünümü ögelerinde olay açıklamalarını görüntüle"
+msgstr "Ajanda görünümü ögelerinde olay konumlarını görüntüle"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6525,19 +6521,15 @@ msgid "Agenda view: underline today's column header date"
 msgstr "Ajanda görünümü: Bugünün sütun başlığı tarihinin altını çiz"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Ajanda görünümü: Ajanda ögelerinde olay açıklamalarını göstermeye olanak "
-"tanı. Bu davranışı etkinleştirmek için Görüntü → Ajanda Görünümü sekmesinde "
-"“Ajanda görünümü ögelerinde olay açıklamalarını göster” kutusunu işaretleyin."
+"Ajanda görünümü: Ajanda ögelerinde olay konumlarını göstermeye olanak "
+"tanıyın. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü "
+"sekmesinde “Ajanda görünümü ögelerinde olay konumlarını göster” kutusunu "
+"işaretleyin."
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""

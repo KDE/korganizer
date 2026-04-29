@@ -3193,6 +3193,17 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Mostra les ubicacions de les incidències als elements de la vista d'agenda</guilabel
+></term>
+  <listitem
+><para
+>Marqueu aquesta casella per a mostrar les ubicacions de les incidències als elements de la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostra les tasques pendents</guilabel

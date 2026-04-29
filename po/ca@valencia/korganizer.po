@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-13 09:00+0200\n"
+"PO-Revision-Date: 2026-04-28 09:57+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -915,7 +915,7 @@ msgid ""
 msgstr ""
 "Trieu esta opció per a mostrar alguns dies següents a la vista d'agenda. "
 "Configureu l'opció <placeholder>x dies següents</placeholder> a la pàgina "
-"<interface>Vistes->General</interface> per a ajustar el nombre de dies "
+"<interface>Vistes → General</interface> per a ajustar el nombre de dies "
 "mostrats."
 
 #: actionmanager.cpp:522
@@ -966,7 +966,7 @@ msgstr ""
 "no estan inclosos en la vostra planificació setmanal. Configureu la vostra "
 "planificació seleccionant els dies a la configuració de la "
 "<placeholder>Planificació setmanal</placeholder> a la pàgina <interface>Data "
-"i hora->Regional</interface>.<para>Normalment esta vista està destinada a "
+"i hora → Regional</interface>.<para>Normalment esta vista està destinada a "
 "mostrar la setmana sense els dies del cap de setmana.</para>"
 
 #: actionmanager.cpp:538
@@ -1151,7 +1151,7 @@ msgid ""
 msgstr ""
 "En la vista multicalendari, s'inicia un diàleg que permet configurar la "
 "vista. Actualment només s'admet la vista multicalendari. Vegeu les opcions "
-"de múltiples calendaris a la configuració «Vistes -> Vistes d'agenda»."
+"de múltiples calendaris a la configuració «Vistes → Vista d'agenda»."
 
 #: actionmanager.cpp:607 actionmanager.cpp:1304 actionmanager.cpp:1346
 #: koeventpopupmenu.cpp:42
@@ -2262,8 +2262,8 @@ msgstr ""
 "Heu creat una incidència en un calendari que actualment està filtrat."
 "<para>Per a veure la incidència creada recentment, activeu el seu calendari "
 "al gestor de calendaris.</para><para>El gestor de calendaris està ocult. "
-"Mostra el gestor utilitzant el menú <interface>Configuració->Barra lateral-"
-">Mostra el gestor de calendaris</interface>.</para>"
+"Mostra el gestor utilitzant el menú <interface>Configuració → Barra lateral "
+"→ Mostra el gestor de calendaris</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -4638,29 +4638,25 @@ msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
 msgstr ""
-"Mostra les descripcions de les incidències als elements de la vista d'agenda"
+"Mostra les ubicacions de les incidències als elements de la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Marqueu esta casella per a mostrar les descripcions de les incidències als "
+"Marqueu esta casella per a mostrar les ubicacions de les incidències als "
 "elements de la vista d'agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
 msgstr ""
-"Mostra les descripcions de les incidències als elements de la vista d'agenda"
+"Mostra les ubicacions de les incidències als elements de la vista d'agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5092,7 +5088,7 @@ msgid ""
 msgstr ""
 "Marqueu esta casella per a utilitzar el dia festiu personalitzat com a color "
 "de fons de la data quan almenys un dia festiu caiga en una data. Configureu "
-"el color dels festius a Configuració->Colors i lletres."
+"el color dels festius a «Configuració → Colors i lletres»."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:258
@@ -6583,7 +6579,7 @@ msgstr ""
 "Vista d'agenda: de manera opcional mostra línies de quadrícula horitzontals "
 "en negreta/més gruixudes cada dues hores. Per a activar este comportament, "
 "marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a "
-"les hores parells» a la pestanya Visualitza->Vista d'agenda"
+"les hores parells» a «Vistes → pestanya Vista d'agenda»"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
@@ -6612,7 +6608,7 @@ msgid ""
 msgstr ""
 "Vista mensual: s'ha afegit una opció per a permetre ocultar els dies "
 "festius. Per a activar este comportament, desmarqueu l'opció «Mostra els "
-"festius a la vista mensual» a la pestanya Vistes->Vista mensual"
+"festius a la vista mensual» a «Vistes → pestanya Vista mensual»"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
@@ -6625,7 +6621,7 @@ msgstr ""
 "personalitzat de festiu com a color de fons del quadro de dates si almenys "
 "un dels festius cau en esta data. Per a activar este comportament, marqueu "
 "l'opció «Utilitza el color de fons de festius quan almenys un festiu caiga "
-"en una data» a la pestanya Vistes->Vista mensual"
+"en una data» a «Vistes → pestanya Vista mensual»"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
@@ -6633,20 +6629,15 @@ msgstr ""
 "Vista d'agenda: subratlla la data d'hui a la capçalera de la columna de dates"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins "
+"Vista d'agenda: de manera opcional mostra les ubicacions d'incidència dins "
 "dels elements d'agenda. Per a activar este comportament, marqueu l'opció "
-"«Mostra les descripcions de les incidències als elements de la vista "
-"d'agenda» a la pestanya Visualitza->Vista d'agenda"
+"«Mostra les ubicacions de les incidències als elements de la vista d'agenda» "
+"a «Vistes → pestanya Vista d'agenda»"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""
@@ -6657,7 +6648,7 @@ msgstr ""
 "Els recordatoris estan activats de manera predeterminada per a tots els "
 "esdeveniments i tasques pendents noves. Per a desactivar este comportament, "
 "desmarqueu les opcions Habilita els recordatoris a la pestanya de "
-"configuració Data i hora->Valors predeterminats"
+"configuració «Data i hora → Valors predeterminats»"
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
@@ -6724,7 +6715,7 @@ msgstr ""
 "Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins "
 "dels elements d'agenda. Per a activar este comportament, marqueu l'opció "
 "«Mostra les descripcions de les incidències als elements de la vista "
-"d'agenda» a la pestanya Visualitza->Vista d'agenda"
+"d'agenda» a «Vistes → pestanya Vista d'agenda»"
 
 #: whatsnew/whatsnewtranslations.cpp:53
 msgid "Search: the search settings are saved/restored"
@@ -6805,7 +6796,7 @@ msgid ""
 "the week numbers"
 msgstr ""
 "Navegador de dates: s'ha afegit una opció dins de la configuració de "
-"Configura->Vistes per a ocultar els números de setmana"
+"«Configuració → Vistes» per a ocultar els números de setmana"
 
 #: whatsnew/whatsnewtranslations.cpp:83
 msgid ""
@@ -6920,7 +6911,7 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr "S'ha corregit el canvi de recordatoris des dels menús"
+msgstr "S'ha esmenat el canvi de recordatoris des dels menús"
 
 #: whatsnew/whatsnewtranslations.cpp:159
 #, kde-format

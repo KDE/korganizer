@@ -3243,11 +3243,11 @@
 <varlistentry>
   <term
 ><guilabel
->Show incidence locations in agenda view items</guilabel
+>Ajanda görünümü ögelerinde olay konumlarını göster</guilabel
 ></term>
   <listitem
 ><para
->Check this box to display the incidence locations in agenda view items.</para
+>Ajanda görünümü ögelerinde olay konumlarını görüntülemek için bu kutuyu işaretleyin.</para
 ></listitem>
 </varlistentry>
 

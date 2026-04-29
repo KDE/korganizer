@@ -9,7 +9,7 @@
 # Tom Albers <tomalbers@kde.nl>, 2004.
 # Rinse de Vries <rinsedevries@kde.nl>,2000-2002, 2003, 2004, 2005, 2006, 2007, 2008.
 # Antoon Tolboom <atolboo@gmail.com>, 2008.
-# SPDX-FileCopyrightText: 2009, 2023, 2024, 2025, 2026 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2009, 2023-2026 Freek de Kruijf <freekdekruijf@kde.nl>
 # Jaap Woldringh <jjhwoldringh@kde.nl>, 2009, 2010.
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023.
 # Jaap Woldringh <jjhwoldringh@kde.nl>, 2011, 2012.
@@ -19,14 +19,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-13 23:37+0200\n"
+"PO-Revision-Date: 2026-04-28 12:14+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -4606,27 +4606,23 @@ msgstr "Incidentbeschrijvingen tonen in de items van de agendaweergave"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Incidentbeschrijvingen tonen in de agendaweergave"
+msgstr "Incidentlocaties tonen in de items in agendaweergave"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Activeer dit vakje voor het tonen van incidentbeschrijvingen in de items van "
-"de agendaweergave."
+"Activeer dit vakje voor het tonen van incidentlocaties in de items van de "
+"agendaweergave."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Incidentbeschrijvingen tonen in de items van de agendaweergave"
+msgstr "Incidentlocaties tonen in de items van de agendaweergave"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6573,19 +6569,14 @@ msgid "Agenda view: underline today's column header date"
 msgstr "Agendaweergave: onderstreep de datum in de kolomkop van vandaag"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Agendaweergave: toon optioneel de incidentbeschrijvingen in de agenda-items. "
-"Om dit gedrag in te schakelen, activeer de optie \"Incidentbeschrijvingen "
-"tonen in de items in de agenda\" in het weergavetabblad Beeld->Agenda"
+"Agendaweergave: toon optioneel de incidentlocaties in de agenda-items. Om "
+"dit gedrag in te schakelen, activeer de optie \"Incidentlocaties tonen in de "
+"items in de agenda\" in het weergavetabblad Beeld->Agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""

@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-16 09:41+0300\n"
+"PO-Revision-Date: 2026-04-28 08:59+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -4517,25 +4517,21 @@ msgstr "הצגת תיאורי חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "להציג תיאורי חזרות בפריטי תצוגת סדר יום"
+msgstr "להציג מקומות חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
-msgstr "יש לסמן את התיבה הזאת כדי להציג את תיאורי החזרות בפריטי תצוגת סדר יום."
+msgstr "יש לסמן את התיבה הזאת כדי להציג את מקומות החזרות בפריטי תצוגת סדר יום."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "הצגת תיאורי חזרות בפריטי תצוגת סדר יום"
+msgstr "הצגת מקומות חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6381,18 +6377,13 @@ msgid "Agenda view: underline today's column header date"
 msgstr "תצוגת סדר יום: לסמן בקו תחתון את תאריך כותרת העמודה של היום"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"תצוגת סדר יום: להציג את תיאורי החזרות בתוך פריטי סדר היום כרשות. כדי להפעיל "
-"את ההתנהגות הזאת יש לסמן את האפשרות „להציג תיאורי חזרות בפריטי תצוגת סדר "
+"תצוגת סדר יום: להציג את מקומות החזרות בתוך פריטי סדר היום כרשות. כדי להפעיל "
+"את ההתנהגות הזאת יש לסמן את האפשרות „להציג מקומות חזרות בפריטי תצוגת סדר "
 "יום” בלשונית תצוגה->תצוגת סדר יום"
 
 #: whatsnew/whatsnewtranslations.cpp:41

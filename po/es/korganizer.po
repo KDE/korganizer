@@ -8,7 +8,7 @@
 # SPDX-FileCopyrightText: 2001, 2002, 2003, 2004, 2005, 2006, 2007 Juan Manuel Garcia Molina <juanma@superiodico.net>
 # SPDX-FileCopyrightText: 2006 Juan Manuel García Molina <juanma@superiodico.net>
 # SPDX-FileCopyrightText: 2006 Pablo de Vicente <pablo.devicente@gmail.com>
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2010, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2007-2010, 2019-2026 Eloy Cuadra <ecuadra@eloihr.net>
 # SPDX-FileCopyrightText: 2007 Enrique Matias Sanchez (aka Quique) <cronopios@gmail.com>
 # SPDX-FileCopyrightText: 2008 Franco Mariluis <fmariluis@gmail.com>
 # SPDX-FileCopyrightText: 2009 Dario Andres Rodriguez <andresbajotierra@gmail.com>
@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-14 01:46+0100\n"
+"PO-Revision-Date: 2026-04-29 00:13+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
 "Second-Translator: Pablo de Vicente <pvicentea@nexo.es>\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -4642,29 +4642,25 @@ msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
 msgstr ""
-"Mostrar descripciones de incidencias en los elementos de la vista de agenda"
+"Mostrar ubicaciones de incidencias en los elementos de la vista de agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Marque esta casilla para mostrar descripciones de incidencias en los "
-"elementos de la vista de agenda."
+"Marque esta casilla para mostrar ubicaciones de incidencias en los elementos "
+"de la vista de agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
 msgstr ""
-"Mostrar descripciones de incidencias en los elementos de la vista de agenda"
+"Mostrar ubicaciones de incidencias en los elementos de la vista de agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6646,20 +6642,15 @@ msgstr ""
 "Vista de agenda: subrayar la fecha de la cabecera de la columna de hoy."
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Vista de agenda: mostrar opcionalmente las descripciones de las incidencias "
+"Vista de agenda: mostrar opcionalmente las ubicaciones de las incidencias "
 "dentro de los elementos de la agenda. Para activar este comportamiento, "
-"marque la opción «Mostrar descripciones de incidencias en los elementos de "
-"la vista de agenda» en la pestaña «Vista->Vista de agenda»."
+"marque la opción «Mostrar ubicaciones de incidencias en los elementos de la "
+"vista de agenda» en la pestaña «Vista->Vista de agenda»."
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""

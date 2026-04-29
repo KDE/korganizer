@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1735683 2026-04-28 01:29:49Z scripty $
+# $Id: korganizer.po 1735754 2026-04-29 01:30:41Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-13 06:46+0200\n"
+"PO-Revision-Date: 2026-04-28 07:33+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -4618,27 +4618,23 @@ msgstr "Prikaz opisov incidence elementov dnevnega reda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Prikaži opise incidence v elementih pogleda dnevnega reda"
+msgstr "Prikaži mesta incidence v elementih pogleda dnevnega reda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Označite to polje, če želite prikazati opise incidence v elementih pogleda "
+"Označite to polje, če želite prikazati mesta incidence v elementih pogleda "
 "dnevnega reda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Prikaz opisov incidence elementov dnevnega reda"
+msgstr "Prikaz mesta incidence elementov dnevnega reda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6508,7 +6504,7 @@ msgstr ""
 "Pogled dnevnega reda: po želji lahko vsaki dve uri narišete krepkejše/"
 "debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, označite "
 "možnost \"Za sode ure nariši krepke vodoravne mrežne črte\" v zavihku Pogled-"
-">Pogled dnevnega reda."
+">Pogled dnevnega reda"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""

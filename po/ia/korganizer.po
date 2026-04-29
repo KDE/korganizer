@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-14 12:32+0200\n"
+"PO-Revision-Date: 2026-04-28 16:28+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -4609,27 +4609,23 @@ msgstr "Monstra descriptiones de incidentia in elementos de vista de agenda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Monstra descriptiones de incidentia in elementos de vista de agenda"
+msgstr "Monstra locationes de incidentia in elementos de vista de agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Marca iste quadrato pro monstrar le descriptionmes de incidentia in "
-"elementos de vista de agenda."
+"Marca iste quadrato pro monstrar le locationes de incidentia in elementos de "
+"vista de agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Monstra descriptiones de incidentia in elementos de vista de agenda"
+msgstr "Monstra locationes de incidentia in elementos de vista de agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6587,20 +6583,15 @@ msgid "Agenda view: underline today's column header date"
 msgstr "Vista de agenda: sublinea le data del capite del columna de hodie"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Vista de Agenda: monstra optionalmente le descriptiones de incidentia intra "
-"le elementos del agenda. Per habilitar iste comportamento,marca le option  "
-"\"Monstra desctiptiones de incidentia in elementos de vista de agenda\" in "
-"le scheda Vista->Vista de Agenda "
+"Vista de Agenda: monstra optionalmente le locationes de incidentia intra le "
+"elementos del agenda. Per habilitar iste comportamento,marca le option  "
+"\"Monstra locationes de incidentia in elementos de vista de agenda\" in le "
+"scheda Vista->Vista de Agenda "
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""

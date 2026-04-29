@@ -3235,6 +3235,17 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Incidentlocaties tonen in de items in agendaweergave</guilabel
+></term>
+  <listitem
+><para
+>Activeer dit vakje voor het tonen van incidentlocaties in de items van de agendaweergave.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Taken tonen</guilabel

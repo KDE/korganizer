@@ -3251,6 +3251,17 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Mostrar ubicaciones de incidencias en los elementos de la vista de agenda</guilabel
+></term>
+  <listitem
+><para
+>Marque esta casilla para mostrar las ubicaciones de las incidencias en los elementos de la vista de agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostrar tareas pendientes</guilabel

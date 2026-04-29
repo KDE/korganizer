@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-13 09:00+0200\n"
+"PO-Revision-Date: 2026-04-28 09:57+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -4639,29 +4639,25 @@ msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
 msgstr ""
-"Mostra les descripcions de les incidències als elements de la vista d'agenda"
+"Mostra les ubicacions de les incidències als elements de la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Marqueu aquesta casella per a mostrar les descripcions de les incidències "
-"als elements de la vista d'agenda."
+"Marqueu aquesta casella per a mostrar les ubicacions de les incidències als "
+"elements de la vista d'agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
 msgstr ""
-"Mostra les descripcions de les incidències als elements de la vista d'agenda"
+"Mostra les ubicacions de les incidències als elements de la vista d'agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6644,20 +6640,15 @@ msgstr ""
 "dates"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Vista d'agenda: opcionalment mostra les descripcions d'incidència dins dels "
+"Vista d'agenda: opcionalment mostra les ubicacions d'incidència dins dels "
 "elements d'agenda. Per a activar aquest comportament, marqueu l'opció "
-"«Mostra les descripcions de les incidències als elements de la vista "
-"d'agenda» a la pestanya Visualitza->Vista d'agenda"
+"«Mostra les ubicacions de les incidències als elements de la vista d'agenda» "
+"a la pestanya Visualitza->Vista d'agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""
