@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1735754 2026-04-29 01:30:41Z scripty $
+# $Id: korganizer.po 1735818 2026-04-30 01:28:00Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-28 07:33+0200\n"
+"PO-Revision-Date: 2026-04-29 09:23+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -6551,20 +6551,15 @@ msgid "Agenda view: underline today's column header date"
 msgstr "Pogled dnevnega reda: podčrtaj današnji datum v glavi stolpca"
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
 "Pogled dnevnega reda: po želji prikažite opise incidence znotraj elementov "
-"dnevnega reda. Če želite omogočiti to delovanje, v zavihku Pogled->Pogled "
-"dnevnega reda označite možnost »Prikaži opise incidence v elementih pogleda "
-"dnevnega reda«"
+"dnevnega reda. Če želite omogočiti to obnašanje, označite možnost \"Prikaži "
+"opise incidence v elementih pogleda dnevnega reda\" v zavihku Pogled->Pogled "
+"dnevnega reda"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""
