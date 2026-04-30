@@ -59,7 +59,7 @@ set(koeventpopupmenutest_LIBS
     korganizer_core
     korganizerprivate
 )
-add_akonadi_isolated_test_advanced(koeventpopupmenutest.cpp "${koeventpopupmenutest_SRCS}" "${koeventpopupmenutest_LIBS}")
+add_akonadi_isolated_test(SOURCE koeventpopupmenutest.cpp ADDITIONAL_SOURCES ${koeventpopupmenutest_SRCS} LINK_LIBRARIES ${koeventpopupmenutest_LIBS})
 
 ecm_add_test(testtoggletodo.cpp
   LINK_LIBRARIES
