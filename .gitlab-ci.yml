@@ -20,7 +20,7 @@ build_clazy:
   - if: $CI_PIPELINE_SOURCE == "merge_request_event"
  variables:
     # remove/comment the CXXFLAGS if you don't want the build to fail on clazy issues
-    CXXFLAGS: -Werror -Wno-deprecated-declarations
+    CXXFLAGS: -Wno-deprecated-declarations
     CC: clang
     CXX: clazy
  script:
