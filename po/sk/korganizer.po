@@ -344,7 +344,7 @@ msgstr "Hide menu bar"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
-msgstr "Importovať kalendár"
+msgstr "Importovať &kalendár…"
 
 #: actionmanager.cpp:243
 #, kde-format
@@ -404,7 +404,7 @@ msgstr "Archivovať staré záznamy..."
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
-msgstr "Skryť opakujúce sa udalosti"
+msgstr "Archivovať udalosti a úlohy do súboru"
 
 #: actionmanager.cpp:265
 #, kde-format
@@ -440,7 +440,7 @@ msgstr "Vyčistiť ukončené úlohy"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
-msgstr "Odstrániť všetky dokončené úlohy z označených kalendárov?"
+msgstr "Odstrániť dokončené úlohy z vášho kalendára"
 
 #: actionmanager.cpp:279
 #, kde-format
@@ -463,13 +463,13 @@ msgstr "O&dstrániť"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
-msgstr "Čo ď&alej"
+msgstr "Čo &ďalej"
 
 #: actionmanager.cpp:334
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
-msgstr "Čo ď&alej"
+msgstr "Pohľad Čo ďalej"
 
 #: actionmanager.cpp:335
 #, kde-format
@@ -507,7 +507,7 @@ msgstr "Mesačný pohľad"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
-msgstr "Zobraziť úlohy v mesačnom pohľade"
+msgstr "Prepnúť na mesačný pohľad"
 
 #: actionmanager.cpp:349
 #, kde-format
@@ -535,7 +535,7 @@ msgstr "Pohľad agendy"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
-msgstr "Zobraziť navrchu pohľadov programu"
+msgstr "Prepnúť na pohľad programu"
 
 #: actionmanager.cpp:361
 #, kde-format
@@ -559,7 +559,7 @@ msgstr "Zoznam udalostí"
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
-msgstr "Mesačný pohľad"
+msgstr "Zobrazenie zoznamu"
 
 #: actionmanager.cpp:370
 #, kde-format
@@ -615,7 +615,7 @@ msgstr "&Denník"
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
-msgstr "Diár"
+msgstr "Pohľad denníka"
 
 #: actionmanager.cpp:390
 #, kde-format
@@ -643,7 +643,7 @@ msgstr "Časová os"
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
-msgstr "Časová os"
+msgstr "Pohľad časovej osi"
 
 #: actionmanager.cpp:400
 #, kde-format
@@ -706,7 +706,7 @@ msgstr "Filter incidences"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "Ignorovať pripomienky z tohto kalendára"
+msgstr "Filtrovať udalosti z kalendára"
 
 #: actionmanager.cpp:428
 #, kde-format
@@ -758,25 +758,25 @@ msgstr "Dnes"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
-msgstr "Prejsť na dnešok"
+msgstr "Posunúť na dnešok"
 
 #: actionmanager.cpp:467 widgets/navigatorbar.cpp:38
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
-msgstr "Prejsť na dnešok"
+msgstr "Posunúť pohľad na dnešok"
 
 #: actionmanager.cpp:468
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Prejsť na dnešok"
+msgstr "Posunie aktuálny pohľad na dnešný dátum."
 
 #: actionmanager.cpp:474
 #, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
-msgstr "Späť"
+msgstr "&Späť"
 
 #: actionmanager.cpp:476
 #, kde-format
@@ -788,13 +788,13 @@ msgstr "Späť"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
-msgstr "Prejsť späť"
+msgstr "Posunúť späť"
 
 #: actionmanager.cpp:478
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr "Prejsť späť"
+msgstr "Posunúť pohľad späť"
 
 #: actionmanager.cpp:480
 #, kde-format
@@ -822,13 +822,13 @@ msgstr "Dopredu"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr "Prejsť dopredu"
+msgstr "Posunúť dopredu"
 
 #: actionmanager.cpp:491
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "Prejsť dopredu"
+msgstr "Posunúť pohľad dopredu"
 
 #: actionmanager.cpp:493
 #, kde-format
@@ -862,7 +862,7 @@ msgstr "View 1 day at a time"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Ukázať tento počet dní v čase v pohľade nasledujúcich \"x\" dní"
+msgstr "Zobraziť 1 deň naraz v pohľade programu"
 
 #: actionmanager.cpp:503
 #, kde-format
@@ -886,7 +886,7 @@ msgstr "View a few days at a time"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Ukázať tento počet dní v čase v pohľade nasledujúcich \"x\" dní"
+msgstr "Zobraziť nasledujúcich niekoľko dní naraz v pohľade programu"
 
 #: actionmanager.cpp:515
 #, kde-kuit-format
@@ -906,7 +906,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Plánovať"
+msgstr "Týž&denný plán"
 
 #: actionmanager.cpp:523
 #, kde-format
@@ -914,7 +914,7 @@ msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "Plánovať"
+msgstr "Týždenný plán"
 
 #: actionmanager.cpp:524
 #, kde-format
@@ -972,7 +972,7 @@ msgstr "View a week at a time"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Zobraziť navrchu pohľadov programu"
+msgstr "Zobraziť 1 týždeň naraz v pohľade programu"
 
 #: actionmanager.cpp:542
 #, kde-format
@@ -1012,7 +1012,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
-msgstr "Nová úloha..."
+msgstr "Nová &úloha…"
 
 #: actionmanager.cpp:560
 #, kde-format
@@ -1064,7 +1064,7 @@ msgstr "Vytvoriť nový diár"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
-msgstr "Zobrazí sa vám dialóg, kde môžete vytvoriť nový zápis v denníku."
+msgstr "Spustí dialóg, ktorý vám umožní vytvoriť nový záznam v denníku."
 
 #: actionmanager.cpp:586
 #, kde-format
@@ -1082,7 +1082,7 @@ msgstr "Dátum"
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Prejsť na dnešok"
+msgstr "Posunúť pohľad na používateľom vybrané dátumy"
 
 #: actionmanager.cpp:589
 #, kde-format
@@ -1144,7 +1144,7 @@ msgstr "&Zobraziť"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "&Upraviť"
+msgstr "&Upraviť…"
 
 #: actionmanager.cpp:620
 #, kde-format
@@ -1220,7 +1220,7 @@ msgstr "&Adresár"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
-msgstr "Navigátor pre dátum"
+msgstr "Zobraziť navigátor dátumov"
 
 #: actionmanager.cpp:709
 #, kde-format
@@ -1232,7 +1232,7 @@ msgstr "Prehľad úloh"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
-msgstr "Prehliadač Udalostí"
+msgstr "Zobraziť prehliadač položiek"
 
 #: actionmanager.cpp:729
 #, kde-format
@@ -1262,7 +1262,7 @@ msgstr "Upraviť &kategórie..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr "Čo ď&alej"
+msgstr "Čo je nové"
 
 #: actionmanager.cpp:763
 #, kde-format
@@ -1517,7 +1517,7 @@ msgstr "%1 (Default Todo)"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "Kalendáre"
+msgstr "Hľadanie v kalendároch"
 
 #: akonadicollectionview.cpp:393
 #, kde-format
@@ -1548,7 +1548,7 @@ msgstr "&Set Folder Color…"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Použiť ako predvolený kalendár"
+msgstr "Nastaviť ako &predvolený kalendár"
 
 #: akonadicollectionview.cpp:537
 #, kde-format
@@ -1560,7 +1560,7 @@ msgstr "Udalosť"
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "Zobrazenie úlohy"
+msgstr "Úloha"
 
 #: akonadicollectionview.cpp:603
 #, kde-kuit-format
@@ -1599,13 +1599,13 @@ msgstr "<filename>%1</filename> is now your default %2 calendar"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Použiť ako predvolený kalendár"
+msgstr "Nastaviť ako &predvolený kalendár udalostí"
 
 #: akonadicollectionview.cpp:773
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Použiť ako predvolený kalendár"
+msgstr "Nastaviť ako &predvolený kalendár úloh"
 
 #: akonadicollectionview.cpp:791
 #, kde-format
@@ -1873,7 +1873,7 @@ msgstr "Nepodarilo sa skopírovať položku \"%1\" do %2."
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
-msgstr "Plánovanie zlyhalo"
+msgstr "Kopírovanie zlyhalo"
 
 #: calendarview.cpp:1581
 #, kde-format
@@ -1889,7 +1889,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
-msgstr "Plánovanie zlyhalo"
+msgstr "Presun zlyhal"
 
 #: calendarview.cpp:1590
 #, kde-format
@@ -1952,19 +1952,19 @@ msgstr "T&aktiež oddeliť budúce"
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
-msgstr "Zrušiť asociáciu udalosti od opakovania"
+msgstr "Zrušiť asociáciu budúcich výskytov"
 
 #: calendarview.cpp:1675
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
-msgstr "Zrušiť asociáciu udalosti od opakovania"
+msgstr "Zrušiť asociáciu výskytu"
 
 #: calendarview.cpp:1682
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
-msgstr "Zrušiť asociáciu udalosti od opakovania"
+msgstr "Zrušenie asociácie budúcich výskytov zlyhalo."
 
 #: calendarview.cpp:1682 calendarview.cpp:1684
 #, kde-format
@@ -1976,7 +1976,7 @@ msgstr "Inštalácia zlyhala."
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
-msgstr "Zrušiť asociáciu udalosti od opakovania"
+msgstr "Zrušenie asociácie výskytu zlyhalo."
 
 #: calendarview.cpp:1828
 #, kde-format
@@ -2000,7 +2000,7 @@ msgstr "Chcete prepísať súbor \"%1\"?"
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr "Importovať kalendár"
+msgstr "Exportovať kalendár"
 
 #: calendarview.cpp:1875
 #, kde-format
@@ -2351,7 +2351,7 @@ msgstr "&Nastavenia"
 #: data/korganizer_part.rc:95 data/korganizerui.rc:96
 #, kde-format
 msgid "&Sidebar"
-msgstr "Časový panel"
+msgstr "&Bočný panel"
 
 #. i18n: ectx: Menu (help)
 #: data/korganizer_part.rc:113 data/korganizerui.rc:111
@@ -2376,7 +2376,7 @@ msgstr "Prezeranie"
 #: data/korganizer_part.rc:139 data/korganizerui.rc:137
 #, kde-format
 msgid "Schedule"
-msgstr "Plánovať"
+msgstr "Plánovanie"
 
 #. i18n: ectx: ToolBar (filter_toolbar)
 #: data/korganizer_part.rc:145 data/korganizerui.rc:144
@@ -2445,7 +2445,7 @@ msgstr "Prehliadač Udalostí"
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr "&Upraviť"
+msgstr "Upraviť…"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2457,7 +2457,7 @@ msgstr "Zobraziť v kontexte"
 #, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
-msgstr "Kalendáre"
+msgstr "Nájsť v kalendároch"
 
 #: dialog/searchdialog.cpp:73
 #, kde-format
@@ -2512,7 +2512,7 @@ msgstr[2] "%1 matches"
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "Ignorovať pripomienky z tohto kalendára"
+msgstr "Nepodarilo sa načítať udalosť z Akonadi"
 
 #: koapp.cpp:68
 #, kde-format
@@ -2615,7 +2615,7 @@ msgstr "Nová udalosť..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "Nová úloha..."
+msgstr "Nová úloha"
 
 #: koeventpopupmenu.cpp:92
 #, kde-format
@@ -2639,7 +2639,7 @@ msgstr "Prepnúť dokončené ú&lohy"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "Pripo&menutie:"
+msgstr "&Prepnúť pripomienku"
 
 #: koeventpopupmenu.cpp:132
 #, kde-format
@@ -2657,13 +2657,13 @@ msgstr "Poslať ako iCalendar..."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
-msgstr "Pripo&menutie:"
+msgstr "&Vypnúť pripomienku"
 
 #: koeventpopupmenu.cpp:191
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
-msgstr "Pripo&menutie:"
+msgstr "Za&pnúť pripomienku"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, ApptSummaryConfig_Base)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:16
@@ -3018,7 +3018,7 @@ msgstr "Nasledujúci: %1"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr "Nová úloha..."
+msgstr "Nová úloha…"
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
@@ -3759,16 +3759,14 @@ msgid ""
 "Select the tag you want to modify. You can change the selected tag's color "
 "using the adjacent color button."
 msgstr ""
-"Vyberte kalendár, ktorý chcete upraviť. Môžete zmeniť farbu pre vybraný "
-"kalendár nižšie pomocou tlačidla."
+"Vyberte tag, ktorý chcete upraviť. Farbu vybraného tagu môžete zmeniť "
+"pomocou susediaceho tlačidla farby."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:122
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
-msgstr ""
-"Tu vybrať farbu pre zvolený kalendár pomocou vyššie uvedeného rozbaľovacieho "
-"zoznamu."
+msgstr "Vyberte farbu tagu vybraného v susediacom rozbaľovacom zozname."
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:130
 #, kde-format
@@ -3951,7 +3949,7 @@ msgstr "Vybrať kategórie sviatkov"
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Plánovať"
+msgstr "Týždenný plán"
 
 #: prefs/koprefsdialogtime.cpp:174
 #, kde-format
@@ -4130,13 +4128,13 @@ msgstr "Zobrazenie úlohy"
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
-msgstr "&Popisy"
+msgstr "Ďalšie možnosti"
 
 #: prefs/kprefsdialog.cpp:177
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
-msgstr "&Upraviť"
+msgstr "Vybrať…"
 
 #: prefs/kprefsdialog.cpp:659
 #, kde-format
@@ -4464,7 +4462,8 @@ msgstr "Zobraziť číslo dňa"
 #: settings/korganizer.kcfg:98
 #, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
-msgstr "Zaškrtnúť toto pole pre zobrazovanie času v položkách pohľadu mesiaca."
+msgstr ""
+"Zaškrtnite toto pole pre zobrazenie čísel týždňov v navigátore dátumov."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:102
@@ -4552,7 +4551,7 @@ msgstr "Kresliť hrubšie čiary mriežky pre párne hodiny"
 #: settings/korganizer.kcfg:130
 #, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "Zobraziť ikony v položkách pohľadu agendy"
+msgstr "Zobrazovať popisy udalostí v položkách pohľadu agendy"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:131
@@ -4560,14 +4559,14 @@ msgstr "Zobraziť ikony v položkách pohľadu agendy"
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Zaškrtnúť toto pole pre zobrazenie ikon (alarm, rekurzia, atď.) v položkách "
-"pohľadu programu."
+"Zaškrtnite toto pole pre zobrazenie popisov udalostí v položkách pohľadu "
+"programu."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:132
 #, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "Zobraziť ikony v položkách pohľadu programu"
+msgstr "Zobrazovať popisy udalostí v položkách pohľadu programu"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
@@ -5200,7 +5199,7 @@ msgstr "Farba pozadia pohľadu programu"
 #: settings/korganizer.kcfg:324 settings/korganizer.kcfg:453
 #, kde-format
 msgid "Select the agenda view background color here."
-msgstr "Farba pozadia pohľadu programu"
+msgstr "Tu vyberte farbu pozadia pohľadu programu."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:328
@@ -5283,13 +5282,13 @@ msgstr "Tu vyberte farbu pre úlohy po termíne"
 #: settings/korganizer.kcfg:354
 #, kde-format
 msgid "Month view today background color"
-msgstr "Farba pozadia mesačného pohľadu"
+msgstr "Farba pozadia dnešného dňa v mesačnom pohľade"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:355
 #, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "Tu vybať farbu pozadia pracovných hodín pre pohľad mesiaca."
+msgstr "Nastaviť farbu pozadia pre dnešný dátum v mesačnom pohľade"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:356
@@ -5355,7 +5354,7 @@ msgstr ""
 #: settings/korganizer.kcfg:375
 #, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Zobraziť aktuálny čas (čiara Marcusa Bainsa)"
+msgstr "Čiara aktuálneho času (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:376
@@ -5647,7 +5646,7 @@ msgstr "Zobraziť iba vybrané"
 #: ui/filteredit_base.ui:301
 #, kde-format
 msgid "Change…"
-msgstr "&Upraviť"
+msgstr "Zmeniť…"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideTodosNotAssignedToMeCheck)
 #: ui/filteredit_base.ui:315
@@ -5840,7 +5839,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:290
 #, kde-format
 msgid "Remember p&assword"
-msgstr "&Uložiť heslo"
+msgstr "Zapamätať &heslo"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7)
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
@@ -5963,7 +5962,7 @@ msgstr "Heslo:"
 #: ui/kogroupwareprefspage.ui:512
 #, kde-format
 msgid "Re&member password"
-msgstr "&Uložiť heslo"
+msgstr "Za&pamätať heslo"
 
 #. i18n: ectx: property (text), widget (QLabel, searchLabel)
 #: ui/searchdialog_base.ui:36
@@ -6003,7 +6002,7 @@ msgstr "*"
 #: ui/searchdialog_base.ui:67
 #, kde-format
 msgid "Search For"
-msgstr "Hľadať"
+msgstr "Hľadať v"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:73
@@ -6191,7 +6190,7 @@ msgstr "Rozsah dátumu"
 #: ui/searchdialog_base.ui:204
 #, kde-format
 msgid "When checked, the search will be limited to the specified date range."
-msgstr "Zahrnúť udalosti v danom rozsahu dátumov"
+msgstr "Po zaškrtnutí bude hľadanie obmedzené na zadaný rozsah dátumov."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:207
@@ -6281,7 +6280,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:302
 #, kde-format
 msgid "Exclude e&vents that extend outside the specified date range"
-msgstr "Zahrnúť udalosti v danom rozsahu dátumov"
+msgstr "Vylúčiť uda&losti presahujúce zadaný rozsah dátumov"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:309
@@ -6312,7 +6311,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:315
 #, kde-format
 msgid "Include all to-dos &within the specified date range"
-msgstr "Zahrnúť udalosti v danom rozsahu dátumov"
+msgstr "Zahrnúť všetky úlohy &v zadanom rozsahu dátumov"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:325
@@ -6320,7 +6319,9 @@ msgstr "Zahrnúť udalosti v danom rozsahu dátumov"
 msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
-msgstr "Stlačte toto tlačidlo na odstránenie aktuálneho aktívneho filtra."
+msgstr ""
+"Zrušte zaškrtnutie tohto poľa pre preskočenie udalostí zodpovedajúcich "
+"aktuálne vybranému filtru pohľadu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -6599,7 +6600,7 @@ msgstr "Incidence editor: add emoji support"
 
 #: whatsnew/whatsnewtranslations.cpp:73
 msgid "Add What's New menu"
-msgstr "Pridať ako nový kalendár"
+msgstr "Pridať ponuku Čo je nové"
 
 #: whatsnew/whatsnewtranslations.cpp:74
 msgid "The current view is remembered"
@@ -6637,7 +6638,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:80
 msgid "To-do view: save/restore fullview setting"
-msgstr "Prehľad úloh používa celé okno"
+msgstr "Pohľad úloh: uložiť/obnoviť nastavenie celého okna"
 
 #: whatsnew/whatsnewtranslations.cpp:81
 msgid "To-do view: save/restore flatview setting"
@@ -6655,7 +6656,9 @@ msgstr ""
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
-msgstr "Týždenné čísla vyberajú pracovný týždeň pri režime pracovného týždňa"
+msgstr ""
+"Navigátor dátumov: nastavenie „Týždenné čísla vyberajú pracovný týždeň v "
+"režime pracovného týždňa“ je predvolene zapnuté"
 
 #: whatsnew/whatsnewtranslations.cpp:84
 msgid "Incidence editor: remember/restore the template manager geometry"
@@ -6850,7 +6853,7 @@ msgstr "Ikony na použitie"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Ukázať čas v položkách pohľadu mesiaca"
+msgstr "Zobraziť/skryť bočný panel v tomto pohľade"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6872,7 +6875,7 @@ msgstr "Prejsť na dnešok"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Prejsť späť"
+msgstr "Posunúť o rok späť"
 
 #: widgets/navigatorbar.cpp:44
 #, kde-format
@@ -6888,7 +6891,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Prejsť späť"
+msgstr "Posunúť o mesiac späť"
 
 #: widgets/navigatorbar.cpp:50
 #, kde-format
@@ -6904,29 +6907,25 @@ msgstr ""
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Prejsť späť"
+msgstr "Posunúť o týždeň späť"
 
 #: widgets/navigatorbar.cpp:55
 #, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr ""
-"Kliknúť na toto tlačidlo pre presun obrazovky na približne rovnaký dátum "
-"nasledujúceho mesiaca"
+msgstr "Kliknite na toto tlačidlo pre posun zobrazenia o 1 týždeň späť"
 
 #: widgets/navigatorbar.cpp:58
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Prejsť dopredu"
+msgstr "Posunúť o týždeň dopredu"
 
 #: widgets/navigatorbar.cpp:59
 #, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr ""
-"Kliknúť na toto tlačidlo pre presun obrazovky na približne rovnaký deň "
-"nasledujúceho roka"
+msgstr "Kliknite na toto tlačidlo pre posun zobrazenia o 1 týždeň dopredu"
 
 #: widgets/navigatorbar.cpp:62
 #, kde-format

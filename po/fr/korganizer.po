@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-04-14 07:22+0200\n"
+"PO-Revision-Date: 2026-04-29 17:20+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -4757,30 +4757,28 @@ msgstr ""
 # unreviewed-context
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
 msgstr ""
-"Afficher les descriptions de récurrence pour les éléments de la vue d'agenda"
+"Afficher les emplacements des récurrences pour les éléments de la vue "
+"d'agenda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Veuillez cocher cette case si vous souhaitez afficher les descriptions de "
-"récurrence pour les éléments de la vue d'agenda"
+"Veuillez cocher cette case si vous souhaitez afficher les emplacements des "
+"récurrences pour les éléments de la vue d'agenda"
 
 # unreviewed-context
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
 msgstr ""
-"Afficher les descriptions de récurrence dans les éléments de la vue d'agenda"
+"Afficher les emplacements des récurrences dans les éléments de la vue "
+"d'agenda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6791,20 +6789,15 @@ msgstr ""
 "colonne "
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Vue d'agenda : afficher éventuellement les descriptions de récurrence dans  "
-"les éléments de l'agenda. Pour activer ce comportement, veuillez cocher "
-"l'option « Afficher les descriptions de récurrence dans les éléments de la "
-"vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
+"Vue d'agenda : afficher éventuellement les emplacements des récurrences "
+"dans  les éléments de l'agenda. Pour activer ce comportement, veuillez "
+"cocher l'option « Afficher les emplacements des récurrences dans les "
+"éléments de la vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid ""
