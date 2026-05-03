@@ -2085,7 +2085,7 @@
 >Etkinliğinize katılımcı eklerken, o belirli zamanda meşgul veya uygun olup olmadıklarını bilmeniz gerekir. Katılımcılar uygun/meşgul bilgilerini kullanıma sunarsa davetleri göndermeden önce programlarını burada görüntüleyebilirsiniz.</para>
 
 <para
->Bu, sağda uygun/meşgul programı çizelgesini gösterir, burada her satır solda listelenen katılımcılardan birini temsil eder. Çizelgedeki işaretli alanlar diğer etkinlikler tarafından halihazırda alınan zamanı temsil eder, işaretsiz alanlar diğer etkinliklerden boş zamanı temsil eder. Etkinliği fareyle sürükleyerek farklı bir zaman noktasına taşıyabilir veya vurgulanan alanın kenarlarını fareyle hareket ettirerek yeniden boyutlandırabilirsiniz.</para>
+>Bu, sağda uygun/meşgul programı çizelgesini gösterir, burada her satır solda listelenen katılımcılardan birini temsil eder. Çizelgedeki işaretli alanlar diğer etkinlikler tarafından hâlihazırda alınan zamanı temsil eder, işaretsiz alanlar diğer etkinliklerden boş zamanı temsil eder. Etkinliği fareyle sürükleyerek farklı bir zaman noktasına taşıyabilir veya vurgulanan alanın kenarlarını fareyle hareket ettirerek yeniden boyutlandırabilirsiniz.</para>
 
 <para
 >Uygun/meşgul bilgisi yalnızca katılımcı uygun/meşgul programını yayınlarsa ve &korganizer; bunu almak üzere doğru bir biçimde yapılandırılmışsa kullanılabilir. &korganizer;’ü uygun/meşgul bilgisini almak/yayınlamak ile ilgili daha fazla bilgi için <xref linkend="config"/> bölümüne bakın. Listedeki katılımcı girişine çift tıklandığında, katılımcının uygun/meşgul bilgilerinin bulunduğu yer girilebilir. </para>
@@ -2711,7 +2711,7 @@
 >Ayça Korkmaz &#060;akorkmaz@bufirma.com&#062;</userinput
 > gibi olacak. <tip
 ><para
->Katılımcılar halihazırda &kde; adres defterinizde varsa adları ve e-postaları elle yazmak yerine <guibutton
+>Katılımcılar hâlihazırda &kde; adres defterinizde varsa adları ve e-postaları elle yazmak yerine <guibutton
 >Katılımcılar Seç…</guibutton
 > düğmesine tıklayarak listeden seçebilirsiniz.</para
 ></tip
