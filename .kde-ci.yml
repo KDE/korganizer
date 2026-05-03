@@ -15,7 +15,7 @@ Dependencies:
     'pim/kcalutils' : '@same'
     'pim/kldap' : '@same'
     'pim/kmailtransport' : '@same'
-    'pim/kmime' : '@same'
+    'frameworks/kmime': '@latest-kf6'
     'pim/kontactinterface' : '@same'
     'pim/libkdepim' : '@same'
     'pim/pimcommon' : '@same'
