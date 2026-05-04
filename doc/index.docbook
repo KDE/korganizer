@@ -2001,6 +2001,14 @@ the email excluding attachments or only a link to the email.</para>
 <para>Note that attaching an email without attachments might invalidate its signature.
 </para></listitem>
 </varlistentry>
+
+<varlistentry>
+<term><guilabel>Default Access Classification</guilabel></term>
+<listitem><para>This option allows you to select the default access classification (Public, Confidential, Private)
+to use when creating an event, to-do or journal. Please see RFC 5545 3.8.1.3. Classification to learn about
+the iCalendar access classification property.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>

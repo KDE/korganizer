@@ -22,6 +22,7 @@
 #include <IncidenceEditor/IncidenceEditorSettings>
 #include <akonadi/calendarsettings.h>
 
+#include <KComboBox>
 #include <KLocalizedString>
 #include <QCheckBox>
 #include <QLabel>
@@ -60,11 +61,22 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
         addWidRadios(IncidenceEditorNG::IncidenceEditorSettings::self()->defaultEmailAttachMethodItem(), personalFrame);
     personalLayout->addWidget(defaultEmailAttachMethod->groupBox());
 
+    auto defaultsGroup = new QGroupBox(i18nc("@title:group", "Default Access Classification"), personalFrame);
+    auto defaultsLayout = new QFormLayout(defaultsGroup);
+    Korganizer::KPrefsWidCombo *eventDefaultSecrecy = addWidCombo(CalendarSupport::KCalPrefs::instance()->eventSecrecyPolicyItem(), defaultsGroup);
+    defaultsLayout->addRow(eventDefaultSecrecy->label(), eventDefaultSecrecy->comboBox());
+    Korganizer::KPrefsWidCombo *todoDefaultSecrecy = addWidCombo(CalendarSupport::KCalPrefs::instance()->todoSecrecyPolicyItem(), defaultsGroup);
+    defaultsLayout->addRow(todoDefaultSecrecy->label(), todoDefaultSecrecy->comboBox());
+    Korganizer::KPrefsWidCombo *journalDefaultSecrecy = addWidCombo(CalendarSupport::KCalPrefs::instance()->journalSecrecyPolicyItem(), defaultsGroup);
+    defaultsLayout->addRow(journalDefaultSecrecy->label(), journalDefaultSecrecy->comboBox());
+    personalLayout->addWidget(defaultsGroup);
+
     auto remindersGroup = new QGroupBox(i18nc("@title:group", "Reminders"), personalFrame);
     auto remindersLayout = new QFormLayout(remindersGroup);
     Korganizer::KPrefsWidBool *onlyMyReminders = addWidBool(Akonadi::CalendarSettings::self()->onlyShowRemindersForMyEventsItem(), remindersGroup);
     remindersLayout->addWidget(onlyMyReminders->checkBox());
     personalLayout->addWidget(remindersGroup);
+
     personalLayout->addStretch(1);
 
     // Save Settings
@@ -115,6 +127,7 @@ void KOPrefsDialogMain::usrWriteConfig()
 #if HAVE_ACTIVITY_SUPPORT
     KOPrefs::instance()->setEnabledActivities(mActivities->isChecked());
 #endif
+    CalendarSupport::KCalPrefs::instance()->save();
     setNeedsSave(false);
 }
 
