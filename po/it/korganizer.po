@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 00:46+0000\n"
-"PO-Revision-Date: 2026-03-17 23:31+0100\n"
+"PO-Revision-Date: 2026-05-03 22:51+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3961,8 +3961,7 @@ msgid "Holidays"
 msgstr "Festività"
 
 #: prefs/koprefsdialogtime.cpp:72
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Zone da usare per le festività:"
@@ -3980,19 +3979,16 @@ msgid "Select Holiday Regions"
 msgstr "Seleziona le zone per le festività"
 
 #: prefs/koprefsdialogtime.cpp:123
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "Zone da usare per le festività:"
+msgstr "Usa categorie delle festività:"
 
 #: prefs/koprefsdialogtime.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Categories"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "Seleziona categorie"
+msgstr "Seleziona le categorie per le festività"
 
 #: prefs/koprefsdialogtime.cpp:159
 #, kde-format
@@ -4627,27 +4623,23 @@ msgstr "Mostra descrizioni delle occorrenze nelle voci della vista agenda."
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Mostra descrizioni delle occorrenze nelle voci della vista agenda"
+msgstr "Mostra posizioni delle occorrenze nelle voci della vista agenda."
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Marca questa casella per mostrare le descrizioni delle occorrenze nelle voci "
+"Marca questa casella per mostrare le posizioni delle occorrenze nelle voci "
 "della vista agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Mostra descrizioni delle occorrenze nelle voci della vista agenda."
+msgstr "Mostra posizioni delle occorrenze nelle voci della vista agenda."
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5030,25 +5022,22 @@ msgstr "Mostra voci di diario nella vista mensile"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Mostra &vacanze"
+msgstr "Mostra festività"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "Marca questa casella per mostrare le cose da fare nella vista mensile."
+msgstr "Marca questa casella per mostrare le festività nella vista mensile."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:247 settings/korganizer.kcfg:254
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Mostra cose da fare nella vista mensile"
+msgstr "Mostra le festività nella vista mensile"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
@@ -5056,6 +5045,8 @@ msgstr "Mostra cose da fare nella vista mensile"
 msgid ""
 "Use the Holiday background color when at least on holiday lands on a date"
 msgstr ""
+"Usa il colore di sfondo delle festività quando cade almeno una festività in "
+"quella data."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:252
@@ -5064,6 +5055,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Usa il colore personalizzato della festività come colore di sfondo della "
+"data se una festività cade in quella data"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:253
@@ -5073,6 +5066,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Marca questa casella per usare la festività personalizzata come colore di "
+"sfondo per la data quando vi cade almeno una festività. Configurare il "
+"colore della festività tramite Impostazioni->Colori e caratteri"
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:258
@@ -5503,21 +5499,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:528
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Colore di sfondo dei giorni occupati"
+msgstr "Usa i colori di sistema per alcuni colori di sfondo"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:529
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Usa il colore di sistema invece di un colore definito dall'utente. Se "
-"abilitato, ignorerà tutte le altre impostazioni di colore"
+"Usa i colore di sistema invece dei colori personalizzati per alcuni colori "
+"di sfondo"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:530
@@ -5527,6 +5519,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Usa i colori di sistema invece dei colori definiti dall'utente tramite "
+"«Colore di sfondo della vista agenda», «Colore di sfondo dei giorni "
+"occupati» e «Colore delle ore lavorative» (e possibilmente altri)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:540
@@ -6555,64 +6550,56 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
+"È ora possibile nascondere le festività che appartengono a determinate "
+"categorie, ad esempio nascondere le festività religiose. Si veda la casella "
+"combinata Categorie nella sezione delle festività nella scheda Data e ora -> "
+"Regionale."
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Vista mensile: per consistenza, le ferie che cadono in un giorno lavorativo "
+"non sono più nascoste."
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Vista agenda: opzionalmente disegna linee della griglia orizzontali più "
-"spesse/grosse ogni due ore. Per abilitare questo comportamento, selezionare "
-"l'opzione «Disegna linee della griglia orizzontali spesse per le ore pari» "
-"nella scheda Visualizza->Vista agenda"
+"Vista mensile: è stata aggiunta un'opzione per nascondere delle festività. "
+"Per abilitare questo comportamento, disabilitare l'opzione «Mostra le "
+"festività nella vista mensile» nella scheda Visualizza->Vista mese."
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
 "enable this behavior, check the \"Use the Holiday background color when at "
 "least on holiday lands on a date\" option in the Views->Month View tab"
 msgstr ""
-"Vista agenda: opzionalmente disegna linee della griglia orizzontali più "
-"spesse/grosse ogni due ore. Per abilitare questo comportamento, selezionare "
-"l'opzione «Disegna linee della griglia orizzontali spesse per le ore pari» "
-"nella scheda Visualizza->Vista agenda"
+"Vista mensile: è stata aggiunta un'opzione per permette l'uso dei colori "
+"personalizzati delle festività come colore di sfondo della casella della "
+"data se almeno una festività cade in quella data. Per abilitare questo "
+"comportamento, selezionare l'opzione «Usa il colore di sfondo delle "
+"festività quando cade almeno una festività in quella data» nella scheda "
+"Visualizza->Vista mensile"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Agenda view: underline today's column header date"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:31
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Vista agenda: opzionalmente mostra le descrizioni delle occorrenze nelle "
-"voci dell'agenda. Per abilitare questo comportamento, selezionare l'opzione "
-"«Mostra descrizioni delle occorrenze nelle voci della vista agenda» nella "
+"Vista agenda: opzionalmente mostra le posizioni delle occorrenze nelle voci "
+"dell'agenda. Per abilitare questo comportamento, selezionare l'opzione "
+"«Mostra posizioni delle occorrenze nelle voci della vista agenda» nella "
 "scheda Visualizza->Vista agenda"
 
 #: whatsnew/whatsnewtranslations.cpp:41
@@ -6902,12 +6889,14 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "Corretta l'attivazione/disattivazione dei promemoria dai menu"
 
 #: whatsnew/whatsnewtranslations.cpp:159
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
+"Vista agenda: migliorato l'allineamento verticale delle etichette "
+"dell'orario alla griglia"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
