@@ -4334,24 +4334,21 @@ msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "显示日程视图项目的图标"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
-msgstr "选中此项以在月视图项目中显示时间。"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "显示日程视图项目的图标"
+msgstr ""
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -6329,7 +6326,7 @@ msgstr "议程视图：没有持续时间的事件显示为 30 分钟  (而不�
 #: whatsnew/whatsnewtranslations.cpp:131
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr ""
+msgstr "事件编辑器：标签在标签编辑器中按字母顺序排序"
 
 #: whatsnew/whatsnewtranslations.cpp:158
 #, kde-format
