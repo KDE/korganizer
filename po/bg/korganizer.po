@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-28 00:46+0000\n"
+"POT-Creation-Date: 2026-05-07 00:45+0000\n"
 "PO-Revision-Date: 2026-04-03 02:42+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -3871,49 +3871,55 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Транспорт по пощата:"
 
-#: prefs/koprefsdialogmain.cpp:43
+#: prefs/koprefsdialogmain.cpp:44
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Лични"
 
-#: prefs/koprefsdialogmain.cpp:49
+#: prefs/koprefsdialogmain.cpp:50
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Настройки на е-поща"
 
-#: prefs/koprefsdialogmain.cpp:63 prefs/koprefsdialogtime.cpp:242
+#: prefs/koprefsdialogmain.cpp:64
+#, kde-format
+msgctxt "@title:group"
+msgid "Default Access Classification"
+msgstr ""
+
+#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Напомняния"
 
-#: prefs/koprefsdialogmain.cpp:72
+#: prefs/koprefsdialogmain.cpp:84
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Запазване"
 
-#: prefs/koprefsdialogmain.cpp:84
+#: prefs/koprefsdialogmain.cpp:96
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Календари"
 
-#: prefs/koprefsdialogmain.cpp:88
+#: prefs/koprefsdialogmain.cpp:100
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Акаунти в календара"
 
-#: prefs/koprefsdialogmain.cpp:97
+#: prefs/koprefsdialogmain.cpp:109
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
 msgstr "Дейности"
 
-#: prefs/koprefsdialogmain.cpp:102
+#: prefs/koprefsdialogmain.cpp:114
 #, kde-format
 msgctxt "@option:check"
 msgid "Enabled"
@@ -6629,7 +6635,15 @@ msgstr ""
 "опцията „Показване на описания на инцидентите в елементите от дневния ред“ в "
 "раздела Изглед->Изглед на дневен ред"
 
-#: whatsnew/whatsnewtranslations.cpp:41
+#: whatsnew/whatsnewtranslations.cpp:33
+msgid ""
+"Options for setting default access classifications (Public, Confidential or "
+"Private) when creating new Events, To-dos and Journals have been added.  "
+"Select your preferences in the \"General->Personal Default Access "
+"Classification\" comboboxes."
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6640,7 +6654,7 @@ msgstr ""
 "на напомняния“ в настройките „Час и дата“ -> раздел „Стойности по "
 "подразбиране“."
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6648,7 +6662,7 @@ msgstr ""
 "Месечен изглед: да не се показва заглавката на месеца и годината, за да се "
 "спести вертикално пространство и да се премахне излишното"
 
-#: whatsnew/whatsnewtranslations.cpp:44
+#: whatsnew/whatsnewtranslations.cpp:46
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6656,7 +6670,7 @@ msgstr ""
 "Месечен изглед: използване на малко по-различен цвят за изобразяване на "
 "заглавките на дните извън текущо избрания месец"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6664,7 +6678,7 @@ msgstr ""
 "Изглед за месеца: контролите за навигация в долния десен ъгъл са премахнати "
 "в полза на подобрената лента за навигация в приложението."
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6674,7 +6688,7 @@ msgstr ""
 "променя. За да конфигурирате цвета, задайте „Цвят на фона на месечния изглед "
 "за днес“ в настройките „Цветове и шрифтове“."
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6682,12 +6696,12 @@ msgstr ""
 "Навигационна лента: подобрена чрез добавяне на превъртане по седмици и "
 "показване/скриване на страничната лента за всеки изглед"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 "Навигационна лента: добавен е бутон за превъртане на изгледа до текущата дата"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6695,7 +6709,7 @@ msgstr ""
 "Изглед на дневен ред: събитията с кратка продължителност се показват с "
 "началния им час, както и с обобщението им"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6706,11 +6720,11 @@ msgstr ""
 "опцията „Показване на описания на инцидентите в елементите от дневния ред“ в "
 "раздела Изглед->Изглед на дневен ред"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid "Search: the search settings are saved/restored"
 msgstr "Търсене: настройките за търсене са запазени/възстановени"
 
-#: whatsnew/whatsnewtranslations.cpp:62
+#: whatsnew/whatsnewtranslations.cpp:64
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6719,31 +6733,31 @@ msgstr ""
 "показват/скриват времевите етикети за системната часова зона от дясната (или "
 "лявата) страна"
 
-#: whatsnew/whatsnewtranslations.cpp:63
+#: whatsnew/whatsnewtranslations.cpp:65
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Редактор на събития: открива и предупреждава за създаването на събития в "
 "миналото"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid "Incidence editor: add emoji support"
 msgstr "Редактор на събития: добавена поддръжка за емотикони"
 
-#: whatsnew/whatsnewtranslations.cpp:73
+#: whatsnew/whatsnewtranslations.cpp:75
 msgid "Add What's New menu"
 msgstr "Добавяне на меню „Какво ново“"
 
-#: whatsnew/whatsnewtranslations.cpp:74
+#: whatsnew/whatsnewtranslations.cpp:76
 msgid "The current view is remembered"
 msgstr "Текущият изглед е запомнен"
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 "Добавяне на диалогов прозорец за избор на дата, достъпен от менюто "
 "„Навигация“."
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6751,7 +6765,7 @@ msgstr ""
 "Изглед Дневен ред: „Ден“, „Следващите X дни“, „Работен график“ и „Седмица“ "
 "са обединени в бутона на инструмента „Дневен ред“."
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6759,30 +6773,30 @@ msgstr ""
 "Изглед на дневен ред: добавена опция в контекстното меню за времеви етикети "
 "за превключване на 24-часов часовник (военен стил)"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Изглед на дневен ред: добавено контекстно меню за създаване на ново събитие "
 "или задача"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Изглед на задачи: добавени са опции в контекстното меню за превключване "
 "между задачи за завършване и напомняния"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Изглед на задачи: запазване/възстановяване на настройката за пълен изглед"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 "Изглед на задачи: запазване/възстановяване на настройката на плоския изглед"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6790,7 +6804,7 @@ msgstr ""
 "Навигатор по дати: добавена е опция в настройките Конфигуриране->Изгледи за "
 "скриване на номерата на седмиците"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6798,58 +6812,58 @@ msgstr ""
 "Навигатор по дати: настройката „Номерата на седмиците избират работна "
 "седмица, когато сте в режим „Работна седмица“ е true по подразбиране."
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Редактор на събития: запомняне/възстановяване на геометрията на мениджъра на "
 "шаблони"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Редактор на събития: поддръжка на прикачени файлове с плъзгане и пускане"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Диалоговият прозорец за експортиране на календар запомня местоположението на "
 "последната папка за експортиране"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Диалоговият прозорец за импортиране на календар запомня местоположението на "
 "последното импортиране на папката"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid "Get Hot New Stuff removed"
 msgstr "„Изтегляне на нови неща“ е премахнато"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 "Добавяне на файл с календар: отдалечените календари винаги са само за четене"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Добавяне на файл с календар: няма да се позволи празен път към файла"
 
-#: whatsnew/whatsnewtranslations.cpp:91
+#: whatsnew/whatsnewtranslations.cpp:93
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "DAV конфигурация: диалоговият прозорец позволява да видите паролата на "
 "акаунта при редактиране"
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:94
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Конфигурация на DAV: съветникът показва икони за различните доставчици"
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:95
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "DAV конфигурация: списъкът с доставчици, актуализиран от помощника"
 
-#: whatsnew/whatsnewtranslations.cpp:111
+#: whatsnew/whatsnewtranslations.cpp:113
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6858,30 +6872,30 @@ msgstr ""
 "Семантиката е променена от концепция за „работен график“ на концепция за "
 "„седмичен график“, за да се съобрази с неработещите потребители."
 
-#: whatsnew/whatsnewtranslations.cpp:112
+#: whatsnew/whatsnewtranslations.cpp:114
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Първоначалните начални часове на „Ново събитие“ са еднакви във всички изгледи"
 
-#: whatsnew/whatsnewtranslations.cpp:113
+#: whatsnew/whatsnewtranslations.cpp:115
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Подобрена обработка на календара за събития по подразбиране"
 
-#: whatsnew/whatsnewtranslations.cpp:115
+#: whatsnew/whatsnewtranslations.cpp:117
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 "Събитията с дълъг списък с изключени дати вече не създават огромни подсказки"
 
-#: whatsnew/whatsnewtranslations.cpp:116
+#: whatsnew/whatsnewtranslations.cpp:118
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr "Поправен е имейл адресът на организатора за събитие с участници"
 
-#: whatsnew/whatsnewtranslations.cpp:117
+#: whatsnew/whatsnewtranslations.cpp:119
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6891,19 +6905,19 @@ msgstr ""
 "продължителност от 30 минути (вместо от 15 минути)."
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:131
+#: whatsnew/whatsnewtranslations.cpp:133
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Редактор на събития: етикетите са подредени по азбучен ред в редактора на "
 "етикети."
 
-#: whatsnew/whatsnewtranslations.cpp:158
+#: whatsnew/whatsnewtranslations.cpp:160
 #, kde-format
 msgid "Fixed reminder toggling from menus"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:159
+#: whatsnew/whatsnewtranslations.cpp:161
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
