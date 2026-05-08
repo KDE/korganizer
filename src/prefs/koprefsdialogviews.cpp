@@ -136,6 +136,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     /*mdisplayLayout->addWidget(
           addWidBool( KOPrefs::instance()->enableMonthScrollItem() )->checkBox() );*/
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showTimeInMonthViewItem())->checkBox());
+    mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showEndTimeInMonthViewItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableMonthItemIconsItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showTodosMonthViewItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showJournalsMonthViewItem())->checkBox());

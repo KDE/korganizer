@@ -27,6 +27,8 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on "
                "that date. To enable this behavior, check the \"Use the Holiday background color when a holiday lands on the date\" option "
                "in the Views->Month View tab"),
+        kli18n("Month view: An option was added to show start-time and end-times. Previously only showing the start-time was supported. To enable this "
+               "option, check the \"Show the start-time and the end-time in month view items\" option in the View->Month View tab"),
         kli18n("Agenda view: underline today's column header date"),
         kli18n("Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence "
                "locations in agenda view items\" option in the View->Agenda View tab"),

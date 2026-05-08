@@ -2340,9 +2340,10 @@ from the context menu.
 
 <varlistentry>
 <term><guilabel>Display Options</guilabel></term>
-<listitem><para>Use the first four check boxes to display the time, icons
-(reminder, recursion &etc;),
-to-dos or journals in Month view.</para></listitem>
+<listitem>
+  <para>The first two check boxes allow displaying the start-time only, or both the start-time and end-time.</para>
+  <para>Use the next four check boxes to optionally display icons, to-dos, journals or holidays in the month view.</para>
+</listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 
