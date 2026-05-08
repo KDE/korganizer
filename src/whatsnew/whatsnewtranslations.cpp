@@ -25,7 +25,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option "
                "in the Views->Month View tab"),
         kli18n("Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on "
-               "that date. To enable this behavior, check the \"Use the Holiday background color when at least on holiday lands on a date\" option "
+               "that date. To enable this behavior, check the \"Use the Holiday background color when a holiday lands on the date\" option "
                "in the Views->Month View tab"),
         kli18n("Agenda view: underline today's column header date"),
         kli18n("Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence "

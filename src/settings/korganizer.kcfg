@@ -248,7 +248,7 @@
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowHolidaysBackgroundMonthView">
-      <label>Use the Holiday background color when at least on holiday lands on a date</label>
+      <label>Use the Holiday background color when a holiday lands on the date</label>
       <tooltip>Use the custom holiday color as the date's background color if a holiday lands on the date</tooltip>
       <whatsthis>Check this box to use the custom holiday as the date's background color when at least one holiday lands on a date. Configure the holiday color in the Settings-&gt;Colors and Fonts.</whatsthis>
       <tooltip>Display holidays in the month view</tooltip>
