@@ -2832,6 +2832,17 @@
 >Cal tenir en compte que adjuntar un correu sense adjunts podria invalidar la vostra signatura. </para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Classificació d'accés predeterminada</guilabel
+></term>
+<listitem
+><para
+>Aquesta opció permet seleccionar la classificació d'accés predeterminada (Públic, Confidencial, Privat) a usar en crear un esdeveniment, tasca pendent o diari. Vegeu la «RFC 5545 3.8.1.3. Classificació» per a conèixer la propietat de classificació d'accés a iCalendar.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>

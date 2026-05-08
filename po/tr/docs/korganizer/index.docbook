@@ -2878,6 +2878,17 @@
 >Eksiz bir e-postayı eklemenin imzayı geçersiz kılabileceğini unutmayın. </para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Öntanımlı Erişim Sınıflandırması</guilabel
+></term>
+<listitem
+><para
+>Bu seçenek, etkinlik, yapılacaklar listesi veya günce oluştururken kullanılacak öntanımlı erişim sınıflandırmasını (Genel, Gizli, Özel) seçmenize olanak tanır. iCalendar erişim sınıflandırma özelliği hakkında bilgi edinmek için lütfen RFC 5545 3.8.1.3. Sınıflandırma bölümüne bakın.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>

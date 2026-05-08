@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:45+0000\n"
-"PO-Revision-Date: 2026-04-29 00:13+0100\n"
+"PO-Revision-Date: 2026-05-07 12:23+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -3880,7 +3880,7 @@ msgstr "Preferencias de correo"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Clasificación de acceso predeterminada"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6665,6 +6665,10 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Opciones para definir la clasificación de acceso predeterminada (pública, "
+"confidencial o privada) al crear nuevos eventos, listas de tareas y entradas "
+"de diario. Seleccione sus preferencias en las listas desplegables de "
+"«General->Clasificación de acceso predeterminada»."
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""

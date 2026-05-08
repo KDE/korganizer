@@ -12,13 +12,13 @@
 # Diego Iastrubni <elcuco@kde.org>, 2006, 2009.
 # Chen Levy <contrib@chenlevy.com>, 2006.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2023, 2024, 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2023-2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:45+0000\n"
-"PO-Revision-Date: 2026-04-28 08:59+0300\n"
+"PO-Revision-Date: 2026-05-07 08:30+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3792,7 +3792,7 @@ msgstr "הגדרות דוא״ל"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "סיווג גישת ברירת מחדל"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6399,6 +6399,9 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"אפשרויות להגדרת סיווגי גישת ברירת המחדל (ציבורי, חסוי או פרטי) בעת יצירת "
+"אירועים ומטלות חדשים והוספת יומנים. אפשר לבחור את ההעדפות שלך דרך תיבות "
+"הבחירה המשולבות תחת „כללי->סיווג גישת ברירת מחדל”."
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""

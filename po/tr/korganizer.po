@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 # Adem Alp Yıldız <ademalp@kde.org.tr>, 2005.
 # Engin Çağatay <engincagatay@yahoo.com>, 2005.
 # Görkem Çetin <gorkem@kde.org>, 2002-2004.
@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:45+0000\n"
-"PO-Revision-Date: 2026-05-02 19:50+0300\n"
+"PO-Revision-Date: 2026-05-07 14:29+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -3851,7 +3851,7 @@ msgstr "E-posta Ayarları"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Öntanımlı Erişim Sınıflandırması"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6544,6 +6544,10 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Yeni Etkinlikler, Yapılacaklar Listeleri ve Günceler oluştururken öntanımlı "
+"erişim sınıflandırmalarını (Genel, Gizli veya Özel) ayarlama seçenekleri "
+"eklendi. Tercihlerinizi, “Genel → Öntanımlı Erişim Sınıflandırması” açılır "
+"kutularından seçin."
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""

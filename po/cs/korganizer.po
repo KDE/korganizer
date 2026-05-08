@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:45+0000\n"
-"PO-Revision-Date: 2026-05-03 22:58+0200\n"
+"PO-Revision-Date: 2026-05-07 10:56+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -3846,7 +3846,7 @@ msgstr "Nastavení e-mailu"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Výchozí úroveň přístupu"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6555,6 +6555,10 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Byly přidány možnosti nastavení výchozích úrovní přístupu (Veřejné, Důvěrné "
+"nebo Soukromé) při vytváření nových událostí, úkolů a deníků.  Své "
+"preference vyberte v rozevíracích seznamech v části \"Obecné -> Osobní -> "
+"Výchozí úroveň přístupu\"."
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""

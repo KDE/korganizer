@@ -2872,6 +2872,17 @@
 >Merk op dat de ondertekening ongeldig kan zijn als u een e-mailbericht zonder de bijlagen aan een afspraak koppelt. </para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Standaard toegangsclassificatie</guilabel
+></term>
+<listitem
+><para
+>Deze optie biedt u de standaardtoegangsclassificatie (Openbaar, Vertrouwelijk, Privé) te selecteren die moet worden gebruikt bij het maken van een evenement, taak of agendapunt. Zie RFC 5545 3.8.1.3. Classificatie voor meer informatie over de iCalendar-eigenschap voor toegangsclassificatie.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>

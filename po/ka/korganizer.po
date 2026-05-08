@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:45+0000\n"
-"PO-Revision-Date: 2026-04-28 06:01+0200\n"
+"PO-Revision-Date: 2026-05-07 07:45+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -3829,7 +3829,7 @@ msgstr "ელფოსტის მორგება"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "ნაგულისხმევი წვდომის კლასიფიკაცია"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6537,6 +6537,10 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"დაემატა ნაგულისხმევი წვდომის კლასიფიკაციის დაყენების ვარიანტები (საჯარო, "
+"კონფიდენციალური, ან პირადი) ახალი მოვლენების, დავალებებისა და ჟურნალების "
+"შექმნისას.  აირჩიეთ სასურველი პარამეტრები მენიუდან \"ზოგადი->პირადი "
+"ნაგულისხმევი წვდომის კლასიფიკაცია\" ჩამოსაშლელ მენიუში."
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1736294 2026-05-07 01:30:16Z scripty $
+# $Id: korganizer.po 1736367 2026-05-08 01:28:25Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:45+0000\n"
-"PO-Revision-Date: 2026-04-29 09:23+0200\n"
+"PO-Revision-Date: 2026-05-07 07:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -3879,7 +3879,7 @@ msgstr "Nastavitve e-pošte"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Privzeta klasifikacija dostopa"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6574,6 +6574,10 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Dodane so bile možnosti za nastavitev privzetih klasifikacij dostopa (javno, "
+"zaupno ali zasebno) pri ustvarjanju novih dogodkov, opravil in dnevnikov. "
+"Izberite svoje nastavitve v kombiniranih poljih \"Splošno->Osebna privzeta "
+"klasifikacija dostopa\"."
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""

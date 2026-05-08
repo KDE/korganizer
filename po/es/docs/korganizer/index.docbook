@@ -2888,6 +2888,17 @@
 >Dese cuenta que adjuntar un correo sin adjuntos podría invalidar su firma. </para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Clasificación de acceso predeterminada</guilabel
+></term>
+<listitem
+><para
+>Esta opción permite seleccionar la clasificación de acceso predeterminada (pública, confidencial, privada) que se debe usar al crear eventos, listas de tareas o diarios. Consulte la RFC 5545, sección «3.8.1.3. Clasificación», para obtener información sobre la propiedad de clasificación de acceso de iCalendar.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>

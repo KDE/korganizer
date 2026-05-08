@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-07 00:45+0000\n"
-"PO-Revision-Date: 2026-04-28 12:14+0200\n"
+"PO-Revision-Date: 2026-05-07 17:28+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -3862,7 +3862,7 @@ msgstr "E-mailinstellingen"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Standaard toegangsclassificatie"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6591,6 +6591,11 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Er zijn opties toegevoegd voor het instellen van "
+"standaardtoegangsclassificaties (Openbaar, Vertrouwelijk of Privé) bij het "
+"aanmaken van nieuwe evenementen, taken en dagboeken. Selecteer uw voorkeuren "
+"in de keuzelijsten \"Algemeen -> Persoonlijke standaardtoegangsclassificatie"
+"\"."
 
 #: whatsnew/whatsnewtranslations.cpp:43
 msgid ""
