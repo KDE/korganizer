@@ -21,7 +21,7 @@ static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase)
         : (phase == KHolidays::LunarPhase::FirstQuarter)               ? QStringLiteral("moon-phase-first-quarter")
         : (phase == KHolidays::LunarPhase::LastQuarter)                ? QStringLiteral("moon-phase-last-quarter")
                                                                        :
-                                                        /* else */ QString();
+                                                                       /* else */ QString();
     return iconName.isEmpty() ? QIcon() : QIcon::fromTheme(iconName);
 }
 
