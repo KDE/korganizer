@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1736367 2026-05-08 01:28:25Z scripty $
+# $Id: korganizer.po 1736512 2026-05-09 01:28:43Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-07 00:45+0000\n"
+"POT-Creation-Date: 2026-05-09 00:44+0000\n"
 "PO-Revision-Date: 2026-05-07 07:10+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -4138,7 +4138,7 @@ msgid "General"
 msgstr "Splošno"
 
 #: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:88
-#: prefs/koprefsdialogviews.cpp:135 prefs/koprefsdialogviews.cpp:165
+#: prefs/koprefsdialogviews.cpp:135 prefs/koprefsdialogviews.cpp:166
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
@@ -4174,13 +4174,13 @@ msgctxt "@title:tab"
 msgid "Month View"
 msgstr "Mesečni prikaz"
 
-#: prefs/koprefsdialogviews.cpp:159
+#: prefs/koprefsdialogviews.cpp:160
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "Prikaz opravil"
 
-#: prefs/koprefsdialogviews.cpp:172
+#: prefs/koprefsdialogviews.cpp:173
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
@@ -4644,7 +4644,7 @@ msgstr "Prikaz mesta incidence elementov dnevnega reda"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:142 settings/korganizer.kcfg:233
+#: settings/korganizer.kcfg:142 settings/korganizer.kcfg:239
 #, kde-format
 msgid "Show to-dos"
 msgstr "Pokaži opravila"
@@ -4736,21 +4736,21 @@ msgstr "Omogoči samodejni urejevalnik dogodkov ob izbiri časovnega obdobja"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:166 settings/korganizer.kcfg:263
+#: settings/korganizer.kcfg:166 settings/korganizer.kcfg:269
 #, kde-format
 msgid "Color Usage"
 msgstr "Uporaba barv"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:169 settings/korganizer.kcfg:266
+#: settings/korganizer.kcfg:169 settings/korganizer.kcfg:272
 #, kde-format
 msgid "Tag inside, calendar outside"
 msgstr "Oznaka znotraj, koledar zunaj"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:170 settings/korganizer.kcfg:267
+#: settings/korganizer.kcfg:170 settings/korganizer.kcfg:273
 #, kde-format
 msgid ""
 "Select the \"Tag inside, calendar outside\" option if you would like to draw "
@@ -4775,14 +4775,14 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:174 settings/korganizer.kcfg:271
+#: settings/korganizer.kcfg:174 settings/korganizer.kcfg:277
 #, kde-format
 msgid "Calendar inside, tag outside"
 msgstr "Koledar znotraj, oznaka zunaj"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:175 settings/korganizer.kcfg:272
+#: settings/korganizer.kcfg:175 settings/korganizer.kcfg:278
 #, kde-format
 msgid ""
 "Select the \"Calendar inside, tag outside\" option if you would like to draw "
@@ -4807,7 +4807,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:179 settings/korganizer.kcfg:276
+#: settings/korganizer.kcfg:179 settings/korganizer.kcfg:282
 #, kde-format
 msgid "Only tag"
 msgstr "Samo oznaka"
@@ -4832,7 +4832,7 @@ msgstr "Izriši notranjost in obrobo predmetov dnevnega reda v barvah oznake"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:184 settings/korganizer.kcfg:281
+#: settings/korganizer.kcfg:184 settings/korganizer.kcfg:287
 #, kde-format
 msgid "Only calendar"
 msgstr "Samo koledar"
@@ -4966,60 +4966,86 @@ msgstr "Pokaži ikone v predmetih mesečnega prikaza"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, kde-format
-msgid "Show time in month view items"
+#, fuzzy, kde-format
+#| msgid "Show time in month view items"
+msgid "Show start-times without end-times in month view items"
 msgstr "V predmetih mesečnega prikaza pokaži čas"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, kde-format
-msgid "Check this box to display the time in month view items."
+#, fuzzy, kde-format
+#| msgid "Check this box to display the time in month view items."
+msgid ""
+"Check this box to display the start-time without the end-time in month view "
+"items."
 msgstr "Označite to polje, da bo v predmetih mesečnega prikaza prikazan čas."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, kde-format
-msgid "Display time in month view items"
+#, fuzzy, kde-format
+#| msgid "Display time in month view items"
+msgid "Display start-time without the end-time in month view items"
+msgstr "V predmetih mesečnega prikaza prikaži čas"
+
+#. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:233
+#, fuzzy, kde-format
+#| msgid "Show time in month view items"
+msgid "Show the start-time and the end-time in month view items"
+msgstr "V predmetih mesečnega prikaza pokaži čas"
+
+#. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:234
+#, fuzzy, kde-format
+#| msgid "Check this box to display the time in month view items."
+msgid "Check this box to display the start and end times in month view items."
+msgstr "Označite to polje, da bo v predmetih mesečnega prikaza prikazan čas."
+
+#. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
+#: settings/korganizer.kcfg:235
+#, fuzzy, kde-format
+#| msgid "Display time in month view items"
+msgid "Display the start and end times in month view items"
 msgstr "V predmetih mesečnega prikaza prikaži čas"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:234
+#: settings/korganizer.kcfg:240
 #, kde-format
 msgid "Check this box to display to-dos in the month view."
 msgstr "Označite to polje, da bodo v mesečnem prikazu prikazana opravila."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:235
+#: settings/korganizer.kcfg:241
 #, kde-format
 msgid "Display to-dos in the month view"
 msgstr "Pokaži opravila v mesečnem prikazu"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:239
+#: settings/korganizer.kcfg:245
 #, kde-format
 msgid "Show journals"
 msgstr "Pokaži dnevnike"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:240
+#: settings/korganizer.kcfg:246
 #, kde-format
 msgid "Check this box to display journals in the month view."
 msgstr "Označite to polje, da bodo v mesečnem prikazu prikazani dnevniki."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:241
+#: settings/korganizer.kcfg:247
 #, kde-format
 msgid "Display journals in the month view"
 msgstr "Pokaži dnevnike v mesečnem prikazu"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
-#: settings/korganizer.kcfg:245
+#: settings/korganizer.kcfg:251
 #, kde-format
 msgid "Show holidays"
 msgstr "Pokaži praznike"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
-#: settings/korganizer.kcfg:246
+#: settings/korganizer.kcfg:252
 #, kde-format
 msgid "Check this box to display holidays in the month view."
 msgstr ""
@@ -5027,22 +5053,23 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:247 settings/korganizer.kcfg:254
+#: settings/korganizer.kcfg:253 settings/korganizer.kcfg:260
 #, kde-format
 msgid "Display holidays in the month view"
 msgstr "Pokaži praznike v mesečnem prikazu"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:251
-#, kde-format
-msgid ""
-"Use the Holiday background color when at least on holiday lands on a date"
+#: settings/korganizer.kcfg:257
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use the Holiday background color when at least on holiday lands on a date"
+msgid "Use the Holiday background color when a holiday lands on the date"
 msgstr ""
 "Uporabi barvo ozadja za praznike, vsaj kadar prazniki pristanejo na določen "
 "datum"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:252
+#: settings/korganizer.kcfg:258
 #, kde-format
 msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
@@ -5052,7 +5079,7 @@ msgstr ""
 "ta datum"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:253
+#: settings/korganizer.kcfg:259
 #, kde-format
 msgid ""
 "Check this box to use the custom holiday as the date's background color when "
@@ -5064,13 +5091,13 @@ msgstr ""
 "konfigurirajte v Nastavitve->Barve in pisave."
 
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:258
+#: settings/korganizer.kcfg:264
 #, kde-format
 msgid "Month view uses full window"
 msgstr "Mesečni prikaz uporablja celotno okno"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:259
+#: settings/korganizer.kcfg:265
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the month "
@@ -5084,7 +5111,7 @@ msgstr ""
 "podrobnosti o predmetu in seznam koledarjev) ne bodo prikazani."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:268
+#: settings/korganizer.kcfg:274
 #, kde-format
 msgid ""
 "Draw month items with their tag color inside and calendar color for their "
@@ -5094,7 +5121,7 @@ msgstr ""
 "koledarjev"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:273
+#: settings/korganizer.kcfg:279
 #, kde-format
 msgid ""
 "Draw month items with their calendar color inside and tag color for their "
@@ -5104,7 +5131,7 @@ msgstr ""
 "barvah oznak"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:277
+#: settings/korganizer.kcfg:283
 #, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
@@ -5116,13 +5143,13 @@ msgstr ""
 "nastavitveno stran »Barve in pisave«."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:278
+#: settings/korganizer.kcfg:284
 #, kde-format
 msgid "Draw month items using their tag color for the inside and border"
 msgstr "Izriši notranjost in obrobo predmetov meseca v barvah oznak"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:282
+#: settings/korganizer.kcfg:288
 #, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
@@ -5134,20 +5161,20 @@ msgstr ""
 "uporabite nastavitveno stran »Barve in pisave«."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:283
+#: settings/korganizer.kcfg:289
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
 msgstr ""
 "Izriši notranjost in obrobo predmetov meseca v barvah njihovih koledarjev"
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:292
+#: settings/korganizer.kcfg:298
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr "Zaključena opravila vedno pokaži na koncu seznama"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:293
+#: settings/korganizer.kcfg:299
 #, kde-format
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
@@ -5155,7 +5182,7 @@ msgid ""
 msgstr "Zaključena opravila so prikazana na koncu seznama ne glede na prednost"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:294
+#: settings/korganizer.kcfg:300
 #, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
@@ -5165,19 +5192,19 @@ msgstr ""
 "koncu seznama opravil."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:298
+#: settings/korganizer.kcfg:304
 #, kde-format
 msgid "To-do list view uses full window"
 msgstr "Prikaz seznama opravil uporablja celotno okno"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:299
+#: settings/korganizer.kcfg:305
 #, kde-format
 msgid "Display to-do list in a full KOrganizer window"
 msgstr "Pokaži seznam opravil v celotnem oknu programa KOrganizer"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:300
+#: settings/korganizer.kcfg:306
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
@@ -5191,19 +5218,19 @@ msgstr ""
 "podrobnosti o opravilu in seznam koledarjev) ne bodo prikazani."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:304
+#: settings/korganizer.kcfg:310
 #, kde-format
 msgid "Display to-dos in a flat list"
 msgstr "Opravila pokaži v navadnem seznamu"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:305
+#: settings/korganizer.kcfg:311
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr "Opravila namesto kot hierarhično drevo prikaže kot navadni seznam"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:306
+#: settings/korganizer.kcfg:312
 #, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
@@ -5213,13 +5240,13 @@ msgstr ""
 "razporejenih v hierarhičnemu drevesu."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:310
+#: settings/korganizer.kcfg:316
 #, kde-format
 msgid "Record completed to-dos in journal entries"
 msgstr "Zaključena opravila zapiši v dnevnik"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:311
+#: settings/korganizer.kcfg:317
 #, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
@@ -5231,8 +5258,8 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:318 settings/korganizer.kcfg:523
-#: settings/korganizer.kcfg:631
+#: settings/korganizer.kcfg:324 settings/korganizer.kcfg:529
+#: settings/korganizer.kcfg:637
 #, kde-format
 msgid "Holiday color"
 msgstr "Barva praznikov"
@@ -5240,8 +5267,8 @@ msgstr "Barva praznikov"
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:319 settings/korganizer.kcfg:524
-#: settings/korganizer.kcfg:632
+#: settings/korganizer.kcfg:325 settings/korganizer.kcfg:530
+#: settings/korganizer.kcfg:638
 #, kde-format
 msgid ""
 "Select the holiday color here. The holiday color will be used for the "
@@ -5252,26 +5279,26 @@ msgstr ""
 
 #. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:323 settings/korganizer.kcfg:452
+#: settings/korganizer.kcfg:329 settings/korganizer.kcfg:458
 #, kde-format
 msgid "Agenda view background color"
 msgstr "Barva ozadja prikaza dnevnega reda"
 
 #. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:324 settings/korganizer.kcfg:453
+#: settings/korganizer.kcfg:330 settings/korganizer.kcfg:459
 #, kde-format
 msgid "Select the agenda view background color here."
 msgstr "Tu izberite barvo ozadja prikaza dnevnega reda."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:328
+#: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
 msgstr "Barva vrstice pogleda dnevnega reda trenutnega časa (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:329
+#: settings/korganizer.kcfg:335
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr ""
@@ -5279,7 +5306,7 @@ msgstr ""
 "Bainsa)."
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:330
+#: settings/korganizer.kcfg:336
 #, kde-format
 msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgstr ""
@@ -5287,13 +5314,13 @@ msgstr ""
 "dnevnega reda"
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:334
+#: settings/korganizer.kcfg:340
 #, kde-format
 msgid "Busy days background color"
 msgstr "Barva ozadja dni, ko sem zaposlen/-a"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:335
+#: settings/korganizer.kcfg:341
 #, kde-format
 msgid ""
 "When you have an all day event marked as busy, you can have a different "
@@ -5305,71 +5332,71 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:339 settings/korganizer.kcfg:552
+#: settings/korganizer.kcfg:345 settings/korganizer.kcfg:558
 #, kde-format
 msgid "Working hours color"
 msgstr "Barva delovnih ur"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:340
+#: settings/korganizer.kcfg:346
 #, kde-format
 msgid "Select the working hours color for the agenda view here."
 msgstr "Tu izberite barvo delovnih ur za prikaz dnevnega reda."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:344 settings/korganizer.kcfg:604
+#: settings/korganizer.kcfg:350 settings/korganizer.kcfg:610
 #, kde-format
 msgid "To-do due today color"
 msgstr "Barva opravil, ki zapadejo danes"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:345 settings/korganizer.kcfg:605
+#: settings/korganizer.kcfg:351 settings/korganizer.kcfg:611
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "Tu izberite barvo opravil, ki zapadejo danes."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:349 settings/korganizer.kcfg:617
+#: settings/korganizer.kcfg:355 settings/korganizer.kcfg:623
 #, kde-format
 msgid "To-do overdue color"
 msgstr "Barva zapadlih opravil"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:350 settings/korganizer.kcfg:618
+#: settings/korganizer.kcfg:356 settings/korganizer.kcfg:624
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "Tu izberite barvo zapadlih opravil."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:354
+#: settings/korganizer.kcfg:360
 #, kde-format
 msgid "Month view today background color"
 msgstr "Barva ozadja za današnji mesečni pogled"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:355
+#: settings/korganizer.kcfg:361
 #, kde-format
 msgid "Set the background color for today's date in month view"
 msgstr "Nastavi barvo ozadja za današnji datum v mesečnem pogledu"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:356
+#: settings/korganizer.kcfg:362
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr "V mesečnem pogledu izberi barvo ozadja za današnji datum."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:363
+#: settings/korganizer.kcfg:369
 #, kde-format
 msgid "Time bar"
 msgstr "Časovna vrstica"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:364
+#: settings/korganizer.kcfg:370
 #, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
@@ -5381,13 +5408,13 @@ msgstr ""
 "okno za izbiranje pisave, ki vam omogoči izbrati pisavo ur v časovnem pasu."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:367
+#: settings/korganizer.kcfg:373
 #, kde-format
 msgid "Month view"
 msgstr "Mesečni prikaz"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:368
+#: settings/korganizer.kcfg:374
 #, kde-format
 msgid ""
 "Press this button to configure the month view font. This button will open "
@@ -5399,13 +5426,13 @@ msgstr ""
 "v mesečnem prikazu."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:371
+#: settings/korganizer.kcfg:377
 #, kde-format
 msgid "Agenda view"
 msgstr "Prikaz dnevnega reda"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:372
+#: settings/korganizer.kcfg:378
 #, kde-format
 msgid ""
 "Press this button to configure the agenda view font. This button will open "
@@ -5417,13 +5444,13 @@ msgstr ""
 "prikazu dnevnega reda."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid "Current-time (Marcus Bains) line"
 msgstr "Vrstica trenutnega časa (Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:376
+#: settings/korganizer.kcfg:382
 #, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
@@ -5435,44 +5462,44 @@ msgstr ""
 "izbrati pisavo za črto trenutnega časa v prikazu dnevnega reda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:395
+#: settings/korganizer.kcfg:401
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "Privzeti način prilaganja opravilom"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:396
+#: settings/korganizer.kcfg:402
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr "Privzeti način za prilaganje spuščenih e-poštnih sporočil opravilom"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:399
+#: settings/korganizer.kcfg:405
 #, kde-format
 msgid "Always ask"
 msgstr "Vedno vprašaj"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:402
+#: settings/korganizer.kcfg:408
 #, kde-format
 msgid "Only attach link to message"
 msgstr "Priloži samo povezavo do sporočila"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:405
+#: settings/korganizer.kcfg:411
 #, kde-format
 msgid "Attach complete message"
 msgstr "Priloži celotno sporočilo"
 
 #. i18n: ectx: label, entry, group (Theming)
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:459 settings/korganizer.kcfg:547
+#: settings/korganizer.kcfg:465 settings/korganizer.kcfg:553
 #, kde-format
 msgid "Highlight color"
 msgstr "Barva poudarjanja"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:460
+#: settings/korganizer.kcfg:466
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5483,19 +5510,19 @@ msgstr ""
 "datumih."
 
 #. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:528
+#: settings/korganizer.kcfg:534
 #, kde-format
 msgid "Use system colors for some background colors"
 msgstr "Uporabi sistemske barve za nekatere barve ozadja"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
-#: settings/korganizer.kcfg:529
+#: settings/korganizer.kcfg:535
 #, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr "Uporabi sistemske barve namesto barv po meri za nekatere barve ozadja"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:530
+#: settings/korganizer.kcfg:536
 #, kde-format
 msgid ""
 "Use system colors instead of user defined colors for the \"Agenda view "
@@ -5507,19 +5534,19 @@ msgstr ""
 "delovnega časa\" (in morebiti tudi druge)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:540
+#: settings/korganizer.kcfg:546
 #, kde-format
 msgid "Month view background color"
 msgstr "Barva ozadja mesečnega prikaza"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:541
+#: settings/korganizer.kcfg:547
 #, kde-format
 msgid "Select the Month view background color here."
 msgstr "Tu izberite barvo ozadja mesečnega prikaza."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:548
+#: settings/korganizer.kcfg:554
 #, kde-format
 msgid ""
 "Select the highlight color here. The highlight color will be used for "
@@ -5529,19 +5556,19 @@ msgstr ""
 "označevanje trenutno izbranega območja v mesecu in v krmarju po datumih."
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:553
+#: settings/korganizer.kcfg:559
 #, kde-format
 msgid "Select the working hours background color for the Month view here."
 msgstr "Tu izberite barvo ozadja delovnih ur za mesečni prikaz."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:575
+#: settings/korganizer.kcfg:581
 #, kde-format
 msgid "Default event color"
 msgstr "Privzeta barva dogodkov"
 
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
-#: settings/korganizer.kcfg:576
+#: settings/korganizer.kcfg:582
 #, kde-format
 msgid ""
 "Select the default event color here. The default event color will be used "
@@ -6541,11 +6568,18 @@ msgstr ""
 "mesečnem pogledu\" na zavihku Pogledi->Mesečni pogled"
 
 #: whatsnew/whatsnewtranslations.cpp:27
+#, fuzzy
+#| msgid ""
+#| "Month view: An option was added to allow using the custom holiday color "
+#| "as the date box background color if at least one holiday lands on that "
+#| "date. To enable this behavior, check the \"Use the Holiday background "
+#| "color when at least on holiday lands on a date\" option in the Views-"
+#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
-"enable this behavior, check the \"Use the Holiday background color when at "
-"least on holiday lands on a date\" option in the Views->Month View tab"
+"enable this behavior, check the \"Use the Holiday background color when a "
+"holiday lands on the date\" option in the Views->Month View tab"
 msgstr ""
 "Mesečni pogled: Dodana je bila možnost, ki omogoča uporabo barve praznika po "
 "meri kot barve ozadja datumskega polja, če na ta datum pade vsaj en praznik. "
@@ -6553,10 +6587,26 @@ msgstr ""
 "praznika, če na določen datum pade vsaj en praznik\" v zavihku Pogledi->Mesec"
 
 #: whatsnew/whatsnewtranslations.cpp:30
+#, fuzzy
+#| msgid ""
+#| "Month view: An option was added to allow hiding holidays. To enable this "
+#| "behavior, uncheck the \"Display holidays in the month view\" option in "
+#| "the Views->Month View tab"
+msgid ""
+"Month view: An option was added to show start-time and end-times. Previously "
+"only showing the start-time was supported. To enable this option, check the "
+"\"Show the start-time and the end-time in month view items\" option in the "
+"View->Month View tab"
+msgstr ""
+"Mesečni pogled: Dodana je bila možnost, ki omogoča skrivanje praznikov. Če "
+"želite omogočiti to delovanje, počistite možnost \"Prikaži praznike v "
+"mesečnem pogledu\" na zavihku Pogledi->Mesečni pogled"
+
+#: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"
 msgstr "Pogled dnevnega reda: podčrtaj današnji datum v glavi stolpca"
 
-#: whatsnew/whatsnewtranslations.cpp:31
+#: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
@@ -6567,7 +6617,7 @@ msgstr ""
 "opise incidence v elementih pogleda dnevnega reda\" v zavihku Pogled->Pogled "
 "dnevnega reda"
 
-#: whatsnew/whatsnewtranslations.cpp:33
+#: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
 "Options for setting default access classifications (Public, Confidential or "
 "Private) when creating new Events, To-dos and Journals have been added.  "
@@ -6579,7 +6629,7 @@ msgstr ""
 "Izberite svoje nastavitve v kombiniranih poljih \"Splošno->Osebna privzeta "
 "klasifikacija dostopa\"."
 
-#: whatsnew/whatsnewtranslations.cpp:43
+#: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6589,7 +6639,7 @@ msgstr ""
 "delovanje onemogočiti, počistite polje pri možnosti Omogoči opomnike v "
 "nastavitvah zavihka Čas in datum -> Privzete vrednosti"
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6597,7 +6647,7 @@ msgstr ""
 "Mesečni pogled: glave meseca in leta nista več prikazani, da se prihrani "
 "navpični prostor in odstrani viške informacij"
 
-#: whatsnew/whatsnewtranslations.cpp:46
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6605,7 +6655,7 @@ msgstr ""
 "Mesečni pogled: za risanje glav za dneve zunaj trenutno izbranega meseca "
 "uporabi malo drugačno barvo"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6613,7 +6663,7 @@ msgstr ""
 "Mesečni pogled: navigacijski gumbi v spodnjem desnem kotu so odstranjeni v "
 "korist izboljšane navigacijske vrstice aplikacij"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6623,7 +6673,7 @@ msgstr ""
 "spremeniti. Če želite konfigurirati barvo, v nastavitvah Barve in pisave "
 "nastavite \"Barva ozadja današnjega mesečnega pogleda\""
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6631,11 +6681,11 @@ msgstr ""
 "Navigacijska vrstica: izboljšana z dodajanjem tedenskega drsenja in "
 "prikazovanjem/skrivanjem stranske vrstice za vsak pogled posebej"
 
-#: whatsnew/whatsnewtranslations.cpp:51
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr "Navigacijska vrstica: dodan gumb za pomik pogleda na trenutni datum"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:54
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6643,7 +6693,7 @@ msgstr ""
 "Pogled dnevnega reda: dogodki s kratkim trajanjem so prikazani skupaj z "
 "njihovim začetnim časom in povzetkom"
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6654,11 +6704,11 @@ msgstr ""
 "dnevnega reda označite možnost »Prikaži opise incidence v elementih pogleda "
 "dnevnega reda«"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid "Search: the search settings are saved/restored"
 msgstr "Iskanje: nastavitve iskanja so shranjene/obnovljene"
 
-#: whatsnew/whatsnewtranslations.cpp:64
+#: whatsnew/whatsnewtranslations.cpp:66
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6667,29 +6717,29 @@ msgstr ""
 "skrivanje časovnih oznak za sistemski časovni pas tudi na desni (ali levi) "
 "strani"
 
-#: whatsnew/whatsnewtranslations.cpp:65
+#: whatsnew/whatsnewtranslations.cpp:67
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Urejevalnik incidenc: zaznavanje in opozarjanje na nastanek incidenc v "
 "preteklosti"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:68
 msgid "Incidence editor: add emoji support"
 msgstr "Urejevalnik pojavnosti: dodaj podporo za čustvenčke"
 
-#: whatsnew/whatsnewtranslations.cpp:75
+#: whatsnew/whatsnewtranslations.cpp:77
 msgid "Add What's New menu"
 msgstr "Dodaj meni Kaj je novega"
 
-#: whatsnew/whatsnewtranslations.cpp:76
+#: whatsnew/whatsnewtranslations.cpp:78
 msgid "The current view is remembered"
 msgstr "Trenutni pogled je zapomnjen"
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:79
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Dodaj pogovorno okno za izbiro datuma, ki je na voljo v meniju Pojdi"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6697,7 +6747,7 @@ msgstr ""
 "Pogled dnevnega reda: časovni razponi \"Dan\", \"Naslednjih X dn\", "
 "\"Delovni urnik\" in \"Teden\" so združeni v gumb orodja Dnevni red"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6705,28 +6755,28 @@ msgstr ""
 "Pogled dnevnega reda: dodana možnost kontekstnega menija časovnih oznak za "
 "preklop med 24-urnim (vojaškim) formatom časa"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Pogled dnevnega reda: dodan kontekstni meni za ustvarjanje novega dogodka "
 "ali opravila"
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Pogled opravil: dodane možnosti kontekstnega menija za preklapljanje med "
 "dokončanjem in opomniki"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid "To-do view: save/restore fullview setting"
 msgstr "Pogled opravil: shranjevanje/obnovitev nastavitve celotnega pogleda"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "To-do view: save/restore flatview setting"
 msgstr "Pogled opravil: shranjevanje/obnovitev nastavitev pogleda seznama"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6734,7 +6784,7 @@ msgstr ""
 "Krmar po datumih: v nastavitvah Konfiguriraj->Pogledi dodana možnost za "
 "skrivanje številk tednov"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6742,53 +6792,53 @@ msgstr ""
 "Krmar po datumih: nastavitev \"Številke tednov izberejo delovni teden v "
 "načinu delovnega tedna\" je privzeto nastavljena na true"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Urejevalnik incidence: zapomni si/obnovi geometrijo upravljalnika predlog"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 "Urejevalnik incidence: podpora za priloge z zmožnostjo »povleci in spusti«"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Pogovorno okno za izvoz koledarja si zapomni zadnjo lokacijo mape za izvoz"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Pogovorno okno za uvoz koledarja si zapomni zadnjo lokacijo mape za uvoz"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "Get Hot New Stuff removed"
 msgstr "Odstrani vroče nove stvari"
 
-#: whatsnew/whatsnewtranslations.cpp:91
+#: whatsnew/whatsnewtranslations.cpp:93
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "Dodaj datoteko koledarja: oddaljeni koledarji so vedno samo za branje"
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:94
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Dodaj datoteko koledarja: prazna pot datoteke ne bo dovoljena"
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:95
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 "Konfiguracija DAV: pogovorno okno omogoča ogled gesla računa med urejanjem"
 
-#: whatsnew/whatsnewtranslations.cpp:94
+#: whatsnew/whatsnewtranslations.cpp:96
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr "Konfiguracija DAV: čarovnik prikazuje ikone za različne ponudnike"
 
-#: whatsnew/whatsnewtranslations.cpp:95
+#: whatsnew/whatsnewtranslations.cpp:97
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Konfiguracija DAV: čarovnik je posodobil seznam ponudnikov"
 
-#: whatsnew/whatsnewtranslations.cpp:113
+#: whatsnew/whatsnewtranslations.cpp:115
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
@@ -6797,18 +6847,18 @@ msgstr ""
 "Semantika se spremeni iz koncepta \"delovnega urnika\" v koncept "
 "\"tedenskega urnika\", da se prilagodi nedelujočim uporabnikom"
 
-#: whatsnew/whatsnewtranslations.cpp:114
+#: whatsnew/whatsnewtranslations.cpp:116
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Začetni časi začetka \"Novega dogodka\" so konsistentni v vseh pogledih"
 
-#: whatsnew/whatsnewtranslations.cpp:115
+#: whatsnew/whatsnewtranslations.cpp:117
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Izboljšano upravljanje privzetega koledarja dogodkov"
 
-#: whatsnew/whatsnewtranslations.cpp:117
+#: whatsnew/whatsnewtranslations.cpp:119
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6816,13 +6866,13 @@ msgstr ""
 "Incidenti z dolgim ​​seznamom izključenih datumov ne ustvarjajo več ogromnih "
 "namigov orodij"
 
-#: whatsnew/whatsnewtranslations.cpp:118
+#: whatsnew/whatsnewtranslations.cpp:120
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Popravljen je bil e-poštni naslov organizatorja za incidence z udeleženci"
 
-#: whatsnew/whatsnewtranslations.cpp:119
+#: whatsnew/whatsnewtranslations.cpp:121
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6832,18 +6882,18 @@ msgstr ""
 "(namesto 15 minut)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:133
+#: whatsnew/whatsnewtranslations.cpp:135
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Urejevalnik incidenc: oznake so razvrščene po abecedi v urejevalniku oznak"
 
-#: whatsnew/whatsnewtranslations.cpp:160
+#: whatsnew/whatsnewtranslations.cpp:162
 #, kde-format
 msgid "Fixed reminder toggling from menus"
 msgstr "Popravljeno preklapljanje opomnikov iz menijev"
 
-#: whatsnew/whatsnewtranslations.cpp:161
+#: whatsnew/whatsnewtranslations.cpp:163
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
