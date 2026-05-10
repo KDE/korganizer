@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1736512 2026-05-09 01:28:43Z scripty $
+# $Id: korganizer.po 1736590 2026-05-10 01:27:34Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:44+0000\n"
-"PO-Revision-Date: 2026-05-07 07:10+0200\n"
+"PO-Revision-Date: 2026-05-09 07:57+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -4966,47 +4966,45 @@ msgstr "Pokaži ikone v predmetih mesečnega prikaza"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "V predmetih mesečnega prikaza pokaži čas"
+msgstr "Prikazu začetne čase brez končnih časov v elementih mesečnega pogleda"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
-msgstr "Označite to polje, da bo v predmetih mesečnega prikaza prikazan čas."
+msgstr ""
+"Označite to polje, če želite prikazovati začetni čas brez končnega časa v "
+"elementih mesečnega pogleda."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "V predmetih mesečnega prikaza prikaži čas"
+msgstr "Prikazuj začetni čas brez končnega časa v elementih mesečnega pogleda"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "V predmetih mesečnega prikaza pokaži čas"
+msgstr "Prikazuj začetni in končni čas v elementih mesečnega pogleda"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
-msgstr "Označite to polje, da bo v predmetih mesečnega prikaza prikazan čas."
+msgstr ""
+"Označite to polje, če želite prikazovati začetni in končni čas v elementih "
+"mesečnega pogleda."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "V predmetih mesečnega prikaza prikaži čas"
+msgstr "Prikazuj začetni in končni čas v elementih mesečnega pogleda"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5060,13 +5058,9 @@ msgstr "Pokaži praznike v mesečnem prikazu"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use the Holiday background color when at least on holiday lands on a date"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
-msgstr ""
-"Uporabi barvo ozadja za praznike, vsaj kadar prazniki pristanejo na določen "
-"datum"
+msgstr "Uporabi barvo ozadja za praznike, vsaj kadar praznik pristane na datum"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -6568,13 +6562,6 @@ msgstr ""
 "mesečnem pogledu\" na zavihku Pogledi->Mesečni pogled"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6584,23 +6571,19 @@ msgstr ""
 "Mesečni pogled: Dodana je bila možnost, ki omogoča uporabo barve praznika po "
 "meri kot barve ozadja datumskega polja, če na ta datum pade vsaj en praznik. "
 "Če želite omogočiti to delovanje, označite možnost \"Uporabi barvo ozadja "
-"praznika, če na določen datum pade vsaj en praznik\" v zavihku Pogledi->Mesec"
+"praznika, ko na ta datum pade praznik\" v zavihku Pogledi->Mesec"
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow hiding holidays. To enable this "
-#| "behavior, uncheck the \"Display holidays in the month view\" option in "
-#| "the Views->Month View tab"
 msgid ""
 "Month view: An option was added to show start-time and end-times. Previously "
 "only showing the start-time was supported. To enable this option, check the "
 "\"Show the start-time and the end-time in month view items\" option in the "
 "View->Month View tab"
 msgstr ""
-"Mesečni pogled: Dodana je bila možnost, ki omogoča skrivanje praznikov. Če "
-"želite omogočiti to delovanje, počistite možnost \"Prikaži praznike v "
-"mesečnem pogledu\" na zavihku Pogledi->Mesečni pogled"
+"Mesečni pogled: Dodana je bila možnost prikazovanja začetnega in končnega "
+"časa. Prej je bil podprt samo prikaz začetnega časa. Če želite omogočiti to "
+"možnost, v zavihku Pogled->Mesec označite možnost \"Prikazuj začetni in "
+"končni čas v elementih mesečnega pogleda\"."
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"

@@ -3336,10 +3336,12 @@
 ><guilabel
 >Opcions de visualització</guilabel
 ></term>
-<listitem
-><para
->Utilitza les quatre primeres caselles de selecció per a mostrar l'hora, les icones (recordatori, repetició, &etc;), les tasques pendents o diaris en la vista mensual.</para
-></listitem>
+<listitem>
+  <para
+>Les dues primeres caselles de selecció permeten mostrar només l'hora d'inici, o tant l'hora d'inici com l'hora final.</para>
+  <para
+>Utilitzeu les quatre caselles de selecció següents per a mostrar les icones, tasques pendents, diaris o festius en la vista mensual.</para>
+</listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 

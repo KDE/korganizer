@@ -17,7 +17,7 @@
 # Anne-Marie Mahfouf <annemarie.mahfouf@free.fr>, 2010.
 # Vincent Pinon <vpinon@kde.org>, 2017, 2018.
 # Simon Depiets <sdepiets@gmail.com>, 2018, 2019, 2020.
-# SPDX-FileCopyrightText: 2020, 2021, 2022, 2023, 2024, 2025, 2026 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2020-2026 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
 msgid ""
@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:44+0000\n"
-"PO-Revision-Date: 2026-04-29 17:20+0200\n"
+"PO-Revision-Date: 2026-05-08 18:40+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.0\n"
 "X-Text-Markup: kde4\n"
 
 #, kde-format
@@ -3977,7 +3977,7 @@ msgstr "Configuration messagerie"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Classification d'accès par défaut"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6866,6 +6866,11 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Des options pour définir les classifications des accès par défaut (Public, "
+"Confidentiel ou Privé) lors de la création de nouveaux évènements, de tâches "
+"à faire et de journaux ont été ajoutées. Veuillez sélectionner vos "
+"préférences dans les listes déroulantes « Général / Classification des accès "
+"personnels par défaut »."
 
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid ""

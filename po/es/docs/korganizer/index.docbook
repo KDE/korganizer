@@ -3394,10 +3394,12 @@
 ><guilabel
 >Opciones de visualización</guilabel
 ></term>
-<listitem
-><para
->Use las cuatro primeras casillas de verificación para mostrar la hora, iconos (recordatorio, repetición, &etc;), tareas pendientes o diarios en la vista de mes.</para
-></listitem>
+<listitem>
+  <para
+>Las dos primeras casillas permiten mostrar solo la hora de inicio, o tanto la hora de inicio como la de finalización.</para>
+  <para
+>Use las siguientes cuatro casillas para mostrar opcionalmente iconos, tareas pendientes, entradas de diario o días festivos en la vista mensual.</para>
+</listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 

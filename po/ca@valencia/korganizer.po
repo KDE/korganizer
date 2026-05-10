@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:44+0000\n"
-"PO-Revision-Date: 2026-05-07 09:49+0200\n"
+"PO-Revision-Date: 2026-05-09 12:25+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -4998,51 +4998,50 @@ msgstr "Mostra les icones d'element en la vista mensual"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "Mostra l'hora en els elements en la vista mensual"
+msgstr ""
+"Mostra les hores d'inici sense hores finals en els elements de la vista "
+"mensual"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
 msgstr ""
-"Marqueu esta casella per a visualitzar l'hora en els elements en la vista "
-"mensual."
+"Marqueu esta casella per a visualitzar l'hora d'inici sense l'hora final en "
+"els elements de la vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "Mostra l'hora en els elements de la vista mensual"
+msgstr ""
+"Mostra l'hora d'inici sense l'hora final en els elements de la vista mensual"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "Mostra l'hora en els elements en la vista mensual"
+msgstr ""
+"Mostra l'hora d'inici i l'hora final en els elements de la vista mensual"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
 msgstr ""
-"Marqueu esta casella per a visualitzar l'hora en els elements en la vista "
-"mensual."
+"Marqueu esta casella per a visualitzar l'hora d'inici i l'hora final en els "
+"elements de la vista mensual."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "Mostra l'hora en els elements de la vista mensual"
+msgstr ""
+"Mostra l'hora d'inici i l'hora final en els elements de la vista mensual"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5096,12 +5095,9 @@ msgstr "Mostra els festius a la vista mensual"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use the Holiday background color when at least on holiday lands on a date"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
-msgstr ""
-"Utilitza el color de fons de festius quan almenys un festiu caiga en una data"
+msgstr "Utilitza el color de fons de festius quan un festiu caiga en la data"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -6646,13 +6642,6 @@ msgstr ""
 "festius a la vista mensual» a «Vistes → pestanya Vista mensual»"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6662,24 +6651,20 @@ msgstr ""
 "Vista mensual: s'ha afegit una opció per a permetre l'ús del color "
 "personalitzat de festiu com a color de fons del quadro de dates si almenys "
 "un dels festius cau en esta data. Per a activar este comportament, marqueu "
-"l'opció «Utilitza el color de fons de festius quan almenys un festiu caiga "
-"en una data» a «Vistes → pestanya Vista mensual»"
+"l'opció «Utilitza el color de fons de festius quan un festiu caiga en la "
+"data» a «Vistes → pestanya Vista mensual»"
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow hiding holidays. To enable this "
-#| "behavior, uncheck the \"Display holidays in the month view\" option in "
-#| "the Views->Month View tab"
 msgid ""
 "Month view: An option was added to show start-time and end-times. Previously "
 "only showing the start-time was supported. To enable this option, check the "
 "\"Show the start-time and the end-time in month view items\" option in the "
 "View->Month View tab"
 msgstr ""
-"Vista mensual: s'ha afegit una opció per a permetre ocultar els dies "
-"festius. Per a activar este comportament, desmarqueu l'opció «Mostra els "
-"festius a la vista mensual» a «Vistes → pestanya Vista mensual»"
+"Vista mensual: s'ha afegit una opció per a mostrar l'hora d'inici i l'hora "
+"final. Anteriorment només s'admetia mostrar l'hora d'inici. Per a marcar "
+"esta opció, marqueu l'opció «Mostra l'hora d'inici i l'hora final en els "
+"elements de la vista mensual» a «Vistes → pestanya Vista mensual»"
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"

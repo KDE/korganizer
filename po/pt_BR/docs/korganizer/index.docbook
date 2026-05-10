@@ -2892,6 +2892,17 @@
 >Lembre-se que o anexo de um e-mail sem anexos poderá invalidar a sua assinatura. </para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Classificação de acesso padrão</guilabel
+></term>
+<listitem
+><para
+>Esta opção permite selecionar a classificação de acesso padrão (Público, Confidencial, Privado) a ser usada ao criar um evento, tarefa ou diário. Consulte a RFC 5545 3.8.1.3. Classification para saber mais sobre a propriedade de classificação de acesso do iCalendar.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>
@@ -3387,10 +3398,12 @@
 ><guilabel
 >Opções de exibição</guilabel
 ></term>
-<listitem
-><para
->Use as primeiras quatro opções para exibir a hora, ícones (lembrete, recorrência, &etc;), tarefas ou diários na vista de Mês.</para
-></listitem>
+<listitem>
+  <para
+>As duas primeiras caixas de seleção permitem exibir apenas a hora de início ou a hora de início e a hora de término.</para>
+  <para
+>Use as próximas quatro caixas de seleção para exibir opcionalmente ícones, tarefas, diários ou feriados na visão mensal.</para>
+</listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 
