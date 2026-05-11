@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 # Adem Alp Yıldız <ademalp@kde.org.tr>, 2005.
 # Engin Çağatay <engincagatay@yahoo.com>, 2005.
 # Görkem Çetin <gorkem@kde.org>, 2002-2004.
@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 02:50+0000\n"
-"PO-Revision-Date: 2026-04-11 21:06+0300\n"
+"PO-Revision-Date: 2026-05-10 13:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -2828,7 +2828,7 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
-"Takviminizdeki yıldönümlerini, yaklaşan etkinlikler özetine eklemek için bu "
+"Takviminizdeki yıl dönümlerini, yaklaşan etkinlikler özetine eklemek için bu "
 "seçeneği etkinleştirin. Bu seçenek, yalnızca takviminizde doğum günleri "
 "kaynağı kullanılıyorsa kullanılabilir."
 
@@ -2838,7 +2838,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:158
 #, kde-format
 msgid "Show &anniversaries"
-msgstr "&Yıldönümlerini göster"
+msgstr "&Yıl dönümlerini göster"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
 #, kde-format
@@ -3442,7 +3442,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
 #, kde-format
 msgid "Show anniversaries from your calendar"
-msgstr "Takviminizdeki yıldönümlerini göster"
+msgstr "Takviminizdeki yıl dönümlerini göster"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
@@ -3452,8 +3452,8 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
-"Takviminizdeki özel kutlamalar özetinde yıldönümlerini dahil etmek "
-"isterseniz bu seçeneği etkinleştirin. Genellikle bu etkinlikler “Yıldönümü” "
+"Takviminizdeki özel kutlamalar özetinde yıl dönümlerini dahil etmek "
+"isterseniz bu seçeneği etkinleştirin. Genellikle bu etkinlikler “Yıl Dönümü” "
 "kategorisindedir."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
@@ -3534,7 +3534,7 @@ msgstr "&Doğum günlerini göster"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
 #, kde-format
 msgid "Show anniversaries from your address book"
-msgstr "Adres defterinizdeki yıldönümlerini göster"
+msgstr "Adres defterinizdeki yıl dönümlerini göster"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
@@ -3543,14 +3543,14 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Yaklaşan özel kutlamalar özetinizde adres defterinizdeki yıldönümlerinin "
+"Yaklaşan özel kutlamalar özetinizde adres defterinizdeki yıl dönümlerinin "
 "gösterilmesini isterseniz bu seçeneği etkinleştirin."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr "&Yıldönümlerini göster"
+msgstr "&Yıl dönümlerini göster"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:101
 #, kde-format
@@ -3577,7 +3577,7 @@ msgstr "Doğum Günü"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:499
 #, kde-format
 msgid "Anniversary"
-msgstr "Yıldönümü"
+msgstr "Yıl Dönümü"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:502
 #, kde-format
