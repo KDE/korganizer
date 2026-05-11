@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:44+0000\n"
-"PO-Revision-Date: 2026-05-07 14:29+0300\n"
+"PO-Revision-Date: 2026-05-10 13:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2839,8 +2839,8 @@ msgstr "Doğum &günlerini göster"
 msgid ""
 "Shows anniversaries from your calendar when using the Birthdays resource"
 msgstr ""
-"Doğum günleri kaynağını kullanırken takviminizdeki yıldönümü kutlamalarını "
-"gösterir"
+"Doğum günleri özkaynağını kullanırken takviminizdeki yıl dönümü "
+"kutlamalarını gösterir"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:152
@@ -2850,7 +2850,7 @@ msgid ""
 "upcoming events summary. This option is only available if you are using the "
 "Birthdays resource in your calendar."
 msgstr ""
-"Takviminizdeki yıldönümlerini, yaklaşan etkinlikler özetine eklemek için bu "
+"Takviminizdeki yıl dönümlerini, yaklaşan etkinlikler özetine eklemek için bu "
 "seçeneği etkinleştirin. Bu seçenek, yalnızca takviminizde doğum günleri "
 "kaynağı kullanılıyorsa kullanılabilir."
 
@@ -2860,7 +2860,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:158
 #, kde-format
 msgid "Show &anniversaries"
-msgstr "&Yıldönümlerini göster"
+msgstr "&Yıl dönümlerini göster"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
 #, kde-format
@@ -3464,7 +3464,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:152
 #, kde-format
 msgid "Show anniversaries from your calendar"
-msgstr "Takviminizdeki yıldönümlerini göster"
+msgstr "Takviminizdeki yıl dönümlerini göster"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:155
@@ -3474,8 +3474,8 @@ msgid ""
 "upcoming special occasions summary. Typically, these are events with the "
 "\"Anniversary\" tag."
 msgstr ""
-"Takviminizdeki özel kutlamalar özetinde yıldönümlerini dahil etmek "
-"isterseniz bu seçeneği etkinleştirin. Genellikle bu etkinlikler “Yıldönümü” "
+"Takviminizdeki özel kutlamalar özetinde yıl dönümlerini dahil etmek "
+"isterseniz bu seçeneği etkinleştirin. Genellikle bu etkinlikler “Yıl Dönümü” "
 "kategorisindedir."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
@@ -3556,7 +3556,7 @@ msgstr "&Doğum günlerini göster"
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
 #, kde-format
 msgid "Show anniversaries from your address book"
-msgstr "Adres defterinizdeki yıldönümlerini göster"
+msgstr "Adres defterinizdeki yıl dönümlerini göster"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:228
@@ -3565,14 +3565,14 @@ msgid ""
 "Enable this option to include anniversaries from your address book in the "
 "upcoming special occasions summary."
 msgstr ""
-"Yaklaşan özel kutlamalar özetinizde adres defterinizdeki yıldönümlerinin "
+"Yaklaşan özel kutlamalar özetinizde adres defterinizdeki yıl dönümlerinin "
 "gösterilmesini isterseniz bu seçeneği etkinleştirin."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr "&Yıldönümlerini göster"
+msgstr "&Yıl dönümlerini göster"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:102
 #, kde-format
@@ -3599,7 +3599,7 @@ msgstr "Doğum Günü"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:503
 #, kde-format
 msgid "Anniversary"
-msgstr "Yıldönümü"
+msgstr "Yıl Dönümü"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
@@ -4941,47 +4941,47 @@ msgstr "Ay görünümü ögelerinde simgeleri görüntüle"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "Ay görünümü ögelerinde zamanı göster"
+msgstr ""
+"Ay görünümü ögelerinde başlangıç zamanlarını bitiş zamanları olmadan göster"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
-msgstr "Ay görünümü ögelerinde zamanı görüntülemek için bu kutuyu işaretleyin."
+msgstr ""
+"Ay görünümü ögelerinde başlangıç zamanını, bitiş zamanı olmadan görüntülemek "
+"için bu kutuyu işaretleyin."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "Ay görünümü ögelerinde zamanı görüntüle"
+msgstr ""
+"Ay görünümü ögelerinde başlangıç zamanını bitiş zamanı olmadan görüntüle"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "Ay görünümü ögelerinde zamanı göster"
+msgstr "Ay görünümü ögelerinde başlangıç ve bitiş zamanını göster"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
-msgstr "Ay görünümü ögelerinde zamanı görüntülemek için bu kutuyu işaretleyin."
+msgstr ""
+"Ay görünümü ögelerinde başlangıç ve bitiş zamanlarını görüntülemek için bu "
+"kutuyu işaretleyin."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "Ay görünümü ögelerinde zamanı görüntüle"
+msgstr "Ay görünümü ögelerinde başlangıç ve bitiş zamanlarını görüntüle"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5034,9 +5034,7 @@ msgstr "Ay görünümünde tatilleri görüntüle"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use the Holiday background color when at least on holiday lands on a date"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
 msgstr "Tatil bir tarihe denk geliyorsa tatil arka plan rengini kullan"
 
@@ -6537,13 +6535,6 @@ msgstr ""
 "tatilleri görüntüle” onay kutusunun işaretini kaldırın."
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6557,20 +6548,16 @@ msgstr ""
 "işaretleyin."
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow hiding holidays. To enable this "
-#| "behavior, uncheck the \"Display holidays in the month view\" option in "
-#| "the Views->Month View tab"
 msgid ""
 "Month view: An option was added to show start-time and end-times. Previously "
 "only showing the start-time was supported. To enable this option, check the "
 "\"Show the start-time and the end-time in month view items\" option in the "
 "View->Month View tab"
 msgstr ""
-"Ay görünümü: Tatilleri gizlemek için bir onay kutusu eklendi. Bu davranışı "
-"etkinleştirmek için “Görünümler → Ay Görünümü” sekmesinde “Ay görünümünde "
-"tatilleri görüntüle” onay kutusunun işaretini kaldırın."
+"Ay görünümü: Hem başlangıç hem de bitiş zamanlarını göstermek için bir "
+"seçenek eklendi. Bu seçeneği etkinleştirmek için “Görünümler → Ay Görünümü” "
+"sekmesinde “Ay görünümü ögelerinde başlangıç ve bitiş zamanını göster” onay "
+"kutusunu işaretleyin."
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"

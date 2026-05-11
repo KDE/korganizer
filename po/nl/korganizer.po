@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:44+0000\n"
-"PO-Revision-Date: 2026-05-07 17:28+0200\n"
+"PO-Revision-Date: 2026-05-10 18:14+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -4955,51 +4955,45 @@ msgstr "Pictogrammen tonen in maandweergave"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "Tijd tonen in maandweergave"
+msgstr "Starttijden tonen in zonder eindtijden in maandweergave"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
 msgstr ""
-"Selecteer dit keuzevakje als u de tijd in de maandweergave wilt laten "
-"weergeven."
+"Activeer dit vakje om de starttijd zonder de eindtijd in de items in de "
+"maandweergave te tonen."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "Tijd tonen in maandweergave"
+msgstr "Starttijd zonder de eindtijd in items in de maandweergave tonen"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "Tijd tonen in maandweergave"
+msgstr "De starttijd en de eindtijd in de items in de maandweergave tonen"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
 msgstr ""
-"Selecteer dit keuzevakje als u de tijd in de maandweergave wilt laten "
-"weergeven."
+"Selecteer dit keuzevakje om de starttijd en de eindtijd in de items van de "
+"maandweergave te tonen."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "Tijd tonen in maandweergave"
+msgstr "De start- en de eindtijden tonen in de items van de maandweergave"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5058,13 +5052,10 @@ msgstr "Vakantiedagen tonen in maandweergave"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use the Holiday background color when at least on holiday lands on a date"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
 msgstr ""
-"Gebruik de vakantiedagachtergrondkleur wanneer minstens één vakantiedag op "
-"een datum valt"
+"Gebruik de vakantiedagachtergrondkleur wanneer vakantiedag op de datum valt"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -6586,13 +6577,6 @@ msgstr ""
 "maandweergave' uit in het tabblad Beeld->Maandweergave"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6602,25 +6586,20 @@ msgstr ""
 "Maandweergave: Er is een optie toegevoegd waarmee de aangepaste "
 "vakantiedagkleur als achtergrondkleur voor het datumvak kan worden gebruikt "
 "als er ten minste één feestdag op die datum valt. Om dit in te schakelen, "
-"activeert u de optie 'Gebruik de vakantiedagachtergrondkleur wanneer er ten "
-"minste één feestdag op een datum valt' aan in het tabblad Beeld-"
-">Maandweergave."
+"activeert u de optie 'Gebruik de vakantiedagachtergrondkleur wanneer er één "
+"feestdag op een datum valt' aan in het tabblad Beeld->Maandweergave."
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow hiding holidays. To enable this "
-#| "behavior, uncheck the \"Display holidays in the month view\" option in "
-#| "the Views->Month View tab"
 msgid ""
 "Month view: An option was added to show start-time and end-times. Previously "
 "only showing the start-time was supported. To enable this option, check the "
 "\"Show the start-time and the end-time in month view items\" option in the "
 "View->Month View tab"
 msgstr ""
-"Maandweergave: er is een optie toegevoegd om vakantiedagen te verbergen. Om "
-"dit in te schakelen, schakelt u de optie 'Vakantiedagen weergeven in de "
-"maandweergave' uit in het tabblad Beeld->Maandweergave"
+"Maandweergave: Er is een optie toegevoegd om de begin- en eindtijd weer te "
+"geven. Voorheen werd alleen de begintijd weergegeven. Om deze optie in te "
+"schakelen, activeert u de optie \"Begin- en eindtijd weergeven in items in "
+"de maandweergave\" aan in het tabblad Weergave->Maandweergave."
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"

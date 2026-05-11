@@ -702,11 +702,11 @@
 <varlistentry>
 <term
 ><guilabel
->Doğum Günleri ve Yıldönümleri</guilabel
+>Doğum Günleri ve Yıl Dönümleri</guilabel
 ></term>
 <listitem
 ><para
->Adres defterinizdeki kişilerin doğum günü ve yıldönümü tarihlerine takvim etkinlikleri olarak erişim sağlar.</para
+>Adres defterinizdeki kişilerin doğum günü ve yıl dönümü tarihlerine takvim etkinlikleri olarak erişim sağlar.</para
 ></listitem>
 </varlistentry>
 
@@ -1548,7 +1548,7 @@
 >Etkinlikler</title>
 
 <para
->Etkinlikler; iş toplantıları, kişisel yıldönümleri ve sinema ziyaretleri gibi gelecekteki veya geçmişteki randevulardır. Bir etkinlik, tatiller gibi birkaç gün de sürebilir.</para>
+>Etkinlikler; iş toplantıları, kişisel yıl dönümleri ve sinema ziyaretleri gibi gelecekteki veya geçmişteki randevulardır. Bir etkinlik, tatiller gibi birkaç gün de sürebilir.</para>
 
 <para
 >Yeni bir etkinlik girmek pek kolaydır. <menuchoice
@@ -1709,7 +1709,7 @@
 
 <tip
 ><para
->İş yerindeki dil dersiniz hem İş hem de Eğitim künyelerine ait olabilirken, evliliğinizin yıldönümü Kişisel veya Özel Günler künyelerine aittir — bu sizin seçiminizdir.</para
+>İş yerindeki dil dersiniz hem İş hem de Eğitim künyelerine ait olabilirken, evliliğinizin yıl dönümü Kişisel veya Özel Günler künyelerine aittir — bu sizin seçiminizdir.</para
 ></tip>
 </listitem>
 </varlistentry>
@@ -3384,10 +3384,12 @@
 ><guilabel
 >Görüntüleme Seçenekleri</guilabel
 ></term>
-<listitem
-><para
->Ay görünümünde zamanı, simgeleri (anımsatıcı, yineleme vb.), yapılacak işleri veya günlükleri görüntülemek için ilk dört onay kutusunu kullanın.</para
-></listitem>
+<listitem>
+  <para
+>İlk iki onay kutusu; yalnızca başlangıç zamanını veya hem başlangıç hem de bitiş zamanını göstermeye olanak tanır.</para>
+  <para
+>İsteğe bağlı olarak simgeleri, yapılacak işleri, günlükleri veya tatilleri görüntülemek için ilk dört onay kutusunu kullanın.</para>
+</listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 
