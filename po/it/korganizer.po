@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:44+0000\n"
-"PO-Revision-Date: 2026-05-05 00:02+0200\n"
+"PO-Revision-Date: 2026-05-15 15:55+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -4978,49 +4978,47 @@ msgstr "Mostra le icone nelle voci della vista mensile"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "Mostra l'orario nelle voci della vista mensile"
+msgstr ""
+"Mostra l'orario di inizio senza quello di fine nelle voci della vista mensile"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
 msgstr ""
-"Marca questa casella per mostrare l'orario delle voci della vista mensile."
+"Marca questa casella per mostrare l'orario di inizio senza quello di fine "
+"nelle voci della vista mensile."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "Mostra l'orario nelle voci della vista mensile"
+msgstr ""
+"Mostra l'orario di inizio senza quello di fine nelle voci della vista mensile"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "Mostra l'orario nelle voci della vista mensile"
+msgstr "Mostra gli orari di inizi e di fine nelle voci della vista mensile"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
 msgstr ""
-"Marca questa casella per mostrare l'orario delle voci della vista mensile."
+"Marca questa casella per mostrare gli orari di inizio e di fine nelle voci "
+"della vista mensile."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "Mostra l'orario nelle voci della vista mensile"
+msgstr "Mostra gli orari di inizio e di fine nelle voci della vista mensile"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5074,13 +5072,10 @@ msgstr "Mostra le festività nella vista mensile"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use the Holiday background color when at least on holiday lands on a date"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
 msgstr ""
-"Usa il colore di sfondo delle festività quando cade almeno una festività in "
-"quella data."
+"Usa il colore di sfondo delle festività quando una festività cade nella data"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -6608,13 +6603,6 @@ msgstr ""
 "festività nella vista mensile» nella scheda Visualizza->Vista mese."
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
@@ -6625,7 +6613,7 @@ msgstr ""
 "personalizzati delle festività come colore di sfondo della casella della "
 "data se almeno una festività cade in quella data. Per abilitare questo "
 "comportamento, selezionare l'opzione «Usa il colore di sfondo delle "
-"festività quando cade almeno una festività in quella data» nella scheda "
+"festività quando una festività cade nella data in quella data» nella scheda "
 "Visualizza->Vista mensile"
 
 #: whatsnew/whatsnewtranslations.cpp:30
