@@ -245,7 +245,7 @@ if(NOT APPLE)
     find_package(X11)
 endif()
 
-set(KTEXTADDONS_MIN_VERSION "2.0.1")
+set(KTEXTADDONS_MIN_VERSION "2.0.2")
 
 find_package(KF6TextAddonsWidgets ${KTEXTADDONS_MIN_VERSION} CONFIG)
 set_package_properties(
