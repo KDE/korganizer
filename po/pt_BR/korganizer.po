@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-09 00:44+0000\n"
-"PO-Revision-Date: 2026-05-10 19:19-0300\n"
+"PO-Revision-Date: 2026-05-17 07:49-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -3757,7 +3757,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
-msgstr "Lista as opções disponíveis para os comentários dos usuários"
+msgstr "Lista as opções disponíveis para o feedback do usuário"
 
 #: koviewmanager.cpp:493
 #, kde-format
