@@ -12,7 +12,7 @@
 # SPDX-FileCopyrightText: 2022 Alois Spitzbart <spitz234@hotmail.com>
 # SPDX-FileCopyrightText: 2022-2023 Frank Steinmetzger <dev-kde@felsenfleischer.de>
 # SPDX-FileCopyrightText: 2024 Johannes Obermayr <johannesobermayr@gmx.de>
-# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
+# SPDX-FileCopyrightText: 2025-2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 # SPDX-FileCopyrightText: 2026 Alexander Becker <alex-at-kde-l10n-de@freenet.de>
 # SPDX-FileCopyrightText: 2010 Intevation GmbH
 msgid ""
@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 02:50+0000\n"
-"PO-Revision-Date: 2026-04-16 18:41+0200\n"
-"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
+"PO-Revision-Date: 2026-05-16 14:17+0200\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -724,7 +724,11 @@ msgid "Filter incidences from the calendar"
 msgstr "Ereignisse aus diesem Kalender filtern"
 
 #: actionmanager.cpp:428
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Runs user-defined view filters on the calendar collection. Filters must "
+#| "be created first. See \"Manage View Filters\" option in the Settings menu."
 msgctxt "@info:whatsthis"
 msgid ""
 "Runs user-defined view filters on the calendar collection. Filters must be "
@@ -872,7 +876,7 @@ msgstr "Tag"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Einen Tag auf einmal anzeigen"
 
 #: actionmanager.cpp:502
 #, kde-format
@@ -885,6 +889,8 @@ msgstr "Nur einen Tag in der Terminplanansicht anzeigen"
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Wählen Sie diese Option, um in der Terminplanansicht nur einen Tag auf "
+"einmal anzuzeigen."
 
 #: actionmanager.cpp:510
 #, kde-format
@@ -896,7 +902,7 @@ msgstr "&Nächste Tage"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Einige Tage auf einmal anzeigen"
 
 #: actionmanager.cpp:512
 #, kde-format
@@ -913,22 +919,24 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"Wählen Sie diese Option, um in der Terminplanansicht einige Tage auf einmal "
+"anzuzeigen. Mithilfe der Einstellung <placeholder>Nächste x Tage</"
+"placeholder> unter <interface>Ansichten → Allgemein</interface> können Sie "
+"die Anzahl der anzuzeigenden Tage ändern."
 
 #: actionmanager.cpp:522
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Planung"
+msgstr "Woch&enplan"
 
 #: actionmanager.cpp:523
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "Planung"
+msgstr "Wochenplan"
 
 #: actionmanager.cpp:524
 #, kde-format
@@ -936,6 +944,7 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
+"Eine Woche auf einmal anzeigen (nur Tage, die Teil Ihres Wochenplans sind)"
 
 #: actionmanager.cpp:526
 #, kde-format
@@ -944,6 +953,8 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"In der Terminplanansicht eine Woche auf einmal anzeigen, ausgenommen der "
+"Tage, die nicht Teil Ihres Wochenplans sind (z. B. ohne das Wochenende)"
 
 #: actionmanager.cpp:529
 #, kde-kuit-format
@@ -955,6 +966,12 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<para>Typically this "
 "view is intended for showing the week without weekend days.</para>"
 msgstr ""
+"Wählen Sie diese Option, um in der Terminplanansicht eine Woche auf einmal "
+"anzuzeigen – ausgenommen der Tage, die nicht Teil Ihres Wochenplans sind. "
+"Ihren Wochenplan können Sie mittels der Einstellung <placeholder>Wochenplan</"
+"placeholder> unter <interface>Zeit und Datum → Regionales</interface> "
+"einrichten.<para>In der Regel wird diese Ansicht dafür verwendet, die "
+"Wochentage ohne das Wochenende anzuzeigen.</para>"
 
 #: actionmanager.cpp:538
 #, kde-format
@@ -972,7 +989,7 @@ msgstr "Woche"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Eine Woche auf einmal anzeigen"
 
 #: actionmanager.cpp:541
 #, kde-format
@@ -985,6 +1002,8 @@ msgstr "Eine Woche auf einmal in der Terminplanansicht anzeigen"
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
+"Wählen Sie diese Option, um in der Terminplanansicht eine komplette Woche "
+"auf einmal anzuzeigen."
 
 #: actionmanager.cpp:549
 #, kde-format
@@ -1074,12 +1093,10 @@ msgstr ""
 "Öffnet einen Dialog, in dem Sie einen neuen Journaleintrag erstellen können."
 
 #: actionmanager.cpp:586
-#, fuzzy, kde-format
-#| msgctxt "@action:button"
-#| msgid "Pick Date"
+#, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
-msgstr "Datum aussuchen"
+msgstr "Ein &Datum auswählen"
 
 #: actionmanager.cpp:587
 #, kde-format
@@ -1104,6 +1121,8 @@ msgstr "Die Ansicht zu benutzerdefinierten Daten verschieben"
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
+"Öffnet einen Datumsauswahl-Dialog, um schnell in der Ansicht navigieren zu "
+"können."
 
 #: actionmanager.cpp:595
 #, kde-format
@@ -3931,11 +3950,10 @@ msgid "Select Holiday Regions"
 msgstr "Feiertagsregionen auswählen"
 
 #: prefs/koprefsdialogtime.cpp:111
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "Planung"
+msgstr "Wochenplan"
 
 #: prefs/koprefsdialogtime.cpp:126
 #, kde-format
@@ -4181,8 +4199,9 @@ msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
-"Wählen Sie diese Option aus, wenn neue Einträge automatisch im aktuellen "
-"Standardkalender gespeichert werden sollen."
+"Wählen Sie diese Option, wenn neue Einträge (Termine, Aufgaben und Journal-"
+"Einträge) automatisch im aktuellen Standardkalender gespeichert werden "
+"sollen."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:22
@@ -5295,12 +5314,12 @@ msgstr ""
 "Sie die gewünschte Schriftart für Termine in der Terminplanansicht auswählen "
 "können."
 
+# https://de.wikipedia.org/wiki/Marcus-Bains-Linie
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:350
-#, fuzzy, kde-format
-#| msgid "Show current-time (Marcus Bains) line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "Aktuelle Zeit (Marcus-Bains-Linie) anzeigen"
+msgstr "Aktuelle Zeit (Marcus-Bains-Linie)"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:351
@@ -6691,11 +6710,10 @@ msgid "Icons to use"
 msgstr "Zu benutzendes Symbol"
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Zeit in der Monatsansicht anzeigen"
+msgstr "Seitenleiste in dieser Ansicht anzeigen/ausblenden"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6704,6 +6722,9 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"Klicken Sie auf diesen Knopf, um die Seitenleiste in der aktuellen Ansicht "
+"anzuzeigen/auszublenden. Diese Einstellung kann für jede Ansicht unabhängig "
+"von anderen Ansichten geändert werden."
 
 #: widgets/navigatorbar.cpp:39
 #, kde-format
