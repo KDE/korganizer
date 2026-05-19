@@ -27,6 +27,7 @@
 
 FilterEditDialog::FilterEditDialog(QList<KCalendarCore::CalFilter *> *filters, QWidget *parent)
     : QDialog(parent)
+    , mFilterEdit(new FilterEdit(filters, this))
 {
     setWindowTitle(i18nc("@title::window", "Edit Calendar Filters"));
     auto mainLayout = new QVBoxLayout(this);
@@ -38,7 +39,7 @@ FilterEditDialog::FilterEditDialog(QList<KCalendarCore::CalFilter *> *filters, Q
     mOkButton->setShortcut(Qt::CTRL | Qt::Key_Return);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &FilterEditDialog::slotOk);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &FilterEditDialog::reject);
-    mainLayout->addWidget(mFilterEdit = new FilterEdit(filters, this));
+    mainLayout->addWidget(mFilterEdit);
     mainLayout->addWidget(buttonBox);
 
     connect(mFilterEdit, &FilterEdit::dataConsistent, this, &FilterEditDialog::setDialogConsistent);
@@ -48,11 +49,7 @@ FilterEditDialog::FilterEditDialog(QList<KCalendarCore::CalFilter *> *filters, Q
     connect(buttonBox->button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &FilterEditDialog::slotApply);
 }
 
-FilterEditDialog::~FilterEditDialog()
-{
-    delete mFilterEdit;
-    mFilterEdit = nullptr;
-}
+FilterEditDialog::~FilterEditDialog() = default;
 
 void FilterEditDialog::updateFilterList()
 {

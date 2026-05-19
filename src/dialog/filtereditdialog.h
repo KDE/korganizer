@@ -48,7 +48,7 @@ public Q_SLOTS:
     void setDialogConsistent(bool consistent);
 
 private:
-    FilterEdit *mFilterEdit = nullptr;
+    FilterEdit *const mFilterEdit;
     QPushButton *mOkButton = nullptr;
     QPushButton *mApplyButton = nullptr;
 
