@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:44+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2284,37 +2284,37 @@ msgstr ""
 "期。</p><p>按下顶部的按钮可浏览前后的月份或年份。</p><p>每行都显示了一周，左"
 "列上的数值代表它是当年的第几周。按下它可选择一整周。</p></qt>"
 
-#: dialog/filtereditdialog.cpp:31
+#: dialog/filtereditdialog.cpp:32
 #, kde-format
 msgctxt "@title::window"
 msgid "Edit Calendar Filters"
 msgstr "编辑日历过滤"
 
-#: dialog/filtereditdialog.cpp:87
+#: dialog/filtereditdialog.cpp:84
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to define a new filter."
 msgstr "点此按钮定义一个新过滤器。"
 
-#: dialog/filtereditdialog.cpp:88
+#: dialog/filtereditdialog.cpp:85
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to remove the currently active filter."
 msgstr "点此按钮删除当前活动的过滤器。"
 
-#: dialog/filtereditdialog.cpp:219
+#: dialog/filtereditdialog.cpp:216
 #, kde-format
 msgctxt "@label default filter name"
 msgid "New Filter %1"
 msgstr "新过滤器 %1"
 
-#: dialog/filtereditdialog.cpp:242
+#: dialog/filtereditdialog.cpp:239
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
 msgstr "您真的想要彻底删除过滤器“%1”吗？"
 
-#: dialog/filtereditdialog.cpp:243
+#: dialog/filtereditdialog.cpp:240
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Filter?"

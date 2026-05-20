@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:44+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2013-09-30 02:22+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -2640,37 +2640,37 @@ msgstr ""
 "p><p>Әрбір жол аптаны көрсетеді. Сол жақтағы бағандағы сан - аптаның жылдағы "
 "реттік нөмірі. Оны түртіп бүкіл аптаны таңдап алуға болады.</p></qt>"
 
-#: dialog/filtereditdialog.cpp:31
+#: dialog/filtereditdialog.cpp:32
 #, kde-format
 msgctxt "@title::window"
 msgid "Edit Calendar Filters"
 msgstr "Күнтізбе сүзгісін өзгерту"
 
-#: dialog/filtereditdialog.cpp:87
+#: dialog/filtereditdialog.cpp:84
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to define a new filter."
 msgstr "Жаңа сүзгіні орнату үшін осы батырманы басыңыз."
 
-#: dialog/filtereditdialog.cpp:88
+#: dialog/filtereditdialog.cpp:85
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to remove the currently active filter."
 msgstr "Қолданыстағы белсенді сүзгіні өшіру үшін осы батырманы басыңыз."
 
-#: dialog/filtereditdialog.cpp:219
+#: dialog/filtereditdialog.cpp:216
 #, kde-format
 msgctxt "@label default filter name"
 msgid "New Filter %1"
 msgstr "%1 жаңа сүзгісі"
 
-#: dialog/filtereditdialog.cpp:242
+#: dialog/filtereditdialog.cpp:239
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
 msgstr "\"%1\" деген сүзгіні шын мүлдем өшірмексіз бе?"
 
-#: dialog/filtereditdialog.cpp:243
+#: dialog/filtereditdialog.cpp:240
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Filter?"

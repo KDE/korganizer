@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:44+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2026-05-09 07:20+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -2404,37 +2404,37 @@ msgstr ""
 "</p><p>თითოეული ხაზი კვირას აჩვენებს. რიცხვი მარცხენა სვეტში ამ კვირის წლის "
 "ნომერია. დააწექით მას მთელი კვირის მოსანიშნად.</p></qt>"
 
-#: dialog/filtereditdialog.cpp:31
+#: dialog/filtereditdialog.cpp:32
 #, kde-format
 msgctxt "@title::window"
 msgid "Edit Calendar Filters"
 msgstr "კალენდრის ფილტრების ჩასწორება"
 
-#: dialog/filtereditdialog.cpp:87
+#: dialog/filtereditdialog.cpp:84
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to define a new filter."
 msgstr "დააწექით ამ ღილაკს ახალი ფილტრის აღსაწერად."
 
-#: dialog/filtereditdialog.cpp:88
+#: dialog/filtereditdialog.cpp:85
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to remove the currently active filter."
 msgstr "დააწექით ამ ღილაკს ამჟამად აქტიური ფილტრის წასაშლელად."
 
-#: dialog/filtereditdialog.cpp:219
+#: dialog/filtereditdialog.cpp:216
 #, kde-format
 msgctxt "@label default filter name"
 msgid "New Filter %1"
 msgstr "ახალი ფილტრი %1"
 
-#: dialog/filtereditdialog.cpp:242
+#: dialog/filtereditdialog.cpp:239
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
 msgstr "მართლა გნებავთ, სამუდამოდ წაშალოთ ფილტრი \"%1\"?"
 
-#: dialog/filtereditdialog.cpp:243
+#: dialog/filtereditdialog.cpp:240
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Filter?"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:44+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -2578,37 +2578,37 @@ msgstr ""
 "の左の数字はその週が 1 年の何番目の週であるかを表しています。その数字を押すと"
 "週全体を選択できます。</p></qt>"
 
-#: dialog/filtereditdialog.cpp:31
+#: dialog/filtereditdialog.cpp:32
 #, kde-format
 msgctxt "@title::window"
 msgid "Edit Calendar Filters"
 msgstr "カレンダーフィルタの編集"
 
-#: dialog/filtereditdialog.cpp:87
+#: dialog/filtereditdialog.cpp:84
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to define a new filter."
 msgstr "このボタンを押して新しいフィルタを定義します。"
 
-#: dialog/filtereditdialog.cpp:88
+#: dialog/filtereditdialog.cpp:85
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to remove the currently active filter."
 msgstr "このボタンを押して選択したフィルタを削除します。"
 
-#: dialog/filtereditdialog.cpp:219
+#: dialog/filtereditdialog.cpp:216
 #, kde-format
 msgctxt "@label default filter name"
 msgid "New Filter %1"
 msgstr "新しいフィルタ %1"
 
-#: dialog/filtereditdialog.cpp:242
+#: dialog/filtereditdialog.cpp:239
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
 msgstr "本当にフィルタ “%1” を完全に削除しますか？"
 
-#: dialog/filtereditdialog.cpp:243
+#: dialog/filtereditdialog.cpp:240
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Filter?"

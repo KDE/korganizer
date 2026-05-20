@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1736590 2026-05-10 01:27:34Z scripty $
+# $Id: korganizer.po 1737240 2026-05-20 01:29:37Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-09 00:44+0000\n"
+"POT-Creation-Date: 2026-05-20 00:46+0000\n"
 "PO-Revision-Date: 2026-05-09 07:57+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2435,37 +2435,37 @@ msgstr ""
 "vrstni red tedna v letu. Za izbor celotnega tedna kliknite na to število.</"
 "p></qt>"
 
-#: dialog/filtereditdialog.cpp:31
+#: dialog/filtereditdialog.cpp:32
 #, kde-format
 msgctxt "@title::window"
 msgid "Edit Calendar Filters"
 msgstr "Urejanje koledarskih filtrov"
 
-#: dialog/filtereditdialog.cpp:87
+#: dialog/filtereditdialog.cpp:84
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to define a new filter."
 msgstr "Pritisnite ta gumb, da določite nov filter."
 
-#: dialog/filtereditdialog.cpp:88
+#: dialog/filtereditdialog.cpp:85
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to remove the currently active filter."
 msgstr "Pritisnite ta gumb, da odstranite trenutno dejaven filter."
 
-#: dialog/filtereditdialog.cpp:219
+#: dialog/filtereditdialog.cpp:216
 #, kde-format
 msgctxt "@label default filter name"
 msgid "New Filter %1"
 msgstr "Nov filter %1"
 
-#: dialog/filtereditdialog.cpp:242
+#: dialog/filtereditdialog.cpp:239
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the filter \"%1\"?"
 msgstr "Ali resnično želite trajno odstraniti filter »%1«?"
 
-#: dialog/filtereditdialog.cpp:243
+#: dialog/filtereditdialog.cpp:240
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Filter?"
