@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-20 00:46+0000\n"
-"PO-Revision-Date: 2026-04-30 09:01+0400\n"
+"PO-Revision-Date: 2026-05-21 11:49+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3832,7 +3832,7 @@ msgstr "إعدادات البريد الإلكتروني"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "تصنيف الوصول المبدئي"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -4891,47 +4891,41 @@ msgstr "اعرض أيقونات في عناصر منظور الشهر"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "اعرض الوقت في عناصر منظور الشهر"
+msgstr "أظهر أوقات البداية دون أوقات النهاية في عناصر عرض الشهر."
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
-msgstr "أشّر على هذا المربّع لعرض الوقت في عناصر منظور الشهر."
+msgstr "حدد هذا المربع لعرض وقت البداية دون وقت النهاية في عناصر عرض الشهر."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "اعرض الوقت في عناصر منظور الشهر"
+msgstr "اعرض وقت البدء دون وقت الانتهاء في عناصر عرض الشهر."
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "اعرض الوقت في عناصر منظور الشهر"
+msgstr "اعرض وقت البدء ووقت الانتهاء في عناصر عرض الشهر"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
-msgstr "أشّر على هذا المربّع لعرض الوقت في عناصر منظور الشهر."
+msgstr "حدد هذا المربع لعرض أوقات البداية والنهاية في عناصر عرض الشهر."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "اعرض الوقت في عناصر منظور الشهر"
+msgstr "اعرض أوقات البداية والنهاية في عناصر عرض الشهر"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -4984,12 +4978,9 @@ msgstr "اعرض العُطل في منظور الشهر"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use the Holiday background color when at least on holiday lands on a date"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
-msgstr ""
-"استخدم لون خلفية ”العطلة“ عندما يقع يوم عطلة واحد على الأقل في تاريخ ما"
+msgstr "استخدم لون خلفية العطلة عندما تصادف العطلة التاريخ."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -6443,39 +6434,27 @@ msgstr ""
 "”عرض الشهر“"
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow using the custom holiday color "
-#| "as the date box background color if at least one holiday lands on that "
-#| "date. To enable this behavior, check the \"Use the Holiday background "
-#| "color when at least on holiday lands on a date\" option in the Views-"
-#| ">Month View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
 "enable this behavior, check the \"Use the Holiday background color when a "
 "holiday lands on the date\" option in the Views->Month View tab"
 msgstr ""
-"عرض الشهر: أضيف خيار يسمح باستخدام لون العطلة المخصص كلون خلفية مربع التاريخ "
-"إذا صادف أن وقع يوم عطلة واحد على الأقل في ذلك التاريخ. لتمكين هذه الميزة، "
-"حدد خيار ”استخدام لون خلفية العطلة عندما يقع يوم عطلة واحد على الأقل في "
-"تاريخ ما“ في علامة التبويب ’العروض‘ -> ”عرض الشهر“"
+"عرض الشهر: أُضيف خيار للسماح باستخدام لون العطلة المخصص كلون خلفية لصندوق "
+"التاريخ إذا صادفت عطلة واحدة على الأقل في ذلك التاريخ. لتفعيل هذا السلوك، "
+"حدد خيار \"استخدام لون خلفية العطلة عندما تصادف عطلة التاريخ\" في علامة "
+"التبويب \"عروض->عرض الشهر\"."
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow hiding holidays. To enable this "
-#| "behavior, uncheck the \"Display holidays in the month view\" option in "
-#| "the Views->Month View tab"
 msgid ""
 "Month view: An option was added to show start-time and end-times. Previously "
 "only showing the start-time was supported. To enable this option, check the "
 "\"Show the start-time and the end-time in month view items\" option in the "
 "View->Month View tab"
 msgstr ""
-"عرض الشهر: تمت إضافة خيار يسمح بإخفاء أيام العطلات. لتمكين هذه الميزة، قم "
-"بإلغاء تحديد خيار ”عرض أيام العطلات في عرض الشهر“ في علامة التبويب ’عرض‘ -> "
-"”عرض الشهر“"
+"عرض الشهر: أُضيف خيار لإظهار وقت البدء ووقت الانتهاء. سابقًا، كان يُدعم فقط "
+"إظهار وقت البدء. لتفعيل هذا الخيار، حدد خيار \"إظهار وقت البدء ووقت الانتهاء "
+"في عناصر عرض الشهر\" في علامة تبويب عرض->عرض الشهر."
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"
@@ -6498,6 +6477,9 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"أضيفت خيارات لضبط تصنيفات الوصول المبدئية (عام، سري، أو خاص) عند إنشاء "
+"فعاليات، ومهام، وسجلات جديدة. حدد تفضيلاتك في مربعات التحرير والسرد \"عام-> "
+"تصنيف الوصول المبدئي الشخصي\"."
 
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
