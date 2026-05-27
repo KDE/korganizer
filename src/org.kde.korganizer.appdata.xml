@@ -461,34 +461,110 @@
     <binary>korganizer</binary>
   </provides>
   <releases>
+    <release version="6.8.0" type="snapshot">
+      <description>
+        <ul>
+          <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar\"</li>
+          <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the \"Draw bold horizontal grid lines for the even hours\" option in the View-&gt;Agenda View tab</li>
+          <li>It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in the Holidays section of the Time&gt;Regional tab</li>
+          <li>Month view: for the sake of consistency, holidays that land on a workday are no longer hidden</li>
+          <li>Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option in the Views-&gt;Month View tab</li>
+          <li>Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on that date. To enable this behavior, check the \"Use the Holiday background color when a holiday lands on the date\" option in the Views-&gt;Month View tab</li>
+          <li>Month view: An option was added to show start-time and end-times. Previously only showing the start-time was supported. To enable this option, check the \"Show the start-time and the end-time in month view items\" option in the View-&gt;Month View tab</li>
+          <li>Agenda view: underline today's column header date</li>
+          <li>Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence locations in agenda view items\" option in the View-&gt;Agenda View tab</li>
+          <li>Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and Journals have been added.  Select your preferences in the \"General-&gt;Personal Default Access Classification\" comboboxes.</li>
+          <li>Fixed reminder toggling from menus</li>
+          <li>Agenda view: improved timelabel vertical alignment with grid</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.7.1" date="2026-05-07"/>
-    <release version="6.7.0" date="2026-04-16"/>
+    <release version="6.7.0" date="2026-04-16">
+      <description>
+        <ul>
+          <li>Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings Time&gt;Default Values tab</li>
+          <li>Month view: no longer display the month year header to save vertical space and remove redundancy</li>
+          <li>Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month</li>
+          <li>Month view: the navigation controls on the lower right side are removed in favor of the improved application navigator bar</li>
+          <li>Month view: the background color for today's date cell can be changed. To configure the color,  set the \"Month view today background color\" in the Colors and Fonts settings</li>
+          <li>Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis</li>
+          <li>Navigator bar: added a button to scroll the view to the current date</li>
+          <li>Agenda view: events with short durations are displayed with their starting time in addition to their summary</li>
+          <li>Agenda view: optionally show the incidence descriptions inside the agenda items. To enable this behavior, check the \"Show incidence descriptions in agenda view items\" option in the View-&gt;Agenda View tab</li>
+          <li>Search: the search settings are saved/restored</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.6.3" date="2026-03-05"/>
     <release version="6.6.2" date="2026-02-05"/>
     <release version="6.6.1" date="2026-01-08"/>
-    <release version="6.6.0" date="2025-12-11"/>
+    <release version="6.6.0" date="2025-12-11">
+      <description>
+        <ul>
+          <li>Incidence editor: the tags are sorted alphabetically in the tags editor</li>
+          <li>Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well</li>
+          <li>Incidence editor: detect and warn about creating incidences in the past</li>
+          <li>Incidence editor: add emoji support</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.5.3" date="2025-11-06"/>
     <release version="6.5.2" date="2025-10-09"/>
     <release version="6.5.1" date="2025-09-11"/>
-    <release version="6.5.0" date="2025-08-14"/>
-    <release version="6.4.3" date="2025-07-03"/>
-    <release version="6.4.2" date="2025-06-05"/>
-    <release version="6.4.1" date="2025-05-08"/>
-    <release version="6.4.0" date="2025-04-17"/>
-    <release version="6.3.3" date="2025-03-06"/>
-    <release version="6.3.2" date="2025-02-06"/>
-    <release version="6.3.1" date="2025-01-09"/>
-    <release version="6.3.0" date="2024-12-12"/>
-    <release version="6.2.3" date="2024-11-07"/>
-    <release version="6.2.2" date="2024-10-10"/>
-    <release version="6.2.1" date="2024-09-12"/>
-    <release version="6.1.90" date="2024-08-22"/>
-    <release version="6.1.2" date="2024-07-04"/>
-    <release version="6.1.1" date="2024-06-13"/>
-    <release version="6.1.0" date="2024-05-23"/>
-    <release version="6.0.2" date="2024-04-11"/>
-    <release version="6.0.1" date="2024-03-21"/>
-    <release version="6.0.0" date="2024-02-28"/>
-    <release version="5.24.5" date="2024-02-15"/>
+    <release version="6.5.0" date="2025-08-14">
+      <description>
+        <ul>
+          <li>Semantics are changed from a \"working schedule\" concept to a \"week schedule\" concept to accommodate non-working users</li>
+          <li>Initial \"New Event\" start times are consistent across all the views</li>
+          <li>Improved default event calendar handling")});
+          <li>Incidences with a long excluded dates list no longer create huge tooltips</li>
+            <li>Fixed the organizer email address for incidences with attendees</li>
+            <li>Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)</li>
+            <li>Add What's New menu</li>
+            <li>The current view is remembered</li>
+            <li>Add a Date Picker dialog available on the Go menu</li>
+            <li>Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button</li>
+            <li>Agenda view: added timelabels context menu option to toggle a 24-hour (military style) clock</li>
+            <li>Agenda view: added context menu to create new Event or To-do</li>
+            <li>To-do view: added context menu options for toggling completion and reminders</li>
+            <li>To-do view: save/restore fullview setting</li>
+            <li>To-do view: save/restore flatview setting</li>
+            <li>Date navigator: added an option in the Configure-&gt;Views settings for hiding the week numbers</li>
+            <li>Date navigator: the \"Week numbers select a work week when in work week mode\" setting is true by default</li>
+            <li>Incidence editor: remember/restore the template manager geometry</li>
+            <li>Incidence editor: support drag-and-drop attachments</li>
+            <li>The export calendar dialog remembers its last export folder location</li>
+            <li>The import calendar dialog remembers its last import folder location</li>
+            <li>Get Hot New Stuff removed</li>
+            <li>Add calendar file: remote calendars are always read-only</li>
+            <li>Add calendar file: will not permit an empty file path</li>
+            <li>DAV configuration: dialog allows seeing the account password when editing</li>
+            <li>DAV configuration: wizard shows icons for the various providers</li>
+            <li>DAV configuration: wizard updated list of providers")};
+        </li>
+          </li>
+        </ul>
+        <release version="6.4.3" date="2025-07-03"/>
+        <release version="6.4.2" date="2025-06-05"/>
+        <release version="6.4.1" date="2025-05-08"/>
+        <release version="6.4.0" date="2025-04-17"/>
+        <release version="6.3.3" date="2025-03-06"/>
+        <release version="6.3.2" date="2025-02-06"/>
+        <release version="6.3.1" date="2025-01-09"/>
+        <release version="6.3.0" date="2024-12-12"/>
+        <release version="6.2.3" date="2024-11-07"/>
+        <release version="6.2.2" date="2024-10-10"/>
+        <release version="6.2.1" date="2024-09-12"/>
+        <release version="6.1.90" date="2024-08-22"/>
+        <release version="6.1.2" date="2024-07-04"/>
+        <release version="6.1.1" date="2024-06-13"/>
+        <release version="6.1.0" date="2024-05-23"/>
+        <release version="6.0.2" date="2024-04-11"/>
+        <release version="6.0.1" date="2024-03-21"/>
+        <release version="6.0.0" date="2024-02-28"/>
+        <release version="5.24.5" date="2024-02-15"/>
+      </description>
+    </release>
   </releases>
 </component>
