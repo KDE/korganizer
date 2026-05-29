@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-20 00:46+0000\n"
-"PO-Revision-Date: 2026-05-09 11:01+0200\n"
+"PO-Revision-Date: 2026-05-28 12:08+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -349,7 +349,7 @@ msgstr "Skrýt nabídku"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
-msgstr "Importovat &kalendář"
+msgstr "Importovat &kalendář…"
 
 #: actionmanager.cpp:243
 #, kde-format
@@ -403,7 +403,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
-msgstr "Archiv starých po&ložek"
+msgstr "Archiv starých po&ložek…"
 
 #: actionmanager.cpp:264
 #, kde-format
@@ -1112,7 +1112,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
-msgstr "Nastavit zobrazení..."
+msgstr "Nastavit zobrazení…"
 
 #: actionmanager.cpp:596
 #, kde-format
@@ -1263,7 +1263,7 @@ msgstr "Nastavit da&tum a čas…"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
-msgstr "Spravovat &filtry zobrazení..."
+msgstr "Spravovat &filtry zobrazení…"
 
 #: actionmanager.cpp:751
 #, kde-format
@@ -1281,7 +1281,7 @@ msgstr "Co je nového"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
-msgstr "&Nastavit KOrganizer..."
+msgstr "&Nastavit KOrganizer…"
 
 #: actionmanager.cpp:841
 #, kde-format
@@ -1377,7 +1377,7 @@ msgstr "&Zobrazit událost"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
-msgstr "&Upravit událost"
+msgstr "&Upravit událost…"
 
 #: actionmanager.cpp:1272
 #, kde-format
@@ -1395,7 +1395,7 @@ msgstr "&Zobrazit úkol"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
-msgstr "&Upravit úkol"
+msgstr "&Upravit úkol…"
 
 #: actionmanager.cpp:1286
 #, kde-format
@@ -1562,7 +1562,7 @@ msgstr "Na&stavit barvu složky…"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Nastavit výchozí kalen&dář?"
+msgstr "Nastavit výchozí kalen&dář"
 
 #: akonadicollectionview.cpp:537
 #, kde-format
@@ -1614,13 +1614,13 @@ msgstr "<filename>%1</filename> je nyní vaším výchozím kalendářem %2"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Nastavit jako výchozí kalen&dář pro události?"
+msgstr "Nastavit jako výchozí kalen&dář pro události"
 
 #: akonadicollectionview.cpp:773
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Nastavit jako výchozí kalen&dář pro úkoly?"
+msgstr "Nastavit jako výchozí kalen&dář pro úkoly"
 
 #: akonadicollectionview.cpp:791
 #, kde-format
@@ -1899,7 +1899,7 @@ msgid ""
 "of this item has been put into %2"
 msgstr ""
 "Nelze odstranit položku \"%1\" z původního kalendáře. Kopie této položky "
-"však byla umístěna do %2."
+"však byla umístěna do %2"
 
 #: calendarview.cpp:1585 calendarview.cpp:1601 calendarview.cpp:2533
 #, kde-format
@@ -2299,7 +2299,7 @@ msgstr "Po&užít vlastní ikonu:"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
-msgstr "Nastavit vlastní ikonu:"
+msgstr "Nastavit vlastní ikonu"
 
 #: collectiongeneralpage.cpp:60
 #, kde-format
@@ -2550,7 +2550,7 @@ msgstr ","
 #, kde-format
 msgctxt "delimiter for joining holiday names"
 msgid ","
-msgstr ", "
+msgstr ","
 
 #: kodaymatrix.cpp:454
 #, kde-format
@@ -2916,7 +2916,7 @@ msgstr[2] " dnů"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr "Nová událost..."
+msgstr "Nová událost…"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
@@ -2987,7 +2987,7 @@ msgstr[2] "za %1 dnů"
 #, kde-format
 msgctxt "eg. in 1 hour 2 minutes"
 msgid "in "
-msgstr " za"
+msgstr "za "
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:187
 #, kde-format
@@ -3347,7 +3347,7 @@ msgstr "dokončené"
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
-msgstr "probíhající"
+msgstr "probíhající "
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:389
 #, kde-format
@@ -4381,7 +4381,7 @@ msgid ""
 "their due, due today or overdue state"
 msgstr ""
 "Zaškrtněte toto políčko, aby úkoly používaly barvy značek a ne barvy "
-"specifické pro jejich stav splnění, splnění dnes nebo po splnění."
+"specifické pro jejich stav splnění, splnění dnes nebo po splnění"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:71
@@ -4525,7 +4525,7 @@ msgstr ""
 #: settings/korganizer.kcfg:112
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr "Nastavit výšku (v pixelech) pro hodiny v mřížce agendy."
+msgstr "Nastavit výšku (v pixelech) pro hodiny v mřížce agendy"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:118
@@ -6065,7 +6065,7 @@ msgstr "*"
 #: ui/searchdialog_base.ui:67
 #, kde-format
 msgid "Search For"
-msgstr "Hledat:"
+msgstr "Hledat"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:73
@@ -6386,7 +6386,7 @@ msgid ""
 "filter"
 msgstr ""
 "Zrušte zaškrtnutí tohoto políčka, chcete-li přeskočit události odpovídající "
-"aktuálně vybranému filtru zobrazení."
+"aktuálně vybranému filtru zobrazení"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -6397,7 +6397,7 @@ msgid ""
 msgstr ""
 "Pokud je toto políčko zaškrtnuto, budou při vyhledávání zohledněny všechny "
 "případy, i ty, které nejsou zobrazeny podle aktuálně vybraného filtru "
-"zobrazení."
+"zobrazení"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
@@ -6522,7 +6522,7 @@ msgid ""
 msgstr ""
 "Nyní je možné skrýt svátky, které patří do určitých kategorií, například "
 "náboženské svátky. Viz rozevírací seznam Kategorie v sekci Svátky na záložce "
-"Datum a čas -> Regionální."
+"Datum a čas -> Regionální"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
@@ -6553,7 +6553,7 @@ msgstr ""
 "barvu pozadí pole s datem, pokud na daný den připadá alespoň jeden svátek. "
 "Chcete-li tuto funkci aktivovat, zaškrtněte na kartě Zobrazení -> Měsíční "
 "zobrazení možnost \"Pokud na daný den připadá svátek, použít barvu pozadí "
-"svátku\"."
+"svátku\""
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
@@ -6579,7 +6579,7 @@ msgid ""
 msgstr ""
 "Zobrazení agendy: volitelné zobrazení umístění položek v zobrazení agendy. "
 "Chcete-li tuto funkci povolit, zaškrtněte možnost \"Zobrazit umístění "
-"položek v zobrazení agendy\" na kartě Zobrazení->Zobrazení agendy."
+"položek v zobrazení agendy\" na kartě Zobrazení->Zobrazení agendy"
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
@@ -6601,7 +6601,7 @@ msgid ""
 msgstr ""
 "Připomenutí jsou ve výchozím nastavení povolena pro všechny nové události a "
 "úkoly. Chcete-li toto chování zakázat, zrušte zaškrtnutí políčka povolující "
-"připomenutí v nastavení na kartě Datum a čas->Výchozí hodnoty."
+"připomenutí v nastavení na kartě Datum a čas->Výchozí hodnoty"
 
 #: whatsnew/whatsnewtranslations.cpp:47
 msgid ""
@@ -6635,7 +6635,7 @@ msgid ""
 msgstr ""
 "Měsíční zobrazení: barvu pozadí buňky s dnešním datem lze změnit. Chcete-li "
 "barvu nastavit,  zvolte „Barvu pozadí dnešku v měsíčním zobrazení“ v "
-"nastavení barev a písma."
+"nastavení barev a písma"
 
 #: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
@@ -6666,7 +6666,7 @@ msgid ""
 msgstr ""
 "Zobrazení agendy: volitelné zobrazení popisů položek v zobrazení agendy. "
 "Chcete-li tuto funkci povolit, zaškrtněte možnost „Zobrazit popisy položek v "
-"zobrazení agendy“ na kartě Zobrazení->Zobrazení agendy."
+"zobrazení agendy“ na kartě Zobrazení->Zobrazení agendy"
 
 #: whatsnew/whatsnewtranslations.cpp:57
 msgid "Search: the search settings are saved/restored"
@@ -6765,13 +6765,13 @@ msgstr "Editor položek: podpora přetahování příloh"
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Dialogové okno exportu kalendáře si pamatuje umístění poslední složky pro "
-"export."
+"export"
 
 #: whatsnew/whatsnewtranslations.cpp:91
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Dialogové okno importu kalendáře si pamatuje umístění poslední složky pro "
-"import."
+"import"
 
 #: whatsnew/whatsnewtranslations.cpp:92
 msgid "Get Hot New Stuff removed"
@@ -6806,13 +6806,13 @@ msgid ""
 "schedule\" concept to accommodate non-working users"
 msgstr ""
 "Sémantika se mění z konceptu \"pracovního rozvrhu\" na koncept \"týdenního "
-"rozvrhu\", aby vyhovovala nepracujícím uživatelům."
+"rozvrhu\", aby vyhovovala nepracujícím uživatelům"
 
 #: whatsnew/whatsnewtranslations.cpp:116
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
-"Počáteční časy zahájení \"nové události\" jsou ve všech zobrazeních stejné."
+"Počáteční časy zahájení \"nové události\" jsou ve všech zobrazeních stejné"
 
 #: whatsnew/whatsnewtranslations.cpp:117
 #, kde-format
