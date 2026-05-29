@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 02:50+0000\n"
-"PO-Revision-Date: 2026-03-29 13:05+0200\n"
+"PO-Revision-Date: 2026-05-28 09:39+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -915,7 +915,7 @@ msgid ""
 msgstr ""
 "Trieu esta opció per a mostrar alguns dies següents a la vista d'agenda. "
 "Configureu l'opció <placeholder>x dies següents</placeholder> a la pàgina "
-"<interface>Vistes->General</interface> per a ajustar el nombre de dies "
+"<interface>Vistes → General</interface> per a ajustar el nombre de dies "
 "mostrats."
 
 #: actionmanager.cpp:522
@@ -966,7 +966,7 @@ msgstr ""
 "no estan inclosos en la vostra planificació setmanal. Configureu la vostra "
 "planificació seleccionant els dies a la configuració de la "
 "<placeholder>Planificació setmanal</placeholder> a la pàgina <interface>Data "
-"i hora->Regional</interface>.<para>Normalment esta vista està destinada a "
+"i hora → Regional</interface>.<para>Normalment esta vista està destinada a "
 "mostrar la setmana sense els dies del cap de setmana.</para>"
 
 #: actionmanager.cpp:538
@@ -1151,7 +1151,7 @@ msgid ""
 msgstr ""
 "En la vista multicalendari, s'inicia un diàleg que permet configurar la "
 "vista. Actualment només s'admet la vista multicalendari. Vegeu les opcions "
-"de múltiples calendaris a la configuració «Vistes -> Vistes d'agenda»."
+"de múltiples calendaris a la configuració «Vistes → Vista d'agenda»."
 
 #: actionmanager.cpp:607 actionmanager.cpp:1304 actionmanager.cpp:1346
 #: koeventpopupmenu.cpp:42
@@ -2240,8 +2240,8 @@ msgstr ""
 "Heu creat una incidència en un calendari que actualment està filtrat."
 "<para>Per a veure la incidència creada recentment, activeu el seu calendari "
 "al gestor de calendaris.</para><para>El gestor de calendaris està ocult. "
-"Mostra el gestor utilitzant el menú <interface>Configuració->Barra lateral-"
-">Mostra el gestor de calendaris</interface>.</para>"
+"Mostra el gestor utilitzant el menú <interface>Configuració → Barra lateral "
+"→ Mostra el gestor de calendaris</interface>.</para>"
 
 #: collectiongeneralpage.cpp:37
 #, kde-format
@@ -6428,7 +6428,7 @@ msgstr ""
 "Els recordatoris estan activats de manera predeterminada per a tots els "
 "esdeveniments i tasques pendents noves. Per a desactivar este comportament, "
 "desmarqueu les opcions Habilita els recordatoris a la pestanya de "
-"configuració Data i hora->Valors predeterminats"
+"configuració «Data i hora → Valors predeterminats»"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
@@ -6495,7 +6495,7 @@ msgstr ""
 "Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins "
 "dels elements d'agenda. Per a activar este comportament, marqueu l'opció "
 "«Mostra les descripcions de les incidències als elements de la vista "
-"d'agenda» a la pestanya Visualitza->Vista d'agenda"
+"d'agenda» a «Vistes → pestanya Vista d'agenda»"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid "Search: the search settings are saved/restored"
@@ -6522,7 +6522,7 @@ msgstr "Editor d'incidències: afig la implementació d'emoji"
 
 #: whatsnew/whatsnewtranslations.cpp:50
 msgid "Add What's New menu"
-msgstr "Afig el menú Què hi ha de nou"
+msgstr "Afig el menú «Què hi ha de nou»"
 
 #: whatsnew/whatsnewtranslations.cpp:51
 msgid "The current view is remembered"
@@ -6576,7 +6576,7 @@ msgid ""
 "the week numbers"
 msgstr ""
 "Navegador de dates: s'ha afegit una opció dins de la configuració de "
-"Configura->Vistes per a ocultar els números de setmana"
+"«Configuració → Vistes» per a ocultar els números de setmana"
 
 #: whatsnew/whatsnewtranslations.cpp:60
 msgid ""

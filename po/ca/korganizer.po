@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 02:50+0000\n"
-"PO-Revision-Date: 2026-03-29 13:05+0200\n"
+"PO-Revision-Date: 2026-05-28 09:39+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -6533,7 +6533,7 @@ msgstr "Editor d'incidències: afegeix la implementació d'emojis"
 
 #: whatsnew/whatsnewtranslations.cpp:50
 msgid "Add What's New menu"
-msgstr "Afegeix el menú Què hi ha de nou"
+msgstr "Afegeix el menú «Què hi ha de nou»"
 
 #: whatsnew/whatsnewtranslations.cpp:51
 msgid "The current view is remembered"

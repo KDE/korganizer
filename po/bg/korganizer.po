@@ -6846,9 +6846,3 @@ msgstr "%1"
 msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Scroll backward to the previous year"
-#~ msgstr "Превъртане назад към предишната година"
-
-#~ msgid "Scroll backward to the previous month"
-#~ msgstr "Превъртане назад към предишния месец"
