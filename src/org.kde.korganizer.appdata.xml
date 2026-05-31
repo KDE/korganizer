@@ -848,53 +848,51 @@
           <li xml:lang="sk">Počiatočné časy začiatku pri \"Novej udalosti\" sú konzistentné vo všetkých pohľadoch</li>
           <li xml:lang="sl">Začetni časi začetka »Novega dogodka« so enaki v vseh pogledih.</li>
           <li xml:lang="uk">Початкові часи початку «Нової події» у новій версії є узгодженими за усіма панелями перегляду</li>
-          <li>Improved default event calendar handling")});
+          <li>Improved default event calendar handling</li>
           <li>Incidences with a long excluded dates list no longer create huge tooltips</li>
-            <li>Fixed the organizer email address for incidences with attendees</li>
-            <li>Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)</li>
-            <li>Add What's New menu</li>
-            <li>The current view is remembered</li>
-            <li>Add a Date Picker dialog available on the Go menu</li>
-            <li>Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button</li>
-            <li>Agenda view: added timelabels context menu option to toggle a 24-hour (military style) clock</li>
-            <li>Agenda view: added context menu to create new Event or To-do</li>
-            <li>To-do view: added context menu options for toggling completion and reminders</li>
-            <li>To-do view: save/restore fullview setting</li>
-            <li>To-do view: save/restore flatview setting</li>
-            <li>Date navigator: added an option in the Configure-&gt;Views settings for hiding the week numbers</li>
-            <li>Date navigator: the \"Week numbers select a work week when in work week mode\" setting is true by default</li>
-            <li>Incidence editor: remember/restore the template manager geometry</li>
-            <li>Incidence editor: support drag-and-drop attachments</li>
-            <li>The export calendar dialog remembers its last export folder location</li>
-            <li>The import calendar dialog remembers its last import folder location</li>
-            <li>Add calendar file: remote calendars are always read-only</li>
-            <li>Add calendar file: will not permit an empty file path</li>
-            <li>DAV configuration: dialog allows seeing the account password when editing</li>
-            <li>DAV configuration: wizard shows icons for the various providers</li>
-            <li>DAV configuration: wizard updated list of providers")};
-        </li>
-          </li>
+          <li>Fixed the organizer email address for incidences with attendees</li>
+          <li>Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)</li>
+          <li>Add What's New menu</li>
+          <li>The current view is remembered</li>
+          <li>Add a Date Picker dialog available on the Go menu</li>
+          <li>Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button</li>
+          <li>Agenda view: added timelabels context menu option to toggle a 24-hour (military style) clock</li>
+          <li>Agenda view: added context menu to create new Event or To-do</li>
+          <li>To-do view: added context menu options for toggling completion and reminders</li>
+          <li>To-do view: save/restore fullview setting</li>
+          <li>To-do view: save/restore flatview setting</li>
+          <li>Date navigator: added an option in the Configure-&gt;Views settings for hiding the week numbers</li>
+          <li>Date navigator: the \"Week numbers select a work week when in work week mode\" setting is true by default</li>
+          <li>Incidence editor: remember/restore the template manager geometry</li>
+          <li>Incidence editor: support drag-and-drop attachments</li>
+          <li>The export calendar dialog remembers its last export folder location</li>
+          <li>The import calendar dialog remembers its last import folder location</li>
+          <li>Add calendar file: remote calendars are always read-only</li>
+          <li>Add calendar file: will not permit an empty file path</li>
+          <li>DAV configuration: dialog allows seeing the account password when editing</li>
+          <li>DAV configuration: wizard shows icons for the various providers</li>
+          <li>DAV configuration: wizard updated list of providers</li>
         </ul>
-        <release version="6.4.3" date="2025-07-03"/>
-        <release version="6.4.2" date="2025-06-05"/>
-        <release version="6.4.1" date="2025-05-08"/>
-        <release version="6.4.0" date="2025-04-17"/>
-        <release version="6.3.3" date="2025-03-06"/>
-        <release version="6.3.2" date="2025-02-06"/>
-        <release version="6.3.1" date="2025-01-09"/>
-        <release version="6.3.0" date="2024-12-12"/>
-        <release version="6.2.3" date="2024-11-07"/>
-        <release version="6.2.2" date="2024-10-10"/>
-        <release version="6.2.1" date="2024-09-12"/>
-        <release version="6.1.90" date="2024-08-22"/>
-        <release version="6.1.2" date="2024-07-04"/>
-        <release version="6.1.1" date="2024-06-13"/>
-        <release version="6.1.0" date="2024-05-23"/>
-        <release version="6.0.2" date="2024-04-11"/>
-        <release version="6.0.1" date="2024-03-21"/>
-        <release version="6.0.0" date="2024-02-28"/>
-        <release version="5.24.5" date="2024-02-15"/>
       </description>
     </release>
+    <release version="6.4.3" date="2025-07-03"/>
+    <release version="6.4.2" date="2025-06-05"/>
+    <release version="6.4.1" date="2025-05-08"/>
+    <release version="6.4.0" date="2025-04-17"/>
+    <release version="6.3.3" date="2025-03-06"/>
+    <release version="6.3.2" date="2025-02-06"/>
+    <release version="6.3.1" date="2025-01-09"/>
+    <release version="6.3.0" date="2024-12-12"/>
+    <release version="6.2.3" date="2024-11-07"/>
+    <release version="6.2.2" date="2024-10-10"/>
+    <release version="6.2.1" date="2024-09-12"/>
+    <release version="6.1.90" date="2024-08-22"/>
+    <release version="6.1.2" date="2024-07-04"/>
+    <release version="6.1.1" date="2024-06-13"/>
+    <release version="6.1.0" date="2024-05-23"/>
+    <release version="6.0.2" date="2024-04-11"/>
+    <release version="6.0.1" date="2024-03-21"/>
+    <release version="6.0.0" date="2024-02-28"/>
+    <release version="5.24.5" date="2024-02-15"/>
   </releases>
 </component>
