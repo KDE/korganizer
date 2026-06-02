@@ -8,41 +8,40 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-20 00:46+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-31 19:24-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr ""
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "Organizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "A Personal Organizer"
-msgstr "تەشكىللىگۈچى"
+msgstr ""
 
 #: aboutdata.cpp:23
 #, kde-format
@@ -56,87 +55,79 @@ msgid ""
 msgstr ""
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Allen Winter"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Allen Winter"
 msgstr "Allen Winter"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Maintainer"
-msgstr "مەسئۇل كىشى"
+msgstr "ئاسرىغۇچى"
 
 #: aboutdata.cpp:32
 #, kde-format
 msgctxt "@info:credit"
 msgid "Reinhold Kainhofer"
-msgstr ""
+msgstr "Reinhold Kainhofer"
 
 #: aboutdata.cpp:32 aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Maintainer"
-msgstr "بۇرۇنقى مەسئۇل ئادەم"
+msgstr "سابىق ئاسرىغۇچى"
 
 #: aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Cornelius Schumacher"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Cornelius Schumacher"
 msgstr "Cornelius Schumacher"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Preston Brown"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Preston Brown"
 msgstr "Preston Brown"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Original Author"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Original Author"
-msgstr "ئەسلى ئاپتور"
+msgstr "ئەسلى يازغۇچى"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Laurent Montel"
-msgstr "بۇرۇنقى مەسئۇل ئادەم"
+msgstr "Laurent Montel"
 
 #: aboutdata.cpp:35
 #, kde-format
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr ""
+msgstr "ئىجادكار"
 
 #: aboutdata.cpp:36
 #, kde-format
 msgctxt "@info:credit"
 msgid "Richard Apodaca"
-msgstr ""
+msgstr "Richard Apodaca"
 
 #: aboutdata.cpp:37
 #, kde-format
 msgctxt "@info:credit"
 msgid "Björn Balazs"
-msgstr ""
+msgstr "Björn Balazs"
 
 #: aboutdata.cpp:38
 #, kde-format
 msgctxt "@info:credit"
 msgid "Jan-Pascal van Best"
-msgstr ""
+msgstr "Jan-Pascal van Best"
 
 #: aboutdata.cpp:39
-#, fuzzy, kde-format
-#| msgid "Bertjan Broeksema"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bertjan Broeksema"
 msgstr "Bertjan Broeksema"
@@ -145,23 +136,22 @@ msgstr "Bertjan Broeksema"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Laszlo Boloni"
-msgstr ""
+msgstr "Laszlo Boloni"
 
 #: aboutdata.cpp:41
 #, kde-format
 msgctxt "@info:credit"
 msgid "Barry Benowitz"
-msgstr ""
+msgstr "Barry Benowitz"
 
 #: aboutdata.cpp:42
 #, kde-format
 msgctxt "@info:credit"
 msgid "Christopher Beard"
-msgstr ""
+msgstr "Christopher Beard"
 
 #: aboutdata.cpp:43
-#, fuzzy, kde-format
-#| msgid "Kalle Dalheimer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Kalle Dalheimer"
 msgstr "Kalle Dalheimer"
@@ -170,36 +160,34 @@ msgstr "Kalle Dalheimer"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Ian Dawes"
-msgstr ""
+msgstr "Ian Dawes"
 
 #: aboutdata.cpp:45
-#, fuzzy, kde-format
-#| msgid "Thomas Zander"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Eitzenberger"
-msgstr "Thomas Zander"
+msgstr "Thomas Eitzenberger"
 
 #: aboutdata.cpp:46
 #, kde-format
 msgctxt "@info:credit"
 msgid "Neil Hart"
-msgstr ""
+msgstr "Neil Hart"
 
 #: aboutdata.cpp:47
 #, kde-format
 msgctxt "@info:credit"
 msgid "Declan Houlihan"
-msgstr ""
+msgstr "Declan Houlihan"
 
 #: aboutdata.cpp:48
 #, kde-format
 msgctxt "@info:credit"
 msgid "Hans-Jürgen Husel"
-msgstr ""
+msgstr "Hans-Jürgen Husel"
 
 #: aboutdata.cpp:49
-#, fuzzy, kde-format
-#| msgid "Tim Jansen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tim Jansen"
 msgstr "Tim Jansen"
@@ -208,18 +196,16 @@ msgstr "Tim Jansen"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Christian Kirsch"
-msgstr ""
+msgstr "Christian Kirsch"
 
 #: aboutdata.cpp:51
-#, fuzzy, kde-format
-#| msgid "Tobias König"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias König"
 msgstr "Tobias König"
 
 #: aboutdata.cpp:52
-#, fuzzy, kde-format
-#| msgid "Martin Koller"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Martin Koller"
 msgstr "Martin Koller"
@@ -228,30 +214,28 @@ msgstr "Martin Koller"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Uwe Koloska"
-msgstr ""
+msgstr "Uwe Koloska"
 
 #: aboutdata.cpp:54
 #, kde-format
 msgctxt "@info:credit"
 msgid "Sergio Luis Martins"
-msgstr ""
+msgstr "Sergio Luis Martins"
 
 #: aboutdata.cpp:55
 #, kde-format
 msgctxt "@info:credit"
 msgid "Mike McQuaid"
-msgstr ""
+msgstr "Mike McQuaid"
 
 #: aboutdata.cpp:56
-#, fuzzy, kde-format
-#| msgid "Glen Parker"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Glen Parker"
 msgstr "Glen Parker"
 
 #: aboutdata.cpp:57
-#, fuzzy, kde-format
-#| msgid "Dan Pilone"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Dan Pilone"
 msgstr "Dan Pilone"
@@ -260,13 +244,13 @@ msgstr "Dan Pilone"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Roman Rohr"
-msgstr ""
+msgstr "Roman Rohr"
 
 #: aboutdata.cpp:59
 #, kde-format
 msgctxt "@info:credit"
 msgid "Rafał Rzepecki"
-msgstr ""
+msgstr "Rafał Rzepecki"
 
 #: aboutdata.cpp:59
 #, kde-format
@@ -275,8 +259,7 @@ msgid "Part of work sponsored by Google with Summer of Code 2005"
 msgstr ""
 
 #: aboutdata.cpp:60
-#, fuzzy, kde-format
-#| msgid "Don Sanders"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Don Sanders"
 msgstr "Don Sanders"
@@ -285,36 +268,34 @@ msgstr "Don Sanders"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Bram Schoenmakers"
-msgstr ""
+msgstr "Bram Schoenmakers"
 
 #: aboutdata.cpp:62
 #, kde-format
 msgctxt "@info:credit"
 msgid "Günter Schwann"
-msgstr ""
+msgstr "Günter Schwann"
 
 #: aboutdata.cpp:63
 #, kde-format
 msgctxt "@info:credit"
 msgid "Herwin Jan Steehouwer"
-msgstr ""
+msgstr "Herwin Jan Steehouwer"
 
 #: aboutdata.cpp:64
 #, kde-format
 msgctxt "@info:credit"
 msgid "Mario Teijeiro"
-msgstr ""
+msgstr "Mario Teijeiro"
 
 #: aboutdata.cpp:65
-#, fuzzy, kde-format
-#| msgid "Nick Thompson"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Nick Thompson"
 msgstr "Nick Thompson"
 
 #: aboutdata.cpp:66
-#, fuzzy, kde-format
-#| msgid "Bo Thorsen"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Bo Thorsen"
 msgstr "Bo Thorsen"
@@ -323,11 +304,10 @@ msgstr "Bo Thorsen"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Larry Wright"
-msgstr ""
+msgstr "Larry Wright"
 
 #: aboutdata.cpp:68
-#, fuzzy, kde-format
-#| msgid "Thomas Zander"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Thomas Zander"
 msgstr "Thomas Zander"
@@ -336,7 +316,7 @@ msgstr "Thomas Zander"
 #, kde-format
 msgctxt "@info:credit"
 msgid "Fester Zigterman"
-msgstr ""
+msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:128
 #, kde-format
@@ -344,27 +324,26 @@ msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr ""
+"بۇ مەشغۇلات تىزىملىك بالداقنى پۈتۈنلەي يوشۇرىدۇ. %1 نى بېسىپ قايتا "
+"كۆرسىتەلەيسىز."
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid "Hide menu bar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
-msgstr "تىزىملىك بالدىقىنى يوشۇر"
+msgstr "تىزىملىك بالداقنى يوشۇر"
 
 #: actionmanager.cpp:242
-#, fuzzy, kde-format
-#| msgid "Only calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
-msgstr "يىلنامىلا"
+msgstr ""
 
 #: actionmanager.cpp:243
-#, fuzzy, kde-format
-#| msgid "Only calendar"
+#, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
-msgstr "يىلنامىلا"
+msgstr ""
 
 #: actionmanager.cpp:244
 #, kde-format
@@ -381,19 +360,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:254
-#, fuzzy, kde-format
-#| msgid "Only calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
-msgstr "يىلنامىلا"
+msgstr ""
 
 #: actionmanager.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
-msgstr "يىلنامىلەر"
+msgstr ""
 
 #: actionmanager.cpp:256
 #, kde-format
@@ -436,25 +412,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:275
-#, fuzzy, kde-format
-#| msgid "Delete To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
-msgstr "قىلىدىغان ئىشلارنى ئۆچۈرۈش"
+msgstr ""
 
 #: actionmanager.cpp:276
-#, fuzzy, kde-format
-#| msgid "Delete To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
-msgstr "قىلىدىغان ئىشلارنى ئۆچۈرۈش"
+msgstr ""
 
 #: actionmanager.cpp:277
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
-msgstr "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
+msgstr ""
 
 #: actionmanager.cpp:279
 #, kde-format
@@ -466,8 +439,7 @@ msgstr ""
 
 #: actionmanager.cpp:316 actionmanager.cpp:615 actionmanager.cpp:1310
 #: actionmanager.cpp:1348
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "ئۆچۈر(&D)"
@@ -501,26 +473,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:345
-#, fuzzy, kde-format
-#| msgid "Month view"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
-msgstr "ئاي كۆرۈنۈشى"
+msgstr ""
 
 #: actionmanager.cpp:346
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Month View"
+#, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "ئاي كۆرۈنۈشى"
 
 #: actionmanager.cpp:347
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
-msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+msgstr ""
 
 #: actionmanager.cpp:349
 #, kde-format
@@ -531,18 +499,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:355
-#, fuzzy, kde-format
-#| msgid "Agenda %1"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
-msgstr "كۈنتەرتىپ %1"
+msgstr ""
 
 #: actionmanager.cpp:358
-#, fuzzy, kde-format
-#| msgid "Agenda view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
-msgstr "كۈنتەرتىپ كۆرۈنۈشى"
+msgstr ""
 
 #: actionmanager.cpp:359
 #, kde-format
@@ -560,19 +526,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:368
-#, fuzzy, kde-format
-#| msgid "&Events"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
-msgstr "ھادىسىلەر(&E)"
+msgstr ""
 
 #: actionmanager.cpp:369
-#, fuzzy, kde-format
-#| msgctxt "@option:check Checkbox to display todos not hierarchical"
-#| msgid "Flat View"
+#, kde-format
 msgctxt "@info:status"
 msgid "List View"
-msgstr "تەكشىلىك كۆرۈنۈش"
+msgstr "تىزىم كۆرۈنۈش"
 
 #: actionmanager.cpp:370
 #, kde-format
@@ -589,25 +552,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:378
-#, fuzzy, kde-format
-#| msgid "&To-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
-msgstr "قىلىدىغان ئىشلار(&T)"
+msgstr ""
 
 #: actionmanager.cpp:379
-#, fuzzy, kde-format
-#| msgid "To-do List"
+#, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
-msgstr "قىلىدىغان ئىش تىزىمى"
+msgstr ""
 
 #: actionmanager.cpp:380
-#, fuzzy, kde-format
-#| msgid "Title of the to-do list"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "قىلىدىغان ئىشلارنىڭ ماۋزۇسى"
+msgstr ""
 
 #: actionmanager.cpp:382
 #, kde-format
@@ -618,18 +578,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:388
-#, fuzzy, kde-format
-#| msgid "Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
-msgstr "ژۇرنال"
+msgstr ""
 
 #: actionmanager.cpp:389
-#, fuzzy, kde-format
-#| msgid "Journal"
+#, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
-msgstr "ژۇرنال"
+msgstr ""
 
 #: actionmanager.cpp:390
 #, kde-format
@@ -672,18 +630,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:411
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "يېڭىلا(&R)"
 
 #: actionmanager.cpp:412
-#, fuzzy, kde-format
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
-msgstr "يېڭىلا(&R)"
+msgstr "يېڭىلا"
 
 #: actionmanager.cpp:413
 #, kde-format
@@ -700,11 +656,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:424
-#, fuzzy, kde-format
-#| msgid "No filter"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
-msgstr "سۈزگۈچ يوق"
+msgstr ""
 
 #: actionmanager.cpp:425
 #, kde-format
@@ -713,11 +668,10 @@ msgid "Filter incidences"
 msgstr ""
 
 #: actionmanager.cpp:426
-#, fuzzy, kde-format
-#| msgid "Exclude private incidences from the export"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "ئېكسپورت قىلىدىغان مەزمۇندىن خۇسۇىي مەزمۇنلارنى چىقىرىۋەت"
+msgstr ""
 
 #: actionmanager.cpp:428
 #, kde-format
@@ -752,26 +706,22 @@ msgid "Out Vertically"
 msgstr ""
 
 #: actionmanager.cpp:464
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
-msgstr "بۈگۈن"
+msgstr ""
 
 #: actionmanager.cpp:465
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "بۈگۈن"
 
 #: actionmanager.cpp:466
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
-msgstr "ئالدى"
+msgstr ""
 
 #: actionmanager.cpp:467 widgets/navigatorbar.cpp:38
 #, kde-format
@@ -780,44 +730,34 @@ msgid "Scroll the view to today"
 msgstr ""
 
 #: actionmanager.cpp:468
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "ئالدى"
+msgstr ""
 
 #: actionmanager.cpp:474
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
-msgstr "كەينى(&B)"
+msgstr ""
 
 #: actionmanager.cpp:476
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
-msgstr "كەينى"
+msgstr "قايت"
 
 #: actionmanager.cpp:477
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
-msgstr "كەينى(&B)"
+msgstr ""
 
 #: actionmanager.cpp:478
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr "كەينى(&B)"
+msgstr ""
 
 #: actionmanager.cpp:480
 #, kde-format
@@ -828,36 +768,28 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:487
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "ئالدىغا(&F)"
 
 #: actionmanager.cpp:489
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
-msgstr "ئالدى"
+msgstr "ئالدىغا"
 
 #: actionmanager.cpp:490
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr "ئالدى"
+msgstr ""
 
 #: actionmanager.cpp:491
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "ئالدى"
+msgstr ""
 
 #: actionmanager.cpp:493
 #, kde-format
@@ -868,18 +800,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:499
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
-msgstr "كۈن(&D)"
+msgstr ""
 
 #: actionmanager.cpp:500
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
-msgstr "كۈن(&D)"
+msgstr "كۈن"
 
 #: actionmanager.cpp:501
 #, kde-format
@@ -900,12 +830,10 @@ msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
 
 #: actionmanager.cpp:510
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "كېيىنكى %1 كۈن(&N)"
+msgstr ""
 
 #: actionmanager.cpp:511
 #, kde-format
@@ -930,20 +858,18 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:522
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "كۈنتەرتىپ"
+msgstr ""
 
 #: actionmanager.cpp:523
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "كۈنتەرتىپ"
+msgstr ""
 
 #: actionmanager.cpp:524
 #, kde-format
@@ -972,18 +898,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:538
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
-msgstr "ھەپتە(&W)"
+msgstr ""
 
 #: actionmanager.cpp:539
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
-msgstr "ھەپتە(&W)"
+msgstr "ھەپتە"
 
 #: actionmanager.cpp:540
 #, kde-format
@@ -1004,25 +928,22 @@ msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
-msgstr "يېڭى ھادىسە(&V)…"
+msgstr ""
 
 #: actionmanager.cpp:550
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
-msgstr "يېڭى ھادىسە قۇرىدۇ"
+msgstr ""
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
-msgstr "يېڭى ھادىسە قۇرىدۇ"
+msgstr ""
 
 #: actionmanager.cpp:553
 #, kde-format
@@ -1033,25 +954,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:559
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
-msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+msgstr ""
 
 #: actionmanager.cpp:560
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
-msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
+msgstr "يېڭىدىن بېجىرىدىغاننى قۇرىدۇ"
 
 #: actionmanager.cpp:561
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
-msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
+msgstr "يېڭىدىن بېجىرىدىغاننى قۇرىدۇ"
 
 #: actionmanager.cpp:563
 #, kde-format
@@ -1062,32 +980,28 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:570
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
-msgstr "يېڭى تارماق قىلىدىغان ئىشلار(&B)…"
+msgstr ""
 
 #: actionmanager.cpp:578
-#, fuzzy, kde-format
-#| msgid "New &Journal..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
-msgstr "يېڭى ژۇرنال(&J)…"
+msgstr ""
 
 #: actionmanager.cpp:579
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
-msgstr "يېڭى ھادىسە قۇرىدۇ"
+msgstr ""
 
 #: actionmanager.cpp:580
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
-msgstr "يېڭى ھادىسە قۇرىدۇ"
+msgstr ""
 
 #: actionmanager.cpp:581
 #, kde-format
@@ -1102,27 +1016,22 @@ msgid "&Pick a Date"
 msgstr ""
 
 #: actionmanager.cpp:587
-#, fuzzy, kde-format
-#| msgid "Date"
+#, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "چېسلا"
 
 #: actionmanager.cpp:588
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "ئالدى"
+msgstr ""
 
 #: actionmanager.cpp:589
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "ئالدى"
+msgstr ""
 
 #: actionmanager.cpp:590
 #, kde-format
@@ -1131,32 +1040,28 @@ msgid "Opens a date selection dialog for quickly navigating the view."
 msgstr ""
 
 #: actionmanager.cpp:595
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
-msgstr "كۆرۈنۈشنى سەپلەش…"
+msgstr ""
 
 #: actionmanager.cpp:596
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "سەپلە"
 
 #: actionmanager.cpp:597
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "كۆرۈنۈشنى سەپلەش…"
+msgstr ""
 
 #: actionmanager.cpp:598
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "كۆرۈنۈشنى سەپلەش…"
+msgstr ""
 
 #: actionmanager.cpp:600
 #, kde-format
@@ -1169,19 +1074,17 @@ msgstr ""
 
 #: actionmanager.cpp:607 actionmanager.cpp:1304 actionmanager.cpp:1346
 #: koeventpopupmenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "&Show"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "كۆرسەت(&S)"
 
 #: actionmanager.cpp:611 actionmanager.cpp:1307 actionmanager.cpp:1347
 #: koeventpopupmenu.cpp:44
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "تەھرىر(&E)"
+msgstr "تەھرىر(&E)…"
 
 #: actionmanager.cpp:620
 #, kde-format
@@ -1206,11 +1109,10 @@ msgid "Send &Invitation to Attendees"
 msgstr ""
 
 #: actionmanager.cpp:647
-#, fuzzy, kde-format
-#| msgid "Due date"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
-msgstr "مۆھلىتى"
+msgstr ""
 
 #: actionmanager.cpp:655
 #, kde-format
@@ -1225,11 +1127,10 @@ msgid "Send Status &Update"
 msgstr ""
 
 #: actionmanager.cpp:671
-#, fuzzy, kde-format
-#| msgid "Due date"
+#, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
-msgstr "مۆھلىتى"
+msgstr ""
 
 #: actionmanager.cpp:679
 #, kde-format
@@ -1238,11 +1139,10 @@ msgid "&Mail Free Busy Information…"
 msgstr ""
 
 #: actionmanager.cpp:684
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
-msgstr "يىلنامە"
+msgstr ""
 
 #: actionmanager.cpp:691
 #, kde-format
@@ -1251,8 +1151,7 @@ msgid "&Upload Free Busy Information"
 msgstr ""
 
 #: actionmanager.cpp:697
-#, fuzzy, kde-format
-#| msgid "&Address Book"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
 msgstr "ئادرېس دەپتىرى(&A)"
@@ -1264,11 +1163,10 @@ msgid "Show Date Navigator"
 msgstr ""
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do View"
-msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+msgstr ""
 
 #: actionmanager.cpp:713
 #, kde-format
@@ -1277,19 +1175,16 @@ msgid "Show Item Viewer"
 msgstr ""
 
 #: actionmanager.cpp:729
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
-msgstr "يىلنامىلەر"
+msgstr ""
 
 #: actionmanager.cpp:743
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
-msgstr "كۆرۈنۈشنى سەپلەش…"
+msgstr ""
 
 #: actionmanager.cpp:747
 #, kde-format
@@ -1307,14 +1202,13 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
-msgstr ""
+msgstr "يېڭىلىق"
 
 #: actionmanager.cpp:763
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
-msgstr "كۆرۈنۈشنى سەپلەش…"
+msgstr ""
 
 #: actionmanager.cpp:841
 #, kde-format
@@ -1342,11 +1236,10 @@ msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr ""
 
 #: actionmanager.cpp:915
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: actionmanager.cpp:951
 #, kde-format
@@ -1373,27 +1266,23 @@ msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
 #: actionmanager.cpp:1051
-#, fuzzy, kde-kuit-format
-#| msgid "Do you want to overwrite %1?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
-msgstr "%1 قاپلىۋېتەمسىز؟"
+msgstr ""
 
 #: actionmanager.cpp:1052
-#, fuzzy, kde-format
-#| msgid "Error"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "خاتالىق"
 
 #: actionmanager.cpp:1078
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
-msgstr[0] "كېيىنكى %1 كۈن(&N)"
+msgstr[0] ""
 
 #: actionmanager.cpp:1091
 #, kde-format
@@ -1402,60 +1291,52 @@ msgid "Could not start control module for date and time format."
 msgstr ""
 
 #: actionmanager.cpp:1266
-#, fuzzy, kde-format
-#| msgid "&Events"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
-msgstr "ھادىسىلەر(&E)"
+msgstr ""
 
 #: actionmanager.cpp:1269
-#, fuzzy, kde-format
-#| msgid "Edit %1"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
-msgstr "%1 نى تەھرىرلەش"
+msgstr ""
 
 #: actionmanager.cpp:1272
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
-msgstr "ئۆچۈر(&D)"
+msgstr ""
 
 #: actionmanager.cpp:1280
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
-msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+msgstr ""
 
 #: actionmanager.cpp:1283
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
-msgstr "قىلىدىغان ئىشلارنى تەھرىرلە(&E)"
+msgstr ""
 
 #: actionmanager.cpp:1286
-#, fuzzy, kde-format
-#| msgid "&Delete To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
-msgstr "قىلىدىغان ئىشلارنى ئۆچۈر(&D)"
+msgstr "بېجىرىدىغاننى ئۆچۈر(&D)"
 
 #: actionmanager.cpp:1429 actionmanager.cpp:1533
-#, fuzzy, kde-format
-#| msgid "Attach as &link"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
-msgstr "ئۇلانما سۈپىتىدە قوشۇش(&L)"
+msgstr ""
 
 #: actionmanager.cpp:1430 actionmanager.cpp:1534
-#, fuzzy, kde-format
-#| msgid "Attach as &link"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
-msgstr "ئۇلانما سۈپىتىدە قوشۇش(&L)"
+msgstr ""
 
 #: actionmanager.cpp:1431
 #, kde-format
@@ -1464,8 +1345,7 @@ msgid "Attach inline &without attachments"
 msgstr ""
 
 #: actionmanager.cpp:1433 actionmanager.cpp:1536
-#, fuzzy, kde-format
-#| msgid "C&ancel"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "ۋاز كەچ(&A)"
@@ -1477,43 +1357,37 @@ msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
 #: actionmanager.cpp:1472
-#, fuzzy, kde-format
-#| msgid "Remove Attachments"
+#, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
-msgstr "قوشۇلمىنى چىقىرىۋېتىش"
+msgstr ""
 
 #: actionmanager.cpp:1621
-#, fuzzy, kde-format
-#| msgid "Undo: %1"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "يېنىۋال: %1"
 
 #: actionmanager.cpp:1624
-#, fuzzy, kde-format
-#| msgid "Undo"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "يېنىۋال"
 
 #: actionmanager.cpp:1634
-#, fuzzy, kde-format
-#| msgid "Redo: %1"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "قايتىلا: %1"
 
 #: actionmanager.cpp:1637
-#, fuzzy, kde-format
-#| msgid "Redo"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "قايتىلا"
 
 #: actionmanager.cpp:1640
-#, fuzzy, kde-format
-#| msgid "Undo"
+#, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "يېنىۋال"
@@ -1548,41 +1422,34 @@ msgid "Merge into existing calendar"
 msgstr ""
 
 #: actionmanager.cpp:1666
-#, fuzzy, kde-format
-#| msgid "Add Calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
-msgstr "يىلنامە قوش"
+msgstr ""
 
 #: akonadicollectionview.cpp:299
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu lowest priority"
-#| msgid "%1 (lowest)"
+#, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
-msgstr "9 (ئەڭ تۆۋەن)"
+msgstr ""
 
 #: akonadicollectionview.cpp:302
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: akonadicollectionview.cpp:304
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: akonadicollectionview.cpp:392
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
-msgstr "يىلنامىلەر"
+msgstr ""
 
 #: akonadicollectionview.cpp:393
 #, kde-format
@@ -1591,18 +1458,17 @@ msgid "Start typing to search for a calendar within the collection."
 msgstr ""
 
 #: akonadicollectionview.cpp:395
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "يىلنامە"
+msgstr ""
 
 #: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
-msgstr "يىلنامە قىسقۇچى ‹%1› نىڭ خاسلىقى"
+msgstr "يىلنامە قىسقۇچى «%1» نىڭ خاسلىقى"
 
 #: akonadicollectionview.cpp:493
 #, kde-format
@@ -1611,78 +1477,66 @@ msgid "&Set Folder Color…"
 msgstr ""
 
 #: akonadicollectionview.cpp:499
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: akonadicollectionview.cpp:537
-#, fuzzy, kde-format
-#| msgctxt "@title:column event description"
-#| msgid "Event"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "ھادىسە"
 
 #: akonadicollectionview.cpp:540
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "قىلىدىغان ئىشلار كۆرۈنۈشى"
+msgstr "بېجىرىدىغان"
 
 #: akonadicollectionview.cpp:603
-#, fuzzy, kde-kuit-format
-#| msgid "Do you want to overwrite file \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?<para>This will replace <filename>%3</filename> as the "
 "default %4 calendar folder.</para>"
-msgstr "ھۆججەت «%1» نى قاپلىۋېتەمسىز؟"
+msgstr ""
 
 #: akonadicollectionview.cpp:610
-#, fuzzy, kde-kuit-format
-#| msgid "Do you want to overwrite file \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
-msgstr "ھۆججەت «%1» نى قاپلىۋېتەمسىز؟"
+msgstr ""
 
 #: akonadicollectionview.cpp:613
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
-#, fuzzy, kde-kuit-format
-#| msgid "Do you want to overwrite file \"%1\"?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
-msgstr "ھۆججەت «%1» نى قاپلىۋېتەمسىز؟"
+msgstr ""
 
 #: akonadicollectionview.cpp:770
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: akonadicollectionview.cpp:773
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: akonadicollectionview.cpp:791
-#, fuzzy, kde-format
-#| msgid "Add Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "يىلنامە قوش"
@@ -1748,11 +1602,10 @@ msgid ""
 msgstr ""
 
 #: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: akonadicollectionview.cpp:970
 #, kde-kuit-format
@@ -1772,11 +1625,10 @@ msgid ""
 msgstr ""
 
 #: akonadicollectionview.cpp:1055
-#, fuzzy, kde-format
-#| msgid "Be added to the standard calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr "ئۆلچەملىك يىلنامىگە قوشۇلىدۇ"
+msgstr ""
 
 #: akonadicollectionview.cpp:1057
 #, kde-format
@@ -1813,11 +1665,10 @@ msgid "Todo completed: %1 (%2)"
 msgstr ""
 
 #: calendarview.cpp:699
-#, fuzzy, kde-format
-#| msgid "Journal"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
-msgstr "ژۇرنال"
+msgstr ""
 
 #: calendarview.cpp:748
 #, kde-kuit-format
@@ -1852,12 +1703,10 @@ msgid "Make sub-to-dos independent"
 msgstr ""
 
 #: calendarview.cpp:1365
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Reminder"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
-msgstr "ئەسكەرتكۈچ"
+msgstr ""
 
 #: calendarview.cpp:1370
 #, kde-kuit-format
@@ -1878,12 +1727,10 @@ msgid "<message>%1</message> reminder toggle failed"
 msgstr ""
 
 #: calendarview.cpp:1406 calendarview.cpp:1464
-#, fuzzy, kde-format
-#| msgctxt "@title:column to-do percent completed"
-#| msgid "Completed"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
-msgstr "تاماملاندى"
+msgstr ""
 
 #: calendarview.cpp:1410
 #, kde-kuit-format
@@ -1961,19 +1808,16 @@ msgstr ""
 
 #: calendarview.cpp:1640 calendarview.cpp:1653 calendarview.cpp:2314
 #: calendarview.cpp:2373 calendarview.cpp:2403
-#, fuzzy, kde-format
-#| msgid "Server Information"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
-msgstr "مۇلازىمېتىر ئۇچۇرى"
+msgstr ""
 
 #: calendarview.cpp:1641
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Moving Failed"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
-msgstr "يۆتكەش مەغلۇپ بولدى"
+msgstr ""
 
 #: calendarview.cpp:1648
 #, kde-format
@@ -1996,18 +1840,16 @@ msgid "&Also Dissociate Future Ones"
 msgstr ""
 
 #: calendarview.cpp:1673
-#, fuzzy, kde-format
-#| msgid "&All Occurrences"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
-msgstr "ھەممىسى(&A)"
+msgstr ""
 
 #: calendarview.cpp:1675
-#, fuzzy, kde-format
-#| msgid "&All Occurrences"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
-msgstr "ھەممىسى(&A)"
+msgstr ""
 
 #: calendarview.cpp:1682
 #, kde-format
@@ -2016,54 +1858,43 @@ msgid "Dissociating the future occurrences failed."
 msgstr ""
 
 #: calendarview.cpp:1682 calendarview.cpp:1684
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Moving Failed"
+#, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
-msgstr "يۆتكەش مەغلۇپ بولدى"
+msgstr ""
 
 #: calendarview.cpp:1684
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Moving Failed"
+#, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
-msgstr "يۆتكەش مەغلۇپ بولدى"
+msgstr ""
 
 #: calendarview.cpp:1828
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr ""
 
 #: calendarview.cpp:1847
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
-msgstr "يىلنامىلەر"
+msgstr ""
 
 #: calendarview.cpp:1860
-#, fuzzy, kde-kuit-format
-#| msgid "Do you want to overwrite %1?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
-msgstr "%1 قاپلىۋېتەمسىز؟"
+msgstr ""
 
 #: calendarview.cpp:1861
-#, fuzzy, kde-format
-#| msgid "Only calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
-msgstr "يىلنامىلا"
+msgstr ""
 
 #: calendarview.cpp:1875
-#, fuzzy, kde-format
-#| msgctxt "save failure cause unknown"
-#| msgid "Reason unknown"
+#, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "سەۋەبى نامەلۇم"
@@ -2076,8 +1907,7 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:1986 calendarview.cpp:2031
-#, fuzzy, kde-format
-#| msgid "No filter"
+#, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "سۈزگۈچ يوق"
@@ -2092,18 +1922,16 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2315
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
-msgstr "ھەممىنى ئۆچۈر…"
+msgstr ""
 
 #: calendarview.cpp:2316 calendarview.cpp:2374
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
-msgstr "ھەممىنى ئۆچۈر…"
+msgstr ""
 
 #: calendarview.cpp:2348
 #, kde-kuit-format
@@ -2128,12 +1956,10 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2381
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Delete Filter?"
+#, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
-msgstr "سۈزگۈچنى ئۆچۈرەمسىز؟"
+msgstr ""
 
 #: calendarview.cpp:2385
 #, kde-kuit-format
@@ -2153,25 +1979,22 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2404
-#, fuzzy, kde-format
-#| msgid "Delete Calendar"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
-msgstr "يىلنامە ئۆچۈرۈش"
+msgstr ""
 
 #: calendarview.cpp:2406
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
-msgstr "ھەممىنى ئۆچۈر…"
+msgstr ""
 
 #: calendarview.cpp:2437 calendarview.cpp:2444
-#, fuzzy, kde-format
-#| msgid "Delete %1"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
-msgstr "%1 ئۆچۈر"
+msgstr ""
 
 #: calendarview.cpp:2476
 #, kde-format
@@ -2181,32 +2004,28 @@ msgid ""
 msgstr ""
 
 #: calendarview.cpp:2481 calendarview.cpp:2763
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
-msgstr "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
+msgstr ""
 
 #: calendarview.cpp:2486
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
-msgstr "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
+msgstr ""
 
 #: calendarview.cpp:2487
-#, fuzzy, kde-format
-#| msgid "To-dos"
+#, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
-msgstr "قىلىدىغان ئىشلار"
+msgstr ""
 
 #: calendarview.cpp:2488
-#, fuzzy, kde-format
-#| msgid "Purge"
+#, kde-format
 msgctxt "@action:button"
 msgid "Purge"
-msgstr "پاكىزلا"
+msgstr ""
 
 #: calendarview.cpp:2498
 #, kde-kuit-format
@@ -2221,11 +2040,10 @@ msgid "Unable to move item <resource>%1</resource>."
 msgstr ""
 
 #: calendarview.cpp:2755
-#, fuzzy, kde-kuit-format
-#| msgid "Delete all completed to-dos?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
-msgstr "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
+msgstr ""
 
 #: calendarview.cpp:2757 calendarview.cpp:2768
 #, kde-format, kde-kuit-format
@@ -2236,12 +2054,11 @@ msgid_plural ""
 msgstr[0] ""
 
 #: calendarview.cpp:2761 calendarview.cpp:2766
-#, fuzzy, kde-format
-#| msgid "Delete all completed to-dos?"
+#, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
-msgstr[0] "تاماملانغان بارلىق ئىشلارنى ئۆچۈرەمسىز؟"
+msgstr[0] ""
 
 #: calendarview.cpp:2773
 #, kde-kuit-format
@@ -2270,9 +2087,7 @@ msgid ""
 msgstr ""
 
 #: collectiongeneralpage.cpp:37
-#, fuzzy, kde-format
-#| msgctxt "general settings for html export"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "ئادەتتىكى"
@@ -2290,12 +2105,10 @@ msgid "Enter a name here to set the name of this folder."
 msgstr ""
 
 #: collectiongeneralpage.cpp:47
-#, fuzzy, kde-format
-#| msgctxt "filter name"
-#| msgid "Name:"
+#, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
-msgstr "ئاتى:"
+msgstr "ئاتى(&N):"
 
 #: collectiongeneralpage.cpp:50
 #, kde-format
@@ -2321,7 +2134,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
-msgstr ""
+msgstr "ئىختىيارى سىنبەلگە ئىشلەت(&U):"
 
 #: collectiongeneralpage.cpp:59
 #, kde-format
@@ -2369,7 +2182,7 @@ msgstr "كۆرۈنۈش(&V)"
 #: data/korganizer_part.rc:51 data/korganizerui.rc:44
 #, kde-format
 msgid "&Zoom"
-msgstr "كېڭەيت تارايت(&Z)"
+msgstr "نىسبەت(&Z)"
 
 #. i18n: ectx: Menu (go)
 #: data/korganizer_part.rc:59 data/korganizerui.rc:53
@@ -2381,7 +2194,7 @@ msgstr "يۆتكەل(&G)"
 #: data/korganizer_part.rc:67 data/korganizerui.rc:63
 #, kde-format
 msgid "&Actions"
-msgstr "مەشغۇلاتلار(&A)"
+msgstr "مەشغۇلات(&A)"
 
 #. i18n: ectx: Menu (schedule)
 #: data/korganizer_part.rc:82 data/korganizerui.rc:80
@@ -2418,7 +2231,7 @@ msgstr "ئاساس"
 #: data/korganizer_part.rc:130 data/korganizerui.rc:128
 #, kde-format
 msgid "Views"
-msgstr "كۆرۈنۈشلەر"
+msgstr "كۆرۈنۈش"
 
 #. i18n: ectx: ToolBar (schedule_toolbar)
 #: data/korganizer_part.rc:139 data/korganizerui.rc:137
@@ -2479,18 +2292,16 @@ msgid "Delete Filter?"
 msgstr "سۈزگۈچنى ئۆچۈرەمسىز؟"
 
 #: dialog/koeventviewerdialog.cpp:32
-#, fuzzy, kde-format
-#| msgid "Event Viewer"
+#, kde-format
 msgctxt "@title:window"
 msgid "Event Viewer"
-msgstr "ھادىسە كۆرگۈچ"
+msgstr ""
 
 #: dialog/koeventviewerdialog.cpp:40
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr "تەھرىر(&E)"
+msgstr "تەھرىر…"
 
 #: dialog/koeventviewerdialog.cpp:41
 #, kde-format
@@ -2499,27 +2310,22 @@ msgid "Show in Context"
 msgstr ""
 
 #: dialog/searchdialog.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
-msgstr "يىلنامىلەر"
+msgstr ""
 
 #: dialog/searchdialog.cpp:73
-#, fuzzy, kde-format
-#| msgctxt "search in calendar"
-#| msgid "&Search"
+#, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "ئىزدە(&S)"
 
 #: dialog/searchdialog.cpp:75
-#, fuzzy, kde-format
-#| msgid "Start searching"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
-msgstr "ئىزدەشنى باشلايدۇ"
+msgstr ""
 
 #: dialog/searchdialog.cpp:76
 #, kde-format
@@ -2542,8 +2348,7 @@ msgid "No items were found that match your search pattern."
 msgstr ""
 
 #: dialog/searchdialog.cpp:159
-#, fuzzy, kde-format
-#| msgid "Search Results"
+#, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "ئىزدەش نەتىجىسى"
@@ -2553,13 +2358,12 @@ msgstr "ئىزدەش نەتىجىسى"
 msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
-msgstr[0] ""
+msgstr[0] "ماس كەلگىنى %1"
 
 #: koapp.cpp:63
-#, fuzzy, kde-format
-#| msgid "Exclude private incidences from the export"
+#, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "ئېكسپورت قىلىدىغان مەزمۇندىن خۇسۇىي مەزمۇنلارنى چىقىرىۋەت"
+msgstr ""
 
 #: koapp.cpp:68
 #, kde-format
@@ -2580,22 +2384,19 @@ msgid ","
 msgstr "،"
 
 #: kodaymatrix.cpp:454
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgid "New E&vent…"
-msgstr "يېڭى ھادىسە(&V)…"
+msgstr ""
 
 #: kodaymatrix.cpp:455
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgid "New &To-do…"
-msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+msgstr ""
 
 #: kodaymatrix.cpp:456
-#, fuzzy, kde-format
-#| msgid "New &Journal..."
+#, kde-format
 msgid "New &Journal…"
-msgstr "يېڭى ژۇرنال(&J)…"
+msgstr ""
 
 #: kodaymatrix.cpp:604
 #, kde-format
@@ -2618,91 +2419,76 @@ msgid "&Cancel"
 msgstr "ۋاز كەچ(&C)"
 
 #: koeventpopupmenu.cpp:46
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "ئۆچۈر(&D)"
 
 #: koeventpopupmenu.cpp:50
-#, fuzzy, kde-format
-#| msgid "&Print"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
-msgstr "باس(&P)"
+msgstr "باس(&P)…"
 
 #: koeventpopupmenu.cpp:52
-#, fuzzy, kde-format
-#| msgid "Print Previe&w..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
-msgstr "بېسىشنى ئالدىن كۆزەت(&W)…"
+msgstr ""
 
 #: koeventpopupmenu.cpp:73
-#, fuzzy, kde-format
-#| msgctxt "cut this event"
-#| msgid "C&ut"
+#, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "كەس(&U)"
 
 #: koeventpopupmenu.cpp:75
-#, fuzzy, kde-format
-#| msgid "&Copy"
+#, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "كۆچۈر(&C)"
 
 #: koeventpopupmenu.cpp:76
-#, fuzzy, kde-format
-#| msgid "&Paste"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "چاپلا(&P)"
 
 #: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
-msgstr "يېڭى ھادىسە(&V)…"
+msgstr ""
 
 #: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
-msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+msgstr ""
 
 #: koeventpopupmenu.cpp:92
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
-msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
+msgstr ""
 
 #: koeventpopupmenu.cpp:109
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
-msgstr "يېڭى ھادىسە قۇرىدۇ"
+msgstr ""
 
 #: koeventpopupmenu.cpp:115
-#, fuzzy, kde-format
-#| msgctxt "@title:column to-do percent completed"
-#| msgid "Completed"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
-msgstr "تاماملاندى"
+msgstr ""
 
 #: koeventpopupmenu.cpp:125
-#, fuzzy, kde-format
-#| msgctxt "@title"
-#| msgid "Reminder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
-msgstr "ئەسكەرتكۈچ"
+msgstr ""
 
 #: koeventpopupmenu.cpp:132
 #, kde-format
@@ -2711,11 +2497,10 @@ msgid "&Dissociate From Recurrence…"
 msgstr ""
 
 #: koeventpopupmenu.cpp:140
-#, fuzzy, kde-format
-#| msgid "Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
-msgstr "يىلنامە"
+msgstr ""
 
 #: koeventpopupmenu.cpp:190
 #, kde-format
@@ -2757,10 +2542,9 @@ msgstr ""
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:34
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:34
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:34
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgid "&Today only"
-msgstr "بۈگۈن"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:44
@@ -2824,19 +2608,15 @@ msgstr ""
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:90
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:93
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:90
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "1 day"
-msgstr "%1 كۈن"
+msgstr "1 كۈن"
 
 #. i18n: ectx: property (suffix), widget (QSpinBox, mCustomDays)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:93
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:96
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:93
-#, fuzzy, kde-format
-#| msgctxt "@label suffix in the N days spin box"
-#| msgid " days"
+#, kde-format
 msgctxt "days to show in summary"
 msgid " days"
 msgstr " كۈن"
@@ -2866,10 +2646,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:142
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgid "Show &birthdays"
-msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:149
@@ -2898,7 +2677,7 @@ msgstr ""
 #: kontactplugin/korganizer/apptsummarywidget.cpp:46
 #, kde-format
 msgid "Upcoming Events"
-msgstr ""
+msgstr "پىلاندىكى ھادىسە"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:196
 #, kde-format
@@ -2907,38 +2686,31 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:229
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Appointments"
+#, kde-format
 msgid "&Edit Appointment…"
-msgstr "ئۇچرىشىشلار"
+msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:231
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Appointments"
+#, kde-format
 msgid "&Delete Appointment"
-msgstr "ئۇچرىشىشلار"
+msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:250
-#, fuzzy, kde-format
-#| msgid "Edit %1"
+#, kde-format
 msgid "Edit Event: \"%1\""
-msgstr "%1 نى تەھرىرلەش"
+msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:27
-#, fuzzy, kde-format
-#| msgid "New &Journal..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Journal…"
-msgstr "يېڭى ژۇرنال(&J)…"
+msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:30
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new journal"
-msgstr "يېڭى ھادىسە قۇرىدۇ"
+msgstr ""
 
 #: kontactplugin/korganizer/journalplugin.cpp:35
 #, kde-format
@@ -2950,23 +2722,19 @@ msgstr ""
 #: kontactplugin/korganizer/kcmapptsummary.cpp:66
 #: kontactplugin/korganizer/kcmtodosummary.cpp:53
 #: kontactplugin/specialdates/kcmsdsummary.cpp:53
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid " day"
 msgid_plural " days"
-msgstr[0] "%1 كۈن"
+msgstr[0] " كۈن"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:44
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
-msgstr "يېڭى ھادىسە(&V)…"
+msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:47
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new event"
 msgstr "يېڭى ھادىسە قۇرىدۇ"
@@ -2980,19 +2748,17 @@ msgstr ""
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:146
 #: kontactplugin/korganizer/todoplugin.cpp:145
-#, fuzzy, kde-format
-#| msgid "&Settings"
+#, kde-format
 msgctxt "@item"
 msgid "Meeting"
-msgstr "تەڭشەك(&S)"
+msgstr "يىغىن"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:160
 #: kontactplugin/korganizer/todoplugin.cpp:159
-#, fuzzy, kde-format
-#| msgid "Notes:"
+#, kde-format
 msgctxt "@item"
 msgid "Note: %1"
-msgstr "ئىزاھ:"
+msgstr "ئىزاھات: %1"
 
 #: kontactplugin/korganizer/korganizerplugin.cpp:191
 #, kde-format
@@ -3009,8 +2775,7 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the appointment is today"
 msgid "Today"
 msgstr "بۈگۈن"
@@ -3019,23 +2784,21 @@ msgstr "بۈگۈن"
 #, kde-format
 msgctxt "the appointment is tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "ئەتە"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:207
 #: kontactplugin/specialdates/sdsummarywidget.cpp:489
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
-msgstr[0] "%1 كۈن"
+msgstr[0] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:184
 #, kde-format
 msgctxt "eg. in 1 hour 2 minutes"
 msgid "in "
-msgstr ""
+msgstr "ئىچىدە "
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:187
 #, kde-format
@@ -3045,9 +2808,7 @@ msgid_plural "%1 hrs"
 msgstr[0] ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:193
-#, fuzzy, kde-format
-#| msgid "1 minute"
-#| msgid_plural "%1 minutes"
+#, kde-format
 msgctxt "use abbreviation for minute to keep the text short"
 msgid "1 min"
 msgid_plural "%1 mins"
@@ -3057,43 +2818,36 @@ msgstr[0] "%1 مىنۇت"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:487
 #, kde-format
 msgid "now"
-msgstr ""
+msgstr "ھازىر"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:203
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "all day"
-msgstr "%1 كۈن"
+msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:243
-#, fuzzy, kde-format
-#| msgctxt "date from - to"
-#| msgid "%1 - %2"
+#, kde-format
 msgctxt "Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:259
-#, fuzzy, kde-format
-#| msgid "Redo: %1"
+#, kde-format
 msgctxt "next occurrence"
 msgid "Next: %1"
-msgstr "قايتىلا: %1"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:40
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
-msgstr "يېڭى قىلىدىغان ئىشلار(&T)…"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
-msgstr "يېڭىدىن قىلىدىغان ئىشلارنى قۇرىدۇ"
+msgstr ""
 
 #: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
@@ -3124,10 +2878,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:22
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgid "Show To-dos Due"
-msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
@@ -3191,10 +2944,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:139
-#, fuzzy, kde-format
-#| msgid "Delete To-do"
+#, kde-format
 msgid "Hide completed To-dos"
-msgstr "قىلىدىغان ئىشلارنى ئۆچۈرۈش"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:142
@@ -3206,11 +2958,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideCompletedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:145
-#, fuzzy, kde-format
-#| msgctxt "@title:column to-do percent completed"
-#| msgid "Completed"
+#, kde-format
 msgid "&Completed"
-msgstr "تاماملاندى"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
@@ -3291,14 +3041,12 @@ msgid "Over&due (not completed and beyond due-date)"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:44
-#, fuzzy, kde-format
-#| msgid "To-dos"
+#, kde-format
 msgid "Pending To-dos"
-msgstr "قىلىدىغان ئىشلار"
+msgstr "كۈتۈۋاتقان بېجىرىدىغانلار"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:173
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the to-do is due today"
 msgid "Today"
 msgstr "بۈگۈن"
@@ -3307,31 +3055,25 @@ msgstr "بۈگۈن"
 #, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "ئەتە"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:181
-#, fuzzy, kde-format
-#| msgctxt "@title month and year"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:209
-#, fuzzy, kde-format
-#| msgid "1 day"
-#| msgid_plural "%1 days"
+#, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
-msgstr[0] "%1 كۈن"
+msgstr[0] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:211
-#, fuzzy, kde-format
-#| msgctxt "@label to-do due date"
-#| msgid "Due"
+#, kde-format
 msgctxt "the to-do is due"
 msgid "due"
-msgstr "مۆھلىتى"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:274
 #, kde-format
@@ -3340,15 +3082,14 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:324
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgid "&Edit To-do…"
-msgstr "قىلىدىغان ئىشلارنى تەھرىرلە(&E)"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:326
 #, kde-format
 msgid "&Delete To-do"
-msgstr "قىلىدىغان ئىشلارنى ئۆچۈر(&D)"
+msgstr "بېجىرىدىغاننى ئۆچۈر(&D)"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:332
 #, kde-format
@@ -3356,10 +3097,9 @@ msgid "&Mark To-do Completed"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:352
-#, fuzzy, kde-format
-#| msgid "&Edit To-do..."
+#, kde-format
 msgid "Edit To-do: \"%1\""
-msgstr "قىلىدىغان ئىشلارنى تەھرىرلە(&E)"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:372
 #, kde-format
@@ -3385,9 +3125,7 @@ msgid "not-started"
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:382
-#, fuzzy, kde-format
-#| msgctxt "@title:column to-do percent completed"
-#| msgid "Completed"
+#, kde-format
 msgctxt "the to-do is completed"
 msgid "completed"
 msgstr "تاماملاندى"
@@ -3399,9 +3137,7 @@ msgid "in-progress "
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:389
-#, fuzzy, kde-format
-#| msgctxt "@item:intext delimiter for joining holiday names"
-#| msgid ","
+#, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
 msgstr "،"
@@ -3527,10 +3263,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgid "Show &holidays"
-msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
@@ -3574,10 +3309,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgid "Show birth&days"
-msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
@@ -3605,8 +3339,7 @@ msgid "Upcoming Special Dates"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:452
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "بۈگۈن"
@@ -3615,17 +3348,17 @@ msgstr "بۈگۈن"
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
-msgstr ""
+msgstr "ئەتە"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:500
 #, kde-format
 msgid "Birthday"
-msgstr ""
+msgstr "تۇغۇلغان كۈن"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:503
 #, kde-format
 msgid "Anniversary"
-msgstr ""
+msgstr "خاتىرە كۈن"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
@@ -3646,7 +3379,7 @@ msgstr ""
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
-msgstr[0] ""
+msgstr[0] "%1 يىل"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:564
 #, kde-format
@@ -3690,15 +3423,13 @@ msgid ""
 msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Current Maintainer"
-msgstr "بۇرۇنقى مەسئۇل ئادەم"
+msgstr "نۆۋەتتىكى ئاسرىغۇچى"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:44
-#, fuzzy, kde-format
-#| msgid "Tobias Koenig"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
@@ -3706,7 +3437,7 @@ msgstr "Tobias Koenig"
 #: korganizer.cpp:78 korganizer_part.cpp:58 korganizer_part.cpp:69
 #, kde-format
 msgid "KOrganizer"
-msgstr "KOrganizer"
+msgstr ""
 
 #: korganizer.cpp:272
 #, kde-format
@@ -3745,7 +3476,7 @@ msgstr ""
 #: korganizer_options.h:24
 #, kde-format
 msgid "Url"
-msgstr ""
+msgstr "تور ئادرېس"
 
 #: korganizer_options.h:28
 #, kde-format
@@ -3760,6 +3491,8 @@ msgstr ""
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr ""
+"ئىشلەتكۈچى قايتۇرما ئىنكاسىنىڭ ئىشلەتكىلى بولىدىغان تاللانما تىزىمىنى "
+"كۆرسىتىدۇ"
 
 #: koviewmanager.cpp:493
 #, kde-format
@@ -3783,13 +3516,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
-msgstr "رەڭلەر"
+msgstr "رەڭ"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:100
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
-msgstr ""
+msgstr "بەلگە"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:114
 #, kde-format
@@ -3830,7 +3563,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
-msgstr "خەت نۇسخىلىرى"
+msgstr "خەت نۇسخا"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:169
 #: prefs/koprefsdialogcolorsandfonts.cpp:175
@@ -3867,7 +3600,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
-msgstr "ئەسكەرتكۈچلەر"
+msgstr "ئەسكەرتكۈچ"
 
 #: prefs/koprefsdialogmain.cpp:84
 #, kde-format
@@ -3882,24 +3615,22 @@ msgid "Calendars"
 msgstr "يىلنامىلەر"
 
 #: prefs/koprefsdialogmain.cpp:100
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
-msgstr "يىلنامىلەر"
+msgstr ""
 
 #: prefs/koprefsdialogmain.cpp:109
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
+msgstr "پائالىيەت"
 
 #: prefs/koprefsdialogmain.cpp:114
 #, kde-format
 msgctxt "@option:check"
 msgid "Enabled"
-msgstr ""
+msgstr "قوزغىتىلغان"
 
 #: prefs/koprefsdialogplugins.cpp:61
 #, kde-format
@@ -3927,8 +3658,7 @@ msgid "Calendar Decorations"
 msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:141
-#, fuzzy, kde-format
-#| msgid "Configure"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "سەپلە"
@@ -3958,48 +3688,40 @@ msgid "Holidays"
 msgstr "دەم ئېلىش كۈنى"
 
 #: prefs/koprefsdialogtime.cpp:72
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
-msgstr "تۆۋەندىكى رايونلارنىڭ تەتىلىنى ئىشلەت:"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:96
-#, fuzzy, kde-format
-#| msgctxt "Holday region, region language"
-#| msgid "%1 (%2)"
+#, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 #: prefs/koprefsdialogtime.cpp:105
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
-msgstr "تۆۋەندىكى رايونلارنىڭ تەتىلىنى ئىشلەت:"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:123
-#, fuzzy, kde-format
-#| msgid "Use holiday region:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "تۆۋەندىكى رايونلارنىڭ تەتىلىنى ئىشلەت:"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Categories"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "كاتېگورىيەلەرنى تاللاش"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:159
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
-msgstr "كۈنتەرتىپ"
+msgstr ""
 
 #: prefs/koprefsdialogtime.cpp:174
 #, kde-format
@@ -4022,44 +3744,43 @@ msgstr ""
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
-msgstr ""
+msgstr "دۈشەنبە"
 
 #: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
-msgstr ""
+msgstr "سەيشەنبە"
 
 #: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
-msgstr ""
+msgstr "چارشەنبە"
 
 #: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
-msgstr ""
+msgstr "پەيشەنبە"
 
 #: prefs/koprefsdialogtime.cpp:191
-#, fuzzy, kde-format
-#| msgid "Holiday"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
-msgstr "دەم ئېلىش كۈنى"
+msgstr "جۈمە"
 
 #: prefs/koprefsdialogtime.cpp:191
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
-msgstr ""
+msgstr "شەنبە"
 
 #: prefs/koprefsdialogtime.cpp:192
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
-msgstr ""
+msgstr "يەكشەنبە"
 
 #: prefs/koprefsdialogtime.cpp:215
 #, kde-format
@@ -4152,7 +3873,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
-msgstr " چېكىت"
+msgstr " پىكسېل"
 
 #: prefs/koprefsdialogviews.cpp:129
 #, kde-format
@@ -4173,41 +3894,33 @@ msgid "Other Options"
 msgstr "باشقا تاللانما"
 
 #: prefs/kprefsdialog.cpp:177
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
-msgstr "ئۆزگەرت…"
+msgstr "تاللا…"
 
 #: prefs/kprefsdialog.cpp:659
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
-msgstr ""
+msgstr "مايىللىق"
 
 #: prefs/kprefsdialog.cpp:706
-#, fuzzy, kde-format
-#| msgid ""
-#| "You are about to set all preferences to default values. All custom "
-#| "modifications will be lost."
+#, kde-format
 msgctxt "@info"
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
-"بارلىق تەڭشەكنى كۆڭۈلدىكى قىممەتكە توغرىلىماقچى بولۇۋاتىسىز. بارلىق "
-"ئۆزگەرتىشلەر يوق بولىدۇ."
 
 #: prefs/kprefsdialog.cpp:708
-#, fuzzy, kde-format
-#| msgid "Setting Default Preferences"
+#, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr "كۆڭۈلدىكى مايىللىقنى بەلگىلەش"
+msgstr ""
 
 #: prefs/kprefsdialog.cpp:709
-#, fuzzy, kde-format
-#| msgid "Reset to Defaults"
+#, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
 msgstr "كۆڭۈلدىكىگە قايتۇر"
@@ -4238,10 +3951,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Be added to the standard calendar"
+#, kde-format
 msgid "Be added to the default calendar"
-msgstr "ئۆلچەملىك يىلنامىگە قوشۇلىدۇ"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:19
@@ -4466,7 +4178,7 @@ msgstr ""
 #: settings/korganizer.kcfg:97
 #, kde-format
 msgid "Show week numbers"
-msgstr ""
+msgstr "ھەپتە نومۇرىنى كۆرسەت"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:98
@@ -4563,31 +4275,27 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:132
-#, fuzzy, kde-format
-#| msgid "Display icons in month view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "ئاي كۆرسىتىش تۈرىدە سىنبەلگىلەرنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Display icons in month view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "ئاي كۆرسىتىش تۈرىدە سىنبەلگىلەرنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
-msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display icons in month view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "ئاي كۆرسىتىش تۈرىدە سىنبەلگىلەرنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -4644,11 +4352,10 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:156
-#, fuzzy, kde-format
-#| msgid "Display seconds with the current-time indicator"
+#, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
-msgstr "نۆۋەتتىكى ۋاقىت كۆرسەتكۈچىدە سېكۇنتلارنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:160
@@ -4681,10 +4388,9 @@ msgstr "رەڭ ئىشلىتىش"
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:169 settings/korganizer.kcfg:272
-#, fuzzy, kde-format
-#| msgid "Category inside, calendar outside"
+#, kde-format
 msgid "Tag inside, calendar outside"
-msgstr "كاتېگورىيە ئىچىدە، يىلنامە سىرتىدا"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4708,10 +4414,9 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:174 settings/korganizer.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Calendar inside, category outside"
+#, kde-format
 msgid "Calendar inside, tag outside"
-msgstr "يىلنامە ئىچىدە، كاتېگورىيە سىرتىدا"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
@@ -4735,10 +4440,9 @@ msgstr ""
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:179 settings/korganizer.kcfg:282
-#, fuzzy, kde-format
-#| msgid "Only category"
+#, kde-format
 msgid "Only tag"
-msgstr "كاتېگورىيەلا"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #: settings/korganizer.kcfg:180
@@ -4874,47 +4578,41 @@ msgstr "ئاي كۆرسىتىش تۈرىدە سىنبەلگىلەرنى كۆرس
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "ئاي كۆرسىتىش تۈرىدە ۋاقىتنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
-msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "ئاي كۆرسىتىش تۈرىدە ۋاقىتنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "ئاي كۆرسىتىش تۈرىدە ۋاقىتنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
-msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "ئاي كۆرسىتىش تۈرىدە ۋاقىتنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -4926,7 +4624,7 @@ msgstr ""
 #: settings/korganizer.kcfg:241
 #, kde-format
 msgid "Display to-dos in the month view"
-msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە بېجىرىدىغاننى كۆرسەت"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
@@ -4948,25 +4646,22 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgid "Show holidays"
-msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:252
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:253 settings/korganizer.kcfg:260
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "ئاي كۆرسىتىشنىڭ ئىچىدە قىلىدىغان ئىشلارنى كۆرسەت"
+msgstr ""
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
@@ -5057,7 +4752,7 @@ msgstr ""
 #: settings/korganizer.kcfg:298
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr "تاماملانغان قىلىدىغان ئىشلارنى ھەمىشە تىزىمنىڭ ئاستىدا كۆرسەت"
+msgstr "تاماملانغان بېجىرىدىغاننى ھەمىشە تىزىمنىڭ ئاستىدا كۆرسەت"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:299
@@ -5167,10 +4862,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:334
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "كۈنتەرتىپ كۆرۈنۈشىنىڭ نۆۋەتتىكى ۋاقىت قۇرىنىڭ رەڭگى"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:335
@@ -5241,10 +4935,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:360
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "ئاي كۆرۈنۈشىنىڭ تەگلىك رەڭگى"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:361
@@ -5305,10 +4998,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
-#, fuzzy, kde-format
-#| msgid "Current-time line"
+#, kde-format
 msgid "Current-time (Marcus Bains) line"
-msgstr "نوۋېتتىكى ۋاقىت سىزىقى"
+msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:382
@@ -5428,8 +5120,7 @@ msgstr ""
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
-#, fuzzy, kde-format
-#| msgid "Search"
+#, kde-format
 msgctxt "Displayed grayed-out inside the textbox, verb to search"
 msgid "Search"
 msgstr "ئىزدە"
@@ -5535,7 +5226,7 @@ msgstr ""
 #: ui/filteredit_base.ui:228
 #, kde-format
 msgid "Tags"
-msgstr ""
+msgstr "بەلگە"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatHideCheck)
 #: ui/filteredit_base.ui:272
@@ -5567,8 +5258,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mCatEditButton)
 #: ui/filteredit_base.ui:301
-#, fuzzy, kde-format
-#| msgid "Change..."
+#, kde-format
 msgid "Change…"
 msgstr "ئۆزگەرت…"
 
@@ -6170,31 +5860,27 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgid "Day"
-msgstr "كۈن(&D)"
+msgstr "كۈن"
 
 #. i18n: ectx: property (text), widget (QPushButton, mWeekBtn)
 #: views/collectionview/quickview.ui:41
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgid "Week"
-msgstr "ھەپتە(&W)"
+msgstr "ھەپتە"
 
 #. i18n: ectx: property (text), widget (QPushButton, mMothBtn)
 #: views/collectionview/quickview.ui:51
-#, fuzzy, kde-format
-#| msgid "Month view"
+#, kde-format
 msgid "Month"
-msgstr "ئاي كۆرۈنۈشى"
+msgstr "ئاي"
 
 #. i18n: ectx: property (text), widget (QPushButton, mAgendaBtn)
 #: views/collectionview/quickview.ui:61
-#, fuzzy, kde-format
-#| msgid "Agenda %1"
+#, kde-format
 msgid "Agenda"
-msgstr "كۈنتەرتىپ %1"
+msgstr "كۈنتەرتىپ"
 
 #. i18n: ectx: property (text), widget (QPushButton, mPreviousBtn)
 #: views/collectionview/quickview.ui:84
@@ -6215,18 +5901,16 @@ msgid ">"
 msgstr ""
 
 #: views/multiagendaview/multiagendaview.cpp:37
-#, fuzzy, kde-format
-#| msgid "Agenda %1"
+#, kde-format
 msgctxt "@title:column"
 msgid "Agenda %1"
-msgstr "كۈنتەرتىپ %1"
+msgstr ""
 
 #: views/multiagendaview/multiagendaview.cpp:352
-#, fuzzy, kde-format
-#| msgid "Configure View..."
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
-msgstr "كۆرۈنۈشنى سەپلەش…"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:17
@@ -6244,12 +5928,11 @@ msgstr ""
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:36
 #, kde-format
 msgid "Number of columns"
-msgstr "ئىستون سانى"
+msgstr "رەت سانى"
 
 #. i18n: ectx: property (text), widget (QLabel, titleLabel)
 #: views/multiagendaview/multiagendaviewconfigwidget.ui:84
-#, fuzzy, kde-format
-#| msgid "Title"
+#, kde-format
 msgctxt "Agenda title"
 msgid "Title"
 msgstr "ماۋزۇ"
@@ -6404,10 +6087,8 @@ msgid "Incidence editor: add emoji support"
 msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:77
-#, fuzzy
-#| msgid "Add Calendar"
 msgid "Add What's New menu"
-msgstr "يىلنامە قوش"
+msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:78
 msgid "The current view is remembered"
@@ -6551,12 +6232,10 @@ msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:176
-#, fuzzy, kde-format
-#| msgctxt "start/end week number of line in date picker"
-#| msgid "%1/%2"
+#, kde-format
 msgctxt "@info start/end week number of line in date picker"
 msgid "%1/%2"
-msgstr "%1/%2"
+msgstr ""
 
 #: widgets/kdatenavigator.cpp:181
 #, kde-format
@@ -6573,8 +6252,7 @@ msgid ""
 msgstr ""
 
 #: widgets/kdatenavigator.cpp:243
-#, fuzzy, kde-format
-#| msgid "%1"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "%1"
 msgstr "%1"
@@ -6611,8 +6289,7 @@ msgid "Alarm"
 msgstr "قوڭغۇراق"
 
 #: widgets/kitemiconcheckcombo.cpp:21
-#, fuzzy, kde-format
-#| msgid "Read Only"
+#, kde-format
 msgctxt "the incidence is read-only"
 msgid "Read Only"
 msgstr "ئوقۇشقىلا بولىدىغان"
@@ -6644,11 +6321,10 @@ msgid "Icons to use"
 msgstr ""
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "ئاي كۆرسىتىش تۈرىدە ۋاقىتنى كۆرسەت"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6659,20 +6335,16 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "ئالدى"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "كەينى(&B)"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:44
 #, kde-format
@@ -6683,12 +6355,10 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "كەينى(&B)"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:50
 #, kde-format
@@ -6699,12 +6369,10 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "كەينى(&B)"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:55
 #, kde-format
@@ -6713,12 +6381,10 @@ msgid "Click this button to scroll the display to back 1 week in time"
 msgstr ""
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "ئالدى"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:59
 #, kde-format
@@ -6727,12 +6393,10 @@ msgid "Click this button to scroll the display to forward 1 week in time"
 msgstr ""
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "ئالدى"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:64
 #, kde-format
@@ -6743,12 +6407,10 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "ئالدى"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:70
 #, kde-format
@@ -6759,15 +6421,13 @@ msgid ""
 msgstr ""
 
 #: widgets/navigatorbar.cpp:77
-#, fuzzy, kde-format
-#| msgid "Select a month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a month"
 msgstr "ئاي تاللايدۇ"
 
 #: widgets/navigatorbar.cpp:83
-#, fuzzy, kde-format
-#| msgid "Select a year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Select a year"
 msgstr "يىل تاللايدۇ"
@@ -6784,7 +6444,6 @@ msgctxt "4 digit year"
 msgid "%1"
 msgstr "%1"
 
-#, fuzzy
 #~| msgid "&Use colors"
 #~ msgid "Use system color"
 #~ msgstr "رەڭلەرنى ئىشلەت(&U)"
@@ -6793,13 +6452,11 @@ msgstr "%1"
 #~ msgid "Use holiday region:"
 #~ msgstr "تۆۋەندىكى رايونلارنىڭ تەتىلىنى ئىشلەت:"
 
-#, fuzzy
 #~| msgid "Show to-dos"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Show To-do List in Calendar Views"
 #~ msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
 
-#, fuzzy
 #~| msgid "New Calendar"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Get New Calendars…"
@@ -6808,18 +6465,15 @@ msgstr "%1"
 #~ msgid "&Show"
 #~ msgstr "كۆرسەت(&S)"
 
-#, fuzzy
 #~| msgid "&Edit"
 #~ msgid "&Edit…"
 #~ msgstr "تەھرىر(&E)"
 
-#, fuzzy
 #~| msgctxt "@title:tab calendar account settings"
 #~| msgid "Calendars"
 #~ msgid "iCalendars (*.ics)"
 #~ msgstr "يىلنامىلەر"
 
-#, fuzzy
 #~| msgid "Configure"
 #~ msgctxt "@action"
 #~ msgid "Configure"
@@ -6831,43 +6485,36 @@ msgstr "%1"
 #~ msgid "W&ork Week"
 #~ msgstr "خىزمەت ھەپتىسى(&O)"
 
-#, fuzzy
 #~| msgid "Search For"
 #~ msgctxt "@info:tooltip"
 #~ msgid "Set search keyword"
 #~ msgstr "ئىزدە"
 
-#, fuzzy
 #~| msgid "Search"
 #~ msgctxt ""
 #~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
 #~ msgid "Search…"
 #~ msgstr "ئىزدە"
 
-#, fuzzy
 #~| msgid "Configure View..."
 #~ msgctxt "@info:status"
 #~ msgid "Configure the view"
 #~ msgstr "كۆرۈنۈشنى سەپلەش…"
 
-#, fuzzy
 #~| msgctxt "@title:group email settings"
 #~| msgid "Email Settings"
 #~ msgid "Groupware Settings"
 #~ msgstr "ئېلخەت تەڭشىكى"
 
-#, fuzzy
 #~| msgid "Show to-dos"
 #~ msgid "Show &my To-dos only"
 #~ msgstr "قىلىدىغان ئىشلار(to-dos)نى كۆرسەت"
 
-#, fuzzy
 #~| msgid "Create a new Event"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Create Note for Event"
 #~ msgstr "يېڭى ھادىسە قۇرىدۇ"
 
-#, fuzzy
 #~| msgid "Create a new To-do"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Create Note for To-do"
@@ -6876,7 +6523,6 @@ msgstr "%1"
 #~ msgid "&Edit..."
 #~ msgstr "تەھرىر(&E)…"
 
-#, fuzzy
 #~| msgid "Search"
 #~ msgctxt ""
 #~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
@@ -6886,13 +6532,11 @@ msgstr "%1"
 #~ msgid "Edit..."
 #~ msgstr "تەھرىر…"
 
-#, fuzzy
 #~| msgid "&Edit..."
 #~ msgctxt "@action:inmenu"
 #~ msgid "&Edit..."
 #~ msgstr "تەھرىر(&E)…"
 
-#, fuzzy
 #~| msgid "&Print..."
 #~ msgctxt "@action:inmenu"
 #~ msgid "&Print..."
@@ -6937,13 +6581,11 @@ msgstr "%1"
 #~ msgid "Moving Failed"
 #~ msgstr "يۆتكەش مەغلۇپ بولدى"
 
-#, fuzzy
 #~| msgid "%1"
 #~ msgctxt "@title:window"
 #~ msgid "%1"
 #~ msgstr "%1"
 
-#, fuzzy
 #~| msgid "(c), 2004 Tobias Koenig"
 #~ msgid "(c) 2004 Tobias Koenig"
 #~ msgstr "(c)، 2004 Tobias Koenig"
@@ -6971,37 +6613,31 @@ msgstr "%1"
 #~ msgid "Categories"
 #~ msgstr "كاتېگورىيە"
 
-#, fuzzy
 #~| msgctxt "date from - to"
 #~| msgid "%1 - %2"
 #~ msgctxt "@item:inlistbox holiday region, region description"
 #~ msgid "%1 - %2"
 #~ msgstr "%1 - %2"
 
-#, fuzzy
 #~| msgid "&Cancel"
 #~ msgctxt "@action:button"
 #~ msgid "Cancel"
 #~ msgstr "ۋاز كەچ(&C)"
 
-#, fuzzy
 #~| msgctxt "@title:tab"
 #~| msgid "Save"
 #~ msgctxt "@action:button"
 #~ msgid "Save"
 #~ msgstr "ساقلا"
 
-#, fuzzy
 #~| msgid "&Title:"
 #~ msgid "Title:"
 #~ msgstr "ماۋزۇ(&T):"
 
-#, fuzzy
 #~| msgid "Text"
 #~ msgid "Text:"
 #~ msgstr "تېكىست"
 
-#, fuzzy
 #~| msgid "%1 item"
 #~| msgid_plural "%1 items"
 #~ msgctxt "@label"
@@ -7017,12 +6653,10 @@ msgstr "%1"
 #~ msgid "&Delete"
 #~ msgstr "ئۆچۈر(&D)"
 
-#, fuzzy
 #~| msgid "Start searching"
 #~ msgid "searching..."
 #~ msgstr "ئىزدەشنى باشلايدۇ"
 
-#, fuzzy
 #~| msgid "Redo: %1"
 #~ msgid "Person: %1"
 #~ msgstr "قايتىلا: %1"
@@ -7037,7 +6671,6 @@ msgstr "%1"
 #~ msgid "*.ics *.vcs|Calendar Files"
 #~ msgstr "*.ics *.vcs|يىلنامە ھۆججەتلىرى"
 
-#, fuzzy
 #~| msgctxt "@title:tab calendar account settings"
 #~| msgid "Calendars"
 #~ msgid "vCalendars (*.vcs)"
@@ -7107,14 +6740,12 @@ msgstr "%1"
 #~ msgid "Attendees"
 #~ msgstr "قاتناشقۇچىلار"
 
-#, fuzzy
 #~| msgctxt "@info/plain to-do percent complete"
 #~| msgid "%1 %"
 #~ msgctxt "@info to-do percent complete"
 #~ msgid "%1 %"
 #~ msgstr "%1 %"
 
-#, fuzzy
 #~| msgctxt "@info/plain"
 #~| msgid "This page was created "
 #~ msgctxt "@info"
@@ -7129,7 +6760,6 @@ msgstr "%1"
 #~ msgid "by <link url='mailto:%1'>%2</link> "
 #~ msgstr "ئاپتور <link url='mailto:%1'>%2</link> "
 
-#, fuzzy
 #~| msgctxt "@info/plain page creator name only"
 #~| msgid "by %1 "
 #~ msgctxt "@info page creator name only"
@@ -7140,14 +6770,12 @@ msgstr "%1"
 #~ msgid "with <link url='%1'>%2</link>"
 #~ msgstr "<link url='%1'>%2</link> بىلەن"
 
-#, fuzzy
 #~| msgctxt "@info/plain page credit name only"
 #~| msgid "with %1"
 #~ msgctxt "@info page credit name only"
 #~ msgid "with %1"
 #~ msgstr "%1 بىلەن"
 
-#, fuzzy
 #~| msgctxt "@info/plain holiday by date and name"
 #~| msgid "%1, %2"
 #~ msgctxt "@info holiday by date and name"
@@ -7235,13 +6863,11 @@ msgstr "%1"
 #~ msgid "Busy times"
 #~ msgstr "ئالدىراش مەزگىللەر"
 
-#, fuzzy
 #~| msgid "Journal"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Sync Journal"
 #~ msgstr "ژۇرنال"
 
-#, fuzzy
 #~| msgid "To-do List"
 #~ msgctxt "@action:inmenu"
 #~ msgid "Sync To-do List"
@@ -7293,7 +6919,6 @@ msgstr "%1"
 #~ msgid "Loading..."
 #~ msgstr "ئوقۇۋاتىدۇ…"
 
-#, fuzzy
 #~| msgctxt "@title:group"
 #~| msgid "Other Plugins"
 #~ msgid "KOrgPlugins"
@@ -7308,12 +6933,10 @@ msgstr "%1"
 #~ msgid "R&emove"
 #~ msgstr "چىقىرىۋەت(&E)"
 
-#, fuzzy
 #~| msgid "Do you want to overwrite %1?"
 #~ msgid "Do you want to remove account '%1'?"
 #~ msgstr "%1 قاپلىۋېتەمسىز؟"
 
-#, fuzzy
 #~| msgid "Remove Attachments"
 #~ msgid "Remove account?"
 #~ msgstr "قوشۇلمىنى چىقىرىۋېتىش"
