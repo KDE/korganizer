@@ -488,7 +488,7 @@
           <li xml:lang="nl">Agendaweergave: optioneel dikkere horizontale rasterlijnen tekenen om de twee uur. Om dit in te schakelen, activeert u de optie \"Dikke horizontale rasterlijnen tekenen voor de even uren\" aan in het tabblad Beeld-&gt;Agendaweergave.</li>
           <li xml:lang="pt-BR">Visão de Agenda: opcionalmente, desenhe linhas de grade horizontais mais grossas a cada duas horas. Para ativar esse comportamento, marque a opção \"Desenhar linhas de grade horizontais grossas para as horas pares\" na aba Exibir -&gt; Visão de Agenda.</li>
           <li xml:lang="sk">Pohľad agendy: voliteľné vykreslenie tučnejších/hrubších vodorovných čiar mriežky každé dve hodiny. Toto správanie zapnete zaškrtnutím voľby \"Kresliť tučné vodorovné čiary mriežky pre párne hodiny\" na karte Zobrazenie-&gt;Pohľad agendy</li>
-          <li xml:lang="sl">Pogled dnevnega reda: po želji lahko vsaki dve uri narišete krepkejše/debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, v zavihku Pogled-&gt; Pogled dnevnega reda izberite možnost \"Za sode ure nariši debelejše vodoravne mrežne črte\".</li>
+          <li xml:lang="sl">Pogled dnevnega reda: po želji lahko vsaki dve uri narišete krepkejše/debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, v zavihku Pogled-&gt; Pogled dnevnega reda izberite možnost \"Za sode ure nariši debelejše vodoravne mrežne črte\"</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak her iki saatte bir daha kalın yatay kılavuz çizgileri çizilir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Çift saatler için kalın yatay kılavuz çizgileri çiz” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути цю можливість, поставте позначку навпроти пункту «Малювати жирні горизонтальні лінії сітки для парних годин» на вкладці «Перегляд-&gt;Перегляд порядку денного».</li>
           <li>It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in the Holidays section of the Time&gt;Regional tab</li>
@@ -502,7 +502,7 @@
           <li xml:lang="nl">Het is nu mogelijk om vakantiedagen die tot specifieke categorieën behoren te verbergen, bijvoorbeeld religieuze feestdagen. Zie het keuzemenu Categorieën in het gedeelte Feestdagen van het tabblad Tijd&gt; Regionaal.</li>
           <li xml:lang="pt-BR">Agora é possível ocultar feriados que pertencem a categorias específicas, por exemplo, feriados religiosos. Consulte a caixa de combinação Categorias na seção Feriados da aba Hora &gt; Regional.</li>
           <li xml:lang="sk">Teraz je možné skryť sviatky, ktoré patria do konkrétnych kategórií, napríklad skryť náboženské sviatky. Pozri rozbaľovací zoznam Kategórie v časti Sviatky na karte Čas&gt;Oblasť</li>
-          <li xml:lang="sl">Zdaj je mogoče skriti praznike, ki spadajo v določene kategorije, na primer verske praznike. Glejte spustni seznam Kategorije v razdelku Prazniki na zavihku Čas in regionalno.</li>
+          <li xml:lang="sl">Zdaj je mogoče skriti praznike, ki spadajo v določene kategorije, na primer verske praznike. Glejte spustni seznam Kategorije v razdelku Prazniki na zavihku Čas in regionalno</li>
           <li xml:lang="tr">Artık belirli kategorilere ait resmi tatilleri (örneğin dini bayramları) gizlemek olanaklıdır. Zaman → Bölgesel sekmesinin Tatiller bölümündeki Kategoriler açılır kutusuna göz atın.</li>
           <li xml:lang="uk">У новій версії можна приховувати свята, які належать до певних категорій, наприклад, приховати релігійні свята. Див. спадний список «Категорії» у розділі «Свята» на вкладці «Час і дата» -&gt; «Регіональні».</li>
           <li>Month view: for the sake of consistency, holidays that land on a workday are no longer hidden</li>
@@ -516,7 +516,7 @@
           <li xml:lang="nl">Maandweergave: omwille van de consistentie worden feestdagen die op een werkdag vallen niet langer verborgen.</li>
           <li xml:lang="pt-BR">Visão mensal: para manter a consistência, os feriados que caem em dias úteis não são mais ocultados</li>
           <li xml:lang="sk">Mesačný pohľad: kvôli konzistentnosti už sviatky, ktoré pripadnú na pracovný deň, nie sú skryté</li>
-          <li xml:lang="sl">Mesečni pogled: zaradi doslednosti prazniki, ki padejo na delovni dan, niso več skriti.</li>
+          <li xml:lang="sl">Mesečni pogled: zaradi doslednosti prazniki, ki padejo na delovni dan, niso več skriti</li>
           <li xml:lang="tr">Ay görünümü: Tutarlılık sağlamak amacıyla, iş günlerine denk gelen resmi tatiller artık gizlenmez.</li>
           <li xml:lang="uk">Перегляд місяця: заради сумісності, свята, які припадають на робочий день, більше не буде приховано</li>
           <li>Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option in the Views-&gt;Month View tab</li>
@@ -529,7 +529,7 @@
           <li xml:lang="nl">Maandweergave: er is een optie toegevoegd om vakantiedagen te verbergen. Om dit in te schakelen, schakelt u de optie \"Vakantiedagen weergeven in de maandweergave\" uit in het tabblad Beeld-&gt;Maandweergave</li>
           <li xml:lang="pt-BR">Visão mensal: Foi adicionada uma opção para ocultar feriados. Para ativar esse recurso, desmarque a opção \"Exibir feriados na visão mensal\" na aba Exibir -&gt; Visão mensal</li>
           <li xml:lang="sk">Mesačný pohľad: pridaná voľba umožňujúca skrytie sviatkov. Toto správanie zapnete zrušením zaškrtnutia voľby \"Zobraziť sviatky v mesačnom pohľade\" na karte Zobrazenia-&gt;Mesačný pohľad</li>
-          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost, ki omogoča skrivanje praznikov. Če želite omogočiti to delovanje, počistite možnost \"Prikaži praznike v mesečnem pogledu\" na zavihku Pogledi-&gt;Mesečni pogled.</li>
+          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost, ki omogoča skrivanje praznikov. Če želite omogočiti to delovanje, počistite možnost \"Prikaži praznike v mesečnem pogledu\" na zavihku Pogledi-&gt;Mesečni pogled</li>
           <li xml:lang="tr">Ay görünümü: Resmi tatillerin gizlenmesine olanak tanıyan bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Resmî tatilleri ay görünümünde göster” seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна приховувати свята. Щоб увімкнути цю можливість, зніміть прапорець з пункту «Показувати свята на панелі перегляду місяця» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
           <li>Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on that date. To enable this behavior, check the \"Use the Holiday background color when a holiday lands on the date\" option in the Views-&gt;Month View tab</li>
@@ -542,7 +542,7 @@
           <li xml:lang="nl">Maandweergave: Er is een optie toegevoegd waarmee de aangepaste vakantiedagkleur als achtergrondkleur voor het datumvak kan worden gebruikt als er ten minste één feestdag op die datum valt. Om dit in te schakelen, activeert u de optie \"Gebruik de vakantiedagachtergrondkleur wanneer er één feestdag op een datum valt\" aan in het tabblad Beeld-&gt;Maandweergave.</li>
           <li xml:lang="pt-BR">Visão mensal: Foi adicionada uma opção que permite usar a cor personalizada do feriado como cor de fundo da caixa de data se pelo menos um feriado ocorrer nessa data. Para ativar esse comportamento, marque a opção \"Usar a cor de fundo do feriado quando um feriado ocorrer na data\" na aba Exibir -&gt; Visão mensal</li>
           <li xml:lang="sk">Mesačný pohľad: pridaná voľba umožňujúca použiť vlastnú farbu sviatku ako farbu pozadia bunky dátumu, ak na daný dátum pripadne aspoň jeden sviatok. Toto správanie zapnete zaškrtnutím voľby \"Použiť farbu pozadia sviatku, ak na dátum pripadne sviatok\" na karte Zobrazenia-&gt;Mesačný pohľad</li>
-          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost, ki omogoča uporabo barve praznika po meri kot barve ozadja datumskega polja, če na ta datum pade vsaj en praznik. Če želite omogočiti to delovanje, v zavihku Pogledi-&gt;Mesec označite možnost \"Uporabi barvo ozadja praznika, ko pade praznik na ta datum\".</li>
+          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost, ki omogoča uporabo barve praznika po meri kot barve ozadja datumskega polja, če na ta datum pade vsaj en praznik. Če želite omogočiti to delovanje, v zavihku Pogledi-&gt;Mesec označite možnost \"Uporabi barvo ozadja praznika, ko pade praznik na ta datum\"</li>
           <li xml:lang="tr">Ay görünümü: O tarihe en az bir resmi tatil denk geliyorsa, özel tatil renginin tarih kutusu arka plan rengi olarak kullanılmasına izin veren bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Bir tarihe resmî tatil denk geldiğinde Tatil arka plan rengini kullan” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна використовувати колір нетипового свята як колір тла поля дати, якщо хоча б одне свято припадає на цю дату. Щоб увімкнути цю можливість, позначте пункт «Використовувати колір тла свята, якщо на дату припадає свято» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
           <li>Month view: An option was added to show start-time and end-times. Previously only showing the start-time was supported. To enable this option, check the \"Show the start-time and the end-time in month view items\" option in the View-&gt;Month View tab</li>
@@ -555,7 +555,7 @@
           <li xml:lang="nl">Maandweergave: Er is een optie toegevoegd om de begin- en eindtijd weer te geven. Voorheen werd alleen de begintijd weergegeven. Om deze optie in te schakelen, activeert u de optie \"Begin- en eindtijd weergeven in items in de maandweergave\" aan in het tabblad Weergave-&gt;Maandweergave.</li>
           <li xml:lang="pt-BR">Visão mensal: Foi adicionada uma opção para exibir os horários de início e término. Anteriormente, apenas o horário de início era exibido. Para habilitar essa opção, marque a opção \"Exibir os horários de início e término nos itens da visão mensal\" na guia Exibir -&gt; Visão mensal.</li>
           <li xml:lang="sk">Mesačný pohľad: pridaná voľba na zobrazenie času začiatku a konca. Predtým bolo podporované iba zobrazenie času začiatku. Túto voľbu zapnete zaškrtnutím voľby \"Zobraziť čas začiatku a čas konca v položkách mesačného pohľadu\" na karte Zobrazenie-&gt;Mesačný pohľad</li>
-          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost prikaza začetnega in končnega časa. Prej je bil podprt samo prikaz začetnega časa. Če želite omogočiti to možnost, v zavihku Pogled-&gt;Mesec označite možnost \"Prikaži začetni in končni čas v elementih mesečnega pogleda\".</li>
+          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost prikaza začetnega in končnega časa. Prej je bil podprt samo prikaz začetnega časa. Če želite omogočiti to možnost, v zavihku Pogled-&gt;Mesec označite možnost \"Prikaži začetni in končni čas v elementih mesečnega pogleda\"</li>
           <li xml:lang="tr">Ay görünümü: Başlangıç ve bitiş zamanlarının gösterilmesini sağlayan bir seçenek eklendi. Önceden yalnızca başlangıç zamanının gösterilmesi destekleniyordu. Bu seçeneği etkinleştirmek için Görünüm → Ay Görünümü sekmesindeki “Ay görünümü ögelerinde başlangıç ve bitiş zamanını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна наказати програмі показувати час початку і час завершення. Раніше у програмі було передбачено показ лише часу початку. Щоб увімкнути цю можливість, позначте пункт «Показувати час початку і час завершення у пунктах у перегляді місяця» на вкладці «Перегляд-&gt;Перегляд місяця».</li>
           <li>Agenda view: underline today's column header date</li>
@@ -646,7 +646,7 @@
           <li xml:lang="nl">Herinneringen zijn standaard ingeschakeld voor alle nieuwe evenementen en taken. Om dit uit te schakelen, deactiveert u de optie Herinneringen inschakelen in de instellingen onder tabblad Tijd&gt;Standaardwaarden.</li>
           <li xml:lang="pt-BR">Os lembretes estão ativados por padrão para todos os novos eventos e tarefas. Para desativar esse comportamento, desmarque a opção para ativar lembretes na aba Hora -&gt; Valores Padrão das configurações</li>
           <li xml:lang="sk">Pripomienky sú predvolene zapnuté pre všetky nové udalosti a úlohy. Toto správanie vypnete zrušením zaškrtnutia voľby Povoliť pripomienky v nastaveniach na karte Čas&gt;Predvolené hodnoty</li>
-          <li xml:lang="sl">Opomniki so privzeto omogočeni za vse nove dogodke in opravila. Če želite to delovanje onemogočiti, počistite polje pri možnosti Omogoči opomnike v nastavitvah Čas in zavihek Privzete vrednosti.</li>
+          <li xml:lang="sl">Opomniki so privzeto omogočeni za vse nove dogodke in opravila. Če želite to delovanje onemogočiti, počistite polje pri možnosti Omogoči opomnike v nastavitvah Čas in zavihek Privzete vrednosti</li>
           <li xml:lang="tr">Anımsatıcılar tüm yeni etkinlikler ve yapılacaklar için öntanımlı olarak etkindir. Bu davranışı devre dışı bırakmak için Zaman → Öntanımlı Değerler ayarlar sekmesindeki Anımsatıcıları etkinleştir seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Типово нагадування увімкнено для усіх нових записів подій та завдань. Щоб вимкнути таку поведінку, зніміть позначки з пунктів нагадувань на вкладці параметрів «Час і дата-&gt;Типові значення»</li>
           <li>Month view: no longer display the month year header to save vertical space and remove redundancy</li>
@@ -702,7 +702,7 @@
           <li xml:lang="nl">Maandweergave: de achtergrondkleur voor de cel met de datum van vandaag kan gewijzigd worden. Om de kleur te wijzigen, zet de \"Achtergrondkleur van vandaag voor maandweergave\" in instellen kleuren en lettertypen</li>
           <li xml:lang="pt-BR">Visão mensal: a cor de fundo da célula correspondente à data de hoje pode ser alterada. Para configurar a cor, defina a opção \"Cor de fundo da data de hoje na visão mensal\" nas configurações de Cores e Fontes.</li>
           <li xml:lang="sk">Mesačný pohľad: farbu pozadia bunky dnešného dátumu možno zmeniť. Farbu nastavíte voľbou \"Farba pozadia dneška v mesačnom pohľade\" v nastaveniach Farby a písma</li>
-          <li xml:lang="sl">Mesečni pogled: barvo ozadja za celico z današnjim datumom je mogoče spremeniti. Če želite konfigurirati barvo, v nastavitvah Barve in pisave nastavite \"Barva ozadja mesečnega pogleda za danes\".</li>
+          <li xml:lang="sl">Mesečni pogled: barvo ozadja za celico z današnjim datumom je mogoče spremeniti. Če želite konfigurirati barvo, v nastavitvah Barve in pisave nastavite \"Barva ozadja mesečnega pogleda za danes\"</li>
           <li xml:lang="tr">Ay görünümü: Bugünün tarih hücre arka plan rengi değiştirilebilir. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Ay görünümü bugün arka plan rengi” seçeneğini ayarlayın.</li>
           <li xml:lang="uk">Панель перегляду місяця: можна змінювати колір тла у комірці поточного дня. Щоб налаштувати колір, встановіть значення для пункту «Колір тла поточного дня на панелі перегляду місяця» у параметра кольорів і шрифтів програми.</li>
           <li>Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis</li>
@@ -795,7 +795,7 @@
           <li xml:lang="nl">Incidentenbewerker: de tags worden alfabetisch gesorteerd in bewerker van tags</li>
           <li xml:lang="pt-BR">Editor de incidência: as etiquetas são ordenadas alfabeticamente no editor de etiquetas</li>
           <li xml:lang="sk">Editor výskytov: značky sú v editore značiek zoradené podľa abecedy</li>
-          <li xml:lang="sl">Urejevalnik pojavnosti: oznake so v urejevalniku oznak razvrščene po abecedi.</li>
+          <li xml:lang="sl">Urejevalnik pojavnosti: oznake so v urejevalniku oznak razvrščene po abecedi</li>
           <li xml:lang="tr">Olay düzenleyici: Etiketler, etiket düzenleyicide abecesel olarak sıralanır.</li>
           <li xml:lang="uk">Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою</li>
           <li>Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well</li>
@@ -809,7 +809,7 @@
           <li xml:lang="nl">Agendaweergave: toegevoegde tijdlabels aan contextmenu om tijdlabels te tonen/verbergen voor de systeemtijdzone ook rechter- (of linkerkant)</li>
           <li xml:lang="pt-BR">Visão da agenda: adicionado menu de contexto de rótulos de tempo para mostrar/ocultar rótulos de tempo para o fuso horário do sistema no lado direito (ou esquerdo)</li>
           <li xml:lang="sk">Pohľad agendy: pridaná kontextová ponuka časových popiskov na zobrazenie/skrytie časových popiskov systémového časového pásma aj na pravej (alebo ľavej) strane</li>
-          <li xml:lang="sl">Pogled dnevnega reda: dodan kontekstni meni časovnih oznak za prikaz/skrivanje časovnih oznak za sistemski časovni pas tudi na desni (ali levi) strani.</li>
+          <li xml:lang="sl">Pogled dnevnega reda: dodan kontekstni meni časovnih oznak za prikaz/skrivanje časovnih oznak za sistemski časovni pas tudi na desni (ali levi) strani</li>
           <li xml:lang="tr">Ajanda görünümü: Sistem saat dilimi için zaman etiketlerini sağ (veya sol) tarafta da göstermek/gizlemek için zaman etiketleri sağ tık menüsü eklendi.</li>
           <li xml:lang="uk">Панель перегляду порядку денного: додано пункт контекстного часу для показу або приховування часових міток для загальносистемного часового поясу праворуч (або ліворуч)</li>
           <li>Incidence editor: detect and warn about creating incidences in the past</li>
@@ -860,7 +860,7 @@
           <li xml:lang="nl">Semantiek is gewijzigd van een concept \"werkplan\" naar een concept \"weekplan\" om niet-werkende gebruikers te accommoderen</li>
           <li xml:lang="pt-BR">A semântica mudou do conceito de \"agenda de trabalho\" para um conceito de \"agenda semanal\" para acomodar usuários que não trabalham</li>
           <li xml:lang="sk">Sémantika sa zmenila z konceptu \"pracovný rozvrh\" na koncept \"týždenný rozvrh\", aby vyhovovala aj nepracujúcim používateľom</li>
-          <li xml:lang="sl">Semantika se spremeni iz koncepta \"delovnega urnika\" v koncept \"tedenskega urnika\", da se prilagodi uporabnikom, ki niso zaposleni.</li>
+          <li xml:lang="sl">Semantika se spremeni iz koncepta \"delovnega urnika\" v koncept \"tedenskega urnika\", da se prilagodi uporabnikom, ki niso zaposleni</li>
           <li xml:lang="tr">Çalışmayan kullanıcıları da kapsamak adına anlamsal yapı “çalışma programı” kavramından “hafta programı” kavramına dönüştürüldü.</li>
           <li xml:lang="uk">Змінено семантику з концепції «робочого розкладу» на «розклад тижня» для задоволення потреб користувачів поза робочим часом</li>
           <li>Initial \"New Event\" start times are consistent across all the views</li>
@@ -874,7 +874,7 @@
           <li xml:lang="nl">Initiële starttijden van \"Nieuwe gebeurtenis\" zijn consistent over alle weergaven</li>
           <li xml:lang="pt-BR">Horas de início de \"novo evento\" inicial são consistentes em todas as vistas</li>
           <li xml:lang="sk">Počiatočné časy začiatku pri \"Novej udalosti\" sú konzistentné vo všetkých pohľadoch</li>
-          <li xml:lang="sl">Začetni časi začetka »Novega dogodka« so enaki v vseh pogledih.</li>
+          <li xml:lang="sl">Začetni časi začetka »Novega dogodka« so enaki v vseh pogledih</li>
           <li xml:lang="tr">İlk “Yeni Etkinlik” başlangıç zamanları tüm görünümlerde tutarlıdır.</li>
           <li xml:lang="uk">Початкові часи початку «Нової події» у новій версії є узгодженими за усіма панелями перегляду</li>
           <li>Improved default event calendar handling</li>
