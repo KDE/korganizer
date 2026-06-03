@@ -54,6 +54,9 @@ Checks: -*,
 #                  misc-*,
 #                  performance-*,
 #                  readability-*,
+HeaderFilterRegex: '.*/korganizer/.*'
+#ExcludeHeaderFilterRegex: '/.*[-]*build[-]*.*/'
+ExcludeHeaderFilterRegex: '/(.*-build|build-.*)/'
 CheckOptions:
     - key:  bugprone-assert-side-effects.AssertMacros
       value: 'Q_ASSERT;QVERIFY;QCOMPARE;AKVERIFY'
