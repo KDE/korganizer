@@ -245,7 +245,7 @@ void SDSummaryWidget::createLabels()
     setUpdatesEnabled(false);
     for (QLabel *label : std::as_const(mLabels)) {
         mLayout->removeWidget(label);
-        delete (label);
+        delete label;
         update();
     }
     mLabels.clear();

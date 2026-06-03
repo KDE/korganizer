@@ -119,7 +119,7 @@ void DateNavigator::selectWorkWeek(QDate d)
     const int mask = KOGlobals::self()->getWorkWeekMask();
 
     for (int i = 0; i < 7; ++i) {
-        if ((1 << ((i + weekStart + 6) % 7)) & (mask)) {
+        if ((1 << ((i + weekStart + 6) % 7)) & mask) {
             mSelectedDates.append(currentDate.addDays(i));
         }
     }
