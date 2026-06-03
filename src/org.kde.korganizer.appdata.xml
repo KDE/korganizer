@@ -172,6 +172,7 @@
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="ta">அம்சங்கள்:</p>
     <p xml:lang="tr">Özellikler:</p>
+    <p xml:lang="ug">ئىقتىدار:</p>
     <p xml:lang="uk">Можливості:</p>
     <p xml:lang="zh-CN">程序功能：</p>
     <p xml:lang="zh-TW">功能：</p>
@@ -287,6 +288,7 @@
       <li xml:lang="sl">Razveljavi in uveljavi</li>
       <li xml:lang="sv">Ångra och gör om</li>
       <li xml:lang="tr">Geri al ve yinele desteği</li>
+      <li xml:lang="ug">يېنىۋال ۋە قايتىلا</li>
       <li xml:lang="uk">можливості скасування та повторення дій;</li>
       <li xml:lang="zh-CN">撤销和重做</li>
       <li xml:lang="zh-TW">復原、重做</li>
@@ -511,6 +513,7 @@
           <li xml:lang="ca-valencia">Vista mensual: en nom de la coherència, els festius que cauen en una jornada laboral ja no s'oculten</li>
           <li xml:lang="cs">Měsíční zobrazení: z důvodu jednotnosti se již nezobrazují svátky, které připadají na pracovní den</li>
           <li xml:lang="es">Vista mensual: para mantener la coherencia, los días festivos que caen en un día laborable ya no se ocultan.</li>
+          <li xml:lang="fr">Vue en Mois : pour des raisons de cohérence, les jours fériés placés sur un jour ouvrable ne sont plus masqués</li>
           <li xml:lang="he">תצוגת חודש: לטובת האחידות, חגים שיוצאים על ימי עבודה לא מוסתרים יותר</li>
           <li xml:lang="ka">თვის ხედი: იმისათვის რომ ყველაფერი ერთნაირი იყოს, დღესასწაულები, რომლებიც სამუშაო დღეს ემთხვევა, დამალული აღარ იქნება</li>
           <li xml:lang="nl">Maandweergave: omwille van de consistentie worden feestdagen die op een werkdag vallen niet langer verborgen.</li>
@@ -564,6 +567,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: subratlla la data d'hui a la capçalera de la columna de dates</li>
           <li xml:lang="cs">Zobrazení agendy: podtrhnutí data v záhlaví sloupce pro dnešní den</li>
           <li xml:lang="es">Vista de la agenda: Subrayar la fecha del encabezado de la columna de hoy.</li>
+          <li xml:lang="fr">Vue en agenda : soulignement de la date de l'en-tête de colonne d'aujourd'hui</li>
           <li xml:lang="he">תצוגת סדר יום: לסמן בקו תחתון את תאריך כותרת העמודה של היום</li>
           <li xml:lang="ka">გეგმის ხედი: დღევანდელი სვეტის თავსართის თარიღის ხაზგასმა</li>
           <li xml:lang="nl">Agendaweergave: onderstreep de datum in de kolomkop van vandaag</li>
@@ -578,6 +582,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra les ubicacions d'incidència dins dels elements d'agenda. Per a activar este comportament, marqueu l'opció «Mostra les ubicacions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="cs">Zobrazení agendy: volitelné zobrazení umístění položek v zobrazení agendy. Chcete-li tuto funkci povolit, zaškrtněte možnost "Zobrazit umístění položek v zobrazení agendy" na kartě Zobrazení-&gt;Zobrazení agendy</li>
           <li xml:lang="es">Vista de agenda: Opcionalmente, mostrar las ubicaciones de las incidencias dentro de los elementos de la agenda. Para activar este comportamiento, marque la opción «Mostrar ubicaciones de incidencias en los elementos de la vista de agenda» en la pestaña «Vista-&gt;Vista de agenda».</li>
+          <li xml:lang="fr">Vue en Agenda : affichage éventuel des lieux d'occurrences à l'intérieur des éléments d'agendas. Pour activer ce comportement, veuillez cocher l'option « Afficher les lieux d'occurrences dans les éléments de la vue en Agenda » dans l'onglet « Affichage / Vue en  Agenda »</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: მოვლენის მდებარეობების არასავალდებულო ჩვენება დღის წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის მდებარეობის ჩვენება დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი-&gt;დღის წესრიგის ხედის ჩანართი</li>
           <li xml:lang="nl">Agendaweergave: toon optioneel de incidentlocaties in de agenda-items. Om dit gedrag in te schakelen, activeer de optie \"Incidentlocaties tonen in de items in de agenda\" in het weergavetabblad Beeld-&gt;Agenda</li>
           <li xml:lang="pt-BR">Visão de Agenda: opcionalmente, mostre as localizações das incidências dentro dos itens da agenda. Para ativar esse comportamento, marque a opção \"Mostrar localizações de incidência nos itens da visão de agenda\" na aba Exibir -&gt; Visão da Agenda.</li>
@@ -619,6 +624,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb la quadrícula</li>
           <li xml:lang="cs">Zobrazení agendy: vylepšené svislé zarovnání časových značek podle mřížky</li>
           <li xml:lang="es">Vista de agenda: Se ha mejorado la alineación vertical de las etiquetas de horas con la cuadrícula.</li>
+          <li xml:lang="fr">Vue en Agenda : amélioration de l'alignement vertical des étiquettes de temps avec la grille</li>
           <li xml:lang="he">תצוגת סדר יום: יישור אנכי של תווית זמין עם הרשת השתפר</li>
           <li xml:lang="ka">გეგმის ხედი: გაუმჯობესდა დროის ჭდის ვერტიკალური სწორება ბადესთან</li>
           <li xml:lang="nl">Agendaweergave: verbeterde verticale uitlijning van tijdlabels met raster</li>
@@ -655,6 +661,7 @@
           <li xml:lang="ca-valencia">Vista mensual: ja no mostra la capçalera de mes any per a estalviar espai vertical i eliminar redundància</li>
           <li xml:lang="cs">Zobrazení měsíce: již se nezobrazuje záhlaví měsíce a roku, aby se ušetřilo svislé místo a odstranila nadbytečnost</li>
           <li xml:lang="es">Vista mensual: Ya no se muestra el encabezado de mes y año para ahorrar espacio vertical y eliminar la redundancia.</li>
+          <li xml:lang="fr">Vue en Mois : suppression de l'affichage de l'en-tête du mois et de l'année pour économiser de l'espace vertical et supprimer la redondance</li>
           <li xml:lang="he">תצוגת חודש: כותרת חודש שנה לא מופיעה עוד כדי לחסוך בשטח מסך אנכי ולהסיר את היתירות</li>
           <li xml:lang="ka">თვის ხედი: თვის წელი სათაური ნაჩვენები აღარ იქნება ვერტიკალური სივრცის შესანახად და სიჭარბის მოსაცილებლად</li>
           <li xml:lang="nl">Maandweergave: niet langer de maand-jaarkop tonen om verticale ruimte te besparen en dubbelen weergave te verwijderen</li>
@@ -711,6 +718,7 @@
           <li xml:lang="ca-valencia">Barra del navegador: s'ha millorat afegint el desplaçament setmanal i mostrant/ocultant la barra lateral en funció de la vista</li>
           <li xml:lang="cs">Navigační lišta: vylepšena přidáním posouvání týdnů a zobrazením/skrytím postranní lišty pro jednotlivé zobrazení</li>
           <li xml:lang="es">Barra de navegación: Se ha mejorado mediante la adición de desplazamiento semanal y la visualización/ocultación de la barra lateral según la vista.</li>
+          <li xml:lang="fr">Barre de navigation : amélioration par l'ajout d'un défilement par semaine et par l'affichage / masquage de la barre latérale selon la vue</li>
           <li xml:lang="he">סרגל ניווט: שופר על ידי הוספת גלילת שבוע והצגת/הסתרת סרגל הצד לפני תצוגה</li>
           <li xml:lang="ka">ნავიგაციის ზოლი: გაუმჯობესდა კვირის გადახვევისა და გვერდითი პანელის თითოეული ხედისთვის ჩვენება/დამალვის დამატებით</li>
           <li xml:lang="nl">Navigatiebalk: verbeterd door het toevoegen van schuiven per week en het tonen/verbergen van de zijbalk per weergave.</li>
@@ -725,6 +733,7 @@
           <li xml:lang="ca-valencia">Barra de navegació: s'ha afegit un botó per a desplaçar la vista fins a la data actual</li>
           <li xml:lang="cs">Navigační lišta: přidáno tlačítko pro posun zobrazení na aktuální datum</li>
           <li xml:lang="es">Barra de navegación: Se ha añadido un botón para desplazar la vista a la fecha actual.</li>
+          <li xml:lang="fr">Barre de navigation : ajout d'un bouton pour le défilement de la vue jusqu'à la date courante</li>
           <li xml:lang="he">סרגל ניווט: נוסף כפתור לגלילת התצוגה לתאריך הנוכחי</li>
           <li xml:lang="ka">ნავიგაციის ზოლი: დაემატა ღილაკი ხედის მიმდინარე თარიღამდე გადასახვევად</li>
           <li xml:lang="nl">Navigatiebalk: een knop toegevoegd om de weergave naar de vandaag te verschuiven</li>
@@ -753,6 +762,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins dels elements d'agenda. Per a activar este comportament, marqueu l'opció «Mostra les descripcions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="cs">Zobrazení agendy: volitelné zobrazení popisů položek v zobrazení agendy. Chcete-li tuto funkci povolit, zaškrtněte možnost „Zobrazit popisy položek v zobrazení agendy“ na kartě Zobrazení-&gt;Zobrazení agendy</li>
           <li xml:lang="es">Vista de agenda: Opcionalmente, mostrar las descripciones de las incidencias dentro de los elementos de la agenda. Para activar este comportamiento, marque la opción «Mostrar descripciones de incidencias en los elementos de la vista de agenda» en la pestaña «Vista-&gt;Vista de agenda».</li>
+          <li xml:lang="fr">Vue d'agenda : afficher éventuellement les descriptions de récurrences dans  les éléments de l'agenda. Pour activer ce comportement, veuillez cocher l'option « Afficher les descriptions de récurrence dans les éléments de la vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »</li>
           <li xml:lang="he">תצוגת סדר יום: להציג את תיאורי החזרות בתוך פריטי סדר היום כרשות. כדי להפעיל את ההתנהגות הזאת יש לסמן את האפשרות „להציג תיאורי חזרות בפריטי תצוגת סדר יום” בלשונית תצוגה-&gt;תצוגת סדר יום</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის აღწერების ჩვენება დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი-&gt;დღის წესრიგის ხედის ჩანართი</li>
           <li xml:lang="nl">Agendaweergave: toon optioneel de incidentbeschrijvingen in de agenda-items. Om dit gedrag in te schakelen, activeer de optie \"Incidentbeschrijvingen tonen in de items in de agenda\" in het weergavetabblad Beeld-&gt;Agenda</li>
@@ -767,6 +777,7 @@
           <li xml:lang="ca-valencia">Busca: la configuració de la busca es guarda/restaura</li>
           <li xml:lang="cs">Hledání: nastavení hledání se ukládá/obnovuje</li>
           <li xml:lang="es">Búsqueda: Las preferencias de la búsqueda se guardan y restauran.</li>
+          <li xml:lang="fr">Recherche : la configuration de recherche est enregistrées / restaurées</li>
           <li xml:lang="he">חיפוש: הגדרות החיפוש נשמרות/משוחזרות</li>
           <li xml:lang="ka">ძებნა: ხდება საძიებო სტრიქონების შენახვა/აღდგენა</li>
           <li xml:lang="nl">Zoeken: de zoekinstellingen worden opgeslagen/hersteld</li>
@@ -790,6 +801,7 @@
           <li xml:lang="ca-valencia">Editor d'incidències: les etiquetes s'ordenen alfabèticament a l'editor d'etiquetes</li>
           <li xml:lang="cs">Editor položek: značky jsou v editoru seřazeny abecedně</li>
           <li xml:lang="es">Editor de incidencias: las etiquetas se ordenan alfabéticamente en el editor de etiquetas</li>
+          <li xml:lang="fr">Éditeur d'occurrences : les étiquettes sont triées par ordre alphabétique dans l'éditeur d'étiquettes</li>
           <li xml:lang="he">עורך מופעים: התגיות מסודרות לפי האלפבית בעורך התגיות</li>
           <li xml:lang="ka">ინციდენტების რედაქტორი: ჭდეების რედაქტორში ჭდეები ანბანის მიხედვით ლაგდება</li>
           <li xml:lang="nl">Incidentenbewerker: de tags worden alfabetisch gesorteerd in bewerker van tags</li>
@@ -818,6 +830,7 @@
           <li xml:lang="ca-valencia">Editor d'incidències: detecta i avisa de la creació d'incidències en el passat</li>
           <li xml:lang="cs">Editor položek: detekuje a upozorňuje na vytvoření položek v minulosti</li>
           <li xml:lang="es">Editor de incidencias: detectar y avisar de la creación de incidencias en el pasado</li>
+          <li xml:lang="fr">Éditeur d'occurrences : détection et alerte lors de création d'incidence dans le passé</li>
           <li xml:lang="he">עורך מופעים: זיהוי ואזהרה בנוגע ליצירת מופעים בעבר</li>
           <li xml:lang="ka">ინციდენტების რედაქტორი: აღმოჩენა და გაფრთხილება ინციდენტების წარსულში შექმნისას</li>
           <li xml:lang="nl">Incidentenbewerker: detecteer en waarschuw over het maken van incidenten in het verleden</li>
@@ -832,6 +845,7 @@
           <li xml:lang="ca-valencia">Editor d'incidències: afig la implementació d'emoji</li>
           <li xml:lang="cs">Editor položek: přidána podpora smajlíků</li>
           <li xml:lang="es">Editor de incidencias: añadir compatibilidad con emojis</li>
+          <li xml:lang="fr">Éditeur d'occurrences : ajout de la prise en charge des émoticônes</li>
           <li xml:lang="he">עורך מופעים: הוספת תמיכה באמוג׳י</li>
           <li xml:lang="ka">ინციდენტების რედაქტორი: დაემატა ემოჯიების მხარდაჭერა</li>
           <li xml:lang="nl">Bewerker van incidenten: ondersteuning van emoji toevoegen</li>
@@ -869,6 +883,7 @@
           <li xml:lang="ca-valencia">Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les vistes</li>
           <li xml:lang="cs">Počáteční časy zahájení "nové události" jsou ve všech zobrazeních stejné</li>
           <li xml:lang="es">Las horas de inicio predeterminadas de «Nuevo evento» son consistentes en todas las vistas.</li>
+          <li xml:lang="fr">Les heures de début initiales « Nouvel événement » sont cohérentes dans toutes les vues</li>
           <li xml:lang="he">זמני התחלת „אירוע חדש” עקביים על פני כל התצוגות</li>
           <li xml:lang="ka">საწყისი \"ახალი მოვლენის\" დაწყების თარიღები მუდმივია ყველა ხედისთვის</li>
           <li xml:lang="nl">Initiële starttijden van \"Nieuwe gebeurtenis\" zijn consistent over alle weergaven</li>
@@ -878,12 +893,20 @@
           <li xml:lang="tr">İlk “Yeni Etkinlik” başlangıç zamanları tüm görünümlerde tutarlıdır.</li>
           <li xml:lang="uk">Початкові часи початку «Нової події» у новій версії є узгодженими за усіма панелями перегляду</li>
           <li>Improved default event calendar handling</li>
+          <li xml:lang="ca">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
+          <li xml:lang="es">Se ha mejorado la gestión del calendario de eventos predeterminado.</li>
+          <li xml:lang="ka">გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა</li>
+          <li xml:lang="pt-BR">Melhorada a manipulação padrão de evento de calendário</li>
+          <li xml:lang="sl">Izboljšano upravljanje privzetega koledarja dogodkov</li>
+          <li xml:lang="tr">İyileştirilmiş öntanımlı takvim işleme</li>
+          <li xml:lang="uk">Удосконалено обробку типового календаря подій</li>
           <li>Incidences with a long excluded dates list no longer create huge tooltips</li>
           <li xml:lang="bg">Събитията с дълъг списък с изключени дати вече не създават огромни подсказки</li>
           <li xml:lang="ca">Les incidències amb una llista llarga de dates excloses ja no creen consells enormes</li>
           <li xml:lang="ca-valencia">Les incidències amb una llista llarga de dates excloses ja no creen consells d'eina enormes</li>
           <li xml:lang="cs">Položky s dlouhým seznamem vyloučených dat již nevytvářejí obrovské popisky</li>
           <li xml:lang="es">Las incidencias con una larga lista de fechas excluidas ya no generan enormes ayudas emergentes.</li>
+          <li xml:lang="fr">Les occurrences avec une longue liste de dates exclues ne créent aucune bulle d'aide énormes</li>
           <li xml:lang="he">מופעים עם תאריכים מוחרגים ממושכים לא יוצרים עוד חלוניות צצות ענקיות</li>
           <li xml:lang="ka">ინციდენტები გრძელი ამოღებული თარიღებით აღარ ქმნიან უზარმაზარ მინიშნებებს</li>
           <li xml:lang="nl">Voorvallen met een lange lijst uitgesloten datums maken niet langer enorme tekstballonnen</li>
@@ -898,6 +921,7 @@
           <li xml:lang="ca-valencia">S'ha corregit l'adreça de correu electrònic de l'organitzador per a les incidències amb els assistents</li>
           <li xml:lang="cs">Opravena e-mailová adresa správce pro položky s účastníky</li>
           <li xml:lang="es">Se ha corregido la dirección de correo electrónico del organizador para incidencias con asistentes.</li>
+          <li xml:lang="fr">Correction du courriel de la personne organisatrice pour les occurrences avec l'ensemble des personnes participantes</li>
           <li xml:lang="he">כתובת הדוא״ל של המארגן/ת תוקנה במופעים עם משתתפים</li>
           <li xml:lang="ka">გასწორდა დამსწრეების მქონე ინციტენტების ორგანიზატორის ელფოსტის მისამართი</li>
           <li xml:lang="nl">Het e-mailadres van de organisator voor voorvallen met deelnemers</li>
@@ -912,6 +936,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: els esdeveniments sense duració es mostren amb una duració de 30 minuts (en lloc de 15 minuts)</li>
           <li xml:lang="cs">Zobrazení agendy: události bez trvání se zobrazují jako 30 minutové (namísto 15 minutových)</li>
           <li xml:lang="es">Vista de agenda: los eventos sin duración se muestran con una duración de 30 minutos (en lugar de 15)</li>
+          <li xml:lang="fr">Vue en Agenda : les évènements sans durée sont affichés avec une durée de 30 minutes (Plutôt que de 15 minutes)</li>
           <li xml:lang="he">תצוגת סדר יום: אירועים בלי משך זמן יופיעו כאילו הם למשך חצי שעה (במקום 15 דקות)</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: ხანგრძლივობის არმქონე მოვლენები 30 წუთის ხანგრძლივობითაა ნაჩვენები (15 წუთის მაგიერ)</li>
           <li xml:lang="nl">Agendaweergave: gebeurtenissen zonder een tijdsduur worden als 30 lang (in plaats van 15 minuten lang) getoond</li>
@@ -956,6 +981,7 @@
           <li xml:lang="ca-valencia">Afig un diàleg selector de dates disponible en el menú Ves</li>
           <li xml:lang="cs">Přidáno dialogové okno pro výběr data dostupné v nabídce Přejít</li>
           <li xml:lang="es">Añadir un diálogo de selección de fecha disponible en el menú Ir.</li>
+          <li xml:lang="fr">Ajout d'une boîte de dialogue de sélection de date disponible dans le menu « Aller »</li>
           <li xml:lang="he">נוספה חלונית בורר תאריכים שזמינה מתפריט המעבר</li>
           <li xml:lang="ka">დაემატა თარიღის ამრჩევი დიალოგი. ხელმისაწვდომია გადასვლის მენიუდან</li>
           <li xml:lang="nl">Een Datumkiezerdialoog toevoegen beschikbaar in het menu Ga</li>
@@ -984,6 +1010,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de temps per a canviar un rellotge de 24 hores (estil militar)</li>
           <li xml:lang="cs">Zobrazení agendy: přidána možnost kontextového menu časových značek pro přepnutí na 24hodinový (vojenský) formát času</li>
           <li xml:lang="es">Vista de agenda: se ha añadido la opción de menú de contexto de etiquetas de tiempo para cambiar a un reloj de 24 horas (de estilo militar).</li>
+          <li xml:lang="fr">Vue en Agenda : ajout de l'option de menu contextuel concernant les étiquettes de temps pour basculer vers une horloge 24 heures (Style militaire)</li>
           <li xml:lang="he">תצוגת סדר יום: נוספה אפשרות תפריט הקשר תוויות זמן להפעלת/כיבוי שעון 24 שעות</li>
           <li xml:lang="ka">გეგმის ხედი: დაემატა კონტექსტური მენიუს პუნქტი დროის ჭდეების 24-საათიან (სამხედრო)საათზე გადართვა</li>
           <li xml:lang="nl">Agendaweergave: contextmenu-option van tijdlabels toegevoegd om naar een 24-uurs klok (militaire stijl) om te schakelen</li>
@@ -998,6 +1025,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha afegit el menú contextual per a crear un esdeveniment o tasca pendent nova</li>
           <li xml:lang="cs">Zobrazení agendy: přidáno kontextové menu pro vytvoření nové události nebo úkolu</li>
           <li xml:lang="es">Vista de agenda: se ha añadido un menú de contexto para crear un nuevo evento o tarea pendiente.</li>
+          <li xml:lang="fr">Vue en Agenda : ajout d'un menu contextuel pour la création d'un nouvel évènement ou d'une nouvelle tâche à faire</li>
           <li xml:lang="he">תצוגת סדר יום: נוסף תפריט הקשר ליצירת אירוע או מטלה חדשים</li>
           <li xml:lang="ka">გეგმის ხედი: დაემატა კონტექსტური მენიუს პუქტი ახალი მოვლენების/გეგმების დასამატებლად</li>
           <li xml:lang="nl">Agendaweergave: contextmenu toegevoegd om nieuwe gebeurtenis  of taak aan te maken</li>
@@ -1012,6 +1040,7 @@
           <li xml:lang="ca-valencia">Vista de les tasques pendents: s'han afegit opcions del menú contextual per a canviar la compleció i els recordatoris</li>
           <li xml:lang="cs">Zobrazení úkolů: přidány možnosti kontextového menu pro přepínání mezi dokončením a upomínkami</li>
           <li xml:lang="es">Vista de tareas pendientes: se han añadido opciones al menú de contexto para conmutar el estado de compleción y los recordatorios.</li>
+          <li xml:lang="fr">Vue des tâches à faire : ajout d'une option de menu contextuel pour basculer les notifications de fermeture et de rappels</li>
           <li xml:lang="he">תצוגת מטלות: נוספו אפשרויות תפריט הקשר להפעלת/כיבוי השלמה ותזכורות</li>
           <li xml:lang="ka">გეგმების ხედი: დაემატა კონტექსტური მენიუს პარამეტრები დასრულებების და შეხსენებების გადასართავად</li>
           <li xml:lang="nl">Taakweergave: contextmenu-opties toegevoegd voor omschakelen van voltooien en herinneringen</li>
@@ -1026,6 +1055,7 @@
           <li xml:lang="ca-valencia">Vista de les tasques pendents: guarda/restaura l'opció de vista completa</li>
           <li xml:lang="cs">Zobrazení úkolů: uložit/obnovit nastavení úplného zobrazení</li>
           <li xml:lang="es">Vista de tareas pendientes: guardar/restaurar la configuración de vista completa.</li>
+          <li xml:lang="fr">Vue des tâches à faire : enregistrement / restauration de la configuration en vue complète</li>
           <li xml:lang="he">תצוגת מטלות: שמירת/שחזור הגדרות תצוגה מלאה</li>
           <li xml:lang="ka">გასაკეთებლების ხედი: სრული ხედის პარამეტრის შენახვა/აღდგენა</li>
           <li xml:lang="nl">Taakweergave: instelling volledige weergave opslaan/herstellen</li>
@@ -1040,6 +1070,7 @@
           <li xml:lang="ca-valencia">Vista de les tasques pendents: guarda/restaura l'opció de vista plana</li>
           <li xml:lang="cs">Zobrazení úkolů: uložit/obnovit nastavení přehledného zobrazení</li>
           <li xml:lang="es">Vista de tareas pendientes: guardar/restaurar la configuración de vista plana.</li>
+          <li xml:lang="fr">Vue des tâches à faire : enregistrement / restauration de la configuration en vue à plat</li>
           <li xml:lang="he">תצוגת מטלות: שמירת/שחזור הגדרות תצוגה שטוחה</li>
           <li xml:lang="ka">გეგმის ხედი: ბრტყელი ხედის პარამეტრის შენახვა/აღდგენა</li>
           <li xml:lang="nl">Taakweergave: instelling vlakke weergave opslaan/herstellen</li>
@@ -1054,6 +1085,7 @@
           <li xml:lang="ca-valencia">Navegador de dates: s'ha afegit una opció dins de la configuració de Configura-&gt;Vistes per a ocultar els números de setmana</li>
           <li xml:lang="cs">Navigátor: do nabídky Nastavení-&gt;Zobrazení byla přidána možnost skrýt čísla týdnů</li>
           <li xml:lang="es">Navegador de fechas: se ha añadido una opción a las preferencias de «Configurar-&gt;Vistas» para ocultar los números de las semanas.</li>
+          <li xml:lang="fr">Navigateur de dates : ajout d'une option dans la configuration « Configurer / Vu»es  pour masquer les numéros de semaines</li>
           <li xml:lang="he">נווטן תאריכים: נוספה אפשרות בהגדרות-&gt;תצוגות להסתרת מספרי השבועות</li>
           <li xml:lang="ka">თარიღის ნავიგატორი: დაემატა პარამეტრი მენიუში მორგება-&gt;ხედის მორგება კვირის ნომრების დასამალად</li>
           <li xml:lang="nl">Datumnavigator: een optie toegevoegd in de instellingen Configureren-&gt;Weergave voor het verbergen van weeknummers</li>
@@ -1082,6 +1114,7 @@
           <li xml:lang="ca-valencia">Editor d'incidències: recorda/restaura la geometria del gestor de plantilles</li>
           <li xml:lang="cs">Editor položek: zapamatovat/obnovit geometrii správce šablon</li>
           <li xml:lang="es">Editor de incidencias: recordar/restaurar la geometría del gestor de plantillas.</li>
+          <li xml:lang="fr">Éditeur d'occurrences : enregistrement / restauration de la disposition du gestionnaire de modèles</li>
           <li xml:lang="he">עורך מופעים: שמירת/שחזור צורת מנהל התבניות</li>
           <li xml:lang="ka">ინციდენტების რედაქტორი: შაბლონების მმართველის გეომეტრიის დამახსოვრება/აღდგენა</li>
           <li xml:lang="nl">Voorvalbewerker: de geometrie van de sjabloonbeheerder onthouden/herstellen</li>
@@ -1096,6 +1129,7 @@
           <li xml:lang="ca-valencia">Editor d'incidències: permet arrossegar i deixar anar adjunts</li>
           <li xml:lang="cs">Editor položek: podpora přetahování příloh</li>
           <li xml:lang="es">Editor de incidencias: permitir arrastrar y soltar adjuntos</li>
+          <li xml:lang="fr">Éditeur d'occurrences : prise en charge du glisser-déposer des pièces jointes</li>
           <li xml:lang="he">עורך מופעים: תמיכה בגרירה של קבצים מצורפים</li>
           <li xml:lang="ka">ინციდენტების რედაქტორი: დაემატა მიმაგრებული ფაილების დაყრის მხარდაჭერა</li>
           <li xml:lang="nl">Voorvalbewerker: ondersteuning van bijlagen via slepen-en-loslaten</li>
@@ -1110,6 +1144,7 @@
           <li xml:lang="ca-valencia">El diàleg d'exportació de calendari recorda la seua última ubicació de la carpeta d'exportació</li>
           <li xml:lang="cs">Dialogové okno exportu kalendáře si pamatuje umístění poslední složky pro export</li>
           <li xml:lang="es">El diálogo de exportación de calendario recuerda la ubicación de la última carpeta de exportación usada.</li>
+          <li xml:lang="fr">La boîte de dialogue du calendrier d'exportation enregistre son dernier emplacement pour le dossier d'exportation</li>
           <li xml:lang="he">חלונית ייצוא לוח השנה זוכרת את מקום התיקייה האחרונה שיוצאה</li>
           <li xml:lang="ka">კალენდრის გატანის დიალოგი იმახსოვრებს ბოლო გატანის საქაღალდის მდებარეობას</li>
           <li xml:lang="nl">De dialoog agenda exporteren onthoudt zijn laatste maplocatie voor exporteren</li>
@@ -1124,6 +1159,7 @@
           <li xml:lang="ca-valencia">El diàleg d'importació de calendari recorda la seua última ubicació de la carpeta d'importació</li>
           <li xml:lang="cs">Dialogové okno importu kalendáře si pamatuje umístění poslední složky pro import</li>
           <li xml:lang="es">El diálogo de importación de calendario recuerda la ubicación de la última carpeta de importación usada.</li>
+          <li xml:lang="fr">La boîte de dialogue du calendrier d'importation enregistre son dernier emplacement pour le dossier d'importation</li>
           <li xml:lang="he">חלונית ייבוא לוח השנה זוכרת את מקום התיקייה האחרונה שיובאה</li>
           <li xml:lang="ka">კალენდრის შემოტანის დიალოგი იმახსოვრებს ბოლო შემოტანის საქაღალდის მდებარეობას</li>
           <li xml:lang="nl">De dialoog agenda exporteren onthoudt zijn laatste maplocatie voor importeren</li>
@@ -1138,6 +1174,7 @@
           <li xml:lang="ca-valencia">Afegir un fitxer de calendari: els calendaris remots sempre són de només lectura</li>
           <li xml:lang="cs">Přidat soubor kalendáře: vzdálené kalendáře jsou vždy pouze pro čtení</li>
           <li xml:lang="es">Añadir archivo de calendario: los calendarios remotos son siempre de solo lectura.</li>
+          <li xml:lang="fr">Ajout d'un fichier de calendrier : les calendriers distants sont toujours en lecture seule</li>
           <li xml:lang="he">הוספת קובץ לוח שנה: לוחות שנה מרוחקים הם תמיד לקריאה בלבד</li>
           <li xml:lang="ka">კალენდრის ფაილის დამატება: დაშორებული კალენდრები ყოველთვის მხოლოდ წაკითხვადია</li>
           <li xml:lang="nl">Agendabestand toevoegen: agenda's op afstand zijn altijd alleen-lezen</li>
@@ -1152,6 +1189,7 @@
           <li xml:lang="ca-valencia">Afegir un fitxer de calendari: no es permet un camí buit de fitxer</li>
           <li xml:lang="cs">Přidat soubor kalendáře: není povolena prázdná cesta k souboru</li>
           <li xml:lang="es">Añadir archivo de calendario: no se permite una ruta de archivo vacía.</li>
+          <li xml:lang="fr">Ajout de fichier de calendrier : impossible de fournir un emplacement vide de fichier</li>
           <li xml:lang="he">הוספת קובץ לוח שנה: לא יורשה נתיב קובץ ריק</li>
           <li xml:lang="ka">კალენდრის ფაილის დამატება: ცარიელი ფაილის ბილიკი დაშვებული არაა</li>
           <li xml:lang="nl">Agendabestand toevoegen: zal geen leeg bestandspad toestaan</li>
@@ -1166,6 +1204,7 @@
           <li xml:lang="ca-valencia">Configuració DAV: el diàleg permet veure la contrasenya del compte en editar</li>
           <li xml:lang="cs">Konfigurace DAV: dialogové okno umožňuje při úpravách zobrazit heslo účtu</li>
           <li xml:lang="es">Configuración de DAV: el diálogo permite ver la contraseña de la cuenta cuando se modifica.</li>
+          <li xml:lang="fr">Configuration DAV : la boite de dialogue permet d'afficher le mot de passe du compte lors de la modification</li>
           <li xml:lang="he">הגדרות DAV: החלונית מאפשרת לראות את סיסמת החשבון בזמן העריכה</li>
           <li xml:lang="ka">DAV-ის მორგება: დიალოგი საშუალებას გაძლევთ, დაინახოთ ანგარიშის პაროლი მისი ჩასწორებისას</li>
           <li xml:lang="nl">DAV-configuratie: dialoog staat toe het zien van het accountwachtwoord bij bewerken</li>
@@ -1180,6 +1219,7 @@
           <li xml:lang="ca-valencia">Configuració DAV: l'assistent mostra icones de diversos proveïdors</li>
           <li xml:lang="cs">Konfigurace DAV: průvodce zobrazuje ikony pro různé poskytovatele</li>
           <li xml:lang="es">Configuración de DAV: el asistente muestra iconos para los distintos proveedores.</li>
+          <li xml:lang="fr">Configuration DAV : l'assistant affiche des icônes pour les différents fournisseurs</li>
           <li xml:lang="he">הגדרות DAV: האשף מציג סמלים לספקים השונים</li>
           <li xml:lang="ka">DAV-ის მორგება: ოსტატი სხვადასხვა პროვაიდერების ხატულებს გაჩვენებთ</li>
           <li xml:lang="nl">DAV-configuratie: assistent toont pictogrammen voor de verschillende leveranciers</li>
@@ -1189,6 +1229,13 @@
           <li xml:lang="tr">DAV yapılandırması: Sihirbaz, çeşitli sağlayıcılar için simgeler gösterir.</li>
           <li xml:lang="uk">Налаштування DAV: реалізовано показ піктограм для різних надавачів даних у майстрі</li>
           <li>DAV configuration: wizard updated list of providers</li>
+          <li xml:lang="ca">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
+          <li xml:lang="es">Configuración de DAV: se ha actualizado la lista de proveedores del asistente.</li>
+          <li xml:lang="ka">DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია</li>
+          <li xml:lang="pt-BR">Configuração DAV: lista de provedores atualizada no assistente</li>
+          <li xml:lang="sl">Konfiguracija DAV: čarovnikov posodobljen seznam ponudnikov</li>
+          <li xml:lang="tr">DAV yapılandırması: Sihirbaz sağlayıcı listesini güncellendi</li>
+          <li xml:lang="uk">Налаштування DAV: оновлено список надавачів даних у майстрі</li>
         </ul>
       </description>
     </release>
