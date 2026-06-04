@@ -472,6 +472,7 @@
           <li xml:lang="ca-valencia">Es pot especificar un calendari de tasques pendents predeterminat per a fer que la creació de tasques pendents noves siga més ràpida i fàcil amb menys possibilitats d'arxivar-les a la carpeta incorrecta. L'establiment d'un calendari d'esdeveniments predeterminat s'ha admés durant molt de temps. Vegeu el menú contextual del gestor de calendaris «Establix com a carpeta predeterminada de tasques pendents»</li>
           <li xml:lang="cs">Lze nastavit výchozí kalendář úkolů, díky čemuž bude vytváření nových úkolů rychlejší a snazší a sníží se riziko, že je zařadíte do nesprávné složky. Nastavení výchozího kalendáře událostí je podporováno již delší dobu. V kontextovém menu Správce kalendáře vyberte možnost „Nastavit jako výchozí kalendář úkolů“</li>
           <li xml:lang="es">Se puede especificar un calendario de tareas predeterminado para que crear nuevas tareas sea más rápido y sencillo, con menos probabilidades de archivarlas en la carpeta incorrecta. La configuración de un calendario de eventos predeterminado ha sido compatible desde hace tiempo. Consulte el menú de contexto del gestor de calendarios «Definir como calendario de tareas predeterminado».</li>
+          <li xml:lang="fr">Un agenda de tâches par défaut peut être spécifié pour rendre la création de nouvelles tâches plus rapide et plus facile, avec moins de risques de les classer dans le mauvais dossier. La définition d'un agenda d'évènements par défaut est prise en charge depuis longtemps. Veuillez consulter le menu contextuel du gestionnaire de calendrier « Définir comme agenda de tâches par défaut »</li>
           <li xml:lang="he">אפשר להגדיר לוח שנה כברירת מחדל למטלות כדי להקל על יצירת מטלות חדשות ולצמצם את האפשרות למילוי שלהן בתיקייה הלא נכונה. הגדרת לוח שנה כברירת מחדל לאירועים כבר נתמך זמן רב. אפשר לגשת אל תפריט ההקשר במנהל לוחות השנה „הגדרה כלוח שנה כברירת מחדל למשימות”</li>
           <li xml:lang="ka">შეგიძლიათ, შექმნათ ნაგულისხმევი გეგმების კალენდარი, რომ გეგმების შექმნა უფრო იოლი იყოს და შემცირდეს შანსი, ისინი არასწორ საქაღალდეში მოხვდნენ. ნაგულისხმევი მოვლენის კალენდრის დაყენება დიდი ხანია, მხარდაჭერილია.  იხილეთ კალენდრის მმართველის კონტექსტური მენიუ \"ნაგულისხმევ გეგმის კალენდრად დაყენება\"</li>
           <li xml:lang="nl">Een standaard takenkalender kan worden ingesteld om het aanmaken van nieuwe taken sneller en gemakkelijker te maken en de kans te verkleinen dat ze in de verkeerde map terechtkomen. Het instellen van een standaard evenementenagenda wordt al lange tijd ondersteund. Zie het contextmenu \"Instellen als standaard takenagenda\" in Agendabeheer.</li>
@@ -486,6 +487,8 @@
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra línies de quadrícula horitzontals en negreta/més gruixudes cada dues hores. Per a activar este comportament, marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="cs">Zobrazení agendy: volitelně lze každé dvě hodiny vykreslovat tučnější/silnější vodorovné čáry mřížky. Chcete-li tuto funkci zapnout, zaškrtněte možnost "Nakreslit výrazné vodorovné čáry mřížky pro sudé hodiny" na kartě Zobrazení -&gt; Zobrazení agendy</li>
           <li xml:lang="es">Vista de agenda: opcionalmente, dibujar líneas de cuadrícula horizontales más gruesas cada dos horas. Para activar este comportamiento, marque la opción «Dibujar líneas de cuadrícula horizontales gruesas para las horas pares» en la pestaña «Vista-&gt;Vista de agenda».</li>
+          <li xml:lang="fr">Vue en Agenda : dessine éventuellement des lignes de grille horizontales plus épaisses / fines toutes les deux heures. Pour activer ce comportement, veuillez cocher l'option « Dessiner des lignes de grille horizontales épaisses pour les heures paires » dans l'onglet « Affichage / Vue en Agenda »</li>
+          <li xml:lang="he">תצוגת סדר יום: אפשר לצייר קווי רשת אופקיים בולטים/עבים יותר כל שעתיים. כדי לאפשר את ההתנהגות הזאת, יש לסמן את האפשרות „לצייר קווי רשת מודגשים לשעות זוגיות” בלשונית תצוגה-&gt;סדר יום</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: უფრო სქელი ჰორიზონტალური ბადის ხაზების არასავალდებულო დახატვა ყოველ ორ საათში. ამ ქცევის ჩასართავად დასვით თოლია \"სქელი ჰორიზონტალური ბადის ხაზების დახატვა ლუწი საათებისთვის\" მენიუში ხედი-&gt;დღის წესრიგის ხედის ჩანართში</li>
           <li xml:lang="nl">Agendaweergave: optioneel dikkere horizontale rasterlijnen tekenen om de twee uur. Om dit in te schakelen, activeert u de optie \"Dikke horizontale rasterlijnen tekenen voor de even uren\" aan in het tabblad Beeld-&gt;Agendaweergave.</li>
           <li xml:lang="pt-BR">Visão de Agenda: opcionalmente, desenhe linhas de grade horizontais mais grossas a cada duas horas. Para ativar esse comportamento, marque a opção \"Desenhar linhas de grade horizontais grossas para as horas pares\" na aba Exibir -&gt; Visão de Agenda.</li>
@@ -499,6 +502,7 @@
           <li xml:lang="ca-valencia">Ara és possible ocultar els dies festius que pertanyen a categories específiques, per exemple, ocultar festes religioses. Vegeu el quadro combinat Categories a la secció Dies festius de la pestanya Data i hora-&gt;Regional</li>
           <li xml:lang="cs">Nyní je možné skrýt svátky, které patří do určitých kategorií, například náboženské svátky. Viz rozevírací seznam Kategorie v sekci Svátky na záložce Datum a čas -&gt; Regionální</li>
           <li xml:lang="es">Ahora se pueden ocultar los días festivos que pertenecen a determinadas categorías; por ejemplo, los días festivos religiosos. Consulte la lista desplegable «Categorías» en la sección «Días festivos» de la pestaña «Hora-&gt;Regional».</li>
+          <li xml:lang="fr">Il est maintenant possible de masquer les jours fériés appartenant à des catégories spécifiques, par exemple, pour masquer les jours fériés religieux. Veuillez consulter la liste déroulante « Catégories » dans la section « Jours fériés » de l'onglet « Temps / Régional ».</li>
           <li xml:lang="he">מעתה ניתן להסתיר חגים ששייכים לקטגוריות מסוימות, למשל להסתיר חגים דתיים. אפשר לגשת אל תיבת בחירת הקטגוריות בסעיף החגים תחת שעה&gt;לשונית אזורי</li>
           <li xml:lang="ka">ახლა შესაძლებელია იმ არდადეგების დამალვა, რომლებიც მიეკუთვნება კონკრეტულ კატეგორიებს, მაგალითად, რელიგიური დღესასწაულების დამალვა. იხილეთ კატეგორიების სია დრო&gt;რეგიონალური ჩანართის არდადეგების განყოფილებაში</li>
           <li xml:lang="nl">Het is nu mogelijk om vakantiedagen die tot specifieke categorieën behoren te verbergen, bijvoorbeeld religieuze feestdagen. Zie het keuzemenu Categorieën in het gedeelte Feestdagen van het tabblad Tijd&gt; Regionaal.</li>
@@ -528,6 +532,8 @@
           <li xml:lang="ca-valencia">Vista mensual: s'ha afegit una opció per a permetre ocultar els dies festius. Per a activar este comportament, desmarqueu l'opció «Mostra els festius a la vista mensual» a la pestanya Vistes-&gt;Vista mensual</li>
           <li xml:lang="cs">Měsíční zobrazení: Byla přidána možnost skrýt svátky. Chcete-li tuto funkci aktivovat, zrušte zaškrtnutí políčka "Zobrazit svátky v měsíčním zobrazení" na kartě Zobrazení -&gt; Měsíční zobrazení</li>
           <li xml:lang="es">Vista mensual: Se ha añadido una opción para permitir ocultar los días festivos. Para activar este comportamiento, desmarque la opción «Mostrar días festivos en la vista mensual» en la pestaña «Vistas-&gt;Vista mensual».</li>
+          <li xml:lang="fr">Vue en Mois : une option a été ajoutée permettant de masquer les jours fériés. Pour activer ce comportement, veuillez décocher l'option « Afficher les jours fériés dans la vue en Mois » dans l'onglet « Vues / Vue du mois »</li>
+          <li xml:lang="he">תצוגת חודש: נוספה אפשרות לאפשר הסתרת חגים. כדי לאפשר את ההתנהגות הזאת, יש לבטל את הסימון מהאפשרות „הצגת חגים בתצוגת חודש” בלשונית תצוגות-&gt;תצוגת חודש</li>
           <li xml:lang="ka">თვის ხედი: დაემატა დღესასწაულების დამალვის პარამეტრი. ამ ქცევის ჩასართავად მოხსენით თოლია \"დღესასწაულების ჩვენება თვის ხედში\" ჩანართში ხედები-&gt;თვის ხედი</li>
           <li xml:lang="nl">Maandweergave: er is een optie toegevoegd om vakantiedagen te verbergen. Om dit in te schakelen, schakelt u de optie \"Vakantiedagen weergeven in de maandweergave\" uit in het tabblad Beeld-&gt;Maandweergave</li>
           <li xml:lang="pt-BR">Visão mensal: Foi adicionada uma opção para ocultar feriados. Para ativar esse recurso, desmarque a opção \"Exibir feriados na visão mensal\" na aba Exibir -&gt; Visão mensal</li>
@@ -541,6 +547,8 @@
           <li xml:lang="ca-valencia">Vista mensual: s'ha afegit una opció per a permetre l'ús del color personalitzat de festiu com a color de fons del quadro de dates si almenys un dels festius cau en esta data. Per a activar este comportament, marqueu l'opció «Utilitza el color de fons de festius quan un festiu caiga en la data» a la pestanya Vistes-&gt;Vista mensual</li>
           <li xml:lang="cs">Měsíční zobrazení: Byla přidána možnost nastavit vlastní barvu svátku jako barvu pozadí pole s datem, pokud na daný den připadá alespoň jeden svátek. Chcete-li tuto funkci aktivovat, zaškrtněte na kartě Zobrazení -&gt; Měsíční zobrazení možnost "Pokud na daný den připadá svátek, použít barvu pozadí svátku"</li>
           <li xml:lang="es">Vista mensual: Se ha añadido una opción para permitir el uso del color personalizado de los días festivos como color de fondo del cuadro de la fecha si al menos un día festivo cae en dicha fecha. Para activar este comportamiento, marque la opción «Usar el color de fondo de los días festivos cuando un día festivo cae en la fecha» en la pestaña «Vistas-&gt;Vista mensual».</li>
+          <li xml:lang="fr">Vue en Mois : une option a été ajoutée pour permettre l'utilisation de la couleur personnalisée de jour férié comme couleur d'arrière-plan de la case de date si au moins un jour férié est présent à cette date. Pour activer ce comportement, veuillez cocher l'option « Utiliser la couleur d'arrière-plan pour les jours fériés lorsqu'un jour férié est présent à cette date » dans l'onglet « Vues / Vue en Mois »</li>
+          <li xml:lang="he">תצוגת חודש: נוספה אפשרות לאפשר שימוש בצבע החג המותאם אישית בתור צבע הרקע של תיבת התאריך אם לפחות חג אחד יוצר בתאריך הזה. כדי להפעיל את ההתנהגות הזאת, יש לסמן את האפשרות „להשתמש בצבע הרקע של החג כאשר חג יוצא על התאריך” תחת הלשונית תצוגות-&gt;תצוגת חודש</li>
           <li xml:lang="ka">თვის ხედი: დაემატა არჩევანი, რომ შეძლოთ მორგებული დღესასწაულის ფერის გამოყენება თარიღის ველის ფერად, თუ ამ თარიღზე, სულ ცოტა, ერთი დღესასწაულია. ამ ქცევის ჩასართავად დასვით თოლია \"დღესასწაულის ფონის ფერის გამოყენება, როცა თარიღზე, სულ ცოტა, ერთი დღესასწაულია\" ჩანართში ხედები-&gt;თვის ხედი</li>
           <li xml:lang="nl">Maandweergave: Er is een optie toegevoegd waarmee de aangepaste vakantiedagkleur als achtergrondkleur voor het datumvak kan worden gebruikt als er ten minste één feestdag op die datum valt. Om dit in te schakelen, activeert u de optie \"Gebruik de vakantiedagachtergrondkleur wanneer er één feestdag op een datum valt\" aan in het tabblad Beeld-&gt;Maandweergave.</li>
           <li xml:lang="pt-BR">Visão mensal: Foi adicionada uma opção que permite usar a cor personalizada do feriado como cor de fundo da caixa de data se pelo menos um feriado ocorrer nessa data. Para ativar esse comportamento, marque a opção \"Usar a cor de fundo do feriado quando um feriado ocorrer na data\" na aba Exibir -&gt; Visão mensal</li>
@@ -554,6 +562,8 @@
           <li xml:lang="ca-valencia">Vista mensual: s'ha afegit una opció per a mostrar l'hora d'inici i l'hora final. Anteriorment només s'admetia mostrar l'hora d'inici. Per a marcar esta opció, marqueu l'opció «Mostra l'hora d'inici i l'hora final en els elements de la vista mensual» a la pestanya Visualitza-&gt;Vista mensual</li>
           <li xml:lang="cs">Měsíční zobrazení: Byla přidána možnost zobrazit čas začátku a konce. Dříve bylo možné zobrazit pouze čas začátku. Chcete-li tuto možnost aktivovat, zaškrtněte políčko "Zobrazit čas začátku a konce v položkách měsíčního zobrazení" na kartě Zobrazení -&gt; Měsíční zobrazení</li>
           <li xml:lang="es">Vista mensual: Se ha añadido una opción para mostrar la hora de inicio y la hora de finalización. Anteriormente, solo se admitía la visualización de la hora de inicio. Para activar esta opción, marque la opción «Mostrar la hora de inicio y la hora de finalización en los elementos de la vista mensual» en la pestaña «Vista-&gt;Vista mensual».</li>
+          <li xml:lang="fr">Vue en Mois : une option a été ajoutée pour afficher l'heure de début et l'heure de fin. Auparavant, seule l'affichage de l'heure de début était pris en charge. Pour activer cette option, veuillez cocher l'option « Afficher l'heure de début et l'heure de fin dans les éléments de la vue en Mois » dans l'onglet « Vue / Vue en Mois »</li>
+          <li xml:lang="he">תצוגת חודש: נוספה אפשרות להציג זמני התחלה וסיום. בעבר הייתה תמיכה רק בהצגת זמני התחלה. כדי לאפשר את זה, יש לסמן את האפשרות „הצגת זמן התחלה וזמן סיום בפריטי תצוגת חודש” בלשונית תצוגה-&gt;תצוגת חודש</li>
           <li xml:lang="ka">თვის ხედი: დაემატა დაწყებისა და დასრულების ჩვენების პარამეტრი. ადრე, მხოლოდ, დაწყების დროის ჩვენება იყო მხარდაჭერილი. ამ პარამეტრის ჩასართავად, ჩართეთ თოლია \"დაწყებისა და დამთავრების დროების ჩვენება თვის ხედის ელემენტებში\" მენიუდან ხედი-&gt;თვის ხედის ჩანართი</li>
           <li xml:lang="nl">Maandweergave: Er is een optie toegevoegd om de begin- en eindtijd weer te geven. Voorheen werd alleen de begintijd weergegeven. Om deze optie in te schakelen, activeert u de optie \"Begin- en eindtijd weergeven in items in de maandweergave\" aan in het tabblad Weergave-&gt;Maandweergave.</li>
           <li xml:lang="pt-BR">Visão mensal: Foi adicionada uma opção para exibir os horários de início e término. Anteriormente, apenas o horário de início era exibido. Para habilitar essa opção, marque a opção \"Exibir os horários de início e término nos itens da visão mensal\" na guia Exibir -&gt; Visão mensal.</li>
@@ -583,6 +593,7 @@
           <li xml:lang="cs">Zobrazení agendy: volitelné zobrazení umístění položek v zobrazení agendy. Chcete-li tuto funkci povolit, zaškrtněte možnost "Zobrazit umístění položek v zobrazení agendy" na kartě Zobrazení-&gt;Zobrazení agendy</li>
           <li xml:lang="es">Vista de agenda: Opcionalmente, mostrar las ubicaciones de las incidencias dentro de los elementos de la agenda. Para activar este comportamiento, marque la opción «Mostrar ubicaciones de incidencias en los elementos de la vista de agenda» en la pestaña «Vista-&gt;Vista de agenda».</li>
           <li xml:lang="fr">Vue en Agenda : affichage éventuel des lieux d'occurrences à l'intérieur des éléments d'agendas. Pour activer ce comportement, veuillez cocher l'option « Afficher les lieux d'occurrences dans les éléments de la vue en Agenda » dans l'onglet « Affichage / Vue en  Agenda »</li>
+          <li xml:lang="he">תצוגת סדר יום: להציג את מקומות החזרות בתוך פריטי סדר היום כרשות. כדי להפעיל את ההתנהגות הזאת יש לסמן את האפשרות „להציג מקומות חזרות בפריטי תצוגת סדר יום” בלשונית תצוגה-&gt;תצוגת סדר יום</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: მოვლენის მდებარეობების არასავალდებულო ჩვენება დღის წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის მდებარეობის ჩვენება დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი-&gt;დღის წესრიგის ხედის ჩანართი</li>
           <li xml:lang="nl">Agendaweergave: toon optioneel de incidentlocaties in de agenda-items. Om dit gedrag in te schakelen, activeer de optie \"Incidentlocaties tonen in de items in de agenda\" in het weergavetabblad Beeld-&gt;Agenda</li>
           <li xml:lang="pt-BR">Visão de Agenda: opcionalmente, mostre as localizações das incidências dentro dos itens da agenda. Para ativar esse comportamento, marque a opção \"Mostrar localizações de incidência nos itens da visão de agenda\" na aba Exibir -&gt; Visão da Agenda.</li>
@@ -596,6 +607,8 @@
           <li xml:lang="ca-valencia">S'han afegit opcions per a establir classificacions d'accés predeterminades (Públic, Confidencial o Privat) en crear esdeveniments, tasques pendents o diaris nous. Trieu les vostres preferències en els quadros combinats «General-&gt;Classificació d'accés predeterminada personal».</li>
           <li xml:lang="cs">Byly přidány možnosti nastavení výchozích úrovní přístupu (Veřejné, Důvěrné nebo Soukromé) při vytváření nových událostí, úkolů a deníků.  Své preference vyberte v rozevíracích seznamech v části "Obecné -&gt; Osobní -&gt; Výchozí úroveň přístupu".</li>
           <li xml:lang="es">Se han añadido opciones para configurar clasificaciones de acceso predeterminadas (Público, Confidencial o Privado) al crear nuevos eventos, tareas pendientes y entradas de diario. Seleccione sus preferencias en las listas desplegables «General-&gt;Clasificación de acceso predeterminada personal».</li>
+          <li xml:lang="fr">Des options pour définir les classifications d'accès par défaut (Public, Confidentiel ou Privé) lors de la création de nouveaux évènements, Tâches et Journaux ont été ajoutées. Veuillez sélectionner vos préférences dans les listes déroulantes « Général / Classification d'accès personnel par défaut ».</li>
+          <li xml:lang="he">אפשרויות להגדרת סיווגי גישת ברירת המחדל (ציבורי, חסוי או פרטי) בעת יצירת אירועים ומטלות חדשים והוספת יומנים. אפשר לבחור את ההעדפות שלך דרך תיבות הבחירה המשולבות תחת „כללי-&gt;סיווג גישת ברירת מחדל”.</li>
           <li xml:lang="ka">დაემატა პარამეტრები ნაგულისხმევი წვდომის კლასიფიკაციის (საჯარო, კონფიდენციალური, ან პირადი) დასაყენებლად ახალი მოვლენების, გეგმებისა და ჟურნალების შექმნისას. აირჩიეთ სასურველი კლასიფიკაცია მენიუში \"ზოგადი-&gt;პირადი ნაგულისხმევი წვდომის კლასიფიკაცია\".</li>
           <li xml:lang="nl">Er zijn opties toegevoegd voor het instellen van standaardtoegangsclassificaties (Openbaar, Vertrouwelijk of Privé) bij het aanmaken van nieuwe evenementen, taken en dagboeken. Selecteer uw voorkeuren in de keuzelijsten \"Algemeen-&gt;Persoonlijke standaardtoegangsclassificatie\".</li>
           <li xml:lang="pt-BR">Foram adicionadas opções para definir classificações de acesso padrão (Público, Confidencial ou Privado) ao criar novos Eventos, Tarefas e Diários. Selecione suas preferências nas caixas de combinação \"Geral -&gt; Classificação de acesso padrão pessoal\".</li>
@@ -647,6 +660,7 @@
           <li xml:lang="ca-valencia">Els recordatoris estan activats de manera predeterminada per a tots els esdeveniments i tasques pendents noves. Per a desactivar este comportament, desmarqueu les opcions Habilita els recordatoris a la pestanya de configuració Data i hora-&gt;Valors predeterminats</li>
           <li xml:lang="cs">Připomenutí jsou ve výchozím nastavení povolena pro všechny nové události a úkoly. Chcete-li toto chování zakázat, zrušte zaškrtnutí políčka povolující připomenutí v nastavení na kartě Datum a čas-&gt;Výchozí hodnoty</li>
           <li xml:lang="es">Los recordatorios están activados de forma predeterminada para todos los eventos y tareas pendientes nuevos. Para desactivar este comportamiento, desmarque las opciones «Activar recordatorios» en la pestaña de preferencias «Hora-&gt;Valores predeterminados».</li>
+          <li xml:lang="fr">Les rappels sont activés par défaut pour tous les nouveaux évènements et tâches. Pour désactiver ce comportement, veuillez décocher l'option « Activer les rappels » dans l'onglet « Temps / Valeurs par défaut des paramètres ».</li>
           <li xml:lang="he">תזכורות פעילות כברירת מחדל לכל האירועים והמטלות החדשים. כדי לכבות את ההתנהגות הזאת, יש לבטל את האפשרויות להפעלת תזכורות בהגדרות בלשונית שעה-&gt;ערכי ברירת מחדל</li>
           <li xml:lang="ka">შეხსენებები ნაგულისხმევად ყველა მოვლენისა და გეგმისთვის ჩართულია. ამ ქცევის გასათიშად მოხსენით შეხსენებების ჩართვის თოლია მენიუში მორგება დრო-&gt;ნაგულისხმევი მნიშვნელობების ჩანართი</li>
           <li xml:lang="nl">Herinneringen zijn standaard ingeschakeld voor alle nieuwe evenementen en taken. Om dit uit te schakelen, deactiveert u de optie Herinneringen inschakelen in de instellingen onder tabblad Tijd&gt;Standaardwaarden.</li>
@@ -676,6 +690,7 @@
           <li xml:lang="ca-valencia">Vista mensual: utilitza un color lleugerament diferent per a dibuixar les capçaleres dels dies fora del mes seleccionat</li>
           <li xml:lang="cs">Měsíční zobrazení: pro vykreslení záhlaví dnů mimo aktuálně vybraný měsíc byla použita mírně odlišná barva</li>
           <li xml:lang="es">Vista mensual: Usar un color ligeramente diferente para dibujar los encabezados de los días que no pertenecen al mes seleccionado.</li>
+          <li xml:lang="fr">Vue par Mois : utilisation d' une couleur légèrement différente pour dessiner les en-têtes des jours en dehors du mois actuellement sélectionné</li>
           <li xml:lang="he">תצוגת חודש: להשתמש בצבע קצת שונה לציור כותרות הימים לימים שמחוץ לחודש הנבחר</li>
           <li xml:lang="ka">თვის ხედი: ამჟამად მონიშნული თვის დღეების გარეთ მყოფი დღეების სათაურის დახატვისას ოდნავ განსხვავებული ფერის გამოყენება</li>
           <li xml:lang="nl">Maandweergave: gebruik een iets andere kleur voor de dagkoppen voor dagen buiten de nu geselecteerde maand.</li>
@@ -690,6 +705,7 @@
           <li xml:lang="ca-valencia">Vista mensual: s'eliminen els controls de navegació a favor de la barra del navegador millorada de l'aplicació</li>
           <li xml:lang="cs">Zobrazení měsíce: ovládací prvky navigace v pravém dolním rohu byly odstraněny a nahrazeny vylepšenou navigační lištou aplikace</li>
           <li xml:lang="es">Vista mensual: Los controles de navegación de la parte inferior derecha se han eliminado en favor de la barra de navegación de la aplicación mejorada.</li>
+          <li xml:lang="fr">Vue par Mois : les contrôles de navigation sur le coté inférieur droit sont supprimés au profit de la barre de navigation d'applications améliorée</li>
           <li xml:lang="he">תצוגת חודש: פקדי הניווט בצד השמאלי לטובת סרגל ניווט היישום המשופר</li>
           <li xml:lang="ka">თვის ხედი: ნავიგაციის კონტროლის ელემენტები ქვედა მარჯვენა მხარეს მოშორდა. დაემატა გაუმჯობესებული აპლიკაციის ნავიგაციის ზოლი</li>
           <li xml:lang="nl">Maandweergave: de navigatieknoppen rechtsonder zijn verwijderd en vervangen door de verbeterde toepassingsnavigatiebalk.</li>
@@ -704,6 +720,7 @@
           <li xml:lang="ca-valencia">Vista mensual: es pot canviar el color de fons de la cel·la de la data d'hui. Per a configurar el color, establiu el «Color de fons d'hui de la vista d'hui» en la configuració de colors i lletres</li>
           <li xml:lang="cs">Měsíční zobrazení: barvu pozadí buňky s dnešním datem lze změnit. Chcete-li barvu nastavit,  zvolte „Barvu pozadí dnešku v měsíčním zobrazení“ v nastavení barev a písma</li>
           <li xml:lang="es">Vista mensual: Se puede cambiar el color de fondo de la celda de la fecha de hoy. Para configurar el color, defina el «Color de fondo de la vista mensual para hoy» en la configuración de «Colores y fuentes».</li>
+          <li xml:lang="fr">Vue en Mois : la couleur de fond de la cellule de la date d'aujourd'hui peut être modifiée. Pour configurer la couleur, veuillez définir la « Couleur de fond d'aujourd'hui dans la vue en Mois » dans les paramètres « Couleurs et polices »</li>
           <li xml:lang="he">תצוגת חודש: אפשר לשנות את צבע הרקע לתא של היום. כדי להגדיר את הצבע, יש להגדיר את „צבע רקע היום בתצוגת חודש” בהגדרות צבעים וגופנים</li>
           <li xml:lang="ka">თვის ხედი: დღევანდელი თარიღის უჯრედში ფონის ფერი, შეიძლება, შეიცვალოს. ფერის კონფიგურაციისთვის, დააყენეთ \"თვის ხედი დღეს ფონის ფერი\" ფერებისა და ფონტების პარამეტრებში</li>
           <li xml:lang="nl">Maandweergave: de achtergrondkleur voor de cel met de datum van vandaag kan gewijzigd worden. Om de kleur te wijzigen, zet de \"Achtergrondkleur van vandaag voor maandweergave\" in instellen kleuren en lettertypen</li>
@@ -748,6 +765,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: els esdeveniments amb una duració curta es mostren amb la seua hora d'inici a més del resum</li>
           <li xml:lang="cs">Zobrazení agendy: události s krátkou dobou trvání se zobrazují s časem zahájení a jejich shrnutím</li>
           <li xml:lang="es">Vista de agenda: Los eventos de corta duración se muestran con su hora de inicio además de su resumen.</li>
+          <li xml:lang="fr">Vue en Agenda : les évènements de courte durée sont affichés avec leur heure de début en plus de leur résumé</li>
           <li xml:lang="he">תצוגת סדר יום: אירועים קצרים מוצגים עם זמן ההתחלה שלהם בנוסף לתקציר</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: მოკლე ხანგრძლივობის მქონე მოვლენები მათ შეჯამებასთან ერთად მათი დაწყების დროითაა ნაჩვენები</li>
           <li xml:lang="nl">Agendaweergave: gebeurtenissen met een korte tijdsduur worden met hun begintijd getoond naast hun samenvatting</li>
@@ -816,6 +834,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha afegit el menú contextual de les etiquetes prompte per a mostrar/ocultar les etiquetes prompte per al fus horari del sistema a la part dreta (o esquerra)</li>
           <li xml:lang="cs">Zobrazení agendy: přidáno kontextové menu časových štítků pro zobrazení/skrytí časových štítků pro systémové časové pásmo na pravé (nebo levé) straně</li>
           <li xml:lang="es">Vista de agenda: se ha añadido un menú de contexto a las etiquetas de tiempo para mostrar/ocultar estas etiquetas en la zona horaria del sistema en el lado derecho (o izquierdo) también.</li>
+          <li xml:lang="fr">Vue en Agenda : ajout du menu contextuel des étiquettes de temps pour afficher / masquer les étiquettes de temps pour le fuseau horaire du système sur le coté droit (Ou à gauche) également</li>
           <li xml:lang="he">תצוגת סדר יום: נוסף תפריט הקשר תוויות זמן להצגת/הסתרת תוויות זמן לאזור הזמן של המערכת מצד ימין (או שמאל) בנוסף</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: დაემატა დროის ჭდეების კონტექსტური მენიუ დროის ჭდეების საჩვენებლად/დასამალად სისტემური დროის სარტყლისთვის მარჯვენა (ან მარცხენა) მხარეს</li>
           <li xml:lang="nl">Agendaweergave: toegevoegde tijdlabels aan contextmenu om tijdlabels te tonen/verbergen voor de systeemtijdzone ook rechter- (of linkerkant)</li>
@@ -869,6 +888,7 @@
           <li xml:lang="ca-valencia">La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari setmanal» per a admetre els usuaris no treballadors</li>
           <li xml:lang="cs">Sémantika se mění z konceptu "pracovního rozvrhu" na koncept "týdenního rozvrhu", aby vyhovovala nepracujícím uživatelům</li>
           <li xml:lang="es">Se ha cambiado la semántica del concepto de «horario laboral» a la de «horario semanal» para adaptarse a los usuarios que no trabajan.</li>
+          <li xml:lang="fr">La sémantique est passée d'un concept de « Calendrier de travail » à un concept de « Calendrier hebdomadaire » afin d'accommoder les personnes utilisatrices non actives.</li>
           <li xml:lang="he">הסמנטיקה הוחלפה מעקרון של „לו״ז עבודה” ל„לו״ז שבועי” כדי להתאים למשתמשים שאינם עובדים</li>
           <li xml:lang="ka">სემანტიკა შეიცვალა \"სამუშაო გრაფიკის\" კონცეპტიდან \"კვირის გრაფიკის\" კონცეპტზე, რომ უმუშევარი მომხმარებლებიც დაფაროს</li>
           <li xml:lang="nl">Semantiek is gewijzigd van een concept \"werkplan\" naar een concept \"weekplan\" om niet-werkende gebruikers te accommoderen</li>
@@ -894,7 +914,10 @@
           <li xml:lang="uk">Початкові часи початку «Нової події» у новій версії є узгодженими за усіма панелями перегляду</li>
           <li>Improved default event calendar handling</li>
           <li xml:lang="ca">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
+          <li xml:lang="ca-valencia">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
+          <li xml:lang="cs">Vylepšené zpracování výchozího kalendáře událostí</li>
           <li xml:lang="es">Se ha mejorado la gestión del calendario de eventos predeterminado.</li>
+          <li xml:lang="he">טיפול משפול בלוח שנה כברירת מחדל לאירועים</li>
           <li xml:lang="ka">გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა</li>
           <li xml:lang="pt-BR">Melhorada a manipulação padrão de evento de calendário</li>
           <li xml:lang="sl">Izboljšano upravljanje privzetega koledarja dogodkov</li>
@@ -996,6 +1019,7 @@
           <li xml:lang="ca-valencia">Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda</li>
           <li xml:lang="cs">Zobrazení agendy: sloučení časových rozsahů "Den", "Následujících X dnů", "Týdenní rozvrh" a "Týden" do tlačítka nástroje Agenda</li>
           <li xml:lang="es">Vista de agenda: se han consolidado los intervalos de tiempo «Día», «Próximos X días», «Horario de trabajo» y «Semana» en el botón de la herramienta Agenda.</li>
+          <li xml:lang="fr">Vue  n Agenda : consolidation des plages horaires « Jour », « Prochains X jours », « Planning de travail », « Semaine » dans le bouton de l'outil « Agenda »</li>
           <li xml:lang="he">תצוגת סדר יום: טווחי הזמנים „יום”, „X הימים הקרובים”, „לו״ז עבודה”, „שבוע” אוחדו לתוך כפתור כלי סדר היום</li>
           <li xml:lang="ka">გეგის ხედი: გაერთიანებული \"დღის\", \"შემდეგი X დღის\", \"სამუშაოს გეგმის\", \"კვირის\" დროის შუალედების გადატანა გეგმის ხელსაწყოს ღილაკში</li>
           <li xml:lang="nl">Agendaweergave: geconsolideerd de tijdreeksen \"Dag\", \"Volgende X dagen\", \"Werkplanning\", \"Week\" in de werkknop Agenda</li>
@@ -1100,6 +1124,7 @@
           <li xml:lang="ca-valencia">Navegador de dates: l'opció «Els números de setmana seleccionen una setmana feinera en el mode de setmana laboral» és certa de manera predeterminada</li>
           <li xml:lang="cs">Navigátor: nastavení "Čísla týdnů vybírají pracovní týden v režimu pracovního týdne" je ve výchozím nastavení zapnuté</li>
           <li xml:lang="es">Navegador de fechas: el ajuste «Los números de semana seleccionan una semana de trabajo en el modo de trabajo semanal» es cierto de forma predeterminada.</li>
+          <li xml:lang="fr">Navigateur de dates : le paramètre « Les numéros de semaine permettent la sélection d'une semaine de travail lorsque le mode est Semaine de travail » est activé par défaut</li>
           <li xml:lang="he">נווטן תאריכים: ההגדרה „מספרי השבועות בוחרים מספר שבוע כאשר נמצאים במצב שבוע עבודה” פעילה כברירת מחדל</li>
           <li xml:lang="ka">თარიღის ნავიგატორი: \"კვირის ნომრები აირჩევენ სამუშაო კვირას, როცა სამუშაო კვირის რეჟიმია ჩართული\" პარამეტრი ნაგულისხმევად ჭეშმარიტია</li>
           <li xml:lang="nl">Datumnavigator: de instelling \"Weeknummers in een werkweek selecteren indien in modus Werkweek\" is standaard waar</li>
@@ -1230,7 +1255,10 @@
           <li xml:lang="uk">Налаштування DAV: реалізовано показ піктограм для різних надавачів даних у майстрі</li>
           <li>DAV configuration: wizard updated list of providers</li>
           <li xml:lang="ca">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
+          <li xml:lang="ca-valencia">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
+          <li xml:lang="cs">Konfigurace DAV: aktualizován seznam poskytovatelů v průvodci</li>
           <li xml:lang="es">Configuración de DAV: se ha actualizado la lista de proveedores del asistente.</li>
+          <li xml:lang="he">הגדרות DAV: רשימת הספקים באשף עודכנה</li>
           <li xml:lang="ka">DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია</li>
           <li xml:lang="pt-BR">Configuração DAV: lista de provedores atualizada no assistente</li>
           <li xml:lang="sl">Konfiguracija DAV: čarovnikov posodobljen seznam ponudnikov</li>
