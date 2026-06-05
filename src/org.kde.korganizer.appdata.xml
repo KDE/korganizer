@@ -917,8 +917,10 @@
           <li xml:lang="ca-valencia">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
           <li xml:lang="cs">Vylepšené zpracování výchozího kalendáře událostí</li>
           <li xml:lang="es">Se ha mejorado la gestión del calendario de eventos predeterminado.</li>
+          <li xml:lang="fr">Gestion améliorée du calendrier des évènements par défaut</li>
           <li xml:lang="he">טיפול משפול בלוח שנה כברירת מחדל לאירועים</li>
           <li xml:lang="ka">გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა</li>
+          <li xml:lang="nl">Verbeterde behandeling van standaardagenda voor gebeurtenissen</li>
           <li xml:lang="pt-BR">Melhorada a manipulação padrão de evento de calendário</li>
           <li xml:lang="sl">Izboljšano upravljanje privzetega koledarja dogodkov</li>
           <li xml:lang="tr">İyileştirilmiş öntanımlı takvim işleme</li>
@@ -1258,8 +1260,10 @@
           <li xml:lang="ca-valencia">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
           <li xml:lang="cs">Konfigurace DAV: aktualizován seznam poskytovatelů v průvodci</li>
           <li xml:lang="es">Configuración de DAV: se ha actualizado la lista de proveedores del asistente.</li>
+          <li xml:lang="fr">Configuration DAV : mise à jour par l'assistant de la liste des fournisseurs</li>
           <li xml:lang="he">הגדרות DAV: רשימת הספקים באשף עודכנה</li>
           <li xml:lang="ka">DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია</li>
+          <li xml:lang="nl">DAV-configuratie: assistent heeft lijst met leveranciers bijgewerkt</li>
           <li xml:lang="pt-BR">Configuração DAV: lista de provedores atualizada no assistente</li>
           <li xml:lang="sl">Konfiguracija DAV: čarovnikov posodobljen seznam ponudnikov</li>
           <li xml:lang="tr">DAV yapılandırması: Sihirbaz sağlayıcı listesini güncellendi</li>
