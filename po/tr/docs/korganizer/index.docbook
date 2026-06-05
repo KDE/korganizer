@@ -938,7 +938,7 @@
 >Bu bölümde, farklı görüntüleme kiplerini açıklıyoruz ve &korganizer; kullanarak kişisel verilerinize nasıl göz atacağınıza dair bir genel bakış sunuyoruz.</para>
 
 <para
->&korganizer; penceresi iki ana alana ayrılabilir: Ana pencere ve kenar çubuğu. Ana pencere ana görünümleri, kenar çubuğu ise Tarih Gezgini’ni, Yapılacaklar Görünümü’nü, Öğe Görüntüleyicisi’ni ve Takvim Yöneticisi Görünümü’nü görüntüler. Kenar çubuğu bileşenlerini gösterip gizlemek için <menuchoice
+>&korganizer; penceresi iki ana alana ayrılabilir: Ana pencere ve kenar çubuğu. Ana pencere ana görünümleri, kenar çubuğu ise Tarih Gezgini’ni, Yapılacaklar Görünümü’nü, Öge Görüntüleyicisi’ni ve Takvim Yöneticisi Görünümü’nü görüntüler. Kenar çubuğu bileşenlerini gösterip gizlemek için <menuchoice
 ><guimenu
 >Ayarlar</guimenu
 > <guisubmenu
@@ -1078,7 +1078,7 @@
 >zil</guiicon
 > simgesi ve birden çok kez yinelenirse bir <guiicon
 >takip eden oklar</guiicon
-> simgesi görüntülenir. Fareyi bir takvim öğesinin üzerine getirdiğinizde, öğe hakkında ayrıntılı bilgi içeren bir araç ipucu görüntülenir. &korganizer;’ün geçerli gün üzerinde (Marcus Bains çizgisi) geçerli zamanı imleyen kırmızı bir çizgi göstermesini sağlamak için <link linkend="config-main-views"
+> simgesi görüntülenir. Fareyi bir takvim ögesinin üzerine getirdiğinizde, öge hakkında ayrıntılı bilgi içeren bir araç ipucu görüntülenir. &korganizer;’ün geçerli gün üzerinde (Marcus Bains çizgisi) geçerli zamanı imleyen kırmızı bir çizgi göstermesini sağlamak için <link linkend="config-main-views"
 >&korganizer; görünüm yapılandırmasında</link
 > <guilabel
 >Geçerli zaman akışını (Marcus Bains) göster</guilabel
@@ -2515,7 +2515,7 @@
 
 
 <para
->Davet edildiğiniz etkinlik veya yapılacak işin bazı özelliklerinden memnun kalmazsanız ve organizatöre karşı bir teklif göndermek isterseniz (örneğin alternatif bir yer veya zaman) öğeyi düzenleyip ve seçip <menuchoice
+>Davet edildiğiniz etkinlik veya yapılacak işin bazı özelliklerinden memnun kalmazsanız ve organizatöre karşı bir teklif göndermek isterseniz (örneğin alternatif bir yer veya zaman) ögeyi düzenleyip ve seçip <menuchoice
 > <guimenu
 >Program</guimenu
 ><guimenuitem
