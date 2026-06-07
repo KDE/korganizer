@@ -467,6 +467,7 @@
       <description>
         <ul>
           <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar\"</li>
+          <li xml:lang="ar">يمكن تحديد تقويم مهام مبدئي لجعل إنشاء المهام الجديدة أسرع وأسهل مع فرصة أقل لحفظها في المجلد الخطأ. كان يُدعم تحديد تقويم أحداث مبدئي منذ فترة طويلة. راجع قائمة السياق لمدير التقويم \"عيّن كتقويم مهام مبدئي\".</li>
           <li xml:lang="bg">Може да се укаже календар за задачи по подразбиране, за да бъде създаването на нови задачи по-бързо и лесно, намалявайки риска от записването им в грешна папка. Задаването на календар за събития по подразбиране се поддържа от дълго време. Вижте контекстното меню на мениджъра на календари „Задаване като календар за задачи по подразбиране“.</li>
           <li xml:lang="ca">Es pot especificar un calendari de tasques pendents predeterminat per a fer que la creació de tasques pendents noves sigui més ràpida i fàcil amb menys possibilitats d'arxivar-les a la carpeta incorrecta. L'establiment d'un calendari d'esdeveniments predeterminat s'ha admès durant molt de temps. Vegeu el menú contextual del gestor de calendaris «Estableix com a carpeta predeterminada de tasques pendents»</li>
           <li xml:lang="ca-valencia">Es pot especificar un calendari de tasques pendents predeterminat per a fer que la creació de tasques pendents noves siga més ràpida i fàcil amb menys possibilitats d'arxivar-les a la carpeta incorrecta. L'establiment d'un calendari d'esdeveniments predeterminat s'ha admés durant molt de temps. Vegeu el menú contextual del gestor de calendaris «Establix com a carpeta predeterminada de tasques pendents»</li>
@@ -482,6 +483,7 @@
           <li xml:lang="tr">Yeni yapılacakların daha hızlı ve kolay oluşturulması ve yanlış klasöre kaydedilme olasılığının azaltılması için öntanımlı bir Yapılacaklar takvimi belirlenebilir. Öntanımlı bir etkinlik takvimi ayarlama özelliği uzun süredir desteklenmektedir. Takvim Yöneticisi sağ tık menüsündeki Öntanımlı Yapılacaklar Takvimi Olarak Ayarla” seçeneğine göz atın.</li>
           <li xml:lang="uk">Можна вказати типовий календар для завдань, щоб пришвидшити та спростити створення записів завдань, зменшивши ризик їх потрапляння до помилкової теки. Підтримку визначення типового календаря подій реалізовано вже доволі давно. Див. пункт контекстного меню керування календарями «Зробити типовим календарем записів Завдання».</li>
           <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the \"Draw bold horizontal grid lines for the even hours\" option in the View-&gt;Agenda View tab</li>
+          <li xml:lang="ar">عرض جدول الأعمال: يمكنك اختيارياً رسم خطوط شبكية أفقية أكثر سمكاً كل ساعتين. لتمكين هذه الميزة، حدد الخيار \”ارسم خطوطًا أفقية سميكة للساعات الزوجية\“ في علامة التبويب \”عرض-&gt;عرض جدول الأعمال\“</li>
           <li xml:lang="bg">Изглед „Дневен план“: опция за изчертаване на по-дебели хоризонтални линии на мрежата на всеки две часа. За да активирате това поведение, поставете отметка на опцията „Изчертаване на дебели хоризонтални линии за четните часове“ в раздела „Изглед -&gt; Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra línies de quadrícula horitzontals en negreta/més gruixudes cada dues hores. Per a activar aquest comportament, marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra línies de quadrícula horitzontals en negreta/més gruixudes cada dues hores. Per a activar este comportament, marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -497,6 +499,7 @@
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak her iki saatte bir daha kalın yatay kılavuz çizgileri çizilir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Çift saatler için kalın yatay kılavuz çizgileri çiz” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути цю можливість, поставте позначку навпроти пункту «Малювати жирні горизонтальні лінії сітки для парних годин» на вкладці «Перегляд-&gt;Перегляд порядку денного».</li>
           <li>It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in the Holidays section of the Time&gt;Regional tab</li>
+          <li xml:lang="ar">أصبح من الممكن الآن إخفاء العطلات التي تنتمي إلى فئات معينة، على سبيل المثال إخفاء العطلات الدينية. انظر مربع القائمة المنسدلة «الفئات» في قسم «العطلات» ضمن علامة التبويب «الوقت والتاريخ» -&gt; «الإعدادات الإقليمية»</li>
           <li xml:lang="bg">Вече е възможно да се скриват официални празници, които принадлежат към специфични категории (например религиозни празници). Вижте падащото меню „Категории“ в раздела „Празници“ на секцията „Време -&gt; Регионални“</li>
           <li xml:lang="ca">Ara és possible ocultar els dies festius que pertanyen a categories específiques, per exemple, ocultar festes religioses. Vegeu el quadre combinat Categories a la secció Dies festius de la pestanya Data i hora-&gt;Regional</li>
           <li xml:lang="ca-valencia">Ara és possible ocultar els dies festius que pertanyen a categories específiques, per exemple, ocultar festes religioses. Vegeu el quadro combinat Categories a la secció Dies festius de la pestanya Data i hora-&gt;Regional</li>
@@ -512,6 +515,7 @@
           <li xml:lang="tr">Artık belirli kategorilere ait resmi tatilleri (örneğin dini bayramları) gizlemek olanaklıdır. Zaman → Bölgesel sekmesinin Tatiller bölümündeki Kategoriler açılır kutusuna göz atın.</li>
           <li xml:lang="uk">У новій версії можна приховувати свята, які належать до певних категорій, наприклад, приховати релігійні свята. Див. спадний список «Категорії» у розділі «Свята» на вкладці «Час і дата» -&gt; «Регіональні».</li>
           <li>Month view: for the sake of consistency, holidays that land on a workday are no longer hidden</li>
+          <li xml:lang="ar">عرض الشهر: حرصًا على الاتساق، لم تعد العطلات التي تصادف أيام عمل تُخفى</li>
           <li xml:lang="bg">Месечен изглед: за по-голяма последователност, празниците, които се падат в работен ден, вече не се скриват.</li>
           <li xml:lang="ca">Vista mensual: en nom de la coherència, els festius que cauen en una jornada laboral ja no s'oculten</li>
           <li xml:lang="ca-valencia">Vista mensual: en nom de la coherència, els festius que cauen en una jornada laboral ja no s'oculten</li>
@@ -527,6 +531,7 @@
           <li xml:lang="tr">Ay görünümü: Tutarlılık sağlamak amacıyla, iş günlerine denk gelen resmi tatiller artık gizlenmez.</li>
           <li xml:lang="uk">Перегляд місяця: заради сумісності, свята, які припадають на робочий день, більше не буде приховано</li>
           <li>Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option in the Views-&gt;Month View tab</li>
+          <li xml:lang="ar">عرض الشهر: تمت إضافة خيار يسمح بإخفاء أيام العطلات. لتمكين هذه الميزة، قم بإلغاء تحديد خيار ”عرض أيام العطلات في عرض الشهر“ في علامة التبويب ’عرض‘ -&gt; ”عرض الشهر“</li>
           <li xml:lang="bg">Изглед „Месец“: Добавена е опция за скриване на официалните празници. За да активирате това поведение, премахнете отметката от опцията „Показване на празници в месечния изглед“ в раздела „Изгледи -&gt; Изглед „Месец““</li>
           <li xml:lang="ca">Vista mensual: s'ha afegit una opció per a permetre ocultar els dies festius. Per a activar aquest comportament, desmarqueu l'opció «Mostra els festius a la vista mensual» a la pestanya Vistes-&gt;Vista mensual</li>
           <li xml:lang="ca-valencia">Vista mensual: s'ha afegit una opció per a permetre ocultar els dies festius. Per a activar este comportament, desmarqueu l'opció «Mostra els festius a la vista mensual» a la pestanya Vistes-&gt;Vista mensual</li>
@@ -542,6 +547,7 @@
           <li xml:lang="tr">Ay görünümü: Resmi tatillerin gizlenmesine olanak tanıyan bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Resmî tatilleri ay görünümünde göster” seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна приховувати свята. Щоб увімкнути цю можливість, зніміть прапорець з пункту «Показувати свята на панелі перегляду місяця» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
           <li>Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on that date. To enable this behavior, check the \"Use the Holiday background color when a holiday lands on the date\" option in the Views-&gt;Month View tab</li>
+          <li xml:lang="ar">عرض الشهر: أُضيف خيار للسماح باستخدام لون العطلة المخصص كلون خلفية لصندوق التاريخ إذا صادفت عطلة واحدة على الأقل في ذلك التاريخ. لتفعيل هذا السلوك، حدد خيار "استخدام لون خلفية العطلة عندما تصادف عطلة التاريخ" في علامة التبويب "عروض-&gt;عرض الشهر".</li>
           <li xml:lang="bg">Изглед „Месец“: Добавена е опция за използване на персонализирания цвят за празник като фонов цвят за клетката на датата, ако на нея се пада поне един празник. За да активирате това поведение, поставете отметка на опцията „Use the Holiday background color when a holiday lands on the date“ в раздела „Изгледи -&gt; Изглед „Месец““</li>
           <li xml:lang="ca">Vista mensual: s'ha afegit una opció per a permetre l'ús del color personalitzat de festiu com a color de fons del quadre de dates si almenys un dels festius cau en aquesta data. Per a activar aquest comportament, marqueu l'opció «Usa el color de fons de festius quan un festiu caigui en la data» a la pestanya Vistes-&gt;Vista mensual</li>
           <li xml:lang="ca-valencia">Vista mensual: s'ha afegit una opció per a permetre l'ús del color personalitzat de festiu com a color de fons del quadro de dates si almenys un dels festius cau en esta data. Per a activar este comportament, marqueu l'opció «Utilitza el color de fons de festius quan un festiu caiga en la data» a la pestanya Vistes-&gt;Vista mensual</li>
@@ -557,6 +563,7 @@
           <li xml:lang="tr">Ay görünümü: O tarihe en az bir resmi tatil denk geliyorsa, özel tatil renginin tarih kutusu arka plan rengi olarak kullanılmasına izin veren bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Bir tarihe resmî tatil denk geldiğinde Tatil arka plan rengini kullan” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна використовувати колір нетипового свята як колір тла поля дати, якщо хоча б одне свято припадає на цю дату. Щоб увімкнути цю можливість, позначте пункт «Використовувати колір тла свята, якщо на дату припадає свято» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
           <li>Month view: An option was added to show start-time and end-times. Previously only showing the start-time was supported. To enable this option, check the \"Show the start-time and the end-time in month view items\" option in the View-&gt;Month View tab</li>
+          <li xml:lang="ar">عرض الشهر: أُضيف خيار لإظهار وقت البدء ووقت الانتهاء. سابقًا، كان يُدعم فقط إظهار وقت البدء. لتفعيل هذا الخيار، حدد خيار "إظهار وقت البدء ووقت الانتهاء في عناصر عرض الشهر" في علامة تبويب عرض-&gt;عرض الشهر.</li>
           <li xml:lang="bg">Изглед „Месец“: Добавена е опция за показване на началния и крайния час. Преди се поддържаше само показване на началния час. За да активирате тази опция, поставете отметка на „Показване на началния и крайния час в елементите на месечния изглед“ в раздела „Изглед -&gt; Изглед „Месец““</li>
           <li xml:lang="ca">Vista mensual: s'ha afegit una opció per a mostrar l'hora d'inici i l'hora final. Anteriorment només s'admetia mostrar l'hora d'inici. Per a activar aquesta opció, marqueu l'opció «Mostra l'hora d'inici i l'hora final en els elements de la vista mensual» a la pestanya Visualitza-&gt;Vista mensual</li>
           <li xml:lang="ca-valencia">Vista mensual: s'ha afegit una opció per a mostrar l'hora d'inici i l'hora final. Anteriorment només s'admetia mostrar l'hora d'inici. Per a marcar esta opció, marqueu l'opció «Mostra l'hora d'inici i l'hora final en els elements de la vista mensual» a la pestanya Visualitza-&gt;Vista mensual</li>
@@ -572,6 +579,7 @@
           <li xml:lang="tr">Ay görünümü: Başlangıç ve bitiş zamanlarının gösterilmesini sağlayan bir seçenek eklendi. Önceden yalnızca başlangıç zamanının gösterilmesi destekleniyordu. Bu seçeneği etkinleştirmek için Görünüm → Ay Görünümü sekmesindeki “Ay görünümü ögelerinde başlangıç ve bitiş zamanını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна наказати програмі показувати час початку і час завершення. Раніше у програмі було передбачено показ лише часу початку. Щоб увімкнути цю можливість, позначте пункт «Показувати час початку і час завершення у пунктах у перегляді місяця» на вкладці «Перегляд-&gt;Перегляд місяця».</li>
           <li>Agenda view: underline today's column header date</li>
+          <li xml:lang="ar">عرض جدول الأعمال: تسطير تاريخ عنوان العمود الخاص بيوم اليوم</li>
           <li xml:lang="bg">Изглед на дневния ред: подчертаване на днешната дата в заглавието на колоната</li>
           <li xml:lang="ca">Vista d'agenda: subratlla la data d'avui a la capçalera de la columna de dates</li>
           <li xml:lang="ca-valencia">Vista d'agenda: subratlla la data d'hui a la capçalera de la columna de dates</li>
@@ -587,6 +595,7 @@
           <li xml:lang="tr">Ajanda görünümü: Bugünün sütun başlığındaki tarihinin altını çiz</li>
           <li xml:lang="uk">Панель порядку денного: реалізовано підкреслювання дати сьогоднішнього заголовка стовпчика</li>
           <li>Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence locations in agenda view items\" option in the View-&gt;Agenda View tab</li>
+          <li xml:lang="ar">عرض جدول الأعمال: اختيارياً، اعرض أماكن الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أماكن الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
           <li xml:lang="bg">Изглед „Дневен план“: опция за показване на местоположенията на събитията вътре в елементите на дневния план. За да активирате това поведение, поставете отметка на „Показване на местоположенията на събитията в елементите на дневния план“ в раздела „Изглед -&gt; Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra les ubicacions d'incidència dins dels elements d'agenda. Per a activar aquest comportament, marqueu l'opció «Mostra les ubicacions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra les ubicacions d'incidència dins dels elements d'agenda. Per a activar este comportament, marqueu l'opció «Mostra les ubicacions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -602,6 +611,7 @@
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak ajanda ögelerinin içinde olay konumlarını gösterir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Ajanda görünümü ögelerinde olay konumlarını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Панель порядку денного: якщо потрібно, програма може показувати місця проведення зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати місця зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -&gt; Перегляд порядку денного».</li>
           <li>Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and Journals have been added.  Select your preferences in the \"General-&gt;Personal Default Access Classification\" comboboxes.</li>
+          <li xml:lang="ar">أضيفت خيارات لضبط تصنيفات الوصول المبدئية (عام، سري، أو خاص) عند إنشاء فعاليات، ومهام، وسجلات جديدة. حدد تفضيلاتك في مربعات التحرير والسرد "عام-&gt; تصنيف الوصول المبدئي الشخصي".</li>
           <li xml:lang="bg">Добавени са опции за задаване на класификация на достъпа по подразбиране (публичен, поверителен или личен) при създаване на нови събития, задачи и дневници. Изберете вашите предпочитания в падащите менюта „Общи -&gt; Класификация на личния достъп по подразбиране“.</li>
           <li xml:lang="ca">S'han afegit opcions per establir classificacions d'accés predeterminades (Públic, Confidencial o Privat) en crear esdeveniments, tasques pendents o diaris nous. Seleccioneu les vostres preferències en els quadres combinats «General-&gt;Classificació d'accés predeterminada personal».</li>
           <li xml:lang="ca-valencia">S'han afegit opcions per a establir classificacions d'accés predeterminades (Públic, Confidencial o Privat) en crear esdeveniments, tasques pendents o diaris nous. Trieu les vostres preferències en els quadros combinats «General-&gt;Classificació d'accés predeterminada personal».</li>
@@ -617,6 +627,7 @@
           <li xml:lang="tr">Yeni Etkinlikler, Yapılacaklar ve Günlükler oluştururken öntanımlı erişim sınıflandırmalarını (Genel, Gizli veya Özel) ayarlama seçenekleri eklendi. Tercihlerinizi “Genel → Kişisel Öntanımlı Erişim Sınıflandırması” açılır kutularından seçin.</li>
           <li xml:lang="uk">Додано варіанти встановлення типової класифікації доступу (Відкритий, Конфіденційний або Приватний) під час створення записів подій, завдань та журналів. Виберіть свій варіант у спадному списку «Загальне-&gt;Типова особиста класифікація доступу».</li>
           <li>Fixed reminder toggling from menus</li>
+          <li xml:lang="ar">إصلاح مشكلة تبديل التذكير من القوائم</li>
           <li xml:lang="bg">Корекция на превключването на напомнянията от менютата</li>
           <li xml:lang="ca">S'ha corregit el canvi de recordatoris des dels menús</li>
           <li xml:lang="ca-valencia">S'ha esmenat el canvi de recordatoris des dels menús</li>
@@ -632,6 +643,7 @@
           <li xml:lang="tr">Menülerden anımsatıcı durumunu değiştirme hatası düzeltildi.</li>
           <li xml:lang="uk">Виправлено перемикання нагадування з меню</li>
           <li>Agenda view: improved timelabel vertical alignment with grid</li>
+          <li xml:lang="ar">عرض جدول الأعمال: تحسين محاذاة العلامات الزمنية عموديًا مع الشبكة</li>
           <li xml:lang="bg">Изглед на дневния ред: подобрено вертикално подравняване на етикетите за време спрямо мрежата</li>
           <li xml:lang="ca">Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb la quadrícula</li>
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb la quadrícula</li>
@@ -655,6 +667,7 @@
       <description>
         <ul>
           <li>Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings Time&gt;Default Values tab</li>
+          <li xml:lang="ar">التذكيرات مفعّلة بشكل مبدئي لجميع الأحداث والمهام الجديدة. لتعطيل هذه الميزة، أزل علامة الاختيار من خيار ”مكّن التذكيرات“ في علامة التبويب ”الوقت والتاريخ-&gt;القيم المبدئية“ في الإعدادات.</li>
           <li xml:lang="bg">Напомнянията са активирани по подразбиране за всички нови събития и задачи. За да изключите това поведение, премахнете отметката от опцията „Активиране на напомняния“ в настройките на раздел „Време -&gt; Стойности по подразбиране“</li>
           <li xml:lang="ca">Els recordatoris estan activats de manera predeterminada per a tots els esdeveniments i tasques pendents noves. Per a desactivar aquest comportament, desmarqueu les opcions Habilita els recordatoris a la pestanya de configuració Data i hora-&gt;Valors predeterminats</li>
           <li xml:lang="ca-valencia">Els recordatoris estan activats de manera predeterminada per a tots els esdeveniments i tasques pendents noves. Per a desactivar este comportament, desmarqueu les opcions Habilita els recordatoris a la pestanya de configuració Data i hora-&gt;Valors predeterminats</li>
@@ -670,6 +683,7 @@
           <li xml:lang="tr">Anımsatıcılar tüm yeni etkinlikler ve yapılacaklar için öntanımlı olarak etkindir. Bu davranışı devre dışı bırakmak için Zaman → Öntanımlı Değerler ayarlar sekmesindeki Anımsatıcıları etkinleştir seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Типово нагадування увімкнено для усіх нових записів подій та завдань. Щоб вимкнути таку поведінку, зніміть позначки з пунктів нагадувань на вкладці параметрів «Час і дата-&gt;Типові значення»</li>
           <li>Month view: no longer display the month year header to save vertical space and remove redundancy</li>
+          <li xml:lang="ar">عرض الشهر: لم يعد يُعرض عنوان الشهر والسنة لتوفير المساحة العمودية وإزالة التكرار</li>
           <li xml:lang="bg">Месечен изглед: да не се показва заглавката на месеца и годината, за да се спести вертикално пространство и да се премахне излишното</li>
           <li xml:lang="ca">Vista mensual: ja no mostra la capçalera de mes any per a estalviar espai vertical i eliminar redundància</li>
           <li xml:lang="ca-valencia">Vista mensual: ja no mostra la capçalera de mes any per a estalviar espai vertical i eliminar redundància</li>
@@ -685,6 +699,7 @@
           <li xml:lang="tr">Ay görünümü: Dikey alandan tasarruf etmek ve gereksiz tekrarları önlemek için artık ay–yıl başlığı gösterilmiyor.</li>
           <li xml:lang="uk">Перегляд місяця: усунено показ заголовка місяць-рік для заощадження вертикального простору і вилучення зайвих відомостей</li>
           <li>Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month</li>
+          <li xml:lang="ar">عرض الشهر: استخدم لونًا مختلفًا قليلاً لرسم عناوين الأيام خارج الشهر المحدد حاليًا</li>
           <li xml:lang="bg">Месечен изглед: използване на малко по-различен цвят за изобразяване на заглавките на дните извън текущо избрания месец</li>
           <li xml:lang="ca">Vista mensual: usa un color lleugerament diferent per a dibuixar les capçaleres dels dies fora del mes seleccionat</li>
           <li xml:lang="ca-valencia">Vista mensual: utilitza un color lleugerament diferent per a dibuixar les capçaleres dels dies fora del mes seleccionat</li>
@@ -700,6 +715,7 @@
           <li xml:lang="tr">Ay görünümü: Seçili ayın dışındaki günlerin başlıklarını çizmek için hafifçe farklı bir renk kullanılır.</li>
           <li xml:lang="uk">Перегляд місяця: використано дещо інший колір для малювання заголовків днів поза межами поточного вибраного місяця</li>
           <li>Month view: the navigation controls on the lower right side are removed in favor of the improved application navigator bar</li>
+          <li xml:lang="ar">عرض الشهر: إزالة عناصر التحكم في التنقل الموجودة في الجانب الأيمن السفلي واستبدالها بشريط تنقل محسّن للتطبيق</li>
           <li xml:lang="bg">Изглед за месеца: контролите за навигация в долния десен ъгъл са премахнати в полза на подобрената лента за навигация в приложението.</li>
           <li xml:lang="ca">Vista mensual: s'eliminen els controls de navegació a favor de la barra del navegador millorada de l'aplicació</li>
           <li xml:lang="ca-valencia">Vista mensual: s'eliminen els controls de navegació a favor de la barra del navegador millorada de l'aplicació</li>
@@ -715,6 +731,7 @@
           <li xml:lang="tr">Ay görünümü: Sağ alt taraftaki gezinti denetimleri, geliştirilmiş uygulama gezinti çubuğu lehine kaldırıldı.</li>
           <li xml:lang="uk">Панель місяця: засоби керування навігацією у нижній правій частині панелі вилучено — вони вже є на удосконаленій панелі навігації програми</li>
           <li>Month view: the background color for today's date cell can be changed. To configure the color,  set the \"Month view today background color\" in the Colors and Fonts settings</li>
+          <li xml:lang="ar">عرض الشهر: يمكن تغيير لون خلفية خلية تاريخ اليوم. لتكوين اللون،  اضبط \”لون خلفية عرض الشهر اليوم\“ في إعدادات الألوان والخطوط.</li>
           <li xml:lang="bg">Месечен изглед: цветът на фона за клетката с днешна дата може да се промени. За да конфигурирате цвета, задайте \„Цвят на фона за днешния месечен изглед\“ в настройките „Цветове и шрифтове“</li>
           <li xml:lang="ca">Vista mensual: es pot canviar el color de fons de la cel·la de la data d'avui. Per a configurar el color, establiu el «Color de fons d'avui de la vista d'avui» a la configuració de colors i lletres</li>
           <li xml:lang="ca-valencia">Vista mensual: es pot canviar el color de fons de la cel·la de la data d'hui. Per a configurar el color, establiu el «Color de fons d'hui de la vista d'hui» en la configuració de colors i lletres</li>
@@ -730,6 +747,7 @@
           <li xml:lang="tr">Ay görünümü: Bugünün tarih hücre arka plan rengi değiştirilebilir. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Ay görünümü bugün arka plan rengi” seçeneğini ayarlayın.</li>
           <li xml:lang="uk">Панель перегляду місяця: можна змінювати колір тла у комірці поточного дня. Щоб налаштувати колір, встановіть значення для пункту «Колір тла поточного дня на панелі перегляду місяця» у параметра кольорів і шрифтів програми.</li>
           <li>Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis</li>
+          <li xml:lang="ar">شريط التنقل: تحسين بإضافة التمرير الأسبوعي وإظهار/إخفاء الشريط الجانبي على أساس كل عرض على حدة</li>
           <li xml:lang="bg">Навигационна лента: подобрена чрез добавяне на превъртане по седмици и показване/скриване на страничната лента за всеки изглед</li>
           <li xml:lang="ca">Barra del navegador: s'ha millorat afegint el desplaçament setmanal i mostrant/ocultant la barra lateral en funció de la vista</li>
           <li xml:lang="ca-valencia">Barra del navegador: s'ha millorat afegint el desplaçament setmanal i mostrant/ocultant la barra lateral en funció de la vista</li>
@@ -745,6 +763,7 @@
           <li xml:lang="tr">Gezinti çubuğu: Hafta kaydırma özelliği eklenerek ve yan çubuğun görünüm bazında gösterilmesi/gizlenmesi sağlanarak iyileştirildi.</li>
           <li xml:lang="uk">Панель навігації: удосконалення шляхом додавання панелі гортання тижнів та показу або приховування бічної панелі на основі вибраного режиму перегляду</li>
           <li>Navigator bar: added a button to scroll the view to the current date</li>
+          <li xml:lang="ar">شريط التنقل: إضافة زر للتمرير إلى التاريخ الحالي</li>
           <li xml:lang="bg">Навигационна лента: добавен е бутон за превъртане на изгледа до текущата дата</li>
           <li xml:lang="ca">Barra de navegació: s'ha afegit un botó per a desplaçar la vista a la data actual</li>
           <li xml:lang="ca-valencia">Barra de navegació: s'ha afegit un botó per a desplaçar la vista fins a la data actual</li>
@@ -760,6 +779,7 @@
           <li xml:lang="tr">Dolaşım çubuğu: Görünümü geçerli tarihe kaydırmak için bir düğme eklendi.</li>
           <li xml:lang="uk">Панель навігації: додано кнопку для гортання перегляду до поточної дати</li>
           <li>Agenda view: events with short durations are displayed with their starting time in addition to their summary</li>
+          <li xml:lang="ar">عرض جدول الأعمال: تُعرض الأحداث قصيرة المدة مع وقت بدايتها بالإضافة إلى ملخصها</li>
           <li xml:lang="bg">Изглед на дневен ред: събитията с кратка продължителност се показват с началния им час, както и с обобщението им</li>
           <li xml:lang="ca">Vista d'agenda: els esdeveniments amb una durada curta es mostren amb la seva hora d'inici a més del resum</li>
           <li xml:lang="ca-valencia">Vista d'agenda: els esdeveniments amb una duració curta es mostren amb la seua hora d'inici a més del resum</li>
@@ -775,6 +795,7 @@
           <li xml:lang="tr">Ajanda görünümü: Kısa süreli etkinlikler, özetlerinin yanı sıra başlangıç saatleriyle birlikte gösterilir.</li>
           <li xml:lang="uk">Панель порядку денного: записи подій короткої тривалості буде показано із їхнім часом початку на додачу до резюме</li>
           <li>Agenda view: optionally show the incidence descriptions inside the agenda items. To enable this behavior, check the \"Show incidence descriptions in agenda view items\" option in the View-&gt;Agenda View tab</li>
+          <li xml:lang="ar">عرض جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
           <li xml:lang="bg">Изглед „Дневен план“: опция за показване на описанията на събитията вътре в елементите на дневния план. За да активирате това поведение, поставете отметка на „Показване на описанията на събитията в елементите на дневния план“ в раздела „Изглед -&gt; Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra les descripcions d'incidència dins dels elements d'agenda. Per a activar aquest comportament, marqueu l'opció «Mostra les descripcions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins dels elements d'agenda. Per a activar este comportament, marqueu l'opció «Mostra les descripcions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -790,6 +811,7 @@
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak ajanda ögelerinin içinde olay açıklamalarını gösterir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Ajanda görünümü ögelerinde olay açıklamalarını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Панель порядку денного: якщо потрібно, програма може показувати описи зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати описи зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -&gt; Перегляд порядку денного».</li>
           <li>Search: the search settings are saved/restored</li>
+          <li xml:lang="ar">البحث: حفظ/استعادة إعدادات البحث</li>
           <li xml:lang="bg">Търсене: настройките за търсене са запазени/възстановени</li>
           <li xml:lang="ca">Cerca: la configuració de la cerca es desa/restaura</li>
           <li xml:lang="ca-valencia">Busca: la configuració de la busca es guarda/restaura</li>
@@ -814,6 +836,7 @@
       <description>
         <ul>
           <li>Incidence editor: the tags are sorted alphabetically in the tags editor</li>
+          <li xml:lang="ar">محرر الحدوث: الوسوم مرتبة أبجديًا في محرر الوسوم</li>
           <li xml:lang="bg">Редактор на събития: етикетите са подредени по азбучен ред в редактора на етикети.</li>
           <li xml:lang="ca">Editor d'incidències: les etiquetes s'ordenen alfabèticament a l'editor d'etiquetes</li>
           <li xml:lang="ca-valencia">Editor d'incidències: les etiquetes s'ordenen alfabèticament a l'editor d'etiquetes</li>
@@ -829,6 +852,7 @@
           <li xml:lang="tr">Olay düzenleyici: Etiketler, etiket düzenleyicide abecesel olarak sıralanır.</li>
           <li xml:lang="uk">Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою</li>
           <li>Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well</li>
+          <li xml:lang="ar">عرض جدول الأعمال: إضافة قائمة سياق لإظهار/إخفاء التسميات الزمنية لمنطقة التوقيت للنظام على الجانب الأيمن (أو الأيسر) أيضًا.</li>
           <li xml:lang="bg">Изглед на дневен ред: добавено контекстно меню за времеви етикети, за да се показват/скриват времевите етикети за системната часова зона от дясната (или лявата) страна</li>
           <li xml:lang="ca">Vista d'agenda: s'ha afegit el menú contextual de les etiquetes d'hora per a mostrar/ocultar les etiquetes d'hora per al fus horari del sistema a la part dreta (o esquerra)</li>
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha afegit el menú contextual de les etiquetes prompte per a mostrar/ocultar les etiquetes prompte per al fus horari del sistema a la part dreta (o esquerra)</li>
@@ -844,6 +868,7 @@
           <li xml:lang="tr">Ajanda görünümü: Sistem saat dilimi için zaman etiketlerini sağ (veya sol) tarafta da göstermek/gizlemek için zaman etiketleri sağ tık menüsü eklendi.</li>
           <li xml:lang="uk">Панель перегляду порядку денного: додано пункт контекстного часу для показу або приховування часових міток для загальносистемного часового поясу праворуч (або ліворуч)</li>
           <li>Incidence editor: detect and warn about creating incidences in the past</li>
+          <li xml:lang="ar">محرر الحدوث: يكتشف إنشاء أحداث في الماضي وينبه عليها</li>
           <li xml:lang="bg">Редактор на събития: открива и предупреждава за създаването на събития в миналото</li>
           <li xml:lang="ca">Editor d'incidències: detecta i avisa de la creació d'incidències en el passat</li>
           <li xml:lang="ca-valencia">Editor d'incidències: detecta i avisa de la creació d'incidències en el passat</li>
@@ -859,6 +884,7 @@
           <li xml:lang="tr">Olay düzenleyicisi: Geçmişte olay oluşturma durumunu algılar ve buna karşı uyarır.</li>
           <li xml:lang="uk">Редактор зустрічей: виявлення створення зустрічей у минулому та попередження про це</li>
           <li>Incidence editor: add emoji support</li>
+          <li xml:lang="ar">محرر الأحداث: إضافة دعم الرموز التعبيرية</li>
           <li xml:lang="bg">Редактор на събития: добавена поддръжка за емотикони</li>
           <li xml:lang="ca">Editor d'incidències: afegeix la implementació d'emojis</li>
           <li xml:lang="ca-valencia">Editor d'incidències: afig la implementació d'emoji</li>
@@ -883,6 +909,7 @@
       <description>
         <ul>
           <li>Semantics are changed from a \"working schedule\" concept to a \"week schedule\" concept to accommodate non-working users</li>
+          <li xml:lang="ar">تغيير الدلالات من مفهوم \”جدول العمل\“ إلى مفهوم \”جدول الأسبوع\“ لاستيعاب المستخدمين غير العاملين</li>
           <li xml:lang="bg">Концепцията е променена от „работен график“ на „седмичен график“, за да бъде удобна и за работещи, и за неработещи потребители</li>
           <li xml:lang="ca">La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari setmanal» per admetre els usuaris no treballadors</li>
           <li xml:lang="ca-valencia">La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari setmanal» per a admetre els usuaris no treballadors</li>
@@ -898,6 +925,7 @@
           <li xml:lang="tr">Çalışmayan kullanıcıları da kapsamak adına anlamsal yapı “çalışma programı” kavramından “hafta programı” kavramına dönüştürüldü.</li>
           <li xml:lang="uk">Змінено семантику з концепції «робочого розкладу» на «розклад тижня» для задоволення потреб користувачів поза робочим часом</li>
           <li>Initial \"New Event\" start times are consistent across all the views</li>
+          <li xml:lang="ar">أوقات بدء \”الحدث الجديد\“ الأولية متسقة في جميع طرق العرض</li>
           <li xml:lang="bg">Първоначалното начално време при „Ново събитие“ вече е еднакво във всички изгледи</li>
           <li xml:lang="ca">Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les vistes</li>
           <li xml:lang="ca-valencia">Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les vistes</li>
@@ -913,6 +941,7 @@
           <li xml:lang="tr">İlk “Yeni Etkinlik” başlangıç zamanları tüm görünümlerde tutarlıdır.</li>
           <li xml:lang="uk">Початкові часи початку «Нової події» у новій версії є узгодженими за усіма панелями перегляду</li>
           <li>Improved default event calendar handling</li>
+          <li xml:lang="ar">تحسين معالجة أحداث التقويم المبدئية</li>
           <li xml:lang="ca">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
           <li xml:lang="ca-valencia">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
           <li xml:lang="cs">Vylepšené zpracování výchozího kalendáře událostí</li>
@@ -926,6 +955,7 @@
           <li xml:lang="tr">İyileştirilmiş öntanımlı takvim işleme</li>
           <li xml:lang="uk">Удосконалено обробку типового календаря подій</li>
           <li>Incidences with a long excluded dates list no longer create huge tooltips</li>
+          <li xml:lang="ar">لم تعد الأحداث التي تحتوي على قائمة تواريخ مستثناة طويلة تنشئ تلميحات ضخمة</li>
           <li xml:lang="bg">Събитията с дълъг списък с изключени дати вече не създават огромни подсказки</li>
           <li xml:lang="ca">Les incidències amb una llista llarga de dates excloses ja no creen consells enormes</li>
           <li xml:lang="ca-valencia">Les incidències amb una llista llarga de dates excloses ja no creen consells d'eina enormes</li>
@@ -941,6 +971,7 @@
           <li xml:lang="tr">Uzun bir dışlanan tarihler listesi içeren olaylar artık devasa araç ipuçları oluşturmuyor.</li>
           <li xml:lang="uk">Програма більше не створюватиме величезних панелей підказок для зустрічей із довгими списками виключених дат</li>
           <li>Fixed the organizer email address for incidences with attendees</li>
+          <li xml:lang="ar">إصلاح عنوان البريد الإلكتروني الخاص بالمنظم للحالات التي حدثت مع الحضور</li>
           <li xml:lang="bg">Поправен е имейл адресът на организатора за събитие с участници</li>
           <li xml:lang="ca">S'ha corregit l'adreça de correu electrònic de l'organitzador per a les incidències amb els assistents</li>
           <li xml:lang="ca-valencia">S'ha corregit l'adreça de correu electrònic de l'organitzador per a les incidències amb els assistents</li>
@@ -956,6 +987,7 @@
           <li xml:lang="tr">Katılımcısı olan olaylar için düzenleyici e-posta adresi düzeltildi.</li>
           <li xml:lang="uk">Виправлено адресу електронної пошти організатора для зустрічі із учасниками</li>
           <li>Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)</li>
+          <li xml:lang="ar">منظور جدول الأعمال: تُعرض الأحداث التي لا تحتوي على مدة زمنية على أنها مدتها 30 دقيقة (بدلاً من 15 دقيقة).</li>
           <li xml:lang="bg">Изглед Дневен ред: събитията без продължителност се показват като събития с продължителност от 30 минути (вместо от 15 минути).</li>
           <li xml:lang="ca">Vista d'agenda: els esdeveniments sense durada es mostren amb una durada de 30 minuts (en lloc de 15 minuts)</li>
           <li xml:lang="ca-valencia">Vista d'agenda: els esdeveniments sense duració es mostren amb una duració de 30 minuts (en lloc de 15 minuts)</li>
@@ -971,6 +1003,7 @@
           <li xml:lang="tr">Ajanda görünümü: Süresi olmayan etkinlikler (15 dakika yerine) 30 dakika uzunluğunda gösterilir.</li>
           <li xml:lang="uk">Панель порядку денного: записи подій без тривалості буде показано із тривалістю 30 (а не 15 хвилин)</li>
           <li>Add What's New menu</li>
+          <li xml:lang="ar">أضِف قائمة ما الجديد</li>
           <li xml:lang="bg">Добавяне на меню „Какво ново“</li>
           <li xml:lang="ca">Afegeix el menú «Què hi ha de nou»</li>
           <li xml:lang="ca-valencia">Afig el menú «Què hi ha de nou»</li>
@@ -986,6 +1019,7 @@
           <li xml:lang="tr">“Neler Yeni” menüsü eklendi.</li>
           <li xml:lang="uk">Додано меню «Що нового?»</li>
           <li>The current view is remembered</li>
+          <li xml:lang="ar">حُفظ المنظور الحالي</li>
           <li xml:lang="bg">Текущият изглед е запомнен</li>
           <li xml:lang="ca">Es recordarà la vista actual</li>
           <li xml:lang="ca-valencia">Es recordarà la vista actual</li>
@@ -1001,6 +1035,7 @@
           <li xml:lang="tr">Geçerli görünüm anımsanır.</li>
           <li xml:lang="uk">Нова версія програми запам'ятовує параметри поточного перегляду</li>
           <li>Add a Date Picker dialog available on the Go menu</li>
+          <li xml:lang="ar">أضف مربع حوار منتقي التاريخ المتاح في قائمة انتقل</li>
           <li xml:lang="bg">Добавяне на диалогов прозорец за избор на дата, достъпен от менюто „Навигация“.</li>
           <li xml:lang="ca">Afegeix un diàleg selector de dates disponible al menú Ves</li>
           <li xml:lang="ca-valencia">Afig un diàleg selector de dates disponible en el menú Ves</li>
@@ -1016,6 +1051,7 @@
           <li xml:lang="tr">Git menüsünde kullanılabilir bir Tarih Seçicisi iletişim kutusu eklendi.</li>
           <li xml:lang="uk">Додано вікно вибору дати, доступ до якого можна отримати з меню «Перехід»</li>
           <li>Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button</li>
+          <li xml:lang="ar">عرض جدول الأعمال: دمج النطاقات الزمنية \”اليوم\“ و\”الأيام X التالية\“ و\”جدول العمل\“ و\”الأسبوع\“ في زر أداة جدول الأعمال</li>
           <li xml:lang="bg">Изглед „Дневен план“: Обединяване на времевите диапазони „Ден“, „Следващите X дни“, „Работен график“ и „Седмица“ в един инструментен бутон „Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda</li>
           <li xml:lang="ca-valencia">Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda</li>
@@ -1031,6 +1067,7 @@
           <li xml:lang="tr">Ajanda görünümü: “Gün”, “Gelecek X Gün”, “Çalışma Programı”, “Hafta” zaman aralıkları Ajanda araç düğmesinde birleştirildi.</li>
           <li xml:lang="uk">Панель порядку денного: діапазони часу «День», «Наступні X днів», «Робочий розклад», «Тиждень» зібрано у кнопці інструмента порядку денного</li>
           <li>Agenda view: added timelabels context menu option to toggle a 24-hour (military style) clock</li>
+          <li xml:lang="ar">عرض جدول الأعمال: إضافة خيار قائمة سياق علامات الوقت لتبديل ساعة 24 ساعة (النمط العسكري)</li>
           <li xml:lang="bg">Изглед на дневен ред: добавена опция в контекстното меню за времеви етикети за превключване на 24-часов часовник (военен стил)</li>
           <li xml:lang="ca">Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de temps per a commutar un rellotge de 24 hores (estil militar)</li>
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de temps per a canviar un rellotge de 24 hores (estil militar)</li>
@@ -1046,6 +1083,7 @@
           <li xml:lang="tr">Ajanda görünümü: 24 saatlik saat biçimine geçiş yapmak için zaman etiketleri sağ tık menüsü seçeneği eklendi.</li>
           <li xml:lang="uk">Панель перегляду порядку денного: додано пункт контекстного часу часових міток для вмикання і вимикання 24-годинного режиму (військовий стан)</li>
           <li>Agenda view: added context menu to create new Event or To-do</li>
+          <li xml:lang="ar">عرض جدول الأعمال: إضافة قائمة سياق لإنشاء حدث أو مهمة جديدة</li>
           <li xml:lang="bg">Изглед на дневен ред: добавено контекстно меню за създаване на ново събитие или задача</li>
           <li xml:lang="ca">Vista d'agenda: s'ha afegit el menú contextual per a crear un esdeveniment o tasca pendent nova</li>
           <li xml:lang="ca-valencia">Vista d'agenda: s'ha afegit el menú contextual per a crear un esdeveniment o tasca pendent nova</li>
@@ -1061,6 +1099,7 @@
           <li xml:lang="tr">Ajanda görünümü: Yeni Etkinlik veya Yapılacak oluşturmak için sağ tık menüsü eklendi.</li>
           <li xml:lang="uk">Панель порядку денного: додано контекстне меню для створення запису події або завдання</li>
           <li>To-do view: added context menu options for toggling completion and reminders</li>
+          <li xml:lang="ar">طريقة عرض المهام: إضافة خيارات قائمة السياق لتبديل الإكمال والتذكيرات</li>
           <li xml:lang="bg">Изглед на задачи: добавени са опции в контекстното меню за превключване между задачи за завършване и напомняния</li>
           <li xml:lang="ca">Vista de les tasques pendents: s'han afegit opcions del menú contextual per a commutar la compleció i els recordatoris</li>
           <li xml:lang="ca-valencia">Vista de les tasques pendents: s'han afegit opcions del menú contextual per a canviar la compleció i els recordatoris</li>
@@ -1076,6 +1115,7 @@
           <li xml:lang="tr">Yapılacaklar görünümü: Tamamlanma durumunu ve anımsatıcıları değiştirmek için sağ tık menüsü seçenekleri eklendi.</li>
           <li xml:lang="uk">Панель перегляду завдань: додано пункти контекстного меню для перемикання стану завершеності та нагадувань</li>
           <li>To-do view: save/restore fullview setting</li>
+          <li xml:lang="ar">عرض المهام: حفظ/استعادة إعدادات العرض الكامل</li>
           <li xml:lang="bg">Изглед на задачи: запазване/възстановяване на настройката за пълен изглед</li>
           <li xml:lang="ca">Vista de les tasques pendents: desa/restaura l'opció de vista completa</li>
           <li xml:lang="ca-valencia">Vista de les tasques pendents: guarda/restaura l'opció de vista completa</li>
@@ -1091,6 +1131,7 @@
           <li xml:lang="tr">Yapılacaklar görünümü: Tam görünüm ayarını kaydet/geri yükle</li>
           <li xml:lang="uk">Панель перегляду завдань: збереження і відновлення параметра повного перегляду</li>
           <li>To-do view: save/restore flatview setting</li>
+          <li xml:lang="ar">عرض المهام: حفظ/استعادة إعدادات العرض المسطح</li>
           <li xml:lang="bg">Изглед на задачи: запазване/възстановяване на настройката на плоския изглед</li>
           <li xml:lang="ca">Vista de les tasques pendents: desa/restaura l'opció de vista plana</li>
           <li xml:lang="ca-valencia">Vista de les tasques pendents: guarda/restaura l'opció de vista plana</li>
@@ -1106,6 +1147,7 @@
           <li xml:lang="tr">Yapılacaklar görünümü: Düz görünüm ayarını kaydet/geri yükle</li>
           <li xml:lang="uk">Панель завдань: збереження і відновлення параметра однорангового перегляду</li>
           <li>Date navigator: added an option in the Configure-&gt;Views settings for hiding the week numbers</li>
+          <li xml:lang="ar">متصفح التاريخ: إضافة خيار في إعدادات التهيئة-&gt; إعدادات العروض لإخفاء أرقام الأسبوع</li>
           <li xml:lang="bg">Навигатор на дати: добавена е опция в настройките „Настройване -&gt; Изгледи“ за скриване на номерата на седмиците</li>
           <li xml:lang="ca">Navegador de dates: s'ha afegit una opció dins de la configuració de Configura-&gt;Vistes per ocultar els números de setmana</li>
           <li xml:lang="ca-valencia">Navegador de dates: s'ha afegit una opció dins de la configuració de Configura-&gt;Vistes per a ocultar els números de setmana</li>
@@ -1121,6 +1163,7 @@
           <li xml:lang="tr">Tarih gezgini: Yapılandır → Görünümler ayarlarında hafta numaralarını gizlemek için bir seçenek eklendi.</li>
           <li xml:lang="uk">Навігація датами: додано пункт у параметрах «Налаштувати-&gt;Перегляди» для приховування номерів тижнів</li>
           <li>Date navigator: the \"Week numbers select a work week when in work week mode\" setting is true by default</li>
+          <li xml:lang="ar">متصفح التاريخ: يكون إعداد \”أرقام الأسبوع تحدد أسبوع العمل عندما تكون في وضع أسبوع العمل\“ صحيحًا بشكل مبدئي</li>
           <li xml:lang="bg">Навигатор на дати: настройката „Номерата на седмиците избират работна седмица в режим на работна седмица“ е включена по подразбиране</li>
           <li xml:lang="ca">Navegador de dates: l'opció «Els números de setmana seleccionen una setmana feinera en el mode de setmana laboral» és certa de manera predeterminada</li>
           <li xml:lang="ca-valencia">Navegador de dates: l'opció «Els números de setmana seleccionen una setmana feinera en el mode de setmana laboral» és certa de manera predeterminada</li>
@@ -1136,6 +1179,7 @@
           <li xml:lang="tr">Tarih gezgini: “Çalışma haftası modundayken hafta numaraları bir çalışma haftasını seçer” ayarı öntanımlı olarak doğrudur.</li>
           <li xml:lang="uk">Навігація датами: типовим значенням параметра «Вибір тижня призводить до вибору робочого тижня у режимі робочого тижня» тепер є «істина»</li>
           <li>Incidence editor: remember/restore the template manager geometry</li>
+          <li xml:lang="ar">محرر الأحداث: تذكّر/استعادة شكل مدير القالب</li>
           <li xml:lang="bg">Редактор на събития: запомняне/възстановяване на геометрията на мениджъра на шаблони</li>
           <li xml:lang="ca">Editor d'incidències: recorda/restaura la geometria del gestor de plantilles</li>
           <li xml:lang="ca-valencia">Editor d'incidències: recorda/restaura la geometria del gestor de plantilles</li>
@@ -1151,6 +1195,7 @@
           <li xml:lang="tr">Olay düzenleyici: Şablon yöneticisi geometrisini anımsa/geri yükle</li>
           <li xml:lang="uk">Редактор зустрічей: запам'ятовування і відновлення геометрії засобу керування шаблонами</li>
           <li>Incidence editor: support drag-and-drop attachments</li>
+          <li xml:lang="ar">محرر الأحداث: دعم مرفقات السحب والإفلات</li>
           <li xml:lang="bg">Редактор на събития: поддръжка на прикачени файлове с плъзгане и пускане</li>
           <li xml:lang="ca">Editor d'incidències: permet arrossegar i deixar anar adjunts</li>
           <li xml:lang="ca-valencia">Editor d'incidències: permet arrossegar i deixar anar adjunts</li>
@@ -1166,6 +1211,7 @@
           <li xml:lang="tr">Olay düzenleyici: Ekleri sürükle–bırak desteği</li>
           <li xml:lang="uk">Редактор зустрічей: підтримка перетягування зі скиданням для долучень</li>
           <li>The export calendar dialog remembers its last export folder location</li>
+          <li xml:lang="ar">يتذكر مربع تصدير التقويم موقع مجلد التصدير الأخير</li>
           <li xml:lang="bg">Диалоговият прозорец за експортиране на календар запомня местоположението на последната папка за експортиране</li>
           <li xml:lang="ca">El diàleg d'exportació de calendari recorda la seva última ubicació de la carpeta d'exportació</li>
           <li xml:lang="ca-valencia">El diàleg d'exportació de calendari recorda la seua última ubicació de la carpeta d'exportació</li>
@@ -1181,6 +1227,7 @@
           <li xml:lang="tr">Takvimi dışa aktarma penceresi, en son dışa aktarılan klasör konumunu anımsar.</li>
           <li xml:lang="uk">У вікні експортування календаря реалізовано запам'ятовування останнього місце теки експортування</li>
           <li>The import calendar dialog remembers its last import folder location</li>
+          <li xml:lang="ar">يتذكر مربع حوار استيراد التقويم موقع مجلد الاستيراد الأخير</li>
           <li xml:lang="bg">Диалоговият прозорец за импортиране на календар запомня местоположението на последното импортиране на папката</li>
           <li xml:lang="ca">El diàleg d'importació de calendari recorda la seva última ubicació de la carpeta d'importació</li>
           <li xml:lang="ca-valencia">El diàleg d'importació de calendari recorda la seua última ubicació de la carpeta d'importació</li>
@@ -1196,6 +1243,7 @@
           <li xml:lang="tr">Takvimi içe aktarma penceresi, en son içe aktarılan klasör konumunu anımsar.</li>
           <li xml:lang="uk">У вікні імпортування календаря реалізовано запам'ятовування останнього місце теки імпортування</li>
           <li>Add calendar file: remote calendars are always read-only</li>
+          <li xml:lang="ar">إضافة ملف تقويم: التقويمات عن بُعد تكون دائماً للقراءة فقط</li>
           <li xml:lang="bg">Добавяне на файл с календар: отдалечените календари винаги са само за четене</li>
           <li xml:lang="ca">Afegir un fitxer de calendari: els calendaris remots sempre són de només lectura</li>
           <li xml:lang="ca-valencia">Afegir un fitxer de calendari: els calendaris remots sempre són de només lectura</li>
@@ -1211,6 +1259,7 @@
           <li xml:lang="tr">Takvim dosyası ekle: Uzak takvimler her zaman saltokunurdur.</li>
           <li xml:lang="uk">Додавання файла календаря: віддалені календарі тепер є придатними лише для читання</li>
           <li>Add calendar file: will not permit an empty file path</li>
+          <li xml:lang="ar">إضافة ملف تقويم: لن يسمح بمسار ملف فارغ</li>
           <li xml:lang="bg">Добавяне на файл с календар: няма да се позволи празен път към файла</li>
           <li xml:lang="ca">Afegir un fitxer de calendari: no es permet un camí buit de fitxer</li>
           <li xml:lang="ca-valencia">Afegir un fitxer de calendari: no es permet un camí buit de fitxer</li>
@@ -1226,6 +1275,7 @@
           <li xml:lang="tr">Takvim dosyası ekle: Boş bir dosya yoluna izin verilmez.</li>
           <li xml:lang="uk">Додавання файла календаря: неможливим стало визначення порожнього шляху до файла</li>
           <li>DAV configuration: dialog allows seeing the account password when editing</li>
+          <li xml:lang="ar">ضبط DAV: يتيح مربع الحوار رؤية كلمة سر الحساب عند التحرير</li>
           <li xml:lang="bg">DAV конфигурация: диалоговият прозорец позволява да видите паролата на акаунта при редактиране</li>
           <li xml:lang="ca">Configuració DAV: el diàleg permet veure la contrasenya del compte en editar</li>
           <li xml:lang="ca-valencia">Configuració DAV: el diàleg permet veure la contrasenya del compte en editar</li>
@@ -1241,6 +1291,7 @@
           <li xml:lang="tr">DAV yapılandırması: Pencere, düzenleme yaparken hesap parolasının görülmesine izin verir.</li>
           <li xml:lang="uk">Налаштування DAV: у вікні уможливлено перегляд пароля до облікового запису при редагуванні</li>
           <li>DAV configuration: wizard shows icons for the various providers</li>
+          <li xml:lang="ar">ضبط DAV: يعرض المعالج أيقونات لمختلف المزودين</li>
           <li xml:lang="bg">Конфигурация на DAV: съветникът показва икони за различните доставчици</li>
           <li xml:lang="ca">Configuració DAV: l'assistent mostra icones de diversos proveïdors</li>
           <li xml:lang="ca-valencia">Configuració DAV: l'assistent mostra icones de diversos proveïdors</li>
@@ -1256,6 +1307,7 @@
           <li xml:lang="tr">DAV yapılandırması: Sihirbaz, çeşitli sağlayıcılar için simgeler gösterir.</li>
           <li xml:lang="uk">Налаштування DAV: реалізовано показ піктограм для різних надавачів даних у майстрі</li>
           <li>DAV configuration: wizard updated list of providers</li>
+          <li xml:lang="ar">ضبط DAV: تحديث المعالج لقائمة المزودين</li>
           <li xml:lang="ca">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
           <li xml:lang="ca-valencia">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
           <li xml:lang="cs">Konfigurace DAV: aktualizován seznam poskytovatelů v průvodci</li>
