@@ -23,6 +23,8 @@
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
+namespace
+{
 class PluginItem : public QTreeWidgetItem
 {
 public:
@@ -46,6 +48,7 @@ public:
 private:
     const KPluginMetaData mService;
 };
+}
 
 Q_DECLARE_METATYPE(PluginItem *)
 

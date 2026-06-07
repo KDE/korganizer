@@ -41,6 +41,8 @@
 
 using namespace KHolidays;
 
+namespace
+{
 class BirthdaySearchJob : public Akonadi::ItemSearchJob
 {
     Q_OBJECT
@@ -73,6 +75,7 @@ enum SDCategory {
     CategorySeasonal,
     CategoryOther
 };
+}
 
 class SDEntry
 {

@@ -37,6 +37,8 @@ static QString generateColumnLabel(int c)
     return i18nc("@title:column", "Agenda %1", c + 1);
 }
 
+namespace
+{
 class CalendarViewCalendarFactory : public EventViews::MultiAgendaView::CalendarFactory
 {
 public:
@@ -55,6 +57,7 @@ public:
 private:
     CalendarViewBase *const mView;
 };
+}
 
 class KOrg::MultiAgendaViewPrivate
 {

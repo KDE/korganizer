@@ -77,6 +77,8 @@ static Akonadi::EntityTreeModel *findEtm(QAbstractItemModel *model)
 /**
  * Automatically checks new calendar entries
  */
+namespace
+{
 class NewCalendarChecker : public QObject
 {
     Q_OBJECT
@@ -115,6 +117,7 @@ private Q_SLOTS:
 private: // NOLINT(readability-redundant-access-specifiers)
     QAbstractItemModel *const mCheckableProxy;
 };
+}
 
 /**
  * Handles expansion state of a treeview

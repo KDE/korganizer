@@ -85,6 +85,8 @@
 #include <QVBoxLayout>
 
 // Meaningful aliases for dialog box return codes.
+namespace
+{
 enum ItemActions {
     Cancel = KMessageBox::Cancel, // Do nothing.
     Current = KMessageBox::Ok, // Selected recurrence only.
@@ -92,6 +94,7 @@ enum ItemActions {
     Parent = KMessageBox::ButtonCode::PrimaryAction, // Instance, but not child instances.
     All = KMessageBox::Continue, // Instance and child instances.
 };
+}
 
 CalendarView::CalendarView(QWidget *parent)
     : CalendarViewBase(parent)

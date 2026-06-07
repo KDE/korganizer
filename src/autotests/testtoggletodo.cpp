@@ -10,6 +10,8 @@
 
 const auto TEST_TZ = "UTC";
 
+namespace
+{
 class TestToggleTodo : public QObject
 {
     Q_OBJECT
@@ -130,6 +132,7 @@ private Q_SLOTS:
         QVERIFY(!todo->isCompleted());
     }
 };
+}
 
 QTEST_MAIN(TestToggleTodo)
 

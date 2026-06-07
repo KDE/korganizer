@@ -10,6 +10,8 @@
 #include <QStandardItemModel>
 #include <QTest>
 
+namespace
+{
 class DummyNode : public ReparentingModel::Node
 {
 public:
@@ -137,6 +139,7 @@ public Q_SLOTS: // NOLINT(readability-redundant-access-specifiers)
         mSignals << QStringLiteral("modelReset");
     }
 };
+}
 
 static QModelIndex getIndex(const char *string, const QAbstractItemModel &model)
 {
@@ -152,6 +155,8 @@ static QModelIndexList getIndexList(const char *string, const QAbstractItemModel
     return model.match(model.index(0, 0), Qt::DisplayRole, QString::fromLatin1(string), 1, Qt::MatchRecursive);
 }
 
+namespace
+{
 class ReparentingModelTest : public QObject
 {
     Q_OBJECT
@@ -776,6 +781,7 @@ void ReparentingModelTest::testDataChanged()
     QTest::qWait(0);
 
     QCOMPARE(spy.mSignals, QStringList() << QStringLiteral("dataChanged"));
+}
 }
 
 QTEST_MAIN(ReparentingModelTest)
