@@ -25,6 +25,7 @@ public:
 
     EventViews::PrefsPtr eventViewsPreferences() const;
 
+protected:
     /** Set preferences to default values */
     void usrSetDefaults() override;
 

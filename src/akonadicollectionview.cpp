@@ -322,6 +322,16 @@ public:
     {
     }
 
+    [[nodiscard]] QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
+    {
+        if (role == Qt::ToolTipRole) {
+            const Akonadi::Collection col = Akonadi::CollectionUtils::fromIndex(index);
+            return CalendarSupport::toolTipString(col);
+        }
+
+        return QSortFilterProxyModel::data(index, role);
+    };
+
 protected:
     [[nodiscard]] bool filterAcceptsRow(int row, const QModelIndex &sourceParent) const override
     {
@@ -337,16 +347,6 @@ protected:
         }
         return true;
     }
-
-    [[nodiscard]] QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
-    {
-        if (role == Qt::ToolTipRole) {
-            const Akonadi::Collection col = Akonadi::CollectionUtils::fromIndex(index);
-            return CalendarSupport::toolTipString(col);
-        }
-
-        return QSortFilterProxyModel::data(index, role);
-    };
 };
 
 class CalendarDelegateModel : public QSortFilterProxyModel

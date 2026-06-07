@@ -70,10 +70,12 @@ public:
     [[nodiscard]] bool showSideBar() override;
     void setShowSideBar(bool show) override;
 
+protected:
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
+
 public Q_SLOTS:
     void updateView() override;
     void updateConfig() override;
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidences, const QDate &date) override;
 
     void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) override;

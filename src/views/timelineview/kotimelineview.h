@@ -37,7 +37,6 @@ public:
     [[nodiscard]] Akonadi::Item::List selectedIncidences() override;
     [[nodiscard]] KCalendarCore::DateList selectedIncidenceDates() override;
     [[nodiscard]] int currentDateCount() const override;
-    void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
     void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType) override;
@@ -53,6 +52,9 @@ public:
 
     [[nodiscard]] bool showSideBar() override;
     void setShowSideBar(bool show) override;
+
+protected:
+    void showDates(const QDate &, const QDate &, const QDate &preferredMonth = QDate()) override;
 
 public Q_SLOTS:
     void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;

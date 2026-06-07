@@ -43,13 +43,15 @@ public:
 
 public Q_SLOTS:
     void updateView() override;
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
 
     void changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType) override;
 
     void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
     void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
+
+protected:
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth) override;
 
 private:
     EventViews::WhatsNextView *const mView;

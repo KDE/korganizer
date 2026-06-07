@@ -43,7 +43,6 @@ public:
         updateView();
     }
 
-protected:
     [[nodiscard]] bool eventFilter(QObject *obj, QEvent *e) override;
 
 private Q_SLOTS:

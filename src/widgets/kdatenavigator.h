@@ -60,6 +60,8 @@ public:
     */
     [[nodiscard]] QDate month() const;
 
+    bool eventFilter(QObject *, QEvent *) override;
+
 public Q_SLOTS:
     void selectDates(const KCalendarCore::DateList &);
     void selectPreviousMonth();
@@ -100,8 +102,6 @@ protected:
     void updateDates();
 
     void wheelEvent(QWheelEvent *) override;
-
-    bool eventFilter(QObject *, QEvent *) override;
 
     void setShowWeekNums(bool enabled);
 

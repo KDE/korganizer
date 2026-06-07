@@ -381,9 +381,6 @@ protected:
      */
     virtual void doSaveConfig(KConfigGroup &configGroup);
 
-    /**
-      @deprecated
-     */
     virtual void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) = 0;
 
     struct DateRange {

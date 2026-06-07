@@ -20,6 +20,7 @@ public:
     KOrganizerApp(int &argc, char **argv[]);
     ~KOrganizerApp() override;
 
+protected:
     /**
       Create new instance of KOrganizer. If there is already running a
       KOrganizer only an additional main window is opened.

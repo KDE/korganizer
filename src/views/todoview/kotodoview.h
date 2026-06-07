@@ -60,9 +60,11 @@ public:
 
     [[nodiscard]] CalendarSupport::CalPrinterBase::PrintType printType() const override;
 
+protected:
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
+
 public Q_SLOTS:
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
     void updateView() override;
     void changeIncidenceDisplay(const Akonadi::Item &incidence, Akonadi::IncidenceChanger::ChangeType changeType) override;

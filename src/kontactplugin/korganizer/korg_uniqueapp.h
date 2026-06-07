@@ -22,5 +22,7 @@ public:
     ~KOrganizerUniqueAppHandler() override = default;
 
     void loadCommandLineOptions(QCommandLineParser *parser) override;
+
+protected:
     int activate(const QStringList &args, const QString &workingDir) override;
 };

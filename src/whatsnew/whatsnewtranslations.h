@@ -15,9 +15,9 @@ public:
     ~WhatsNewTranslations() override;
 
     [[nodiscard]] QList<TextAddonsWidgets::WhatsNewInfo> createWhatsNewInfo() const override;
-    [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures() const override;
 
 private:
+    [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures() const override;
     [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures65() const;
     [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures66() const;
     [[nodiscard]] QList<KLazyLocalizedString> lastNewFeatures67() const;

@@ -71,6 +71,9 @@ public Q_SLOTS:
     /** show status message */
     void showStatusMessage(const QString &) override;
 
+    /** Sets title of window according to filename and modification state */
+    void setTitle() override;
+
 protected Q_SLOTS:
 
     /** using the KConfig associated with the kapp variable, read in the
@@ -80,9 +83,6 @@ protected Q_SLOTS:
 
     /** write current state to config file. */
     void writeSettings();
-
-    /** Sets title of window according to filename and modification state */
-    void setTitle() override;
 
     void slotEditKeys();
 
