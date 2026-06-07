@@ -114,7 +114,7 @@ void KDateNavigator::setBaseDate(const QDate &date)
     }
 }
 
-QSizePolicy KDateNavigator::sizePolicy() const
+QSizePolicy KDateNavigator::navBarSizePolicy() const
 {
     return {QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding};
 }

@@ -42,7 +42,7 @@ public:
         return mSelectedDates;
     }
 
-    [[nodiscard]] QSizePolicy sizePolicy() const;
+    [[nodiscard]] QSizePolicy navBarSizePolicy() const;
 
     NavigatorBar *navigatorBar() const
     {
