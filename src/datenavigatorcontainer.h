@@ -67,7 +67,8 @@ public Q_SLOTS:
     void goNextMonth();
 
 Q_SIGNALS:
-    void datesSelected(const KCalendarCore::DateList &, const QDate &preferredMonth);
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
+    void datesSelected(const KCalendarCore::DateList &dateList, const QDate &preferredMonth);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
     void newEventSignal(const QDate &);
@@ -108,6 +109,7 @@ Q_SIGNALS:
     void monthSelected(int month);
 
     void yearSelected(int year);
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 protected:
     void resizeEvent(QResizeEvent *) override;

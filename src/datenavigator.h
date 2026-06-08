@@ -64,10 +64,12 @@ public Q_SLOTS:
     void selectYear(int year);
 
 Q_SIGNALS:
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     /* preferredMonth is useful when the datelist crosses months,
        if valid, any month-like component should honour it
     */
-    void datesSelected(const KCalendarCore::DateList &, const QDate &preferredMonth);
+    void datesSelected(const KCalendarCore::DateList &dateList, const QDate &preferredMonth);
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 protected:
     void emitSelected(const QDate &preferredMonth = QDate());

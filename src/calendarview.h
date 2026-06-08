@@ -217,7 +217,10 @@ Q_SIGNALS:
       Emitted when an incidence gets selected. If the selection is cleared the
       signal is emitted with 0 as argument.
     */
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     void incidenceSelected(const Akonadi::Item &incidence, const QDate &date);
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
+
     /** Emitted, when a todoitem is selected or deselected.
         the connected slots enables/disables the corresponding menu items */
     void todoSelected(bool);
@@ -243,8 +246,10 @@ Q_SIGNALS:
     void filtersUpdated(const QStringList &, int);
     void filterChanged();
 
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar);
     void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar);
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 public Q_SLOTS:
     /** options dialog made a changed to the configuration. we catch this

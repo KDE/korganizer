@@ -76,7 +76,9 @@ public Q_SLOTS:
     void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 Q_SIGNALS:
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     void fullViewChanged(bool enabled);
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 private:
     EventViews::MonthView *mMonthView = nullptr;

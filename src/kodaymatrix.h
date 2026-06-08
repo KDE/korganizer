@@ -158,6 +158,7 @@ public Q_SLOTS:
     void resourcesChanged();
 
 Q_SIGNALS:
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     /**
      * Emitted if the user selects a block of days with the mouse by dragging
      * a rectangle inside the matrix
@@ -187,6 +188,7 @@ Q_SIGNALS:
      * @param dt QDate that has been selected
      */
     void incidenceDroppedMove(const Akonadi::Item &item, const QDate &dt);
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 protected:
     bool event(QEvent *e) override;

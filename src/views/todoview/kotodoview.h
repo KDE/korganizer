@@ -77,11 +77,13 @@ private Q_SLOTS:
     void printPreviewTodo();
 
 Q_SIGNALS:
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     void purgeCompletedSignal();
     void unSubTodoSignal();
     void unAllSubTodoSignal();
     void configChanged();
     void fullViewChanged(bool enabled);
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 private:
     EventViews::TodoView *mView = nullptr;

@@ -101,8 +101,10 @@ public Q_SLOTS:
     void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 Q_SIGNALS:
-    void zoomViewHorizontally(const QDate &, int count);
+    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
+    void zoomViewHorizontally(const QDate &date, int count);
     void timeSpanSelectionChanged();
+    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 private:
     std::unique_ptr<KOAgendaViewPrivate> const d;
