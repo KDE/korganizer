@@ -951,6 +951,7 @@
           <li xml:lang="ka">გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა</li>
           <li xml:lang="nl">Verbeterde behandeling van standaardagenda voor gebeurtenissen</li>
           <li xml:lang="pt-BR">Melhorada a manipulação padrão de evento de calendário</li>
+          <li xml:lang="sk">Zlepšené spracovanie predvoleného kalendára udalostí</li>
           <li xml:lang="sl">Izboljšano upravljanje privzetega koledarja dogodkov</li>
           <li xml:lang="tr">İyileştirilmiş öntanımlı takvim işleme</li>
           <li xml:lang="uk">Удосконалено обробку типового календаря подій</li>
@@ -1317,6 +1318,7 @@
           <li xml:lang="ka">DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია</li>
           <li xml:lang="nl">DAV-configuratie: assistent heeft lijst met leveranciers bijgewerkt</li>
           <li xml:lang="pt-BR">Configuração DAV: lista de provedores atualizada no assistente</li>
+          <li xml:lang="sk">Nastavenie DAV: sprievodca aktualizoval zoznam poskytovateľov</li>
           <li xml:lang="sl">Konfiguracija DAV: čarovnikov posodobljen seznam ponudnikov</li>
           <li xml:lang="tr">DAV yapılandırması: Sihirbaz sağlayıcı listesini güncellendi</li>
           <li xml:lang="uk">Налаштування DAV: оновлено список надавачів даних у майстрі</li>
