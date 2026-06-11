@@ -599,7 +599,7 @@ public Q_SLOTS:
     /** Popup the "What's New" dialog **/
     void slotWhatsNew();
 
-protected:
+protected Q_SLOTS:
     /**
      * Select a view or adapt the current view to display the specified dates.
      * @p preferredMonth is useful when the datelist crosses months, if valid,
@@ -628,8 +628,6 @@ public:
     */
     QDate activeDate(bool fallbackToToday = false);
 
-    bool eventFilter(QObject *watched, QEvent *event) override;
-
     static void toggleCompleted(const KCalendarCore::Todo::Ptr &, const QDate &);
 
 protected:
@@ -646,6 +644,8 @@ protected:
     */
     void dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bool &allDay);
     IncidenceEditorNG::IncidenceDialog *newEventEditor(const KCalendarCore::Event::Ptr &event);
+
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
     /** Delete the given incidence and, if it is recurring, its instances. */
     void deleteRecurringIncidence(const Akonadi::Item &todoItem);

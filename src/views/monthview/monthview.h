@@ -60,9 +60,6 @@ public:
 
     void setIncidenceChanger(Akonadi::IncidenceChanger *changer) override;
 
-protected:
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
-
 public Q_SLOTS:
     void updateView() override;
 
@@ -81,6 +78,8 @@ Q_SIGNALS:
     // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 private:
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth = QDate()) override;
+
     EventViews::MonthView *mMonthView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
 };

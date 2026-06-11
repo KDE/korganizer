@@ -21,6 +21,7 @@ class KOPrefsUserFeedBack : public KCModule
 public:
     explicit KOPrefsUserFeedBack(QObject *parent, const KPluginMetaData &data);
 
+protected:
     void load() override;
     void save() override;
 

@@ -41,6 +41,9 @@ public:
     [[nodiscard]] bool showSideBar() override;
     void setShowSideBar(bool show) override;
 
+protected:
+    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth) override;
+
 public Q_SLOTS:
     void updateView() override;
     void showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date) override;
@@ -49,9 +52,6 @@ public Q_SLOTS:
 
     void calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar) override;
     void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
-
-protected:
-    void showDates(const QDate &start, const QDate &end, const QDate &preferredMonth) override;
 
 private:
     EventViews::WhatsNextView *const mView;

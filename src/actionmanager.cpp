@@ -1259,6 +1259,7 @@ public:
         return incidence->accept(*this, incidence);
     }
 
+protected:
     bool visit(const KCalendarCore::Event::Ptr &) override
     {
         if (mShow) {
@@ -1297,7 +1298,6 @@ public:
         return false;
     }
 
-protected:
     bool assignDefaultStrings()
     {
         if (mShow) {

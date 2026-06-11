@@ -71,3 +71,5 @@ CheckOptions:
       value: true
     - key: VectorLikeClasses
       value: 'std::vector;QList'
+    - key: misc-override-with-different-visibility.DisallowedVisibilityChange
+      value: widening

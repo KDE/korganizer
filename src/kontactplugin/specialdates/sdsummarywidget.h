@@ -45,6 +45,7 @@ public:
         updateView();
     }
 
+protected:
     bool eventFilter(QObject *obj, QEvent *e) override;
 
 private:
