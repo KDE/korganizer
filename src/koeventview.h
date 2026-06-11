@@ -98,7 +98,6 @@ public Q_SLOTS:
     void focusChanged(QWidget *, QWidget *);
 
 Q_SIGNALS:
-    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     /**
      * When the view changes the dates that are selected in one way or
      * another, this signal is emitted.  It should be connected back to
@@ -107,14 +106,13 @@ Q_SIGNALS:
      * selected dates has changed.
      *   @param datelist the new list of selected dates
      */
-    void datesSelected(const KCalendarCore::DateList &datelist);
+    void datesSelected(const KCalendarCore::DateList);
 
     /**
      * Emitted when an event is moved using the mouse in an agenda
      * view (week / month).
      */
-    void shiftedEvent(const QDate &olddate, const QDate &newdate);
-    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
+    void shiftedEvent(const QDate &, const QDate &);
 
 protected Q_SLOTS:
     void popupShow();

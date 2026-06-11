@@ -158,37 +158,35 @@ public Q_SLOTS:
     void resourcesChanged();
 
 Q_SIGNALS:
-    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     /**
      * Emitted if the user selects a block of days with the mouse by dragging
      * a rectangle inside the matrix
      *
-     * @param daylist list of days that have been selected by the user
+     * param list of days that have been selected by the user
      */
-    void selected(const KCalendarCore::DateList &daylist);
+    void selected(const KCalendarCore::DateList &);
 
-    void newEventSignal(const QDate &date);
-    void newTodoSignal(const QDate &date);
-    void newJournalSignal(const QDate &date);
+    void newEventSignal(const QDate &);
+    void newTodoSignal(const QDate &);
+    void newJournalSignal(const QDate &);
 
     /**
      * Emitted if the user has dropped an incidence (event or todo) inside
      * the matrix.
      *
-     * @param incidence the dropped calendar incidence
-     * @param dt QDate that has been selected
+     * param the dropped calendar incidence
+     * param QDate that has been selected
      */
-    void incidenceDropped(const Akonadi::Item &item, const QDate &dt);
+    void incidenceDropped(const Akonadi::Item &, const QDate &);
 
     /**
      * Emitted if the user has dropped an event inside the matrix and chose
      * to move it instead of copy
      *
-     * @param oldincidence the new calendar incidence
-     * @param dt QDate that has been selected
+     * param the calendar incidence to move
+     * param QDate that has been selected
      */
-    void incidenceDroppedMove(const Akonadi::Item &item, const QDate &dt);
-    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
+    void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
 
 protected:
     bool event(QEvent *e) override;

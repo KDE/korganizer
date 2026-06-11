@@ -47,6 +47,7 @@ public:
        An invalid QDate() is returned if the index is too big or too small.
     */
     [[nodiscard]] QDate monthOfNavigator(int navigatorIndex = 0) const;
+
 public Q_SLOTS:
 
     /**
@@ -67,8 +68,7 @@ public Q_SLOTS:
     void goNextMonth();
 
 Q_SIGNALS:
-    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
-    void datesSelected(const KCalendarCore::DateList &dateList, const QDate &preferredMonth);
+    void datesSelected(const KCalendarCore::DateList &, const QDate &);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
     void newEventSignal(const QDate &);
@@ -76,11 +76,11 @@ Q_SIGNALS:
     void newJournalSignal(const QDate &);
 
     /**
-     * @param preferredMonth Holds the month that should be selected when the
-     * week crosses months. It's a QDate instead of uint so it can be easily
-     * fed to KCalendarSystem's functions.
+     * The second parameter is the preferredMonth that should be selected
+     * when the week crosses months. It's a QDate instead of uint so it
+     * can be easily fed to KCalendarSystem's functions.
      */
-    void weekClicked(const QDate &week, const QDate &preferredMonth);
+    void weekClicked(const QDate &, const QDate &);
 
     void goPrevious();
     void goNext();
@@ -102,14 +102,13 @@ Q_SIGNALS:
         @param selectionLowerLimit The first date of the first KDateNavigator.
         @param selectionUpperLimit The last date of the last KDateNavigator.
     */
-    void prevMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit);
+    void prevMonthClicked(const QDate &, const QDate &, const QDate &);
 
-    void nextMonthClicked(const QDate &currentMonth, const QDate &selectionLowerLimit, const QDate &selectionUpperLimit);
+    void nextMonthClicked(const QDate &, const QDate &, const QDate &);
 
-    void monthSelected(int month);
+    void monthSelected(int);
 
-    void yearSelected(int year);
-    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
+    void yearSelected(int);
 
 protected:
     void resizeEvent(QResizeEvent *) override;

@@ -34,7 +34,6 @@ public Q_SLOTS:
     void selectDates(const KCalendarCore::DateList &);
 
 Q_SIGNALS:
-    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     void fullWindowClicked();
     void todayClicked();
     void nextWeekClicked();
@@ -43,9 +42,8 @@ Q_SIGNALS:
     void prevMonthClicked();
     void nextYearClicked();
     void prevYearClicked();
-    void monthSelected(int month);
-    void yearSelected(int year);
-    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
+    void monthSelected(int);
+    void yearSelected(int);
 
 protected:
     QToolButton *createNavigationButton(const QString &icon, const QString &toolTip, const QString &whatsThis);

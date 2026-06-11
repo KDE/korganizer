@@ -73,14 +73,13 @@ public Q_SLOTS:
     void setUpdateNeeded();
 
 Q_SIGNALS:
-    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     void datesSelected(const KCalendarCore::DateList &);
     void incidenceDropped(const Akonadi::Item &, const QDate &);
     void incidenceDroppedMove(const Akonadi::Item &, const QDate &);
     void newEventSignal(const QDate &);
     void newTodoSignal(const QDate &);
     void newJournalSignal(const QDate &);
-    void weekClicked(const QDate &week, const QDate &month);
+    void weekClicked(const QDate &, const QDate &);
 
     void goPrevious();
     void goNext();
@@ -94,9 +93,8 @@ Q_SIGNALS:
     void nextYearClicked();
     void prevYearClicked();
 
-    void monthSelected(int month);
-    void yearSelected(int year);
-    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
+    void monthSelected(int);
+    void yearSelected(int);
 
 protected:
     void updateDates();

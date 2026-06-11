@@ -70,15 +70,13 @@ public:
     [[nodiscard]] Akonadi::Collection currentCalendar() const;
 
 Q_SIGNALS:
-    // NOLINTBEGIN(readability-inconsistent-declaration-parameter-name)
     void collectionEnabled(const Akonadi::Collection &);
     void collectionDisabled(const Akonadi::Collection &);
 
-    void resourcesChanged(bool enabled);
+    void resourcesChanged(bool);
     void resourcesAddedRemoved();
     void defaultResourceChanged(const Akonadi::Collection &);
     void colorsChanged();
-    // NOLINTEND(readability-inconsistent-declaration-parameter-name)
 
 private Q_SLOTS:
     void updateView();
