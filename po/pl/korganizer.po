@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1738729 $
+# Version: $Revision: 1738957 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
+"POT-Creation-Date: 2026-06-12 00:44+0000\n"
 "PO-Revision-Date: 2026-03-14 07:53+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -1366,37 +1366,37 @@ msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Nie można uruchomić modułu ustawień formatu daty i czasu."
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Pokaż wydarzenie"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Edytuj wydarzenie…"
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1272
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Usuń wy&darzenie"
 
-#: actionmanager.cpp:1279
+#: actionmanager.cpp:1280
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "P&okaż zadanie"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1283
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Edytuj zadanie…"
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1286
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
@@ -3717,18 +3717,20 @@ msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Scal podane pliki z istniejącym kalendarzem"
 
-#: korganizer_options.h:24
+#: korganizer_options.h:25
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Wyświetl dane wystąpienie (po adresie URL)"
 
-#: korganizer_options.h:24
-#, kde-format
+#: korganizer_options.h:25
+#, fuzzy, kde-format
+#| msgid "Url"
+msgctxt "@info:shell"
 msgid "Url"
 msgstr "Adres URL"
 
-#: korganizer_options.h:28
+#: korganizer_options.h:29
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -3739,7 +3741,7 @@ msgstr ""
 "użytkownik zostanie zapytany czy importować, otworzyć w innym oknie, lub "
 "scalić."
 
-#: korganizer_options.h:32
+#: korganizer_options.h:33
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
@@ -7061,16 +7063,28 @@ msgid "Select a year"
 msgstr "Wybierz rok"
 
 #: widgets/navigatorbar.cpp:141
-#, kde-format
-msgctxt "monthname"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "%1"
+msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, kde-format
-msgctxt "4 digit year"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "%1"
+msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #~ msgid "Use system color"
 #~ msgstr "Użyj kolorów systemowych"

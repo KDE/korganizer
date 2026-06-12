@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1738729 2026-06-09 01:27:56Z scripty $
+# $Id: korganizer.po 1738957 2026-06-12 01:28:09Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
+"POT-Creation-Date: 2026-06-12 00:44+0000\n"
 "PO-Revision-Date: 2026-05-09 07:57+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -1372,37 +1372,37 @@ msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Nadzornega modula za obliko datuma in časa ni bilo mogoče zagnati."
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Pokaži dogodek"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Ur&edi dogodek…"
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1272
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Izbriši dogodek"
 
-#: actionmanager.cpp:1279
+#: actionmanager.cpp:1280
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "Pokaži opravilo"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1283
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "Ur&edi opravilo…"
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1286
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
@@ -3744,18 +3744,20 @@ msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Zlij navedene datoteke v obstoječi koledar"
 
-#: korganizer_options.h:24
+#: korganizer_options.h:25
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Prikaži dane incidence (po URL)"
 
-#: korganizer_options.h:24
-#, kde-format
+#: korganizer_options.h:25
+#, fuzzy, kde-format
+#| msgid "Url"
+msgctxt "@info:shell"
 msgid "Url"
 msgstr "Url"
 
-#: korganizer_options.h:28
+#: korganizer_options.h:29
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -3765,7 +3767,7 @@ msgstr ""
 "Koledarske datoteke ali naslovi URL. Če nista izrecno podana -i ali -m, bo "
 "uporabnik vprašan ali želi uvoz ali zlitje"
 
-#: korganizer_options.h:32
+#: korganizer_options.h:33
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
@@ -7093,16 +7095,28 @@ msgid "Select a year"
 msgstr "Izberite leto"
 
 #: widgets/navigatorbar.cpp:141
-#, kde-format
-msgctxt "monthname"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "%1"
+msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, kde-format
-msgctxt "4 digit year"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "%1"
+msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #~ msgid "Use system color"
 #~ msgstr "Uporabi sistemsko barvo"

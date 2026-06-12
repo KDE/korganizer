@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
+"POT-Creation-Date: 2026-06-12 00:44+0000\n"
 "PO-Revision-Date: 2026-01-05 17:25+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1368,37 +1368,37 @@ msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Päivämäärän ja ajan asetuksia ei voitu avata."
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Näytä tapahtuma"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Muokkaa tapahtumaa…"
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1272
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Poista tapahtuma"
 
-#: actionmanager.cpp:1279
+#: actionmanager.cpp:1280
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "Näytä t&ehtävä"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1283
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "Muokkaa te&htävää…"
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1286
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
@@ -3764,18 +3764,20 @@ msgid "Merge the specified files into an existing calendar"
 msgstr "Yhdistä valitut tiedostot olemassa olevaan kalenteriin"
 
 # *** TARKISTA: ”by URL” on kaksitulkintainen: onko se tämän komennon tulos vai parametri? Tulkitsin parametriksi
-#: korganizer_options.h:24
+#: korganizer_options.h:25
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr "Näytä valittu ilmentymä (verkko-osoitteen mukaan)"
 
-#: korganizer_options.h:24
-#, kde-format
+#: korganizer_options.h:25
+#, fuzzy, kde-format
+#| msgid "Url"
+msgctxt "@info:shell"
 msgid "Url"
 msgstr "Verkko-osoite"
 
-#: korganizer_options.h:28
+#: korganizer_options.h:29
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -3785,7 +3787,7 @@ msgstr ""
 "Kalenteritiedostot tai verkko-osoitteet. Ellei -i- tai -m-valitsinta ole "
 "annettu, kysytään käyttäjältä, onko tarkoitus tuoda vai liittää"
 
-#: korganizer_options.h:32
+#: korganizer_options.h:33
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
@@ -7085,16 +7087,28 @@ msgid "Select a year"
 msgstr "Valitse vuosi"
 
 #: widgets/navigatorbar.cpp:141
-#, kde-format
-msgctxt "monthname"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "%1"
+msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, kde-format
-msgctxt "4 digit year"
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "%1"
+msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #~ msgid "Use system color"
 #~ msgstr "Käytä järjestelmäväriä"

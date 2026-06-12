@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
+"POT-Creation-Date: 2026-06-12 00:44+0000\n"
 "PO-Revision-Date: 2007-03-28 20:53+0200\n"
 "Last-Translator: Rinse de Vries <rinsedevries@kde.nl>\n"
 "Language-Team: Frysk <kde-i18n-fry@kde.org>\n"
@@ -1436,42 +1436,42 @@ msgid "Could not start control module for date and time format."
 msgstr ""
 "De ynstallaasjemodule foar de datum- en tiidopmak koe net starten wurde."
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Evenemint &toane"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Evenemint b&ewurkje..."
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1272
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Evenemint wis&kje"
 
-#: actionmanager.cpp:1279
+#: actionmanager.cpp:1280
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "Taak &toane"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1283
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "Taak b&ewurkje..."
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1286
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
@@ -3927,18 +3927,19 @@ msgid "Merge the specified files into an existing calendar"
 msgstr ""
 "De opjûne aginda's gearfoegje mei de standert aginda (alle items kopiearje)"
 
-#: korganizer_options.h:24
+#: korganizer_options.h:25
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr ""
 
-#: korganizer_options.h:24
+#: korganizer_options.h:25
 #, kde-format
+msgctxt "@info:shell"
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:28
+#: korganizer_options.h:29
 #, fuzzy, kde-format
 #| msgid ""
 #| "Calendar files or urls. Unless -i, -o or -m is explicitly specified, the "
@@ -3952,7 +3953,7 @@ msgstr ""
 "oars sil de brûker frege wurde  om te ymportearen, gear te foegjen of om it "
 "te iepenje yn in nij finster."
 
-#: korganizer_options.h:32
+#: korganizer_options.h:33
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
@@ -7354,16 +7355,28 @@ msgstr "Selektearje in moanne"
 #: widgets/navigatorbar.cpp:141
 #, fuzzy, kde-format
 #| msgid "%1"
-msgctxt "monthname"
+msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
 #, fuzzy, kde-format
 #| msgid "%1"
-msgctxt "4 digit year"
+msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #, fuzzy
 #~| msgid "&Use colors"

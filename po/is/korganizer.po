@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-09 00:45+0000\n"
+"POT-Creation-Date: 2026-06-12 00:44+0000\n"
 "PO-Revision-Date: 2009-07-28 20:21+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -1392,42 +1392,42 @@ msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Gat ekki ræst stjórneiningu fyrir dagsetninga og tímasnið."
 
-#: actionmanager.cpp:1265
+#: actionmanager.cpp:1266
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Sýna &atburð"
 
-#: actionmanager.cpp:1268
+#: actionmanager.cpp:1269
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Br&eyta atburði..."
 
-#: actionmanager.cpp:1271
+#: actionmanager.cpp:1272
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Eyða atburði"
 
-#: actionmanager.cpp:1279
+#: actionmanager.cpp:1280
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Sýna verkþátt"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1283
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Sýsla með verkþátt..."
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1286
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
@@ -3769,18 +3769,19 @@ msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
 msgstr "Bæta við viðhengi"
 
-#: korganizer_options.h:24
+#: korganizer_options.h:25
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
 msgstr ""
 
-#: korganizer_options.h:24
+#: korganizer_options.h:25
 #, kde-format
+msgctxt "@info:shell"
 msgid "Url"
 msgstr ""
 
-#: korganizer_options.h:28
+#: korganizer_options.h:29
 #, kde-format
 msgctxt "@info:shell"
 msgid ""
@@ -3788,7 +3789,7 @@ msgid ""
 "will be asked whether to import or merge"
 msgstr ""
 
-#: korganizer_options.h:32
+#: korganizer_options.h:33
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
@@ -6897,16 +6898,28 @@ msgstr "Veldu mánuð"
 #: widgets/navigatorbar.cpp:141
 #, fuzzy, kde-format
 #| msgid "%1"
-msgctxt "monthname"
+msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
 #, fuzzy, kde-format
 #| msgid "%1"
-msgctxt "4 digit year"
+msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "monthname"
+#~ msgid "%1"
+#~ msgstr "%1"
+
+#, fuzzy
+#~| msgid "%1"
+#~ msgctxt "4 digit year"
+#~ msgid "%1"
+#~ msgstr "%1"
 
 #, fuzzy
 #~| msgid "&Use colors"
