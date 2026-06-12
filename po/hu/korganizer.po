@@ -2,13 +2,13 @@
 # Peter Abraham <abraham@mail.lauder.hu>, 2000.
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2011, 2012, 2014.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
-# SPDX-FileCopyrightText: 2024 Kristof Kiszel <ulysses@fsf.hu>
+# SPDX-FileCopyrightText: 2024, 2026 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-28 02:50+0000\n"
-"PO-Revision-Date: 2024-08-06 22:24+0200\n"
+"PO-Revision-Date: 2026-06-11 23:11+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,47 +16,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 "Ábrahám Péter,Griechisch Erika,Kelemen Gábor,Kiszel Kristóf,Szántó Tamás,Úr "
-"Balázs"
+"Balázs,Kisjuhász Attila"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "abraham@mail.lauder.hu,griechisch.erika@gmail.com,kelemeng@gnome.hu,"
-"ulysses@fsf.hu,taszanto@gmail.com,ur.balazs@fsf.hu"
+"ulysses@fsf.hu,taszanto@gmail.com,ur.balazs@fsf.hu,kj.attil@gmail.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
 #: kontactplugin/korganizer/korganizerplugin.cpp:42
 #: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
-#, fuzzy, kde-format
-#| msgid "KOrganizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
 #: aboutdata.cpp:20
-#, fuzzy, kde-format
-#| msgid "A Personal Organizer"
+#, kde-format
 msgctxt "@info/plain"
 msgid "A Personal Organizer"
-msgstr "Egy határidőnapló"
+msgstr "Személyes szervező"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2024 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -69,7 +61,7 @@ msgstr ""
 "Copyright © Cornelius Schumacher, 2000-2004, 2007.\n"
 "Copyright © Reinhold Kainhofer, 2004-2005.\n"
 "Copyright © Allen Winter, 2006-2012.\n"
-"Copyright © A KOrganizer szerzői, 2012-2024."
+"Copyright © A KOrganizer szerzői, 2012-2026."
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -78,8 +70,7 @@ msgid "Allen Winter"
 msgstr "Allen Winter"
 
 #: aboutdata.cpp:31
-#, fuzzy, kde-format
-#| msgid "Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Maintainer"
 msgstr "Karbantartó"
@@ -91,8 +82,7 @@ msgid "Reinhold Kainhofer"
 msgstr "Reinhold Kainhofer"
 
 #: aboutdata.cpp:32 aboutdata.cpp:33
-#, fuzzy, kde-format
-#| msgid "Former Maintainer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Former Maintainer"
 msgstr "Korábbi karbantartó"
@@ -110,8 +100,7 @@ msgid "Preston Brown"
 msgstr "Preston Brown"
 
 #: aboutdata.cpp:34
-#, fuzzy, kde-format
-#| msgid "Original Author"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Original Author"
 msgstr "Eredeti szerző"
@@ -123,8 +112,7 @@ msgid "Laurent Montel"
 msgstr "Laurent Montel"
 
 #: aboutdata.cpp:35
-#, fuzzy, kde-format
-#| msgid "Developer"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Fejlesztő"
@@ -274,12 +262,10 @@ msgid "Rafał Rzepecki"
 msgstr "Rafał Rzepecki"
 
 #: aboutdata.cpp:59
-#, fuzzy, kde-format
-#| msgid "Part of work sponsored by Google with Summer of Code 2005"
+#, kde-format
 msgctxt "@info:credit"
 msgid "Part of work sponsored by Google with Summer of Code 2005"
-msgstr ""
-"A munkát részben a Google szponzorálta a Summer of Code 2005 rendezvényen"
+msgstr "A munkát részben a Google szponzorálta a Summer of Code 2005 keretében"
 
 #: aboutdata.cpp:60
 #, kde-format
@@ -342,28 +328,20 @@ msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
 #: actionmanager.cpp:128
-#, fuzzy, kde-format
-#| msgid ""
-#| "<qt>This will hide the menu bar completely. You can show it again by "
-#| "typing %1.</qt>"
+#, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
-msgstr ""
-"<qt>Teljesen elrejti a menüsávot. Ezzel a paranccsal állítható vissza: %1.</"
-"qt>"
+msgstr "Teljesen elrejti a menüsávot. Ezzel a paranccsal állítható vissza: %1."
 
 #: actionmanager.cpp:131
-#, fuzzy, kde-format
-#| msgid "Hide menu bar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "Menüsáv elrejtése"
 
 #: actionmanager.cpp:242
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Import &Calendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "&Naptár importálása…"
@@ -391,9 +369,7 @@ msgstr ""
 "importálni a jelenlegi naptárgyűjteménybe."
 
 #: actionmanager.cpp:254
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Export as &iCalendar…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "Exportálás i&Calendarként…"
@@ -420,9 +396,7 @@ msgstr ""
 "fájlba."
 
 #: actionmanager.cpp:263
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Archive O&ld Incidences…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "Régi események archivá&lása…"
@@ -431,13 +405,13 @@ msgstr "Régi események archivá&lása…"
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
-msgstr "Események és feladatok archiválása fájlba"
+msgstr "Események és teendők archiválása fájlba"
 
 #: actionmanager.cpp:265
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
-msgstr "Régi eseményel és feladatok archiválása iCalendar-fájlba"
+msgstr "Régi események és teendők archiválása iCalendar-fájlba"
 
 #: actionmanager.cpp:267
 #, kde-format
@@ -448,28 +422,26 @@ msgid ""
 "your existing calendar collection."
 msgstr ""
 "Ez a menübejegyzés megnyit egy párbeszédablakot, amely lehetővé teszi a régi "
-"események és feladatok kiválasztását, hogy iCalendar-fájlba archiválhassa "
+"események és teendők kiválasztását, hogy iCalendar-fájlba archiválhassa "
 "azokat. Ezek eltávolításra kerülnek a meglévő naptárgyűjteményéből."
 
 #: actionmanager.cpp:275
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "Pur&ge Completed To-dos"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
-msgstr "Lezárt feladatok tö&rlése"
+msgstr "Befejezett teendők tö&rlése"
 
 #: actionmanager.cpp:276
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
-msgstr "A befejezett feladatok törlése"
+msgstr "A befejezett teendők törlése"
 
 #: actionmanager.cpp:277
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
-msgstr "Eltávolítja a befejezett feladatokat a naptárból"
+msgstr "Eltávolítja a befejezett teendőket a naptárból"
 
 #: actionmanager.cpp:279
 #, kde-format
@@ -478,23 +450,21 @@ msgid ""
 "Allows you to remove all completed to-dos from your calendar collection. "
 "This action cannot be undone!"
 msgstr ""
-"Lehetővé teszi az összes befejezett feladat eltávolítását a "
+"Lehetővé teszi az összes befejezett teendő eltávolítását a "
 "naptárgyűjteményből. Ez a művelet nem vonható vissza!"
 
 #: actionmanager.cpp:316 actionmanager.cpp:615 actionmanager.cpp:1310
 #: actionmanager.cpp:1348
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "&Törlés"
 
 #: actionmanager.cpp:333
-#, fuzzy, kde-format
-#| msgid "What's &Next"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
-msgstr "Mi kö&vetkezik?"
+msgstr "Mi kö&vetkezik"
 
 #: actionmanager.cpp:334
 #, kde-format
@@ -518,13 +488,12 @@ msgid ""
 "Navigator sidebar will be shown."
 msgstr ""
 "A „Mi következik” nézetre vált, amely megjeleníti a hamarosan esedékes "
-"eseményeket és feladatokat egy rövid listában a gyors olvasáshoz. Minden "
-"nyitott feladat megjelenik, de az események közül csak a Dátumnavigátor "
+"eseményeket és teendőket egy rövid listában a gyors olvasáshoz. Minden "
+"nyitott teendő megjelenik, de az események közül csak a Dátumnavigátor "
 "oldalsávon kiválasztott napokéi."
 
 #: actionmanager.cpp:345
-#, fuzzy, kde-format
-#| msgid "&Month"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "Hóna&p"
@@ -533,13 +502,13 @@ msgstr "Hóna&p"
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
-msgstr "Havi nézet"
+msgstr "Hónap nézet"
 
 #: actionmanager.cpp:347
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
-msgstr "Váltás a Havi nézetre"
+msgstr "Váltás a Hónap nézetre"
 
 #: actionmanager.cpp:349
 #, kde-format
@@ -548,27 +517,26 @@ msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
 msgstr ""
-"Átvált a Havi nézetre, amely megjeleníti az összes eseményt és esedékes "
-"feladatot egy ismereső, havi naptárelrendezésben."
+"Átvált a Hónap nézetre, amely megjeleníti az összes eseményt és esedékes "
+"teendőt egy ismerős, havi naptárelrendezésben."
 
 #: actionmanager.cpp:355
-#, fuzzy, kde-format
-#| msgid "&Agenda"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
-msgstr "Á&ttekintő nézet"
+msgstr "N&apirend"
 
 #: actionmanager.cpp:358
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
-msgstr "Áttekintő nézet"
+msgstr "Napirend nézet"
 
 #: actionmanager.cpp:359
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
-msgstr "Váltás az Áttekintő nézetre"
+msgstr "Váltás a Napirend nézetre"
 
 #: actionmanager.cpp:361
 #, kde-format
@@ -578,25 +546,27 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
+"Átvált a Napirend nézetre, amely időrendben rendezi az eseményeket vagy a "
+"teendőket egy vagy több napra vonatkozóan. A napi ütemtervben az egyes "
+"események időtartamát is láthatja."
 
 #: actionmanager.cpp:368
-#, fuzzy, kde-format
-#| msgid "&Event List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
-msgstr "&Események"
+msgstr "&Eseménylista"
 
 #: actionmanager.cpp:369
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
-msgstr "Listanézet"
+msgstr "Lista nézet"
 
 #: actionmanager.cpp:370
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
-msgstr "Váltás a Listanézetre"
+msgstr "Váltás a Lista nézetre"
 
 #: actionmanager.cpp:372
 #, kde-format
@@ -605,25 +575,26 @@ msgid ""
 "Switches to the List View, which displays all your to-dos, events and "
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
+"Átvált a Lista nézetre, amely a Dátumnavigátorban kiválasztott dátumokra "
+"vonatkozó összes teendőt, eseményt és naplóbejegyzést listaként jeleníti meg."
 
 #: actionmanager.cpp:378
-#, fuzzy, kde-format
-#| msgid "&To-do List"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
-msgstr "Fela&datlista"
+msgstr "&Teendőlista"
 
 #: actionmanager.cpp:379
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
-msgstr "Feladatlista nézet"
+msgstr "Teendőlista nézet"
 
 #: actionmanager.cpp:380
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "Váltás a feladatlista nézetre"
+msgstr "Váltás a Teendőlista nézetre"
 
 #: actionmanager.cpp:382
 #, kde-format
@@ -632,13 +603,14 @@ msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
 msgstr ""
+"Átvált a Teendőlista nézetre, ahol nyomon követheti az elvégzendő "
+"feladatokat."
 
 #: actionmanager.cpp:388
-#, fuzzy, kde-format
-#| msgid "&Journal"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
-msgstr "Nap&ló"
+msgstr "&Napló"
 
 #: actionmanager.cpp:389
 #, kde-format
@@ -650,7 +622,7 @@ msgstr "Napló nézet"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
-msgstr "Váltás a napló nézetre"
+msgstr "Váltás a Napló nézetre"
 
 #: actionmanager.cpp:392
 #, kde-format
@@ -659,10 +631,11 @@ msgid ""
 "Switches to the Journal View, which provides a place for you to record your "
 "reflections, occurrences or experiences."
 msgstr ""
+"Átvált a Napló nézetre, ahol rögzítheti gondolatait, eseményeket vagy "
+"élményeit."
 
 #: actionmanager.cpp:398
-#, fuzzy, kde-format
-#| msgid "Time&line"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "Idő&vonal"
@@ -677,7 +650,7 @@ msgstr "Idővonal nézet"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
-msgstr ""
+msgstr "Váltás az Idővonal nézetre"
 
 #: actionmanager.cpp:402
 #, kde-format
@@ -686,11 +659,12 @@ msgid ""
 "Switches to the Timeline View, which shows all events for the selected "
 "timespan in a Gantt view. Each calendar is displayed in a separate line."
 msgstr ""
+"Átvált az Idővonal nézetre, amely a kiválasztott időszak összes eseményét "
+"Gantt-diagram formájában jeleníti meg. Minden naptár egy külön sorban "
+"jelenik meg."
 
 #: actionmanager.cpp:411
-#, fuzzy, kde-format
-#| msgctxt "@action"
-#| msgid "&Refresh"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "&Frissítés"
@@ -705,7 +679,7 @@ msgstr "Frissítés"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
-msgstr "Frissíti a kijelzőt"
+msgstr "Frissíti a képernyőt"
 
 #: actionmanager.cpp:415
 #, kde-format
@@ -714,10 +688,11 @@ msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
 msgstr ""
+"Ez a művelet frissíti és újrarajzolja az aktuális naptárnézetet. Nem "
+"szinkronizálja és nem frissíti a naptármappákat."
 
 #: actionmanager.cpp:424
-#, fuzzy, kde-format
-#| msgid "F&ilter"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "&Szűrő"
