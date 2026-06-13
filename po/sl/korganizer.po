@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1738957 2026-06-12 01:28:09Z scripty $
+# $Id: korganizer.po 1739028 2026-06-13 01:28:25Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-12 00:44+0000\n"
-"PO-Revision-Date: 2026-05-09 07:57+0200\n"
+"PO-Revision-Date: 2026-06-12 06:53+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -3751,8 +3751,7 @@ msgid "Display the specified incidence (by URL)"
 msgstr "Prikaži dane incidence (po URL)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid "Url"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Url"
 msgstr "Url"
@@ -6585,7 +6584,7 @@ msgstr ""
 "Mesečni pogled: Dodana je bila možnost prikazovanja začetnega in končnega "
 "časa. Prej je bil podprt samo prikaz začetnega časa. Če želite omogočiti to "
 "možnost, v zavihku Pogled->Mesec označite možnost \"Prikazuj začetni in "
-"končni čas v elementih mesečnega pogleda\"."
+"končni čas v elementih mesečnega pogleda\""
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"
@@ -7095,17 +7094,13 @@ msgid "Select a year"
 msgstr "Izberite leto"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"

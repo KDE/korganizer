@@ -6582,25 +6582,13 @@ msgid "Select a year"
 msgstr "选择年"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
-msgstr "%1"
+msgstr ""
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
-msgstr "%1"
-
-#~ msgctxt "monthname"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#~ msgctxt "4 digit year"
-#~ msgid "%1"
-#~ msgstr "%1"
+msgstr ""
