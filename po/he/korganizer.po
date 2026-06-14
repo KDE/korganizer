@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-12 00:44+0000\n"
-"PO-Revision-Date: 2026-05-09 07:13+0300\n"
+"PO-Revision-Date: 2026-06-13 16:25+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3666,8 +3666,7 @@ msgid "Display the specified incidence (by URL)"
 msgstr "הצגת המאורע שצוין (לפי כתובת)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid "Url"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Url"
 msgstr "כתובת"
@@ -6882,17 +6881,13 @@ msgid "Select a year"
 msgstr "נא לבחור שנה"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
