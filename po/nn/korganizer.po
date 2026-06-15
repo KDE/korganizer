@@ -6856,13 +6856,3 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
-
-# unreviewed-context
-#~ msgctxt "monthname"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-# unreviewed-context
-#~ msgctxt "4 digit year"
-#~ msgid "%1"
-#~ msgstr "%1"

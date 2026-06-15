@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-12 00:44+0000\n"
-"PO-Revision-Date: 2026-05-15 15:55+0200\n"
+"PO-Revision-Date: 2026-06-07 22:27+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -3875,7 +3875,7 @@ msgstr "Impostazioni posta elettronica"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Categoria di accesso predefinito"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -6562,7 +6562,7 @@ msgstr ""
 "possibilità di inserirle nella cartella sbgliata. Impostare un calendario "
 "degli eventi predefinito è un'operazione supportata da tanto tempo. "
 "Controllare il menu contestuale  «Imposta come calen&dario predefinito delle "
-"cose da fare« del gestore di calendario."
+"cose da fare» del gestore di calendario."
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
@@ -6583,8 +6583,8 @@ msgid ""
 msgstr ""
 "È ora possibile nascondere le festività che appartengono a determinate "
 "categorie, ad esempio nascondere le festività religiose. Si veda la casella "
-"combinata Categorie nella sezione delle festività nella scheda Data e ora -> "
-"Regionale."
+"combinata Categorie nella sezione delle festività nella scheda Data e ora-"
+">Regionale."
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
@@ -6602,7 +6602,7 @@ msgid ""
 msgstr ""
 "Vista mensile: è stata aggiunta un'opzione per nascondere delle festività. "
 "Per abilitare questo comportamento, disabilitare l'opzione «Mostra le "
-"festività nella vista mensile» nella scheda Visualizza->Vista mese."
+"festività nella vista mensile» nella scheda Visualizza->Vista mensile."
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
@@ -6619,20 +6619,16 @@ msgstr ""
 "Visualizza->Vista mensile"
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid ""
-#| "Month view: An option was added to allow hiding holidays. To enable this "
-#| "behavior, uncheck the \"Display holidays in the month view\" option in "
-#| "the Views->Month View tab"
 msgid ""
 "Month view: An option was added to show start-time and end-times. Previously "
 "only showing the start-time was supported. To enable this option, check the "
 "\"Show the start-time and the end-time in month view items\" option in the "
 "View->Month View tab"
 msgstr ""
-"Vista mensile: è stata aggiunta un'opzione per nascondere delle festività. "
-"Per abilitare questo comportamento, disabilitare l'opzione «Mostra le "
-"festività nella vista mensile» nella scheda Visualizza->Vista mese."
+"Vista mensile: è stata aggiunta un'opzione per mostrare gli orari di inizio "
+"e di fine. Prima si poteva solo mostrare l'orario di inizio. Per abilitare "
+"questa opzione, selezionare l'opzione «Mostra gli orari di inizi e di fine "
+"nelle voci della vista mensile» nella scheda Visualizza->Vista mensile."
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"
@@ -6657,6 +6653,10 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Sono state aggiunte le opzioni per impostare le categorie di accesso "
+"predefinite (pubblica, confidenziale o privata) alla creazione di nuovi "
+"eventi, cose da fare e diari. Selezionare le proprie preferenze nelle "
+"caselle combinate «Generale->Categoria di accesso predefinito personale»."
 
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
