@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-12 00:44+0000\n"
-"PO-Revision-Date: 2026-05-29 15:37+0200\n"
+"PO-Revision-Date: 2026-06-17 15:17+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -3721,11 +3721,10 @@ msgid "Display the specified incidence (by URL)"
 msgstr "Показване на посоченото събитие (по URL)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid "Url"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Url"
-msgstr "Адрес"
+msgstr "Url"
 
 #: korganizer_options.h:29
 #, kde-format
@@ -7111,53 +7110,13 @@ msgid "Select a year"
 msgstr "Избиране на година"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "monthname"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#~ msgctxt "4 digit year"
-#~ msgid "%1"
-#~ msgstr "%1"
-
-#~ msgid "Use system color"
-#~ msgstr "Използване на системен цвят"
-
-#~ msgctxt "@info"
-#~ msgid ""
-#~ "Do you really want to delete the <filename>%1</filename> calendar?"
-#~ "<para><note>The calendar data will not be deleted, nor will the calendar "
-#~ "be removed from its remote resource. The <filename>%1</filename> calendar "
-#~ "can be added again at any time.</note></para><para><warning>This calendar "
-#~ "contains your default calendar folder <filename>%2</filename>. If you "
-#~ "delete it you may be prompted to select a new default calendar folder.</"
-#~ "warning></para>"
-#~ msgstr ""
-#~ "Наистина ли искате да изтриете календара <filename>%1</filename>?"
-#~ "<para><note>Данните в календара няма да бъдат изтрити, нито календарът ще "
-#~ "бъде премахнат от неговия отдалечен ресурс. Календарът <filename>%1</"
-#~ "filename> може да бъде добавен отново по всяко време.</note></"
-#~ "para><para><warning>Този календар съдържа вашата папка на календара по "
-#~ "подразбиране<filename>%2</filename>. Ако я изтриете, може да бъдете "
-#~ "подканени да изберете нова папка на календара по подразбиране.</warning></"
-#~ "para>"
-
-#~ msgid "Scroll backward to the previous year"
-#~ msgstr "Превъртане назад към предишната година"
-
-#~ msgid "Scroll backward to the previous month"
-#~ msgstr "Превъртане назад към предишния месец"
