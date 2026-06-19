@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-12 00:44+0000\n"
-"PO-Revision-Date: 2026-06-11 23:11+0200\n"
+"PO-Revision-Date: 2026-06-18 21:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -1475,7 +1475,7 @@ msgstr "Csat&olás beszúrva mellékletek nélkül"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
-msgstr "&Mégsem"
+msgstr "&Mégse"
 
 #: actionmanager.cpp:1471
 #, fuzzy, kde-format
@@ -2742,7 +2742,7 @@ msgstr "&Hozzáadás"
 #: kodaymatrix.cpp:613
 #, kde-format
 msgid "&Cancel"
-msgstr "&Mégsem"
+msgstr "&Mégse"
 
 #: koeventpopupmenu.cpp:46
 #, kde-format
