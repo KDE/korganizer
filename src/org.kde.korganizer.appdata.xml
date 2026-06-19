@@ -969,6 +969,7 @@
           <li xml:lang="uk">Початкові часи початку «Нової події» у новій версії є узгодженими за усіма панелями перегляду</li>
           <li>Improved default event calendar handling</li>
           <li xml:lang="ar">تحسين معالجة أحداث التقويم المبدئية</li>
+          <li xml:lang="bg">Подобрена обработка на календара за събития по подразбиране</li>
           <li xml:lang="ca">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
           <li xml:lang="ca-valencia">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
           <li xml:lang="cs">Vylepšené zpracování výchozího kalendáře událostí</li>
@@ -1359,6 +1360,7 @@
           <li xml:lang="uk">Налаштування DAV: реалізовано показ піктограм для різних надавачів даних у майстрі</li>
           <li>DAV configuration: wizard updated list of providers</li>
           <li xml:lang="ar">ضبط DAV: تحديث المعالج لقائمة المزودين</li>
+          <li xml:lang="bg">Настройка на DAV: Помощникът обнови списъка с доставчици</li>
           <li xml:lang="ca">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
           <li xml:lang="ca-valencia">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
           <li xml:lang="cs">Konfigurace DAV: aktualizován seznam poskytovatelů v průvodci</li>
