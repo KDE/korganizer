@@ -3,4 +3,7 @@
   <suppress>
     <id>virtualCallInConstructor</id>
   </suppress>
+  <suppress>
+    <id>shadowFunction</id>
+  </suppress>
 </suppressions>
