@@ -627,7 +627,7 @@ void AkonadiCollectionView::setDefaultCalendar()
     }
     Q_EMIT collectionEnabled(newCollection);
 
-    CalendarSupport::KCalPrefs::KCalPrefs::instance()->usrSave();
+    CalendarSupport::KCalPrefs::KCalPrefs::instance()->savePrefs();
     updateMenu();
     updateView();
 
@@ -1066,7 +1066,7 @@ void AkonadiCollectionView::requestDefaultCalendar(const QString &mimeType)
     } else {
         CalendarSupport::KCalPrefs::instance()->setDefaultEventCalendarId(defaultCollectionId);
     }
-    CalendarSupport::KCalPrefs::instance()->usrSave();
+    CalendarSupport::KCalPrefs::instance()->savePrefs();
 }
 
 void AkonadiCollectionView::resetDefaultEventCalendar()
