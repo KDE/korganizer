@@ -155,7 +155,7 @@ bool KOrganizerPart::saveAsURL(const QUrl &url)
 
 QUrl KOrganizerPart::getCurrentURL() const
 {
-    return mActionManager->url();
+    return mActionManager->currentURL();
 }
 
 bool KOrganizerPart::openFile()

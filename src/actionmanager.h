@@ -89,7 +89,7 @@ public Q_SLOTS:
 
 public:
     /** Get current URL */
-    [[nodiscard]] QUrl url() const
+    [[nodiscard]] QUrl currentURL() const
     {
         return mURL;
     }

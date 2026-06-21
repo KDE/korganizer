@@ -213,7 +213,7 @@ bool KOrganizer::saveAsURL(const QUrl &kurl)
 
 QUrl KOrganizer::getCurrentURL() const
 {
-    return mActionManager->url();
+    return mActionManager->currentURL();
 }
 
 KXMLGUIFactory *KOrganizer::mainGuiFactory()
@@ -260,7 +260,7 @@ void KOrganizer::setTitle()
 {
     QString title;
     if (hasDocument()) {
-        const QUrl url = mActionManager->url();
+        const QUrl url = mActionManager->currentURL();
 
         if (!url.isEmpty()) {
             if (url.isLocalFile()) {
