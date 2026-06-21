@@ -76,14 +76,14 @@ enum SDCategory {
 class SDEntry
 {
 public:
-    SDIncidenceType type;
-    SDCategory category;
-    int yearsOld;
-    int daysTo;
+    SDIncidenceType type = IncidenceTypeContact;
+    SDCategory category = CategoryBirthday;
+    int yearsOld = 0;
+    int daysTo = 0;
     QDate date;
     QString summary;
     QString desc;
-    int span; // #days in the special occasion.
+    int span = 0; // #days in the special occasion.
     KContacts::Addressee addressee;
     Akonadi::Item item;
 };
