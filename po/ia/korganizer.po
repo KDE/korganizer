@@ -4945,7 +4945,7 @@ msgid ""
 "calendars list, will not be displayed."
 msgstr ""
 "Marca iste quadrato pro usar le fenestra complete de KOrganizer quando on "
-"monstra le vista de mense. Si iste quadrato es marcate, tu ganiara un pauc "
+"monstra le vista de mense. Si iste quadrato es marcate, tu ganiara un pauco "
 "de spatio pro le vista de mense ma altere elementos de fenestra, tal como le "
 "navigator de data, le detalios de elementos e le lista de calendario, non "
 "essera monstrate."
@@ -5062,7 +5062,7 @@ msgid ""
 msgstr ""
 "Marca iste quadrato pro usar le fenestra complete de KOrganizer quando on "
 "monstra le vista de lista de activitates de facer. Si iste quadrato es "
-"marcate, tu ganiara un pauc de spatio pro le vista de activitates de facer, "
+"marcate, tu ganiara un pauco de spatio pro le vista de activitates de facer, "
 "ma altere elementos de fenestra, tal como le navigator de data, le detalios "
 "de elementos e le lista de calendario, non essera monstrate."
 
@@ -6471,7 +6471,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:41
 msgid "Incidence editor: add emoji support"
-msgstr "Editor de incidentia: adde supportode emoji"
+msgstr "Editor de incidentia: adde supporto de emoji"
 
 #: whatsnew/whatsnewtranslations.cpp:50
 msgid "Add What's New menu"

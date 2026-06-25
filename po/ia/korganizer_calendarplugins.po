@@ -4107,7 +4107,7 @@ msgstr "MMMM_aaaa"
 #~ msgstr ""
 #~ "Marca iste quadrato pro usar le fenestra complete de KOrganizer quando on "
 #~ "monstra le vista de lista de activitates de facer. Si iste quadrato es "
-#~ "marcate, tu ganiara un pauc de spatio pro le vista de activitates de "
+#~ "marcate, tu ganiara un pauco de spatio pro le vista de activitates de "
 #~ "facer, ma altere elementos de fenestra, tal como le navigator de data, le "
 #~ "detalios de elementos e le lista de calendario, non essera monstrate."
 
