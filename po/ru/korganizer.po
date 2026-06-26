@@ -11,21 +11,21 @@
 # Julia Dronova <juliette.tux@gmail.com>, 2012.
 # Yuri Efremov <yur.arh@gmail.com>, 2013.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
-# SPDX-FileCopyrightText: 2019, 2020, 2021, 2023, 2024, 2025, 2026 Alexander Yavorsky <kekcuha@gmail.com>
+# SPDX-FileCopyrightText: 2019-2021, 2023-2026 Alexander Yavorsky <kekcuha@gmail.com>
 # SPDX-FileCopyrightText: 2021, 2022, 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-12 00:44+0000\n"
-"PO-Revision-Date: 2026-04-03 22:25+0200\n"
+"PO-Revision-Date: 2026-06-25 14:24+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.2\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -3775,8 +3775,7 @@ msgid "Display the specified incidence (by URL)"
 msgstr "Показать указанное событие (используется URL)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid "Url"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Url"
 msgstr "URL"
@@ -3905,7 +3904,7 @@ msgstr "Параметры электронной почты"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Классификация доступа по умолчанию"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -3999,8 +3998,7 @@ msgid "Holidays"
 msgstr "Праздничные дни"
 
 #: prefs/koprefsdialogtime.cpp:72
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Используемые регионы для учёта праздников:"
@@ -4018,19 +4016,16 @@ msgid "Select Holiday Regions"
 msgstr "Выберите регионы для учёта праздников"
 
 #: prefs/koprefsdialogtime.cpp:123
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "Используемые регионы для учёта праздников:"
+msgstr "Используемые категории праздников:"
 
 #: prefs/koprefsdialogtime.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Holiday Regions"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "Выберите регионы для учёта праздников"
+msgstr "Выберите категории для учёта праздников"
 
 #: prefs/koprefsdialogtime.cpp:159
 #, kde-format
@@ -4642,27 +4637,23 @@ msgstr "Отображать описания событий в элемента
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Показывать описания событий в элементах повестки дня"
+msgstr "Показывать местоположения событий в элементах повестки дня"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
 msgstr ""
-"Отметьте этот пункт для отображения описаний событий в элементах "
+"Отметьте этот пункт для отображения местоположений событий в элементах "
 "представления повестки дня."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Отображать описания событий в элементах повестки дня"
+msgstr "Отображать местоположения событий в элементах повестки дня"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -4980,47 +4971,45 @@ msgstr "Показывать значки при просмотре элемен
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "Показывать время при просмотре элементов месяца"
+msgstr ""
+"Показывать время начала без времени окончания при просмотре элементов месяца"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
-msgstr "Показывать время при просмотре элементов месяца."
+msgstr ""
+"Показывать время начала без времени окончания в элементах представления "
+"месяца."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "Отображать время при просмотре элементов месяца"
+msgstr ""
+"Показывать время начала без времени окончания при просмотре элементов месяца"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "Показывать время при просмотре элементов месяца"
+msgstr "Показывать время начала и окончания при просмотре элементов месяца"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
-msgstr "Показывать время при просмотре элементов месяца."
+msgstr "Показывать время начала и окончания при просмотре элементов месяца."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "Отображать время при просмотре элементов месяца"
+msgstr "Показывать время начала и окончания при просмотре элементов месяца"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5054,32 +5043,28 @@ msgstr "Показывать дневники при просмотре меся
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "&Праздники"
+msgstr "Праздники"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:252
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "Показывать задачи при просмотре месяца."
+msgstr "Показывать праздники при просмотре месяца."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:253 settings/korganizer.kcfg:260
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Отображать задачи при просмотре месяца"
+msgstr "Показывать праздники при просмотре месяца"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid "Set the background color for today's date in month view"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
-msgstr "Задать цвет фона для сегодняшней даты для режима просмотра «Месяц»"
+msgstr "Использовать цвет фона для праздничных дней"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -5088,6 +5073,7 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Использовать для фона даты цвет праздника, если он выпадает на эту дату"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:259
@@ -5097,6 +5083,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Использовать цвет пользовательского праздника в качестве фона даты, если на "
+"неё приходится хотя бы один праздник. Цвет праздника настраивается в разделе "
+"«Параметры» → «Цвета и шрифты»."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -5501,17 +5490,13 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:534
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Фон занятых дней:"
+msgstr "Использовать системные цвета для фона"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:535
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
 "Использовать системный цвет вместо цвета, заданного пользователем. Если этот "
@@ -5525,6 +5510,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Использовать системные цвета вместо пользовательских для «Цвет фона повестки "
+"дня», «Цвет фона занятых дней» и «Цвет рабочего времени» (и, возможно, "
+"других)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:546
@@ -6531,82 +6519,69 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
+"Добавлена возможность скрытия праздников, относящихся к определённым "
+"категориям, например, религиозных праздников. См. выпадающий список "
+"«Категории» в разделе «Праздники» на вкладке «Дата и время → Региональные "
+"настройки»."
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"Представление «Месяц»: для единообразия праздники, выпадающие на рабочие "
+"дни, больше не скрываются"
 
 #: whatsnew/whatsnewtranslations.cpp:25
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow hiding holidays. To enable this "
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
-"Представление «Повестка дня»: возможность рисовать более жирные "
-"горизонтальные линии сетки каждые два часа. Для включения этой возможности "
-"отметьте параметр «Рисовать жирные горизонтальные линии сетки для чётных "
-"часов» во вкладке «Вид» → «Представление повестки дня»."
+"Представление «Месяц»: добавлена возможность скрывать праздники. Чтобы "
+"включить это поведение, снимите флажок «Показывать праздники в представлении "
+"месяца» на вкладке «Вид» → «Представление месяца»."
 
 #: whatsnew/whatsnewtranslations.cpp:27
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to allow using the custom holiday color as "
 "the date box background color if at least one holiday lands on that date. To "
 "enable this behavior, check the \"Use the Holiday background color when a "
 "holiday lands on the date\" option in the Views->Month View tab"
 msgstr ""
-"Представление «Повестка дня»: возможность рисовать более жирные "
-"горизонтальные линии сетки каждые два часа. Для включения этой возможности "
-"отметьте параметр «Рисовать жирные горизонтальные линии сетки для чётных "
-"часов» во вкладке «Вид» → «Представление повестки дня»."
+"Представление «Месяц»: добавлен параметр, позволяющий использовать "
+"пользовательский цвет праздника в качестве цвета фона ячейки даты, если на "
+"эту дату приходится хотя бы один праздник. Чтобы включить это поведение, "
+"отметьте параметр «Использовать цвет фона праздника, если на дату приходится "
+"праздник» на вкладке «Вид» → «Представление месяца»."
 
 #: whatsnew/whatsnewtranslations.cpp:30
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
-#| "two hours. To enable this behaviour, check the \"Draw bold horizontal "
-#| "grid lines for the even hours\" option in the View->Agenda View tab"
 msgid ""
 "Month view: An option was added to show start-time and end-times. Previously "
 "only showing the start-time was supported. To enable this option, check the "
 "\"Show the start-time and the end-time in month view items\" option in the "
 "View->Month View tab"
 msgstr ""
-"Представление «Повестка дня»: возможность рисовать более жирные "
-"горизонтальные линии сетки каждые два часа. Для включения этой возможности "
-"отметьте параметр «Рисовать жирные горизонтальные линии сетки для чётных "
-"часов» во вкладке «Вид» → «Представление повестки дня»."
+"Представление «Месяц»: добавлена возможность отображения времени начала и "
+"окончания. Ранее поддерживалось только отображение времени начала. Чтобы "
+"включить эту возможность, отметьте параметр «Показывать время начала и "
+"окончания в элементах представления «Месяц»» во вкладке «Вид» → "
+"«Представление «Месяц»»."
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"
-msgstr ""
+msgstr "Расписание дня: подчёркивать дату в заголовке столбца «Сегодня»"
 
 #: whatsnew/whatsnewtranslations.cpp:33
-#, fuzzy
-#| msgid ""
-#| "Agenda view: optionally show the incidence descriptions inside the agenda "
-#| "items. To enable this behavior, check the \"Show incidence descriptions "
-#| "in agenda view items\" option in the View->Agenda View tab"
 msgid ""
 "Agenda view: optionally show the incidence locations inside the agenda "
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"Представление «Повестка дня»: возможность показывать описания событий внутри "
-"элементов повестки дня. Для включения этого поведения отметьте параметр "
-"«Показывать описания событий в элементах представления повестки дня» во "
-"вкладке «Вид» → «Представление повестки дня»"
+"Представление «Повестка дня»: возможность показывать места проведения "
+"событий внутри  элементов повестки дня. Для включения этого поведения "
+"отметьте параметр  «Показывать места проведения событий в элементах "
+"представления повестки дня» на  вкладке «Вид» → «Представление повестки дня»"
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
@@ -6615,6 +6590,10 @@ msgid ""
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
+"Добавлены параметры для настройки классификации доступа по умолчанию "
+"(общедоступные, конфиденциальные или личные) при создании новых событий, "
+"задач и записей журнала. Предпочтения задаются в раскрывающихся списках "
+"«Общие → Личная классификация доступа по умолчанию»."
 
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid ""
@@ -6881,12 +6860,12 @@ msgstr "Редактор событий: автоматическая сорти
 #: whatsnew/whatsnewtranslations.cpp:162
 #, kde-format
 msgid "Fixed reminder toggling from menus"
-msgstr ""
+msgstr "Исправлено переключение напоминаний из меню"
 
 #: whatsnew/whatsnewtranslations.cpp:163
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
+msgstr "Расписание: улучшено вертикальное выравнивание меток времени по сетке"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
@@ -7093,17 +7072,13 @@ msgid "Select a year"
 msgstr "Выбрать год"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
