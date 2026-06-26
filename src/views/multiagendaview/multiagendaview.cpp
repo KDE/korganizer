@@ -503,7 +503,7 @@ KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column
         return nullptr;
     }
 
-    KCheckableProxyModel *const m = d->selections[column]; // NOLINT(misc-const-correctness)
+    KCheckableProxyModel *const m = d->selections[column];
     d->newlyCreated.erase(std::remove(d->newlyCreated.begin(), d->newlyCreated.end(), m), d->newlyCreated.end());
     return m;
 }

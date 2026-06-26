@@ -125,8 +125,8 @@ private:
     void rebuildAll();
     QModelIndex index(Node *node) const;
     int row(Node *node) const;
-    Node *getReparentNode(const QModelIndex &sourceIndex);
-    Node *getParentNode(const QModelIndex &sourceIndex);
+    Node *getReparentNode(const QModelIndex &sourceIndex) const;
+    Node *getParentNode(const QModelIndex &sourceIndex) const;
     bool validateNode(const Node *node) const;
     Node *extractNode(const QModelIndex &index) const;
     void appendSourceNode(Node *parentNode, const QModelIndex &sourceParent, const QModelIndexList &skip = QModelIndexList());

@@ -117,7 +117,7 @@ public:
         return mRangeMode;
     }
 
-    [[nodiscard]] QAction *viewToAction(const QString &, RangeMode);
+    [[nodiscard]] QAction *viewToAction(const QString &, RangeMode) const;
     void viewActionEnable(QObject *);
     void viewActionEnable(QAction *);
 
@@ -160,7 +160,7 @@ private Q_SLOTS:
     void removeCalendar(const Akonadi::CollectionCalendar::Ptr &calendar);
 
 private:
-    KActionCollection *getActionCollection();
+    KActionCollection *getActionCollection() const;
     QWidget *widgetForView(KOrg::BaseView *) const;
     QList<KOrg::BaseView *> mViews;
     CalendarView *const mMainView;

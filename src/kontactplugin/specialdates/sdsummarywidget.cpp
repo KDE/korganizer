@@ -391,9 +391,9 @@ void SDSummaryWidget::createLabels()
 
     if (!mDates.isEmpty()) {
         int counter = 0;
-        QList<SDEntry>::Iterator addrIt;
-        QList<SDEntry>::Iterator addrEnd(mDates.end()); // NOLINT(misc-const-correctness)
-        for (addrIt = mDates.begin(); addrIt != addrEnd; ++addrIt) {
+        QList<SDEntry>::ConstIterator addrIt;
+        const QList<SDEntry>::ConstIterator addrEnd(mDates.end());
+        for (addrIt = mDates.cbegin(); addrIt != addrEnd; ++addrIt) {
             const bool makeBold = (*addrIt).daysTo == 0; // i.e., today
 
             // Pixmap

@@ -337,7 +337,7 @@ void ReparentingModel::onSourceRowsAboutToBeInserted(const QModelIndex &parent, 
     Q_UNUSED(end)
 }
 
-ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex)
+ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sourceIndex) const
 {
     const auto it = std::ranges::find_if(mProxyNodes, [sourceIndex](const Node::Ptr &proxyNode) {
         // Re-parent source nodes according to the provided rules
@@ -351,9 +351,9 @@ ReparentingModel::Node *ReparentingModel::getReparentNode(const QModelIndex &sou
     return nullptr;
 }
 
-ReparentingModel::Node *ReparentingModel::getParentNode(const QModelIndex &sourceIndex)
+ReparentingModel::Node *ReparentingModel::getParentNode(const QModelIndex &sourceIndex) const
 {
-    if (Node *node = getReparentNode(sourceIndex)) { // NOLINT(misc-const-correctness)
+    if (Node *node = getReparentNode(sourceIndex)) {
         return node;
     }
     const QModelIndex proxyIndex = mapFromSource(sourceIndex.parent());
@@ -575,7 +575,7 @@ void ReparentingModel::onSourceModelReset()
 
 ReparentingModel::Node *ReparentingModel::extractNode(const QModelIndex &index) const
 {
-    Node *node = static_cast<Node *>(index.internalPointer()); // NOLINT(misc-const-correctness)
+    Node *node = static_cast<Node *>(index.internalPointer());
     Q_ASSERT(node);
     Q_ASSERT(validateNode(node));
     return node;

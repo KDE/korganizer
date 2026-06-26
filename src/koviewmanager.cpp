@@ -48,9 +48,9 @@ KOrg::BaseView *KOViewManager::currentView()
     return mCurrentView;
 }
 
-KActionCollection *KOViewManager::getActionCollection()
+KActionCollection *KOViewManager::getActionCollection() const
 {
-    KActionCollection *collection = nullptr; // NOLINT(misc-const-correctness)
+    KActionCollection *collection = nullptr;
     const KOrg::MainWindow *w = ActionManager::findInstance(QUrl());
     if (w) {
         collection = w->getActionCollection();
@@ -58,9 +58,9 @@ KActionCollection *KOViewManager::getActionCollection()
     return collection;
 }
 
-QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode)
+QAction *KOViewManager::viewToAction(const QString &view, RangeMode rangeMode) const
 {
-    QAction *action = nullptr; // NOLINT(misc-const-correctness)
+    QAction *action = nullptr;
     const KActionCollection *ac = getActionCollection();
     if (!ac) {
         return action;

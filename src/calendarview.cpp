@@ -986,7 +986,7 @@ void CalendarView::dateTimesForNewEvent(QDateTime &startDt, QDateTime &endDt, bo
 
 IncidenceEditorNG::IncidenceDialog *CalendarView::incidenceDialog(const Akonadi::Item &item)
 {
-    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog(item); // NOLINT(misc-const-correctness)
+    IncidenceEditorNG::IncidenceDialog *dialog = mDialogManager->createDialog(item);
     connect(dialog, &IncidenceEditorNG::IncidenceDialog::incidenceCreated, this, &CalendarView::handleIncidenceCreated);
     return dialog;
 }
@@ -995,7 +995,7 @@ IncidenceEditorNG::IncidenceDialog *CalendarView::newEventEditor(const KCalendar
 {
     Akonadi::Item item;
     item.setPayload(event);
-    IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog(item); // NOLINT(misc-const-correctness)
+    IncidenceEditorNG::IncidenceDialog *dialog = incidenceDialog(item);
 
     dialog->load(item);
 

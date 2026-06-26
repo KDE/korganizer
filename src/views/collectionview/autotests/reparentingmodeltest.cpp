@@ -100,7 +100,7 @@ public:
     int start = 0;
     int end = 0;
 
-public Q_SLOTS: // NOLINT(readability-redundant-access-specifiers)
+public Q_SLOTS:
     void onRowsInserted(const QModelIndex &p, int s, int e)
     {
         mSignals << QStringLiteral("rowsInserted");

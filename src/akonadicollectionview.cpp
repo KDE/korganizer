@@ -114,7 +114,7 @@ private Q_SLOTS:
         }
     }
 
-private: // NOLINT(readability-redundant-access-specifiers)
+private:
     QAbstractItemModel *const mCheckableProxy;
 };
 }
@@ -147,7 +147,7 @@ public:
         // but that unfortunately doesn't seem to work
     }
 
-public Q_SLOTS: // NOLINT(readability-redundant-access-specifiers)
+public Q_SLOTS:
     void saveState()
     {
         saveTreeState();
@@ -188,7 +188,7 @@ private Q_SLOTS:
         }
     }
 
-private: // NOLINT(readability-redundant-access-specifiers)
+private:
     void saveTreeState()
     {
         Akonadi::ETMViewStateSaver treeStateSaver;
@@ -208,7 +208,6 @@ private: // NOLINT(readability-redundant-access-specifiers)
         if (!findEtm(mTreeView->model())) {
             return;
         }
-        // NOLINT(readability-delete-null-pointer)
         if (treeStateRestorer) { // NOLINT(readability-delete-null-pointer)
             // We don't need more than one to be running at the same time
             delete treeStateRestorer;
