@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-12 00:44+0000\n"
+"POT-Creation-Date: 2026-06-27 00:45+0000\n"
 "PO-Revision-Date: 2026-06-12 06:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1496,74 +1496,74 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "ახალ კალენდრად დამატება"
 
-#: akonadicollectionview.cpp:302
+#: akonadicollectionview.cpp:301
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (გათიშულია)"
 
-#: akonadicollectionview.cpp:305
+#: akonadicollectionview.cpp:304
 #, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
 msgstr "%1 (ნაგულისხმევი მოვლენა)"
 
-#: akonadicollectionview.cpp:307
+#: akonadicollectionview.cpp:306
 #, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
 msgstr "%1 (ნაგულისხმევი გეგმა)"
 
-#: akonadicollectionview.cpp:395
+#: akonadicollectionview.cpp:394
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "კალენდრის ძებნა"
 
-#: akonadicollectionview.cpp:396
+#: akonadicollectionview.cpp:395
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "დაიწყეთ კრეფა კოლექციაში კალენდრის მოსაძებნად."
 
-#: akonadicollectionview.cpp:398
+#: akonadicollectionview.cpp:397
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "კალენდრის ძებნა…"
 
-#: akonadicollectionview.cpp:484 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "კალენდრის საქაღალდის თვისებები: %1"
 
-#: akonadicollectionview.cpp:496
+#: akonadicollectionview.cpp:495
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "საქაღალდის ფერის დაყენება …"
 
-#: akonadicollectionview.cpp:502
+#: akonadicollectionview.cpp:501
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "ნაგულისხმევ კალენ&დრად დაყენება"
 
-#: akonadicollectionview.cpp:540
+#: akonadicollectionview.cpp:539
 #, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "მოვლენა"
 
-#: akonadicollectionview.cpp:543
+#: akonadicollectionview.cpp:542
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "გეგმა"
 
-#: akonadicollectionview.cpp:606
+#: akonadicollectionview.cpp:605
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1575,7 +1575,7 @@ msgstr ""
 "ნაგულისხმევ %2-ის კალენდრის საქაღალდედ?<para>ეს ჩაანაცვლებს <filename>%3</"
 "filename> ნაგულისხმევ %4-ის საქაღალდედ.</para>"
 
-#: akonadicollectionview.cpp:613
+#: akonadicollectionview.cpp:612
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1585,43 +1585,43 @@ msgstr ""
 "მართლა გნებავთ, დააყენოთ <filename>%1</filename> თქვენი ნაგულისხმევი %2-ის "
 "კალენდრის საქაღალდედ?"
 
-#: akonadicollectionview.cpp:616
+#: akonadicollectionview.cpp:615
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "ჩავანაცვლო ნაგულისხმევი %1-ის კალენდარი?"
 
-#: akonadicollectionview.cpp:620 akonadicollectionview.cpp:1052
+#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "<filename>%1</filename> ახლა თქვენი ნაგულისხმევი %2-ის კალენდარია"
 
-#: akonadicollectionview.cpp:773
+#: akonadicollectionview.cpp:772
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "ნაგულისხმევი მოვლენების კალენ&დრად დაყენება"
 
-#: akonadicollectionview.cpp:776
+#: akonadicollectionview.cpp:775
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "ნაგულისხმევ გეგმების საქაღალ&დედ დაყენება"
 
-#: akonadicollectionview.cpp:794
+#: akonadicollectionview.cpp:793
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "კალენდრის დამატება"
 
-#: akonadicollectionview.cpp:813
+#: akonadicollectionview.cpp:812
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "ახალი კალენდრის დამატება ჩავარდა: <message>%1</message>"
 
-#: akonadicollectionview.cpp:895
+#: akonadicollectionview.cpp:894
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1635,7 +1635,7 @@ msgstr ""
 "კალენდარს <filename>%1</filename> როცა გნებავთ, მაშინ დაამატებთ თავიდან.</"
 "note></para>"
 
-#: akonadicollectionview.cpp:903
+#: akonadicollectionview.cpp:902
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1653,7 +1653,7 @@ msgstr ""
 "შეიცავს თქვენი ნაგულისხმევი კალენდრის საქაღალდეს. თუ მას წაშლით, ჩვენ "
 "გთხოვთ, ახალი კალენდრის ნაგულისხმევი საქაღალდე აირჩიოთ.</warning></para>"
 
-#: akonadicollectionview.cpp:913
+#: akonadicollectionview.cpp:912
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1672,7 +1672,7 @@ msgstr ""
 "გთხოვთ, ახალი %2-ის კალენდრის ნაგულისხმევი საქაღალდე აირჩიოთ.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:925
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1684,7 +1684,7 @@ msgstr ""
 "ქმედება შეუქცევადია. კარგად დაფიქრდით, სანამ დააწვებით ღილაკს %2.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:934
+#: akonadicollectionview.cpp:933
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1700,13 +1700,13 @@ msgstr ""
 "საქაღალდეა. თუ მას წაშლით, თქვენ გთხოვენ, ახალი %4-ის ნაგულისხმევი კალენდარი "
 "აირჩიოთ.</warning></para>"
 
-#: akonadicollectionview.cpp:947 akonadicollectionview.cpp:978
+#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "კალენდრის წაშლა"
 
-#: akonadicollectionview.cpp:973
+#: akonadicollectionview.cpp:972
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1719,7 +1719,7 @@ msgstr ""
 "მონაცემები წაიშლება.<para><warning> ეს ქმედება შეუქცევადია. კარგად "
 "დაფიქრდით, სანამ დააჭერთ ღილაკს %1.</warning></para>"
 
-#: akonadicollectionview.cpp:988
+#: akonadicollectionview.cpp:987
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1728,19 +1728,19 @@ msgstr ""
 "კალენდრის წაშლა ჩავარდა: <message>არასწორი Akonadi-ის აგენტის გაშვებული "
 "ასლი</message>"
 
-#: akonadicollectionview.cpp:1058
+#: akonadicollectionview.cpp:1057
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "იფიქრეთ ნაგულისხმევი %1-ის კალენდრის დაყენებაზე"
 
-#: akonadicollectionview.cpp:1060
+#: akonadicollectionview.cpp:1059
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr "იფიქრეთ დაამატოთ ჩაწერა-ჩართული %1-ის კალენდარი"
 
-#: akonadicollectionview.cpp:1094
+#: akonadicollectionview.cpp:1093
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

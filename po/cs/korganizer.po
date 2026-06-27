@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-12 00:44+0000\n"
+"POT-Creation-Date: 2026-06-27 00:45+0000\n"
 "PO-Revision-Date: 2026-06-12 23:45+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -1509,74 +1509,74 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Přidat jako nový kalendář"
 
-#: akonadicollectionview.cpp:302
+#: akonadicollectionview.cpp:301
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (Offline)"
 
-#: akonadicollectionview.cpp:305
+#: akonadicollectionview.cpp:304
 #, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
 msgstr "%1 (Výchozí událost)"
 
-#: akonadicollectionview.cpp:307
+#: akonadicollectionview.cpp:306
 #, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
 msgstr "%1 (Výchozí úkol)"
 
-#: akonadicollectionview.cpp:395
+#: akonadicollectionview.cpp:394
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Vyhledání kalendáře"
 
-#: akonadicollectionview.cpp:396
+#: akonadicollectionview.cpp:395
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Začněte psát a vyhledejte kalendář ve sbírce."
 
-#: akonadicollectionview.cpp:398
+#: akonadicollectionview.cpp:397
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Hledat kalendář…"
 
-#: akonadicollectionview.cpp:484 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Vlastnosti složky kalendáře %1"
 
-#: akonadicollectionview.cpp:496
+#: akonadicollectionview.cpp:495
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Na&stavit barvu složky…"
 
-#: akonadicollectionview.cpp:502
+#: akonadicollectionview.cpp:501
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "Nastavit výchozí kalen&dář"
 
-#: akonadicollectionview.cpp:540
+#: akonadicollectionview.cpp:539
 #, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Událost"
 
-#: akonadicollectionview.cpp:543
+#: akonadicollectionview.cpp:542
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "Úkoly"
 
-#: akonadicollectionview.cpp:606
+#: akonadicollectionview.cpp:605
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1588,7 +1588,7 @@ msgstr ""
 "kalendáře %2?<para>Tím se nahradí <filename>%3</filename> jako výchozí "
 "složka kalendáře %4.</para>"
 
-#: akonadicollectionview.cpp:613
+#: akonadicollectionview.cpp:612
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1598,43 +1598,43 @@ msgstr ""
 "Opravdu chcete nastavit <filename>%1</filename> jako výchozí složku "
 "kalendáře %2?"
 
-#: akonadicollectionview.cpp:616
+#: akonadicollectionview.cpp:615
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "Nahradit výchozí kalendář %1?"
 
-#: akonadicollectionview.cpp:620 akonadicollectionview.cpp:1052
+#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "<filename>%1</filename> je nyní vaším výchozím kalendářem %2"
 
-#: akonadicollectionview.cpp:773
+#: akonadicollectionview.cpp:772
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "Nastavit jako výchozí kalen&dář pro události"
 
-#: akonadicollectionview.cpp:776
+#: akonadicollectionview.cpp:775
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "Nastavit jako výchozí kalen&dář pro úkoly"
 
-#: akonadicollectionview.cpp:794
+#: akonadicollectionview.cpp:793
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Přidat kalendář"
 
-#: akonadicollectionview.cpp:813
+#: akonadicollectionview.cpp:812
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Přidání nového kalendáře se nezdařilo: <message>%1</message>"
 
-#: akonadicollectionview.cpp:895
+#: akonadicollectionview.cpp:894
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1648,7 +1648,7 @@ msgstr ""
 "zdroje. Kalendář <filename>%1</filename> lze kdykoli znovu přidat.</note></"
 "para>"
 
-#: akonadicollectionview.cpp:903
+#: akonadicollectionview.cpp:902
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1666,7 +1666,7 @@ msgstr ""
 "Pokud jej odstraníte, můžete být vyzváni k výběru nové výchozí složky "
 "kalendáře.</warning></para>"
 
-#: akonadicollectionview.cpp:913
+#: akonadicollectionview.cpp:912
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1683,7 +1683,7 @@ msgstr ""
 "para><para><warning>Toto je váš výchozí kalendář %2. Pokud jej odstraníte, "
 "budete možná vyzváni k výběru nového výchozího kalendáře. </warning></para>"
 
-#: akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:925
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1695,7 +1695,7 @@ msgstr ""
 "úkon nelze vrátit zpět. Před stisknutím tlačítka %2 si to prosím dobře "
 "rozmyslete.</warning></para>"
 
-#: akonadicollectionview.cpp:934
+#: akonadicollectionview.cpp:933
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1711,13 +1711,13 @@ msgstr ""
 "kalendáře %3. Pokud ji odstraníte, budete možná vyzváni k výběru nového "
 "výchozího kalendáře %4. </warning></para>"
 
-#: akonadicollectionview.cpp:947 akonadicollectionview.cpp:978
+#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Smazat kalendář"
 
-#: akonadicollectionview.cpp:973
+#: akonadicollectionview.cpp:972
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1731,7 +1731,7 @@ msgstr ""
 "úkon nelze vrátit zpět. Před stisknutím tlačítka %1 si to prosím dobře "
 "rozmyslete.</warning></para>"
 
-#: akonadicollectionview.cpp:988
+#: akonadicollectionview.cpp:987
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1740,19 +1740,19 @@ msgstr ""
 "Odstranění kalendáře se nezdařilo: <message>Neplatná instance agenta "
 "Akonadi</message>"
 
-#: akonadicollectionview.cpp:1058
+#: akonadicollectionview.cpp:1057
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "Zvažte nastavení výchozího kalendáře %1 pro nové události"
 
-#: akonadicollectionview.cpp:1060
+#: akonadicollectionview.cpp:1059
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr "Zvažte přidání kalendáře %1 událostí s možností zápisu"
 
-#: akonadicollectionview.cpp:1094
+#: akonadicollectionview.cpp:1093
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

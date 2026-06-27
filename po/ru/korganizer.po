@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-12 00:44+0000\n"
-"PO-Revision-Date: 2026-06-25 14:24+0200\n"
+"POT-Creation-Date: 2026-06-27 00:45+0000\n"
+"PO-Revision-Date: 2026-06-26 21:10+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -1531,74 +1531,74 @@ msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Добавить календарь"
 
-#: akonadicollectionview.cpp:302
+#: akonadicollectionview.cpp:301
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (не в сети)"
 
-#: akonadicollectionview.cpp:305
+#: akonadicollectionview.cpp:304
 #, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
 msgstr "%1 (событие по умолчанию)"
 
-#: akonadicollectionview.cpp:307
+#: akonadicollectionview.cpp:306
 #, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
 msgstr "%1 (задачи по умолчанию)"
 
-#: akonadicollectionview.cpp:395
+#: akonadicollectionview.cpp:394
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Поиск календарей"
 
-#: akonadicollectionview.cpp:396
+#: akonadicollectionview.cpp:395
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Введите текст для поиска календаря в наборе."
 
-#: akonadicollectionview.cpp:398
+#: akonadicollectionview.cpp:397
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Поиск календаря…"
 
-#: akonadicollectionview.cpp:484 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Свойства папки календаря %1"
 
-#: akonadicollectionview.cpp:496
+#: akonadicollectionview.cpp:495
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Задать &цвет папки…"
 
-#: akonadicollectionview.cpp:502
+#: akonadicollectionview.cpp:501
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "&Использовать как календарь по умолчанию"
 
-#: akonadicollectionview.cpp:540
+#: akonadicollectionview.cpp:539
 #, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "События"
 
-#: akonadicollectionview.cpp:543
+#: akonadicollectionview.cpp:542
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "Задачи"
 
-#: akonadicollectionview.cpp:606
+#: akonadicollectionview.cpp:605
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1610,7 +1610,7 @@ msgstr ""
 "умолчанию для %2?<para>Это заменит папку <filename>%3</filename>, "
 "используемую по умолчанию для %4.</para>"
 
-#: akonadicollectionview.cpp:613
+#: akonadicollectionview.cpp:612
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1620,44 +1620,44 @@ msgstr ""
 "Использовать папку <filename>%1</filename> в качестве каталога календаря по "
 "умолчанию для %2?"
 
-#: akonadicollectionview.cpp:616
+#: akonadicollectionview.cpp:615
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "Замена календаря по умолчанию «%1»"
 
-#: akonadicollectionview.cpp:620 akonadicollectionview.cpp:1052
+#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr ""
 "Календарь <filename>%1</filename> теперь используется по умолчанию для %2."
 
-#: akonadicollectionview.cpp:773
+#: akonadicollectionview.cpp:772
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "Использовать как календарь событий по &умолчанию"
 
-#: akonadicollectionview.cpp:776
+#: akonadicollectionview.cpp:775
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "&Использовать как календарь задач по умолчанию"
 
-#: akonadicollectionview.cpp:794
+#: akonadicollectionview.cpp:793
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Добавление календаря"
 
-#: akonadicollectionview.cpp:813
+#: akonadicollectionview.cpp:812
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Не удалось добавить календарь: <message>%1</message>"
 
-#: akonadicollectionview.cpp:895
+#: akonadicollectionview.cpp:894
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1671,7 +1671,7 @@ msgstr ""
 "Календарь <filename>%1</filename> всегда можно будет добавить снова.</note></"
 "para> "
 
-#: akonadicollectionview.cpp:903
+#: akonadicollectionview.cpp:902
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1689,7 +1689,7 @@ msgstr ""
 "умолчанию. После удаления может потребоваться выбрать другую папку по "
 "умолчанию.</warning></para>"
 
-#: akonadicollectionview.cpp:913
+#: akonadicollectionview.cpp:912
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1706,7 +1706,7 @@ msgstr ""
 "para><para><warning>Это ваш календарь %2 по умолчанию. После его удаления "
 "может потребоваться выбрать новый календарь %2 по умолчанию.</warning></para>"
 
-#: akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:925
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1718,7 +1718,7 @@ msgstr ""
 "необратимо. Внимательно подумайте, прежде чем нажать кнопку %2.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:934
+#: akonadicollectionview.cpp:933
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1734,13 +1734,13 @@ msgstr ""
 "удаления может потребоваться выбрать новую папку календаря %4 по умолчанию.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:947 akonadicollectionview.cpp:978
+#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Удаление календаря"
 
-#: akonadicollectionview.cpp:973
+#: akonadicollectionview.cpp:972
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1753,7 +1753,7 @@ msgstr ""
 "календаря будут удалены. <para><warning>Это действие невозможно отменить. "
 "Внимательно подумайте, прежде чем нажимать кнопку %1.</warning></para>"
 
-#: akonadicollectionview.cpp:988
+#: akonadicollectionview.cpp:987
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1762,19 +1762,19 @@ msgstr ""
 "Не удалось удалить календарь: <message>Неверный экземпляр агента Akonadi</"
 "message>"
 
-#: akonadicollectionview.cpp:1058
+#: akonadicollectionview.cpp:1057
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "Задайте календарь «%1» по умолчанию."
 
-#: akonadicollectionview.cpp:1060
+#: akonadicollectionview.cpp:1059
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr "Добавьте календарь «%1» с возможностью записи."
 
-#: akonadicollectionview.cpp:1094
+#: akonadicollectionview.cpp:1093
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -4653,7 +4653,7 @@ msgstr ""
 #: settings/korganizer.kcfg:138
 #, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Отображать местоположения событий в элементах повестки дня"
+msgstr "Показывать описания событий в режиме просмотра расписания на день"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5045,7 +5045,7 @@ msgstr "Показывать дневники при просмотре меся
 #: settings/korganizer.kcfg:251
 #, kde-format
 msgid "Show holidays"
-msgstr "Праздники"
+msgstr "Показывать праздники"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:252
