@@ -18,25 +18,27 @@
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/SearchQuery>
+
 #include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
 
 #include <KCalendarCore/Calendar>
 
+#include <KColorScheme>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KHolidays/HolidayRegion>
 #include <KLocalizedString>
 #include <KUrlLabel>
-#include <QDesktopServices>
-#include <QMenu>
-#include <QPointer>
 
 #include <QDate>
+#include <QDesktopServices>
 #include <QEvent>
 #include <QGridLayout>
 #include <QLabel>
+#include <QMenu>
+#include <QPointer>
 #include <QStyle>
 
 using namespace KHolidays;
@@ -386,6 +388,9 @@ void SDSummaryWidget::createLabels()
         }
     }
 
+    QPalette todayPalette = palette();
+    KColorScheme::adjustBackground(todayPalette, KColorScheme::ActiveBackground, QPalette::Window);
+
     // Sort, then Print the Special Dates
     std::ranges::sort(mDates, eventLessThan);
 
@@ -482,6 +487,8 @@ void SDSummaryWidget::createLabels()
                 QFont font = label->font();
                 font.setBold(true);
                 label->setFont(font);
+                label->setPalette(todayPalette);
+                label->setAutoFillBackground(true);
             }
 
             // Countdown

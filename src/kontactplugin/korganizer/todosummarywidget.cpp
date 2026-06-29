@@ -21,14 +21,15 @@
 
 #include <KontactInterface/Core>
 
+#include <KColorScheme>
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
 #include <KUrlLabel>
-#include <QMenu>
 
 #include <QGridLayout>
 #include <QLabel>
+#include <QMenu>
 #include <QStyle>
 #include <QTextDocument> // for Qt::mightBeRichText
 #include <QVBoxLayout>
@@ -92,6 +93,7 @@ void TodoSummaryWidget::updateView()
     KCalendarCore::Todo::List prList;
 
     const QDate currDate = QDate::currentDate();
+    const QTime currTime = QTime::currentTime();
     const KCalendarCore::Todo::List todos = mCalendar->todos();
     for (const KCalendarCore::Todo::Ptr &todo : todos) {
         if (todo->hasDueDate()) {
@@ -150,6 +152,11 @@ void TodoSummaryWidget::updateView()
     if (!prList.isEmpty()) {
         QPixmap const pm = QIcon::fromTheme(QStringLiteral("view-calendar-tasks")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize));
 
+        QPalette todayPalette = palette();
+        KColorScheme::adjustBackground(todayPalette, KColorScheme::ActiveBackground, QPalette::Window);
+        QPalette urgentPalette = palette();
+        KColorScheme::adjustBackground(urgentPalette, KColorScheme::NegativeBackground, QPalette::Window);
+
         QString str;
 
         for (const KCalendarCore::Todo::Ptr &todo : std::as_const(prList)) {
@@ -164,6 +171,7 @@ void TodoSummaryWidget::updateView()
             mLabels.append(label);
 
             // Due date label
+            bool makeUrgent = false;
             str.clear();
             if (todo->hasDueDate() && todo->dtDue().date().isValid()) {
                 daysTo = currDate.daysTo(todo->dtDue().date());
@@ -188,16 +196,32 @@ void TodoSummaryWidget::updateView()
                         str = locale.toString(todo->dtDue(), QLocale::ShortFormat);
                     }
                 }
+                int secsTo;
+                if (todo->allDay()) {
+                    secsTo = currTime.secsTo(QTime(23, 59));
+                } else {
+                    secsTo = currTime.secsTo(todo->dtDue().time());
+                }
+                if (secsTo < 3600) {
+                    // "urgent" if due in less than 1 hour or overdue (i.e secsTo < 0).
+                    makeUrgent = true;
+                }
             }
 
             label = new QLabel(str, this);
             label->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
             mLayout->addWidget(label, counter, 1);
             mLabels.append(label);
-            if (makeBold) {
+            if (makeBold || makeUrgent) {
                 QFont font = label->font();
                 font.setBold(true);
                 label->setFont(font);
+                if (makeUrgent) {
+                    label->setPalette(urgentPalette);
+                } else {
+                    label->setPalette(todayPalette);
+                }
+                label->setAutoFillBackground(true);
             }
 
             // Days togo/ago label
@@ -208,7 +232,19 @@ void TodoSummaryWidget::updateView()
                 } else if (daysTo < 0) {
                     str = i18np("1 day ago", "%1 days ago", -daysTo);
                 } else {
-                    str = i18nc("the to-do is due", "due");
+                    if (todo->allDay()) {
+                        str = i18nc("the to-do is due today", "due any time today");
+                    } else {
+                        if (currTime < todo->dtDue().time()) {
+                            str = i18nc("the to-do is due at specified time",
+                                        "is due at %1",
+                                        QLocale::system().toString(todo->dtDue().time(), QLocale::ShortFormat));
+                        } else {
+                            str = i18nc("the to-do was due at specified time",
+                                        "was due at %1",
+                                        QLocale::system().toString(todo->dtDue().time(), QLocale::ShortFormat));
+                        }
+                    }
                 }
             }
             label = new QLabel(str, this);
