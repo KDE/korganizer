@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-27 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:44+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -3195,8 +3195,8 @@ msgid "Tomorrow"
 msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
-#: kontactplugin/korganizer/todosummarywidget.cpp:207
-#: kontactplugin/specialdates/sdsummarywidget.cpp:492
+#: kontactplugin/korganizer/todosummarywidget.cpp:231
+#: kontactplugin/specialdates/sdsummarywidget.cpp:499
 #, fuzzy, kde-format
 #| msgid "1 day"
 #| msgid_plural "%1 days"
@@ -3227,7 +3227,7 @@ msgid_plural "%1 mins"
 msgstr[0] "%1 នាទី"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:490
+#: kontactplugin/specialdates/sdsummarywidget.cpp:497
 #, kde-format
 msgid "now"
 msgstr ""
@@ -3488,26 +3488,26 @@ msgstr "គូស​ធីក​ប្រអប់​នេះ ប្រសិ�
 msgid "Over&due (not completed and beyond due-date)"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:44
+#: kontactplugin/korganizer/todosummarywidget.cpp:45
 #, fuzzy, kde-format
 #| msgid "Purge To-dos"
 msgid "Pending To-dos"
 msgstr "លុប​បំបាត់​ការងារ​ត្រូវ​ធ្វើ"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:173
+#: kontactplugin/korganizer/todosummarywidget.cpp:181
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "the to-do is due today"
 msgid "Today"
 msgstr "ថ្ងៃ​នេះ"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:175
+#: kontactplugin/korganizer/todosummarywidget.cpp:183
 #, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:181
+#: kontactplugin/korganizer/todosummarywidget.cpp:189
 #, fuzzy, kde-format
 #| msgctxt "@title month and year"
 #| msgid "%1 %2"
@@ -3515,7 +3515,7 @@ msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2​"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:209
+#: kontactplugin/korganizer/todosummarywidget.cpp:233
 #, fuzzy, kde-format
 #| msgid "1 day"
 #| msgid_plural "%1 days"
@@ -3523,69 +3523,80 @@ msgid "1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] "%1 ថ្ងៃ"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:211
-#, fuzzy, kde-format
-#| msgctxt "@label to-do due date"
-#| msgid "Due"
-msgctxt "the to-do is due"
-msgid "due"
-msgstr "ដល់​កំណត់"
+#: kontactplugin/korganizer/todosummarywidget.cpp:236
+#, kde-format
+msgctxt "the to-do is due today"
+msgid "due any time today"
+msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:274
+#: kontactplugin/korganizer/todosummarywidget.cpp:240
+#, fuzzy, kde-format
+#| msgid "No due date"
+msgctxt "the to-do is due at specified time"
+msgid "is due at %1"
+msgstr "គ្មាន​កាលបរិច្ឆេទ​ដល់​កំណត់់​កំណត់"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:244
+#, kde-format
+msgctxt "the to-do was due at specified time"
+msgid "was due at %1"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:310
 #, fuzzy, kde-format
 #| msgid "Print to-dos due within the specified date range"
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "បោះពុម្ព​ការងារ​ត្រូវ​ធ្វើ​ជាមួយ​ជួរ​កាលបរិច្ឆេទ​ដែល​បាន​បញ្ជាក់"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:324
+#: kontactplugin/korganizer/todosummarywidget.cpp:360
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgid "&Edit To-do…"
 msgstr "កែសម្រួល​ការងារ​ត្រូវ​ធ្វើ..."
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:326
+#: kontactplugin/korganizer/todosummarywidget.cpp:362
 #, kde-format
 msgid "&Delete To-do"
 msgstr "លុប​ការងារ​ត្រូវធ្វើ"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:332
+#: kontactplugin/korganizer/todosummarywidget.cpp:368
 #, fuzzy, kde-format
 #| msgid "Togg&le To-do Completed"
 msgid "&Mark To-do Completed"
 msgstr "បិទ​បើក​ការងារ​ត្រូវ​ធ្វើ​ដែល​បាន​ធ្វើ​រួច"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:352
+#: kontactplugin/korganizer/todosummarywidget.cpp:388
 #, fuzzy, kde-format
 #| msgid "To-do: %1"
 msgid "Edit To-do: \"%1\""
 msgstr "ការងារ​ត្រូវ​ធ្វើ ៖ %1"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:372
+#: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
 msgid "open-ended"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:374
+#: kontactplugin/korganizer/todosummarywidget.cpp:410
 #, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:376
+#: kontactplugin/korganizer/todosummarywidget.cpp:412
 #, fuzzy, kde-format
 #| msgid "No start date"
 msgctxt "the to-do starts today"
 msgid "starts today"
 msgstr "គ្មាន​កាលបរិច្ឆេទ​ចាប់ផ្ដើម"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:380
+#: kontactplugin/korganizer/todosummarywidget.cpp:416
 #, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:382
+#: kontactplugin/korganizer/todosummarywidget.cpp:418
 #, fuzzy, kde-format
 #| msgctxt "@title:column to-do percent completed"
 #| msgid "Completed"
@@ -3593,13 +3604,13 @@ msgctxt "the to-do is completed"
 msgid "completed"
 msgstr "បាន​បញ្ចប់​ទាំងស្រុង​"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:384
+#: kontactplugin/korganizer/todosummarywidget.cpp:420
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:389
+#: kontactplugin/korganizer/todosummarywidget.cpp:425
 #, fuzzy, kde-format
 #| msgctxt "@item:intext delimiter for joining holiday names"
 #| msgid ","
@@ -3810,74 +3821,74 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:105
+#: kontactplugin/specialdates/sdsummarywidget.cpp:107
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:455
+#: kontactplugin/specialdates/sdsummarywidget.cpp:460
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "ថ្ងៃ​នេះ"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:457
+#: kontactplugin/specialdates/sdsummarywidget.cpp:462
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:503
+#: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
 msgid "Birthday"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:506
+#: kontactplugin/specialdates/sdsummarywidget.cpp:513
 #, kde-format
 msgid "Anniversary"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:509
+#: kontactplugin/specialdates/sdsummarywidget.cpp:516
 #, kde-format
 msgid "Holiday"
 msgstr "ថ្ងៃ​ឈប់​សម្រាក"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:512
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, kde-format
 msgid "Change of Seasons"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:515
+#: kontactplugin/specialdates/sdsummarywidget.cpp:522
 #, kde-format
 msgid "Special Occasion"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:557
+#: kontactplugin/specialdates/sdsummarywidget.cpp:564
 #, fuzzy, kde-format
 #| msgid "Print &year"
 msgid "one year"
 msgid_plural "%1 years"
 msgstr[0] "ឆ្នាំ​បោះពុម្ព"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:567
+#: kontactplugin/specialdates/sdsummarywidget.cpp:574
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:661
+#: kontactplugin/specialdates/sdsummarywidget.cpp:668
 #, kde-format
 msgid "Send &Mail"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:662
+#: kontactplugin/specialdates/sdsummarywidget.cpp:669
 #, fuzzy, kde-format
 #| msgid "View Columns"
 msgid "View &Contact"
 msgstr "មើល​ជួរឈរ"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:677
+#: kontactplugin/specialdates/sdsummarywidget.cpp:684
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr ""
@@ -7367,6 +7378,13 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#, fuzzy
+#~| msgctxt "@label to-do due date"
+#~| msgid "Due"
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "ដល់​កំណត់"
+
 #~ msgctxt "monthname"
 #~ msgid "%1"
 #~ msgstr "%1"
@@ -9730,9 +9748,6 @@ msgstr "%1"
 
 #~ msgid "Due date: "
 #~ msgstr "កាល​បរិច្ឆេទ​ដល់​កំណត់"
-
-#~ msgid "No due date"
-#~ msgstr "គ្មាន​កាលបរិច្ឆេទ​ដល់​កំណត់់​កំណត់"
 
 #~ msgctxt "except for listed dates"
 #~ msgid " except"

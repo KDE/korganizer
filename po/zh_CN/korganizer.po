@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-27 00:45+0000\n"
+"POT-Creation-Date: 2026-06-30 00:44+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2821,8 +2821,8 @@ msgid "Tomorrow"
 msgstr "明天"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
-#: kontactplugin/korganizer/todosummarywidget.cpp:207
-#: kontactplugin/specialdates/sdsummarywidget.cpp:492
+#: kontactplugin/korganizer/todosummarywidget.cpp:231
+#: kontactplugin/specialdates/sdsummarywidget.cpp:499
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -2849,7 +2849,7 @@ msgid_plural "%1 mins"
 msgstr[0] "%1 分钟"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:490
+#: kontactplugin/specialdates/sdsummarywidget.cpp:497
 #, kde-format
 msgid "now"
 msgstr "现在"
@@ -3074,103 +3074,115 @@ msgstr "如果您不想显示已过期却仍未结束的待办事项，请选中
 msgid "Over&due (not completed and beyond due-date)"
 msgstr "过期 (未完成而超过了安排日期) (&D)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:44
+#: kontactplugin/korganizer/todosummarywidget.cpp:45
 #, kde-format
 msgid "Pending To-dos"
 msgstr "未决的待办事项"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:173
+#: kontactplugin/korganizer/todosummarywidget.cpp:181
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "Today"
 msgstr "今天"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:175
+#: kontactplugin/korganizer/todosummarywidget.cpp:183
 #, kde-format
 msgctxt "the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "明天"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:181
+#: kontactplugin/korganizer/todosummarywidget.cpp:189
 #, kde-format
 msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%2年%1月"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:209
+#: kontactplugin/korganizer/todosummarywidget.cpp:233
 #, kde-format
 msgid "1 day ago"
 msgid_plural "%1 days ago"
 msgstr[0] "%1 天前"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:211
+#: kontactplugin/korganizer/todosummarywidget.cpp:236
 #, kde-format
-msgctxt "the to-do is due"
-msgid "due"
-msgstr "到期"
+msgctxt "the to-do is due today"
+msgid "due any time today"
+msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:274
+#: kontactplugin/korganizer/todosummarywidget.cpp:240
+#, kde-format
+msgctxt "the to-do is due at specified time"
+msgid "is due at %1"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:244
+#, kde-format
+msgctxt "the to-do was due at specified time"
+msgid "was due at %1"
+msgstr ""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:310
 #, kde-format
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "在以后 %1 天内没有待办事项。"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:324
+#: kontactplugin/korganizer/todosummarywidget.cpp:360
 #, kde-format
 msgid "&Edit To-do…"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:326
+#: kontactplugin/korganizer/todosummarywidget.cpp:362
 #, kde-format
 msgid "&Delete To-do"
 msgstr "删除待办事项(&D)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:332
+#: kontactplugin/korganizer/todosummarywidget.cpp:368
 #, kde-format
 msgid "&Mark To-do Completed"
 msgstr "标为已办事宜(&M)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:352
+#: kontactplugin/korganizer/todosummarywidget.cpp:388
 #, kde-format
 msgid "Edit To-do: \"%1\""
 msgstr "编辑待办：“%1”"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:372
+#: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
 msgid "open-ended"
 msgstr "不设期限"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:374
+#: kontactplugin/korganizer/todosummarywidget.cpp:410
 #, kde-format
 msgctxt "the to-do is overdue"
 msgid "overdue"
 msgstr "过期"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:376
+#: kontactplugin/korganizer/todosummarywidget.cpp:412
 #, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
 msgstr "今天开始"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:380
+#: kontactplugin/korganizer/todosummarywidget.cpp:416
 #, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
 msgstr "未开始"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:382
+#: kontactplugin/korganizer/todosummarywidget.cpp:418
 #, kde-format
 msgctxt "the to-do is completed"
 msgid "completed"
 msgstr "已完成"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:384
+#: kontactplugin/korganizer/todosummarywidget.cpp:420
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
 msgstr "进行中"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:389
+#: kontactplugin/korganizer/todosummarywidget.cpp:425
 #, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
@@ -3373,71 +3385,71 @@ msgstr "启用此选项可在最近特殊事项摘要中显示地址簿里的纪
 msgid "Show anni&versaries"
 msgstr "显示纪念日(&V)"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:105
+#: kontactplugin/specialdates/sdsummarywidget.cpp:107
 #, kde-format
 msgid "Upcoming Special Dates"
 msgstr "即将到来的特殊日期"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:455
+#: kontactplugin/specialdates/sdsummarywidget.cpp:460
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "今天"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:457
+#: kontactplugin/specialdates/sdsummarywidget.cpp:462
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "明天"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:503
+#: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
 msgid "Birthday"
 msgstr "生日"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:506
+#: kontactplugin/specialdates/sdsummarywidget.cpp:513
 #, kde-format
 msgid "Anniversary"
 msgstr "纪念日"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:509
+#: kontactplugin/specialdates/sdsummarywidget.cpp:516
 #, kde-format
 msgid "Holiday"
 msgstr "假日"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:512
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, kde-format
 msgid "Change of Seasons"
 msgstr "季节变化"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:515
+#: kontactplugin/specialdates/sdsummarywidget.cpp:522
 #, kde-format
 msgid "Special Occasion"
 msgstr "特殊情况"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:557
+#: kontactplugin/specialdates/sdsummarywidget.cpp:564
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
 msgstr[0] "%1 年"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:567
+#: kontactplugin/specialdates/sdsummarywidget.cpp:574
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] "在以后 %1 天内没有要到来的特殊日期"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:661
+#: kontactplugin/specialdates/sdsummarywidget.cpp:668
 #, kde-format
 msgid "Send &Mail"
 msgstr "发送邮件(&M)"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:662
+#: kontactplugin/specialdates/sdsummarywidget.cpp:669
 #, kde-format
 msgid "View &Contact"
 msgstr "查看联系人(&C)"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:677
+#: kontactplugin/specialdates/sdsummarywidget.cpp:684
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "邮寄到：“%1”"
@@ -6592,3 +6604,7 @@ msgstr ""
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr ""
+
+#~ msgctxt "the to-do is due"
+#~ msgid "due"
+#~ msgstr "到期"
