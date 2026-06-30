@@ -197,7 +197,36 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                         }
                     }
                 } else {
-                    str = i18n("now");
+                    // Event has started.  is it in-progess or done?
+                    int secsToEnd;
+                    const int durationAsSeconds = ev->dtStart().secsTo(ev->dtEnd());
+                    if (!ev->recurs()) {
+                        secsToEnd = currentDateTime.secsTo(ev->dtEnd());
+                    } else {
+                        QDateTime kdt(start, QTime(0, 0, 0), QTimeZone::LocalTime);
+                        kdt = kdt.addSecs(-1);
+                        const QDateTime next = ev->recurrence()->getNextDateTime(kdt).addSecs(durationAsSeconds);
+                        secsToEnd = currentDateTime.secsTo(next);
+                    }
+                    if (secsToEnd > 0) {
+                        str = i18nc("the event is currently in-progress", "in-progress");
+                        summaryEvent->makeUrgent = true;
+                    } else {
+                        const int hours = -secsToEnd / 60 / 60;
+                        if (hours > 0) {
+                            str = i18ncp("use abbreviation for hour to keep the text short. the event ended at least 1 hour ago",
+                                         "ended 1 hr ago",
+                                         "ended %1 hrs ago",
+                                         hours);
+                        } else {
+                            const int mins = -secsToEnd / 60;
+                            str = i18ncp("use abbreviation for min to keep the text short. the event ended a few minutes ago",
+                                         "ended 1 min ago",
+                                         "ended %1 mins ago",
+                                         mins);
+                            summaryEvent->makeUrgent = true;
+                        }
+                    }
                 }
             } else {
                 str = i18n("all day");
