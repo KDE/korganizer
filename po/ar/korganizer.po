@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-30 00:44+0000\n"
-"PO-Revision-Date: 2026-06-13 19:43+0400\n"
+"PO-Revision-Date: 2026-06-30 21:35+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3270,19 +3270,19 @@ msgstr[5] "قبل %1 يوم"
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "due any time today"
-msgstr ""
+msgstr "مستحقة اليوم في أي وقت"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:240
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "the to-do is due at specified time"
 msgid "is due at %1"
-msgstr "لا التاريخ"
+msgstr "مستحقة عند %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
 #, kde-format
 msgctxt "the to-do was due at specified time"
 msgid "was due at %1"
-msgstr ""
+msgstr "كانت مستحقة عند %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:310
 #, kde-format

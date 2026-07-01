@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1740218 2026-06-30 01:27:35Z scripty $
+# $Id: korganizer.po 1740279 2026-07-01 01:30:01Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-30 00:44+0000\n"
-"PO-Revision-Date: 2026-06-12 06:53+0200\n"
+"PO-Revision-Date: 2026-06-30 06:20+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -3315,19 +3315,19 @@ msgstr[3] "pred %1 dnevi"
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "due any time today"
-msgstr ""
+msgstr "zapade kadarkoli danes"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:240
 #, kde-format
 msgctxt "the to-do is due at specified time"
 msgid "is due at %1"
-msgstr ""
+msgstr "zapade ob %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
 #, kde-format
 msgctxt "the to-do was due at specified time"
 msgid "was due at %1"
-msgstr ""
+msgstr "je zapadlo ob %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:310
 #, kde-format

@@ -6868,7 +6868,3 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "the to-do is due"
-#~ msgid "due"
-#~ msgstr "forfell"
