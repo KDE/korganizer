@@ -6604,7 +6604,3 @@ msgstr ""
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr ""
-
-#~ msgctxt "the to-do is due"
-#~ msgid "due"
-#~ msgstr "到期"
