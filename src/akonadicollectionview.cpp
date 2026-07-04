@@ -348,7 +348,7 @@ protected:
         }
 
         return QSortFilterProxyModel::data(index, role);
-    };
+    }
 };
 
 class CalendarDelegateModel : public QSortFilterProxyModel
