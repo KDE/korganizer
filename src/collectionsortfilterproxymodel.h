@@ -7,13 +7,22 @@
 */
 
 #pragma once
-
+#include "config-korganizer.h"
+#if HAVE_SORTFILTERPROXYMODELBASE
+#include <TextAddonsWidgets/SortFilterProxyModelBase>
+#else
 #include <QSortFilterProxyModel>
+#endif
 namespace Akonadi
 {
 class AccountActivitiesAbstract;
 }
-class CollectionSortFilterProxyModel : public QSortFilterProxyModel
+class CollectionSortFilterProxyModel :
+#if HAVE_SORTFILTERPROXYMODELBASE
+    public TextAddonsWidgets::SortFilterProxyModelBase
+#else
+    public QSortFilterProxyModel
+#endif
 {
     Q_OBJECT
 public:

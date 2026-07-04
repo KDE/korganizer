@@ -267,6 +267,10 @@ if(
     set(HAVE_WHATSNEWSNGSUPPORT TRUE)
 endif()
 
+if(${KF6TextAddonsWidgets_VERSION} VERSION_GREATER_EQUAL 2.1.40)
+    set(HAVE_SORTFILTERPROXYMODELBASE TRUE)
+endif()
+
 set(KDEPIM_HAVE_X11 ${X11_FOUND})
 configure_file(config-korganizer.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-korganizer.h)
 include_directories(
