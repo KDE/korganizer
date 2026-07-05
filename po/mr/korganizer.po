@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-30 00:44+0000\n"
+"POT-Creation-Date: 2026-07-05 00:45+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1700,26 +1700,26 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "दिनदर्शिका शोधा"
 
-#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:488 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "दिनदर्शिका संचिका %1 ची वैशिष्ट्ये"
 
-#: akonadicollectionview.cpp:495
+#: akonadicollectionview.cpp:500
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr ""
 
-#: akonadicollectionview.cpp:501
+#: akonadicollectionview.cpp:506
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "पूर्वनिर्धारित दिनदर्शिका म्हणून वापरा (&D)"
 
-#: akonadicollectionview.cpp:539
+#: akonadicollectionview.cpp:544
 #, fuzzy, kde-format
 #| msgctxt "@title:column event description"
 #| msgid "Event"
@@ -1727,7 +1727,7 @@ msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "घटना"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:547
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Todo View"
@@ -1735,7 +1735,7 @@ msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "करायच्या कामांचे दृष्यरूप"
 
-#: akonadicollectionview.cpp:605
+#: akonadicollectionview.cpp:610
 #, fuzzy, kde-kuit-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
@@ -1745,7 +1745,7 @@ msgid ""
 "default %4 calendar folder.</para>"
 msgstr "तुम्हाला दिनदर्शिका %1 खरोखरीच वगळायची/काढून टाकायची आहे का?"
 
-#: akonadicollectionview.cpp:612
+#: akonadicollectionview.cpp:617
 #, fuzzy, kde-kuit-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
@@ -1754,48 +1754,48 @@ msgid ""
 "calendar folder?"
 msgstr "तुम्हाला दिनदर्शिका %1 खरोखरीच वगळायची/काढून टाकायची आहे का?"
 
-#: akonadicollectionview.cpp:615
+#: akonadicollectionview.cpp:620
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "पूर्वनिर्धारित दिनदर्शिका म्हणून वापरा (&D)"
 
-#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
+#: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
 #, fuzzy, kde-kuit-format
 #| msgid "Do you really want to delete calendar %1?"
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "तुम्हाला दिनदर्शिका %1 खरोखरीच वगळायची/काढून टाकायची आहे का?"
 
-#: akonadicollectionview.cpp:772
+#: akonadicollectionview.cpp:777
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "पूर्वनिर्धारित दिनदर्शिका म्हणून वापरा (&D)"
 
-#: akonadicollectionview.cpp:775
+#: akonadicollectionview.cpp:780
 #, fuzzy, kde-format
 #| msgid "Use as &Default Calendar"
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "पूर्वनिर्धारित दिनदर्शिका म्हणून वापरा (&D)"
 
-#: akonadicollectionview.cpp:793
+#: akonadicollectionview.cpp:798
 #, fuzzy, kde-format
 #| msgid "Add Calendar"
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "दिनदर्शिका वाढवा"
 
-#: akonadicollectionview.cpp:812
+#: akonadicollectionview.cpp:817
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:894
+#: akonadicollectionview.cpp:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1805,7 +1805,7 @@ msgid ""
 "be added again at any time.</note></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:902
+#: akonadicollectionview.cpp:907
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1817,7 +1817,7 @@ msgid ""
 "select a new default calendar folder.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:912
+#: akonadicollectionview.cpp:917
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1829,7 +1829,7 @@ msgid ""
 "calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:925
+#: akonadicollectionview.cpp:930
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1838,7 +1838,7 @@ msgid ""
 "pressing the %2 button.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:938
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1849,14 +1849,14 @@ msgid ""
 "default %4 calendar.</warning></para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
+#: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, fuzzy, kde-format
 #| msgid "Delete Calendar"
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "दिनदर्शिका काढून टाका"
 
-#: akonadicollectionview.cpp:972
+#: akonadicollectionview.cpp:977
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1866,27 +1866,27 @@ msgid ""
 "para>"
 msgstr ""
 
-#: akonadicollectionview.cpp:987
+#: akonadicollectionview.cpp:992
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr ""
 
-#: akonadicollectionview.cpp:1057
+#: akonadicollectionview.cpp:1062
 #, fuzzy, kde-format
 #| msgid "Be added to the standard calendar"
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "प्रमाणित दिनदर्शिकेत समाविष्ट केले पाहिजेत"
 
-#: akonadicollectionview.cpp:1059
+#: akonadicollectionview.cpp:1064
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:1093
+#: akonadicollectionview.cpp:1098
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

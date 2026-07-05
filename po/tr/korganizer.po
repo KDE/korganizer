@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-30 00:44+0000\n"
+"POT-Creation-Date: 2026-07-05 00:45+0000\n"
 "PO-Revision-Date: 2026-07-01 19:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1551,37 +1551,37 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "Takvim ara…"
 
-#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:488 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 Takvim Klasörü Özellikleri"
 
-#: akonadicollectionview.cpp:495
+#: akonadicollectionview.cpp:500
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Kla&sör Rengini Ayarla…"
 
-#: akonadicollectionview.cpp:501
+#: akonadicollectionview.cpp:506
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "Ö&ntanımlı Takvim Olarak Ayarla"
 
-#: akonadicollectionview.cpp:539
+#: akonadicollectionview.cpp:544
 #, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Etkinlik"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:547
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "Yapılacak"
 
-#: akonadicollectionview.cpp:605
+#: akonadicollectionview.cpp:610
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1593,7 +1593,7 @@ msgstr ""
 "ayarlamayı gerçekten istiyor musunuz?<para>Bu, <filename>%3</filename> "
 "ögesini öntanımlı %4 takvimi klasörü olarak değiştirecektir.</para>"
 
-#: akonadicollectionview.cpp:612
+#: akonadicollectionview.cpp:617
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1603,43 +1603,43 @@ msgstr ""
 "<filename>%1</filename> ögesini öntanımlı %2 takvim klasörünüz olarak "
 "ayarlamayı gerçekten istiyor musunuz?"
 
-#: akonadicollectionview.cpp:615
+#: akonadicollectionview.cpp:620
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "Öntanımlı %1 Takvimini Değiştir?"
 
-#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
+#: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "<filename>%1</filename>. artık öntanımlı %2 takviminiz"
 
-#: akonadicollectionview.cpp:772
+#: akonadicollectionview.cpp:777
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "Ö&ntanımlı Etkinlik Takvimi Olarak Ayarla"
 
-#: akonadicollectionview.cpp:775
+#: akonadicollectionview.cpp:780
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "Ö&ntanımlı Yapılacaklar Takvimi Olarak Ayarla"
 
-#: akonadicollectionview.cpp:793
+#: akonadicollectionview.cpp:798
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Takvim Ekle"
 
-#: akonadicollectionview.cpp:812
+#: akonadicollectionview.cpp:817
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Yeni takvim eklenemedi: <message>%1</message>"
 
-#: akonadicollectionview.cpp:894
+#: akonadicollectionview.cpp:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1653,7 +1653,7 @@ msgstr ""
 "kaldırılacaktır. <filename>%1</filename> takvimi istenen herhangi bir "
 "zamanda eklenebilir.</note></para>"
 
-#: akonadicollectionview.cpp:902
+#: akonadicollectionview.cpp:907
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1671,7 +1671,7 @@ msgstr ""
 "takvim klasörü içeriyor. Onu silerseniz yeni bir öntanımlı takvim klasörü "
 "seçmeniz istenecektir.</warning></para>"
 
-#: akonadicollectionview.cpp:912
+#: akonadicollectionview.cpp:917
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1689,7 +1689,7 @@ msgstr ""
 "takviminizdir. Onu silerseniz yeni bir öntanımlı %2 takvimi seçmeniz "
 "istenecektir.</warning></para>"
 
-#: akonadicollectionview.cpp:925
+#: akonadicollectionview.cpp:930
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1701,7 +1701,7 @@ msgstr ""
 "<para><warning>Bu işlem geri alınamaz. %2 düğmesine basmadan önce lütfen bir "
 "kez daha düşünün.</warning></para>"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:938
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1717,13 +1717,13 @@ msgstr ""
 "takvimi klasörünüzdür. Onu silerseniz yeni bir öntanımlı %4 takvimi seçmeniz "
 "istenecektir.</warning></para>"
 
-#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
+#: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Takvimi Sil"
 
-#: akonadicollectionview.cpp:972
+#: akonadicollectionview.cpp:977
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1736,26 +1736,26 @@ msgstr ""
 "verisi kaldırılacak. <para><warning>Bu işlem geri alınamaz. %1 düğmesine "
 "basmadan önce lütfen bir kez daha düşünün.</warning></para>"
 
-#: akonadicollectionview.cpp:987
+#: akonadicollectionview.cpp:992
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr "Takvim silinemedi: <message>Geçersiz Akonadi aracısı örneği</message>"
 
-#: akonadicollectionview.cpp:1057
+#: akonadicollectionview.cpp:1062
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "Öntanımlı bir %1 takvimi ayarlamayı düşünün"
 
-#: akonadicollectionview.cpp:1059
+#: akonadicollectionview.cpp:1064
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr "Yazılabilir bir %1 takvimi eklemeyi düşünün"
 
-#: akonadicollectionview.cpp:1093
+#: akonadicollectionview.cpp:1098
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

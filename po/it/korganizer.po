@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-30 00:44+0000\n"
+"POT-Creation-Date: 2026-07-05 00:45+0000\n"
 "PO-Revision-Date: 2026-06-23 23:24+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1556,37 +1556,37 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "Cerca calendario…"
 
-#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:488 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Proprietà della cartella di calendario %1"
 
-#: akonadicollectionview.cpp:495
+#: akonadicollectionview.cpp:500
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Impo&sta colore della cartella…"
 
-#: akonadicollectionview.cpp:501
+#: akonadicollectionview.cpp:506
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "Imposta come calen&dario predefinito"
 
-#: akonadicollectionview.cpp:539
+#: akonadicollectionview.cpp:544
 #, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Evento"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:547
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "Cosa da fare"
 
-#: akonadicollectionview.cpp:605
+#: akonadicollectionview.cpp:610
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1598,7 +1598,7 @@ msgstr ""
 "%2 predefinita?<para>Questa sostituirà <filename>%3</filename> come cartella "
 "di calendario %4 predefinita.</para>"
 
-#: akonadicollectionview.cpp:612
+#: akonadicollectionview.cpp:617
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1608,44 +1608,44 @@ msgstr ""
 "Vuoi veramente impostare <filename>%1</filename> come cartella di calendario "
 "%2 predefinita?"
 
-#: akonadicollectionview.cpp:615
+#: akonadicollectionview.cpp:620
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "Sostituisci il calendario predefinito %1?"
 
-#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
+#: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr ""
 "Adesso <filename>%1</filename> è il calendario degli eventi predefinito %2"
 
-#: akonadicollectionview.cpp:772
+#: akonadicollectionview.cpp:777
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "Imposta come calen&dario predefinito degli eventi"
 
-#: akonadicollectionview.cpp:775
+#: akonadicollectionview.cpp:780
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "Imposta come calen&dario predefinito delle cose da fare"
 
-#: akonadicollectionview.cpp:793
+#: akonadicollectionview.cpp:798
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Aggiungi calendario"
 
-#: akonadicollectionview.cpp:812
+#: akonadicollectionview.cpp:817
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Aggiunta di un nuovo calendario non riuscita: <message>%1</message>"
 
-#: akonadicollectionview.cpp:894
+#: akonadicollectionview.cpp:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1659,7 +1659,7 @@ msgstr ""
 "dalla sua risorsa remota. Il calendario <filename>%1</filename> può essere "
 "aggiunto nuovamente in qualsiasi momento.</note></para>"
 
-#: akonadicollectionview.cpp:902
+#: akonadicollectionview.cpp:907
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1678,7 +1678,7 @@ msgstr ""
 "eliminata potrebbe venire richiesto di selezionare una nuova cartella "
 "predefinita di calendario.</warning></para>"
 
-#: akonadicollectionview.cpp:912
+#: akonadicollectionview.cpp:917
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1696,7 +1696,7 @@ msgstr ""
 "è il calendario predefinito %2. Se viene eliminato potrebbe venire richiesto "
 "di selezionare un nuovo calendario predefinito %2.</warning></para>"
 
-#: akonadicollectionview.cpp:925
+#: akonadicollectionview.cpp:930
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1708,7 +1708,7 @@ msgstr ""
 "<para><warning>Questa operazione non può essere annullata. Bisogna fare "
 "attenzione prima di premere il tasto %2.</warning></para>"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:938
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1725,13 +1725,13 @@ msgstr ""
 "viene eliminata potrebbe venire richiesto di selezionare una nuova cartella "
 "predefinita %4 di calendario.</warning></para>"
 
-#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
+#: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Elimina calendario"
 
-#: akonadicollectionview.cpp:972
+#: akonadicollectionview.cpp:977
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1745,7 +1745,7 @@ msgstr ""
 "operazione non può essere annullata. Bisogna fare attenzione prima di "
 "premere il tasto %1.</warning></para>"
 
-#: akonadicollectionview.cpp:987
+#: akonadicollectionview.cpp:992
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1754,19 +1754,19 @@ msgstr ""
 "Eliminazione del calendario non riuscita: <message>Istanza dell'agente "
 "Akonadi non valida</message>"
 
-#: akonadicollectionview.cpp:1057
+#: akonadicollectionview.cpp:1062
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "Valutare l'impostazione di un calendario predefinito %1"
 
-#: akonadicollectionview.cpp:1059
+#: akonadicollectionview.cpp:1064
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr "Valutare l'aggiunta di un calendario %1 aperto in scrittura"
 
-#: akonadicollectionview.cpp:1093
+#: akonadicollectionview.cpp:1098
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

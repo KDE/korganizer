@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-30 00:44+0000\n"
+"POT-Creation-Date: 2026-07-05 00:45+0000\n"
 "PO-Revision-Date: 2026-06-30 09:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1523,37 +1523,37 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "חיפוש לוח שנה…"
 
-#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:488 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "מאפייני תיקיית לוח השנה %1"
 
-#: akonadicollectionview.cpp:495
+#: akonadicollectionview.cpp:500
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "ה&גדרת צבע תיקייה…"
 
-#: akonadicollectionview.cpp:501
+#: akonadicollectionview.cpp:506
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "הגדרת לוח השנה כ&ברירת מחדל"
 
-#: akonadicollectionview.cpp:539
+#: akonadicollectionview.cpp:544
 #, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "אירוע"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:547
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "מטלה"
 
-#: akonadicollectionview.cpp:605
+#: akonadicollectionview.cpp:610
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1565,7 +1565,7 @@ msgstr ""
 "הזאת תחליף את <filename>%3</filename> כתיקיית ברירת המחדל ללוח שנה עבור %4.</"
 "para>"
 
-#: akonadicollectionview.cpp:612
+#: akonadicollectionview.cpp:617
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1574,43 +1574,43 @@ msgid ""
 msgstr ""
 "להגדיר את <filename>%1</filename> כתיקיית לוח השנה כברירת מחדל עבור %2?"
 
-#: akonadicollectionview.cpp:615
+#: akonadicollectionview.cpp:620
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "להחליף את לוח השנה כברירת המחדל עבור %1?"
 
-#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
+#: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "<filename>%1</filename> הוא לוח השנה כברירת המחדל שלך לתיעוד %2"
 
-#: akonadicollectionview.cpp:772
+#: akonadicollectionview.cpp:777
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "הגדרה כלוח שנה כ&ברירת מחדל לאירועים"
 
-#: akonadicollectionview.cpp:775
+#: akonadicollectionview.cpp:780
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "הגדרת לוח השנה כ&ברירת מחדל למטלות"
 
-#: akonadicollectionview.cpp:793
+#: akonadicollectionview.cpp:798
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "הוספת לוח שנה"
 
-#: akonadicollectionview.cpp:812
+#: akonadicollectionview.cpp:817
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "הוספת לוח שנה חדש נכשלה: <message>%1</message>"
 
-#: akonadicollectionview.cpp:894
+#: akonadicollectionview.cpp:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1623,7 +1623,7 @@ msgstr ""
 "יימחקו, או שלוח השנה יוסר מהמקור המרוחק שלו. אפשר להוסיף את לוח השנה "
 "<filename>%1</filename> שוב בכל עת.</note></para>"
 
-#: akonadicollectionview.cpp:902
+#: akonadicollectionview.cpp:907
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1640,7 +1640,7 @@ msgstr ""
 "תיקיית לוחות השנה כברירת מחדל. מחיקתו תציג בקשה לבחירת תיקיית לוחות שנה חדשה "
 "כברירת מחדל.</warning></para>"
 
-#: akonadicollectionview.cpp:912
+#: akonadicollectionview.cpp:917
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1657,7 +1657,7 @@ msgstr ""
 "כברירת מחדל עבור %2. מחיקתו עשויה להציג חלונית לבחירת לוח שנה חדש כברירת "
 "מחדל עבור %2.</warning></para>"
 
-#: akonadicollectionview.cpp:925
+#: akonadicollectionview.cpp:930
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1668,7 +1668,7 @@ msgstr ""
 "למחוק את לוח השנה<filename>%1</filename>?<para><warning>זאת פעולה בלתי "
 "הפיכה. נא לשקול בכובד ראש בטרם לחיצה על הכפתור %2.</warning></para>"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:938
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1683,13 +1683,13 @@ msgstr ""
 "para><para><warning>זאת תיקיית ברירת המחדל שלך ללוחות שנה עבור %3. מחיקתה "
 "תקפיץ חלונית לבחירת ברירת מחדל חדשה ללוח שנה עבור %4.</warning></para>"
 
-#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
+#: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "מחיקת לוח שנה"
 
-#: akonadicollectionview.cpp:972
+#: akonadicollectionview.cpp:977
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1702,26 +1702,26 @@ msgstr ""
 "<para><warning>זאת פעולה בלתי הפיכה. נא לשקול בכובד ראש בטרם לחיצה על הכפתור "
 "%1.</warning></para>"
 
-#: akonadicollectionview.cpp:987
+#: akonadicollectionview.cpp:992
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Delete calendar failed: <message>Invalid Akonadi agent instance</message>"
 msgstr "מחיקת לוח השנה נכשלה: <message>מופע שגוי של סוכן Akonadi</message>"
 
-#: akonadicollectionview.cpp:1057
+#: akonadicollectionview.cpp:1062
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "כדאי להגדיר לוח שנה כברירת מחדל עבור %1"
 
-#: akonadicollectionview.cpp:1059
+#: akonadicollectionview.cpp:1064
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr "כדאי להוסיף לוח שנה עבור %1 שניתן לערוך"
 
-#: akonadicollectionview.cpp:1093
+#: akonadicollectionview.cpp:1098
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"

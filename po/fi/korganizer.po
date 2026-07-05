@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-06-30 00:44+0000\n"
+"POT-Creation-Date: 2026-07-05 00:45+0000\n"
 "PO-Revision-Date: 2026-01-05 17:25+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1550,19 +1550,19 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "Etsi kalenteria…"
 
-#: akonadicollectionview.cpp:483 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:488 manageshowcollectionproperties.cpp:76
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "Kalenterikansion %1 ominaisuudet"
 
-#: akonadicollectionview.cpp:495
+#: akonadicollectionview.cpp:500
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "As&eta kansioväri…"
 
-#: akonadicollectionview.cpp:501
+#: akonadicollectionview.cpp:506
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Set as &Default Folder"
@@ -1570,7 +1570,7 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "Käytä &oletuskansiona"
 
-#: akonadicollectionview.cpp:539
+#: akonadicollectionview.cpp:544
 #, fuzzy, kde-format
 #| msgctxt "@title:column event description"
 #| msgid "Event"
@@ -1578,7 +1578,7 @@ msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Tapahtuma"
 
-#: akonadicollectionview.cpp:542
+#: akonadicollectionview.cpp:547
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Todo View"
@@ -1586,7 +1586,7 @@ msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "Tehtävänäkymä"
 
-#: akonadicollectionview.cpp:605
+#: akonadicollectionview.cpp:610
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1603,7 +1603,7 @@ msgstr ""
 "oletuskalenterikansioksi?<para>Tämä korvaa aiemmin valitun kansion <filename>"
 "%2</filename>.</para>"
 
-#: akonadicollectionview.cpp:612
+#: akonadicollectionview.cpp:617
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1617,7 +1617,7 @@ msgstr ""
 "Haluatko varmasti, että <filename>%1</filename> korvaa nykyisen "
 "oletuskalenterikansion?"
 
-#: akonadicollectionview.cpp:615
+#: akonadicollectionview.cpp:620
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Replace Default Calendar?"
@@ -1625,7 +1625,7 @@ msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "Korvataanko oletuskalenteri?"
 
-#: akonadicollectionview.cpp:619 akonadicollectionview.cpp:1051
+#: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "<filename>%1</filename> is now your default event calendar"
@@ -1633,7 +1633,7 @@ msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "<filename>%1</filename> on nyt tapahtumien oletuskalenteri"
 
-#: akonadicollectionview.cpp:772
+#: akonadicollectionview.cpp:777
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Set as &Default Folder"
@@ -1641,7 +1641,7 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "Käytä &oletuskansiona"
 
-#: akonadicollectionview.cpp:775
+#: akonadicollectionview.cpp:780
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Set as &Default Folder"
@@ -1649,19 +1649,19 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "Käytä &oletuskansiona"
 
-#: akonadicollectionview.cpp:793
+#: akonadicollectionview.cpp:798
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Lisää kalenteri"
 
-#: akonadicollectionview.cpp:812
+#: akonadicollectionview.cpp:817
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Uuden kalenterin lisääminen epäonnistui: <message>%1</message>"
 
-#: akonadicollectionview.cpp:894
+#: akonadicollectionview.cpp:899
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1675,7 +1675,7 @@ msgstr ""
 "etäresurssistaan. Kalenterin <filename>%1</filename> voi milloin tahansa "
 "lisätä uudelleen.</note></para>"
 
-#: akonadicollectionview.cpp:902
+#: akonadicollectionview.cpp:907
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1701,7 +1701,7 @@ msgstr ""
 "oletuskalenterikansio. Jos se poistetaan, sinua voidaan pyytää valitsemaan "
 "uusi oletuskalenterikansio.</warning></para>"
 
-#: akonadicollectionview.cpp:912
+#: akonadicollectionview.cpp:917
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1727,7 +1727,7 @@ msgstr ""
 "poistetaan, sinua voidaan pyytää valitsemaan uusi oletuskalenteri.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:925
+#: akonadicollectionview.cpp:930
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1739,7 +1739,7 @@ msgstr ""
 "<para><warning>Tätä ei voi kumota. Harkitse huolella, ennen kuin napsautat "
 "%2.</warning></para>"
 
-#: akonadicollectionview.cpp:933
+#: akonadicollectionview.cpp:938
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1762,13 +1762,13 @@ msgstr ""
 "poistetaan, sinua voidaan pyytää valitsemaan uusi oletuskalenteri</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:946 akonadicollectionview.cpp:977
+#: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Poista kalenteri"
 
-#: akonadicollectionview.cpp:972
+#: akonadicollectionview.cpp:977
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1781,7 +1781,7 @@ msgstr ""
 "kalenterin tiedot poistetaan.<para><warning>Tätä ei voi kumota. Harkitse "
 "tarkkaan, ennen kuin painat %1.</warning></para>"
 
-#: akonadicollectionview.cpp:987
+#: akonadicollectionview.cpp:992
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1790,7 +1790,7 @@ msgstr ""
 "Kalenterin poistaminen epäonnistui: <message>Virheellinen Akonadi-agentin "
 "ilmentymä</message>"
 
-#: akonadicollectionview.cpp:1057
+#: akonadicollectionview.cpp:1062
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Consider setting a default calendar for new events"
@@ -1798,7 +1798,7 @@ msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "Harkitse oletuskalenterin asettamista uusia tapahtumia varten"
 
-#: akonadicollectionview.cpp:1059
+#: akonadicollectionview.cpp:1064
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Consider adding a write-enabled events calendar"
@@ -1806,7 +1806,7 @@ msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr "Harkitse kirjoitettavissa olevan tapahtumakalenterin lisäämistä"
 
-#: akonadicollectionview.cpp:1093
+#: akonadicollectionview.cpp:1098
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
