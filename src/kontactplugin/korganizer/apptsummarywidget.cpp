@@ -56,7 +56,7 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     mChanger = new Akonadi::IncidenceChanger(parent);
 
     connect(mCalendar.data(), &Akonadi::ETMCalendar::calendarChanged, this, &ApptSummaryWidget::updateView);
-    connect(mPlugin->core(), &KontactInterface::Core::dayChanged, this, &ApptSummaryWidget::updateView);
+    connect(mPlugin->core(), &KontactInterface::Core::minuteChanged, this, &ApptSummaryWidget::updateView);
 
     // Update Configuration
     configUpdated();
