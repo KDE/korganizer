@@ -10,8 +10,8 @@ if(DEFINED KDEPIM_DEV_VERSION)
     set(KDEPIM_DEV_VERSION " ${KDEPIM_DEV_VERSION}")
 endif()
 
-set(PIM_VERSION "6.7.40")
-set(RELEASE_SERVICE_VERSION "26.07.40")
+set(PIM_VERSION "6.8.40")
+set(RELEASE_SERVICE_VERSION "26.11.40")
 
 # Update it for each release
 set(KORGANIZER_RELEASE_VERSION_DATE "26.07.10") # yy.MM.dd
@@ -244,7 +244,7 @@ if(NOT APPLE)
     find_package(X11)
 endif()
 
-set(KTEXTADDONS_MIN_VERSION "2.0.2")
+set(KTEXTADDONS_MIN_VERSION "2.1.0")
 
 find_package(KF6TextAddonsWidgets ${KTEXTADDONS_MIN_VERSION} CONFIG)
 set_package_properties(
