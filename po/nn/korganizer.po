@@ -2,22 +2,21 @@
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 2000, 2002, 2003, 2005.
 # Håvard Korsvoll <korsvoll@skulelinux.no>, 2003, 2004.
-# Karl Ove Hufthammer <karl@huftis.org>, 2005, 2006, 2008, 2009, 2010, 2011, 2012, 2018, 2020, 2021.
 # Eirik U. Birkeland <eirbir@gmail.com>, 2008, 2009, 2010.
 # Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:45+0000\n"
-"PO-Revision-Date: 2021-10-18 20:25+0200\n"
+"POT-Creation-Date: 2026-07-06 00:46+0000\n"
+"PO-Revision-Date: 2026-07-05 17:15+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.08.2\n"
+"X-Generator: Lokalize 26.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -2996,24 +2995,46 @@ msgid_plural "%1 mins"
 msgstr[0] "1 minutt"
 msgstr[1] "%1 minutt"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:497
-#, kde-format
-msgid "now"
-msgstr "no"
+#: kontactplugin/korganizer/summaryeventinfo.cpp:212
+#, fuzzy, kde-format
+#| msgctxt "the to-do is in-progress"
+#| msgid "in-progress "
+msgctxt "the event is currently in-progress"
+msgid "in-progress"
+msgstr "i gang"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:203
+#: kontactplugin/korganizer/summaryeventinfo.cpp:218
+#, kde-format
+msgctxt ""
+"use abbreviation for hour to keep the text short. the event ended at least 1 "
+"hour ago"
+msgid "ended 1 hr ago"
+msgid_plural "ended %1 hrs ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:224
+#, kde-format
+msgctxt ""
+"use abbreviation for min to keep the text short. the event ended a few "
+"minutes ago"
+msgid "ended 1 min ago"
+msgid_plural "ended %1 mins ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
 msgid "all day"
 msgstr "heile dagen"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:243
+#: kontactplugin/korganizer/summaryeventinfo.cpp:272
 #, kde-format
 msgctxt "Time from - to"
 msgid "%1 - %2"
 msgstr "%1–%2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:259
+#: kontactplugin/korganizer/summaryeventinfo.cpp:288
 #, kde-format
 msgctxt "next occurrence"
 msgid "Next: %1"
@@ -3173,7 +3194,7 @@ msgstr "&Utan forfallsdato"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
 #, kde-format
 msgid "Hide unstarted To-dos"
-msgstr "Gøym ikkje-påbegynte oppgåver"
+msgstr "Gøym ikkje-starta oppgåver"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:174
@@ -3187,13 +3208,13 @@ msgstr "Kryss av her for å gøyma oppgåver med startdato i framtida."
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:177
 #, kde-format
 msgid "&Unstarted (start date is in the future)"
-msgstr "&Ikkje påbegynt (startdatoen er i framtida)"
+msgstr "&Ikkje starta (startdatoen er i framtida)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:184
 #, kde-format
 msgid "Hide in-progress To-dos"
-msgstr "Gøym oppgåver som pågår"
+msgstr "Gøym oppgåver som er i gang"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:187
@@ -3201,13 +3222,14 @@ msgstr "Gøym oppgåver som pågår"
 msgid ""
 "Check this box if you do not want to see To-dos that have been started but "
 "are not yet completed."
-msgstr "Kryss av her for å gøyma oppgåver som pågår, men ikkje er fullførte."
+msgstr ""
+"Kryss av her for å gøyma oppgåver som er i gang, men ikkje er fullførte."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:190
 #, kde-format
 msgid "&In-progress (started but not completed)"
-msgstr "&Pågår (påbegynt, men ikkje fullført)"
+msgstr "&I gang (starta, men ikkje fullført)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:197
@@ -3339,7 +3361,7 @@ msgstr "fullført"
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
-msgstr "pågår"
+msgstr "i gang"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:425
 #, kde-format
@@ -3564,6 +3586,11 @@ msgstr "I dag"
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "I morgon"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:497
+#, kde-format
+msgid "now"
+msgstr "no"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format

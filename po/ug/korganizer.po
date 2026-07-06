@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:45+0000\n"
+"POT-Creation-Date: 2026-07-06 00:46+0000\n"
 "PO-Revision-Date: 2026-05-31 19:24-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -2814,24 +2814,42 @@ msgid "1 min"
 msgid_plural "%1 mins"
 msgstr[0] "%1 مىنۇت"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:497
+#: kontactplugin/korganizer/summaryeventinfo.cpp:212
 #, kde-format
-msgid "now"
-msgstr "ھازىر"
+msgctxt "the event is currently in-progress"
+msgid "in-progress"
+msgstr ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:203
+#: kontactplugin/korganizer/summaryeventinfo.cpp:218
+#, kde-format
+msgctxt ""
+"use abbreviation for hour to keep the text short. the event ended at least 1 "
+"hour ago"
+msgid "ended 1 hr ago"
+msgid_plural "ended %1 hrs ago"
+msgstr[0] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:224
+#, kde-format
+msgctxt ""
+"use abbreviation for min to keep the text short. the event ended a few "
+"minutes ago"
+msgid "ended 1 min ago"
+msgid_plural "ended %1 mins ago"
+msgstr[0] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
 msgid "all day"
 msgstr ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:243
+#: kontactplugin/korganizer/summaryeventinfo.cpp:272
 #, kde-format
 msgctxt "Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:259
+#: kontactplugin/korganizer/summaryeventinfo.cpp:288
 #, kde-format
 msgctxt "next occurrence"
 msgid "Next: %1"
@@ -3361,6 +3379,11 @@ msgstr "بۈگۈن"
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "ئەتە"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:497
+#, kde-format
+msgid "now"
+msgstr "ھازىر"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
 #, kde-format
