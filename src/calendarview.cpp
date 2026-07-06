@@ -31,7 +31,6 @@
 #include "views/agendaview/koagendaview.h"
 #include "views/monthview/monthview.h"
 #include "views/todoview/kotodoview.h"
-#include "whatsnew/whatsnewtranslations.h"
 #include "widgets/navigatorbar.h"
 
 #include <Akonadi/AttributeFactory>
@@ -67,7 +66,7 @@
 #include <KCalUtils/DndFactory>
 #include <KCalUtils/Stringify>
 
-#include <TextAddonsWidgets/WhatsNewDialog>
+#include <TextAddonsWidgets/WhatsNewNgDialog>
 
 #include <PimCommonAkonadi/CollectionAclPage>
 #include <PimCommonAkonadi/ImapAclAttribute>
@@ -291,6 +290,9 @@ CalendarView::CalendarView(QWidget *parent)
             pageRegistered = true;
         }
     }
+
+    const KAboutData aboutData = KAboutData::fromAppStreamForApplication();
+    mReleasesInfo = aboutData.releases();
 
     Akonadi::FreeBusyManager::self()->setCalendar(mCalendar);
 
@@ -1827,9 +1829,8 @@ void CalendarView::printPreview()
 
 void CalendarView::slotWhatsNew()
 {
-    const WhatsNewTranslations translations;
-    TextAddonsWidgets::WhatsNewDialog dlg(translations.createWhatsNewInfo(), this, i18nc("@title:window", "KOrganizer"));
-    dlg.updateInformations();
+    TextAddonsWidgets::WhatsNewNgDialog dlg(i18nc("@title:window", "KOrganizer"), this);
+    dlg.setReleases(mReleasesInfo);
     dlg.exec();
 }
 

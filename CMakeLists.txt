@@ -20,7 +20,7 @@ set(KDEPIM_VERSION "${PIM_VERSION}${KDEPIM_DEV_VERSION} (${RELEASE_SERVICE_VERSI
 
 project(korganizer VERSION ${PIM_VERSION})
 
-set(KF_MIN_VERSION "6.25.0")
+set(KF_MIN_VERSION "6.26.0")
 set(QT_REQUIRED_VERSION "6.9.0")
 find_package(ECM ${KF_MIN_VERSION} CONFIG REQUIRED)
 
@@ -255,17 +255,6 @@ set_package_properties(
         TYPE
             REQUIRED
 )
-
-if(
-    ${KF6CoreAddons_VERSION}
-        VERSION_GREATER_EQUAL
-        6.26.0
-    AND ${KF6TextAddonsWidgets_VERSION}
-        VERSION_GREATER_EQUAL
-        2.0.67
-)
-    set(HAVE_WHATSNEWSNGSUPPORT TRUE)
-endif()
 
 if(${KF6TextAddonsWidgets_VERSION} VERSION_GREATER_EQUAL 2.1.40)
     set(HAVE_SORTFILTERPROXYMODELBASE TRUE)

@@ -13,11 +13,10 @@
 #include "impl/korganizerifaceimpl.h"
 #include "kocore.h"
 #include "prefs/koprefs.h"
-#include "whatsnew/whatsnewtranslations.h"
 
 #include <Akonadi/CalendarUtils>
 #include <KCalUtils/IncidenceFormatter>
-#include <TextAddonsWidgets/WhatsNewMessageWidget>
+#include <TextAddonsWidgets/WhatsNewMessageNgWidget>
 
 #include "korganizer_debug.h"
 #include <KParts/StatusBarExtension>
@@ -62,15 +61,20 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPl
 
     auto topLayout = new QVBoxLayout(canvas);
 
-    const WhatsNewTranslations translations;
-    const QString newFeaturesMD5 = translations.newFeaturesMD5();
+    QString newFeaturesMD5;
+    const KAboutData aboutData = KAboutData::fromAppStreamForApplication();
+    auto releasesInfo = aboutData.releases();
+    if (!releasesInfo.isEmpty()) {
+        newFeaturesMD5 = releasesInfo.constFirst().untranslatedDescription();
+    }
+
     if (!newFeaturesMD5.isEmpty()) {
         const QString previousNewFeaturesMD5 = KOPrefs::instance()->previousNewFeaturesMD5();
         if (!previousNewFeaturesMD5.isEmpty()) {
             const bool hasNewFeature = (previousNewFeaturesMD5 != newFeaturesMD5);
             if (hasNewFeature) {
-                auto whatsNewMessageWidget = new TextAddonsWidgets::WhatsNewMessageWidget(parentWidget, i18n("KOrganizer"));
-                whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
+                auto whatsNewMessageWidget = new TextAddonsWidgets::WhatsNewMessageNgWidget(i18n("KOrganizer"), parentWidget);
+                whatsNewMessageWidget->setReleases(releasesInfo);
                 whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
                 topLayout->addWidget(whatsNewMessageWidget);
                 KOPrefs::instance()->setPreviousNewFeaturesMD5(newFeaturesMD5);

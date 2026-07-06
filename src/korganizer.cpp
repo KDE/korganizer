@@ -23,7 +23,6 @@
 #include <Libkdepim/ProgressStatusBarWidget>
 #include <Libkdepim/StatusbarProgressWidget>
 
-#include "whatsnew/whatsnewtranslations.h"
 #include <KAboutData>
 #include <KActionCollection>
 #include <KSharedConfig>
@@ -37,7 +36,7 @@
 #include <TextAddonsWidgets/NeedUpdateVersionUtils>
 #include <TextAddonsWidgets/NeedUpdateVersionWidget>
 #include <TextAddonsWidgets/VerifyNewVersionWidget>
-#include <TextAddonsWidgets/WhatsNewMessageWidget>
+#include <TextAddonsWidgets/WhatsNewMessageNgWidget>
 #if HAVE_ACTIVITY_SUPPORT
 #include "activities/activitiesmanager.h"
 #endif
@@ -68,15 +67,19 @@ KOrganizer::KOrganizer()
         }
     }
 
-    const WhatsNewTranslations translations;
-    const QString newFeaturesMD5 = translations.newFeaturesMD5();
+    const KAboutData aboutData = KAboutData::fromAppStreamForApplication();
+    QString newFeaturesMD5;
+    auto releasesInfo = aboutData.releases();
+    if (!releasesInfo.isEmpty()) {
+        newFeaturesMD5 = releasesInfo.constFirst().untranslatedDescription();
+    }
     if (!newFeaturesMD5.isEmpty()) {
         const QString previousNewFeaturesMD5 = KOPrefs::instance()->previousNewFeaturesMD5();
         if (!previousNewFeaturesMD5.isEmpty()) {
             const bool hasNewFeature = (previousNewFeaturesMD5 != newFeaturesMD5);
             if (hasNewFeature) {
-                auto whatsNewMessageWidget = new TextAddonsWidgets::WhatsNewMessageWidget(this, i18n("KOrganizer"));
-                whatsNewMessageWidget->setWhatsNewInfos(translations.createWhatsNewInfo());
+                auto whatsNewMessageWidget = new TextAddonsWidgets::WhatsNewMessageNgWidget(i18n("KOrganizer"), this);
+                whatsNewMessageWidget->setReleases(releasesInfo);
                 whatsNewMessageWidget->setObjectName(QStringLiteral("whatsNewMessageWidget"));
                 mainWidgetLayout->addWidget(whatsNewMessageWidget);
                 KOPrefs::instance()->setPreviousNewFeaturesMD5(newFeaturesMD5);

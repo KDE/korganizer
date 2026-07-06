@@ -24,6 +24,8 @@
 
 #include <CalendarSupport/MessageWidget>
 
+#include <KAboutData>
+
 #include <functional>
 #include <list>
 
@@ -750,4 +752,5 @@ private:
     AkonadiCollectionView *mETMCollectionView = nullptr;
 
     Akonadi::SearchCollectionHelper mSearchCollectionHelper;
+    QList<KAboutRelease> mReleasesInfo;
 };
