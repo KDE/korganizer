@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-06 00:46+0000\n"
+"POT-Creation-Date: 2026-07-07 00:44+0000\n"
 "PO-Revision-Date: 2026-01-05 17:25+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -1812,7 +1812,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Kalenterin poistaminen epäonnistui: <message>%1</message>"
 
-#: calendarview.cpp:267
+#: calendarview.cpp:266
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1823,7 +1823,7 @@ msgstr ""
 "para><para>Näytä tiedot valitsemalla tapahtuma, tehtävä tai "
 "päiväkirjamerkintä.</para>"
 
-#: calendarview.cpp:271
+#: calendarview.cpp:270
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1833,19 +1833,19 @@ msgstr ""
 "Näytä KOrganizerin päänäkymässä valittujen tapahtumien, "
 "päiväkirjamerkintöjen tai tehtävien yksityiskohdat tässä."
 
-#: calendarview.cpp:693
+#: calendarview.cpp:695
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Tehtävä valmistunut: %1 (%2)"
 
-#: calendarview.cpp:702
+#: calendarview.cpp:704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "%1 – päiväkirja"
 
-#: calendarview.cpp:751
+#: calendarview.cpp:753
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1855,49 +1855,49 @@ msgstr ""
 "Nykyiset suodatinasetuksesi suodattavat merkinnän <resource>%1</resource>, "
 "joten se piilotetaan eikä näy näkymässä."
 
-#: calendarview.cpp:820
+#: calendarview.cpp:822
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Haluatko varmasti poistaa pysyvästi merkinnän ”%1”?"
 
-#: calendarview.cpp:821
+#: calendarview.cpp:823
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Poistetaanko merkintä?"
 
-#: calendarview.cpp:896
+#: calendarview.cpp:898
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Liittäminen epäonnistui: kelvollista kohdepäivää ei voitu päätellä."
 
-#: calendarview.cpp:1314
+#: calendarview.cpp:1316
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Tee alitehtävistä itsenäisiä"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1370
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Vaihda muistutuksen tilaa"
 
-#: calendarview.cpp:1373
+#: calendarview.cpp:1375
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "<message>%1</message>: muistutus on käytössä"
 
-#: calendarview.cpp:1375
+#: calendarview.cpp:1377
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message>: muistutus ei ole käytössä"
 
-#: calendarview.cpp:1378
+#: calendarview.cpp:1380
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info alarm enabled"
 #| msgid "<message>%1</message> reminder is enabled"
@@ -1905,19 +1905,19 @@ msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "<message>%1</message>: muistutus on käytössä"
 
-#: calendarview.cpp:1409 calendarview.cpp:1467
+#: calendarview.cpp:1411 calendarview.cpp:1469
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Vaihda tehtävän valmis-tilaa"
 
-#: calendarview.cpp:1413
+#: calendarview.cpp:1415
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Tehtävästä ”<message>%1</message>” %2 % valmiina"
 
-#: calendarview.cpp:1416
+#: calendarview.cpp:1418
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info percentage completed"
 #| msgid "To-do <message>%1</message> %2 percent completed"
@@ -1925,31 +1925,31 @@ msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "Tehtävästä ”<message>%1</message>” %2 % valmiina"
 
-#: calendarview.cpp:1519
+#: calendarview.cpp:1521
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "”%1” kopioitiin onnistuneesti kohteeseen %2."
 
-#: calendarview.cpp:1520
+#: calendarview.cpp:1522
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopiointi onnistui"
 
-#: calendarview.cpp:1524
+#: calendarview.cpp:1526
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Merkintää ”%1” ei saatu kopioiduksi kohteeseen %2."
 
-#: calendarview.cpp:1525 calendarview.cpp:2501
+#: calendarview.cpp:1527 calendarview.cpp:2502
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopiointi epäonnistui"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1586
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1959,50 +1959,50 @@ msgstr ""
 "Merkintää ”%1” ei saatu poistetuksi alkuperäisestä kalenterista. Merkinnästä "
 "tehtiin kuitenkin kopio kohteeseen %2"
 
-#: calendarview.cpp:1588 calendarview.cpp:1604 calendarview.cpp:2536
+#: calendarview.cpp:1590 calendarview.cpp:1606 calendarview.cpp:2537
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Siirto epäonnistui"
 
-#: calendarview.cpp:1593
+#: calendarview.cpp:1595
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "”%1” siirrettiin onnistuneesti (%2–%3)."
 
-#: calendarview.cpp:1594
+#: calendarview.cpp:1596
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Siirto onnistui"
 
-#: calendarview.cpp:1600
+#: calendarview.cpp:1602
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Merkintää ”%1” ei voitu lisätä kohteeseen %2. Merkintää ei siirretty."
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Haluatko irrottaa %1 toistoista?"
 
-#: calendarview.cpp:1643 calendarview.cpp:1656 calendarview.cpp:2317
-#: calendarview.cpp:2376 calendarview.cpp:2406
+#: calendarview.cpp:1645 calendarview.cpp:1658 calendarview.cpp:2318
+#: calendarview.cpp:2377 calendarview.cpp:2407
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer: vahvistus"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1646
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Irrota"
 
-#: calendarview.cpp:1651
+#: calendarview.cpp:1653
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2010,43 +2010,43 @@ msgid ""
 "dissociate future ones?"
 msgstr "Haluatko irrottaa toistoista vain %1 vai myös tulevat esiintymät?"
 
-#: calendarview.cpp:1657
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Irrota &vain tämä"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Irrota t&ulevatkin tapahtumat"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1678
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Irrota tulevat esiintymät"
 
-#: calendarview.cpp:1678
+#: calendarview.cpp:1680
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Irrota esiintymä"
 
-#: calendarview.cpp:1685
+#: calendarview.cpp:1687
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Tulevien esiintymien irrottaminen epäonnistui."
 
-#: calendarview.cpp:1685 calendarview.cpp:1687
+#: calendarview.cpp:1687 calendarview.cpp:1689
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Irrotus epäonnistui"
 
-#: calendarview.cpp:1687
+#: calendarview.cpp:1689
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
@@ -2054,37 +2054,37 @@ msgstr "Esiintymän irrottaminen epäonnistui."
 
 # pmap: =/gen=KOrganizerin/
 # pmap: =/elat=KOrganizerista/
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1851
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Vie kalenteri tiedostoksi"
 
-#: calendarview.cpp:1863
+#: calendarview.cpp:1864
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Haluatko korvata tiedoston <filename>%1</filename>?"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1865
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Vie kalenteri"
 
-#: calendarview.cpp:1878
+#: calendarview.cpp:1879
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Syy tuntematon"
 
-#: calendarview.cpp:1880
+#: calendarview.cpp:1881
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2093,13 +2093,13 @@ msgstr ""
 "Ei voida kirjoittaa iCalendar-tiedostoa <filename>%1</filename>: <message>"
 "%2</message>"
 
-#: calendarview.cpp:1989 calendarview.cpp:2034
+#: calendarview.cpp:1990 calendarview.cpp:2035
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Ei suodatinta"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2111,19 +2111,19 @@ msgstr ""
 "tehtävän ja tehdä sen alitehtävistä itsenäisiä vai poistaa tehtävän kaikkine "
 "alitehtävineen?"
 
-#: calendarview.cpp:2318
+#: calendarview.cpp:2319
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Poista vain tämä"
 
-#: calendarview.cpp:2319 calendarview.cpp:2377
+#: calendarview.cpp:2320 calendarview.cpp:2378
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Poista kaikki"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2352
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2133,13 +2133,13 @@ msgstr ""
 "<resource>%1</resource> on vain luettavissa eikä sitä voi poistaa. Se kuuluu "
 "ehkä vain luettavissa olevaan kalenteriin."
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2355
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Poistaminen ei mahdollista"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2149,13 +2149,13 @@ msgstr ""
 "Kalenterimerkintä <resource>%1</resource> toistuu eri päivinä. Haluatko "
 "varmasti poistaa sen kaikkine toistokertoineen?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2385
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Poista myös t&ulevat"
 
-#: calendarview.cpp:2388
+#: calendarview.cpp:2389
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2167,7 +2167,7 @@ msgstr ""
 "poistaa vain nykyisen esiintymän %2, sen ja tulevat toistokerrat vai kaikki "
 "esiintymät?"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2396
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2177,25 +2177,25 @@ msgstr ""
 "Kalenterimerkintä <resource>%1</resource> toistuu useampana päivänä. "
 "Haluatko poistaa vain nykyisen tapahtuman %2 vai kaikki toistokerrat?"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2408
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Poista n&ykyinen"
 
-#: calendarview.cpp:2409
+#: calendarview.cpp:2410
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Poist&a kaikki"
 
-#: calendarview.cpp:2440 calendarview.cpp:2447
+#: calendarview.cpp:2441 calendarview.cpp:2448
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Poista ”%1”"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2480
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2204,49 +2204,49 @@ msgstr ""
 "Yhtäkään kalenteria ei ole kalenterinhallinnassa valittu. Tehtäviä ei "
 "siivottu."
 
-#: calendarview.cpp:2484 calendarview.cpp:2766
+#: calendarview.cpp:2485 calendarview.cpp:2767
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Ei ole valmistuneita tehtäviä siivottavaksi."
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2490
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Poistetaanko valituista kalentereista kaikki valmistuneet tehtävät?"
 
-#: calendarview.cpp:2490
+#: calendarview.cpp:2491
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Siivoa tehtävät"
 
-#: calendarview.cpp:2491
+#: calendarview.cpp:2492
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Siivoa"
 
-#: calendarview.cpp:2501
+#: calendarview.cpp:2502
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Ei voitu kopioida kohdetta <resource>%1</resource>"
 
-#: calendarview.cpp:2536
+#: calendarview.cpp:2537
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ei voitu siirtää kohdetta <resource>%1</resource>"
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2759
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Yhtään valmistunutta tehtävää ei siivottu.<nl/>"
 
-#: calendarview.cpp:2760 calendarview.cpp:2771
+#: calendarview.cpp:2761 calendarview.cpp:2772
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2259,7 +2259,7 @@ msgstr[1] ""
 "%1 tehtävää sivuutettiin, koska niillä on tekemättömiä tai "
 "kirjoitussuojattuja alitehtäviä."
 
-#: calendarview.cpp:2764 calendarview.cpp:2769
+#: calendarview.cpp:2765 calendarview.cpp:2770
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2267,14 +2267,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Siivottiin yksi valmistunut tehtävä."
 msgstr[1] "Siivottiin %1 valmistunutta tehtävää."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2777
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 "Siivottaessa valmistuneita tehtäviä tapahtui virhe: <message>%1</message>"
 
-#: calendarview.cpp:2837
+#: calendarview.cpp:2838
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2285,7 +2285,7 @@ msgstr ""
 "Loit esiintymän kalenteriin, joka on suodatettu pois näkyvistä."
 "<para>Nähdäksesi esiintymän ota se käyttöön kalenterinhallinnasta.</para>"
 
-#: calendarview.cpp:2841
+#: calendarview.cpp:2842
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3770,23 +3770,23 @@ msgstr "Tobias Koenig"
 
 # pmap: =/gen=KOrganizerin/
 # pmap: =/elat=KOrganizerista/
-#: korganizer.cpp:78 korganizer_part.cpp:61 korganizer_part.cpp:72
+#: korganizer.cpp:81 korganizer_part.cpp:60 korganizer_part.cpp:76
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:272
+#: korganizer.cpp:275
 #, kde-format
 msgid "New Calendar"
 msgstr "Uusi kalenteri"
 
-#: korganizer.cpp:276
+#: korganizer.cpp:279
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "vain luku"
 
-#: korganizer.cpp:279
+#: korganizer.cpp:282
 #, kde-format
 msgid "Calendar"
 msgstr "Kalenteri"
@@ -6561,332 +6561,6 @@ msgstr "Otsikko"
 msgid "Selected Calendars"
 msgstr "Valitut kalenterit"
 
-#: whatsnew/whatsnewtranslations.cpp:18
-msgid ""
-"A default To-do calendar can be specified to make creating new to-dos faster "
-"and easier with less chance of filing them into the wrong folder. Setting a "
-"default Event calendar has been supported for a long time.  See the Calendar "
-"Manager context menu \"Set as Default Todo Calendar\""
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:20
-msgid ""
-"Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
-"hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
-"for the even hours\" option in the View->Agenda View tab"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:22
-msgid ""
-"It is now possible to hide holidays that belong to specific categories, for "
-"example to hide religious holidays. See the Categories combobox in the "
-"Holidays section of the Time&Date->Regional tab"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:24
-msgid ""
-"Month view: for the sake of consistency, holidays that land on a workday are "
-"no longer hidden"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:25
-msgid ""
-"Month view: An option was added to allow hiding holidays. To enable this "
-"behavior, uncheck the \"Display holidays in the month view\" option in the "
-"Views->Month View tab"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:27
-msgid ""
-"Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if at least one holiday lands on that date. To "
-"enable this behavior, check the \"Use the Holiday background color when a "
-"holiday lands on the date\" option in the Views->Month View tab"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:30
-msgid ""
-"Month view: An option was added to show start-time and end-times. Previously "
-"only showing the start-time was supported. To enable this option, check the "
-"\"Show the start-time and the end-time in month view items\" option in the "
-"View->Month View tab"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:32
-msgid "Agenda view: underline today's column header date"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:33
-msgid ""
-"Agenda view: optionally show the incidence locations inside the agenda "
-"items. To enable this behavior, check the \"Show incidence locations in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:35
-msgid ""
-"Options for setting default access classifications (Public, Confidential or "
-"Private) when creating new Events, To-dos and Journals have been added.  "
-"Select your preferences in the \"General->Personal Default Access "
-"Classification\" comboboxes."
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:45
-msgid ""
-"Reminders are enabled by default for all new events and to-dos. To disable "
-"this behavior, uncheck the Enable reminders options in the settings "
-"Time&Date->Default Values tab"
-msgstr ""
-"Muistutukset ovat oletuksena käytössä kaikille uusille tapahtumille ja "
-"tehtäville. Tämän voi muutta poistamalla ”Käytä muistutuksia” -valinnan Aika "
-"ja päiväys -asetusten Oletusarvot-välilehdeltä"
-
-#: whatsnew/whatsnewtranslations.cpp:47
-msgid ""
-"Month view: no longer display the month year header to save vertical space "
-"and remove redundancy"
-msgstr ""
-"Kuukausinäkymä: säästä pystytilaa ja vähennä toisteisuutta olemalla "
-"näyttämällä kuukausi/vuosiotsaketta"
-
-#: whatsnew/whatsnewtranslations.cpp:48
-msgid ""
-"Month view: use a slightly different color for drawing the day headers for "
-"days outside of the currently selected month"
-msgstr ""
-"Kuukausinäkymä: piirrä päiväotsakkeet valitun kuun ulkopuolelta hieman eri "
-"värillä"
-
-#: whatsnew/whatsnewtranslations.cpp:49
-msgid ""
-"Month view: the navigation controls on the lower right side are removed in "
-"favor of the improved application navigator bar"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:50
-msgid ""
-"Month view: the background color for today's date cell can be changed. To "
-"configure the color,  set the \"Month view today background color\" in the "
-"Colors and Fonts settings"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:52
-msgid ""
-"Navigator bar: improved by adding week scrolling and showing/hiding the "
-"sidebar on a per-view basis"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:53
-msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:54
-#, fuzzy
-#| msgid ""
-#| "Agenda view: events without a duration are displayed as 30 long (rather "
-#| "than 15 minutes long)"
-msgid ""
-"Agenda view: events with short durations are displayed with their starting "
-"time in addition to their summary"
-msgstr ""
-"Päivyrinäkymä: kestottomat tapahtumat näytetään 30 min pituisina (15 min "
-"sijaan)"
-
-#: whatsnew/whatsnewtranslations.cpp:55
-msgid ""
-"Agenda view: optionally show the incidence descriptions inside the agenda "
-"items. To enable this behavior, check the \"Show incidence descriptions in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:57
-msgid "Search: the search settings are saved/restored"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:66
-msgid ""
-"Agenda view: added timelabels context menu to show/hide time labels for the "
-"system timezone on the right (or left) side as well"
-msgstr ""
-"Päivyrinäkymä: lisätty kontekstivalikko järjestelmän aikavyöhykkeen "
-"aikaselitteiden näyttämiseksi tai piilottamiseksi myös oikealta (tai "
-"vasemmalta) puolen"
-
-#: whatsnew/whatsnewtranslations.cpp:67
-msgid "Incidence editor: detect and warn about creating incidences in the past"
-msgstr ""
-"Esiintymämuokkain: havaitse ja varoita luomasta esiintymiä menneisyyteen"
-
-#: whatsnew/whatsnewtranslations.cpp:68
-msgid "Incidence editor: add emoji support"
-msgstr "Esiintymämuokkain: lisää hymiötuki"
-
-#: whatsnew/whatsnewtranslations.cpp:77
-msgid "Add What's New menu"
-msgstr "Lisää Mitä uutta -valikko"
-
-#: whatsnew/whatsnewtranslations.cpp:78
-msgid "The current view is remembered"
-msgstr "Muistetaan nykyinen näkymä"
-
-#: whatsnew/whatsnewtranslations.cpp:79
-msgid "Add a Date Picker dialog available on the Go menu"
-msgstr "Lisää Siirry-valikosta saatavilla oleva päivämäärävalintaikkuna"
-
-# *** TARKISTA: Käännettävässä jonossa ei vaikuta ole mitään tolkkua
-#: whatsnew/whatsnewtranslations.cpp:80
-msgid ""
-"Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
-"\"Week\" time ranges into the Agenda tool button"
-msgstr "Päivyrinäkymä: "
-
-#: whatsnew/whatsnewtranslations.cpp:81
-msgid ""
-"Agenda view: added timelabels context menu option to toggle a 24-hour "
-"(military style) clock"
-msgstr ""
-"Päivyrinäkymä: lisätty kontekstivalikkokohdat 24-tuntisen kellon ottamiseksi "
-"käyttöön tai poistamiseksi käytöstä"
-
-#: whatsnew/whatsnewtranslations.cpp:82
-msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr ""
-"Päivyrinäkymä: lisätty kontekstivalikko uuden tapahtuman tai tehtävän "
-"luomiseksi"
-
-#: whatsnew/whatsnewtranslations.cpp:83
-msgid ""
-"To-do view: added context menu options for toggling completion and reminders"
-msgstr ""
-"Tehtävänäkymä: lisätty kontekstivalikkokohdat täydennyksestä ja "
-"muistutuksista"
-
-#: whatsnew/whatsnewtranslations.cpp:84
-msgid "To-do view: save/restore fullview setting"
-msgstr "Tehtävänäkymä: tallenna tai palauta koko näytön tila"
-
-#: whatsnew/whatsnewtranslations.cpp:85
-msgid "To-do view: save/restore flatview setting"
-msgstr "Tehtävänäkymä: tallenna tai palauta lattean näkymän asetus"
-
-#: whatsnew/whatsnewtranslations.cpp:86
-msgid ""
-"Date navigator: added an option in the Configure->Views settings for hiding "
-"the week numbers"
-msgstr ""
-"Päivänavigointi: lisätty Asetukset→Näkymät-kohtaan asetus viikkonumeroiden "
-"piilottamiseksi"
-
-#: whatsnew/whatsnewtranslations.cpp:87
-msgid ""
-"Date navigator: the \"Week numbers select a work week when in work week mode"
-"\" setting is true by default"
-msgstr ""
-"Päivänavigointi: ”Viikkonumerot valitsevat työviikkotilassa työpäivät” -"
-"asetus on oletuksena voimassa"
-
-#: whatsnew/whatsnewtranslations.cpp:88
-msgid "Incidence editor: remember/restore the template manager geometry"
-msgstr "Ilmentymämuokkain: muista tai palauta mallipohjahallinnan geometria"
-
-#: whatsnew/whatsnewtranslations.cpp:89
-msgid "Incidence editor: support drag-and-drop attachments"
-msgstr "Ilmentymämuokkain: tuki vedä ja pudota -liitteille"
-
-#: whatsnew/whatsnewtranslations.cpp:90
-msgid "The export calendar dialog remembers its last export folder location"
-msgstr ""
-"Kalenterin vienti-ikkuna muistaa viimeisimmän viennin kansion sijainnin"
-
-#: whatsnew/whatsnewtranslations.cpp:91
-msgid "The import calendar dialog remembers its last import folder location"
-msgstr ""
-"Kalenterin tuonti-ikkuna muistaa viimeisimmän tuonnin kansion sijainnin"
-
-#: whatsnew/whatsnewtranslations.cpp:92
-msgid "Get Hot New Stuff removed"
-msgstr "”Hae verkosta” poistettu"
-
-#: whatsnew/whatsnewtranslations.cpp:93
-msgid "Add calendar file: remote calendars are always read-only"
-msgstr "Lisää kalenteritiedosto: etäkalenterit ovat aina vain luettavissa"
-
-#: whatsnew/whatsnewtranslations.cpp:94
-msgid "Add calendar file: will not permit an empty file path"
-msgstr "Lisää kalenteritiedosto: ei salli tyhjää tiedostosijaintia"
-
-#: whatsnew/whatsnewtranslations.cpp:95
-msgid ""
-"DAV configuration: dialog allows seeing the account password when editing"
-msgstr "DAV-asetus: ikkuna sallii nähdä tilin salasanan muokattaessa"
-
-#: whatsnew/whatsnewtranslations.cpp:96
-msgid "DAV configuration: wizard shows icons for the various providers"
-msgstr "DAV-asetus: opastettu toiminto näyttää eri tarjoajille kuvakkeet"
-
-#: whatsnew/whatsnewtranslations.cpp:97
-msgid "DAV configuration: wizard updated list of providers"
-msgstr "DAV-asetus: opastetun toiminnon tarjoajaluettelo on päivitetty"
-
-#: whatsnew/whatsnewtranslations.cpp:115
-#, kde-format
-msgid ""
-"Semantics are changed from a \"working schedule\" concept to a \"week "
-"schedule\" concept to accommodate non-working users"
-msgstr ""
-"Työssä olemattomia käyttäjiä ajatellen on siirrytty työaikataulun "
-"käsitteestä viikkoaikataulun käsitteeseen"
-
-#: whatsnew/whatsnewtranslations.cpp:116
-#, kde-format
-msgid "Initial \"New Event\" start times are consistent across all the views"
-msgstr ""
-"Alustavat ”Uuden tapahtuman” aloitusajat ovat yhdenmukaiset eri näkymissä"
-
-#: whatsnew/whatsnewtranslations.cpp:117
-#, kde-format
-msgid "Improved default event calendar handling"
-msgstr "Parannettu tapahtumakalenterin oletuskäsittelyä"
-
-#: whatsnew/whatsnewtranslations.cpp:119
-#, kde-format
-msgid ""
-"Incidences with a long excluded dates list no longer create huge tooltips"
-msgstr ""
-"Ilmentymät, joissa on paljon pois suljettua päiviä, eivät enää aiheuta "
-"valtavia työkaluvihjeitä"
-
-#: whatsnew/whatsnewtranslations.cpp:120
-#, kde-format
-msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
-"Korjattu järjestäjän sähköpostiosoite ilmentymissä, joilla on osallistujia"
-
-#: whatsnew/whatsnewtranslations.cpp:121
-#, kde-format
-msgid ""
-"Agenda view: events without a duration are displayed as 30 long (rather than "
-"15 minutes long)"
-msgstr ""
-"Päivyrinäkymä: kestottomat tapahtumat näytetään 30 min pituisina (15 min "
-"sijaan)"
-
-#. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:135
-#, kde-format
-msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr "Esiintymämuokkain: luokitusmuokkaimessa luokitukset aakkostetaan"
-
-#: whatsnew/whatsnewtranslations.cpp:162
-#, kde-format
-msgid "Fixed reminder toggling from menus"
-msgstr ""
-
-#: whatsnew/whatsnewtranslations.cpp:163
-#, kde-format
-msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
-
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
 msgctxt "@info start/end week number of line in date picker"
@@ -7141,6 +6815,179 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid ""
+#~ "Reminders are enabled by default for all new events and to-dos. To "
+#~ "disable this behavior, uncheck the Enable reminders options in the "
+#~ "settings Time&Date->Default Values tab"
+#~ msgstr ""
+#~ "Muistutukset ovat oletuksena käytössä kaikille uusille tapahtumille ja "
+#~ "tehtäville. Tämän voi muutta poistamalla ”Käytä muistutuksia” -valinnan "
+#~ "Aika ja päiväys -asetusten Oletusarvot-välilehdeltä"
+
+#~ msgid ""
+#~ "Month view: no longer display the month year header to save vertical "
+#~ "space and remove redundancy"
+#~ msgstr ""
+#~ "Kuukausinäkymä: säästä pystytilaa ja vähennä toisteisuutta olemalla "
+#~ "näyttämällä kuukausi/vuosiotsaketta"
+
+#~ msgid ""
+#~ "Month view: use a slightly different color for drawing the day headers "
+#~ "for days outside of the currently selected month"
+#~ msgstr ""
+#~ "Kuukausinäkymä: piirrä päiväotsakkeet valitun kuun ulkopuolelta hieman "
+#~ "eri värillä"
+
+#, fuzzy
+#~| msgid ""
+#~| "Agenda view: events without a duration are displayed as 30 long (rather "
+#~| "than 15 minutes long)"
+#~ msgid ""
+#~ "Agenda view: events with short durations are displayed with their "
+#~ "starting time in addition to their summary"
+#~ msgstr ""
+#~ "Päivyrinäkymä: kestottomat tapahtumat näytetään 30 min pituisina (15 min "
+#~ "sijaan)"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu to show/hide time labels for "
+#~ "the system timezone on the right (or left) side as well"
+#~ msgstr ""
+#~ "Päivyrinäkymä: lisätty kontekstivalikko järjestelmän aikavyöhykkeen "
+#~ "aikaselitteiden näyttämiseksi tai piilottamiseksi myös oikealta (tai "
+#~ "vasemmalta) puolen"
+
+#~ msgid ""
+#~ "Incidence editor: detect and warn about creating incidences in the past"
+#~ msgstr ""
+#~ "Esiintymämuokkain: havaitse ja varoita luomasta esiintymiä menneisyyteen"
+
+#~ msgid "Incidence editor: add emoji support"
+#~ msgstr "Esiintymämuokkain: lisää hymiötuki"
+
+#~ msgid "Add What's New menu"
+#~ msgstr "Lisää Mitä uutta -valikko"
+
+#~ msgid "The current view is remembered"
+#~ msgstr "Muistetaan nykyinen näkymä"
+
+#~ msgid "Add a Date Picker dialog available on the Go menu"
+#~ msgstr "Lisää Siirry-valikosta saatavilla oleva päivämäärävalintaikkuna"
+
+# *** TARKISTA: Käännettävässä jonossa ei vaikuta ole mitään tolkkua
+#~ msgid ""
+#~ "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule"
+#~ "\", \"Week\" time ranges into the Agenda tool button"
+#~ msgstr "Päivyrinäkymä: "
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu option to toggle a 24-hour "
+#~ "(military style) clock"
+#~ msgstr ""
+#~ "Päivyrinäkymä: lisätty kontekstivalikkokohdat 24-tuntisen kellon "
+#~ "ottamiseksi käyttöön tai poistamiseksi käytöstä"
+
+#~ msgid "Agenda view: added context menu to create new Event or To-do"
+#~ msgstr ""
+#~ "Päivyrinäkymä: lisätty kontekstivalikko uuden tapahtuman tai tehtävän "
+#~ "luomiseksi"
+
+#~ msgid ""
+#~ "To-do view: added context menu options for toggling completion and "
+#~ "reminders"
+#~ msgstr ""
+#~ "Tehtävänäkymä: lisätty kontekstivalikkokohdat täydennyksestä ja "
+#~ "muistutuksista"
+
+#~ msgid "To-do view: save/restore fullview setting"
+#~ msgstr "Tehtävänäkymä: tallenna tai palauta koko näytön tila"
+
+#~ msgid "To-do view: save/restore flatview setting"
+#~ msgstr "Tehtävänäkymä: tallenna tai palauta lattean näkymän asetus"
+
+#~ msgid ""
+#~ "Date navigator: added an option in the Configure->Views settings for "
+#~ "hiding the week numbers"
+#~ msgstr ""
+#~ "Päivänavigointi: lisätty Asetukset→Näkymät-kohtaan asetus "
+#~ "viikkonumeroiden piilottamiseksi"
+
+#~ msgid ""
+#~ "Date navigator: the \"Week numbers select a work week when in work week "
+#~ "mode\" setting is true by default"
+#~ msgstr ""
+#~ "Päivänavigointi: ”Viikkonumerot valitsevat työviikkotilassa työpäivät” -"
+#~ "asetus on oletuksena voimassa"
+
+#~ msgid "Incidence editor: remember/restore the template manager geometry"
+#~ msgstr "Ilmentymämuokkain: muista tai palauta mallipohjahallinnan geometria"
+
+#~ msgid "Incidence editor: support drag-and-drop attachments"
+#~ msgstr "Ilmentymämuokkain: tuki vedä ja pudota -liitteille"
+
+#~ msgid "The export calendar dialog remembers its last export folder location"
+#~ msgstr ""
+#~ "Kalenterin vienti-ikkuna muistaa viimeisimmän viennin kansion sijainnin"
+
+#~ msgid "The import calendar dialog remembers its last import folder location"
+#~ msgstr ""
+#~ "Kalenterin tuonti-ikkuna muistaa viimeisimmän tuonnin kansion sijainnin"
+
+#~ msgid "Get Hot New Stuff removed"
+#~ msgstr "”Hae verkosta” poistettu"
+
+#~ msgid "Add calendar file: remote calendars are always read-only"
+#~ msgstr "Lisää kalenteritiedosto: etäkalenterit ovat aina vain luettavissa"
+
+#~ msgid "Add calendar file: will not permit an empty file path"
+#~ msgstr "Lisää kalenteritiedosto: ei salli tyhjää tiedostosijaintia"
+
+#~ msgid ""
+#~ "DAV configuration: dialog allows seeing the account password when editing"
+#~ msgstr "DAV-asetus: ikkuna sallii nähdä tilin salasanan muokattaessa"
+
+#~ msgid "DAV configuration: wizard shows icons for the various providers"
+#~ msgstr "DAV-asetus: opastettu toiminto näyttää eri tarjoajille kuvakkeet"
+
+#~ msgid "DAV configuration: wizard updated list of providers"
+#~ msgstr "DAV-asetus: opastetun toiminnon tarjoajaluettelo on päivitetty"
+
+#~ msgid ""
+#~ "Semantics are changed from a \"working schedule\" concept to a \"week "
+#~ "schedule\" concept to accommodate non-working users"
+#~ msgstr ""
+#~ "Työssä olemattomia käyttäjiä ajatellen on siirrytty työaikataulun "
+#~ "käsitteestä viikkoaikataulun käsitteeseen"
+
+#~ msgid ""
+#~ "Initial \"New Event\" start times are consistent across all the views"
+#~ msgstr ""
+#~ "Alustavat ”Uuden tapahtuman” aloitusajat ovat yhdenmukaiset eri näkymissä"
+
+#~ msgid "Improved default event calendar handling"
+#~ msgstr "Parannettu tapahtumakalenterin oletuskäsittelyä"
+
+#~ msgid ""
+#~ "Incidences with a long excluded dates list no longer create huge tooltips"
+#~ msgstr ""
+#~ "Ilmentymät, joissa on paljon pois suljettua päiviä, eivät enää aiheuta "
+#~ "valtavia työkaluvihjeitä"
+
+#~ msgid "Fixed the organizer email address for incidences with attendees"
+#~ msgstr ""
+#~ "Korjattu järjestäjän sähköpostiosoite ilmentymissä, joilla on osallistujia"
+
+#~ msgid ""
+#~ "Agenda view: events without a duration are displayed as 30 long (rather "
+#~ "than 15 minutes long)"
+#~ msgstr ""
+#~ "Päivyrinäkymä: kestottomat tapahtumat näytetään 30 min pituisina (15 min "
+#~ "sijaan)"
+
+#~ msgid ""
+#~ "Incidence editor: the tags are sorted alphabetically in the tags editor"
+#~ msgstr "Esiintymämuokkain: luokitusmuokkaimessa luokitukset aakkostetaan"
 
 #~ msgctxt "the to-do is due"
 #~ msgid "due"

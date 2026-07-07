@@ -24,7 +24,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-06 00:46+0000\n"
+"POT-Creation-Date: 2026-07-07 00:44+0000\n"
 "PO-Revision-Date: 2026-07-01 12:43+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -1818,7 +1818,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Impossible de supprimer l'agenda : <message>%1</message>"
 
-#: calendarview.cpp:267
+#: calendarview.cpp:266
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1829,7 +1829,7 @@ msgstr ""
 "sélectionner un évènement, une tâche à faire ou une entrée de journal pour "
 "afficher son contenu détaillé ici.</para>"
 
-#: calendarview.cpp:271
+#: calendarview.cpp:270
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1841,7 +1841,7 @@ msgstr ""
 
 # unreviewed-context
 # unreviewed-context
-#: calendarview.cpp:693
+#: calendarview.cpp:695
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
@@ -1849,14 +1849,14 @@ msgstr "Tâche à faire terminée : %1 (%2)"
 
 # unreviewed-context
 # unreviewed-context
-#: calendarview.cpp:702
+#: calendarview.cpp:704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "Journal de %1"
 
 # unreviewed-context
-#: calendarview.cpp:751
+#: calendarview.cpp:753
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1866,68 +1866,68 @@ msgstr ""
 "L'élément <resource>%1</resource> est filtrée par vos règles de filtrage "
 "actuelles. Aussi, celui-ci sera masqué et n'apparaitra pas dans la vue."
 
-#: calendarview.cpp:820
+#: calendarview.cpp:822
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Voulez-vous vraiment supprimer l'élément « %1 » ?"
 
-#: calendarview.cpp:821
+#: calendarview.cpp:823
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Supprimer l'élément ?"
 
-#: calendarview.cpp:896
+#: calendarview.cpp:898
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Échec de la copie : impossible de déterminer une date cible valable."
 
-#: calendarview.cpp:1314
+#: calendarview.cpp:1316
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Rendre les sous-tâches à faire indépendantes"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1370
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Activer / Désactiver le rappel"
 
-#: calendarview.cpp:1373
+#: calendarview.cpp:1375
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "Le rappel de <message>%1</message> est activé."
 
-#: calendarview.cpp:1375
+#: calendarview.cpp:1377
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "Le rappel de <message>%1</message> est désactivé."
 
-#: calendarview.cpp:1378
+#: calendarview.cpp:1380
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "Il a été impossible de basculer le rappel de <message>%1</message>."
 
-#: calendarview.cpp:1409 calendarview.cpp:1467
+#: calendarview.cpp:1411 calendarview.cpp:1469
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Afficher / Masquer les tâches à faire terminées"
 
-#: calendarview.cpp:1413
+#: calendarview.cpp:1415
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr ""
 "L'avancement de la tâche à faire <message>%1</message> est à %2 pourcent. "
 
-#: calendarview.cpp:1416
+#: calendarview.cpp:1418
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
@@ -1935,31 +1935,31 @@ msgstr ""
 "Il a été impossible de modifier l'avancement de la tâche à faire <message>"
 "%1</message>. "
 
-#: calendarview.cpp:1519
+#: calendarview.cpp:1521
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "« %1 » a été copié avec succès vers %2."
 
-#: calendarview.cpp:1520
+#: calendarview.cpp:1522
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "La copie a réussi"
 
-#: calendarview.cpp:1524
+#: calendarview.cpp:1526
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Impossible de copier l'élément « %1 » vers %2."
 
-#: calendarview.cpp:1525 calendarview.cpp:2501
+#: calendarview.cpp:1527 calendarview.cpp:2502
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "La copie a échoué"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1586
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1969,25 +1969,25 @@ msgstr ""
 "Impossible de supprimer l'élément « %1 » du calendrier d'origine. Néanmoins, "
 "une copie de cet élément a été mise dans %2."
 
-#: calendarview.cpp:1588 calendarview.cpp:1604 calendarview.cpp:2536
+#: calendarview.cpp:1590 calendarview.cpp:1606 calendarview.cpp:2537
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Le déplacement a échoué"
 
-#: calendarview.cpp:1593
+#: calendarview.cpp:1595
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "« %1 » a été déplacé avec succès de %2 vers %3."
 
-#: calendarview.cpp:1594
+#: calendarview.cpp:1596
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Le déplacement a réussi"
 
-#: calendarview.cpp:1600
+#: calendarview.cpp:1602
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
@@ -1995,26 +1995,26 @@ msgstr ""
 "Impossible d'ajouter l'élément « %1 » dans %2. Cet élément n'a pas été "
 "déplacé."
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Voulez-vous dissocier l'occurrence de %1 de sa périodicité ?"
 
-#: calendarview.cpp:1643 calendarview.cpp:1656 calendarview.cpp:2317
-#: calendarview.cpp:2376 calendarview.cpp:2406
+#: calendarview.cpp:1645 calendarview.cpp:1658 calendarview.cpp:2318
+#: calendarview.cpp:2377 calendarview.cpp:2407
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmation de KOrganizer"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1646
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Dissocier"
 
-#: calendarview.cpp:1651
+#: calendarview.cpp:1653
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2024,79 +2024,79 @@ msgstr ""
 "Voulez-vous dissocier l'occurrence de %1 de sa périodicité ou aussi "
 "dissocier les futures occurrences ?"
 
-#: calendarview.cpp:1657
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Dissocier &uniquement celui-ci"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "&Dissocier également les futures occurrences"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1678
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Dissocier des occurrences futures"
 
-#: calendarview.cpp:1678
+#: calendarview.cpp:1680
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Dissocier l'occurrence"
 
-#: calendarview.cpp:1685
+#: calendarview.cpp:1687
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "La dissociation des occurrences futures a échoué."
 
-#: calendarview.cpp:1685 calendarview.cpp:1687
+#: calendarview.cpp:1687 calendarview.cpp:1689
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Impossible de réaliser une dissociation"
 
-#: calendarview.cpp:1687
+#: calendarview.cpp:1689
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "La dissociation de l'évènement a échoué."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1851
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Exporter l'agenda dans un fichier"
 
-#: calendarview.cpp:1863
+#: calendarview.cpp:1864
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Voulez-vous écraser le fichier <filename>%1</filename> ?"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1865
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Exporter un agenda"
 
-#: calendarview.cpp:1878
+#: calendarview.cpp:1879
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Raison inconnue"
 
-#: calendarview.cpp:1880
+#: calendarview.cpp:1881
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2105,14 +2105,14 @@ msgstr ""
 "Impossible d'écrire le fichier d'agenda <filename>%1</filename> : <message>"
 "%2</message>"
 
-#: calendarview.cpp:1989 calendarview.cpp:2034
+#: calendarview.cpp:1990 calendarview.cpp:2035
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Aucun filtre"
 
 # unreviewed-context
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2124,19 +2124,19 @@ msgstr ""
 "vous supprimer cet élément et rendre toutes ses sous-tâches indépendantes ou "
 "supprimer la tâche et toutes ses sous-tâches ?"
 
-#: calendarview.cpp:2318
+#: calendarview.cpp:2319
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Supprimer celle-ci uniquement"
 
-#: calendarview.cpp:2319 calendarview.cpp:2377
+#: calendarview.cpp:2320 calendarview.cpp:2378
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Tout supprimer"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2352
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2147,14 +2147,14 @@ msgstr ""
 "impossible de le supprimer. Il doit probablement appartenir à un agenda "
 "accessible en lecture uniquement."
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2355
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "La suppression est impossible."
 
 # unreviewed-context
-#: calendarview.cpp:2373
+#: calendarview.cpp:2374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2164,7 +2164,7 @@ msgstr ""
 "L'élément d'agenda <resource>%1</resource> se répète à plusieurs dates. "
 "Voulez-vous vraiment le supprimer et toutes ses occurrences ?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2385
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
@@ -2173,7 +2173,7 @@ msgstr "Supprimer également les &futures occurrences"
 # unreviewed-context
 # unreviewed-context
 # unreviewed-context
-#: calendarview.cpp:2388
+#: calendarview.cpp:2389
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2188,7 +2188,7 @@ msgstr ""
 # unreviewed-context
 # unreviewed-context
 # unreviewed-context
-#: calendarview.cpp:2395
+#: calendarview.cpp:2396
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2199,25 +2199,25 @@ msgstr ""
 "Voulez-vous supprimer uniquement l'élément courant de %2 ou toutes ses "
 "occurrences ?"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2408
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Supprimer l'évènement co&urant"
 
-#: calendarview.cpp:2409
+#: calendarview.cpp:2410
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "&Tout supprimer"
 
-#: calendarview.cpp:2440 calendarview.cpp:2447
+#: calendarview.cpp:2441 calendarview.cpp:2448
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Supprimer « %1 »"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2480
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2226,13 +2226,13 @@ msgstr ""
 "Aucun agenda n'est sélectionné dans le gestionnaire d'agendas. Aucune tâche "
 "à faire n'a été purgée."
 
-#: calendarview.cpp:2484 calendarview.cpp:2766
+#: calendarview.cpp:2485 calendarview.cpp:2767
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Il n'y a aucune tâche à faire terminée à purger."
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2490
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
@@ -2240,13 +2240,13 @@ msgstr ""
 "Supprimer toutes les tâches à faire terminées à partir des agendas "
 "sélectionnés ?"
 
-#: calendarview.cpp:2490
+#: calendarview.cpp:2491
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purger les tâches à faire"
 
-#: calendarview.cpp:2491
+#: calendarview.cpp:2492
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
@@ -2254,7 +2254,7 @@ msgstr "Purger"
 
 # unreviewed-context
 # unreviewed-context
-#: calendarview.cpp:2501
+#: calendarview.cpp:2502
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
@@ -2262,19 +2262,19 @@ msgstr "Impossible de copier l'élément <resource>%1</resource>."
 
 # unreviewed-context
 # unreviewed-context
-#: calendarview.cpp:2536
+#: calendarview.cpp:2537
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Impossible de déplacer l'élément <resource>%1</resource>."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2759
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 tâche à faire terminée a été purgée.<nl/>"
 
-#: calendarview.cpp:2760 calendarview.cpp:2771
+#: calendarview.cpp:2761 calendarview.cpp:2772
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2287,7 +2287,7 @@ msgstr[1] ""
 "Les tâches à faire %1 ont été ignorées car elles possèdent des tâches filles "
 "incomplètes ou en lecture seule."
 
-#: calendarview.cpp:2764 calendarview.cpp:2769
+#: calendarview.cpp:2765 calendarview.cpp:2770
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2295,7 +2295,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "La tâche à faire %1 terminée a été purgée."
 msgstr[1] "%1 tâches à faire terminées ont été purgées."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2777
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2303,7 +2303,7 @@ msgstr ""
 "Une erreur est survenue lors de la purge des tâches à faire terminées : "
 "<message>%1</message>"
 
-#: calendarview.cpp:2837
+#: calendarview.cpp:2838
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2315,7 +2315,7 @@ msgstr ""
 "l'affichage de cette nouvelle récurrence, veuillez activer son agenda dans "
 "le gestionnaire d'agendas.</para>"
 
-#: calendarview.cpp:2841
+#: calendarview.cpp:2842
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3832,24 +3832,24 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:78 korganizer_part.cpp:61 korganizer_part.cpp:72
+#: korganizer.cpp:81 korganizer_part.cpp:60 korganizer_part.cpp:76
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:272
+#: korganizer.cpp:275
 #, kde-format
 msgid "New Calendar"
 msgstr "Nouvel agenda"
 
 # unreviewed-context
-#: korganizer.cpp:276
+#: korganizer.cpp:279
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "En lecture seule"
 
-#: korganizer.cpp:279
+#: korganizer.cpp:282
 #, kde-format
 msgid "Calendar"
 msgstr "Agenda"
@@ -6786,415 +6786,6 @@ msgstr "Titre"
 msgid "Selected Calendars"
 msgstr "Agendas sélectionnés"
 
-#: whatsnew/whatsnewtranslations.cpp:18
-msgid ""
-"A default To-do calendar can be specified to make creating new to-dos faster "
-"and easier with less chance of filing them into the wrong folder. Setting a "
-"default Event calendar has been supported for a long time.  See the Calendar "
-"Manager context menu \"Set as Default Todo Calendar\""
-msgstr ""
-"Un agenda de tâches par défaut peut être spécifié pour rendre la création de "
-"nouvelles tâches plus rapide et plus facile, avec moins de risques de les "
-"classer dans le mauvais dossier. La définition d'un agenda d'évènements par "
-"défaut est prise en charge depuis longtemps. Veuillez consulter le menu "
-"contextuel « Gestionnaire d'agenda » avec « Définir comme agenda de tâches "
-"par défaut »"
-
-#: whatsnew/whatsnewtranslations.cpp:20
-msgid ""
-"Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
-"hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
-"for the even hours\" option in the View->Agenda View tab"
-msgstr ""
-"Vue d'agenda : affichage optionnel du dessin des lignes de grille "
-"horizontales plus en gras / plus épaisses toutes les deux heures.  Pour "
-"activer ce comportement, veuillez cocher l'option « Dessiner des lignes de "
-"grille horizontales plus en gras / plus épaisses toutes les deux heures » "
-"dans l'onglet « Affichage / Vue d'agenda »"
-
-#: whatsnew/whatsnewtranslations.cpp:22
-msgid ""
-"It is now possible to hide holidays that belong to specific categories, for "
-"example to hide religious holidays. See the Categories combobox in the "
-"Holidays section of the Time&Date->Regional tab"
-msgstr ""
-"Il est maintenant possible de masquer les jours fériés appartenant à des "
-"catégories spécifiques, par exemple, masquer les jours fériés religieux. "
-"Veuillez consulter la liste déroulante « Catégories » dans la section "
-"« Jours fériés » dans l'onglet « Heure & Date / Régional »."
-
-#: whatsnew/whatsnewtranslations.cpp:24
-msgid ""
-"Month view: for the sake of consistency, holidays that land on a workday are "
-"no longer hidden"
-msgstr ""
-"Vue en moins : pour des raisons de cohérence, les jours fériés qui se "
-"placent sur un jour de travail ne sont plus masqués"
-
-#: whatsnew/whatsnewtranslations.cpp:25
-msgid ""
-"Month view: An option was added to allow hiding holidays. To enable this "
-"behavior, uncheck the \"Display holidays in the month view\" option in the "
-"Views->Month View tab"
-msgstr ""
-"Vue en moins : une option a été ajouté afin d'autoriser le masquage des "
-"jours fériés. Pour activer ce comportement, veuillez cocher l'option "
-"« Afficher les jours fériés » dans l'onglet « Affichage /Onglet de vue par "
-"mois »"
-
-#: whatsnew/whatsnewtranslations.cpp:27
-msgid ""
-"Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if at least one holiday lands on that date. To "
-"enable this behavior, check the \"Use the Holiday background color when a "
-"holiday lands on the date\" option in the Views->Month View tab"
-msgstr ""
-"Vue mensuelle : une option a été ajoutée pour permettre l'utilisation de la "
-"couleur personnalisée pour les jours fériés comme couleur de fond de la "
-"boîte de date si au moins un jour férié se place à cette date. Pour activer "
-"ce comportement, veuillez cocher l'option « Utiliser la couleur d'arrière-"
-"plan des jours fériés lorsqu'au moins un jour férié se place à une date » "
-"dans l'onglet « Affichage / Vue par mois »."
-
-#: whatsnew/whatsnewtranslations.cpp:30
-msgid ""
-"Month view: An option was added to show start-time and end-times. Previously "
-"only showing the start-time was supported. To enable this option, check the "
-"\"Show the start-time and the end-time in month view items\" option in the "
-"View->Month View tab"
-msgstr ""
-"Vue mensuelle : une option a été ajoutée pour afficher les heures de début "
-"et de fin. Auparavant, seul l’affichage de l’heure de début était pris en "
-"charge. Pour activer cette option, veuillez cocher l'option « Afficher les "
-"heures de début et de fin pour les éléments de la vue mensuelle » dans "
-"l'onglet « Affichage /Onglet de vue mensuelle »"
-
-#: whatsnew/whatsnewtranslations.cpp:32
-msgid "Agenda view: underline today's column header date"
-msgstr ""
-"Vue  en agenda : soulignement de la date d'aujourd'hui dans l'en-tête de "
-"colonne "
-
-#: whatsnew/whatsnewtranslations.cpp:33
-msgid ""
-"Agenda view: optionally show the incidence locations inside the agenda "
-"items. To enable this behavior, check the \"Show incidence locations in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"Vue d'agenda : afficher éventuellement les emplacements des récurrences "
-"dans  les éléments de l'agenda. Pour activer ce comportement, veuillez "
-"cocher l'option « Afficher les emplacements des récurrences dans les "
-"éléments de la vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
-
-#: whatsnew/whatsnewtranslations.cpp:35
-msgid ""
-"Options for setting default access classifications (Public, Confidential or "
-"Private) when creating new Events, To-dos and Journals have been added.  "
-"Select your preferences in the \"General->Personal Default Access "
-"Classification\" comboboxes."
-msgstr ""
-"Des options pour définir les classifications des accès par défaut (Public, "
-"Confidentiel ou Privé) lors de la création de nouveaux évènements, de tâches "
-"à faire et de journaux ont été ajoutées. Veuillez sélectionner vos "
-"préférences dans les listes déroulantes « Général / Classification des accès "
-"personnels par défaut »."
-
-#: whatsnew/whatsnewtranslations.cpp:45
-msgid ""
-"Reminders are enabled by default for all new events and to-dos. To disable "
-"this behavior, uncheck the Enable reminders options in the settings "
-"Time&Date->Default Values tab"
-msgstr ""
-"Les rappels sont activés par défaut pour tous les nouveaux évènements et les "
-"tâches à faire. Pour désactiver ce comportement, veuillez décocher les "
-"options « Activer les rappels » dans l'onglet « Date et Heure / Valeurs par "
-"défaut » de la configuration."
-
-#: whatsnew/whatsnewtranslations.cpp:47
-msgid ""
-"Month view: no longer display the month year header to save vertical space "
-"and remove redundancy"
-msgstr ""
-"Vue mensuelle : suppression de l'affichage de l'en-tête du mois et de "
-"l'année pour économiser de l'espace vertical et supprimer la redondance."
-
-#: whatsnew/whatsnewtranslations.cpp:48
-msgid ""
-"Month view: use a slightly different color for drawing the day headers for "
-"days outside of the currently selected month"
-msgstr ""
-"Vue mensuelle : utilisez une couleur légèrement différente pour dessiner les "
-"en-têtes de tous les jours en dehors du mois actuellement sélectionné"
-
-#: whatsnew/whatsnewtranslations.cpp:49
-msgid ""
-"Month view: the navigation controls on the lower right side are removed in "
-"favor of the improved application navigator bar"
-msgstr ""
-"Vue mensuelle : les contrôles de navigation sur le coté inférieur droit ont "
-"été supprimés au profit de la barre de navigation améliorée de l'application"
-
-#: whatsnew/whatsnewtranslations.cpp:50
-msgid ""
-"Month view: the background color for today's date cell can be changed. To "
-"configure the color,  set the \"Month view today background color\" in the "
-"Colors and Fonts settings"
-msgstr ""
-"Vue « Mois » : la couleur d'arrière-plan de la cellule de la date "
-"d'aujourd'hui peut être modifiée. Pour configurer la couleur, veuillez "
-"définir la « Couleur d'arrière-plan » pour la date d'aujourd'hui dans la vue "
-"« Mois » dans les paramètres « Couleurs et polices »."
-
-#: whatsnew/whatsnewtranslations.cpp:52
-msgid ""
-"Navigator bar: improved by adding week scrolling and showing/hiding the "
-"sidebar on a per-view basis"
-msgstr ""
-"Barre de navigation : amélioration par ajout du défilement par semaine et "
-"par affichage / masquage de la barre latérale pour chaque vue"
-
-#: whatsnew/whatsnewtranslations.cpp:53
-msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr ""
-"Barre de navigation : ajout d'un bouton pour le défilement de la vue jusqu'à "
-"la date courante"
-
-#: whatsnew/whatsnewtranslations.cpp:54
-msgid ""
-"Agenda view: events with short durations are displayed with their starting "
-"time in addition to their summary"
-msgstr ""
-"Vue d'agenda : les évènements de courte durée sont affichés avec leur date "
-"de démarrage et leur résumé"
-
-#: whatsnew/whatsnewtranslations.cpp:55
-msgid ""
-"Agenda view: optionally show the incidence descriptions inside the agenda "
-"items. To enable this behavior, check the \"Show incidence descriptions in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"Vue d'agenda : afficher éventuellement les descriptions de récurrence dans  "
-"les éléments de l'agenda. Pour activer ce comportement, veuillez cocher "
-"l'option « Afficher les descriptions de récurrence dans les éléments de la "
-"vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
-
-#: whatsnew/whatsnewtranslations.cpp:57
-msgid "Search: the search settings are saved/restored"
-msgstr "Recherche : la configuration de recherche est enregistrée / restaurée"
-
-#: whatsnew/whatsnewtranslations.cpp:66
-msgid ""
-"Agenda view: added timelabels context menu to show/hide time labels for the "
-"system timezone on the right (or left) side as well"
-msgstr ""
-"Vue d'agenda : ajout d'un menu contextuel des horaires permettant "
-"d'afficher / de masquer les étiquettes de temps pour le fuseau horaire du "
-"système sur le côté droit (ou gauche)"
-
-#: whatsnew/whatsnewtranslations.cpp:67
-msgid "Incidence editor: detect and warn about creating incidences in the past"
-msgstr ""
-"Éditeur d'incidences : détecter et avertir de la création d'incidences dans "
-"le passé"
-
-#: whatsnew/whatsnewtranslations.cpp:68
-msgid "Incidence editor: add emoji support"
-msgstr "Éditeur d'occurrences : ajout de la prise en charge des émoticônes"
-
-#: whatsnew/whatsnewtranslations.cpp:77
-msgid "Add What's New menu"
-msgstr "Ajouter le menu « Quoi de neuf »"
-
-#: whatsnew/whatsnewtranslations.cpp:78
-msgid "The current view is remembered"
-msgstr "La vue actuelle est mémorisée."
-
-#: whatsnew/whatsnewtranslations.cpp:79
-msgid "Add a Date Picker dialog available on the Go menu"
-msgstr ""
-"Ajouter une boite de dialogue « Sélecteur de dates » à partir du menu "
-"« Aller »"
-
-#: whatsnew/whatsnewtranslations.cpp:80
-msgid ""
-"Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
-"\"Week\" time ranges into the Agenda tool button"
-msgstr ""
-"Affichage d'agendas : consolidation des intervalles de temps pour « Jour », "
-"« Planning de semaine », « Semaine » dans le bouton d'outil « Agenda »"
-
-#: whatsnew/whatsnewtranslations.cpp:81
-msgid ""
-"Agenda view: added timelabels context menu option to toggle a 24-hour "
-"(military style) clock"
-msgstr ""
-"Affichage d'agendas : ajout d'une option de menu contextuel pour les "
-"étiquettes de temps pour basculer vers une horloge sur 24 heures (Apparence "
-"militaire)"
-
-#: whatsnew/whatsnewtranslations.cpp:82
-msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr ""
-"Affichage d'agendas : ajout d'un menu contextuel pour la création d'un "
-"nouvel évènement ou tâche"
-
-#: whatsnew/whatsnewtranslations.cpp:83
-msgid ""
-"To-do view: added context menu options for toggling completion and reminders"
-msgstr ""
-"Affichage des tâches à faire : ajout d'options par menu contextuel pour "
-"activer ou désactiver le complètement et les rappels"
-
-#: whatsnew/whatsnewtranslations.cpp:84
-msgid "To-do view: save/restore fullview setting"
-msgstr ""
-"Affichage des tâches à faire : enregistrement / restauration du paramètre "
-"d'affichage en plein écran"
-
-#: whatsnew/whatsnewtranslations.cpp:85
-msgid "To-do view: save/restore flatview setting"
-msgstr ""
-"Affichage des tâches à faire : enregistrement / restauration du paramètre "
-"d'affichage en mode à plat"
-
-#: whatsnew/whatsnewtranslations.cpp:86
-msgid ""
-"Date navigator: added an option in the Configure->Views settings for hiding "
-"the week numbers"
-msgstr ""
-"Navigateur de dates : ajout d'une option dans les paramètres dans "
-"Configurer / Vues pour masquer les numéros de semaine"
-
-#: whatsnew/whatsnewtranslations.cpp:87
-msgid ""
-"Date navigator: the \"Week numbers select a work week when in work week mode"
-"\" setting is true by default"
-msgstr ""
-"Navigateur de dates : « Les numéros de semaine sélectionnent une semaine de "
-"travail en mode de semaine de travail » est défini à VRAI par défaut"
-
-#: whatsnew/whatsnewtranslations.cpp:88
-msgid "Incidence editor: remember/restore the template manager geometry"
-msgstr ""
-"Éditeur de fréquences : mémorisation / restauration de la géométrie du "
-"gestionnaire de modèles"
-
-#: whatsnew/whatsnewtranslations.cpp:89
-msgid "Incidence editor: support drag-and-drop attachments"
-msgstr ""
-"Éditeur de fréquence : prise en charge des pièces jointes par glisser-déposer"
-
-#: whatsnew/whatsnewtranslations.cpp:90
-msgid "The export calendar dialog remembers its last export folder location"
-msgstr ""
-"La boite de dialogue d'exportation d'agendas se souvient de son dernier "
-"emplacement de dossier d'exportation"
-
-#: whatsnew/whatsnewtranslations.cpp:91
-msgid "The import calendar dialog remembers its last import folder location"
-msgstr ""
-"La boite de dialogue d'importation d'agendas se souvient de son dernier "
-"emplacement de dossier d'importation"
-
-#: whatsnew/whatsnewtranslations.cpp:92
-msgid "Get Hot New Stuff removed"
-msgstr "Le menu « Obtenir les nouveautés » a été supprimé"
-
-#: whatsnew/whatsnewtranslations.cpp:93
-msgid "Add calendar file: remote calendars are always read-only"
-msgstr ""
-"Ajout d'un fichier d'agenda : les calendriers distants sont toujours en "
-"lecture seule"
-
-#: whatsnew/whatsnewtranslations.cpp:94
-msgid "Add calendar file: will not permit an empty file path"
-msgstr ""
-"Ajout d'un fichier d'agenda : n'autorisera pas un emplacement vide de fichier"
-
-#: whatsnew/whatsnewtranslations.cpp:95
-msgid ""
-"DAV configuration: dialog allows seeing the account password when editing"
-msgstr ""
-"Configuration « DAV » : la boite de dialogue permet l'affichage du mot de "
-"passe du compte lors de la modification"
-
-#: whatsnew/whatsnewtranslations.cpp:96
-msgid "DAV configuration: wizard shows icons for the various providers"
-msgstr ""
-"Configuration « DAV » : l'assistant affiche les icônes des différents "
-"fournisseurs"
-
-#: whatsnew/whatsnewtranslations.cpp:97
-msgid "DAV configuration: wizard updated list of providers"
-msgstr ""
-"Configuration « DAV » : liste des fournisseurs mise à jour par l'assistant"
-
-#: whatsnew/whatsnewtranslations.cpp:115
-#, kde-format
-msgid ""
-"Semantics are changed from a \"working schedule\" concept to a \"week "
-"schedule\" concept to accommodate non-working users"
-msgstr ""
-"La sémantique a été modifiée d'un concept « d'horaire de travail » à un "
-"concept « d'horaire de semaine » pour accueillir les utilisateurs non actifs"
-
-#: whatsnew/whatsnewtranslations.cpp:116
-#, kde-format
-msgid "Initial \"New Event\" start times are consistent across all the views"
-msgstr ""
-"Les heures de début initiales d'un « nouvel évènement » sont cohérentes dans "
-"toutes les vues"
-
-#: whatsnew/whatsnewtranslations.cpp:117
-#, kde-format
-msgid "Improved default event calendar handling"
-msgstr "Amélioration de la gestion du calendrier des évènements par défaut"
-
-#: whatsnew/whatsnewtranslations.cpp:119
-#, kde-format
-msgid ""
-"Incidences with a long excluded dates list no longer create huge tooltips"
-msgstr ""
-"Les fréquences avec une longue liste de dates exclues ne créent plus "
-"d'énormes infobulles"
-
-#: whatsnew/whatsnewtranslations.cpp:120
-#, kde-format
-msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
-"Correction de l'adresse de courriel de la personne organisatrice pour les "
-"fréquences avec les personnes participantes"
-
-#: whatsnew/whatsnewtranslations.cpp:121
-#, kde-format
-msgid ""
-"Agenda view: events without a duration are displayed as 30 long (rather than "
-"15 minutes long)"
-msgstr ""
-"Vue agenda : les évènements sans durée sont affichés sur 30 minutes (Au lieu "
-"de 15 minutes)"
-
-#. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:135
-#, kde-format
-msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr ""
-"Éditeur de fréquences : les étiquettes sont triées en ordre alphabétique "
-"dans l'éditeur d'étiquettes"
-
-#: whatsnew/whatsnewtranslations.cpp:162
-#, kde-format
-msgid "Fixed reminder toggling from menus"
-msgstr ""
-"Correction de l'activation / désactivation des rappels depuis les menus"
-
-#: whatsnew/whatsnewtranslations.cpp:163
-#, kde-format
-msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
-"Vue en agenda : amélioration de l'alignement vertical des étiquettes "
-"chronologiques avec la grille"
-
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
 msgctxt "@info start/end week number of line in date picker"
@@ -7429,6 +7020,363 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid ""
+#~ "A default To-do calendar can be specified to make creating new to-dos "
+#~ "faster and easier with less chance of filing them into the wrong folder. "
+#~ "Setting a default Event calendar has been supported for a long time.  See "
+#~ "the Calendar Manager context menu \"Set as Default Todo Calendar\""
+#~ msgstr ""
+#~ "Un agenda de tâches par défaut peut être spécifié pour rendre la création "
+#~ "de nouvelles tâches plus rapide et plus facile, avec moins de risques de "
+#~ "les classer dans le mauvais dossier. La définition d'un agenda "
+#~ "d'évènements par défaut est prise en charge depuis longtemps. Veuillez "
+#~ "consulter le menu contextuel « Gestionnaire d'agenda » avec « Définir "
+#~ "comme agenda de tâches par défaut »"
+
+#~ msgid ""
+#~ "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
+#~ "two hours. To enable this behaviour, check the \"Draw bold horizontal "
+#~ "grid lines for the even hours\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Vue d'agenda : affichage optionnel du dessin des lignes de grille "
+#~ "horizontales plus en gras / plus épaisses toutes les deux heures.  Pour "
+#~ "activer ce comportement, veuillez cocher l'option « Dessiner des lignes "
+#~ "de grille horizontales plus en gras / plus épaisses toutes les deux "
+#~ "heures » dans l'onglet « Affichage / Vue d'agenda »"
+
+#~ msgid ""
+#~ "It is now possible to hide holidays that belong to specific categories, "
+#~ "for example to hide religious holidays. See the Categories combobox in "
+#~ "the Holidays section of the Time&Date->Regional tab"
+#~ msgstr ""
+#~ "Il est maintenant possible de masquer les jours fériés appartenant à des "
+#~ "catégories spécifiques, par exemple, masquer les jours fériés religieux. "
+#~ "Veuillez consulter la liste déroulante « Catégories » dans la section "
+#~ "« Jours fériés » dans l'onglet « Heure & Date / Régional »."
+
+#~ msgid ""
+#~ "Month view: for the sake of consistency, holidays that land on a workday "
+#~ "are no longer hidden"
+#~ msgstr ""
+#~ "Vue en moins : pour des raisons de cohérence, les jours fériés qui se "
+#~ "placent sur un jour de travail ne sont plus masqués"
+
+#~ msgid ""
+#~ "Month view: An option was added to allow hiding holidays. To enable this "
+#~ "behavior, uncheck the \"Display holidays in the month view\" option in "
+#~ "the Views->Month View tab"
+#~ msgstr ""
+#~ "Vue en moins : une option a été ajouté afin d'autoriser le masquage des "
+#~ "jours fériés. Pour activer ce comportement, veuillez cocher l'option "
+#~ "« Afficher les jours fériés » dans l'onglet « Affichage /Onglet de vue "
+#~ "par mois »"
+
+#~ msgid ""
+#~ "Month view: An option was added to allow using the custom holiday color "
+#~ "as the date box background color if at least one holiday lands on that "
+#~ "date. To enable this behavior, check the \"Use the Holiday background "
+#~ "color when a holiday lands on the date\" option in the Views->Month View "
+#~ "tab"
+#~ msgstr ""
+#~ "Vue mensuelle : une option a été ajoutée pour permettre l'utilisation de "
+#~ "la couleur personnalisée pour les jours fériés comme couleur de fond de "
+#~ "la boîte de date si au moins un jour férié se place à cette date. Pour "
+#~ "activer ce comportement, veuillez cocher l'option « Utiliser la couleur "
+#~ "d'arrière-plan des jours fériés lorsqu'au moins un jour férié se place à "
+#~ "une date » dans l'onglet « Affichage / Vue par mois »."
+
+#~ msgid ""
+#~ "Month view: An option was added to show start-time and end-times. "
+#~ "Previously only showing the start-time was supported. To enable this "
+#~ "option, check the \"Show the start-time and the end-time in month view "
+#~ "items\" option in the View->Month View tab"
+#~ msgstr ""
+#~ "Vue mensuelle : une option a été ajoutée pour afficher les heures de "
+#~ "début et de fin. Auparavant, seul l’affichage de l’heure de début était "
+#~ "pris en charge. Pour activer cette option, veuillez cocher l'option "
+#~ "« Afficher les heures de début et de fin pour les éléments de la vue "
+#~ "mensuelle » dans l'onglet « Affichage /Onglet de vue mensuelle »"
+
+#~ msgid "Agenda view: underline today's column header date"
+#~ msgstr ""
+#~ "Vue  en agenda : soulignement de la date d'aujourd'hui dans l'en-tête de "
+#~ "colonne "
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence locations inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence locations in "
+#~ "agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Vue d'agenda : afficher éventuellement les emplacements des récurrences "
+#~ "dans  les éléments de l'agenda. Pour activer ce comportement, veuillez "
+#~ "cocher l'option « Afficher les emplacements des récurrences dans les "
+#~ "éléments de la vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
+
+#~ msgid ""
+#~ "Options for setting default access classifications (Public, Confidential "
+#~ "or Private) when creating new Events, To-dos and Journals have been "
+#~ "added.  Select your preferences in the \"General->Personal Default Access "
+#~ "Classification\" comboboxes."
+#~ msgstr ""
+#~ "Des options pour définir les classifications des accès par défaut "
+#~ "(Public, Confidentiel ou Privé) lors de la création de nouveaux "
+#~ "évènements, de tâches à faire et de journaux ont été ajoutées. Veuillez "
+#~ "sélectionner vos préférences dans les listes déroulantes « Général / "
+#~ "Classification des accès personnels par défaut »."
+
+#~ msgid ""
+#~ "Reminders are enabled by default for all new events and to-dos. To "
+#~ "disable this behavior, uncheck the Enable reminders options in the "
+#~ "settings Time&Date->Default Values tab"
+#~ msgstr ""
+#~ "Les rappels sont activés par défaut pour tous les nouveaux évènements et "
+#~ "les tâches à faire. Pour désactiver ce comportement, veuillez décocher "
+#~ "les options « Activer les rappels » dans l'onglet « Date et Heure / "
+#~ "Valeurs par défaut » de la configuration."
+
+#~ msgid ""
+#~ "Month view: no longer display the month year header to save vertical "
+#~ "space and remove redundancy"
+#~ msgstr ""
+#~ "Vue mensuelle : suppression de l'affichage de l'en-tête du mois et de "
+#~ "l'année pour économiser de l'espace vertical et supprimer la redondance."
+
+#~ msgid ""
+#~ "Month view: use a slightly different color for drawing the day headers "
+#~ "for days outside of the currently selected month"
+#~ msgstr ""
+#~ "Vue mensuelle : utilisez une couleur légèrement différente pour dessiner "
+#~ "les en-têtes de tous les jours en dehors du mois actuellement sélectionné"
+
+#~ msgid ""
+#~ "Month view: the navigation controls on the lower right side are removed "
+#~ "in favor of the improved application navigator bar"
+#~ msgstr ""
+#~ "Vue mensuelle : les contrôles de navigation sur le coté inférieur droit "
+#~ "ont été supprimés au profit de la barre de navigation améliorée de "
+#~ "l'application"
+
+#~ msgid ""
+#~ "Month view: the background color for today's date cell can be changed. To "
+#~ "configure the color,  set the \"Month view today background color\" in "
+#~ "the Colors and Fonts settings"
+#~ msgstr ""
+#~ "Vue « Mois » : la couleur d'arrière-plan de la cellule de la date "
+#~ "d'aujourd'hui peut être modifiée. Pour configurer la couleur, veuillez "
+#~ "définir la « Couleur d'arrière-plan » pour la date d'aujourd'hui dans la "
+#~ "vue « Mois » dans les paramètres « Couleurs et polices »."
+
+#~ msgid ""
+#~ "Navigator bar: improved by adding week scrolling and showing/hiding the "
+#~ "sidebar on a per-view basis"
+#~ msgstr ""
+#~ "Barre de navigation : amélioration par ajout du défilement par semaine et "
+#~ "par affichage / masquage de la barre latérale pour chaque vue"
+
+#~ msgid "Navigator bar: added a button to scroll the view to the current date"
+#~ msgstr ""
+#~ "Barre de navigation : ajout d'un bouton pour le défilement de la vue "
+#~ "jusqu'à la date courante"
+
+#~ msgid ""
+#~ "Agenda view: events with short durations are displayed with their "
+#~ "starting time in addition to their summary"
+#~ msgstr ""
+#~ "Vue d'agenda : les évènements de courte durée sont affichés avec leur "
+#~ "date de démarrage et leur résumé"
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence descriptions inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence descriptions "
+#~ "in agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Vue d'agenda : afficher éventuellement les descriptions de récurrence "
+#~ "dans  les éléments de l'agenda. Pour activer ce comportement, veuillez "
+#~ "cocher l'option « Afficher les descriptions de récurrence dans les "
+#~ "éléments de la vue d'agenda » dans l'onglet « Affichage / Vue d'agenda »"
+
+#~ msgid "Search: the search settings are saved/restored"
+#~ msgstr ""
+#~ "Recherche : la configuration de recherche est enregistrée / restaurée"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu to show/hide time labels for "
+#~ "the system timezone on the right (or left) side as well"
+#~ msgstr ""
+#~ "Vue d'agenda : ajout d'un menu contextuel des horaires permettant "
+#~ "d'afficher / de masquer les étiquettes de temps pour le fuseau horaire du "
+#~ "système sur le côté droit (ou gauche)"
+
+#~ msgid ""
+#~ "Incidence editor: detect and warn about creating incidences in the past"
+#~ msgstr ""
+#~ "Éditeur d'incidences : détecter et avertir de la création d'incidences "
+#~ "dans le passé"
+
+#~ msgid "Incidence editor: add emoji support"
+#~ msgstr "Éditeur d'occurrences : ajout de la prise en charge des émoticônes"
+
+#~ msgid "Add What's New menu"
+#~ msgstr "Ajouter le menu « Quoi de neuf »"
+
+#~ msgid "The current view is remembered"
+#~ msgstr "La vue actuelle est mémorisée."
+
+#~ msgid "Add a Date Picker dialog available on the Go menu"
+#~ msgstr ""
+#~ "Ajouter une boite de dialogue « Sélecteur de dates » à partir du menu "
+#~ "« Aller »"
+
+#~ msgid ""
+#~ "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule"
+#~ "\", \"Week\" time ranges into the Agenda tool button"
+#~ msgstr ""
+#~ "Affichage d'agendas : consolidation des intervalles de temps pour "
+#~ "« Jour », « Planning de semaine », « Semaine » dans le bouton d'outil "
+#~ "« Agenda »"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu option to toggle a 24-hour "
+#~ "(military style) clock"
+#~ msgstr ""
+#~ "Affichage d'agendas : ajout d'une option de menu contextuel pour les "
+#~ "étiquettes de temps pour basculer vers une horloge sur 24 heures "
+#~ "(Apparence militaire)"
+
+#~ msgid "Agenda view: added context menu to create new Event or To-do"
+#~ msgstr ""
+#~ "Affichage d'agendas : ajout d'un menu contextuel pour la création d'un "
+#~ "nouvel évènement ou tâche"
+
+#~ msgid ""
+#~ "To-do view: added context menu options for toggling completion and "
+#~ "reminders"
+#~ msgstr ""
+#~ "Affichage des tâches à faire : ajout d'options par menu contextuel pour "
+#~ "activer ou désactiver le complètement et les rappels"
+
+#~ msgid "To-do view: save/restore fullview setting"
+#~ msgstr ""
+#~ "Affichage des tâches à faire : enregistrement / restauration du paramètre "
+#~ "d'affichage en plein écran"
+
+#~ msgid "To-do view: save/restore flatview setting"
+#~ msgstr ""
+#~ "Affichage des tâches à faire : enregistrement / restauration du paramètre "
+#~ "d'affichage en mode à plat"
+
+#~ msgid ""
+#~ "Date navigator: added an option in the Configure->Views settings for "
+#~ "hiding the week numbers"
+#~ msgstr ""
+#~ "Navigateur de dates : ajout d'une option dans les paramètres dans "
+#~ "Configurer / Vues pour masquer les numéros de semaine"
+
+#~ msgid ""
+#~ "Date navigator: the \"Week numbers select a work week when in work week "
+#~ "mode\" setting is true by default"
+#~ msgstr ""
+#~ "Navigateur de dates : « Les numéros de semaine sélectionnent une semaine "
+#~ "de travail en mode de semaine de travail » est défini à VRAI par défaut"
+
+#~ msgid "Incidence editor: remember/restore the template manager geometry"
+#~ msgstr ""
+#~ "Éditeur de fréquences : mémorisation / restauration de la géométrie du "
+#~ "gestionnaire de modèles"
+
+#~ msgid "Incidence editor: support drag-and-drop attachments"
+#~ msgstr ""
+#~ "Éditeur de fréquence : prise en charge des pièces jointes par glisser-"
+#~ "déposer"
+
+#~ msgid "The export calendar dialog remembers its last export folder location"
+#~ msgstr ""
+#~ "La boite de dialogue d'exportation d'agendas se souvient de son dernier "
+#~ "emplacement de dossier d'exportation"
+
+#~ msgid "The import calendar dialog remembers its last import folder location"
+#~ msgstr ""
+#~ "La boite de dialogue d'importation d'agendas se souvient de son dernier "
+#~ "emplacement de dossier d'importation"
+
+#~ msgid "Get Hot New Stuff removed"
+#~ msgstr "Le menu « Obtenir les nouveautés » a été supprimé"
+
+#~ msgid "Add calendar file: remote calendars are always read-only"
+#~ msgstr ""
+#~ "Ajout d'un fichier d'agenda : les calendriers distants sont toujours en "
+#~ "lecture seule"
+
+#~ msgid "Add calendar file: will not permit an empty file path"
+#~ msgstr ""
+#~ "Ajout d'un fichier d'agenda : n'autorisera pas un emplacement vide de "
+#~ "fichier"
+
+#~ msgid ""
+#~ "DAV configuration: dialog allows seeing the account password when editing"
+#~ msgstr ""
+#~ "Configuration « DAV » : la boite de dialogue permet l'affichage du mot de "
+#~ "passe du compte lors de la modification"
+
+#~ msgid "DAV configuration: wizard shows icons for the various providers"
+#~ msgstr ""
+#~ "Configuration « DAV » : l'assistant affiche les icônes des différents "
+#~ "fournisseurs"
+
+#~ msgid "DAV configuration: wizard updated list of providers"
+#~ msgstr ""
+#~ "Configuration « DAV » : liste des fournisseurs mise à jour par l'assistant"
+
+#~ msgid ""
+#~ "Semantics are changed from a \"working schedule\" concept to a \"week "
+#~ "schedule\" concept to accommodate non-working users"
+#~ msgstr ""
+#~ "La sémantique a été modifiée d'un concept « d'horaire de travail » à un "
+#~ "concept « d'horaire de semaine » pour accueillir les utilisateurs non "
+#~ "actifs"
+
+#~ msgid ""
+#~ "Initial \"New Event\" start times are consistent across all the views"
+#~ msgstr ""
+#~ "Les heures de début initiales d'un « nouvel évènement » sont cohérentes "
+#~ "dans toutes les vues"
+
+#~ msgid "Improved default event calendar handling"
+#~ msgstr "Amélioration de la gestion du calendrier des évènements par défaut"
+
+#~ msgid ""
+#~ "Incidences with a long excluded dates list no longer create huge tooltips"
+#~ msgstr ""
+#~ "Les fréquences avec une longue liste de dates exclues ne créent plus "
+#~ "d'énormes infobulles"
+
+#~ msgid "Fixed the organizer email address for incidences with attendees"
+#~ msgstr ""
+#~ "Correction de l'adresse de courriel de la personne organisatrice pour les "
+#~ "fréquences avec les personnes participantes"
+
+#~ msgid ""
+#~ "Agenda view: events without a duration are displayed as 30 long (rather "
+#~ "than 15 minutes long)"
+#~ msgstr ""
+#~ "Vue agenda : les évènements sans durée sont affichés sur 30 minutes (Au "
+#~ "lieu de 15 minutes)"
+
+#~ msgid ""
+#~ "Incidence editor: the tags are sorted alphabetically in the tags editor"
+#~ msgstr ""
+#~ "Éditeur de fréquences : les étiquettes sont triées en ordre alphabétique "
+#~ "dans l'éditeur d'étiquettes"
+
+#~ msgid "Fixed reminder toggling from menus"
+#~ msgstr ""
+#~ "Correction de l'activation / désactivation des rappels depuis les menus"
+
+#~ msgid "Agenda view: improved timelabel vertical alignment with grid"
+#~ msgstr ""
+#~ "Vue en agenda : amélioration de l'alignement vertical des étiquettes "
+#~ "chronologiques avec la grille"
 
 #~ msgctxt "the to-do is due"
 #~ msgid "due"

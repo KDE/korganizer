@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-06 00:46+0000\n"
-"PO-Revision-Date: 2026-07-01 05:21+0200\n"
+"POT-Creation-Date: 2026-07-07 00:44+0000\n"
+"PO-Revision-Date: 2026-07-06 06:33+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1746,7 +1746,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "კალენდრის წაშლა ჩავარდა: <message>%1</message>"
 
-#: calendarview.cpp:267
+#: calendarview.cpp:266
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1757,7 +1757,7 @@ msgstr ""
 "მოვლენა, გასაკეთებელი ან ჟურნალის ჩანაწერი, რომლის დეტალების აქ ნახვაც "
 "გნებავთ.</para>"
 
-#: calendarview.cpp:271
+#: calendarview.cpp:270
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1767,19 +1767,19 @@ msgstr ""
 "აქ შეგიძლიათ, Korganzer-ის მთავარ ხედში არჩეული მოვლენის დეტალების, ჟურნალის "
 "ჩანაწერების ან გასაკეთებლის დეტალები იხილოთ."
 
-#: calendarview.cpp:693
+#: calendarview.cpp:695
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "გასაკეთებელი დასრულდა: %1 (%2)"
 
-#: calendarview.cpp:702
+#: calendarview.cpp:704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "%1-ის ჟურნალი"
 
-#: calendarview.cpp:751
+#: calendarview.cpp:753
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1789,97 +1789,97 @@ msgstr ""
 "ელემენტი <resource>%1</resource> გაიფილტრა თქვენი მიმდინარე ფილტრის წესებით, "
 "ასე რომ, ის დამალულია და ხედში არ გამოჩნდება."
 
-#: calendarview.cpp:820
+#: calendarview.cpp:822
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "მართლა გნებავთ, სამუდამოდ წაშალოთ ელემენტი \"%1\"?"
 
-#: calendarview.cpp:821
+#: calendarview.cpp:823
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "წავშალო ჩანაწერი?"
 
-#: calendarview.cpp:896
+#: calendarview.cpp:898
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "ჩასმის შეცდომა: სწორი სამიზნე თარიღის დადგენა შეუძლებელია."
 
-#: calendarview.cpp:1314
+#: calendarview.cpp:1316
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "ყველა ქვეგასაკეთებლის დამოუკიდებლად გადაკეთება"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1370
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "შემხსენებლის გადართვა"
 
-#: calendarview.cpp:1373
+#: calendarview.cpp:1375
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "<message>%1</message> შეხსენება ჩართულია"
 
-#: calendarview.cpp:1375
+#: calendarview.cpp:1377
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> შეხსენება გამორთულია"
 
-#: calendarview.cpp:1378
+#: calendarview.cpp:1380
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "<message>%1</message> შეხსენების გადართვა ჩავარდა"
 
-#: calendarview.cpp:1409 calendarview.cpp:1467
+#: calendarview.cpp:1411 calendarview.cpp:1469
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "გასაკეთებლის გაკეთებულობის გადართვა"
 
-#: calendarview.cpp:1413
+#: calendarview.cpp:1415
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "გეგმა <message>%1</message> %2 პროცენტით დასრულებულია"
 
-#: calendarview.cpp:1416
+#: calendarview.cpp:1418
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "გეგმის <message>%1</message> დასრულების შეცვლა ჩავარდა"
 
-#: calendarview.cpp:1519
+#: calendarview.cpp:1521
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" წარმატებით დაკოპირდა %2-ზე."
 
-#: calendarview.cpp:1520
+#: calendarview.cpp:1522
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "კოპირება წარმატებულია"
 
-#: calendarview.cpp:1524
+#: calendarview.cpp:1526
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "\"%1\"-ის %2-ში კოპირება შეუძლებელია."
 
-#: calendarview.cpp:1525 calendarview.cpp:2501
+#: calendarview.cpp:1527 calendarview.cpp:2502
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "კოპირების შეცდომა"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1586
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1889,51 +1889,51 @@ msgstr ""
 "ელემენტის \"%1\" საწყისი კალენდრიდან წაშლა შეუძლებელია. მაგრამ ამ ელემენტის "
 "ასლი %2-ში ჩავდეთ"
 
-#: calendarview.cpp:1588 calendarview.cpp:1604 calendarview.cpp:2536
+#: calendarview.cpp:1590 calendarview.cpp:1606 calendarview.cpp:2537
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "გადატანის შეცდომა"
 
-#: calendarview.cpp:1593
+#: calendarview.cpp:1595
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" წარმატებით იქნა გადატანილი %2-დან %3-ში."
 
-#: calendarview.cpp:1594
+#: calendarview.cpp:1596
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "გადატანა წარმატებულია"
 
-#: calendarview.cpp:1600
+#: calendarview.cpp:1602
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "ელემენტის %1 %2-ში ჩამატება შეუძლებელია. ელემენტის გადატანა არ მომხდარა."
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "გნებავთ ინციდენტის %1 გამეორებისგან მოცილება?"
 
-#: calendarview.cpp:1643 calendarview.cpp:1656 calendarview.cpp:2317
-#: calendarview.cpp:2376 calendarview.cpp:2406
+#: calendarview.cpp:1645 calendarview.cpp:1658 calendarview.cpp:2318
+#: calendarview.cpp:2377 calendarview.cpp:2407
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer -ის დასტური"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1646
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&ასოცირების გაუქმება"
 
-#: calendarview.cpp:1651
+#: calendarview.cpp:1653
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1941,79 +1941,79 @@ msgid ""
 "dissociate future ones?"
 msgstr "გნებავთ ინციდენტის %1 გამეორებიდან მომავლისთვისაც მოვაცილო?"
 
-#: calendarview.cpp:1657
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "&მხოლოდ, ამის ასოცირების მოხსნა"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "&ასევე მომავალი ასოცირებების მოხსნა"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1678
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "მომავალი გამეორებების ასოცირების მოხსნა"
 
-#: calendarview.cpp:1678
+#: calendarview.cpp:1680
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "გამეორების ასოცირების მოხსნა"
 
-#: calendarview.cpp:1685
+#: calendarview.cpp:1687
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "მომავალი გამეორების ასოციაციის მოხსნა ჩავარდა."
 
-#: calendarview.cpp:1685 calendarview.cpp:1687
+#: calendarview.cpp:1687 calendarview.cpp:1689
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "ასოციაციის მოხსნა ჩავარდა"
 
-#: calendarview.cpp:1687
+#: calendarview.cpp:1689
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "გამეორების ასოცირების მოხსნა ჩავარდა."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1851
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "თქვენი კალენდრის ფაილში გატანა"
 
-#: calendarview.cpp:1863
+#: calendarview.cpp:1864
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "გნებავთ, თავზე გადააწეროთ ფაილს <filename>%1</filename>?"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1865
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "კალენდრს გატანა"
 
-#: calendarview.cpp:1878
+#: calendarview.cpp:1879
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "უცნობი მიზეზი"
 
-#: calendarview.cpp:1880
+#: calendarview.cpp:1881
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2021,13 +2021,13 @@ msgid ""
 msgstr ""
 "ვერ ჩავწერე iCalendar-ის ფაილი <filename>%1</filename>: <message>%2</message>"
 
-#: calendarview.cpp:1989 calendarview.cpp:2034
+#: calendarview.cpp:1990 calendarview.cpp:2035
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "ფილტრის გარეშე"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2039,19 +2039,19 @@ msgstr ""
 "მხოლოდ ეს ელემენტი და მისი ქვეგასაკეთებლები დამოუკიდებლები გახადოთ, თუ "
 "თავისი ქვეგასაკეთებლებით ამოვჭრა?"
 
-#: calendarview.cpp:2318
+#: calendarview.cpp:2319
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "მხოლოდ ამის წაშლა"
 
-#: calendarview.cpp:2319 calendarview.cpp:2377
+#: calendarview.cpp:2320 calendarview.cpp:2378
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "ყველას წაშლა"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2352
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2061,13 +2061,13 @@ msgstr ""
 "ელემენტი <resource>%1</resource> მონიშნულია, როგორც მხოლოდ-წაკითხვადი და "
 "მისი წაშლა შეუძლებელია. ალბათ, ის, მხოლოდ-კითხვად კალენდარს ეკუთვნის."
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2355
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "წაშლა შეუძლებელია"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2077,13 +2077,13 @@ msgstr ""
 "კალენდრის ელემენტი <resource>%1</resource> ერთზე მეტ თარიღზე მეორდება. "
 "მართლა გნებავთ მისი და მისი ყველა გამეორების წაშლა?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2385
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "&მომავალშიც წაიშლება"
 
-#: calendarview.cpp:2388
+#: calendarview.cpp:2389
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2094,7 +2094,7 @@ msgstr ""
 "კალენდრის ელემენტი <resource>%1</resource> ერთზე მეტ თარიღზე მეორდება. "
 "გნებავთ, წაშალოთ მიმდინარე %2-ზე, მომავალი გამეორება თუ მისი ყველა გამეორება?"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2396
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2104,25 +2104,25 @@ msgstr ""
 "კალენდრის ელემენტი <resource>%1</resource> ერთზე მეტ თარიღზე მეორდება. "
 "გნებავთ, მხოლოდ მიმდინარე, %2-ზე, წაშალოთ, თუ მისი ყველა გამეორება?"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2408
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "&მიმდინარის წაშლა"
 
-#: calendarview.cpp:2409
+#: calendarview.cpp:2410
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "&ყველას წაშლა"
 
-#: calendarview.cpp:2440 calendarview.cpp:2447
+#: calendarview.cpp:2441 calendarview.cpp:2448
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "\"%1\"-ის წაშლა"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2480
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2131,49 +2131,49 @@ msgstr ""
 "კალენდრის მმართველში ყველა კალენდრის მონიშვნა მოხსნილია. გასაკეთებლები არ "
 "მოცილებულა."
 
-#: calendarview.cpp:2484 calendarview.cpp:2766
+#: calendarview.cpp:2485 calendarview.cpp:2767
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "მოსასუფთავებელი გასაკეთებლების გარეშე."
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2490
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "წავშალო ყველა დასრულებული გასაკეთებელი მონიშნული კალენდრებიდან?"
 
-#: calendarview.cpp:2490
+#: calendarview.cpp:2491
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "გასაკეთებლების მოსუფთავება"
 
-#: calendarview.cpp:2491
+#: calendarview.cpp:2492
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "გაწმენდა"
 
-#: calendarview.cpp:2501
+#: calendarview.cpp:2502
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "ელემენტის <resource>%1</resource> კოპირება შეუძლებელია."
 
-#: calendarview.cpp:2536
+#: calendarview.cpp:2537
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "ელემენტის <resource>%1</resource> გადატანა შეუძლებელია."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2759
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "მოსუფთავებულია 0 დასრულებული გასაკეთებელი.<nl/>"
 
-#: calendarview.cpp:2760 calendarview.cpp:2771
+#: calendarview.cpp:2761 calendarview.cpp:2772
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2186,7 +2186,7 @@ msgstr[1] ""
 "%1 გასაკეთებელი გამოტოვებელია იმიტომ, რომ მას დაუსრულებელი ან მხოლოდ "
 "კითხვადი შვილები გააჩნია."
 
-#: calendarview.cpp:2764 calendarview.cpp:2769
+#: calendarview.cpp:2765 calendarview.cpp:2770
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2194,14 +2194,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 დასრულებული გასაკეთებელი მოსუფთავდა."
 msgstr[1] "%1 დასრულებული გასაკეთებელი მოსუფთავდა."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2777
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 "შეცდომა დასრულებული გასაკეთებლების მოსუფთავებისას: <message>%1</message>"
 
-#: calendarview.cpp:2837
+#: calendarview.cpp:2838
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2212,7 +2212,7 @@ msgstr ""
 "კალენდარში შექმენით ინციდენტი, რომელიც ახლა გაფილტრულია. <para>ახალშექმნილი "
 "ინციდენტების დასანახად ჩართეთ მისი კალენდარი კალენდრების მმართველში.</para>"
 
-#: calendarview.cpp:2841
+#: calendarview.cpp:2842
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2996,12 +2996,10 @@ msgstr[0] "1 წთ"
 msgstr[1] "%1 წთ"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
-msgstr "მიმდინარე "
+msgstr "მიმდინარეობს"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:218
 #, kde-format
@@ -3010,8 +3008,8 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "დასრულდა 1 საათის წინ"
+msgstr[1] "დასრულდა %1 საათის წინ"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3020,8 +3018,8 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "დასრულდა 1 წუთის წინ"
+msgstr[1] "დასრულდა %1 წუთის წინ"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3702,23 +3700,23 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:78 korganizer_part.cpp:61 korganizer_part.cpp:72
+#: korganizer.cpp:81 korganizer_part.cpp:60 korganizer_part.cpp:76
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:272
+#: korganizer.cpp:275
 #, kde-format
 msgid "New Calendar"
 msgstr "ახალი კალენდარი"
 
-#: korganizer.cpp:276
+#: korganizer.cpp:279
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "მხოლოდ-წაკითხვადი"
 
-#: korganizer.cpp:279
+#: korganizer.cpp:282
 #, kde-format
 msgid "Calendar"
 msgstr "კალენდარი"
@@ -6514,374 +6512,6 @@ msgstr "სათაური"
 msgid "Selected Calendars"
 msgstr "მონიშნული კალენდარები"
 
-#: whatsnew/whatsnewtranslations.cpp:18
-msgid ""
-"A default To-do calendar can be specified to make creating new to-dos faster "
-"and easier with less chance of filing them into the wrong folder. Setting a "
-"default Event calendar has been supported for a long time.  See the Calendar "
-"Manager context menu \"Set as Default Todo Calendar\""
-msgstr ""
-"შეგიძლიათ, შექმნათ ნაგულისხმევი გეგმების კალენდარი, რომ გეგმების შექმნა უფრო "
-"იოლი იყოს და შემცირდეს შანსი, ისინი არასწორ საქაღალდეში მოხვდნენ. "
-"ნაგულისხმევი მოვლენის კალენდრის დაყენება დიდი ხანია, მხარდაჭერილია.  იხილეთ "
-"კალენდრის მმართველის კონტექსტური მენიუ 'ნაგულისხმევ გეგმის კალენდრად "
-"დაყენება'"
-
-#: whatsnew/whatsnewtranslations.cpp:20
-msgid ""
-"Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
-"hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
-"for the even hours\" option in the View->Agenda View tab"
-msgstr ""
-"დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის წესრიგის "
-"ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"სქელი ჰორიზონტალური ბადის "
-"ხაზების დახაზვა ლუწი საათებისთვის\" მენიუდან ხედი -> დღის წესრიგის ხედის "
-"ჩანართი"
-
-#: whatsnew/whatsnewtranslations.cpp:22
-msgid ""
-"It is now possible to hide holidays that belong to specific categories, for "
-"example to hide religious holidays. See the Categories combobox in the "
-"Holidays section of the Time&Date->Regional tab"
-msgstr ""
-"ახლა შესაძლებელია იმ არდადეგების დამალვა, რომლებიც მიეკუთვნება კონკრეტულ "
-"კატეგორიებს, მაგალითად, რელიგიური დღესასწაულების დამალვა. იხილეთ "
-"კატეგორიების სია დრო&თარიღი->რეგიონალური ჩანართის არდადეგების განყოფილებაში"
-
-#: whatsnew/whatsnewtranslations.cpp:24
-msgid ""
-"Month view: for the sake of consistency, holidays that land on a workday are "
-"no longer hidden"
-msgstr ""
-"თვის ხედი: იმისათვის რომ ყველაფერი ერთნაირი იყოს, დღესასწაულები, რომლებიც "
-"სამუშაო დღეს ემთხვევა, დამალული აღარ იქნება"
-
-#: whatsnew/whatsnewtranslations.cpp:25
-msgid ""
-"Month view: An option was added to allow hiding holidays. To enable this "
-"behavior, uncheck the \"Display holidays in the month view\" option in the "
-"Views->Month View tab"
-msgstr ""
-"თვის ხედი: დაემატა დღესასწაულების დამალვის პარამეტრი. ამ ქცევის ჩასართავად "
-"მოხსენით თოლია \"დღესასწაულების ჩვენება თვის ხედში\" ჩანართში ხედები->თვის "
-"ხედი"
-
-#: whatsnew/whatsnewtranslations.cpp:27
-msgid ""
-"Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if at least one holiday lands on that date. To "
-"enable this behavior, check the \"Use the Holiday background color when a "
-"holiday lands on the date\" option in the Views->Month View tab"
-msgstr ""
-"თვის ხედი: დაემატა არჩევანი, რომ შეძლოთ მორგებული დღესასწაულის ფერის "
-"გამოყენება თარიღის ველის ფერად, თუ ამ თარიღზე, სულ ცოტა, ერთი დღესასწაულია. "
-"ამ ქცევის ჩასართავად დასვით თოლია \"დღესასწაულის ფონის ფერის გამოყენება, "
-"როცა თარიღზე, სულ ცოტა, ერთი დღესასწაულია\" ჩანართში ხედები->თვის ხედი"
-
-#: whatsnew/whatsnewtranslations.cpp:30
-msgid ""
-"Month view: An option was added to show start-time and end-times. Previously "
-"only showing the start-time was supported. To enable this option, check the "
-"\"Show the start-time and the end-time in month view items\" option in the "
-"View->Month View tab"
-msgstr ""
-"თვის ხედი: დაემატა დაწყებისა და დასრულების ჩვენების პარამეტრი. ადრე, მხოლოდ, "
-"დაწყების დროის ჩვენება იყო მხარდაჭერილი. ამ პარამეტრის ჩასართავად, ჩართეთ "
-"თოლია 'დაწყებისა და დამთავრების დროების ჩვენება თვის ხედის ელემენტებში' "
-"მენიუდან ხედი->თვის ხედის ჩანართი"
-
-#: whatsnew/whatsnewtranslations.cpp:32
-msgid "Agenda view: underline today's column header date"
-msgstr "გეგმის ხედი: დღევანდელი სვეტის თავსართის თარიღის ხაზგასმა"
-
-#: whatsnew/whatsnewtranslations.cpp:33
-msgid ""
-"Agenda view: optionally show the incidence locations inside the agenda "
-"items. To enable this behavior, check the \"Show incidence locations in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"დღის წესრიგის ხედი: მოვლენის მდებარეობების არასავალდებულო ჩვენება დღის "
-"წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის "
-"მდებარეობის ჩვენება დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი -> დღის "
-"წესრიგის ხედის ჩანართი"
-
-#: whatsnew/whatsnewtranslations.cpp:35
-msgid ""
-"Options for setting default access classifications (Public, Confidential or "
-"Private) when creating new Events, To-dos and Journals have been added.  "
-"Select your preferences in the \"General->Personal Default Access "
-"Classification\" comboboxes."
-msgstr ""
-"დაემატა ნაგულისხმევი წვდომის კლასიფიკაციის დაყენების ვარიანტები (საჯარო, "
-"კონფიდენციალური, ან პირადი) ახალი მოვლენების, დავალებებისა და ჟურნალების "
-"შექმნისას.  აირჩიეთ სასურველი პარამეტრები მენიუდან \"ზოგადი->პირადი "
-"ნაგულისხმევი წვდომის კლასიფიკაცია\" ჩამოსაშლელ მენიუში."
-
-#: whatsnew/whatsnewtranslations.cpp:45
-msgid ""
-"Reminders are enabled by default for all new events and to-dos. To disable "
-"this behavior, uncheck the Enable reminders options in the settings "
-"Time&Date->Default Values tab"
-msgstr ""
-"შეხსენებები ნაგულისხმევად ყველა მოვლენისა და გეგმისთვის ჩართულია. ამ ქცევის "
-"გასათიშად მოხსენით შეხსენებების ჩართვის თოლია მენიუში მორგება -> "
-"დრო&თარიღი>ნაგულისხმევი მნიშვნელობების ჩანართი"
-
-#: whatsnew/whatsnewtranslations.cpp:47
-msgid ""
-"Month view: no longer display the month year header to save vertical space "
-"and remove redundancy"
-msgstr ""
-"თვის ხედი: აღარ იქნება ნაჩვენები თვის წლის თავსართი ვერტიკალური სივრცის "
-"დასაზოგად და ზედმეტობის ამოსაღებად"
-
-#: whatsnew/whatsnewtranslations.cpp:48
-msgid ""
-"Month view: use a slightly different color for drawing the day headers for "
-"days outside of the currently selected month"
-msgstr ""
-"თვის ხედი: ოდნავ განსხვავებული ფერის გამოყენება დღის სათაურების დასახატად იმ "
-"დღეებისთვის, რომლებიც ამჟამად მონიშნული თვის გარეთაა"
-
-#: whatsnew/whatsnewtranslations.cpp:49
-msgid ""
-"Month view: the navigation controls on the lower right side are removed in "
-"favor of the improved application navigator bar"
-msgstr ""
-"თვის ხედი: ნავიგაციის კონტროლის ელემენტები ქვედა მარჯვენა მხარეს მოშორდა. "
-"დაემატა გაუმჯობესებული აპლიკაციის ნავიგაციის ზოლი"
-
-#: whatsnew/whatsnewtranslations.cpp:50
-msgid ""
-"Month view: the background color for today's date cell can be changed. To "
-"configure the color,  set the \"Month view today background color\" in the "
-"Colors and Fonts settings"
-msgstr ""
-"თვის ხედი: დღევანდელი თარიღის უჯრედში ფონის ფერი, შეიძლება, შეიცვალოს. ფერის "
-"კონფიგურაციისთვის, დააყენეთ \"თვის ხედი დღეს ფონის ფერი\" ფერებისა და "
-"ფონტების პარამეტრებში"
-
-#: whatsnew/whatsnewtranslations.cpp:52
-msgid ""
-"Navigator bar: improved by adding week scrolling and showing/hiding the "
-"sidebar on a per-view basis"
-msgstr ""
-"ნავიგაციის ზოლი: გაუმჯობესდა კვირის გადახვევისა და გვერდითი პანელის თითოეული "
-"ხედისთვის ჩვენება/დამალვის დამატებით"
-
-#: whatsnew/whatsnewtranslations.cpp:53
-msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr "ნავიგაციის ზოლი: დაემატა ღილაკი ხედის მიმდინარე თარიღამდე გადასახვევად"
-
-#: whatsnew/whatsnewtranslations.cpp:54
-msgid ""
-"Agenda view: events with short durations are displayed with their starting "
-"time in addition to their summary"
-msgstr ""
-"დღის წესრიგი: მოვლენები მოკლე ხანგრძლივობით ნაჩვენებია მათი დაწყების დროით, "
-"მათი შეჯამების გარდა"
-
-#: whatsnew/whatsnewtranslations.cpp:55
-msgid ""
-"Agenda view: optionally show the incidence descriptions inside the agenda "
-"items. To enable this behavior, check the \"Show incidence descriptions in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის წესრიგის "
-"ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის აღწერების ჩვენება "
-"დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი -> დღის წესრიგის ხედის "
-"ჩანართი"
-
-#: whatsnew/whatsnewtranslations.cpp:57
-msgid "Search: the search settings are saved/restored"
-msgstr "ძებნა: ხდება ძებნის პარამეტრების შენახვა/აღდგენა"
-
-#: whatsnew/whatsnewtranslations.cpp:66
-msgid ""
-"Agenda view: added timelabels context menu to show/hide time labels for the "
-"system timezone on the right (or left) side as well"
-msgstr ""
-"გეგმის ხედი: დაემატა დროის ჭდეების კონტექსტური მენიუ დროის ჭდეების სისტემური "
-"დროის სარტყლისთვის მარჯვენა (ან მარცხენა) მხარესაც საჩვენებლად/დასამალად"
-
-#: whatsnew/whatsnewtranslations.cpp:67
-msgid "Incidence editor: detect and warn about creating incidences in the past"
-msgstr "რედაქტორი: წარსულში ინციდენტების შექმნის აღმოჩენა და გაფრთხილება"
-
-#: whatsnew/whatsnewtranslations.cpp:68
-msgid "Incidence editor: add emoji support"
-msgstr "ინციდენტების რედაქტორი: დაემატა ემოციების მხარდაჭერა"
-
-#: whatsnew/whatsnewtranslations.cpp:77
-msgid "Add What's New menu"
-msgstr "დაემატა მენიუ 'რა არის ახალი'"
-
-#: whatsnew/whatsnewtranslations.cpp:78
-msgid "The current view is remembered"
-msgstr "მიმდინარე ხედი გახსენებულია"
-
-#: whatsnew/whatsnewtranslations.cpp:79
-msgid "Add a Date Picker dialog available on the Go menu"
-msgstr "დაემატა თარიღის ამრჩევი დიალოგი. ხელმისაწვდომია გადასვლის მენიუდან"
-
-#: whatsnew/whatsnewtranslations.cpp:80
-msgid ""
-"Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
-"\"Week\" time ranges into the Agenda tool button"
-msgstr ""
-"გეგის ხედი: გაერთიანებული \"დღის\", \"შემდეგი X დღის\", \"სამუშაოს გეგმის, "
-"\"კვირის\" დროის შუალედების გადატანა გეგმის ხელსაწყოს ღილაკში"
-
-#: whatsnew/whatsnewtranslations.cpp:81
-msgid ""
-"Agenda view: added timelabels context menu option to toggle a 24-hour "
-"(military style) clock"
-msgstr ""
-"გეგმის ხედი: დაემატა კონტექსტური მენიუს პუნქტი დროის ჭდეების 24-საათიან "
-"(სამხედრო)საათზე გადართვა"
-
-#: whatsnew/whatsnewtranslations.cpp:82
-msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr ""
-"გეგმის ხედი: დაემატა კონტექსტური მენიუს პუქტი ახალი მოვლენების/გეგმების "
-"დასამატებლად"
-
-#: whatsnew/whatsnewtranslations.cpp:83
-msgid ""
-"To-do view: added context menu options for toggling completion and reminders"
-msgstr ""
-"გეგმების ხედი: დაემატა კონტექსტური მენიუს პარამეტრები დასრულებების და "
-"შეხსენებების გადასართავად"
-
-#: whatsnew/whatsnewtranslations.cpp:84
-msgid "To-do view: save/restore fullview setting"
-msgstr "გასაკეთებლების ხედი: სრული ხედის პარამეტრის შენახვა/აღდგენა"
-
-#: whatsnew/whatsnewtranslations.cpp:85
-msgid "To-do view: save/restore flatview setting"
-msgstr "გეგმის ხედი: ბრტყელი ხედის პარამეტრის შენახვა/აღდგენა"
-
-#: whatsnew/whatsnewtranslations.cpp:86
-msgid ""
-"Date navigator: added an option in the Configure->Views settings for hiding "
-"the week numbers"
-msgstr ""
-"თარიღის ნავიგატორი: დაემატა პარამეტრი მენიუში მორგება->ხედის მორგება კვირის "
-"ნომრების დასამალად"
-
-#: whatsnew/whatsnewtranslations.cpp:87
-msgid ""
-"Date navigator: the \"Week numbers select a work week when in work week mode"
-"\" setting is true by default"
-msgstr ""
-"თარიღის ნავიგატორი: \"კვირის ნომრები აირჩევენ სამუშაო კვირას, როცა სამუშაო "
-"კვირის რეჟიმია ჩართული\" პარამეტრი ნაგულისხმევად ჭეშმარიტია"
-
-#: whatsnew/whatsnewtranslations.cpp:88
-msgid "Incidence editor: remember/restore the template manager geometry"
-msgstr ""
-"ინციდენტების რედაქტორი: შაბლონების მმართველის გეომეტრიის დამახსოვრება/აღდგენა"
-
-#: whatsnew/whatsnewtranslations.cpp:89
-msgid "Incidence editor: support drag-and-drop attachments"
-msgstr ""
-"ინციდენტების რედაქტორი: მიმაგრებული ფაილების გადათრევა-დაგდების მხარდაჭერა"
-
-#: whatsnew/whatsnewtranslations.cpp:90
-msgid "The export calendar dialog remembers its last export folder location"
-msgstr ""
-"კალენდრის გატანის დიალოგი იმახსოვრებს ბოლო გატანის საქაღალდის მდებარეობას"
-
-#: whatsnew/whatsnewtranslations.cpp:91
-msgid "The import calendar dialog remembers its last import folder location"
-msgstr ""
-"კალენდრის შემოტანის დიალოგი იმახსოვრებს ბოლო შემოტანის საქაღალდის მდებარეობას"
-
-#: whatsnew/whatsnewtranslations.cpp:92
-msgid "Get Hot New Stuff removed"
-msgstr "ახალი &რამერუმეების წაშლა"
-
-#: whatsnew/whatsnewtranslations.cpp:93
-msgid "Add calendar file: remote calendars are always read-only"
-msgstr ""
-"კალენდრის ფაილის დამატება: დაშორებული კალენდრები ყოველთვის მხოლოდ წაკითხვადია"
-
-#: whatsnew/whatsnewtranslations.cpp:94
-msgid "Add calendar file: will not permit an empty file path"
-msgstr "კალენდრის ფაილის დამატება: ცარიელი ფაილის ბილიკი დაშვებული არაა"
-
-#: whatsnew/whatsnewtranslations.cpp:95
-msgid ""
-"DAV configuration: dialog allows seeing the account password when editing"
-msgstr ""
-"DAV-ის მორგება: დიალოგი საშუალებას გაძლევთ, დაინახოთ ანგარიშის პაროლი მისი "
-"ჩასწორებისას"
-
-#: whatsnew/whatsnewtranslations.cpp:96
-msgid "DAV configuration: wizard shows icons for the various providers"
-msgstr "DAV-ის მორგება: ოსტატი სხვადასხვა პროვაიდერების ხატულებს გაჩვენებთ"
-
-#: whatsnew/whatsnewtranslations.cpp:97
-msgid "DAV configuration: wizard updated list of providers"
-msgstr "DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია"
-
-#: whatsnew/whatsnewtranslations.cpp:115
-#, kde-format
-msgid ""
-"Semantics are changed from a \"working schedule\" concept to a \"week "
-"schedule\" concept to accommodate non-working users"
-msgstr ""
-"სემანტიკა შეიცვალა \"სამუშაო გრაფიკის\" კონცეპტიდან \"კვირის გრაფიკის\" "
-"კონცეპტზე, რომ უმუშევარი მომხმარებლებიც დაფაროს"
-
-#: whatsnew/whatsnewtranslations.cpp:116
-#, kde-format
-msgid "Initial \"New Event\" start times are consistent across all the views"
-msgstr "საწყისი \"ახალი მოვლენის\" დაწყების თარიღები მუდმივია ყველა ხედისთვის"
-
-#: whatsnew/whatsnewtranslations.cpp:117
-#, kde-format
-msgid "Improved default event calendar handling"
-msgstr "გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა"
-
-#: whatsnew/whatsnewtranslations.cpp:119
-#, kde-format
-msgid ""
-"Incidences with a long excluded dates list no longer create huge tooltips"
-msgstr ""
-"ინციდენტები გრძელი ამოღებული თარიღებით აღარ ქმნიან უზარმაზარ მინიშნებებს"
-
-#: whatsnew/whatsnewtranslations.cpp:120
-#, kde-format
-msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
-"გასწორდა ორგანიზატორის ელფოსტის მისამართი დამსწრეების მქონე ინციტენდებისთვის"
-
-#: whatsnew/whatsnewtranslations.cpp:121
-#, kde-format
-msgid ""
-"Agenda view: events without a duration are displayed as 30 long (rather than "
-"15 minutes long)"
-msgstr ""
-"დღის წესრიგი: მოვლენები, რომლებზეც ხანგრძლივობა მითითებული არაა, ნაჩვენებია, "
-"როგორც 30 წთ (15 წუთის მაგიერ)"
-
-#. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:135
-#, kde-format
-msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr "რედაქტორი: ჭდეების რედაქტორში ისინი ანბანის მიხედვითაა დალაგებული"
-
-#: whatsnew/whatsnewtranslations.cpp:162
-#, kde-format
-msgid "Fixed reminder toggling from menus"
-msgstr "გასწორდა შეხსენების გადართვა მენიუებიდან"
-
-#: whatsnew/whatsnewtranslations.cpp:163
-#, kde-format
-msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr "გეგმის ხედი: გაუმჯობესდა დროის ჭდის ვერტიკალური სწორება ბადესთან"
-
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
 msgctxt "@info start/end week number of line in date picker"
@@ -7103,6 +6733,325 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid ""
+#~ "A default To-do calendar can be specified to make creating new to-dos "
+#~ "faster and easier with less chance of filing them into the wrong folder. "
+#~ "Setting a default Event calendar has been supported for a long time.  See "
+#~ "the Calendar Manager context menu \"Set as Default Todo Calendar\""
+#~ msgstr ""
+#~ "შეგიძლიათ, შექმნათ ნაგულისხმევი გეგმების კალენდარი, რომ გეგმების შექმნა "
+#~ "უფრო იოლი იყოს და შემცირდეს შანსი, ისინი არასწორ საქაღალდეში მოხვდნენ. "
+#~ "ნაგულისხმევი მოვლენის კალენდრის დაყენება დიდი ხანია, მხარდაჭერილია.  "
+#~ "იხილეთ კალენდრის მმართველის კონტექსტური მენიუ 'ნაგულისხმევ გეგმის "
+#~ "კალენდრად დაყენება'"
+
+#~ msgid ""
+#~ "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
+#~ "two hours. To enable this behaviour, check the \"Draw bold horizontal "
+#~ "grid lines for the even hours\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის "
+#~ "წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"სქელი "
+#~ "ჰორიზონტალური ბადის ხაზების დახაზვა ლუწი საათებისთვის\" მენიუდან ხედი -> "
+#~ "დღის წესრიგის ხედის ჩანართი"
+
+#~ msgid ""
+#~ "It is now possible to hide holidays that belong to specific categories, "
+#~ "for example to hide religious holidays. See the Categories combobox in "
+#~ "the Holidays section of the Time&Date->Regional tab"
+#~ msgstr ""
+#~ "ახლა შესაძლებელია იმ არდადეგების დამალვა, რომლებიც მიეკუთვნება კონკრეტულ "
+#~ "კატეგორიებს, მაგალითად, რელიგიური დღესასწაულების დამალვა. იხილეთ "
+#~ "კატეგორიების სია დრო&თარიღი->რეგიონალური ჩანართის არდადეგების "
+#~ "განყოფილებაში"
+
+#~ msgid ""
+#~ "Month view: for the sake of consistency, holidays that land on a workday "
+#~ "are no longer hidden"
+#~ msgstr ""
+#~ "თვის ხედი: იმისათვის რომ ყველაფერი ერთნაირი იყოს, დღესასწაულები, რომლებიც "
+#~ "სამუშაო დღეს ემთხვევა, დამალული აღარ იქნება"
+
+#~ msgid ""
+#~ "Month view: An option was added to allow hiding holidays. To enable this "
+#~ "behavior, uncheck the \"Display holidays in the month view\" option in "
+#~ "the Views->Month View tab"
+#~ msgstr ""
+#~ "თვის ხედი: დაემატა დღესასწაულების დამალვის პარამეტრი. ამ ქცევის "
+#~ "ჩასართავად მოხსენით თოლია \"დღესასწაულების ჩვენება თვის ხედში\" ჩანართში "
+#~ "ხედები->თვის ხედი"
+
+#~ msgid ""
+#~ "Month view: An option was added to allow using the custom holiday color "
+#~ "as the date box background color if at least one holiday lands on that "
+#~ "date. To enable this behavior, check the \"Use the Holiday background "
+#~ "color when a holiday lands on the date\" option in the Views->Month View "
+#~ "tab"
+#~ msgstr ""
+#~ "თვის ხედი: დაემატა არჩევანი, რომ შეძლოთ მორგებული დღესასწაულის ფერის "
+#~ "გამოყენება თარიღის ველის ფერად, თუ ამ თარიღზე, სულ ცოტა, ერთი "
+#~ "დღესასწაულია. ამ ქცევის ჩასართავად დასვით თოლია \"დღესასწაულის ფონის "
+#~ "ფერის გამოყენება, როცა თარიღზე, სულ ცოტა, ერთი დღესასწაულია\" ჩანართში "
+#~ "ხედები->თვის ხედი"
+
+#~ msgid ""
+#~ "Month view: An option was added to show start-time and end-times. "
+#~ "Previously only showing the start-time was supported. To enable this "
+#~ "option, check the \"Show the start-time and the end-time in month view "
+#~ "items\" option in the View->Month View tab"
+#~ msgstr ""
+#~ "თვის ხედი: დაემატა დაწყებისა და დასრულების ჩვენების პარამეტრი. ადრე, "
+#~ "მხოლოდ, დაწყების დროის ჩვენება იყო მხარდაჭერილი. ამ პარამეტრის "
+#~ "ჩასართავად, ჩართეთ თოლია 'დაწყებისა და დამთავრების დროების ჩვენება თვის "
+#~ "ხედის ელემენტებში' მენიუდან ხედი->თვის ხედის ჩანართი"
+
+#~ msgid "Agenda view: underline today's column header date"
+#~ msgstr "გეგმის ხედი: დღევანდელი სვეტის თავსართის თარიღის ხაზგასმა"
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence locations inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence locations in "
+#~ "agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "დღის წესრიგის ხედი: მოვლენის მდებარეობების არასავალდებულო ჩვენება დღის "
+#~ "წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის "
+#~ "მდებარეობის ჩვენება დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი -> "
+#~ "დღის წესრიგის ხედის ჩანართი"
+
+#~ msgid ""
+#~ "Options for setting default access classifications (Public, Confidential "
+#~ "or Private) when creating new Events, To-dos and Journals have been "
+#~ "added.  Select your preferences in the \"General->Personal Default Access "
+#~ "Classification\" comboboxes."
+#~ msgstr ""
+#~ "დაემატა ნაგულისხმევი წვდომის კლასიფიკაციის დაყენების ვარიანტები (საჯარო, "
+#~ "კონფიდენციალური, ან პირადი) ახალი მოვლენების, დავალებებისა და ჟურნალების "
+#~ "შექმნისას.  აირჩიეთ სასურველი პარამეტრები მენიუდან \"ზოგადი->პირადი "
+#~ "ნაგულისხმევი წვდომის კლასიფიკაცია\" ჩამოსაშლელ მენიუში."
+
+#~ msgid ""
+#~ "Reminders are enabled by default for all new events and to-dos. To "
+#~ "disable this behavior, uncheck the Enable reminders options in the "
+#~ "settings Time&Date->Default Values tab"
+#~ msgstr ""
+#~ "შეხსენებები ნაგულისხმევად ყველა მოვლენისა და გეგმისთვის ჩართულია. ამ "
+#~ "ქცევის გასათიშად მოხსენით შეხსენებების ჩართვის თოლია მენიუში მორგება -> "
+#~ "დრო&თარიღი>ნაგულისხმევი მნიშვნელობების ჩანართი"
+
+#~ msgid ""
+#~ "Month view: no longer display the month year header to save vertical "
+#~ "space and remove redundancy"
+#~ msgstr ""
+#~ "თვის ხედი: აღარ იქნება ნაჩვენები თვის წლის თავსართი ვერტიკალური სივრცის "
+#~ "დასაზოგად და ზედმეტობის ამოსაღებად"
+
+#~ msgid ""
+#~ "Month view: use a slightly different color for drawing the day headers "
+#~ "for days outside of the currently selected month"
+#~ msgstr ""
+#~ "თვის ხედი: ოდნავ განსხვავებული ფერის გამოყენება დღის სათაურების დასახატად "
+#~ "იმ დღეებისთვის, რომლებიც ამჟამად მონიშნული თვის გარეთაა"
+
+#~ msgid ""
+#~ "Month view: the navigation controls on the lower right side are removed "
+#~ "in favor of the improved application navigator bar"
+#~ msgstr ""
+#~ "თვის ხედი: ნავიგაციის კონტროლის ელემენტები ქვედა მარჯვენა მხარეს მოშორდა. "
+#~ "დაემატა გაუმჯობესებული აპლიკაციის ნავიგაციის ზოლი"
+
+#~ msgid ""
+#~ "Month view: the background color for today's date cell can be changed. To "
+#~ "configure the color,  set the \"Month view today background color\" in "
+#~ "the Colors and Fonts settings"
+#~ msgstr ""
+#~ "თვის ხედი: დღევანდელი თარიღის უჯრედში ფონის ფერი, შეიძლება, შეიცვალოს. "
+#~ "ფერის კონფიგურაციისთვის, დააყენეთ \"თვის ხედი დღეს ფონის ფერი\" ფერებისა "
+#~ "და ფონტების პარამეტრებში"
+
+#~ msgid ""
+#~ "Navigator bar: improved by adding week scrolling and showing/hiding the "
+#~ "sidebar on a per-view basis"
+#~ msgstr ""
+#~ "ნავიგაციის ზოლი: გაუმჯობესდა კვირის გადახვევისა და გვერდითი პანელის "
+#~ "თითოეული ხედისთვის ჩვენება/დამალვის დამატებით"
+
+#~ msgid "Navigator bar: added a button to scroll the view to the current date"
+#~ msgstr ""
+#~ "ნავიგაციის ზოლი: დაემატა ღილაკი ხედის მიმდინარე თარიღამდე გადასახვევად"
+
+#~ msgid ""
+#~ "Agenda view: events with short durations are displayed with their "
+#~ "starting time in addition to their summary"
+#~ msgstr ""
+#~ "დღის წესრიგი: მოვლენები მოკლე ხანგრძლივობით ნაჩვენებია მათი დაწყების "
+#~ "დროით, მათი შეჯამების გარდა"
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence descriptions inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence descriptions "
+#~ "in agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის "
+#~ "წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია \"მოვლენის "
+#~ "აღწერების ჩვენება დღის წესრიგის ხედის ელემენტებში\" მენიუდან ხედი -> დღის "
+#~ "წესრიგის ხედის ჩანართი"
+
+#~ msgid "Search: the search settings are saved/restored"
+#~ msgstr "ძებნა: ხდება ძებნის პარამეტრების შენახვა/აღდგენა"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu to show/hide time labels for "
+#~ "the system timezone on the right (or left) side as well"
+#~ msgstr ""
+#~ "გეგმის ხედი: დაემატა დროის ჭდეების კონტექსტური მენიუ დროის ჭდეების "
+#~ "სისტემური დროის სარტყლისთვის მარჯვენა (ან მარცხენა) მხარესაც საჩვენებლად/"
+#~ "დასამალად"
+
+#~ msgid ""
+#~ "Incidence editor: detect and warn about creating incidences in the past"
+#~ msgstr "რედაქტორი: წარსულში ინციდენტების შექმნის აღმოჩენა და გაფრთხილება"
+
+#~ msgid "Incidence editor: add emoji support"
+#~ msgstr "ინციდენტების რედაქტორი: დაემატა ემოციების მხარდაჭერა"
+
+#~ msgid "Add What's New menu"
+#~ msgstr "დაემატა მენიუ 'რა არის ახალი'"
+
+#~ msgid "The current view is remembered"
+#~ msgstr "მიმდინარე ხედი გახსენებულია"
+
+#~ msgid "Add a Date Picker dialog available on the Go menu"
+#~ msgstr "დაემატა თარიღის ამრჩევი დიალოგი. ხელმისაწვდომია გადასვლის მენიუდან"
+
+#~ msgid ""
+#~ "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule"
+#~ "\", \"Week\" time ranges into the Agenda tool button"
+#~ msgstr ""
+#~ "გეგის ხედი: გაერთიანებული \"დღის\", \"შემდეგი X დღის\", \"სამუშაოს "
+#~ "გეგმის, \"კვირის\" დროის შუალედების გადატანა გეგმის ხელსაწყოს ღილაკში"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu option to toggle a 24-hour "
+#~ "(military style) clock"
+#~ msgstr ""
+#~ "გეგმის ხედი: დაემატა კონტექსტური მენიუს პუნქტი დროის ჭდეების 24-საათიან "
+#~ "(სამხედრო)საათზე გადართვა"
+
+#~ msgid "Agenda view: added context menu to create new Event or To-do"
+#~ msgstr ""
+#~ "გეგმის ხედი: დაემატა კონტექსტური მენიუს პუქტი ახალი მოვლენების/გეგმების "
+#~ "დასამატებლად"
+
+#~ msgid ""
+#~ "To-do view: added context menu options for toggling completion and "
+#~ "reminders"
+#~ msgstr ""
+#~ "გეგმების ხედი: დაემატა კონტექსტური მენიუს პარამეტრები დასრულებების და "
+#~ "შეხსენებების გადასართავად"
+
+#~ msgid "To-do view: save/restore fullview setting"
+#~ msgstr "გასაკეთებლების ხედი: სრული ხედის პარამეტრის შენახვა/აღდგენა"
+
+#~ msgid "To-do view: save/restore flatview setting"
+#~ msgstr "გეგმის ხედი: ბრტყელი ხედის პარამეტრის შენახვა/აღდგენა"
+
+#~ msgid ""
+#~ "Date navigator: added an option in the Configure->Views settings for "
+#~ "hiding the week numbers"
+#~ msgstr ""
+#~ "თარიღის ნავიგატორი: დაემატა პარამეტრი მენიუში მორგება->ხედის მორგება "
+#~ "კვირის ნომრების დასამალად"
+
+#~ msgid ""
+#~ "Date navigator: the \"Week numbers select a work week when in work week "
+#~ "mode\" setting is true by default"
+#~ msgstr ""
+#~ "თარიღის ნავიგატორი: \"კვირის ნომრები აირჩევენ სამუშაო კვირას, როცა "
+#~ "სამუშაო კვირის რეჟიმია ჩართული\" პარამეტრი ნაგულისხმევად ჭეშმარიტია"
+
+#~ msgid "Incidence editor: remember/restore the template manager geometry"
+#~ msgstr ""
+#~ "ინციდენტების რედაქტორი: შაბლონების მმართველის გეომეტრიის დამახსოვრება/"
+#~ "აღდგენა"
+
+#~ msgid "Incidence editor: support drag-and-drop attachments"
+#~ msgstr ""
+#~ "ინციდენტების რედაქტორი: მიმაგრებული ფაილების გადათრევა-დაგდების მხარდაჭერა"
+
+#~ msgid "The export calendar dialog remembers its last export folder location"
+#~ msgstr ""
+#~ "კალენდრის გატანის დიალოგი იმახსოვრებს ბოლო გატანის საქაღალდის მდებარეობას"
+
+#~ msgid "The import calendar dialog remembers its last import folder location"
+#~ msgstr ""
+#~ "კალენდრის შემოტანის დიალოგი იმახსოვრებს ბოლო შემოტანის საქაღალდის "
+#~ "მდებარეობას"
+
+#~ msgid "Get Hot New Stuff removed"
+#~ msgstr "ახალი &რამერუმეების წაშლა"
+
+#~ msgid "Add calendar file: remote calendars are always read-only"
+#~ msgstr ""
+#~ "კალენდრის ფაილის დამატება: დაშორებული კალენდრები ყოველთვის მხოლოდ "
+#~ "წაკითხვადია"
+
+#~ msgid "Add calendar file: will not permit an empty file path"
+#~ msgstr "კალენდრის ფაილის დამატება: ცარიელი ფაილის ბილიკი დაშვებული არაა"
+
+#~ msgid ""
+#~ "DAV configuration: dialog allows seeing the account password when editing"
+#~ msgstr ""
+#~ "DAV-ის მორგება: დიალოგი საშუალებას გაძლევთ, დაინახოთ ანგარიშის პაროლი "
+#~ "მისი ჩასწორებისას"
+
+#~ msgid "DAV configuration: wizard shows icons for the various providers"
+#~ msgstr "DAV-ის მორგება: ოსტატი სხვადასხვა პროვაიდერების ხატულებს გაჩვენებთ"
+
+#~ msgid "DAV configuration: wizard updated list of providers"
+#~ msgstr "DAV-ის მორგება: ოსტატმა განაახლა პროვაიდერების სია"
+
+#~ msgid ""
+#~ "Semantics are changed from a \"working schedule\" concept to a \"week "
+#~ "schedule\" concept to accommodate non-working users"
+#~ msgstr ""
+#~ "სემანტიკა შეიცვალა \"სამუშაო გრაფიკის\" კონცეპტიდან \"კვირის გრაფიკის\" "
+#~ "კონცეპტზე, რომ უმუშევარი მომხმარებლებიც დაფაროს"
+
+#~ msgid ""
+#~ "Initial \"New Event\" start times are consistent across all the views"
+#~ msgstr ""
+#~ "საწყისი \"ახალი მოვლენის\" დაწყების თარიღები მუდმივია ყველა ხედისთვის"
+
+#~ msgid "Improved default event calendar handling"
+#~ msgstr "გაუმჯობესდა ნაგულისხმევი მოვლენის კალენდრის მართვა"
+
+#~ msgid ""
+#~ "Incidences with a long excluded dates list no longer create huge tooltips"
+#~ msgstr ""
+#~ "ინციდენტები გრძელი ამოღებული თარიღებით აღარ ქმნიან უზარმაზარ მინიშნებებს"
+
+#~ msgid "Fixed the organizer email address for incidences with attendees"
+#~ msgstr ""
+#~ "გასწორდა ორგანიზატორის ელფოსტის მისამართი დამსწრეების მქონე "
+#~ "ინციტენდებისთვის"
+
+#~ msgid ""
+#~ "Agenda view: events without a duration are displayed as 30 long (rather "
+#~ "than 15 minutes long)"
+#~ msgstr ""
+#~ "დღის წესრიგი: მოვლენები, რომლებზეც ხანგრძლივობა მითითებული არაა, "
+#~ "ნაჩვენებია, როგორც 30 წთ (15 წუთის მაგიერ)"
+
+#~ msgid ""
+#~ "Incidence editor: the tags are sorted alphabetically in the tags editor"
+#~ msgstr "რედაქტორი: ჭდეების რედაქტორში ისინი ანბანის მიხედვითაა დალაგებული"
+
+#~ msgid "Fixed reminder toggling from menus"
+#~ msgstr "გასწორდა შეხსენების გადართვა მენიუებიდან"
+
+#~ msgid "Agenda view: improved timelabel vertical alignment with grid"
+#~ msgstr "გეგმის ხედი: გაუმჯობესდა დროის ჭდის ვერტიკალური სწორება ბადესთან"
 
 #~ msgctxt "the to-do is due"
 #~ msgid "due"

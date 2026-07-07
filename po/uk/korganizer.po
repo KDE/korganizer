@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-06 00:46+0000\n"
-"PO-Revision-Date: 2026-06-30 20:04+0300\n"
+"POT-Creation-Date: 2026-07-07 00:44+0000\n"
+"PO-Revision-Date: 2026-07-06 09:04+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1771,7 +1771,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Не вдалося вилучити календар: <message>%1</message>"
 
-#: calendarview.cpp:267
+#: calendarview.cpp:266
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1781,7 +1781,7 @@ msgstr ""
 "<para><emphasis>Не вибрано пункт</emphasis></para><para>Виберіть подію, "
 "завдання або запис журналу, щоб тут переглянути його подробиці.</para>"
 
-#: calendarview.cpp:271
+#: calendarview.cpp:270
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1791,19 +1791,19 @@ msgstr ""
 "Переглянути тут подробиці подій, записів журналів, завдань вибраних в "
 "головному вікні KOrganizer."
 
-#: calendarview.cpp:693
+#: calendarview.cpp:695
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Виконання завдання: %1 (%2)"
 
-#: calendarview.cpp:702
+#: calendarview.cpp:704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "Журнал - %1"
 
-#: calendarview.cpp:751
+#: calendarview.cpp:753
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1813,19 +1813,19 @@ msgstr ""
 "Пункт <resource>%1</resource> фільтрується відповідно до поточних правил "
 "фільтрування, тому його буде приховано і не показано у перегляді."
 
-#: calendarview.cpp:820
+#: calendarview.cpp:822
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Ви дійсно хочете остаточно вилучити пункт «%1»?"
 
-#: calendarview.cpp:821
+#: calendarview.cpp:823
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Вилучити пункт?"
 
-#: calendarview.cpp:896
+#: calendarview.cpp:898
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
@@ -1833,79 +1833,79 @@ msgstr ""
 "Спроба вставлення завершилася невдало: не вдалося визначити коректну дату "
 "призначення."
 
-#: calendarview.cpp:1314
+#: calendarview.cpp:1316
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Зробити підзавдання незалежними"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1370
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Увімкнути або вимкнути нагадування"
 
-#: calendarview.cpp:1373
+#: calendarview.cpp:1375
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "Увімкнено нагадування <message>%1</message>"
 
-#: calendarview.cpp:1375
+#: calendarview.cpp:1377
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "Вимкнено нагадування <message>%1</message>"
 
-#: calendarview.cpp:1378
+#: calendarview.cpp:1380
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "Не вдалося перемкнути нагадування <message>%1</message>"
 
-#: calendarview.cpp:1409 calendarview.cpp:1467
+#: calendarview.cpp:1411 calendarview.cpp:1469
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Увімкнути або вимкнути стан завершеності завдання"
 
-#: calendarview.cpp:1413
+#: calendarview.cpp:1415
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Завдання <message>%1</message> виконано на %2 відсотків"
 
-#: calendarview.cpp:1416
+#: calendarview.cpp:1418
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "Не вдалося перемкнути стан завершеності завдання <message>%1</message>"
 
-#: calendarview.cpp:1519
+#: calendarview.cpp:1521
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "«%1» було успішно скопійовано до %2."
 
-#: calendarview.cpp:1520
+#: calendarview.cpp:1522
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Успішне копіювання"
 
-#: calendarview.cpp:1524
+#: calendarview.cpp:1526
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Не вдалося скопіювати запис «%1» до %2."
 
-#: calendarview.cpp:1525 calendarview.cpp:2501
+#: calendarview.cpp:1527 calendarview.cpp:2502
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Копіювання зазнало невдачі"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1586
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1915,50 +1915,50 @@ msgstr ""
 "Не вдалося вилучити запис «%1» з початкового календаря. Копію цього запису "
 "було збережено у %2."
 
-#: calendarview.cpp:1588 calendarview.cpp:1604 calendarview.cpp:2536
+#: calendarview.cpp:1590 calendarview.cpp:1606 calendarview.cpp:2537
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Пересування зазнало невдачі"
 
-#: calendarview.cpp:1593
+#: calendarview.cpp:1595
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "«%1» було успішно пересунуто з %2 до %3."
 
-#: calendarview.cpp:1594
+#: calendarview.cpp:1596
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Успішне пересування"
 
-#: calendarview.cpp:1600
+#: calendarview.cpp:1602
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Не вдалося додати запис «%1» до %2. Цей запис не було пересунуто."
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Бажаєте виокремити подію о %1 з повторення?"
 
-#: calendarview.cpp:1643 calendarview.cpp:1656 calendarview.cpp:2317
-#: calendarview.cpp:2376 calendarview.cpp:2406
+#: calendarview.cpp:1645 calendarview.cpp:1658 calendarview.cpp:2318
+#: calendarview.cpp:2377 calendarview.cpp:2407
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Підтвердження KOrganizer"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1646
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "Ві&дділити"
 
-#: calendarview.cpp:1651
+#: calendarview.cpp:1653
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1968,79 +1968,79 @@ msgstr ""
 "Бажаєте виокремити випадок %1 з повтору чи також виокремити і всі наступні "
 "випадки?"
 
-#: calendarview.cpp:1657
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Відділити &лише цю подію"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Відділити і &майбутні події"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1678
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Відділяти майбутні події"
 
-#: calendarview.cpp:1678
+#: calendarview.cpp:1680
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Відділити подію"
 
-#: calendarview.cpp:1685
+#: calendarview.cpp:1687
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Відділення майбутніх подій зазнало невдачі."
 
-#: calendarview.cpp:1685 calendarview.cpp:1687
+#: calendarview.cpp:1687 calendarview.cpp:1689
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Відділення зазнало невдачі"
 
-#: calendarview.cpp:1687
+#: calendarview.cpp:1689
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Відділення події зазнало невдачі."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1851
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Експортування календаря до файла"
 
-#: calendarview.cpp:1863
+#: calendarview.cpp:1864
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Чи бажаєте ви перезаписати <filename>%1</filename>?"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1865
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Експортування календаря"
 
-#: calendarview.cpp:1878
+#: calendarview.cpp:1879
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Причина невідома"
 
-#: calendarview.cpp:1880
+#: calendarview.cpp:1881
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2049,13 +2049,13 @@ msgstr ""
 "Неможливо записати файл iCalendar <filename>%1</filename>: <message>%2</"
 "message>"
 
-#: calendarview.cpp:1989 calendarview.cpp:2034
+#: calendarview.cpp:1990 calendarview.cpp:2035
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Без фільтра"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2067,19 +2067,19 @@ msgstr ""
 "пункт і зробити всі його підзавдання незалежними чи вилучити це завдання з "
 "усіма його підзавданнями?"
 
-#: calendarview.cpp:2318
+#: calendarview.cpp:2319
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Вилучити тільки це"
 
-#: calendarview.cpp:2319 calendarview.cpp:2377
+#: calendarview.cpp:2320 calendarview.cpp:2378
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Вилучити всі"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2352
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2089,13 +2089,13 @@ msgstr ""
 "Пункт <resource>%1</resource> позначено «тільки для читання», його не можна "
 "вилучити; ймовірно, він належить до календаря тільки для читання."
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2355
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Вилучення неможливе"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2105,13 +2105,13 @@ msgstr ""
 "Пункт календаря <resource>%1</resource> повторюється в багатьох датах. Ви "
 "впевнені, що хочете вилучити його з усіма повтореннями?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2385
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Також вилучати &майбутні"
 
-#: calendarview.cpp:2388
+#: calendarview.cpp:2389
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2123,7 +2123,7 @@ msgstr ""
 "Хочете вилучити тільки поточний пункт на %2, всі майбутні повторення, чи всі "
 "його повторення?"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2396
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2133,25 +2133,25 @@ msgstr ""
 "Пункт календаря <resource>%1</resource> повторюється в багатьох датах. "
 "Хочете вилучити тільки поточний пункт на %2 чи всі його повторення?"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2408
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Вилучити пото&чну"
 
-#: calendarview.cpp:2409
+#: calendarview.cpp:2410
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Вилучити &всі"
 
-#: calendarview.cpp:2440 calendarview.cpp:2447
+#: calendarview.cpp:2441 calendarview.cpp:2448
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Вилучити «%1»"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2480
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2160,49 +2160,49 @@ msgstr ""
 "У засобі керування календарями знято позначки з усіх календарів. Не вилучено "
 "жодного запису завдання."
 
-#: calendarview.cpp:2484 calendarview.cpp:2766
+#: calendarview.cpp:2485 calendarview.cpp:2767
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Немає завершених завдань для вилучення."
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2490
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Вилучити усі виконані завдання з позначених календарів?"
 
-#: calendarview.cpp:2490
+#: calendarview.cpp:2491
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Очищення завдань"
 
-#: calendarview.cpp:2491
+#: calendarview.cpp:2492
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Очистити"
 
-#: calendarview.cpp:2501
+#: calendarview.cpp:2502
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Не вдалося скопіювати пункт <resource>%1</resource>."
 
-#: calendarview.cpp:2536
+#: calendarview.cpp:2537
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Не вдалося пересунути пункт <resource>%1</resource>."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2759
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Вилучено 0 записів завершених завдань.<nl/>"
 
-#: calendarview.cpp:2760 calendarview.cpp:2771
+#: calendarview.cpp:2761 calendarview.cpp:2772
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2221,7 +2221,7 @@ msgstr[3] ""
 "одне завдання проігноровано через те, що у ньому містилися незавершені або "
 "придатні лише для читання дочірні елементи."
 
-#: calendarview.cpp:2764 calendarview.cpp:2769
+#: calendarview.cpp:2765 calendarview.cpp:2770
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2231,7 +2231,7 @@ msgstr[1] "Вилучено %1 завершених завдання."
 msgstr[2] "Вилучено %1 завершених завдань."
 msgstr[3] "Вилучено одне завершене завдання."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2777
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2239,7 +2239,7 @@ msgstr ""
 "Під час спроби вилучити завершені завдання сталася помилка: <message>%1</"
 "message>"
 
-#: calendarview.cpp:2837
+#: calendarview.cpp:2838
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2251,7 +2251,7 @@ msgstr ""
 "<para>Щоб переглянути новостворені записи зустрічей, будь ласка, увімкніть "
 "їхній календар у засобі керування календарями.</para>"
 
-#: calendarview.cpp:2841
+#: calendarview.cpp:2842
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3052,9 +3052,7 @@ msgstr[2] "%1 хв."
 msgstr[3] "%1 хв."
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
 msgstr "в процесі"
@@ -3066,10 +3064,10 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "завершено %1 годину тому"
+msgstr[1] "завершено %1 години тому"
+msgstr[2] "завершено %1 годин тому"
+msgstr[3] "завершено %1 годину тому"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3078,10 +3076,10 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "завершено %1 хвилину тому"
+msgstr[1] "завершено %1 хвилини тому"
+msgstr[2] "завершено %1 хвилин тому"
+msgstr[3] "завершено %1 хвилину тому"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3773,23 +3771,23 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:78 korganizer_part.cpp:61 korganizer_part.cpp:72
+#: korganizer.cpp:81 korganizer_part.cpp:60 korganizer_part.cpp:76
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:272
+#: korganizer.cpp:275
 #, kde-format
 msgid "New Calendar"
 msgstr "Новий календар"
 
-#: korganizer.cpp:276
+#: korganizer.cpp:279
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "лише читання"
 
-#: korganizer.cpp:279
+#: korganizer.cpp:282
 #, kde-format
 msgid "Calendar"
 msgstr "Календар"
@@ -6595,399 +6593,6 @@ msgstr "Заголовок"
 msgid "Selected Calendars"
 msgstr "Позначені календарі"
 
-#: whatsnew/whatsnewtranslations.cpp:18
-msgid ""
-"A default To-do calendar can be specified to make creating new to-dos faster "
-"and easier with less chance of filing them into the wrong folder. Setting a "
-"default Event calendar has been supported for a long time.  See the Calendar "
-"Manager context menu \"Set as Default Todo Calendar\""
-msgstr ""
-"Можна вказати типовий календар для завдань, щоб пришвидшити та спростити "
-"створення записів завдань, зменшивши ризик їх потрапляння до помилкової "
-"теки. Підтримку визначення типового календаря подій реалізовано вже доволі "
-"давно. Див. пункт контекстного меню керування календарями «Зробити типовим "
-"календарем записів Завдання»."
-
-#: whatsnew/whatsnewtranslations.cpp:20
-msgid ""
-"Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
-"hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
-"for the even hours\" option in the View->Agenda View tab"
-msgstr ""
-"Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/"
-"товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути цю "
-"можливість, поставте позначку навпроти пункту «Малювати жирні горизонтальні "
-"лінії сітки для парних годин» на вкладці «Перегляд->Перегляд порядку "
-"денного»."
-
-#: whatsnew/whatsnewtranslations.cpp:22
-msgid ""
-"It is now possible to hide holidays that belong to specific categories, for "
-"example to hide religious holidays. See the Categories combobox in the "
-"Holidays section of the Time&Date->Regional tab"
-msgstr ""
-"У новій версії можна приховувати свята, які належать до певних категорій, "
-"наприклад, приховати релігійні свята. Див. спадний список «Категорії» у "
-"розділі «Свята» на вкладці «Час і дата» -> «Регіональні»."
-
-#: whatsnew/whatsnewtranslations.cpp:24
-msgid ""
-"Month view: for the sake of consistency, holidays that land on a workday are "
-"no longer hidden"
-msgstr ""
-"Перегляд місяця: заради сумісності, свята, які припадають на робочий день, "
-"більше не буде приховано"
-
-#: whatsnew/whatsnewtranslations.cpp:25
-msgid ""
-"Month view: An option was added to allow hiding holidays. To enable this "
-"behavior, uncheck the \"Display holidays in the month view\" option in the "
-"Views->Month View tab"
-msgstr ""
-"Перегляд місяця: додано пункт, за допомогою якого можна приховувати свята. "
-"Щоб увімкнути цю можливість, зніміть прапорець з пункту «Показувати свята на "
-"панелі перегляду місяця» на вкладці «Перегляди-> Перегляд місяця»."
-
-#: whatsnew/whatsnewtranslations.cpp:27
-msgid ""
-"Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if at least one holiday lands on that date. To "
-"enable this behavior, check the \"Use the Holiday background color when a "
-"holiday lands on the date\" option in the Views->Month View tab"
-msgstr ""
-"Перегляд місяця: додано пункт, за допомогою якого можна використовувати "
-"колір нетипового свята як колір тла поля дати, якщо хоча б одне свято "
-"припадає на цю дату. Щоб увімкнути цю можливість, позначте пункт "
-"«Використовувати колір тла свята, якщо на дату припадає свято» на вкладці "
-"«Перегляди->Перегляд місяця»."
-
-#: whatsnew/whatsnewtranslations.cpp:30
-msgid ""
-"Month view: An option was added to show start-time and end-times. Previously "
-"only showing the start-time was supported. To enable this option, check the "
-"\"Show the start-time and the end-time in month view items\" option in the "
-"View->Month View tab"
-msgstr ""
-"Перегляд місяця: додано пункт, за допомогою якого можна наказати програмі "
-"показувати час початку і час завершення. Раніше у програмі було передбачено "
-"показ лише часу початку. Щоб увімкнути цю можливість, позначте пункт "
-"«Показувати час початку і час завершення у пунктах у перегляді місяця» на "
-"вкладці «Перегляд->Перегляд місяця»."
-
-#: whatsnew/whatsnewtranslations.cpp:32
-msgid "Agenda view: underline today's column header date"
-msgstr ""
-"Панель порядку денного: реалізовано підкреслювання дати сьогоднішнього "
-"заголовка стовпчика"
-
-#: whatsnew/whatsnewtranslations.cpp:33
-msgid ""
-"Agenda view: optionally show the incidence locations inside the agenda "
-"items. To enable this behavior, check the \"Show incidence locations in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"Панель порядку денного: якщо потрібно, програма може показувати місця "
-"проведення зустрічей у пунктах. Щоб увімкнути показ, позначте пункт "
-"«Показувати місця зустрічей для пунктів перегляду порядку денного» на "
-"вкладці «Перегляд -> Перегляд порядку денного»."
-
-#: whatsnew/whatsnewtranslations.cpp:35
-msgid ""
-"Options for setting default access classifications (Public, Confidential or "
-"Private) when creating new Events, To-dos and Journals have been added.  "
-"Select your preferences in the \"General->Personal Default Access "
-"Classification\" comboboxes."
-msgstr ""
-"Додано варіанти встановлення типової класифікації доступу (Відкритий, "
-"Конфіденційний або Приватний) під час створення записів подій, завдань та "
-"журналів. Виберіть свій варіант у спадному списку «Загальне->Типова особиста "
-"класифікація доступу»."
-
-#: whatsnew/whatsnewtranslations.cpp:45
-msgid ""
-"Reminders are enabled by default for all new events and to-dos. To disable "
-"this behavior, uncheck the Enable reminders options in the settings "
-"Time&Date->Default Values tab"
-msgstr ""
-"Типово нагадування увімкнено для усіх нових записів подій та завдань. Щоб "
-"вимкнути таку поведінку, зніміть позначки з пунктів нагадувань на вкладці "
-"параметрів «Час і дата->Типові значення»"
-
-#: whatsnew/whatsnewtranslations.cpp:47
-msgid ""
-"Month view: no longer display the month year header to save vertical space "
-"and remove redundancy"
-msgstr ""
-"Перегляд місяця: усунено показ заголовка місяць-рік для заощадження "
-"вертикального простору і вилучення зайвих відомостей"
-
-#: whatsnew/whatsnewtranslations.cpp:48
-msgid ""
-"Month view: use a slightly different color for drawing the day headers for "
-"days outside of the currently selected month"
-msgstr ""
-"Перегляд місяця: використано дещо інший колір для малювання заголовків днів "
-"поза межами поточного вибраного місяця"
-
-#: whatsnew/whatsnewtranslations.cpp:49
-msgid ""
-"Month view: the navigation controls on the lower right side are removed in "
-"favor of the improved application navigator bar"
-msgstr ""
-"Панель місяця: засоби керування навігацією у нижній правій частині панелі "
-"вилучено — вони вже є на удосконаленій панелі навігації програми"
-
-#: whatsnew/whatsnewtranslations.cpp:50
-msgid ""
-"Month view: the background color for today's date cell can be changed. To "
-"configure the color,  set the \"Month view today background color\" in the "
-"Colors and Fonts settings"
-msgstr ""
-"Панель перегляду місяця: можна змінювати колір тла у комірці поточного дня. "
-"Щоб налаштувати колір, встановіть значення для пункту «Колір тла поточного "
-"дня на панелі перегляду місяця» у параметра кольорів і шрифтів програми."
-
-#: whatsnew/whatsnewtranslations.cpp:52
-msgid ""
-"Navigator bar: improved by adding week scrolling and showing/hiding the "
-"sidebar on a per-view basis"
-msgstr ""
-"Панель навігації: удосконалення шляхом додавання панелі гортання тижнів та "
-"показу або приховування бічної панелі на основі вибраного режиму перегляду"
-
-#: whatsnew/whatsnewtranslations.cpp:53
-msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr ""
-"Панель навігації: додано кнопку для гортання перегляду до поточної дати"
-
-#: whatsnew/whatsnewtranslations.cpp:54
-msgid ""
-"Agenda view: events with short durations are displayed with their starting "
-"time in addition to their summary"
-msgstr ""
-"Панель порядку денного: записи подій короткої тривалості буде показано із "
-"їхнім часом початку на додачу до резюме"
-
-#: whatsnew/whatsnewtranslations.cpp:55
-msgid ""
-"Agenda view: optionally show the incidence descriptions inside the agenda "
-"items. To enable this behavior, check the \"Show incidence descriptions in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"Панель порядку денного: якщо потрібно, програма може показувати описи "
-"зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати описи "
-"зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -> "
-"Перегляд порядку денного»."
-
-#: whatsnew/whatsnewtranslations.cpp:57
-msgid "Search: the search settings are saved/restored"
-msgstr "Пошук: реалізовано зберігання і відновлення параметрів пошуку"
-
-#: whatsnew/whatsnewtranslations.cpp:66
-msgid ""
-"Agenda view: added timelabels context menu to show/hide time labels for the "
-"system timezone on the right (or left) side as well"
-msgstr ""
-"Панель перегляду порядку денного: додано пункт контекстного часу для показу "
-"або приховування часових міток для загальносистемного часового поясу "
-"праворуч (або ліворуч)"
-
-#: whatsnew/whatsnewtranslations.cpp:67
-msgid "Incidence editor: detect and warn about creating incidences in the past"
-msgstr ""
-"Редактор зустрічей: виявлення створення зустрічей у минулому та попередження "
-"про це"
-
-#: whatsnew/whatsnewtranslations.cpp:68
-msgid "Incidence editor: add emoji support"
-msgstr "Редактор зустрічей: додано підтримку емоційок"
-
-#: whatsnew/whatsnewtranslations.cpp:77
-msgid "Add What's New menu"
-msgstr "Додано меню «Що нового?»"
-
-#: whatsnew/whatsnewtranslations.cpp:78
-msgid "The current view is remembered"
-msgstr "Нова версія програми запам'ятовує параметри поточного перегляду"
-
-#: whatsnew/whatsnewtranslations.cpp:79
-msgid "Add a Date Picker dialog available on the Go menu"
-msgstr ""
-"Додано вікно вибору дати, доступ до якого можна отримати з меню «Перехід»"
-
-#: whatsnew/whatsnewtranslations.cpp:80
-msgid ""
-"Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
-"\"Week\" time ranges into the Agenda tool button"
-msgstr ""
-"Панель порядку денного: діапазони часу «День», «Наступні X днів», «Робочий "
-"розклад», «Тиждень» зібрано у кнопці інструмента порядку денного"
-
-#: whatsnew/whatsnewtranslations.cpp:81
-msgid ""
-"Agenda view: added timelabels context menu option to toggle a 24-hour "
-"(military style) clock"
-msgstr ""
-"Панель перегляду порядку денного: додано пункт контекстного часу часових "
-"міток для вмикання і вимикання 24-годинного режиму (військовий стан)"
-
-#: whatsnew/whatsnewtranslations.cpp:82
-msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr ""
-"Панель порядку денного: додано контекстне меню для створення запису події "
-"або завдання"
-
-#: whatsnew/whatsnewtranslations.cpp:83
-msgid ""
-"To-do view: added context menu options for toggling completion and reminders"
-msgstr ""
-"Панель перегляду завдань: додано пункти контекстного меню для перемикання "
-"стану завершеності та нагадувань"
-
-#: whatsnew/whatsnewtranslations.cpp:84
-msgid "To-do view: save/restore fullview setting"
-msgstr ""
-"Панель перегляду завдань: збереження і відновлення параметра повного "
-"перегляду"
-
-#: whatsnew/whatsnewtranslations.cpp:85
-msgid "To-do view: save/restore flatview setting"
-msgstr ""
-"Панель завдань: збереження і відновлення параметра однорангового перегляду"
-
-#: whatsnew/whatsnewtranslations.cpp:86
-msgid ""
-"Date navigator: added an option in the Configure->Views settings for hiding "
-"the week numbers"
-msgstr ""
-"Навігація датами: додано пункт у параметрах «Налаштувати->Перегляди» для "
-"приховування номерів тижнів"
-
-#: whatsnew/whatsnewtranslations.cpp:87
-msgid ""
-"Date navigator: the \"Week numbers select a work week when in work week mode"
-"\" setting is true by default"
-msgstr ""
-"Навігація датами: типовим значенням параметра «Вибір тижня призводить до "
-"вибору робочого тижня у режимі робочого тижня» тепер є «істина»"
-
-#: whatsnew/whatsnewtranslations.cpp:88
-msgid "Incidence editor: remember/restore the template manager geometry"
-msgstr ""
-"Редактор зустрічей: запам'ятовування і відновлення геометрії засобу "
-"керування шаблонами"
-
-#: whatsnew/whatsnewtranslations.cpp:89
-msgid "Incidence editor: support drag-and-drop attachments"
-msgstr "Редактор зустрічей: підтримка перетягування зі скиданням для долучень"
-
-#: whatsnew/whatsnewtranslations.cpp:90
-msgid "The export calendar dialog remembers its last export folder location"
-msgstr ""
-"У вікні експортування календаря реалізовано запам'ятовування останнього "
-"місце теки експортування"
-
-#: whatsnew/whatsnewtranslations.cpp:91
-msgid "The import calendar dialog remembers its last import folder location"
-msgstr ""
-"У вікні імпортування календаря реалізовано запам'ятовування останнього місце "
-"теки імпортування"
-
-#: whatsnew/whatsnewtranslations.cpp:92
-msgid "Get Hot New Stuff removed"
-msgstr "Вилучено можливість отримання нових матеріалів"
-
-#: whatsnew/whatsnewtranslations.cpp:93
-msgid "Add calendar file: remote calendars are always read-only"
-msgstr ""
-"Додавання файла календаря: віддалені календарі тепер є придатними лише для "
-"читання"
-
-#: whatsnew/whatsnewtranslations.cpp:94
-msgid "Add calendar file: will not permit an empty file path"
-msgstr ""
-"Додавання файла календаря: неможливим стало визначення порожнього шляху до "
-"файла"
-
-#: whatsnew/whatsnewtranslations.cpp:95
-msgid ""
-"DAV configuration: dialog allows seeing the account password when editing"
-msgstr ""
-"Налаштування DAV: у вікні уможливлено перегляд пароля до облікового запису "
-"при редагуванні"
-
-#: whatsnew/whatsnewtranslations.cpp:96
-msgid "DAV configuration: wizard shows icons for the various providers"
-msgstr ""
-"Налаштування DAV: реалізовано показ піктограм для різних надавачів даних у "
-"майстрі"
-
-#: whatsnew/whatsnewtranslations.cpp:97
-msgid "DAV configuration: wizard updated list of providers"
-msgstr "Налаштування DAV: оновлено список надавачів даних у майстрі"
-
-#: whatsnew/whatsnewtranslations.cpp:115
-#, kde-format
-msgid ""
-"Semantics are changed from a \"working schedule\" concept to a \"week "
-"schedule\" concept to accommodate non-working users"
-msgstr ""
-"Змінено семантику з концепції «робочого розкладу» на «розклад тижня» для "
-"задоволення потреб користувачів поза робочим часом"
-
-#: whatsnew/whatsnewtranslations.cpp:116
-#, kde-format
-msgid "Initial \"New Event\" start times are consistent across all the views"
-msgstr ""
-"Початкові часи початку «Нової події» у новій версії є узгодженими за усіма "
-"панелями перегляду"
-
-#: whatsnew/whatsnewtranslations.cpp:117
-#, kde-format
-msgid "Improved default event calendar handling"
-msgstr "Удосконалено обробку типового календаря подій"
-
-#: whatsnew/whatsnewtranslations.cpp:119
-#, kde-format
-msgid ""
-"Incidences with a long excluded dates list no longer create huge tooltips"
-msgstr ""
-"Програма більше не створюватиме величезних панелей підказок для зустрічей із "
-"довгими списками виключених дат"
-
-#: whatsnew/whatsnewtranslations.cpp:120
-#, kde-format
-msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
-"Виправлено адресу електронної пошти організатора для зустрічі із учасниками"
-
-#: whatsnew/whatsnewtranslations.cpp:121
-#, kde-format
-msgid ""
-"Agenda view: events without a duration are displayed as 30 long (rather than "
-"15 minutes long)"
-msgstr ""
-"Панель порядку денного: записи подій без тривалості буде показано із "
-"тривалістю 30 (а не 15 хвилин)"
-
-#. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:135
-#, kde-format
-msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr "Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою"
-
-#: whatsnew/whatsnewtranslations.cpp:162
-#, kde-format
-msgid "Fixed reminder toggling from menus"
-msgstr "Виправлено перемикання нагадування з меню"
-
-#: whatsnew/whatsnewtranslations.cpp:163
-#, kde-format
-msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
-"Панель порядку денного: удосконалено вертикальне вирівнювання мітки часу за "
-"ґраткою"
-
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
 msgctxt "@info start/end week number of line in date picker"
@@ -7215,6 +6820,346 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid ""
+#~ "A default To-do calendar can be specified to make creating new to-dos "
+#~ "faster and easier with less chance of filing them into the wrong folder. "
+#~ "Setting a default Event calendar has been supported for a long time.  See "
+#~ "the Calendar Manager context menu \"Set as Default Todo Calendar\""
+#~ msgstr ""
+#~ "Можна вказати типовий календар для завдань, щоб пришвидшити та спростити "
+#~ "створення записів завдань, зменшивши ризик їх потрапляння до помилкової "
+#~ "теки. Підтримку визначення типового календаря подій реалізовано вже "
+#~ "доволі давно. Див. пункт контекстного меню керування календарями «Зробити "
+#~ "типовим календарем записів Завдання»."
+
+#~ msgid ""
+#~ "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
+#~ "two hours. To enable this behaviour, check the \"Draw bold horizontal "
+#~ "grid lines for the even hours\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/"
+#~ "товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути "
+#~ "цю можливість, поставте позначку навпроти пункту «Малювати жирні "
+#~ "горизонтальні лінії сітки для парних годин» на вкладці «Перегляд-"
+#~ ">Перегляд порядку денного»."
+
+#~ msgid ""
+#~ "It is now possible to hide holidays that belong to specific categories, "
+#~ "for example to hide religious holidays. See the Categories combobox in "
+#~ "the Holidays section of the Time&Date->Regional tab"
+#~ msgstr ""
+#~ "У новій версії можна приховувати свята, які належать до певних категорій, "
+#~ "наприклад, приховати релігійні свята. Див. спадний список «Категорії» у "
+#~ "розділі «Свята» на вкладці «Час і дата» -> «Регіональні»."
+
+#~ msgid ""
+#~ "Month view: for the sake of consistency, holidays that land on a workday "
+#~ "are no longer hidden"
+#~ msgstr ""
+#~ "Перегляд місяця: заради сумісності, свята, які припадають на робочий "
+#~ "день, більше не буде приховано"
+
+#~ msgid ""
+#~ "Month view: An option was added to allow hiding holidays. To enable this "
+#~ "behavior, uncheck the \"Display holidays in the month view\" option in "
+#~ "the Views->Month View tab"
+#~ msgstr ""
+#~ "Перегляд місяця: додано пункт, за допомогою якого можна приховувати "
+#~ "свята. Щоб увімкнути цю можливість, зніміть прапорець з пункту "
+#~ "«Показувати свята на панелі перегляду місяця» на вкладці «Перегляди-> "
+#~ "Перегляд місяця»."
+
+#~ msgid ""
+#~ "Month view: An option was added to allow using the custom holiday color "
+#~ "as the date box background color if at least one holiday lands on that "
+#~ "date. To enable this behavior, check the \"Use the Holiday background "
+#~ "color when a holiday lands on the date\" option in the Views->Month View "
+#~ "tab"
+#~ msgstr ""
+#~ "Перегляд місяця: додано пункт, за допомогою якого можна використовувати "
+#~ "колір нетипового свята як колір тла поля дати, якщо хоча б одне свято "
+#~ "припадає на цю дату. Щоб увімкнути цю можливість, позначте пункт "
+#~ "«Використовувати колір тла свята, якщо на дату припадає свято» на вкладці "
+#~ "«Перегляди->Перегляд місяця»."
+
+#~ msgid ""
+#~ "Month view: An option was added to show start-time and end-times. "
+#~ "Previously only showing the start-time was supported. To enable this "
+#~ "option, check the \"Show the start-time and the end-time in month view "
+#~ "items\" option in the View->Month View tab"
+#~ msgstr ""
+#~ "Перегляд місяця: додано пункт, за допомогою якого можна наказати програмі "
+#~ "показувати час початку і час завершення. Раніше у програмі було "
+#~ "передбачено показ лише часу початку. Щоб увімкнути цю можливість, "
+#~ "позначте пункт «Показувати час початку і час завершення у пунктах у "
+#~ "перегляді місяця» на вкладці «Перегляд->Перегляд місяця»."
+
+#~ msgid "Agenda view: underline today's column header date"
+#~ msgstr ""
+#~ "Панель порядку денного: реалізовано підкреслювання дати сьогоднішнього "
+#~ "заголовка стовпчика"
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence locations inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence locations in "
+#~ "agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Панель порядку денного: якщо потрібно, програма може показувати місця "
+#~ "проведення зустрічей у пунктах. Щоб увімкнути показ, позначте пункт "
+#~ "«Показувати місця зустрічей для пунктів перегляду порядку денного» на "
+#~ "вкладці «Перегляд -> Перегляд порядку денного»."
+
+#~ msgid ""
+#~ "Options for setting default access classifications (Public, Confidential "
+#~ "or Private) when creating new Events, To-dos and Journals have been "
+#~ "added.  Select your preferences in the \"General->Personal Default Access "
+#~ "Classification\" comboboxes."
+#~ msgstr ""
+#~ "Додано варіанти встановлення типової класифікації доступу (Відкритий, "
+#~ "Конфіденційний або Приватний) під час створення записів подій, завдань та "
+#~ "журналів. Виберіть свій варіант у спадному списку «Загальне->Типова "
+#~ "особиста класифікація доступу»."
+
+#~ msgid ""
+#~ "Reminders are enabled by default for all new events and to-dos. To "
+#~ "disable this behavior, uncheck the Enable reminders options in the "
+#~ "settings Time&Date->Default Values tab"
+#~ msgstr ""
+#~ "Типово нагадування увімкнено для усіх нових записів подій та завдань. Щоб "
+#~ "вимкнути таку поведінку, зніміть позначки з пунктів нагадувань на вкладці "
+#~ "параметрів «Час і дата->Типові значення»"
+
+#~ msgid ""
+#~ "Month view: no longer display the month year header to save vertical "
+#~ "space and remove redundancy"
+#~ msgstr ""
+#~ "Перегляд місяця: усунено показ заголовка місяць-рік для заощадження "
+#~ "вертикального простору і вилучення зайвих відомостей"
+
+#~ msgid ""
+#~ "Month view: use a slightly different color for drawing the day headers "
+#~ "for days outside of the currently selected month"
+#~ msgstr ""
+#~ "Перегляд місяця: використано дещо інший колір для малювання заголовків "
+#~ "днів поза межами поточного вибраного місяця"
+
+#~ msgid ""
+#~ "Month view: the navigation controls on the lower right side are removed "
+#~ "in favor of the improved application navigator bar"
+#~ msgstr ""
+#~ "Панель місяця: засоби керування навігацією у нижній правій частині панелі "
+#~ "вилучено — вони вже є на удосконаленій панелі навігації програми"
+
+#~ msgid ""
+#~ "Month view: the background color for today's date cell can be changed. To "
+#~ "configure the color,  set the \"Month view today background color\" in "
+#~ "the Colors and Fonts settings"
+#~ msgstr ""
+#~ "Панель перегляду місяця: можна змінювати колір тла у комірці поточного "
+#~ "дня. Щоб налаштувати колір, встановіть значення для пункту «Колір тла "
+#~ "поточного дня на панелі перегляду місяця» у параметра кольорів і шрифтів "
+#~ "програми."
+
+#~ msgid ""
+#~ "Navigator bar: improved by adding week scrolling and showing/hiding the "
+#~ "sidebar on a per-view basis"
+#~ msgstr ""
+#~ "Панель навігації: удосконалення шляхом додавання панелі гортання тижнів "
+#~ "та показу або приховування бічної панелі на основі вибраного режиму "
+#~ "перегляду"
+
+#~ msgid "Navigator bar: added a button to scroll the view to the current date"
+#~ msgstr ""
+#~ "Панель навігації: додано кнопку для гортання перегляду до поточної дати"
+
+#~ msgid ""
+#~ "Agenda view: events with short durations are displayed with their "
+#~ "starting time in addition to their summary"
+#~ msgstr ""
+#~ "Панель порядку денного: записи подій короткої тривалості буде показано із "
+#~ "їхнім часом початку на додачу до резюме"
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence descriptions inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence descriptions "
+#~ "in agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Панель порядку денного: якщо потрібно, програма може показувати описи "
+#~ "зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати "
+#~ "описи зустрічей для пунктів перегляду порядку денного» на вкладці "
+#~ "«Перегляд -> Перегляд порядку денного»."
+
+#~ msgid "Search: the search settings are saved/restored"
+#~ msgstr "Пошук: реалізовано зберігання і відновлення параметрів пошуку"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu to show/hide time labels for "
+#~ "the system timezone on the right (or left) side as well"
+#~ msgstr ""
+#~ "Панель перегляду порядку денного: додано пункт контекстного часу для "
+#~ "показу або приховування часових міток для загальносистемного часового "
+#~ "поясу праворуч (або ліворуч)"
+
+#~ msgid ""
+#~ "Incidence editor: detect and warn about creating incidences in the past"
+#~ msgstr ""
+#~ "Редактор зустрічей: виявлення створення зустрічей у минулому та "
+#~ "попередження про це"
+
+#~ msgid "Incidence editor: add emoji support"
+#~ msgstr "Редактор зустрічей: додано підтримку емоційок"
+
+#~ msgid "Add What's New menu"
+#~ msgstr "Додано меню «Що нового?»"
+
+#~ msgid "The current view is remembered"
+#~ msgstr "Нова версія програми запам'ятовує параметри поточного перегляду"
+
+#~ msgid "Add a Date Picker dialog available on the Go menu"
+#~ msgstr ""
+#~ "Додано вікно вибору дати, доступ до якого можна отримати з меню «Перехід»"
+
+#~ msgid ""
+#~ "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule"
+#~ "\", \"Week\" time ranges into the Agenda tool button"
+#~ msgstr ""
+#~ "Панель порядку денного: діапазони часу «День», «Наступні X днів», "
+#~ "«Робочий розклад», «Тиждень» зібрано у кнопці інструмента порядку денного"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu option to toggle a 24-hour "
+#~ "(military style) clock"
+#~ msgstr ""
+#~ "Панель перегляду порядку денного: додано пункт контекстного часу часових "
+#~ "міток для вмикання і вимикання 24-годинного режиму (військовий стан)"
+
+#~ msgid "Agenda view: added context menu to create new Event or To-do"
+#~ msgstr ""
+#~ "Панель порядку денного: додано контекстне меню для створення запису події "
+#~ "або завдання"
+
+#~ msgid ""
+#~ "To-do view: added context menu options for toggling completion and "
+#~ "reminders"
+#~ msgstr ""
+#~ "Панель перегляду завдань: додано пункти контекстного меню для перемикання "
+#~ "стану завершеності та нагадувань"
+
+#~ msgid "To-do view: save/restore fullview setting"
+#~ msgstr ""
+#~ "Панель перегляду завдань: збереження і відновлення параметра повного "
+#~ "перегляду"
+
+#~ msgid "To-do view: save/restore flatview setting"
+#~ msgstr ""
+#~ "Панель завдань: збереження і відновлення параметра однорангового перегляду"
+
+#~ msgid ""
+#~ "Date navigator: added an option in the Configure->Views settings for "
+#~ "hiding the week numbers"
+#~ msgstr ""
+#~ "Навігація датами: додано пункт у параметрах «Налаштувати->Перегляди» для "
+#~ "приховування номерів тижнів"
+
+#~ msgid ""
+#~ "Date navigator: the \"Week numbers select a work week when in work week "
+#~ "mode\" setting is true by default"
+#~ msgstr ""
+#~ "Навігація датами: типовим значенням параметра «Вибір тижня призводить до "
+#~ "вибору робочого тижня у режимі робочого тижня» тепер є «істина»"
+
+#~ msgid "Incidence editor: remember/restore the template manager geometry"
+#~ msgstr ""
+#~ "Редактор зустрічей: запам'ятовування і відновлення геометрії засобу "
+#~ "керування шаблонами"
+
+#~ msgid "Incidence editor: support drag-and-drop attachments"
+#~ msgstr ""
+#~ "Редактор зустрічей: підтримка перетягування зі скиданням для долучень"
+
+#~ msgid "The export calendar dialog remembers its last export folder location"
+#~ msgstr ""
+#~ "У вікні експортування календаря реалізовано запам'ятовування останнього "
+#~ "місце теки експортування"
+
+#~ msgid "The import calendar dialog remembers its last import folder location"
+#~ msgstr ""
+#~ "У вікні імпортування календаря реалізовано запам'ятовування останнього "
+#~ "місце теки імпортування"
+
+#~ msgid "Get Hot New Stuff removed"
+#~ msgstr "Вилучено можливість отримання нових матеріалів"
+
+#~ msgid "Add calendar file: remote calendars are always read-only"
+#~ msgstr ""
+#~ "Додавання файла календаря: віддалені календарі тепер є придатними лише "
+#~ "для читання"
+
+#~ msgid "Add calendar file: will not permit an empty file path"
+#~ msgstr ""
+#~ "Додавання файла календаря: неможливим стало визначення порожнього шляху "
+#~ "до файла"
+
+#~ msgid ""
+#~ "DAV configuration: dialog allows seeing the account password when editing"
+#~ msgstr ""
+#~ "Налаштування DAV: у вікні уможливлено перегляд пароля до облікового "
+#~ "запису при редагуванні"
+
+#~ msgid "DAV configuration: wizard shows icons for the various providers"
+#~ msgstr ""
+#~ "Налаштування DAV: реалізовано показ піктограм для різних надавачів даних "
+#~ "у майстрі"
+
+#~ msgid "DAV configuration: wizard updated list of providers"
+#~ msgstr "Налаштування DAV: оновлено список надавачів даних у майстрі"
+
+#~ msgid ""
+#~ "Semantics are changed from a \"working schedule\" concept to a \"week "
+#~ "schedule\" concept to accommodate non-working users"
+#~ msgstr ""
+#~ "Змінено семантику з концепції «робочого розкладу» на «розклад тижня» для "
+#~ "задоволення потреб користувачів поза робочим часом"
+
+#~ msgid ""
+#~ "Initial \"New Event\" start times are consistent across all the views"
+#~ msgstr ""
+#~ "Початкові часи початку «Нової події» у новій версії є узгодженими за "
+#~ "усіма панелями перегляду"
+
+#~ msgid "Improved default event calendar handling"
+#~ msgstr "Удосконалено обробку типового календаря подій"
+
+#~ msgid ""
+#~ "Incidences with a long excluded dates list no longer create huge tooltips"
+#~ msgstr ""
+#~ "Програма більше не створюватиме величезних панелей підказок для зустрічей "
+#~ "із довгими списками виключених дат"
+
+#~ msgid "Fixed the organizer email address for incidences with attendees"
+#~ msgstr ""
+#~ "Виправлено адресу електронної пошти організатора для зустрічі із "
+#~ "учасниками"
+
+#~ msgid ""
+#~ "Agenda view: events without a duration are displayed as 30 long (rather "
+#~ "than 15 minutes long)"
+#~ msgstr ""
+#~ "Панель порядку денного: записи подій без тривалості буде показано із "
+#~ "тривалістю 30 (а не 15 хвилин)"
+
+#~ msgid ""
+#~ "Incidence editor: the tags are sorted alphabetically in the tags editor"
+#~ msgstr "Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою"
+
+#~ msgid "Fixed reminder toggling from menus"
+#~ msgstr "Виправлено перемикання нагадування з меню"
+
+#~ msgid "Agenda view: improved timelabel vertical alignment with grid"
+#~ msgstr ""
+#~ "Панель порядку денного: удосконалено вертикальне вирівнювання мітки часу "
+#~ "за ґраткою"
 
 #~ msgctxt "the to-do is due"
 #~ msgid "due"

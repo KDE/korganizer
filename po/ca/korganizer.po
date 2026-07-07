@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-06 00:46+0000\n"
-"PO-Revision-Date: 2026-06-30 09:54+0200\n"
+"POT-Creation-Date: 2026-07-07 00:44+0000\n"
+"PO-Revision-Date: 2026-07-06 09:42+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -1770,7 +1770,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Ha fallat en suprimir el calendari: <message>%1</message>"
 
-#: calendarview.cpp:267
+#: calendarview.cpp:266
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1781,7 +1781,7 @@ msgstr ""
 "para><para>Seleccioneu un esdeveniment, tasca pendent o entrada de diari per "
 "a veure'n els detalls.</para>"
 
-#: calendarview.cpp:271
+#: calendarview.cpp:270
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1791,19 +1791,19 @@ msgstr ""
 "Aquí veieu els detalls dels esdeveniments, entrades del diari o tasques "
 "pendents seleccionats a la vista principal del KOrganizer."
 
-#: calendarview.cpp:693
+#: calendarview.cpp:695
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Tasca pendent finalitzada: %1 (%2)"
 
-#: calendarview.cpp:702
+#: calendarview.cpp:704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "Diari de %1"
 
-#: calendarview.cpp:751
+#: calendarview.cpp:753
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1813,100 +1813,100 @@ msgstr ""
 "L'element <resource>%1</resource> s'ha filtrat amb les regles de filtratge "
 "actuals, per tant, s'ocultarà i no apareixerà a la vista."
 
-#: calendarview.cpp:820
+#: calendarview.cpp:822
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Realment voleu eliminar permanentment l'element «%1»?"
 
-#: calendarview.cpp:821
+#: calendarview.cpp:823
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Suprimeixo l'element?"
 
-#: calendarview.cpp:896
+#: calendarview.cpp:898
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
 "Ha fallat l'enganxat: no s'ha pogut determinar una data de destinació vàlida."
 
-#: calendarview.cpp:1314
+#: calendarview.cpp:1316
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Fes independents les subtasques pendents"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1370
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Commuta el recordatori"
 
-#: calendarview.cpp:1373
+#: calendarview.cpp:1375
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "El recordatori de <message>%1</message> està activat"
 
-#: calendarview.cpp:1375
+#: calendarview.cpp:1377
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "El recordatori de <message>%1</message> està desactivat"
 
-#: calendarview.cpp:1378
+#: calendarview.cpp:1380
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "Ha fallat la commutació del recordatori de <message>%1</message>"
 
-#: calendarview.cpp:1409 calendarview.cpp:1467
+#: calendarview.cpp:1411 calendarview.cpp:1469
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Commuta les tasques pendents finalitzades"
 
-#: calendarview.cpp:1413
+#: calendarview.cpp:1415
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "La tasca pendent <message>%1</message> s'ha completat al %2 per cent"
 
-#: calendarview.cpp:1416
+#: calendarview.cpp:1418
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr ""
 "Ha fallat en canviar la compleció de la tasca pendent <message>%1</message>"
 
-#: calendarview.cpp:1519
+#: calendarview.cpp:1521
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "«%1» s'ha copiat correctament a %2."
 
-#: calendarview.cpp:1520
+#: calendarview.cpp:1522
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "S'ha copiat correctament"
 
-#: calendarview.cpp:1524
+#: calendarview.cpp:1526
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "No s'ha pogut copiar l'element «%1» a %2."
 
-#: calendarview.cpp:1525 calendarview.cpp:2501
+#: calendarview.cpp:1527 calendarview.cpp:2502
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "La còpia ha fallat"
 
 # skip-rule: punctuation-period-no
-#: calendarview.cpp:1584
+#: calendarview.cpp:1586
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1916,51 +1916,51 @@ msgstr ""
 "No s'ha pogut eliminar l'element «%1» del calendari original. No obstant "
 "això, s'ha posat una còpia d'aquest element en %2."
 
-#: calendarview.cpp:1588 calendarview.cpp:1604 calendarview.cpp:2536
+#: calendarview.cpp:1590 calendarview.cpp:1606 calendarview.cpp:2537
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Ha fallat l'acció de moure"
 
-#: calendarview.cpp:1593
+#: calendarview.cpp:1595
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "«%1» s'ha mogut correctament des de %2 a %3."
 
-#: calendarview.cpp:1594
+#: calendarview.cpp:1596
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "S'ha mogut correctament"
 
-#: calendarview.cpp:1600
+#: calendarview.cpp:1602
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "No s'ha pogut afegir l'element «%1» en %2. Aquest element no s'ha mogut."
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1641
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Voleu dissociar l'ocurrència en %1 de la repetició?"
 
-#: calendarview.cpp:1643 calendarview.cpp:1656 calendarview.cpp:2317
-#: calendarview.cpp:2376 calendarview.cpp:2406
+#: calendarview.cpp:1645 calendarview.cpp:1658 calendarview.cpp:2318
+#: calendarview.cpp:2377 calendarview.cpp:2407
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmació del KOrganizer"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1646
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Dissocia"
 
-#: calendarview.cpp:1651
+#: calendarview.cpp:1653
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1970,79 +1970,79 @@ msgstr ""
 "Voleu dissociar l'ocurrència en %1 de la repetició o també dissociar les "
 "repeticions futures?"
 
-#: calendarview.cpp:1657
+#: calendarview.cpp:1659
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Dissocia n&omés aquesta"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1660
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Dissocia t&ambé les futures"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1678
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Dissocia les ocurrències futures"
 
-#: calendarview.cpp:1678
+#: calendarview.cpp:1680
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Dissocia l'ocurrència"
 
-#: calendarview.cpp:1685
+#: calendarview.cpp:1687
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Ha fallat la dissociació de les ocurrències futures."
 
-#: calendarview.cpp:1685 calendarview.cpp:1687
+#: calendarview.cpp:1687 calendarview.cpp:1689
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "La dissociació ha fallat"
 
-#: calendarview.cpp:1687
+#: calendarview.cpp:1689
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Ha fallat la dissociació de l'ocurrència."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1832
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1851
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Exporta el calendari a un fitxer"
 
-#: calendarview.cpp:1863
+#: calendarview.cpp:1864
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Voleu sobreescriure <filename>%1</filename>?"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1865
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Exportació d'un calendari"
 
-#: calendarview.cpp:1878
+#: calendarview.cpp:1879
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Motiu desconegut"
 
-#: calendarview.cpp:1880
+#: calendarview.cpp:1881
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2051,13 +2051,13 @@ msgstr ""
 "No s'ha pogut escriure el fitxer d'iCalendar <filename>%1</filename>: "
 "<message>%2</message>"
 
-#: calendarview.cpp:1989 calendarview.cpp:2034
+#: calendarview.cpp:1990 calendarview.cpp:2035
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Cap filtre"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2313
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2069,19 +2069,19 @@ msgstr ""
 "aquest element i fer independents les seves subtasques pendents o suprimir "
 "la tasca pendent amb totes les seves subtasques pendents?"
 
-#: calendarview.cpp:2318
+#: calendarview.cpp:2319
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Suprimeix només aquesta"
 
-#: calendarview.cpp:2319 calendarview.cpp:2377
+#: calendarview.cpp:2320 calendarview.cpp:2378
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Suprimeix-ho tot"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2352
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2091,13 +2091,13 @@ msgstr ""
 "L'element <resource>%1</resource> està marcat com a només lectura i no es "
 "pot suprimir, probablement pertany a un calendari de només lectura."
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2355
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "No és possible eliminar-lo"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2374
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2107,13 +2107,13 @@ msgstr ""
 "L'element de calendari <resource>%1</resource> es repeteix en múltiples "
 "dates. Realment voleu suprimir-lo amb totes les seves repeticions?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2385
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Suprimeix també les &futures"
 
-#: calendarview.cpp:2388
+#: calendarview.cpp:2389
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2125,7 +2125,7 @@ msgstr ""
 "dates. Voleu suprimir només l'ocurrència actual el %2, també les repeticions "
 "futures, o totes les seves repeticions?"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2396
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2136,25 +2136,25 @@ msgstr ""
 "dates. Voleu suprimir només l'ocurrència actual el %2 o totes les seves "
 "repeticions?"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2408
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Suprimeix l'&actual"
 
-#: calendarview.cpp:2409
+#: calendarview.cpp:2410
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Suprimeix-les &totes"
 
-#: calendarview.cpp:2440 calendarview.cpp:2447
+#: calendarview.cpp:2441 calendarview.cpp:2448
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Suprimeix «%1»"
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2480
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2163,50 +2163,50 @@ msgstr ""
 "Tots els calendaris al gestor de calendaris estan sense marcar. No s'ha "
 "purgat cap tasca pendent."
 
-#: calendarview.cpp:2484 calendarview.cpp:2766
+#: calendarview.cpp:2485 calendarview.cpp:2767
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "No hi ha tasques pendents finalitzades per a purgar."
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2490
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr ""
 "Suprimeixo totes les tasques pendents finalitzades dels calendaris marcats?"
 
-#: calendarview.cpp:2490
+#: calendarview.cpp:2491
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Purga les tasques pendents"
 
-#: calendarview.cpp:2491
+#: calendarview.cpp:2492
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Purga"
 
-#: calendarview.cpp:2501
+#: calendarview.cpp:2502
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "No s'ha pogut copiar l'element <resource>%1</resource>."
 
-#: calendarview.cpp:2536
+#: calendarview.cpp:2537
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "No s'ha pogut moure l'element <resource>%1</resource>."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2759
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "S'han purgat zero tasques pendents finalitzades.<nl/>"
 
-#: calendarview.cpp:2760 calendarview.cpp:2771
+#: calendarview.cpp:2761 calendarview.cpp:2772
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2219,7 +2219,7 @@ msgstr[1] ""
 "S'han ignorat %1 tasques pendents perquè tenia fills incomplets o de només "
 "lectura."
 
-#: calendarview.cpp:2764 calendarview.cpp:2769
+#: calendarview.cpp:2765 calendarview.cpp:2770
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2227,7 +2227,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "S'ha purgat %1 tasca pendent finalitzada."
 msgstr[1] "S'han purgat %1 tasques pendents finalitzades."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2777
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2235,7 +2235,7 @@ msgstr ""
 "S'ha produït un error mentre es purgaven les tasques pendents finalitzades: "
 "<message>%1</message>"
 
-#: calendarview.cpp:2837
+#: calendarview.cpp:2838
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2247,7 +2247,7 @@ msgstr ""
 "<para>Per a veure la incidència creada recentment, activeu el seu calendari "
 "al gestor de calendaris.</para>"
 
-#: calendarview.cpp:2841
+#: calendarview.cpp:2842
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -3035,12 +3035,10 @@ msgstr[0] "1 min"
 msgstr[1] "%1 min"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
-msgstr "en curs "
+msgstr "en curs"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:218
 #, kde-format
@@ -3049,8 +3047,8 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "finalitzat fa 1 h"
+msgstr[1] "finalitzat fa %1 h"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3059,8 +3057,8 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "finalitzat fa 1 m"
+msgstr[1] "finalitzat fa %1 m"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3747,23 +3745,23 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:78 korganizer_part.cpp:61 korganizer_part.cpp:72
+#: korganizer.cpp:81 korganizer_part.cpp:60 korganizer_part.cpp:76
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:272
+#: korganizer.cpp:275
 #, kde-format
 msgid "New Calendar"
 msgstr "Calendari nou"
 
-#: korganizer.cpp:276
+#: korganizer.cpp:279
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "només de lectura"
 
-#: korganizer.cpp:279
+#: korganizer.cpp:282
 #, kde-format
 msgid "Calendar"
 msgstr "Calendari"
@@ -6637,394 +6635,6 @@ msgstr "Títol"
 msgid "Selected Calendars"
 msgstr "Calendaris seleccionats"
 
-#: whatsnew/whatsnewtranslations.cpp:18
-msgid ""
-"A default To-do calendar can be specified to make creating new to-dos faster "
-"and easier with less chance of filing them into the wrong folder. Setting a "
-"default Event calendar has been supported for a long time.  See the Calendar "
-"Manager context menu \"Set as Default Todo Calendar\""
-msgstr ""
-"Es pot especificar un calendari de tasques pendents predeterminat per a fer "
-"que la creació de tasques pendents noves sigui més ràpida i fàcil amb menys "
-"possibilitats d'arxivar-les a la carpeta incorrecta. L'establiment d'un "
-"calendari d'esdeveniments predeterminat s'ha admès durant molt de temps.  "
-"Vegeu el menú contextual del gestor de calendaris «Estableix com a carpeta "
-"predeterminada de tasques pendents»"
-
-#: whatsnew/whatsnewtranslations.cpp:20
-msgid ""
-"Agenda view: optionally draw bolder/fatter horizontal grid lines every two "
-"hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
-"for the even hours\" option in the View->Agenda View tab"
-msgstr ""
-"Vista d'agenda: opcionalment mostra línies de quadrícula horitzontals en "
-"negreta/més gruixudes cada dues hores. Per a activar aquest comportament, "
-"marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a "
-"les hores parells» a la pestanya Visualitza->Vista d'agenda"
-
-#: whatsnew/whatsnewtranslations.cpp:22
-msgid ""
-"It is now possible to hide holidays that belong to specific categories, for "
-"example to hide religious holidays. See the Categories combobox in the "
-"Holidays section of the Time&Date->Regional tab"
-msgstr ""
-"Ara és possible ocultar els dies festius que pertanyen a categories "
-"específiques, per exemple, ocultar festes religioses. Vegeu el quadre "
-"combinat Categories a la secció Dies festius de la pestanya Data i hora -> "
-"Regional"
-
-#: whatsnew/whatsnewtranslations.cpp:24
-msgid ""
-"Month view: for the sake of consistency, holidays that land on a workday are "
-"no longer hidden"
-msgstr ""
-"Vista mensual: en nom de la coherència, els festius que cauen en una jornada "
-"laboral ja no s'oculten"
-
-#: whatsnew/whatsnewtranslations.cpp:25
-msgid ""
-"Month view: An option was added to allow hiding holidays. To enable this "
-"behavior, uncheck the \"Display holidays in the month view\" option in the "
-"Views->Month View tab"
-msgstr ""
-"Vista mensual: s'ha afegit una opció per a permetre ocultar els dies "
-"festius. Per a activar aquest comportament, desmarqueu l'opció «Mostra els "
-"festius a la vista mensual» a la pestanya Vistes->Vista mensual"
-
-#: whatsnew/whatsnewtranslations.cpp:27
-msgid ""
-"Month view: An option was added to allow using the custom holiday color as "
-"the date box background color if at least one holiday lands on that date. To "
-"enable this behavior, check the \"Use the Holiday background color when a "
-"holiday lands on the date\" option in the Views->Month View tab"
-msgstr ""
-"Vista mensual: s'ha afegit una opció per a permetre l'ús del color "
-"personalitzat de festiu com a color de fons del quadre de dates si almenys "
-"un dels festius cau en aquesta data. Per a activar aquest comportament, "
-"marqueu l'opció «Usa el color de fons de festius quan un festiu caigui en la "
-"data» a la pestanya Vistes->Vista mensual"
-
-#: whatsnew/whatsnewtranslations.cpp:30
-msgid ""
-"Month view: An option was added to show start-time and end-times. Previously "
-"only showing the start-time was supported. To enable this option, check the "
-"\"Show the start-time and the end-time in month view items\" option in the "
-"View->Month View tab"
-msgstr ""
-"Vista mensual: s'ha afegit una opció per a mostrar l'hora d'inici i l'hora "
-"final. Anteriorment només s'admetia mostrar l'hora d'inici. Per a activar "
-"aquesta opció, marqueu l'opció «Mostra l'hora d'inici i l'hora final en els "
-"elements de la vista mensual» a la pestanya Visualitza->Vista mensual"
-
-#: whatsnew/whatsnewtranslations.cpp:32
-msgid "Agenda view: underline today's column header date"
-msgstr ""
-"Vista d'agenda: subratlla la data d'avui a la capçalera de la columna de "
-"dates"
-
-#: whatsnew/whatsnewtranslations.cpp:33
-msgid ""
-"Agenda view: optionally show the incidence locations inside the agenda "
-"items. To enable this behavior, check the \"Show incidence locations in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"Vista d'agenda: opcionalment mostra les ubicacions d'incidència dins dels "
-"elements d'agenda. Per a activar aquest comportament, marqueu l'opció "
-"«Mostra les ubicacions de les incidències als elements de la vista d'agenda» "
-"a la pestanya Visualitza->Vista d'agenda"
-
-#: whatsnew/whatsnewtranslations.cpp:35
-msgid ""
-"Options for setting default access classifications (Public, Confidential or "
-"Private) when creating new Events, To-dos and Journals have been added.  "
-"Select your preferences in the \"General->Personal Default Access "
-"Classification\" comboboxes."
-msgstr ""
-"S'han afegit opcions per establir classificacions d'accés predeterminades "
-"(Públic, Confidencial o Privat) en crear esdeveniments, tasques pendents o "
-"diaris nous.  Seleccioneu les vostres preferències en els quadres combinats "
-"«General->Classificació d'accés predeterminada personal»."
-
-#: whatsnew/whatsnewtranslations.cpp:45
-msgid ""
-"Reminders are enabled by default for all new events and to-dos. To disable "
-"this behavior, uncheck the Enable reminders options in the settings "
-"Time&Date->Default Values tab"
-msgstr ""
-"Els recordatoris estan activats de manera predeterminada per a tots els "
-"esdeveniments i tasques pendents noves. Per a desactivar aquest "
-"comportament, desmarqueu les opcions Habilita els recordatoris a la pestanya "
-"de configuració Data i hora->Valors predeterminats"
-
-#: whatsnew/whatsnewtranslations.cpp:47
-msgid ""
-"Month view: no longer display the month year header to save vertical space "
-"and remove redundancy"
-msgstr ""
-"Vista mensual: ja no mostra la capçalera de mes any per a estalviar espai "
-"vertical i eliminar redundància"
-
-#: whatsnew/whatsnewtranslations.cpp:48
-msgid ""
-"Month view: use a slightly different color for drawing the day headers for "
-"days outside of the currently selected month"
-msgstr ""
-"Vista mensual: usa un color lleugerament diferent per a dibuixar les "
-"capçaleres dels dies fora del mes seleccionat"
-
-#: whatsnew/whatsnewtranslations.cpp:49
-msgid ""
-"Month view: the navigation controls on the lower right side are removed in "
-"favor of the improved application navigator bar"
-msgstr ""
-"Vista mensual: s'eliminen els controls de navegació a favor de la barra del "
-"navegador millorada de l'aplicació"
-
-#: whatsnew/whatsnewtranslations.cpp:50
-msgid ""
-"Month view: the background color for today's date cell can be changed. To "
-"configure the color,  set the \"Month view today background color\" in the "
-"Colors and Fonts settings"
-msgstr ""
-"Vista mensual: es pot canviar el color de fons de la cel·la de la data "
-"d'avui. Per a configurar el color, establiu el «Color de fons d'avui de la "
-"vista d'avui» a la configuració de colors i lletres"
-
-#: whatsnew/whatsnewtranslations.cpp:52
-msgid ""
-"Navigator bar: improved by adding week scrolling and showing/hiding the "
-"sidebar on a per-view basis"
-msgstr ""
-"Barra del navegador: s'ha millorat afegint el desplaçament setmanal i "
-"mostrant/ocultant la barra lateral en funció de la vista"
-
-#: whatsnew/whatsnewtranslations.cpp:53
-msgid "Navigator bar: added a button to scroll the view to the current date"
-msgstr ""
-"Barra de navegació: s'ha afegit un botó per a desplaçar la vista a la data "
-"actual"
-
-#: whatsnew/whatsnewtranslations.cpp:54
-msgid ""
-"Agenda view: events with short durations are displayed with their starting "
-"time in addition to their summary"
-msgstr ""
-"Vista d'agenda: els esdeveniments amb una durada curta es mostren amb la "
-"seva hora d'inici a més del resum"
-
-#: whatsnew/whatsnewtranslations.cpp:55
-msgid ""
-"Agenda view: optionally show the incidence descriptions inside the agenda "
-"items. To enable this behavior, check the \"Show incidence descriptions in "
-"agenda view items\" option in the View->Agenda View tab"
-msgstr ""
-"Vista d'agenda: opcionalment mostra les descripcions d'incidència dins dels "
-"elements d'agenda. Per a activar aquest comportament, marqueu l'opció "
-"«Mostra les descripcions de les incidències als elements de la vista "
-"d'agenda» a la pestanya Visualitza->Vista d'agenda"
-
-#: whatsnew/whatsnewtranslations.cpp:57
-msgid "Search: the search settings are saved/restored"
-msgstr "Cerca: la configuració de la cerca es desa/restaura"
-
-#: whatsnew/whatsnewtranslations.cpp:66
-msgid ""
-"Agenda view: added timelabels context menu to show/hide time labels for the "
-"system timezone on the right (or left) side as well"
-msgstr ""
-"Vista d'agenda: s'ha afegit el menú contextual de les etiquetes d'hora per a "
-"mostrar/ocultar les etiquetes d'hora per al fus horari del sistema a la part "
-"dreta (o esquerra)"
-
-#: whatsnew/whatsnewtranslations.cpp:67
-msgid "Incidence editor: detect and warn about creating incidences in the past"
-msgstr ""
-"Editor d'incidències: detecta i avisa de la creació d'incidències en el "
-"passat"
-
-#: whatsnew/whatsnewtranslations.cpp:68
-msgid "Incidence editor: add emoji support"
-msgstr "Editor d'incidències: afegeix la implementació d'emojis"
-
-#: whatsnew/whatsnewtranslations.cpp:77
-msgid "Add What's New menu"
-msgstr "Afegeix el menú «Què hi ha de nou»"
-
-#: whatsnew/whatsnewtranslations.cpp:78
-msgid "The current view is remembered"
-msgstr "Es recordarà la vista actual"
-
-#: whatsnew/whatsnewtranslations.cpp:79
-msgid "Add a Date Picker dialog available on the Go menu"
-msgstr "Afegeix un diàleg selector de dates disponible al menú Ves"
-
-#: whatsnew/whatsnewtranslations.cpp:80
-msgid ""
-"Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
-"\"Week\" time ranges into the Agenda tool button"
-msgstr ""
-"Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies "
-"següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda"
-
-#: whatsnew/whatsnewtranslations.cpp:81
-msgid ""
-"Agenda view: added timelabels context menu option to toggle a 24-hour "
-"(military style) clock"
-msgstr ""
-"Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de temps "
-"per a commutar un rellotge de 24 hores (estil militar)"
-
-#: whatsnew/whatsnewtranslations.cpp:82
-msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr ""
-"Vista d'agenda: s'ha afegit el menú contextual per a crear un esdeveniment o "
-"tasca pendent nova"
-
-#: whatsnew/whatsnewtranslations.cpp:83
-msgid ""
-"To-do view: added context menu options for toggling completion and reminders"
-msgstr ""
-"Vista de les tasques pendents: s'han afegit opcions del menú contextual per "
-"a commutar la compleció i els recordatoris"
-
-#: whatsnew/whatsnewtranslations.cpp:84
-msgid "To-do view: save/restore fullview setting"
-msgstr "Vista de les tasques pendents: desa/restaura l'opció de vista completa"
-
-#: whatsnew/whatsnewtranslations.cpp:85
-msgid "To-do view: save/restore flatview setting"
-msgstr "Vista de les tasques pendents: desa/restaura l'opció de vista plana"
-
-#: whatsnew/whatsnewtranslations.cpp:86
-msgid ""
-"Date navigator: added an option in the Configure->Views settings for hiding "
-"the week numbers"
-msgstr ""
-"Navegador de dates: s'ha afegit una opció dins de la configuració de "
-"Configura->Vistes per ocultar els números de setmana"
-
-#: whatsnew/whatsnewtranslations.cpp:87
-msgid ""
-"Date navigator: the \"Week numbers select a work week when in work week mode"
-"\" setting is true by default"
-msgstr ""
-"Navegador de dates: l'opció «Els números de setmana seleccionen una setmana "
-"feinera en el mode de setmana laboral» és certa de manera predeterminada"
-
-#: whatsnew/whatsnewtranslations.cpp:88
-msgid "Incidence editor: remember/restore the template manager geometry"
-msgstr ""
-"Editor d'incidències: recorda/restaura la geometria del gestor de plantilles"
-
-#: whatsnew/whatsnewtranslations.cpp:89
-msgid "Incidence editor: support drag-and-drop attachments"
-msgstr "Editor d'incidències: permet arrossegar i deixar anar adjunts"
-
-#: whatsnew/whatsnewtranslations.cpp:90
-msgid "The export calendar dialog remembers its last export folder location"
-msgstr ""
-"El diàleg d'exportació de calendari recorda la seva última ubicació de la "
-"carpeta d'exportació"
-
-#: whatsnew/whatsnewtranslations.cpp:91
-msgid "The import calendar dialog remembers its last import folder location"
-msgstr ""
-"El diàleg d'importació de calendari recorda la seva última ubicació de la "
-"carpeta d'importació"
-
-#: whatsnew/whatsnewtranslations.cpp:92
-msgid "Get Hot New Stuff removed"
-msgstr "S'ha eliminat «Obtén les novetats candents»"
-
-#: whatsnew/whatsnewtranslations.cpp:93
-msgid "Add calendar file: remote calendars are always read-only"
-msgstr ""
-"Afegir un fitxer de calendari: els calendaris remots sempre són de només "
-"lectura"
-
-#: whatsnew/whatsnewtranslations.cpp:94
-msgid "Add calendar file: will not permit an empty file path"
-msgstr "Afegir un fitxer de calendari: no es permet un camí buit de fitxer"
-
-#: whatsnew/whatsnewtranslations.cpp:95
-msgid ""
-"DAV configuration: dialog allows seeing the account password when editing"
-msgstr ""
-"Configuració DAV: el diàleg permet veure la contrasenya del compte en editar"
-
-#: whatsnew/whatsnewtranslations.cpp:96
-msgid "DAV configuration: wizard shows icons for the various providers"
-msgstr "Configuració DAV: l'assistent mostra icones de diversos proveïdors"
-
-#: whatsnew/whatsnewtranslations.cpp:97
-msgid "DAV configuration: wizard updated list of providers"
-msgstr "Configuració DAV: llista actualitza de proveïdors de l'assistent"
-
-#: whatsnew/whatsnewtranslations.cpp:115
-#, kde-format
-msgid ""
-"Semantics are changed from a \"working schedule\" concept to a \"week "
-"schedule\" concept to accommodate non-working users"
-msgstr ""
-"La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari "
-"setmanal» per admetre els usuaris no treballadors"
-
-#: whatsnew/whatsnewtranslations.cpp:116
-#, kde-format
-msgid "Initial \"New Event\" start times are consistent across all the views"
-msgstr ""
-"Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les "
-"vistes"
-
-#: whatsnew/whatsnewtranslations.cpp:117
-#, kde-format
-msgid "Improved default event calendar handling"
-msgstr "Millora de la gestió del calendari predeterminat d'esdeveniments"
-
-#: whatsnew/whatsnewtranslations.cpp:119
-#, kde-format
-msgid ""
-"Incidences with a long excluded dates list no longer create huge tooltips"
-msgstr ""
-"Les incidències amb una llista llarga de dates excloses ja no creen consells "
-"enormes"
-
-#: whatsnew/whatsnewtranslations.cpp:120
-#, kde-format
-msgid "Fixed the organizer email address for incidences with attendees"
-msgstr ""
-"S'ha corregit l'adreça de correu electrònic de l'organitzador per a les "
-"incidències amb els assistents"
-
-#: whatsnew/whatsnewtranslations.cpp:121
-#, kde-format
-msgid ""
-"Agenda view: events without a duration are displayed as 30 long (rather than "
-"15 minutes long)"
-msgstr ""
-"Vista d'agenda: els esdeveniments sense durada es mostren amb una durada de "
-"30 minuts (en lloc de 15 minuts)"
-
-#. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:135
-#, kde-format
-msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
-msgstr ""
-"Editor d'incidències: les etiquetes s'ordenen alfabèticament a l'editor "
-"d'etiquetes"
-
-#: whatsnew/whatsnewtranslations.cpp:162
-#, kde-format
-msgid "Fixed reminder toggling from menus"
-msgstr "S'ha corregit el canvi de recordatoris des dels menús"
-
-#: whatsnew/whatsnewtranslations.cpp:163
-#, kde-format
-msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr ""
-"Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb "
-"la quadrícula"
-
 #: widgets/kdatenavigator.cpp:176
 #, kde-format
 msgctxt "@info start/end week number of line in date picker"
@@ -7251,6 +6861,341 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid ""
+#~ "A default To-do calendar can be specified to make creating new to-dos "
+#~ "faster and easier with less chance of filing them into the wrong folder. "
+#~ "Setting a default Event calendar has been supported for a long time.  See "
+#~ "the Calendar Manager context menu \"Set as Default Todo Calendar\""
+#~ msgstr ""
+#~ "Es pot especificar un calendari de tasques pendents predeterminat per a "
+#~ "fer que la creació de tasques pendents noves sigui més ràpida i fàcil amb "
+#~ "menys possibilitats d'arxivar-les a la carpeta incorrecta. L'establiment "
+#~ "d'un calendari d'esdeveniments predeterminat s'ha admès durant molt de "
+#~ "temps.  Vegeu el menú contextual del gestor de calendaris «Estableix com "
+#~ "a carpeta predeterminada de tasques pendents»"
+
+#~ msgid ""
+#~ "Agenda view: optionally draw bolder/fatter horizontal grid lines every "
+#~ "two hours. To enable this behaviour, check the \"Draw bold horizontal "
+#~ "grid lines for the even hours\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Vista d'agenda: opcionalment mostra línies de quadrícula horitzontals en "
+#~ "negreta/més gruixudes cada dues hores. Per a activar aquest comportament, "
+#~ "marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per "
+#~ "a les hores parells» a la pestanya Visualitza->Vista d'agenda"
+
+#~ msgid ""
+#~ "It is now possible to hide holidays that belong to specific categories, "
+#~ "for example to hide religious holidays. See the Categories combobox in "
+#~ "the Holidays section of the Time&Date->Regional tab"
+#~ msgstr ""
+#~ "Ara és possible ocultar els dies festius que pertanyen a categories "
+#~ "específiques, per exemple, ocultar festes religioses. Vegeu el quadre "
+#~ "combinat Categories a la secció Dies festius de la pestanya Data i hora -"
+#~ "> Regional"
+
+#~ msgid ""
+#~ "Month view: for the sake of consistency, holidays that land on a workday "
+#~ "are no longer hidden"
+#~ msgstr ""
+#~ "Vista mensual: en nom de la coherència, els festius que cauen en una "
+#~ "jornada laboral ja no s'oculten"
+
+#~ msgid ""
+#~ "Month view: An option was added to allow hiding holidays. To enable this "
+#~ "behavior, uncheck the \"Display holidays in the month view\" option in "
+#~ "the Views->Month View tab"
+#~ msgstr ""
+#~ "Vista mensual: s'ha afegit una opció per a permetre ocultar els dies "
+#~ "festius. Per a activar aquest comportament, desmarqueu l'opció «Mostra "
+#~ "els festius a la vista mensual» a la pestanya Vistes->Vista mensual"
+
+#~ msgid ""
+#~ "Month view: An option was added to allow using the custom holiday color "
+#~ "as the date box background color if at least one holiday lands on that "
+#~ "date. To enable this behavior, check the \"Use the Holiday background "
+#~ "color when a holiday lands on the date\" option in the Views->Month View "
+#~ "tab"
+#~ msgstr ""
+#~ "Vista mensual: s'ha afegit una opció per a permetre l'ús del color "
+#~ "personalitzat de festiu com a color de fons del quadre de dates si "
+#~ "almenys un dels festius cau en aquesta data. Per a activar aquest "
+#~ "comportament, marqueu l'opció «Usa el color de fons de festius quan un "
+#~ "festiu caigui en la data» a la pestanya Vistes->Vista mensual"
+
+#~ msgid ""
+#~ "Month view: An option was added to show start-time and end-times. "
+#~ "Previously only showing the start-time was supported. To enable this "
+#~ "option, check the \"Show the start-time and the end-time in month view "
+#~ "items\" option in the View->Month View tab"
+#~ msgstr ""
+#~ "Vista mensual: s'ha afegit una opció per a mostrar l'hora d'inici i "
+#~ "l'hora final. Anteriorment només s'admetia mostrar l'hora d'inici. Per a "
+#~ "activar aquesta opció, marqueu l'opció «Mostra l'hora d'inici i l'hora "
+#~ "final en els elements de la vista mensual» a la pestanya Visualitza-"
+#~ ">Vista mensual"
+
+#~ msgid "Agenda view: underline today's column header date"
+#~ msgstr ""
+#~ "Vista d'agenda: subratlla la data d'avui a la capçalera de la columna de "
+#~ "dates"
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence locations inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence locations in "
+#~ "agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Vista d'agenda: opcionalment mostra les ubicacions d'incidència dins dels "
+#~ "elements d'agenda. Per a activar aquest comportament, marqueu l'opció "
+#~ "«Mostra les ubicacions de les incidències als elements de la vista "
+#~ "d'agenda» a la pestanya Visualitza->Vista d'agenda"
+
+#~ msgid ""
+#~ "Options for setting default access classifications (Public, Confidential "
+#~ "or Private) when creating new Events, To-dos and Journals have been "
+#~ "added.  Select your preferences in the \"General->Personal Default Access "
+#~ "Classification\" comboboxes."
+#~ msgstr ""
+#~ "S'han afegit opcions per establir classificacions d'accés predeterminades "
+#~ "(Públic, Confidencial o Privat) en crear esdeveniments, tasques pendents "
+#~ "o diaris nous.  Seleccioneu les vostres preferències en els quadres "
+#~ "combinats «General->Classificació d'accés predeterminada personal»."
+
+#~ msgid ""
+#~ "Reminders are enabled by default for all new events and to-dos. To "
+#~ "disable this behavior, uncheck the Enable reminders options in the "
+#~ "settings Time&Date->Default Values tab"
+#~ msgstr ""
+#~ "Els recordatoris estan activats de manera predeterminada per a tots els "
+#~ "esdeveniments i tasques pendents noves. Per a desactivar aquest "
+#~ "comportament, desmarqueu les opcions Habilita els recordatoris a la "
+#~ "pestanya de configuració Data i hora->Valors predeterminats"
+
+#~ msgid ""
+#~ "Month view: no longer display the month year header to save vertical "
+#~ "space and remove redundancy"
+#~ msgstr ""
+#~ "Vista mensual: ja no mostra la capçalera de mes any per a estalviar espai "
+#~ "vertical i eliminar redundància"
+
+#~ msgid ""
+#~ "Month view: use a slightly different color for drawing the day headers "
+#~ "for days outside of the currently selected month"
+#~ msgstr ""
+#~ "Vista mensual: usa un color lleugerament diferent per a dibuixar les "
+#~ "capçaleres dels dies fora del mes seleccionat"
+
+#~ msgid ""
+#~ "Month view: the navigation controls on the lower right side are removed "
+#~ "in favor of the improved application navigator bar"
+#~ msgstr ""
+#~ "Vista mensual: s'eliminen els controls de navegació a favor de la barra "
+#~ "del navegador millorada de l'aplicació"
+
+#~ msgid ""
+#~ "Month view: the background color for today's date cell can be changed. To "
+#~ "configure the color,  set the \"Month view today background color\" in "
+#~ "the Colors and Fonts settings"
+#~ msgstr ""
+#~ "Vista mensual: es pot canviar el color de fons de la cel·la de la data "
+#~ "d'avui. Per a configurar el color, establiu el «Color de fons d'avui de "
+#~ "la vista d'avui» a la configuració de colors i lletres"
+
+#~ msgid ""
+#~ "Navigator bar: improved by adding week scrolling and showing/hiding the "
+#~ "sidebar on a per-view basis"
+#~ msgstr ""
+#~ "Barra del navegador: s'ha millorat afegint el desplaçament setmanal i "
+#~ "mostrant/ocultant la barra lateral en funció de la vista"
+
+#~ msgid "Navigator bar: added a button to scroll the view to the current date"
+#~ msgstr ""
+#~ "Barra de navegació: s'ha afegit un botó per a desplaçar la vista a la "
+#~ "data actual"
+
+#~ msgid ""
+#~ "Agenda view: events with short durations are displayed with their "
+#~ "starting time in addition to their summary"
+#~ msgstr ""
+#~ "Vista d'agenda: els esdeveniments amb una durada curta es mostren amb la "
+#~ "seva hora d'inici a més del resum"
+
+#~ msgid ""
+#~ "Agenda view: optionally show the incidence descriptions inside the agenda "
+#~ "items. To enable this behavior, check the \"Show incidence descriptions "
+#~ "in agenda view items\" option in the View->Agenda View tab"
+#~ msgstr ""
+#~ "Vista d'agenda: opcionalment mostra les descripcions d'incidència dins "
+#~ "dels elements d'agenda. Per a activar aquest comportament, marqueu "
+#~ "l'opció «Mostra les descripcions de les incidències als elements de la "
+#~ "vista d'agenda» a la pestanya Visualitza->Vista d'agenda"
+
+#~ msgid "Search: the search settings are saved/restored"
+#~ msgstr "Cerca: la configuració de la cerca es desa/restaura"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu to show/hide time labels for "
+#~ "the system timezone on the right (or left) side as well"
+#~ msgstr ""
+#~ "Vista d'agenda: s'ha afegit el menú contextual de les etiquetes d'hora "
+#~ "per a mostrar/ocultar les etiquetes d'hora per al fus horari del sistema "
+#~ "a la part dreta (o esquerra)"
+
+#~ msgid ""
+#~ "Incidence editor: detect and warn about creating incidences in the past"
+#~ msgstr ""
+#~ "Editor d'incidències: detecta i avisa de la creació d'incidències en el "
+#~ "passat"
+
+#~ msgid "Incidence editor: add emoji support"
+#~ msgstr "Editor d'incidències: afegeix la implementació d'emojis"
+
+#~ msgid "Add What's New menu"
+#~ msgstr "Afegeix el menú «Què hi ha de nou»"
+
+#~ msgid "The current view is remembered"
+#~ msgstr "Es recordarà la vista actual"
+
+#~ msgid "Add a Date Picker dialog available on the Go menu"
+#~ msgstr "Afegeix un diàleg selector de dates disponible al menú Ves"
+
+#~ msgid ""
+#~ "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule"
+#~ "\", \"Week\" time ranges into the Agenda tool button"
+#~ msgstr ""
+#~ "Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies "
+#~ "següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda"
+
+#~ msgid ""
+#~ "Agenda view: added timelabels context menu option to toggle a 24-hour "
+#~ "(military style) clock"
+#~ msgstr ""
+#~ "Vista d'agenda: s'ha afegit l'opció de menú contextual d'etiquetes de "
+#~ "temps per a commutar un rellotge de 24 hores (estil militar)"
+
+#~ msgid "Agenda view: added context menu to create new Event or To-do"
+#~ msgstr ""
+#~ "Vista d'agenda: s'ha afegit el menú contextual per a crear un "
+#~ "esdeveniment o tasca pendent nova"
+
+#~ msgid ""
+#~ "To-do view: added context menu options for toggling completion and "
+#~ "reminders"
+#~ msgstr ""
+#~ "Vista de les tasques pendents: s'han afegit opcions del menú contextual "
+#~ "per a commutar la compleció i els recordatoris"
+
+#~ msgid "To-do view: save/restore fullview setting"
+#~ msgstr ""
+#~ "Vista de les tasques pendents: desa/restaura l'opció de vista completa"
+
+#~ msgid "To-do view: save/restore flatview setting"
+#~ msgstr "Vista de les tasques pendents: desa/restaura l'opció de vista plana"
+
+#~ msgid ""
+#~ "Date navigator: added an option in the Configure->Views settings for "
+#~ "hiding the week numbers"
+#~ msgstr ""
+#~ "Navegador de dates: s'ha afegit una opció dins de la configuració de "
+#~ "Configura->Vistes per ocultar els números de setmana"
+
+#~ msgid ""
+#~ "Date navigator: the \"Week numbers select a work week when in work week "
+#~ "mode\" setting is true by default"
+#~ msgstr ""
+#~ "Navegador de dates: l'opció «Els números de setmana seleccionen una "
+#~ "setmana feinera en el mode de setmana laboral» és certa de manera "
+#~ "predeterminada"
+
+#~ msgid "Incidence editor: remember/restore the template manager geometry"
+#~ msgstr ""
+#~ "Editor d'incidències: recorda/restaura la geometria del gestor de "
+#~ "plantilles"
+
+#~ msgid "Incidence editor: support drag-and-drop attachments"
+#~ msgstr "Editor d'incidències: permet arrossegar i deixar anar adjunts"
+
+#~ msgid "The export calendar dialog remembers its last export folder location"
+#~ msgstr ""
+#~ "El diàleg d'exportació de calendari recorda la seva última ubicació de la "
+#~ "carpeta d'exportació"
+
+#~ msgid "The import calendar dialog remembers its last import folder location"
+#~ msgstr ""
+#~ "El diàleg d'importació de calendari recorda la seva última ubicació de la "
+#~ "carpeta d'importació"
+
+#~ msgid "Get Hot New Stuff removed"
+#~ msgstr "S'ha eliminat «Obtén les novetats candents»"
+
+#~ msgid "Add calendar file: remote calendars are always read-only"
+#~ msgstr ""
+#~ "Afegir un fitxer de calendari: els calendaris remots sempre són de només "
+#~ "lectura"
+
+#~ msgid "Add calendar file: will not permit an empty file path"
+#~ msgstr "Afegir un fitxer de calendari: no es permet un camí buit de fitxer"
+
+#~ msgid ""
+#~ "DAV configuration: dialog allows seeing the account password when editing"
+#~ msgstr ""
+#~ "Configuració DAV: el diàleg permet veure la contrasenya del compte en "
+#~ "editar"
+
+#~ msgid "DAV configuration: wizard shows icons for the various providers"
+#~ msgstr "Configuració DAV: l'assistent mostra icones de diversos proveïdors"
+
+#~ msgid "DAV configuration: wizard updated list of providers"
+#~ msgstr "Configuració DAV: llista actualitza de proveïdors de l'assistent"
+
+#~ msgid ""
+#~ "Semantics are changed from a \"working schedule\" concept to a \"week "
+#~ "schedule\" concept to accommodate non-working users"
+#~ msgstr ""
+#~ "La semàntica es canvia del concepte d'«horari laboral» al concepte "
+#~ "d'«horari setmanal» per admetre els usuaris no treballadors"
+
+#~ msgid ""
+#~ "Initial \"New Event\" start times are consistent across all the views"
+#~ msgstr ""
+#~ "Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes "
+#~ "les vistes"
+
+#~ msgid "Improved default event calendar handling"
+#~ msgstr "Millora de la gestió del calendari predeterminat d'esdeveniments"
+
+#~ msgid ""
+#~ "Incidences with a long excluded dates list no longer create huge tooltips"
+#~ msgstr ""
+#~ "Les incidències amb una llista llarga de dates excloses ja no creen "
+#~ "consells enormes"
+
+#~ msgid "Fixed the organizer email address for incidences with attendees"
+#~ msgstr ""
+#~ "S'ha corregit l'adreça de correu electrònic de l'organitzador per a les "
+#~ "incidències amb els assistents"
+
+#~ msgid ""
+#~ "Agenda view: events without a duration are displayed as 30 long (rather "
+#~ "than 15 minutes long)"
+#~ msgstr ""
+#~ "Vista d'agenda: els esdeveniments sense durada es mostren amb una durada "
+#~ "de 30 minuts (en lloc de 15 minuts)"
+
+#~ msgid ""
+#~ "Incidence editor: the tags are sorted alphabetically in the tags editor"
+#~ msgstr ""
+#~ "Editor d'incidències: les etiquetes s'ordenen alfabèticament a l'editor "
+#~ "d'etiquetes"
+
+#~ msgid "Fixed reminder toggling from menus"
+#~ msgstr "S'ha corregit el canvi de recordatoris des dels menús"
+
+#~ msgid "Agenda view: improved timelabel vertical alignment with grid"
+#~ msgstr ""
+#~ "Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores "
+#~ "amb la quadrícula"
 
 #~ msgctxt "the to-do is due"
 #~ msgid "due"
