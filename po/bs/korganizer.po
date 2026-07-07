@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-05 00:45+0000\n"
+"POT-Creation-Date: 2026-07-07 02:39+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -3303,20 +3303,43 @@ msgstr[0] "%1 minuta"
 msgstr[1] "%1 minute"
 msgstr[2] "%1 minuta"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:497
-#, kde-format
-msgid "now"
-msgstr ""
+#: kontactplugin/korganizer/summaryeventinfo.cpp:212
+#, fuzzy, kde-format
+#| msgid "Hide &inactive to-dos"
+msgctxt "the event is currently in-progress"
+msgid "in-progress"
+msgstr "Sakrij završene zadatke"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:203
+#: kontactplugin/korganizer/summaryeventinfo.cpp:218
+#, kde-format
+msgctxt ""
+"use abbreviation for hour to keep the text short. the event ended at least 1 "
+"hour ago"
+msgid "ended 1 hr ago"
+msgid_plural "ended %1 hrs ago"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:224
+#, kde-format
+msgctxt ""
+"use abbreviation for min to keep the text short. the event ended a few "
+"minutes ago"
+msgid "ended 1 min ago"
+msgid_plural "ended %1 mins ago"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, fuzzy, kde-format
 #| msgid "1 day"
 #| msgid_plural "%1 days"
 msgid "all day"
 msgstr "%1 dan"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:243
+#: kontactplugin/korganizer/summaryeventinfo.cpp:272
 #, fuzzy, kde-format
 #| msgctxt "date from - to"
 #| msgid "%1 - %2"
@@ -3324,7 +3347,7 @@ msgctxt "Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:259
+#: kontactplugin/korganizer/summaryeventinfo.cpp:288
 #, fuzzy, kde-format
 #| msgid "Redo: %1"
 msgctxt "next occurrence"
@@ -3932,6 +3955,11 @@ msgstr "Danas"
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:497
+#, kde-format
+msgid "now"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:510
