@@ -481,6 +481,7 @@
           <li xml:lang="ru">Для ускорения и упрощения создания новых задач, а также для снижения вероятности их сохранения в неправильной папке, можно указать календарь задач по умолчанию. Возможность задания календаря событий по умолчанию поддерживалась и ранее. Используйте пункт контекстного меню списка календарей «Использовать как календарь задач по умолчанию».</li>
           <li xml:lang="sk">Možno určiť predvolený kalendár úloh, aby bolo vytváranie nových úloh rýchlejšie a jednoduchšie s menšou pravdepodobnosťou ich zaradenia do nesprávneho priečinka. Nastavenie predvoleného kalendára udalostí je podporované už dlho. Pozri kontextovú ponuku Správcu kalendárov \"Nastaviť ako predvolený kalendár úloh\"</li>
           <li xml:lang="sl">Določiti je mogoče privzeti koledar opravil, da je ustvarjanje novih opravil hitrejše in lažje ter da je manj možnosti, da bi jih shranili v napačno mapo, manj. Nastavitev privzetega koledarja dogodkov je podprta že dolgo časa. Glejte kontekstni meni Upravljalnika koledarjev \"Nastavi kot privzeti koledar opravil\".</li>
+          <li xml:lang="sv">En standardkalender med uppgifter kan anges för att göra det snabbare och enklare att skapa nya uppgifter, med mindre risk att de hamnar i fel katalog. Att ställa in en standardkalender för händelser har sedan länge varit möjligt. Se Kalenderhanterarens sammanhangsberoende meny \"Använd som standardkalender med uppgifter\".</li>
           <li xml:lang="tr">Yeni yapılacakların daha hızlı ve kolay oluşturulması ve yanlış klasöre kaydedilme olasılığının azaltılması için öntanımlı bir Yapılacaklar takvimi belirlenebilir. Öntanımlı bir etkinlik takvimi ayarlama özelliği uzun süredir desteklenmektedir. Takvim Yöneticisi sağ tık menüsündeki Öntanımlı Yapılacaklar Takvimi Olarak Ayarla” seçeneğine göz atın.</li>
           <li xml:lang="uk">Можна вказати типовий календар для завдань, щоб пришвидшити та спростити створення записів завдань, зменшивши ризик їх потрапляння до помилкової теки. Підтримку визначення типового календаря подій реалізовано вже доволі давно. Див. пункт контекстного меню керування календарями «Зробити типовим календарем записів Завдання».</li>
           <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the \"Draw bold horizontal grid lines for the even hours\" option in the View-&gt;Agenda View tab</li>
@@ -499,6 +500,7 @@
           <li xml:lang="ru">Представление «Повестка дня»: возможность рисовать более жирные горизонтальные линии сетки каждые два часа. Для включения этой возможности отметьте параметр «Рисовать жирные горизонтальные линии сетки для чётных часов» во вкладке «Вид» → «Представление повестки дня».</li>
           <li xml:lang="sk">Pohľad agendy: voliteľné vykreslenie tučnejších/hrubších vodorovných čiar mriežky každé dve hodiny. Toto správanie zapnete zaškrtnutím voľby \"Kresliť tučné vodorovné čiary mriežky pre párne hodiny\" na karte Zobrazenie-&gt;Pohľad agendy</li>
           <li xml:lang="sl">Pogled dnevnega reda: po želji lahko vsaki dve uri narišete krepkejše/debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, v zavihku Pogled-&gt; Pogled dnevnega reda izberite možnost \"Za sode ure nariši debelejše vodoravne mrežne črte\"</li>
+          <li xml:lang="sv">Agendavy: rita valfritt grövre/tjockare horisontella rutnätslinjer varannan timme. För att aktivera beteendet, markera alternativet \"Rita grova horisontella rutnätslinjer för jämna timmar\" under fliken Visa -&gt; Agendavy</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak her iki saatte bir daha kalın yatay kılavuz çizgileri çizilir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Çift saatler için kalın yatay kılavuz çizgileri çiz” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути цю можливість, поставте позначку навпроти пункту «Малювати жирні горизонтальні лінії сітки для парних годин» на вкладці «Перегляд-&gt;Перегляд порядку денного».</li>
           <li>It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in the Holidays section of the Time&gt;Regional tab</li>
@@ -517,6 +519,7 @@
           <li xml:lang="ru">Реализована возможность скрытия праздников, относящихся к определённым категориям, например, религиозных праздников. См. раскрывающийся список «Категории» в разделе «Праздники» на вкладке «Время&gt;Региональные».</li>
           <li xml:lang="sk">Teraz je možné skryť sviatky, ktoré patria do konkrétnych kategórií, napríklad skryť náboženské sviatky. Pozri rozbaľovací zoznam Kategórie v časti Sviatky na karte Čas&gt;Oblasť</li>
           <li xml:lang="sl">Zdaj je mogoče skriti praznike, ki spadajo v določene kategorije, na primer verske praznike. Glejte spustni seznam Kategorije v razdelku Prazniki na zavihku Čas in regionalno</li>
+          <li xml:lang="sv">Det är nu möjligt att dölja helgdagar som tillhör specifika kategorier, till exempel för att dölja religiösa helgdagar. Se kombinationsrutan Kategorier i avsnittet Helgdagar under fliken Tid och datum -&gt; Lokal</li>
           <li xml:lang="tr">Artık belirli kategorilere ait resmi tatilleri (örneğin dini bayramları) gizlemek olanaklıdır. Zaman → Bölgesel sekmesinin Tatiller bölümündeki Kategoriler açılır kutusuna göz atın.</li>
           <li xml:lang="uk">У новій версії можна приховувати свята, які належать до певних категорій, наприклад, приховати релігійні свята. Див. спадний список «Категорії» у розділі «Свята» на вкладці «Час і дата» -&gt; «Регіональні».</li>
           <li>Month view: for the sake of consistency, holidays that land on a workday are no longer hidden</li>
@@ -535,6 +538,7 @@
           <li xml:lang="ru">Представление «Месяц»: для единообразия праздники, выпадающие на рабочие дни, больше не скрываются</li>
           <li xml:lang="sk">Mesačný pohľad: kvôli konzistentnosti už sviatky, ktoré pripadnú na pracovný deň, nie sú skryté</li>
           <li xml:lang="sl">Mesečni pogled: zaradi doslednosti prazniki, ki padejo na delovni dan, niso več skriti</li>
+          <li xml:lang="sv">Månadsvy: för konsekvensens skull döljs inte längre helgdagar som infaller på en arbetsdag</li>
           <li xml:lang="tr">Ay görünümü: Tutarlılık sağlamak amacıyla, iş günlerine denk gelen resmi tatiller artık gizlenmez.</li>
           <li xml:lang="uk">Перегляд місяця: заради сумісності, свята, які припадають на робочий день, більше не буде приховано</li>
           <li>Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option in the Views-&gt;Month View tab</li>
@@ -553,6 +557,7 @@
           <li xml:lang="ru">Представление «Месяц»: добавлен параметр, позволяющий скрывать праздники. Чтобы включить это поведение, снимите флажок \"Показывать праздники в представлении месяца\" на вкладке «Вид → Месяц».</li>
           <li xml:lang="sk">Mesačný pohľad: pridaná voľba umožňujúca skrytie sviatkov. Toto správanie zapnete zrušením zaškrtnutia voľby \"Zobraziť sviatky v mesačnom pohľade\" na karte Zobrazenia-&gt;Mesačný pohľad</li>
           <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost, ki omogoča skrivanje praznikov. Če želite omogočiti to delovanje, počistite možnost \"Prikaži praznike v mesečnem pogledu\" na zavihku Pogledi-&gt;Mesečni pogled</li>
+          <li xml:lang="sv">Månadsvy: Ett alternativ har lagts till för att tillåta att helgdagar döljs. För att aktivera beteendet, avmarkera alternativet \"Visa helgdagar i månadsvyn\" under fliken Vyer -&gt; Månadsvy</li>
           <li xml:lang="tr">Ay görünümü: Resmi tatillerin gizlenmesine olanak tanıyan bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Resmî tatilleri ay görünümünde göster” seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна приховувати свята. Щоб увімкнути цю можливість, зніміть прапорець з пункту «Показувати свята на панелі перегляду місяця» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
           <li>Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on that date. To enable this behavior, check the \"Use the Holiday background color when a holiday lands on the date\" option in the Views-&gt;Month View tab</li>
@@ -571,6 +576,7 @@
           <li xml:lang="ru">Представление «Месяц»: добавлен параметр, позволяющий использовать цвет фона праздника в качестве цвета фона ячейки даты, если на эту дату выпадает хотя бы один праздник. Для включения этого поведения установите флажок \«Использовать цвет фона праздника для дат, на которые выпадает праздник»\ на вкладке «Вид → Месяц».</li>
           <li xml:lang="sk">Mesačný pohľad: pridaná voľba umožňujúca použiť vlastnú farbu sviatku ako farbu pozadia bunky dátumu, ak na daný dátum pripadne aspoň jeden sviatok. Toto správanie zapnete zaškrtnutím voľby \"Použiť farbu pozadia sviatku, ak na dátum pripadne sviatok\" na karte Zobrazenia-&gt;Mesačný pohľad</li>
           <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost, ki omogoča uporabo barve praznika po meri kot barve ozadja datumskega polja, če na ta datum pade vsaj en praznik. Če želite omogočiti to delovanje, v zavihku Pogledi-&gt;Mesec označite možnost \"Uporabi barvo ozadja praznika, ko pade praznik na ta datum\"</li>
+          <li xml:lang="sv">Månadsvy: Ett alternativ har lagts till för att tillåta användning av den egna helgdagsfärgen som bakgrundsfärg för datumrutan om minst en helgdag infaller på det datumet. För att aktivera beteendet, markera alternativet \"Använd bakgrundsfärgen för helgdagar när en helg infaller på datumet\" under fliken Vyer -&gt; Månadsvy</li>
           <li xml:lang="tr">Ay görünümü: O tarihe en az bir resmi tatil denk geliyorsa, özel tatil renginin tarih kutusu arka plan rengi olarak kullanılmasına izin veren bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Bir tarihe resmî tatil denk geldiğinde Tatil arka plan rengini kullan” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна використовувати колір нетипового свята як колір тла поля дати, якщо хоча б одне свято припадає на цю дату. Щоб увімкнути цю можливість, позначте пункт «Використовувати колір тла свята, якщо на дату припадає свято» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
           <li>Month view: An option was added to show start-time and end-times. Previously only showing the start-time was supported. To enable this option, check the \"Show the start-time and the end-time in month view items\" option in the View-&gt;Month View tab</li>
@@ -589,6 +595,7 @@
           <li xml:lang="ru">Представление «Месяц»: добавлен параметр отображения времени начала и окончания. Ранее поддерживалось только отображение времени начала. Чтобы включить этот параметр, установите флажок \«Показывать время начала и окончания в элементах вида месяца»\ на вкладке «Вид» -&gt; «Вид месяца».</li>
           <li xml:lang="sk">Mesačný pohľad: pridaná voľba na zobrazenie času začiatku a konca. Predtým bolo podporované iba zobrazenie času začiatku. Túto voľbu zapnete zaškrtnutím voľby \"Zobraziť čas začiatku a čas konca v položkách mesačného pohľadu\" na karte Zobrazenie-&gt;Mesačný pohľad</li>
           <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost prikaza začetnega in končnega časa. Prej je bil podprt samo prikaz začetnega časa. Če želite omogočiti to možnost, v zavihku Pogled-&gt;Mesec označite možnost \"Prikaži začetni in končni čas v elementih mesečnega pogleda\"</li>
+          <li xml:lang="sv">Månadsvy: Ett alternativ har lagts till för att visa starttid och sluttid. Tidigare stöddes endast visning av starttid. För att aktivera alternativet, markera \"Visa starttid och sluttid i månadsvyns objekt\" under fliken Visa -&gt; Månadsvy</li>
           <li xml:lang="tr">Ay görünümü: Başlangıç ve bitiş zamanlarının gösterilmesini sağlayan bir seçenek eklendi. Önceden yalnızca başlangıç zamanının gösterilmesi destekleniyordu. Bu seçeneği etkinleştirmek için Görünüm → Ay Görünümü sekmesindeki “Ay görünümü ögelerinde başlangıç ve bitiş zamanını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна наказати програмі показувати час початку і час завершення. Раніше у програмі було передбачено показ лише часу початку. Щоб увімкнути цю можливість, позначте пункт «Показувати час початку і час завершення у пунктах у перегляді місяця» на вкладці «Перегляд-&gt;Перегляд місяця».</li>
           <li>Agenda view: underline today's column header date</li>
@@ -607,6 +614,7 @@
           <li xml:lang="ru">Расписание на день: подчёркивание даты в заголовке столбца «Сегодня»</li>
           <li xml:lang="sk">Pohľad agendy: podčiarknutie dnešného dátumu v hlavičke stĺpca</li>
           <li xml:lang="sl">Pogled dnevnega reda: podčrta današnji datum v glavi stolpca</li>
+          <li xml:lang="sv">Agendavy: stryk under datum i dagens kolumnrubrik</li>
           <li xml:lang="tr">Ajanda görünümü: Bugünün sütun başlığındaki tarihinin altını çiz</li>
           <li xml:lang="uk">Панель порядку денного: реалізовано підкреслювання дати сьогоднішнього заголовка стовпчика</li>
           <li>Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence locations in agenda view items\" option in the View-&gt;Agenda View tab</li>
@@ -625,6 +633,7 @@
           <li xml:lang="ru">Представление повестки дня: отображение мест событий в элементах повестки дня. Для включения установите флажок \"Показывать места событий в элементах представления повестки дня\" на вкладке «Вид → Представление повестки дня».</li>
           <li xml:lang="sk">Pohľad agendy: voliteľné zobrazenie miest výskytov vnútri položiek agendy. Toto správanie zapnete zaškrtnutím voľby \"Zobraziť miesta výskytov v položkách pohľadu agendy\" na karte Zobrazenie-&gt;Pohľad agendy</li>
           <li xml:lang="sl">Pogled dnevnega reda: po želji prikaže lokacije pojavnosti znotraj elementov dnevnega reda. Če želite omogočiti to delovanje, v zavihku Pogled-&gt; Pogled dnevnega reda izberite možnost \"Prikaži lokacije pojavnosti v elementih pogleda dnevnega reda\"</li>
+          <li xml:lang="sv">Agendavy: visa valfritt förekomsternas plats i agendans punkter. För att aktivera beteendet, markera \"Visa förekomsternas plats i agendavyns punkter\" under fliken Visa -&gt; Agendavy</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak ajanda ögelerinin içinde olay konumlarını gösterir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Ajanda görünümü ögelerinde olay konumlarını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Панель порядку денного: якщо потрібно, програма може показувати місця проведення зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати місця зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -&gt; Перегляд порядку денного».</li>
           <li>Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and Journals have been added.  Select your preferences in the \"General-&gt;Personal Default Access Classification\" comboboxes.</li>
@@ -643,6 +652,7 @@
           <li xml:lang="ru">Добавлена возможность задавать классификацию доступа по умолчанию (Общедоступный, Конфиденциальный или Личный) при создании событий, задач и записей журнала. Выберите нужные параметры в выпадающих списках \"Общие-&gt;Персональная классификация доступа по умолчанию\".</li>
           <li xml:lang="sk">Pridané voľby na nastavenie predvolených klasifikácií prístupu (Verejné, Dôverné alebo Súkromné) pri vytváraní nových udalostí, úloh a denníkov. Svoje predvoľby vyberte v rozbaľovacích zoznamoch \"Všeobecné-&gt;Osobná predvolená klasifikácia prístupu\".</li>
           <li xml:lang="sl">Dodane so bile možnosti za nastavitev privzetih klasifikacij dostopa (javno, zaupno ali zasebno) pri ustvarjanju novih dogodkov, opravil in dnevnikov. Izberite svoje nastavitve v kombiniranih poljih \"Splošno-&gt;Osebna privzeta klasifikacija dostopa\".</li>
+          <li xml:lang="sv">Alternativ för att ställa in standardklassificering av åtkomst (öppen, konfidentiell eller privat) när nya händelser, uppgifter och journalanteckningar skapas har lagts till. Välj inställning i kombinationsrutorna under \"Allmänt -&gt; Personligt Standardklassificering av åtkomst\".</li>
           <li xml:lang="tr">Yeni Etkinlikler, Yapılacaklar ve Günlükler oluştururken öntanımlı erişim sınıflandırmalarını (Genel, Gizli veya Özel) ayarlama seçenekleri eklendi. Tercihlerinizi “Genel → Kişisel Öntanımlı Erişim Sınıflandırması” açılır kutularından seçin.</li>
           <li xml:lang="uk">Додано варіанти встановлення типової класифікації доступу (Відкритий, Конфіденційний або Приватний) під час створення записів подій, завдань та журналів. Виберіть свій варіант у спадному списку «Загальне-&gt;Типова особиста класифікація доступу».</li>
           <li>Fixed reminder toggling from menus</li>
@@ -661,6 +671,7 @@
           <li xml:lang="ru">Исправлено переключение напоминаний из меню;</li>
           <li xml:lang="sk">Opravené prepínanie pripomienok z ponúk</li>
           <li xml:lang="sl">Popravljeno preklapljanje opomnikov iz menijev</li>
+          <li xml:lang="sv">Rättade ändring av påminnelser i menyer</li>
           <li xml:lang="tr">Menülerden anımsatıcı durumunu değiştirme hatası düzeltildi.</li>
           <li xml:lang="uk">Виправлено перемикання нагадування з меню</li>
           <li>Agenda view: improved timelabel vertical alignment with grid</li>
@@ -679,6 +690,7 @@
           <li xml:lang="ru">Расписание: улучшено вертикальное выравнивание меток времени по сетке</li>
           <li xml:lang="sk">Pohľad agendy: vylepšené zvislé zarovnanie časových popiskov s mriežkou</li>
           <li xml:lang="sl">Pogled dnevnega reda: izboljšana navpična poravnava časovnih oznak z mrežo</li>
+          <li xml:lang="sv">Agendavy: förbättrad vertikal justering av tidsetiketter med rutnät</li>
           <li xml:lang="tr">Ajanda görünümü: Zaman etiketlerinin kılavuz çizgileriyle dikey hizalaması iyileştirildi.</li>
           <li xml:lang="uk">Панель порядку денного: удосконалено вертикальне вирівнювання мітки часу за ґраткою</li>
         </ul>
@@ -706,6 +718,7 @@
           <li xml:lang="ru">Напоминания по умолчанию включены для всех новых событий и задач. Чтобы отключить это поведение, снимите флажок «Включить напоминания» на вкладке «Время &gt; Значения по умолчанию» в настройках.</li>
           <li xml:lang="sk">Pripomienky sú predvolene zapnuté pre všetky nové udalosti a úlohy. Toto správanie vypnete zrušením zaškrtnutia voľby Povoliť pripomienky v nastaveniach na karte Čas&gt;Predvolené hodnoty</li>
           <li xml:lang="sl">Opomniki so privzeto omogočeni za vse nove dogodke in opravila. Če želite to delovanje onemogočiti, počistite polje pri možnosti Omogoči opomnike v nastavitvah Čas in zavihek Privzete vrednosti</li>
+          <li xml:lang="sv">Påminnelser är normalt aktiverade för alla nya händelser och uppgifter. För att inaktivera beteendet, avmarkera alternativen Aktivera påminnelser i inställningarna under fliken Tid -&gt; Standardvärden</li>
           <li xml:lang="tr">Anımsatıcılar tüm yeni etkinlikler ve yapılacaklar için öntanımlı olarak etkindir. Bu davranışı devre dışı bırakmak için Zaman → Öntanımlı Değerler ayarlar sekmesindeki Anımsatıcıları etkinleştir seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Типово нагадування увімкнено для усіх нових записів подій та завдань. Щоб вимкнути таку поведінку, зніміть позначки з пунктів нагадувань на вкладці параметрів «Час і дата-&gt;Типові значення»</li>
           <li>Month view: no longer display the month year header to save vertical space and remove redundancy</li>
@@ -724,6 +737,7 @@
           <li xml:lang="ru">Режим просмотра «Месяц»: заголовок с месяцем и годом больше не отображается для экономии вертикального пространства и устранения избыточности</li>
           <li xml:lang="sk">Mesačný pohľad: hlavička s mesiacom a rokom sa už nezobrazuje, aby sa ušetrilo zvislé miesto a odstránila nadbytočnosť</li>
           <li xml:lang="sl">Mesečni pogled: glava meseca in leta ni več prikazana zaradi prihranka navpičnega prostora in odprave odvečnosti</li>
+          <li xml:lang="sv">Månadsvy: visa inte längre månads- och årsrubriken för att spara vertikalt utrymme och undvika redundans</li>
           <li xml:lang="tr">Ay görünümü: Dikey alandan tasarruf etmek ve gereksiz tekrarları önlemek için artık ay–yıl başlığı gösterilmiyor.</li>
           <li xml:lang="uk">Перегляд місяця: усунено показ заголовка місяць-рік для заощадження вертикального простору і вилучення зайвих відомостей</li>
           <li>Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month</li>
@@ -742,6 +756,7 @@
           <li xml:lang="ru">Режим просмотра «Месяц»: слегка изменён цвет заголовков дней вне текущего месяца</li>
           <li xml:lang="sk">Mesačný pohľad: použitie mierne odlišnej farby na vykreslenie hlavičiek dní pre dni mimo aktuálne vybraného mesiaca</li>
           <li xml:lang="sl">Mesečni pogled: za risanje dnevnih glav za dneve zunaj trenutno izbranega meseca uporabljena nekoliko drugačna barva</li>
+          <li xml:lang="sv">Månadsvy: använd en något annorlunda färg för att rita rubrikerna för dagar utanför den valda månaden</li>
           <li xml:lang="tr">Ay görünümü: Seçili ayın dışındaki günlerin başlıklarını çizmek için hafifçe farklı bir renk kullanılır.</li>
           <li xml:lang="uk">Перегляд місяця: використано дещо інший колір для малювання заголовків днів поза межами поточного вибраного місяця</li>
           <li>Month view: the navigation controls on the lower right side are removed in favor of the improved application navigator bar</li>
@@ -760,6 +775,7 @@
           <li xml:lang="ru">Режим просмотра «Месяц»: элементы навигации в правом нижнем углу удалены в пользу улучшенной панели навигации приложения</li>
           <li xml:lang="sk">Mesačný pohľad: navigačné ovládacie prvky v pravom dolnom rohu boli odstránené v prospech vylepšeného navigačného panela aplikácie</li>
           <li xml:lang="sl">Mesečni pogled: navigacijski gumbi v spodnjem desnem kotu so odstranjeni v korist izboljšane navigacijske vrstice aplikacij</li>
+          <li xml:lang="sv">Månadsvy: navigeringsknapparna längst ner till höger har tagits bort till förmån för programmets förbättrade navigeringsfält</li>
           <li xml:lang="tr">Ay görünümü: Sağ alt taraftaki gezinti denetimleri, geliştirilmiş uygulama gezinti çubuğu lehine kaldırıldı.</li>
           <li xml:lang="uk">Панель місяця: засоби керування навігацією у нижній правій частині панелі вилучено — вони вже є на удосконаленій панелі навігації програми</li>
           <li>Month view: the background color for today's date cell can be changed. To configure the color,  set the \"Month view today background color\" in the Colors and Fonts settings</li>
@@ -778,6 +794,7 @@
           <li xml:lang="ru">Режиме просмотра «Месяц»: возможно изменить цвет фона ячейки сегодняшней даты. Для настройки цвета задайте параметр «Цвет фона сегодняшнего дня в режиме месяца» в разделе «Цвета и шрифты»</li>
           <li xml:lang="sk">Mesačný pohľad: farbu pozadia bunky dnešného dátumu možno zmeniť. Farbu nastavíte voľbou \"Farba pozadia dneška v mesačnom pohľade\" v nastaveniach Farby a písma</li>
           <li xml:lang="sl">Mesečni pogled: barvo ozadja za celico z današnjim datumom je mogoče spremeniti. Če želite konfigurirati barvo, v nastavitvah Barve in pisave nastavite \"Barva ozadja mesečnega pogleda za danes\"</li>
+          <li xml:lang="sv">Månadsvy: bakgrundsfärgen för dagens datumcell kan ändras. För att ställa in färgen, använd \"Bakgrundsfärg för idag i månadsvyn\" i inställningarna för Färger och teckensnitt.</li>
           <li xml:lang="tr">Ay görünümü: Bugünün tarih hücre arka plan rengi değiştirilebilir. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Ay görünümü bugün arka plan rengi” seçeneğini ayarlayın.</li>
           <li xml:lang="uk">Панель перегляду місяця: можна змінювати колір тла у комірці поточного дня. Щоб налаштувати колір, встановіть значення для пункту «Колір тла поточного дня на панелі перегляду місяця» у параметра кольорів і шрифтів програми.</li>
           <li>Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis</li>
@@ -796,6 +813,7 @@
           <li xml:lang="ru">Панель навигации: улучшена добавлением прокрутки по неделям и возможностью показа/скрытия боковой панели для каждого представления</li>
           <li xml:lang="sk">Navigačný panel: vylepšený pridaním posúvania po týždňoch a zobrazovaním/skrývaním bočného panela podľa jednotlivých pohľadov</li>
           <li xml:lang="sl">Navigacijska vrstica: izboljšana z dodajanjem tedenskega drsenja in prikazovanjem/skrivanjem stranske vrstice za vsak pogled posebej</li>
+          <li xml:lang="sv">Navigeringsrad: förbättrat genom tillägg av veckovis förflyttning och visa/dölj sidorad per vy</li>
           <li xml:lang="tr">Gezinti çubuğu: Hafta kaydırma özelliği eklenerek ve yan çubuğun görünüm bazında gösterilmesi/gizlenmesi sağlanarak iyileştirildi.</li>
           <li xml:lang="uk">Панель навігації: удосконалення шляхом додавання панелі гортання тижнів та показу або приховування бічної панелі на основі вибраного режиму перегляду</li>
           <li>Navigator bar: added a button to scroll the view to the current date</li>
@@ -814,6 +832,7 @@
           <li xml:lang="ru">Панель навигации: добавлена кнопка для перехода к текущей дате</li>
           <li xml:lang="sk">Navigačný panel: pridané tlačidlo na posunutie pohľadu na aktuálny dátum</li>
           <li xml:lang="sl">Navigacijska vrstica: dodan gumb za pomikanje pogleda na trenutni datum</li>
+          <li xml:lang="sv">Navigeringsrad: tillägg av en knapp för att gå till aktuellt datum i vyn</li>
           <li xml:lang="tr">Dolaşım çubuğu: Görünümü geçerli tarihe kaydırmak için bir düğme eklendi.</li>
           <li xml:lang="uk">Панель навігації: додано кнопку для гортання перегляду до поточної дати</li>
           <li>Agenda view: events with short durations are displayed with their starting time in addition to their summary</li>
@@ -832,6 +851,7 @@
           <li xml:lang="ru">Просмотр повестки дня: события с короткой продолжительностью отображаются с временем начала в дополнение к их описанию</li>
           <li xml:lang="sk">Pohľad agendy: udalosti s krátkym trvaním sa okrem súhrnu zobrazujú aj s časom začiatku</li>
           <li xml:lang="sl">Pogled dnevnega reda: dogodki s kratkim trajanjem so prikazani skupaj z njihovim začetkom in povzetkom</li>
+          <li xml:lang="sv">Agendavy: händelser med kort varaktighet visas med sina starttider utöver sina sammanfattningar</li>
           <li xml:lang="tr">Ajanda görünümü: Kısa süreli etkinlikler, özetlerinin yanı sıra başlangıç saatleriyle birlikte gösterilir.</li>
           <li xml:lang="uk">Панель порядку денного: записи подій короткої тривалості буде показано із їхнім часом початку на додачу до резюме</li>
           <li>Agenda view: optionally show the incidence descriptions inside the agenda items. To enable this behavior, check the \"Show incidence descriptions in agenda view items\" option in the View-&gt;Agenda View tab</li>
@@ -850,6 +870,7 @@
           <li xml:lang="ru">Представление «Повестка дня»: возможность показывать описания событий внутри элементов повестки дня. Для включения этого поведения отметьте параметр «Показывать описания событий в элементах представления повестки дня» во вкладке «Вид» → «Представление повестки дня»</li>
           <li xml:lang="sk">Pohľad agendy: voliteľné zobrazenie popisov výskytov vnútri položiek agendy. Toto správanie zapnete zaškrtnutím voľby \"Zobraziť popisy výskytov v položkách pohľadu agendy\" na karte Zobrazenie-&gt;Pohľad agendy</li>
           <li xml:lang="sl">Pogled dnevnega reda: po želji prikazuje opise dogodkov znotraj elementov dnevnega reda. Če želite omogočiti to delovanje, v zavihku Pogled-&gt; Pogled dnevnega reda izberite možnost \"Prikazuj opise dogodkov v elementih pogleda dnevnega reda\"</li>
+          <li xml:lang="sv">Agendavy: visa valfritt förekomstbeskrivningar inne i agendans punkter. För att aktivera beteendet, markera alternativet \"Visa förekomstbeskrivningar i agendavyns punkter\" under fliken Visa -&gt; Agendavy.</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak ajanda ögelerinin içinde olay açıklamalarını gösterir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Ajanda görünümü ögelerinde olay açıklamalarını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Панель порядку денного: якщо потрібно, програма може показувати описи зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати описи зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -&gt; Перегляд порядку денного».</li>
           <li>Search: the search settings are saved/restored</li>
@@ -868,6 +889,7 @@
           <li xml:lang="ru">Поиск: настройки поиска сохраняются и восстанавливаются</li>
           <li xml:lang="sk">Hľadanie: nastavenia hľadania sa ukladajú a obnovujú</li>
           <li xml:lang="sl">Iskanje: nastavitve iskanja so shranjene/obnovljene</li>
+          <li xml:lang="sv">Sök: sökinställningar sparas och återställs</li>
           <li xml:lang="tr">Arama: Arama ayarları kaydedilir ve geri yüklenir.</li>
           <li xml:lang="uk">Пошук: реалізовано зберігання і відновлення параметрів пошуку</li>
         </ul>
@@ -895,6 +917,7 @@
           <li xml:lang="ru">Редактор событий: автоматическая сортировка меток в редакторе меток</li>
           <li xml:lang="sk">Editor výskytov: značky sú v editore značiek zoradené podľa abecedy</li>
           <li xml:lang="sl">Urejevalnik pojavnosti: oznake so v urejevalniku oznak razvrščene po abecedi</li>
+          <li xml:lang="sv">Förekomsteditor: etiketterna sorteras alfabetiskt i etiketteditorn</li>
           <li xml:lang="tr">Olay düzenleyici: Etiketler, etiket düzenleyicide abecesel olarak sıralanır.</li>
           <li xml:lang="uk">Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою</li>
           <li>Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well</li>
@@ -913,6 +936,7 @@
           <li xml:lang="ru">Расписание: добавление контекстного меню для показа или скрытия меток времени для системного часового пояса также и с правой (или левой) стороны</li>
           <li xml:lang="sk">Pohľad agendy: pridaná kontextová ponuka časových popiskov na zobrazenie/skrytie časových popiskov systémového časového pásma aj na pravej (alebo ľavej) strane</li>
           <li xml:lang="sl">Pogled dnevnega reda: dodan kontekstni meni časovnih oznak za prikaz/skrivanje časovnih oznak za sistemski časovni pas tudi na desni (ali levi) strani</li>
+          <li xml:lang="sv">Agendavy: dessutom tillägg av sammanhangsberoende menyalternativ som visar/döljer tidsbeteckningar för systemets tidszon på höger (eller vänster) sida</li>
           <li xml:lang="tr">Ajanda görünümü: Sistem saat dilimi için zaman etiketlerini sağ (veya sol) tarafta da göstermek/gizlemek için zaman etiketleri sağ tık menüsü eklendi.</li>
           <li xml:lang="uk">Панель перегляду порядку денного: додано пункт контекстного часу для показу або приховування часових міток для загальносистемного часового поясу праворуч (або ліворуч)</li>
           <li>Incidence editor: detect and warn about creating incidences in the past</li>
@@ -931,6 +955,7 @@
           <li xml:lang="ru">Редактор событий: обнаружение и предупреждение о создании событий в прошлом</li>
           <li xml:lang="sk">Editor výskytov: zisťovanie a upozorňovanie na vytváranie výskytov v minulosti</li>
           <li xml:lang="sl">Urejevalnik pojavnosti: zaznavanje in opozarjanje na nastanek incidence v preteklosti</li>
+          <li xml:lang="sv">Förekomsteditor: detektera och varna om förekomster skapade i det förflutna</li>
           <li xml:lang="tr">Olay düzenleyicisi: Geçmişte olay oluşturma durumunu algılar ve buna karşı uyarır.</li>
           <li xml:lang="uk">Редактор зустрічей: виявлення створення зустрічей у минулому та попередження про це</li>
           <li>Incidence editor: add emoji support</li>
@@ -949,6 +974,7 @@
           <li xml:lang="ru">Редактор событий: добавление поддержки смайликов</li>
           <li xml:lang="sk">Editor výskytov: pridaná podpora pre emodži</li>
           <li xml:lang="sl">Urejevalnik pojavnosti: dodana podpora za čustvenčke</li>
+          <li xml:lang="sv">Förekomsteditor: lägg till stöd för emoji</li>
           <li xml:lang="tr">Olay düzenleyicisi: Emoji desteği eklendi.</li>
           <li xml:lang="uk">Редактор зустрічей: додано підтримку емоційок</li>
         </ul>
@@ -976,6 +1002,7 @@
           <li xml:lang="ru">Замена формулировки «рабочее расписание» на «расписание на неделю» (подходит как работающим, так и неработающим пользователям)</li>
           <li xml:lang="sk">Sémantika sa zmenila z konceptu \"pracovný rozvrh\" na koncept \"týždenný rozvrh\", aby vyhovovala aj nepracujúcim používateľom</li>
           <li xml:lang="sl">Semantika se spremeni iz koncepta \"delovnega urnika\" v koncept \"tedenskega urnika\", da se prilagodi uporabnikom, ki niso zaposleni</li>
+          <li xml:lang="sv">Semantiken ändras från konceptet \"arbetsschema\" till \"veckoschema\" för att tillgodose användare som inte arbetar</li>
           <li xml:lang="tr">Çalışmayan kullanıcıları da kapsamak adına anlamsal yapı “çalışma programı” kavramından “hafta programı” kavramına dönüştürüldü.</li>
           <li xml:lang="uk">Змінено семантику з концепції «робочого розкладу» на «розклад тижня» для задоволення потреб користувачів поза робочим часом</li>
           <li>Initial \"New Event\" start times are consistent across all the views</li>
@@ -994,6 +1021,7 @@
           <li xml:lang="ru">Одно и то же первоначальное время начала «Нового события» во всех представлениях</li>
           <li xml:lang="sk">Počiatočné časy začiatku pri \"Novej udalosti\" sú konzistentné vo všetkých pohľadoch</li>
           <li xml:lang="sl">Začetni časi začetka »Novega dogodka« so enaki v vseh pogledih</li>
+          <li xml:lang="sv">Inledande starttider för \"Ny händelse\" är konsekventa i alla vyer</li>
           <li xml:lang="tr">İlk “Yeni Etkinlik” başlangıç zamanları tüm görünümlerde tutarlıdır.</li>
           <li xml:lang="uk">Початкові часи початку «Нової події» у новій версії є узгодженими за усіма панелями перегляду</li>
           <li>Improved default event calendar handling</li>
@@ -1012,6 +1040,7 @@
           <li xml:lang="ru">Улучшение обработки календаря событий по умолчанию</li>
           <li xml:lang="sk">Zlepšené spracovanie predvoleného kalendára udalostí</li>
           <li xml:lang="sl">Izboljšano upravljanje privzetega koledarja dogodkov</li>
+          <li xml:lang="sv">Förbättrad kalenderhantering av standardhändelser</li>
           <li xml:lang="tr">İyileştirilmiş öntanımlı takvim işleme</li>
           <li xml:lang="uk">Удосконалено обробку типового календаря подій</li>
           <li>Incidences with a long excluded dates list no longer create huge tooltips</li>
@@ -1030,6 +1059,7 @@
           <li xml:lang="ru">Для событий с длинным перечнем исключённых дат больше не создаются огромные всплывающие подсказки</li>
           <li xml:lang="sk">Výskyty s dlhým zoznamom vylúčených dátumov už nevytvárajú obrovské bublinové nápovedy</li>
           <li xml:lang="sl">Pojavnosti z dolgim ​​seznamom izključenih datumov ne ustvarjajo več ogromnih opisov orodij</li>
+          <li xml:lang="sv">Förekomster med en lång lista över undantagna datum skapar inte längre mycket stora verktygstips</li>
           <li xml:lang="tr">Uzun bir dışlanan tarihler listesi içeren olaylar artık devasa araç ipuçları oluşturmuyor.</li>
           <li xml:lang="uk">Програма більше не створюватиме величезних панелей підказок для зустрічей із довгими списками виключених дат</li>
           <li>Fixed the organizer email address for incidences with attendees</li>
@@ -1048,6 +1078,7 @@
           <li xml:lang="ru">Исправление адреса эл. почты организатора для событий с участниками</li>
           <li xml:lang="sk">Opravená e-mailová adresa organizátora pre výskyty s účastníkmi</li>
           <li xml:lang="sl">Popravljen je bil e-poštni naslov organizatorja za pojavnosti z udeleženci</li>
+          <li xml:lang="sv">Åtgärdade organisatörens e-postadress för förekomster med deltagare</li>
           <li xml:lang="tr">Katılımcısı olan olaylar için düzenleyici e-posta adresi düzeltildi.</li>
           <li xml:lang="uk">Виправлено адресу електронної пошти організатора для зустрічі із учасниками</li>
           <li>Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)</li>
@@ -1066,6 +1097,7 @@
           <li xml:lang="ru">Расписание: показ событий без длительности как 30-минутных (а не 15-минутных)</li>
           <li xml:lang="sk">Pohľad agendy: udalosti bez trvania sa zobrazujú ako 30-minútové (namiesto 15-minútových)</li>
           <li xml:lang="sl">Pogled dnevnega reda: dogodki brez trajanja so prikazani kot dolgi 30 minut (namesto 15 minut)</li>
+          <li xml:lang="sv">Agendavy: händelser utan längd visas som 30 minuter (istället för 15)</li>
           <li xml:lang="tr">Ajanda görünümü: Süresi olmayan etkinlikler (15 dakika yerine) 30 dakika uzunluğunda gösterilir.</li>
           <li xml:lang="uk">Панель порядку денного: записи подій без тривалості буде показано із тривалістю 30 (а не 15 хвилин)</li>
           <li>Add What's New menu</li>
@@ -1084,6 +1116,7 @@
           <li xml:lang="ru">Добавление меню «Что нового?»</li>
           <li xml:lang="sk">Pridaná ponuka Čo je nové</li>
           <li xml:lang="sl">Doda meni Kaj je novega</li>
+          <li xml:lang="sv">Lägg till Vad är nytt-meny</li>
           <li xml:lang="tr">“Neler Yeni” menüsü eklendi.</li>
           <li xml:lang="uk">Додано меню «Що нового?»</li>
           <li>The current view is remembered</li>
@@ -1102,6 +1135,7 @@
           <li xml:lang="ru">Запоминание текущего представления</li>
           <li xml:lang="sk">Aktuálny pohľad sa zapamätá</li>
           <li xml:lang="sl">Zapomni si trenutni pogled</li>
+          <li xml:lang="sv">Den aktuella vyn är ihågkommen</li>
           <li xml:lang="tr">Geçerli görünüm anımsanır.</li>
           <li xml:lang="uk">Нова версія програми запам'ятовує параметри поточного перегляду</li>
           <li>Add a Date Picker dialog available on the Go menu</li>
@@ -1120,6 +1154,7 @@
           <li xml:lang="ru">Добавление диалога выбора даты в меню «Переход»</li>
           <li xml:lang="sk">Pridaný dialóg výberu dátumu dostupný v ponuke Prejsť</li>
           <li xml:lang="sl">Doda pogovorno okno za izbiro datuma, ki je na voljo v meniju Pojdi</li>
+          <li xml:lang="sv">Lägg till en datumväljardialogruta tillgänglig i menyn Gå</li>
           <li xml:lang="tr">Git menüsünde kullanılabilir bir Tarih Seçicisi iletişim kutusu eklendi.</li>
           <li xml:lang="uk">Додано вікно вибору дати, доступ до якого можна отримати з меню «Перехід»</li>
           <li>Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button</li>
@@ -1138,6 +1173,7 @@
           <li xml:lang="ru">Расписание: объединение временных диапазонов («День», «Следующие x дней», «Рабочее расписание», «Неделя») под кнопкой инструмента «Расписание»</li>
           <li xml:lang="sk">Pohľad agendy: časové rozsahy \"Deň\", \"Nasledujúcich X dní\", \"Pracovný rozvrh\" a \"Týždeň\" boli zlúčené do nástrojového tlačidla Agenda</li>
           <li xml:lang="sl">Pogled dnevnega reda: časovni razponi \"Dan\", \"Naslednjih X dni\", \"Delovni urnik\" so združeni v gumb orodja Dnevni red</li>
+          <li xml:lang="sv">Agendavy: sammanställde tidsintervallen \"Dag\", \"Följande dagar\", \"Arbetsvecka\", \"Vecka\" till verktygsknappen Agenda</li>
           <li xml:lang="tr">Ajanda görünümü: “Gün”, “Gelecek X Gün”, “Çalışma Programı”, “Hafta” zaman aralıkları Ajanda araç düğmesinde birleştirildi.</li>
           <li xml:lang="uk">Панель порядку денного: діапазони часу «День», «Наступні X днів», «Робочий розклад», «Тиждень» зібрано у кнопці інструмента порядку денного</li>
           <li>Agenda view: added timelabels context menu option to toggle a 24-hour (military style) clock</li>
@@ -1156,6 +1192,7 @@
           <li xml:lang="ru">Расписание: добавление параметра, позволяющего включать или отключать часы в 24-часовом формате (армейский стиль), в контекстное меню меток времени</li>
           <li xml:lang="sk">Pohľad agendy: do kontextovej ponuky časových popiskov pridaná voľba na prepnutie 24-hodinového formátu hodín</li>
           <li xml:lang="sl">Pogled dnevnega reda: dodana možnost kontekstnega menija časovnih oznak za preklop med 24-urnim (vojaškim) formatom časa</li>
+          <li xml:lang="sv">Agendavy: tillägg av sammanhangsberoende menyalternativ för tidsbeteckningar som byter till en 24-timmarsklocka (militär stil)</li>
           <li xml:lang="tr">Ajanda görünümü: 24 saatlik saat biçimine geçiş yapmak için zaman etiketleri sağ tık menüsü seçeneği eklendi.</li>
           <li xml:lang="uk">Панель перегляду порядку денного: додано пункт контекстного часу часових міток для вмикання і вимикання 24-годинного режиму (військовий стан)</li>
           <li>Agenda view: added context menu to create new Event or To-do</li>
@@ -1174,6 +1211,7 @@
           <li xml:lang="ru">Расписание: добавление контекстного меню для создания нового события или задачи</li>
           <li xml:lang="sk">Pohľad agendy: pridaná kontextová ponuka na vytvorenie novej udalosti alebo úlohy</li>
           <li xml:lang="sl">Pogled dnevnega reda: dodan kontekstni meni za ustvarjanje novega dogodka ali opravila</li>
+          <li xml:lang="sv">Agendavy: tillägg av sammanhangsberoende meny för att skapa ny händelse eller uppgift</li>
           <li xml:lang="tr">Ajanda görünümü: Yeni Etkinlik veya Yapılacak oluşturmak için sağ tık menüsü eklendi.</li>
           <li xml:lang="uk">Панель порядку денного: додано контекстне меню для створення запису події або завдання</li>
           <li>To-do view: added context menu options for toggling completion and reminders</li>
@@ -1192,6 +1230,7 @@
           <li xml:lang="ru">Задачи: добавление параметров, позволяющих включать или отключать выполнение и напоминания, в контекстное меню </li>
           <li xml:lang="sk">Pohľad úloh: pridané voľby kontextovej ponuky na prepínanie dokončenia a pripomienok</li>
           <li xml:lang="sl">Pogled opravil: dodane možnosti kontekstnega menija za preklapljanje med dokončanjem in opomniki</li>
+          <li xml:lang="sv">Uppgiftsvy: tillägg av sammanhangsberoende menyalternativ för att stänga av och sätta på komplettering och påminnelser</li>
           <li xml:lang="tr">Yapılacaklar görünümü: Tamamlanma durumunu ve anımsatıcıları değiştirmek için sağ tık menüsü seçenekleri eklendi.</li>
           <li xml:lang="uk">Панель перегляду завдань: додано пункти контекстного меню для перемикання стану завершеності та нагадувань</li>
           <li>To-do view: save/restore fullview setting</li>
@@ -1210,6 +1249,7 @@
           <li xml:lang="ru">Задачи: сохранение и восстановление значения параметра полноэкранного просмотра</li>
           <li xml:lang="sk">Pohľad úloh: ukladanie a obnovenie nastavenia úplného zobrazenia</li>
           <li xml:lang="sl">Pogled opravil: shranjevanje/obnovitev nastavitve celotnega pogleda</li>
+          <li xml:lang="sv">Uppgiftsvy: spara och återställ inställning av fullständig visning</li>
           <li xml:lang="tr">Yapılacaklar görünümü: Tam görünüm ayarını kaydet/geri yükle</li>
           <li xml:lang="uk">Панель перегляду завдань: збереження і відновлення параметра повного перегляду</li>
           <li>To-do view: save/restore flatview setting</li>
@@ -1228,6 +1268,7 @@
           <li xml:lang="ru">Задачи: сохранение и восстановление значения параметра просмотра в виде плоского списка</li>
           <li xml:lang="sk">Pohľad úloh: ukladanie a obnovenie nastavenia plochého zobrazenia</li>
           <li xml:lang="sl">Pogled opravil: shranjevanje/obnovitev nastavitev ploskega pogleda</li>
+          <li xml:lang="sv">Uppgiftsvy: spara och återställ inställning av enkel lista</li>
           <li xml:lang="tr">Yapılacaklar görünümü: Düz görünüm ayarını kaydet/geri yükle</li>
           <li xml:lang="uk">Панель завдань: збереження і відновлення параметра однорангового перегляду</li>
           <li>Date navigator: added an option in the Configure-&gt;Views settings for hiding the week numbers</li>
@@ -1246,6 +1287,7 @@
           <li xml:lang="ru">Календарь: добавление параметра для скрытия номеров недель в раздел Настроить -&gt; Вид </li>
           <li xml:lang="sk">Navigátor dátumov: do nastavení Nastaviť-&gt;Pohľady pridaná voľba na skrytie čísel týždňov</li>
           <li xml:lang="sl">Navigator po datumih: v nastavitvah Konfiguriraj-&gt;Pogledi dodana možnost skrivanja številk tednov</li>
+          <li xml:lang="sv">Datumnavigering: tillägg av ett alternativ i inställningarna Anpassa -&gt; Vyer för att dölja veckonummer</li>
           <li xml:lang="tr">Tarih gezgini: Yapılandır → Görünümler ayarlarında hafta numaralarını gizlemek için bir seçenek eklendi.</li>
           <li xml:lang="uk">Навігація датами: додано пункт у параметрах «Налаштувати-&gt;Перегляди» для приховування номерів тижнів</li>
           <li>Date navigator: the \"Week numbers select a work week when in work week mode\" setting is true by default</li>
@@ -1264,6 +1306,7 @@
           <li xml:lang="ru">Календарь: параметр «Номера недель выбирают рабочую неделю в режиме рабочей недели» включён по умолчанию</li>
           <li xml:lang="sk">Navigátor dátumov: nastavenie \"Čísla týždňov vyberajú pracovný týždeň v režime pracovného týždňa\" je predvolene zapnuté</li>
           <li xml:lang="sl">Navigator datuma: nastavitev \"Številke tednov izberejo delovni teden v načinu delovnega tedna\" je privzeto nastavljena na true</li>
+          <li xml:lang="sv">Datumnavigering: inställningen \"Veckonummer väljer en arbetsvecka i arbetsveckoläge\" är normalt sann</li>
           <li xml:lang="tr">Tarih gezgini: “Çalışma haftası modundayken hafta numaraları bir çalışma haftasını seçer” ayarı öntanımlı olarak doğrudur.</li>
           <li xml:lang="uk">Навігація датами: типовим значенням параметра «Вибір тижня призводить до вибору робочого тижня у режимі робочого тижня» тепер є «істина»</li>
           <li>Incidence editor: remember/restore the template manager geometry</li>
@@ -1282,6 +1325,7 @@
           <li xml:lang="ru">Редактор событий: запоминание/восстановление геометрии в диспетчере шаблонов</li>
           <li xml:lang="sk">Editor výskytov: zapamätanie a obnovenie geometrie správcu šablón</li>
           <li xml:lang="sl">Urejevalnik pojavnosti: zapomne si/obnovi geometrijo upravljalnika predlog</li>
+          <li xml:lang="sv">Förekomsteditor: kom ihåg och återställ mallhanteringens geometri</li>
           <li xml:lang="tr">Olay düzenleyici: Şablon yöneticisi geometrisini anımsa/geri yükle</li>
           <li xml:lang="uk">Редактор зустрічей: запам'ятовування і відновлення геометрії засобу керування шаблонами</li>
           <li>Incidence editor: support drag-and-drop attachments</li>
@@ -1300,6 +1344,7 @@
           <li xml:lang="ru">Редактор событий: поддержка выполнения вложения с помощью перетаскивания</li>
           <li xml:lang="sk">Editor výskytov: podpora príloh metódou ťahaj a pusť</li>
           <li xml:lang="sl">Urejevalnik pojavnosti: podpora za priloge z zmožnostjo povleci in spusti</li>
+          <li xml:lang="sv">Förekomsteditor: stöd dra och släpp av bilagor</li>
           <li xml:lang="tr">Olay düzenleyici: Ekleri sürükle–bırak desteği</li>
           <li xml:lang="uk">Редактор зустрічей: підтримка перетягування зі скиданням для долучень</li>
           <li>The export calendar dialog remembers its last export folder location</li>
@@ -1318,6 +1363,7 @@
           <li xml:lang="ru">Сохранение последнего расположения папки экспорта в диалоге экспорта календаря</li>
           <li xml:lang="sk">Dialóg exportu kalendára si pamätá umiestnenie posledného priečinka exportu</li>
           <li xml:lang="sl">Pogovorno okno za izvoz koledarja si zapomni zadnjo lokacijo mape za izvoz</li>
+          <li xml:lang="sv">Dialogrutan för kalenderexport kommer ihåg senast exporterade katalogplats</li>
           <li xml:lang="tr">Takvimi dışa aktarma penceresi, en son dışa aktarılan klasör konumunu anımsar.</li>
           <li xml:lang="uk">У вікні експортування календаря реалізовано запам'ятовування останнього місце теки експортування</li>
           <li>The import calendar dialog remembers its last import folder location</li>
@@ -1336,6 +1382,7 @@
           <li xml:lang="ru">Сохранение последнего расположения папки импорта в диалоге импорта календаря</li>
           <li xml:lang="sk">Dialóg importu kalendára si pamätá umiestnenie posledného priečinka importu</li>
           <li xml:lang="sl">Pogovorno okno za uvoz koledarja si zapomni zadnjo lokacijo mape za uvoz</li>
+          <li xml:lang="sv">Dialogrutan för kalenderimport kommer ihåg senast exporterade katalogplats</li>
           <li xml:lang="tr">Takvimi içe aktarma penceresi, en son içe aktarılan klasör konumunu anımsar.</li>
           <li xml:lang="uk">У вікні імпортування календаря реалізовано запам'ятовування останнього місце теки імпортування</li>
           <li>Add calendar file: remote calendars are always read-only</li>
@@ -1354,6 +1401,7 @@
           <li xml:lang="ru">Добавление файла календаря: сетевые календари всегда доступны только для чтения</li>
           <li xml:lang="sk">Pridať súbor kalendára: vzdialené kalendáre sú vždy len na čítanie</li>
           <li xml:lang="sl">Dodaj datoteko koledarja: oddaljeni koledarji so vedno samo za branje</li>
+          <li xml:lang="sv">Lägg till kalenderfil: fjärrkalendrar är alltid skrivskyddade</li>
           <li xml:lang="tr">Takvim dosyası ekle: Uzak takvimler her zaman saltokunurdur.</li>
           <li xml:lang="uk">Додавання файла календаря: віддалені календарі тепер є придатними лише для читання</li>
           <li>Add calendar file: will not permit an empty file path</li>
@@ -1372,6 +1420,7 @@
           <li xml:lang="ru">Добавление файла календаря: нельзя указывать пустой путь к файлу</li>
           <li xml:lang="sk">Pridať súbor kalendára: neumožní prázdnu cestu k súboru</li>
           <li xml:lang="sl">Dodaj datoteko koledarja: ne bo dovoljena prazna pot datoteke</li>
+          <li xml:lang="sv">Lägg till kalenderfil: tillåter inte en tom filsökväg</li>
           <li xml:lang="tr">Takvim dosyası ekle: Boş bir dosya yoluna izin verilmez.</li>
           <li xml:lang="uk">Додавання файла календаря: неможливим стало визначення порожнього шляху до файла</li>
           <li>DAV configuration: dialog allows seeing the account password when editing</li>
@@ -1390,6 +1439,7 @@
           <li xml:lang="ru">Настройка DAV: в диалоге возможен просмотр пароля во время редактирования</li>
           <li xml:lang="sk">Nastavenie DAV: dialóg umožňuje vidieť heslo k účtu počas úprav</li>
           <li xml:lang="sl">Konfiguracija DAV: pogovorno okno omogoča ogled gesla računa med urejanjem</li>
+          <li xml:lang="sv">DAV-inställning: dialogrutan tillåter att visa kontots lösenord vid redigering</li>
           <li xml:lang="tr">DAV yapılandırması: Pencere, düzenleme yaparken hesap parolasının görülmesine izin verir.</li>
           <li xml:lang="uk">Налаштування DAV: у вікні уможливлено перегляд пароля до облікового запису при редагуванні</li>
           <li>DAV configuration: wizard shows icons for the various providers</li>
@@ -1408,6 +1458,7 @@
           <li xml:lang="ru">Настройка DAV: в мастере показаны значки для различных поставщиков</li>
           <li xml:lang="sk">Nastavenie DAV: sprievodca zobrazuje ikony pre rôznych poskytovateľov</li>
           <li xml:lang="sl">Konfiguracija DAV: čarovnik prikazuje ikone za različne ponudnike</li>
+          <li xml:lang="sv">DAV-inställning: guiden visar ikoner för de olika leverantörerna</li>
           <li xml:lang="tr">DAV yapılandırması: Sihirbaz, çeşitli sağlayıcılar için simgeler gösterir.</li>
           <li xml:lang="uk">Налаштування DAV: реалізовано показ піктограм для різних надавачів даних у майстрі</li>
           <li>DAV configuration: wizard updated list of providers</li>
@@ -1426,6 +1477,7 @@
           <li xml:lang="ru">Настройка DAV: в мастере обновлён список поставщиков</li>
           <li xml:lang="sk">Nastavenie DAV: sprievodca aktualizoval zoznam poskytovateľov</li>
           <li xml:lang="sl">Konfiguracija DAV: čarovnikov posodobljen seznam ponudnikov</li>
+          <li xml:lang="sv">DAV-inställning: uppdaterad lista med leverantörer i guiden</li>
           <li xml:lang="tr">DAV yapılandırması: Sihirbaz sağlayıcı listesini güncellendi</li>
           <li xml:lang="uk">Налаштування DAV: оновлено список надавачів даних у майстрі</li>
         </ul>
