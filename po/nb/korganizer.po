@@ -6675,19 +6675,3 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#, fuzzy
-#~ msgid "Add What's New menu"
-#~ msgstr "Legg til som ny kalender"
-
-#, fuzzy
-#~| msgid "To-do list view uses full window"
-#~ msgid "To-do view: save/restore fullview setting"
-#~ msgstr "Gjøremålliste vises i fullt vindu"
-
-#, fuzzy
-#~| msgid "Week numbers select a work week when in work week mode"
-#~ msgid ""
-#~ "Date navigator: the \"Week numbers select a work week when in work week "
-#~ "mode\" setting is true by default"
-#~ msgstr "Ukenumre velger en arbeidsuke når arbeidsukemodus er på"

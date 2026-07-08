@@ -6264,7 +6264,3 @@ msgstr ""
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Add What's New menu"
-#~ msgstr "Lasit ođđa kaleandaran"
