@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-07 02:39+0000\n"
-"PO-Revision-Date: 2026-06-30 09:11+0300\n"
+"PO-Revision-Date: 2026-07-07 08:59+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2966,12 +2966,10 @@ msgstr[2] "%1 דקות"
 msgstr[3] "%1 דקות"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
-msgstr "בתהליך"
+msgstr "מתרחש כרגע"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:218
 #, kde-format
@@ -2980,10 +2978,10 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "הסתיים לפני שעה"
+msgstr[1] "הסתיים לפני שעתיים"
+msgstr[2] "הסתיים לפני %1 שעות"
+msgstr[3] "הסתיים לפני %1 שעות"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -2992,10 +2990,10 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "הסתיים לפני דקה"
+msgstr[1] "הסתיים לפני שתי דקות"
+msgstr[2] "הסתיים לפני %1 דקות"
+msgstr[3] "הסתיים לפני %1 דקות"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format

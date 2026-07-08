@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-07 02:39+0000\n"
-"PO-Revision-Date: 2026-06-30 09:54+0200\n"
+"PO-Revision-Date: 2026-07-07 09:16+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -3036,12 +3036,10 @@ msgstr[0] "1 min"
 msgstr[1] "%1 min"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
-msgstr "en curs "
+msgstr "en curs"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:218
 #, kde-format
@@ -3050,8 +3048,8 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "finalitzat fa 1 h"
+msgstr[1] "finalitzat fa %1 h"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3060,8 +3058,8 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "finalitzat fa 1 m"
+msgstr[1] "finalitzat fa %1 m"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -6732,7 +6730,7 @@ msgstr ""
 "S'han afegit opcions per a establir classificacions d'accés predeterminades "
 "(Públic, Confidencial o Privat) en crear esdeveniments, tasques pendents o "
 "diaris nous.  Trieu les vostres preferències en els quadros combinats "
-"«General->Classificació d'accés predeterminada personal»."
+"«General → Classificació d'accés predeterminada personal»."
 
 #: whatsnew/whatsnewtranslations.cpp:45
 msgid ""

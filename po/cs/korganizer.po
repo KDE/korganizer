@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-07 02:39+0000\n"
-"PO-Revision-Date: 2026-06-30 20:08+0200\n"
+"PO-Revision-Date: 2026-07-06 18:44+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -3008,9 +3008,7 @@ msgstr[1] "%1 min"
 msgstr[2] "%1 min"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
 msgstr "probíhající "
@@ -3022,9 +3020,9 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "skončilo před 1 hodinou"
+msgstr[1] "skončilo před %1 hodinami"
+msgstr[2] "skončilo před %1 hodinami"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3033,9 +3031,9 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "skončilo před 1 minutou"
+msgstr[1] "skončilo před %1 minutami"
+msgstr[2] "skončilo před %1 minutami"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format

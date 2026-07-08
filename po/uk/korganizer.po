@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-07 02:39+0000\n"
-"PO-Revision-Date: 2026-06-30 20:04+0300\n"
+"PO-Revision-Date: 2026-07-07 08:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -3052,9 +3052,7 @@ msgstr[2] "%1 хв."
 msgstr[3] "%1 хв."
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
 msgstr "в процесі"
@@ -3066,10 +3064,10 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "завершено %1 годину тому"
+msgstr[1] "завершено %1 години тому"
+msgstr[2] "завершено %1 годин тому"
+msgstr[3] "завершено %1 годину тому"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3078,10 +3076,10 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "завершено %1 хвилину тому"
+msgstr[1] "завершено %1 хвилини тому"
+msgstr[2] "завершено %1 хвилин тому"
+msgstr[3] "завершено %1 хвилину тому"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
