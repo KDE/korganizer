@@ -4,21 +4,21 @@
 #
 # Mattias Newzella <newzella@linux.nu>, 2000, 2001, 2002,2003, 2004, 2005.
 # Per Lindström <per.lindstrom@osd.privataccess.nu>, 2000.
-# SPDX-FileCopyrightText: 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2024, 2025, 2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2004-2010, 2024-2026 Stefan Asserhäll <stefan.asserhall@gmail.com>
 # Stefan Asserhall <stefan.asserhall@gmail.com>, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-07 00:44+0000\n"
-"PO-Revision-Date: 2026-01-27 18:01+0100\n"
+"PO-Revision-Date: 2026-07-08 11:48+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -1500,20 +1500,16 @@ msgid "%1 (Offline)"
 msgstr "%1 (nerkopplad)"
 
 #: akonadicollectionview.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1 (standard)"
+msgstr "%1 (standardhändelse)"
 
 #: akonadicollectionview.cpp:306
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1 (standard)"
+msgstr "%1 (standarduppgift)"
 
 #: akonadicollectionview.cpp:394
 #, kde-format
@@ -1547,36 +1543,25 @@ msgid "&Set Folder Color…"
 msgstr "&Ange katalogfärg…"
 
 #: akonadicollectionview.cpp:506
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Använd som stan&dardkatalog"
+msgstr "Använd som stan&dardkalender"
 
 #: akonadicollectionview.cpp:544
-#, fuzzy, kde-format
-#| msgctxt "@title:column event description"
-#| msgid "Event"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
-msgstr "Händelselse"
+msgstr "Händelse"
 
 #: akonadicollectionview.cpp:547
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "Uppgiftsvy"
+msgstr "Uppgift"
 
 #: akonadicollectionview.cpp:610
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
-#| "default calendar folder.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
@@ -1584,54 +1569,42 @@ msgid ""
 "default %4 calendar folder.</para>"
 msgstr ""
 "Vill du verkligen ange <filename>%1</filename> som katalog för "
-"standardkalendern?<para>Det ersätter <filename>%2</filename> som katalog för "
-"standardkalendern.</para>"
+"standardkalendern med %2?<para>Det ersätter <filename>%3</filename> som "
+"katalog för standardkalender med %4.</para>"
 
 #: akonadicollectionview.cpp:617
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
 msgstr ""
 "Vill du verkligen ange <filename>%1</filename> som katalog för "
-"standardkalender?"
+"standardkalendern med %2?"
 
 #: akonadicollectionview.cpp:620
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Replace Default Calendar?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "Ersätt standardkalender?"
+msgstr "Ersätt standardkalender med %1?"
 
 #: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1</filename> is now your default event calendar"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
-msgstr "<filename>%1</filename> är nu din standardkatalog för händelser"
+msgstr "<filename>%1</filename> är nu din standardkatalog med %2"
 
 #: akonadicollectionview.cpp:777
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Använd som stan&dardkatalog"
+msgstr "Använd som stan&dardkatalog med händelser"
 
 #: akonadicollectionview.cpp:780
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Använd som stan&dardkatalog"
+msgstr "Använd som stan&dardkalender med uppgifter"
 
 #: akonadicollectionview.cpp:798
 #, kde-format
@@ -1660,15 +1633,7 @@ msgstr ""
 "helst igen.</note></para>"
 
 #: akonadicollectionview.cpp:907
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This calendar "
-#| "contains your default calendar folder. If you delete it you may be "
-#| "prompted to select a new default calendar folder.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1681,20 +1646,12 @@ msgstr ""
 "Vill du verkligen ta bort kalendern <filename>%1</filename>?"
 "<para><note>Kalenderdata tas inte bort, och kalendern tas inte heller bort "
 "från fjärresursen. Kalendern <filename>%1</filename> kan läggas till när som "
-"helst igen.</note></para><para><warning>Kalendern innehåller "
-"standardkalenderns katalog. Om du tar bort den kan du bli tillfrågad om att "
-"välja en ny katalog för standardkalendern.</warning></para>"
+"helst igen.</note></para><para><warning>Kalendern innehåller en katalog för "
+"standardkalendern. Om du tar bort den kan du bli tillfrågad om att välja en "
+"ny katalog för standardkalendern.</warning></para>"
 
 #: akonadicollectionview.cpp:917
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This is your "
-#| "default calendar. If you delete it you may be prompted to select a new "
-#| "default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1707,9 +1664,9 @@ msgstr ""
 "Vill du verkligen ta bort kalendern <filename>%1</filename>?"
 "<para><note>Kalenderdata tas inte bort, och kalendern tas inte heller bort "
 "från fjärresursen. Kalendern <filename>%1</filename> kan läggas till när som "
-"helst igen.</note></para><para><warning>Det är din standardkalender. Om du "
-"tar bort den kan du bli tillfrågad om att välja en ny katalog för "
-"standardkalendern.</warning></para>"
+"helst igen.</note></para><para><warning>Det är din standardkalender med %2. "
+"Om du tar bort den kan du bli tillfrågad om att välja en ny katalog för "
+"standardkalendern med %2.</warning></para>"
 
 #: akonadicollectionview.cpp:930
 #, kde-kuit-format
@@ -1724,14 +1681,7 @@ msgstr ""
 "knappen %2.</warning></para>"
 
 #: akonadicollectionview.cpp:938
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para><para><warning>This is your "
-#| "default calendar folder. If you delete it you may be prompted to select a "
-#| "new default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1742,9 +1692,9 @@ msgid ""
 msgstr ""
 "Vill du verkligen ta bort katalogen <filename>%1</filename>?"
 "<para><warning>Det går inte att ångra. Överväg noggrant innan du trycker på "
-"knappen %2.</warning></para><para><warning>Det är din standardkalender. Om "
-"du tar bort den kan du bli tillfrågad om att välja en ny katalog för "
-"standardkalendern.</warning></para>"
+"knappen %2.</warning></para><para><warning>Det är din standardkalender med "
+"%3. Om du tar bort den kan du bli tillfrågad om att välja en ny katalog för "
+"standardkalendern med %4.</warning></para>"
 
 #: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, kde-format
@@ -1775,20 +1725,16 @@ msgstr ""
 "message>"
 
 #: akonadicollectionview.cpp:1062
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider setting a default calendar for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr "Överväg att ange en standardkalender för nya händelser"
+msgstr "Överväg att ange en standardkalender med %1"
 
 #: akonadicollectionview.cpp:1064
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider adding a write-enabled events calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
-msgstr "Överväg att lägga till en skrivbar händelsekalender"
+msgstr "Överväg att lägga till en skrivbar kalender med %1"
 
 #: akonadicollectionview.cpp:1098
 #, kde-kuit-format
@@ -1882,12 +1828,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> påminnelse är inaktiverad"
 
 #: calendarview.cpp:1380
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> påminnelse är aktiverad"
+msgstr "<message>%1</message> misslyckades ändra påminnelse"
 
 #: calendarview.cpp:1411 calendarview.cpp:1469
 #, kde-format
@@ -1902,12 +1846,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Uppgift <message>%1</message> %2 procent färdig"
 
 #: calendarview.cpp:1418
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "Uppgift <message>%1</message> %2 procent färdig"
+msgstr "Uppgift <message>%1</message> misslyckades ändra färdigdatum"
 
 #: calendarview.cpp:1521
 #, kde-format
@@ -3046,12 +2988,10 @@ msgstr[0] "1 min"
 msgstr[1] "%1 min"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
-msgstr "pågår "
+msgstr "pågående"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:218
 #, kde-format
@@ -3060,8 +3000,8 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "slutade för 1 timme sedan"
+msgstr[1] "slutade för %1 timmar sedan"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3070,8 +3010,8 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "slutade för 1 minut sedan"
+msgstr[1] "slutade för %1 minuter sedan"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3340,20 +3280,19 @@ msgstr[1] "För %1 dagar sedan"
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "due any time today"
-msgstr ""
+msgstr "färdig när som helst idag"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:240
-#, fuzzy, kde-format
-#| msgid "No due date"
+#, kde-format
 msgctxt "the to-do is due at specified time"
 msgid "is due at %1"
-msgstr "Ingen datumfrist"
+msgstr "ska vara färdig %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
 #, kde-format
 msgctxt "the to-do was due at specified time"
 msgid "was due at %1"
-msgstr ""
+msgstr "skulle varit färdig %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:310
 #, kde-format
@@ -3787,8 +3726,7 @@ msgid "Display the specified incidence (by URL)"
 msgstr "Visa angiven förekomst (enligt webbadress)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid "Url"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Url"
 msgstr "Webbadress"
@@ -3917,7 +3855,7 @@ msgstr "E-postinställningar"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "Standardklassificering av åtkomst"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -4011,8 +3949,7 @@ msgid "Holidays"
 msgstr "Helger"
 
 #: prefs/koprefsdialogtime.cpp:72
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Använd helgområden:"
@@ -4030,19 +3967,16 @@ msgid "Select Holiday Regions"
 msgstr "Välj helgområden"
 
 #: prefs/koprefsdialogtime.cpp:123
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "Använd helgområden:"
+msgstr "Använd helgkategorier:"
 
 #: prefs/koprefsdialogtime.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Categories"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "Välj kategorier"
+msgstr "Välj helgkategorier"
 
 #: prefs/koprefsdialogtime.cpp:159
 #, kde-format
@@ -4627,7 +4561,7 @@ msgstr "Visa ikoner i agendavyns objekt"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "Rita grova horisontella rutnätslinjer för jämna timmar"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
@@ -4635,12 +4569,14 @@ msgstr ""
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
+"Rita en grövre horisontell rutnätslinje för de jämna timmarna (12, 2, 4, "
+"etc)."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "Rita grövre horisontella rutnätslinjer för jämna timmar"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
@@ -4663,25 +4599,21 @@ msgstr "Visa förekomstbeskrivningar i agendavyns objekt"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "Visa förekomstbeskrivningar i agendavyns objekt"
+msgstr "Visa förekomsternas plats i agendavyns punkter"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
-msgstr "Markera rutan för att visa förekomstbeskrivningar i agendavyns objekt."
+msgstr "Markera rutan för att visa förekomsternas plats i agendavyns objekt."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "Visa förekomstbeskrivningar i agendavyns objekt"
+msgstr "Visa förekomsternas plats i agendavyns punkter"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -5000,47 +4932,42 @@ msgstr "Visa ikoner i månadsvyns objekt"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "Visa tid i månadsvyns objekt"
+msgstr "Visa starttider utan sluttider i månadsvyns objekt"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
-msgstr "Markera rutan för att visa tiden i månadsvyns objekt."
+msgstr ""
+"Markera rutan för att visa starttider utan sluttider i månadsvyns objekt."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "Visa tiden i månadsvyns objekt"
+msgstr "Visa starttiden utan sluttider i månadsvyns objekt"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "Visa tid i månadsvyns objekt"
+msgstr "Visa starttid och sluttid i månadsvyns objekt"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
-msgstr "Markera rutan för att visa tiden i månadsvyns objekt."
+msgstr "Markera rutan för att visa start- och sluttider i månadsvyns objekt."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "Visa tiden i månadsvyns objekt"
+msgstr "Visa start- och sluttider i månadsvyns objekt"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5074,32 +5001,28 @@ msgstr "Visa journaler i månadsvyn"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "Visa &helgdagar"
+msgstr "Visa helgdagar"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:252
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "Markera rutan för att visa uppgifter i månadsvyn."
+msgstr "Markera rutan för att visa helgdagar i månadsvyn."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:253 settings/korganizer.kcfg:260
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "Visa uppgifter i månadsvyn"
+msgstr "Visa helgdagar i månadsvyn"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid "Set the background color for today's date in month view"
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
-msgstr "Välj bakgrundsfärg för dagens datum i månadsvyn"
+msgstr "Använd bakgrundsfärgen för helgdagar när en helg hamnar på datumet"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -5108,6 +5031,8 @@ msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
 msgstr ""
+"Använd den egna helgfärgen som datumets bakgrundsfärg om en helg hamnar på "
+"datumet"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:259
@@ -5117,6 +5042,9 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"Markera rutan för att använda den egna helgdagen som datumets bakgrundsfärg "
+"när minst en helgdag infaller på ett datum. Ställ in helgdagsfärgen med "
+"Inställningar -> Färger och teckensnitt."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -5533,21 +5461,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:534
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "Bakgrundsfärg för upptagna dagar"
+msgstr "Använd systemfärger för vissa bakgrundsfärger"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:535
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
-msgstr ""
-"Använd systemfärg istället för användardefinierad färg. Om aktiverad "
-"ignoreras övriga färginställningar."
+msgstr "Använd systemfärger istället för egna färger för vissa bakgrundsfärger"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:536
@@ -5557,6 +5479,9 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"Använd systemfärger istället för användardefinierade färger för "
+"\"Bakgrundsfärg för agendavy\", \"Bakgrundsfärg för upptagna dagar\" och "
+"\"Färg för arbetstimmar\" (och eventuellt andra)."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:546
@@ -6747,17 +6672,13 @@ msgid "Select a year"
 msgstr "Välj ett år"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
