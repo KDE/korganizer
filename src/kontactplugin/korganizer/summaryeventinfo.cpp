@@ -159,8 +159,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         // Print the date span for multiday, floating events, for the
         // first day of the event only.
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
-            str = IncidenceFormatter::dateToString(ev->dtStart().toLocalTime().date(), false) + QLatin1StringView(" -\n ")
-                + IncidenceFormatter::dateToString(ev->dtEnd().toLocalTime().date(), false);
+            str = QLocale().toString(ev->dtStart().toLocalTime().date(), QLocale::LongFormat) + QLatin1StringView(" -\n ")
+                + QLocale().toString(ev->dtEnd().toLocalTime().date(), QLocale::LongFormat);
         }
         summaryEvent->dateSpan = str;
 

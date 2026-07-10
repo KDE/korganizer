@@ -15,7 +15,6 @@
 #include "prefs/koprefs.h"
 
 #include <Akonadi/CalendarUtils>
-#include <KCalUtils/IncidenceFormatter>
 #include <TextAddonsWidgets/WhatsNewMessageNgWidget>
 
 #include "korganizer_debug.h"
@@ -113,7 +112,7 @@ void KOrganizerPart::slotChangeInfo(const Akonadi::Item &item, const QDate &date
     const KCalendarCore::Incidence::Ptr incidence = Akonadi::CalendarUtils::incidence(item);
     if (incidence) {
         Q_EMIT textChanged(incidence->summary() + QLatin1StringView(" / ")
-                           + KCalUtils::IncidenceFormatter::timeToString(incidence->dtStart().toLocalTime().time()));
+                           + QLocale().toString(incidence->dtStart().toLocalTime().time(), QLocale::ShortFormat));
     } else {
         Q_EMIT textChanged(QString());
     }
