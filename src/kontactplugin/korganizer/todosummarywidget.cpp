@@ -267,6 +267,7 @@ void TodoSummaryWidget::updateView()
             str = QLatin1Char('[') + QString::number(todo->priority()) + u']';
             label = new QLabel(str, this);
             label->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+            label->setMaximumWidth(3.5 * QFontMetrics(label->font()).averageCharWidth());
             mLayout->addWidget(label, counter, 3);
             mLabels.append(label);
 
