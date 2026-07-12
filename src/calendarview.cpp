@@ -82,7 +82,7 @@
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QVBoxLayout>
-
+using namespace Qt::Literals::StringLiterals;
 // Meaningful aliases for dialog box return codes.
 namespace
 {
@@ -291,7 +291,7 @@ CalendarView::CalendarView(QWidget *parent)
         }
     }
 
-    const KAboutData aboutData = KAboutData::fromAppStreamForApplication();
+    const KAboutData aboutData = KAboutData::fromAppStreamId(u"org.kde.korganizer"_s);
     mReleasesInfo = aboutData.releases();
 
     Akonadi::FreeBusyManager::self()->setCalendar(mCalendar);

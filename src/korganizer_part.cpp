@@ -23,7 +23,7 @@
 
 #include <QStatusBar>
 #include <QVBoxLayout>
-
+using namespace Qt::Literals::StringLiterals;
 namespace
 {
 K_PLUGIN_FACTORY(KOrganizerFactory, registerPlugin<KOrganizerPart>();)
@@ -61,7 +61,8 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPl
     auto topLayout = new QVBoxLayout(canvas);
 
     QString newFeaturesMD5;
-    const KAboutData aboutData = KAboutData::fromAppStreamForApplication();
+    const KAboutData aboutData = KAboutData::fromAppStreamId(u"org.kde.korganizer"_s);
+
     auto releasesInfo = aboutData.releases();
     if (!releasesInfo.isEmpty()) {
         newFeaturesMD5 = releasesInfo.constFirst().untranslatedDescription();

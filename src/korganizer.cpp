@@ -46,7 +46,7 @@
 #include <KUserFeedback/NotificationPopup>
 #include <KUserFeedback/Provider>
 #endif
-
+using namespace Qt::Literals::StringLiterals;
 KOrganizer::KOrganizer()
     : mCalendarView(new CalendarView(this))
 {
@@ -67,7 +67,7 @@ KOrganizer::KOrganizer()
         }
     }
 
-    const KAboutData aboutData = KAboutData::fromAppStreamForApplication();
+    const KAboutData aboutData = KAboutData::fromAppStreamId(u"org.kde.korganizer"_s);
     QString newFeaturesMD5;
     auto releasesInfo = aboutData.releases();
     if (!releasesInfo.isEmpty()) {
