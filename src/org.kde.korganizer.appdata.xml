@@ -466,7 +466,7 @@
     <release version="6.8.0" type="snapshot">
       <description>
         <ul>
-          <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar\"</li>
+          <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu "Set as Default Todo Calendar"</li>
           <li xml:lang="ar">يمكن تحديد تقويم مهام مبدئي لجعل إنشاء المهام الجديدة أسرع وأسهل مع فرصة أقل لحفظها في المجلد الخطأ. كان يُدعم تحديد تقويم أحداث مبدئي منذ فترة طويلة. راجع قائمة السياق لمدير التقويم \"عيّن كتقويم مهام مبدئي\".</li>
           <li xml:lang="bg">Може да се укаже календар за задачи по подразбиране, за да бъде създаването на нови задачи по-бързо и лесно, намалявайки риска от записването им в грешна папка. Задаването на календар за събития по подразбиране се поддържа от дълго време. Вижте контекстното меню на мениджъра на календари „Задаване като календар за задачи по подразбиране“.</li>
           <li xml:lang="ca">Es pot especificar un calendari de tasques pendents predeterminat per a fer que la creació de tasques pendents noves sigui més ràpida i fàcil amb menys possibilitats d'arxivar-les a la carpeta incorrecta. L'establiment d'un calendari d'esdeveniments predeterminat s'ha admès durant molt de temps. Vegeu el menú contextual del gestor de calendaris «Estableix com a carpeta predeterminada de tasques pendents»</li>
@@ -484,7 +484,7 @@
           <li xml:lang="sv">En standardkalender med uppgifter kan anges för att göra det snabbare och enklare att skapa nya uppgifter, med mindre risk att de hamnar i fel katalog. Att ställa in en standardkalender för händelser har sedan länge varit möjligt. Se Kalenderhanterarens sammanhangsberoende meny \"Använd som standardkalender med uppgifter\".</li>
           <li xml:lang="tr">Yeni yapılacakların daha hızlı ve kolay oluşturulması ve yanlış klasöre kaydedilme olasılığının azaltılması için öntanımlı bir Yapılacaklar takvimi belirlenebilir. Öntanımlı bir etkinlik takvimi ayarlama özelliği uzun süredir desteklenmektedir. Takvim Yöneticisi sağ tık menüsündeki Öntanımlı Yapılacaklar Takvimi Olarak Ayarla” seçeneğine göz atın.</li>
           <li xml:lang="uk">Можна вказати типовий календар для завдань, щоб пришвидшити та спростити створення записів завдань, зменшивши ризик їх потрапляння до помилкової теки. Підтримку визначення типового календаря подій реалізовано вже доволі давно. Див. пункт контекстного меню керування календарями «Зробити типовим календарем записів Завдання».</li>
-          <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the \"Draw bold horizontal grid lines for the even hours\" option in the View-&gt;Agenda View tab</li>
+          <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the "Draw bold horizontal grid lines for the even hours" option in the View-&gt;Agenda View tab</li>
           <li xml:lang="ar">عرض جدول الأعمال: يمكنك اختيارياً رسم خطوط شبكية أفقية أكثر سمكاً كل ساعتين. لتمكين هذه الميزة، حدد الخيار \”ارسم خطوطًا أفقية سميكة للساعات الزوجية\“ في علامة التبويب \”عرض-&gt;عرض جدول الأعمال\“</li>
           <li xml:lang="bg">Изглед „Дневен план“: опция за изчертаване на по-дебели хоризонтални линии на мрежата на всеки две часа. За да активирате това поведение, поставете отметка на опцията „Изчертаване на дебели хоризонтални линии за четните часове“ в раздела „Изглед -&gt; Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra línies de quadrícula horitzontals en negreta/més gruixudes cada dues hores. Per a activar aquest comportament, marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -503,7 +503,7 @@
           <li xml:lang="sv">Agendavy: rita valfritt grövre/tjockare horisontella rutnätslinjer varannan timme. För att aktivera beteendet, markera alternativet \"Rita grova horisontella rutnätslinjer för jämna timmar\" under fliken Visa -&gt; Agendavy</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak her iki saatte bir daha kalın yatay kılavuz çizgileri çizilir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Çift saatler için kalın yatay kılavuz çizgileri çiz” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути цю можливість, поставте позначку навпроти пункту «Малювати жирні горизонтальні лінії сітки для парних годин» на вкладці «Перегляд-&gt;Перегляд порядку денного».</li>
-          <li>It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in the Holidays section of the Time&gt;Regional tab</li>
+          <li>It is now possible to hide holidays that belong to specific categories, for example to hide religious holidays. See the Categories combobox in the Holidays section of the Time-&gt;Regional tab</li>
           <li xml:lang="ar">أصبح من الممكن الآن إخفاء العطلات التي تنتمي إلى فئات معينة، على سبيل المثال إخفاء العطلات الدينية. انظر مربع القائمة المنسدلة «الفئات» في قسم «العطلات» ضمن علامة التبويب «الوقت والتاريخ» -&gt; «الإعدادات الإقليمية»</li>
           <li xml:lang="bg">Вече е възможно да се скриват официални празници, които принадлежат към специфични категории (например религиозни празници). Вижте падащото меню „Категории“ в раздела „Празници“ на секцията „Време -&gt; Регионални“</li>
           <li xml:lang="ca">Ara és possible ocultar els dies festius que pertanyen a categories específiques, per exemple, ocultar festes religioses. Vegeu el quadre combinat Categories a la secció Dies festius de la pestanya Data i hora-&gt;Regional</li>
@@ -541,7 +541,7 @@
           <li xml:lang="sv">Månadsvy: för konsekvensens skull döljs inte längre helgdagar som infaller på en arbetsdag</li>
           <li xml:lang="tr">Ay görünümü: Tutarlılık sağlamak amacıyla, iş günlerine denk gelen resmi tatiller artık gizlenmez.</li>
           <li xml:lang="uk">Перегляд місяця: заради сумісності, свята, які припадають на робочий день, більше не буде приховано</li>
-          <li>Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the \"Display holidays in the month view\" option in the Views-&gt;Month View tab</li>
+          <li>Month view: An option was added to allow hiding holidays. To enable this behavior, uncheck the "Display holidays in the month view" option in the Views-&gt;Month View tab</li>
           <li xml:lang="ar">عرض الشهر: تمت إضافة خيار يسمح بإخفاء أيام العطلات. لتمكين هذه الميزة، قم بإلغاء تحديد خيار ”عرض أيام العطلات في عرض الشهر“ في علامة التبويب ’عرض‘ -&gt; ”عرض الشهر“</li>
           <li xml:lang="bg">Изглед „Месец“: Добавена е опция за скриване на официалните празници. За да активирате това поведение, премахнете отметката от опцията „Показване на празници в месечния изглед“ в раздела „Изгледи -&gt; Изглед „Месец““</li>
           <li xml:lang="ca">Vista mensual: s'ha afegit una opció per a permetre ocultar els dies festius. Per a activar aquest comportament, desmarqueu l'opció «Mostra els festius a la vista mensual» a la pestanya Vistes-&gt;Vista mensual</li>
@@ -560,7 +560,7 @@
           <li xml:lang="sv">Månadsvy: Ett alternativ har lagts till för att tillåta att helgdagar döljs. För att aktivera beteendet, avmarkera alternativet \"Visa helgdagar i månadsvyn\" under fliken Vyer -&gt; Månadsvy</li>
           <li xml:lang="tr">Ay görünümü: Resmi tatillerin gizlenmesine olanak tanıyan bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Resmî tatilleri ay görünümünde göster” seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна приховувати свята. Щоб увімкнути цю можливість, зніміть прапорець з пункту «Показувати свята на панелі перегляду місяця» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
-          <li>Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on that date. To enable this behavior, check the \"Use the Holiday background color when a holiday lands on the date\" option in the Views-&gt;Month View tab</li>
+          <li>Month view: An option was added to allow using the custom holiday color as the date box background color if at least one holiday lands on that date. To enable this behavior, check the "Use the Holiday background color when a holiday lands on the date" option in the Views-&gt;Month View tab</li>
           <li xml:lang="ar">عرض الشهر: أُضيف خيار للسماح باستخدام لون العطلة المخصص كلون خلفية لصندوق التاريخ إذا صادفت عطلة واحدة على الأقل في ذلك التاريخ. لتفعيل هذا السلوك، حدد خيار "استخدام لون خلفية العطلة عندما تصادف عطلة التاريخ" في علامة التبويب "عروض-&gt;عرض الشهر".</li>
           <li xml:lang="bg">Изглед „Месец“: Добавена е опция за използване на персонализирания цвят за празник като фонов цвят за клетката на датата, ако на нея се пада поне един празник. За да активирате това поведение, поставете отметка на опцията „Use the Holiday background color when a holiday lands on the date“ в раздела „Изгледи -&gt; Изглед „Месец““</li>
           <li xml:lang="ca">Vista mensual: s'ha afegit una opció per a permetre l'ús del color personalitzat de festiu com a color de fons del quadre de dates si almenys un dels festius cau en aquesta data. Per a activar aquest comportament, marqueu l'opció «Usa el color de fons de festius quan un festiu caigui en la data» a la pestanya Vistes-&gt;Vista mensual</li>
@@ -579,7 +579,7 @@
           <li xml:lang="sv">Månadsvy: Ett alternativ har lagts till för att tillåta användning av den egna helgdagsfärgen som bakgrundsfärg för datumrutan om minst en helgdag infaller på det datumet. För att aktivera beteendet, markera alternativet \"Använd bakgrundsfärgen för helgdagar när en helg infaller på datumet\" under fliken Vyer -&gt; Månadsvy</li>
           <li xml:lang="tr">Ay görünümü: O tarihe en az bir resmi tatil denk geliyorsa, özel tatil renginin tarih kutusu arka plan rengi olarak kullanılmasına izin veren bir seçenek eklendi. Bu davranışı etkinleştirmek için Görünümler → Ay Görünümü sekmesindeki “Bir tarihe resmî tatil denk geldiğinde Tatil arka plan rengini kullan” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна використовувати колір нетипового свята як колір тла поля дати, якщо хоча б одне свято припадає на цю дату. Щоб увімкнути цю можливість, позначте пункт «Використовувати колір тла свята, якщо на дату припадає свято» на вкладці «Перегляди-&gt;Перегляд місяця».</li>
-          <li>Month view: An option was added to show start-time and end-times. Previously only showing the start-time was supported. To enable this option, check the \"Show the start-time and the end-time in month view items\" option in the View-&gt;Month View tab</li>
+          <li>Month view: An option was added to show start-time and end-times. Previously only showing the start-time was supported. To enable this option, check the "Show the start-time and the end-time in month view items" option in the View-&gt;Month View tab</li>
           <li xml:lang="ar">عرض الشهر: أُضيف خيار لإظهار وقت البدء ووقت الانتهاء. سابقًا، كان يُدعم فقط إظهار وقت البدء. لتفعيل هذا الخيار، حدد خيار "إظهار وقت البدء ووقت الانتهاء في عناصر عرض الشهر" في علامة تبويب عرض-&gt;عرض الشهر.</li>
           <li xml:lang="bg">Изглед „Месец“: Добавена е опция за показване на началния и крайния час. Преди се поддържаше само показване на началния час. За да активирате тази опция, поставете отметка на „Показване на началния и крайния час в елементите на месечния изглед“ в раздела „Изглед -&gt; Изглед „Месец““</li>
           <li xml:lang="ca">Vista mensual: s'ha afegit una opció per a mostrar l'hora d'inici i l'hora final. Anteriorment només s'admetia mostrar l'hora d'inici. Per a activar aquesta opció, marqueu l'opció «Mostra l'hora d'inici i l'hora final en els elements de la vista mensual» a la pestanya Visualitza-&gt;Vista mensual</li>
@@ -617,7 +617,7 @@
           <li xml:lang="sv">Agendavy: stryk under datum i dagens kolumnrubrik</li>
           <li xml:lang="tr">Ajanda görünümü: Bugünün sütun başlığındaki tarihinin altını çiz</li>
           <li xml:lang="uk">Панель порядку денного: реалізовано підкреслювання дати сьогоднішнього заголовка стовпчика</li>
-          <li>Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence locations in agenda view items\" option in the View-&gt;Agenda View tab</li>
+          <li>Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the "Show incidence locations in agenda view items" option in the View-&gt;Agenda View tab</li>
           <li xml:lang="ar">عرض جدول الأعمال: اختيارياً، اعرض أماكن الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أماكن الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
           <li xml:lang="bg">Изглед „Дневен план“: опция за показване на местоположенията на събитията вътре в елементите на дневния план. За да активирате това поведение, поставете отметка на „Показване на местоположенията на събитията в елементите на дневния план“ в раздела „Изглед -&gt; Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra les ubicacions d'incidència dins dels elements d'agenda. Per a activar aquest comportament, marqueu l'opció «Mostra les ubicacions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -636,7 +636,7 @@
           <li xml:lang="sv">Agendavy: visa valfritt förekomsternas plats i agendans punkter. För att aktivera beteendet, markera \"Visa förekomsternas plats i agendavyns punkter\" under fliken Visa -&gt; Agendavy</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak ajanda ögelerinin içinde olay konumlarını gösterir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Ajanda görünümü ögelerinde olay konumlarını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Панель порядку денного: якщо потрібно, програма може показувати місця проведення зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати місця зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -&gt; Перегляд порядку денного».</li>
-          <li>Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and Journals have been added.  Select your preferences in the \"General-&gt;Personal Default Access Classification\" comboboxes.</li>
+          <li>Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and Journals have been added.  Select your preferences in the "General-&gt;Personal Default Access Classification" comboboxes.</li>
           <li xml:lang="ar">أضيفت خيارات لضبط تصنيفات الوصول المبدئية (عام، سري، أو خاص) عند إنشاء فعاليات، ومهام، وسجلات جديدة. حدد تفضيلاتك في مربعات التحرير والسرد "عام-&gt; تصنيف الوصول المبدئي الشخصي".</li>
           <li xml:lang="bg">Добавени са опции за задаване на класификация на достъпа по подразбиране (публичен, поверителен или личен) при създаване на нови събития, задачи и дневници. Изберете вашите предпочитания в падащите менюта „Общи -&gt; Класификация на личния достъп по подразбиране“.</li>
           <li xml:lang="ca">S'han afegit opcions per establir classificacions d'accés predeterminades (Públic, Confidencial o Privat) en crear esdeveniments, tasques pendents o diaris nous. Seleccioneu les vostres preferències en els quadres combinats «General-&gt;Classificació d'accés predeterminada personal».</li>
@@ -702,7 +702,7 @@
     <release version="6.7.0" date="2026-04-16">
       <description>
         <ul>
-          <li>Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings Time&gt;Default Values tab</li>
+          <li>Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings Time-&gt;Default Values tab</li>
           <li xml:lang="ar">التذكيرات مفعّلة بشكل مبدئي لجميع الأحداث والمهام الجديدة. لتعطيل هذه الميزة، أزل علامة الاختيار من خيار ”مكّن التذكيرات“ في علامة التبويب ”الوقت والتاريخ-&gt;القيم المبدئية“ في الإعدادات.</li>
           <li xml:lang="bg">Напомнянията са активирани по подразбиране за всички нови събития и задачи. За да изключите това поведение, премахнете отметката от опцията „Активиране на напомняния“ в настройките на раздел „Време -&gt; Стойности по подразбиране“</li>
           <li xml:lang="ca">Els recordatoris estan activats de manera predeterminada per a tots els esdeveniments i tasques pendents noves. Per a desactivar aquest comportament, desmarqueu les opcions Habilita els recordatoris a la pestanya de configuració Data i hora-&gt;Valors predeterminats</li>
@@ -778,7 +778,7 @@
           <li xml:lang="sv">Månadsvy: navigeringsknapparna längst ner till höger har tagits bort till förmån för programmets förbättrade navigeringsfält</li>
           <li xml:lang="tr">Ay görünümü: Sağ alt taraftaki gezinti denetimleri, geliştirilmiş uygulama gezinti çubuğu lehine kaldırıldı.</li>
           <li xml:lang="uk">Панель місяця: засоби керування навігацією у нижній правій частині панелі вилучено — вони вже є на удосконаленій панелі навігації програми</li>
-          <li>Month view: the background color for today's date cell can be changed. To configure the color,  set the \"Month view today background color\" in the Colors and Fonts settings</li>
+          <li>Month view: the background color for today's date cell can be changed. To configure the color,  set the "Month view today background color" in the Colors and Fonts settings</li>
           <li xml:lang="ar">عرض الشهر: يمكن تغيير لون خلفية خلية تاريخ اليوم. لتكوين اللون،  اضبط \”لون خلفية عرض الشهر اليوم\“ في إعدادات الألوان والخطوط.</li>
           <li xml:lang="bg">Месечен изглед: цветът на фона за клетката с днешна дата може да се промени. За да конфигурирате цвета, задайте \„Цвят на фона за днешния месечен изглед\“ в настройките „Цветове и шрифтове“</li>
           <li xml:lang="ca">Vista mensual: es pot canviar el color de fons de la cel·la de la data d'avui. Per a configurar el color, establiu el «Color de fons d'avui de la vista d'avui» a la configuració de colors i lletres</li>
@@ -854,7 +854,7 @@
           <li xml:lang="sv">Agendavy: händelser med kort varaktighet visas med sina starttider utöver sina sammanfattningar</li>
           <li xml:lang="tr">Ajanda görünümü: Kısa süreli etkinlikler, özetlerinin yanı sıra başlangıç saatleriyle birlikte gösterilir.</li>
           <li xml:lang="uk">Панель порядку денного: записи подій короткої тривалості буде показано із їхнім часом початку на додачу до резюме</li>
-          <li>Agenda view: optionally show the incidence descriptions inside the agenda items. To enable this behavior, check the \"Show incidence descriptions in agenda view items\" option in the View-&gt;Agenda View tab</li>
+          <li>Agenda view: optionally show the incidence descriptions inside the agenda items. To enable this behavior, check the "Show incidence descriptions in agenda view items" option in the View-&gt;Agenda View tab</li>
           <li xml:lang="ar">عرض جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
           <li xml:lang="bg">Изглед „Дневен план“: опция за показване на описанията на събитията вътре в елементите на дневния план. За да активирате това поведение, поставете отметка на „Показване на описанията на събитията в елементите на дневния план“ в раздела „Изглед -&gt; Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra les descripcions d'incidència dins dels elements d'agenda. Per a activar aquest comportament, marqueu l'opció «Mostra les descripcions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -986,7 +986,7 @@
     <release version="6.5.0" date="2025-08-14">
       <description>
         <ul>
-          <li>Semantics are changed from a \"working schedule\" concept to a \"week schedule\" concept to accommodate non-working users</li>
+          <li>Semantics are changed from a "working schedule" concept to a "week schedule" concept to accommodate non-working users</li>
           <li xml:lang="ar">تغيير الدلالات من مفهوم \”جدول العمل\“ إلى مفهوم \”جدول الأسبوع\“ لاستيعاب المستخدمين غير العاملين</li>
           <li xml:lang="bg">Концепцията е променена от „работен график“ на „седмичен график“, за да бъде удобна и за работещи, и за неработещи потребители</li>
           <li xml:lang="ca">La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari setmanal» per admetre els usuaris no treballadors</li>
@@ -1005,7 +1005,7 @@
           <li xml:lang="sv">Semantiken ändras från konceptet \"arbetsschema\" till \"veckoschema\" för att tillgodose användare som inte arbetar</li>
           <li xml:lang="tr">Çalışmayan kullanıcıları da kapsamak adına anlamsal yapı “çalışma programı” kavramından “hafta programı” kavramına dönüştürüldü.</li>
           <li xml:lang="uk">Змінено семантику з концепції «робочого розкладу» на «розклад тижня» для задоволення потреб користувачів поза робочим часом</li>
-          <li>Initial \"New Event\" start times are consistent across all the views</li>
+          <li>Initial "New Event" start times are consistent across all the views</li>
           <li xml:lang="ar">أوقات بدء \”الحدث الجديد\“ الأولية متسقة في جميع طرق العرض</li>
           <li xml:lang="bg">Първоначалното начално време при „Ново събитие“ вече е еднакво във всички изгледи</li>
           <li xml:lang="ca">Les hores inicials d'inici d'«Esdeveniment nou» són coherents en totes les vistes</li>
@@ -1157,7 +1157,7 @@
           <li xml:lang="sv">Lägg till en datumväljardialogruta tillgänglig i menyn Gå</li>
           <li xml:lang="tr">Git menüsünde kullanılabilir bir Tarih Seçicisi iletişim kutusu eklendi.</li>
           <li xml:lang="uk">Додано вікно вибору дати, доступ до якого можна отримати з меню «Перехід»</li>
-          <li>Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", \"Week\" time ranges into the Agenda tool button</li>
+          <li>Agenda view: consolidated the "Day", "Next X Days", "Work Schedule", "Week" time ranges into the Agenda tool button</li>
           <li xml:lang="ar">عرض جدول الأعمال: دمج النطاقات الزمنية \”اليوم\“ و\”الأيام X التالية\“ و\”جدول العمل\“ و\”الأسبوع\“ في زر أداة جدول الأعمال</li>
           <li xml:lang="bg">Изглед „Дневен план“: Обединяване на времевите диапазони „Ден“, „Следващите X дни“, „Работен график“ и „Седмица“ в един инструментен бутон „Дневен план“</li>
           <li xml:lang="ca">Vista d'agenda: s'han consolidat els intervals de temps «Dia», «X dies següents», «Setmana laboral», «Setmana» al botó d'eina de l'agenda</li>
@@ -1290,7 +1290,7 @@
           <li xml:lang="sv">Datumnavigering: tillägg av ett alternativ i inställningarna Anpassa -&gt; Vyer för att dölja veckonummer</li>
           <li xml:lang="tr">Tarih gezgini: Yapılandır → Görünümler ayarlarında hafta numaralarını gizlemek için bir seçenek eklendi.</li>
           <li xml:lang="uk">Навігація датами: додано пункт у параметрах «Налаштувати-&gt;Перегляди» для приховування номерів тижнів</li>
-          <li>Date navigator: the \"Week numbers select a work week when in work week mode\" setting is true by default</li>
+          <li>Date navigator: the "Week numbers select a work week when in work week mode" setting is true by default</li>
           <li xml:lang="ar">متصفح التاريخ: يكون إعداد \”أرقام الأسبوع تحدد أسبوع العمل عندما تكون في وضع أسبوع العمل\“ صحيحًا بشكل مبدئي</li>
           <li xml:lang="bg">Навигатор на дати: настройката „Номерата на седмиците избират работна седмица в режим на работна седмица“ е включена по подразбиране</li>
           <li xml:lang="ca">Navegador de dates: l'opció «Els números de setmana seleccionen una setmana feinera en el mode de setmana laboral» és certa de manera predeterminada</li>
