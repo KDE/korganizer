@@ -185,10 +185,21 @@ void TodoSummaryWidget::updateView()
                     const auto locale = QLocale::system();
                     for (int i = 3; i < 8; ++i) {
                         if (daysTo < i * 24 * 60 * 60) {
-                            str = i18nc("1. weekday, 2. time",
-                                        "%1 %2",
-                                        locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat),
-                                        locale.toString(todo->dtDue().time(), QLocale::ShortFormat));
+                            if (todo->dtDue().time() != QTime(0, 0)) {
+                                str = i18nc("1. weekday, 2. time",
+                                            "%1 %2",
+                                            locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat),
+                                            locale.toString(todo->dtDue().time(), QLocale::ShortFormat));
+                            } else {
+                                if (daysTo < 6 && daysTo > 0) {
+                                    str = i18nc("1. weekday", "%1", locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat));
+                                } else {
+                                    str = i18nc("1. weekday, 2. date",
+                                                "%1 %2",
+                                                locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat),
+                                                locale.toString(todo->dtDue().date(), QLocale::ShortFormat));
+                                }
+                            }
                             break;
                         }
                     }
