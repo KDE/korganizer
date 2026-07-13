@@ -465,6 +465,48 @@
   <releases>
     <release version="6.8.0" type="snapshot">
       <description>
+        <p>Bug Fixes</p>
+        <ul>
+          <li>Fixed reminder toggling from menus</li>
+          <li xml:lang="ar">إصلاح مشكلة تبديل التذكير من القوائم</li>
+          <li xml:lang="bg">Корекция на превключването на напомнянията от менютата</li>
+          <li xml:lang="ca">S'ha corregit el canvi de recordatoris des dels menús</li>
+          <li xml:lang="ca-valencia">S'ha esmenat el canvi de recordatoris des dels menús</li>
+          <li xml:lang="cs">Opraveno přepínání připomenutí v nabídkách</li>
+          <li xml:lang="es">Se ha corregido la conmutación de recordatorios en los menús.</li>
+          <li xml:lang="fr">Correction de l'activation / désactivation des rappels à partir des menus</li>
+          <li xml:lang="he">תוקנו הפעלה/כיבוי של תזכורות מתפריטים</li>
+          <li xml:lang="it">Corretta l'attivazione/disattivazione dei promemoria dai menu</li>
+          <li xml:lang="ka">გასწორდა შეხსენების გადართვა მენიუებიდან</li>
+          <li xml:lang="nl">Het in- en uitschakelen van herinneringen via menu's is nu correct</li>
+          <li xml:lang="pt-BR">Correção na alternância de lembretes a partir dos menus</li>
+          <li xml:lang="ru">Исправлено переключение напоминаний из меню;</li>
+          <li xml:lang="sk">Opravené prepínanie pripomienok z ponúk</li>
+          <li xml:lang="sl">Popravljeno preklapljanje opomnikov iz menijev</li>
+          <li xml:lang="sv">Rättade ändring av påminnelser i menyer</li>
+          <li xml:lang="tr">Menülerden anımsatıcı durumunu değiştirme hatası düzeltildi.</li>
+          <li xml:lang="uk">Виправлено перемикання нагадування з меню</li>
+          <li>Agenda view: improved timelabel vertical alignment with grid</li>
+          <li xml:lang="ar">عرض جدول الأعمال: تحسين محاذاة العلامات الزمنية عموديًا مع الشبكة</li>
+          <li xml:lang="bg">Изглед на дневния ред: подобрено вертикално подравняване на етикетите за време спрямо мрежата</li>
+          <li xml:lang="ca">Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb la quadrícula</li>
+          <li xml:lang="ca-valencia">Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb la quadrícula</li>
+          <li xml:lang="cs">Zobrazení agendy: vylepšené svislé zarovnání časových značek podle mřížky</li>
+          <li xml:lang="es">Vista de agenda: Se ha mejorado la alineación vertical de las etiquetas de horas con la cuadrícula.</li>
+          <li xml:lang="fr">Vue en Agenda : amélioration de l'alignement vertical des étiquettes de temps avec la grille</li>
+          <li xml:lang="he">תצוגת סדר יום: יישור אנכי של תווית זמין עם הרשת השתפר</li>
+          <li xml:lang="it">Vista agenda: migliorato l'allineamento verticale delle etichette dell'orario alla griglia</li>
+          <li xml:lang="ka">გეგმის ხედი: გაუმჯობესდა დროის ჭდის ვერტიკალური სწორება ბადესთან</li>
+          <li xml:lang="nl">Agendaweergave: verbeterde verticale uitlijning van tijdlabels met raster</li>
+          <li xml:lang="pt-BR">Visão da agenda: alinhamento vertical dos rótulos de tempo aprimorado com a grade</li>
+          <li xml:lang="ru">Расписание: улучшено вертикальное выравнивание меток времени по сетке</li>
+          <li xml:lang="sk">Pohľad agendy: vylepšené zvislé zarovnanie časových popiskov s mriežkou</li>
+          <li xml:lang="sl">Pogled dnevnega reda: izboljšana navpična poravnava časovnih oznak z mrežo</li>
+          <li xml:lang="sv">Agendavy: förbättrad vertikal justering av tidsetiketter med rutnät</li>
+          <li xml:lang="tr">Ajanda görünümü: Zaman etiketlerinin kılavuz çizgileriyle dikey hizalaması iyileştirildi.</li>
+          <li xml:lang="uk">Панель порядку денного: удосконалено вертикальне вирівнювання мітки часу за ґраткою</li>
+        </ul>
+        <p>Features</p>
         <ul>
           <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu "Set as Default Todo Calendar"</li>
           <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the "Draw bold horizontal grid lines for the even hours" option in the View-&gt;Agenda View tab</li>
@@ -512,44 +554,6 @@
           <li xml:lang="uk">Панель порядку денного: реалізовано підкреслювання дати сьогоднішнього заголовка стовпчика</li>
           <li>Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the "Show incidence locations in agenda view items" option in the View-&gt;Agenda View tab</li>
           <li>Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and Journals have been added.  Select your preferences in the "General-&gt;Personal Default Access Classification" comboboxes.</li>
-          <li>Fixed reminder toggling from menus</li>
-          <li xml:lang="ar">إصلاح مشكلة تبديل التذكير من القوائم</li>
-          <li xml:lang="bg">Корекция на превключването на напомнянията от менютата</li>
-          <li xml:lang="ca">S'ha corregit el canvi de recordatoris des dels menús</li>
-          <li xml:lang="ca-valencia">S'ha esmenat el canvi de recordatoris des dels menús</li>
-          <li xml:lang="cs">Opraveno přepínání připomenutí v nabídkách</li>
-          <li xml:lang="es">Se ha corregido la conmutación de recordatorios en los menús.</li>
-          <li xml:lang="fr">Correction de l'activation / désactivation des rappels à partir des menus</li>
-          <li xml:lang="he">תוקנו הפעלה/כיבוי של תזכורות מתפריטים</li>
-          <li xml:lang="it">Corretta l'attivazione/disattivazione dei promemoria dai menu</li>
-          <li xml:lang="ka">გასწორდა შეხსენების გადართვა მენიუებიდან</li>
-          <li xml:lang="nl">Het in- en uitschakelen van herinneringen via menu's is nu correct</li>
-          <li xml:lang="pt-BR">Correção na alternância de lembretes a partir dos menus</li>
-          <li xml:lang="ru">Исправлено переключение напоминаний из меню;</li>
-          <li xml:lang="sk">Opravené prepínanie pripomienok z ponúk</li>
-          <li xml:lang="sl">Popravljeno preklapljanje opomnikov iz menijev</li>
-          <li xml:lang="sv">Rättade ändring av påminnelser i menyer</li>
-          <li xml:lang="tr">Menülerden anımsatıcı durumunu değiştirme hatası düzeltildi.</li>
-          <li xml:lang="uk">Виправлено перемикання нагадування з меню</li>
-          <li>Agenda view: improved timelabel vertical alignment with grid</li>
-          <li xml:lang="ar">عرض جدول الأعمال: تحسين محاذاة العلامات الزمنية عموديًا مع الشبكة</li>
-          <li xml:lang="bg">Изглед на дневния ред: подобрено вертикално подравняване на етикетите за време спрямо мрежата</li>
-          <li xml:lang="ca">Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb la quadrícula</li>
-          <li xml:lang="ca-valencia">Vista d'agenda: s'ha millorat l'alineació vertical de l'etiqueta d'hores amb la quadrícula</li>
-          <li xml:lang="cs">Zobrazení agendy: vylepšené svislé zarovnání časových značek podle mřížky</li>
-          <li xml:lang="es">Vista de agenda: Se ha mejorado la alineación vertical de las etiquetas de horas con la cuadrícula.</li>
-          <li xml:lang="fr">Vue en Agenda : amélioration de l'alignement vertical des étiquettes de temps avec la grille</li>
-          <li xml:lang="he">תצוגת סדר יום: יישור אנכי של תווית זמין עם הרשת השתפר</li>
-          <li xml:lang="it">Vista agenda: migliorato l'allineamento verticale delle etichette dell'orario alla griglia</li>
-          <li xml:lang="ka">გეგმის ხედი: გაუმჯობესდა დროის ჭდის ვერტიკალური სწორება ბადესთან</li>
-          <li xml:lang="nl">Agendaweergave: verbeterde verticale uitlijning van tijdlabels met raster</li>
-          <li xml:lang="pt-BR">Visão da agenda: alinhamento vertical dos rótulos de tempo aprimorado com a grade</li>
-          <li xml:lang="ru">Расписание: улучшено вертикальное выравнивание меток времени по сетке</li>
-          <li xml:lang="sk">Pohľad agendy: vylepšené zvislé zarovnanie časových popiskov s mriežkou</li>
-          <li xml:lang="sl">Pogled dnevnega reda: izboljšana navpična poravnava časovnih oznak z mrežo</li>
-          <li xml:lang="sv">Agendavy: förbättrad vertikal justering av tidsetiketter med rutnät</li>
-          <li xml:lang="tr">Ajanda görünümü: Zaman etiketlerinin kılavuz çizgileriyle dikey hizalaması iyileştirildi.</li>
-          <li xml:lang="uk">Панель порядку денного: удосконалено вертикальне вирівнювання мітки часу за ґраткою</li>
         </ul>
       </description>
     </release>
@@ -558,6 +562,7 @@
     <release version="6.7.1" date="2026-05-07"/>
     <release version="6.7.0" date="2026-04-16">
       <description>
+        <p>Features</p>
         <ul>
           <li>Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings Time-&gt;Default Values tab</li>
           <li>Month view: no longer display the month year header to save vertical space and remove redundancy</li>
@@ -703,6 +708,7 @@
     <release version="6.6.1" date="2026-01-08"/>
     <release version="6.6.0" date="2025-12-11">
       <description>
+        <p>Bug Fixes</p>
         <ul>
           <li>Incidence editor: the tags are sorted alphabetically in the tags editor</li>
           <li xml:lang="ar">محرر الحدوث: الوسوم مرتبة أبجديًا في محرر الوسوم</li>
@@ -723,6 +729,9 @@
           <li xml:lang="sv">Förekomsteditor: etiketterna sorteras alfabetiskt i etiketteditorn</li>
           <li xml:lang="tr">Olay düzenleyici: Etiketler, etiket düzenleyicide abecesel olarak sıralanır.</li>
           <li xml:lang="uk">Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою</li>
+        </ul>
+        <p>Features</p>
+        <ul>
           <li>Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well</li>
           <li xml:lang="ar">عرض جدول الأعمال: إضافة قائمة سياق لإظهار/إخفاء التسميات الزمنية لمنطقة التوقيت للنظام على الجانب الأيمن (أو الأيسر) أيضًا.</li>
           <li xml:lang="bg">Изглед на дневен ред: добавено контекстно меню за времеви етикети, за да се показват/скриват времевите етикети за системната часова зона от дясната (или лявата) страна</li>
@@ -788,6 +797,7 @@
     <release version="6.5.1" date="2025-09-11"/>
     <release version="6.5.0" date="2025-08-14">
       <description>
+        <p>General</p>
         <ul>
           <li>Semantics are changed from a "working schedule" concept to a "week schedule" concept to accommodate non-working users</li>
           <li>Initial "New Event" start times are consistent across all the views</li>
@@ -810,6 +820,9 @@
           <li xml:lang="sv">Förbättrad kalenderhantering av standardhändelser</li>
           <li xml:lang="tr">İyileştirilmiş öntanımlı takvim işleme</li>
           <li xml:lang="uk">Удосконалено обробку типового календаря подій</li>
+        </ul>
+        <p>Bug Fixes</p>
+        <ul>
           <li>Incidences with a long excluded dates list no longer create huge tooltips</li>
           <li xml:lang="ar">لم تعد الأحداث التي تحتوي على قائمة تواريخ مستثناة طويلة تنشئ تلميحات ضخمة</li>
           <li xml:lang="bg">Събитията с дълъг списък с изключени дати вече не създават огромни подсказки</li>
@@ -867,6 +880,9 @@
           <li xml:lang="sv">Agendavy: händelser utan längd visas som 30 minuter (istället för 15)</li>
           <li xml:lang="tr">Ajanda görünümü: Süresi olmayan etkinlikler (15 dakika yerine) 30 dakika uzunluğunda gösterilir.</li>
           <li xml:lang="uk">Панель порядку денного: записи подій без тривалості буде показано із тривалістю 30 (а не 15 хвилин)</li>
+        </ul>
+        <p>Features</p>
+        <ul>
           <li>Add What's New menu</li>
           <li xml:lang="ar">أضِف قائمة ما الجديد</li>
           <li xml:lang="bg">Добавяне на меню „Какво ново“</li>
