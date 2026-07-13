@@ -25,6 +25,8 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KMessageBox>
+#include <KStandardGuiItem>
 #include <KUrlLabel>
 
 #include <QGridLayout>
@@ -344,7 +346,14 @@ void TodoSummaryWidget::viewTodo(const QString &uid)
 
 void TodoSummaryWidget::removeTodo(const Akonadi::Item &item)
 {
-    (void)mChanger->deleteIncidence(item);
+    if (KMessageBox::warningContinueCancel(
+            this,
+            i18nc("@info", "Do you really want to permanently remove the item \"%1\"?", Akonadi::CalendarUtils::incidence(item)->summary()),
+            i18nc("@title:window", "Delete Item?"),
+            KStandardGuiItem::del())
+        == KMessageBox::Continue) {
+        (void)mChanger->deleteIncidence(item);
+    }
 }
 
 void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)

@@ -15,6 +15,7 @@
 #include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/Utils>
 
+#include <Akonadi/CalendarUtils>
 #include <Akonadi/Collection>
 #include <Akonadi/IncidenceChanger>
 
@@ -27,11 +28,13 @@
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
+#include <KMessageBox>
+#include <KStandardGuiItem>
 #include <KUrlLabel>
-#include <QMenu>
 
 #include <QGridLayout>
 #include <QLabel>
+#include <QMenu>
 #include <QStyle>
 #include <QVBoxLayout>
 
@@ -217,7 +220,14 @@ void ApptSummaryWidget::viewEvent(const QString &uid)
 
 void ApptSummaryWidget::removeEvent(const Akonadi::Item &item)
 {
-    (void)mChanger->deleteIncidence(item);
+    if (KMessageBox::warningContinueCancel(
+            this,
+            i18nc("@info", "Do you really want to permanently remove the item \"%1\"?", Akonadi::CalendarUtils::incidence(item)->summary()),
+            i18nc("@title:window", "Delete Item?"),
+            KStandardGuiItem::del())
+        == KMessageBox::Continue) {
+        (void)mChanger->deleteIncidence(item);
+    }
 }
 
 void ApptSummaryWidget::popupMenu(const QString &uid)
