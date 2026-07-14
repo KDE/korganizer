@@ -706,7 +706,7 @@ void ActionManager::initActions()
     mACollection->addAction(QStringLiteral("show_datenavigator"), mDateNavigatorShowAction);
     connect(mDateNavigatorShowAction, &KToggleAction::triggered, this, &ActionManager::toggleDateNavigator);
 
-    mTodoViewShowAction = new KToggleAction(i18nc("@action:inmenu", "Show To-do View"), this);
+    mTodoViewShowAction = new KToggleAction(i18nc("@action:inmenu", "Show To-do List"), this);
     mACollection->addAction(QStringLiteral("show_todoview"), mTodoViewShowAction);
     connect(mTodoViewShowAction, &KToggleAction::triggered, this, &ActionManager::toggleTodoView);
 
