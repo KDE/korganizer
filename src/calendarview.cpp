@@ -160,6 +160,7 @@ CalendarView::CalendarView(QWidget *parent)
     // hides the widget magically. I know I blamed Akonadi for not showing my
     // calendar more than once.
     mLeftSplitter->setChildrenCollapsible(false);
+    connect(mLeftSplitter, &QSplitter::splitterMoved, this, &CalendarView::leftSplitterMoved);
 
     mDateNavigatorContainer = new DateNavigatorContainer(mLeftSplitter);
     mDateNavigatorContainer->setObjectName(QLatin1StringView("CalendarView::DateNavigator"));
@@ -312,6 +313,15 @@ CalendarView::~CalendarView()
     delete mEventViewer;
 }
 
+void CalendarView::leftSplitterMoved([[maybe_unused]] int pos, [[maybe_unused]] int index)
+{
+    if (mViewManager->currentView()->identifier() == "DefaultTodoView") {
+        mLeftSplitterSizesTodo = mLeftSplitter->sizes();
+    } else {
+        mLeftSplitterSizes = mLeftSplitter->sizes();
+    }
+}
+
 QAbstractItemModel *CalendarView::eventsModel() const
 {
     return mPartStatFilterProxy;
@@ -457,10 +467,8 @@ void CalendarView::readSettings()
     }
     mPanner->setSizes(sizes);
 
-    sizes = geometryConfig.readEntry("Separator2", QList<int>());
-    if (!sizes.isEmpty() && sizes.count() != sizes.count(0)) {
-        mLeftSplitter->setSizes(sizes);
-    }
+    mLeftSplitterSizes = geometryConfig.readEntry("Separator2", QList<int>());
+    mLeftSplitterSizesTodo = geometryConfig.readEntry("Separator2Todo", QList<int>());
 
     mViewManager->readSettings(config.data());
     mTodoList->restoreLayout(config.data(), QStringLiteral("Sidebar Todo View"), true);
@@ -490,11 +498,14 @@ void CalendarView::writeSettings()
         geometryConfig.writeEntry("Separator1", list);
     }
 
-    list = mLeftSplitter->sizes();
+    list = mLeftSplitterSizes;
     if (list.count() != list.count(0) && mSplitterSizesValid) {
         geometryConfig.writeEntry("Separator2", list);
     }
-
+    list = mLeftSplitterSizesTodo;
+    if (list.count() != list.count(0) && mSplitterSizesValid) {
+        geometryConfig.writeEntry("Separator2Todo", list);
+    }
     mViewManager->writeSettings(config.data());
     mTodoList->saveLayout(config.data(), QStringLiteral("Sidebar Todo View"));
 
@@ -782,6 +793,15 @@ void CalendarView::changeIncidenceDisplay(const Akonadi::Item &item, Akonadi::In
 void CalendarView::updateView(const QDate &start, const QDate &end, const QDate &preferredMonth, const bool updateTodos)
 {
     const bool currentViewIsTodoView = mViewManager->currentView()->identifier() == "DefaultTodoView";
+
+    /* Never show the todolist in the sidebar when in todoview mode */
+    if (currentViewIsTodoView) {
+        mTodoList->setVisible(false);
+        mLeftSplitter->setSizes(mLeftSplitterSizesTodo);
+    } else {
+        mTodoList->setVisible(mViewManager->isTodoListShown());
+        mLeftSplitter->setSizes(mLeftSplitterSizes);
+    }
 
     if (updateTodos && mTodoList->isVisible()) {
         // Update the sidepane todoView

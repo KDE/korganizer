@@ -340,6 +340,18 @@ void KOViewManager::connectTodoView(KOTodoView *todoView)
     connect(todoView, &KOTodoView::fullViewChanged, mMainView, &CalendarView::changeFullView);
 }
 
+bool KOViewManager::isTodoListShown()
+{
+    const KActionCollection *ac = getActionCollection();
+    if (ac) {
+        const QAction *action = ac->action(QStringLiteral("show_todoview"));
+        if (action) {
+            return action->isChecked();
+        }
+    }
+    return false;
+}
+
 void KOViewManager::zoomInHorizontally()
 {
     if (mAgendaView == mCurrentView) {

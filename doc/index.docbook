@@ -622,7 +622,7 @@ journals items from the dates selected in the Date Navigator. The
 month shown in the Date Navigator (the selected days in the month won't change
 the Month view, only month changes).</para>
 
-<para>The To-do View sidebar component lists your to-dos, just like the
+<para>The To-do List sidebar component lists your to-dos, just like the
 <link linkend="todo-view">To-do view</link>. It is useful if you want
 to see your to-dos while using the other views.</para>
 

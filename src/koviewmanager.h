@@ -120,6 +120,7 @@ public:
     [[nodiscard]] QAction *viewToAction(const QString &, RangeMode) const;
     void viewActionEnable(QObject *);
     void viewActionEnable(QAction *);
+    bool isTodoListShown();
 
 Q_SIGNALS:
     void configChanged();

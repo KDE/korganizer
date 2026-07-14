@@ -463,6 +463,14 @@
     <binary>korganizer</binary>
   </provides>
   <releases>
+    <release version="6.8.40" type="snapshot">
+      <description>
+        <p>Features</p>
+        <ul>
+          <li>Todo view: the mini todolist is no longer shown in the sidebar; the mini todolist can still be shown in all the other views if the Settings-&gt;Sidebar-&gt;Show Todo List option is enabled</li>
+        </ul>
+      </description>
+    </release>
     <release version="6.8.0" type="snapshot">
       <description>
         <ul>

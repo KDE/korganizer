@@ -591,6 +591,8 @@ public Q_SLOTS:
     void collectionSelected(const Akonadi::Collection &collection);
     void collectionDeselected(const Akonadi::Collection &collection);
 
+    void leftSplitterMoved(int, int);
+
     /** Popup the "What's New" dialog **/
     void slotWhatsNew();
 
@@ -700,6 +702,8 @@ private:
 
     QSplitter *mPanner = nullptr;
     QSplitter *mLeftSplitter = nullptr;
+    QList<int> mLeftSplitterSizes;
+    QList<int> mLeftSplitterSizesTodo;
     QWidget *mLeftFrame = nullptr;
     QStackedWidget *mRightFrame = nullptr;
     CalendarSupport::MessageWidget *mMessageWidget = nullptr;
