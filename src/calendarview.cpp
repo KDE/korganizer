@@ -919,7 +919,7 @@ void CalendarView::edit_paste()
         return;
     }
 
-    KCalUtils::DndFactory factory(mCalendar);
+    const KCalUtils::DndFactory factory(mCalendar);
 
     KCalendarCore::Incidence::List pastedIncidences = factory.pasteIncidences(finalDateTime, pasteFlags);
     KCalendarCore::Incidence::List::Iterator it;
