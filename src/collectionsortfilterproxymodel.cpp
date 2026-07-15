@@ -13,11 +13,7 @@
 #include <Akonadi/EntityTreeModel>
 
 CollectionSortFilterProxyModel::CollectionSortFilterProxyModel(QObject *parent)
-#if HAVE_SORTFILTERPROXYMODELBASE
     : TextAddonsWidgets::SortFilterProxyModelBase{parent}
-#else
-    : QSortFilterProxyModel{parent}
-#endif
 {
 }
 
@@ -35,16 +31,12 @@ bool CollectionSortFilterProxyModel::filterAcceptsRow(int source_row, const QMod
             return mAccountActivities->filterAcceptsRow(instance.activities());
         }
     }
-#if HAVE_SORTFILTERPROXYMODELBASE
     const QModelIndex sourceIndex = sourceModel()->index(source_row, 0, source_parent);
     const QString name = sourceIndex.data().toString();
     if (contains(name)) {
         return true;
     }
     return false;
-#else
-    return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
-#endif
 }
 
 void CollectionSortFilterProxyModel::setAccountActivities(Akonadi::AccountActivitiesAbstract *accountActivities)

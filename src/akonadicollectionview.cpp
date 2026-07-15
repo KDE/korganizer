@@ -422,11 +422,7 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
     filterTreeViewModel->setSourceModel(searchProxy);
 
-#if HAVE_SORTFILTERPROXYMODELBASE
     connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel, &CollectionSortFilterProxyModel::setFilterString);
-#else
-    connect(searchCol, &QLineEdit::textChanged, filterTreeViewModel, &QSortFilterProxyModel::setFilterWildcard);
-#endif
 
     mCollectionView = new Akonadi::EntityTreeView(this);
     mCollectionView->header()->hide();
