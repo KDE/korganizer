@@ -256,7 +256,7 @@ set_package_properties(
             REQUIRED
 )
 
-if(${KF6TextAddonsWidgets_VERSION} VERSION_GREATER_EQUAL 2.1.40)
+if(${KF6TextAddonsWidgets_VERSION} VERSION_GREATER_EQUAL 2.1.1)
     set(HAVE_SORTFILTERPROXYMODELBASE TRUE)
 endif()
 
