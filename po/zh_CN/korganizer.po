@@ -3167,20 +3167,16 @@ msgid "%1 %2"
 msgstr "%2年%1月"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
-msgstr "%1"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
-msgstr "%2年%1月"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:246
 #, kde-format
