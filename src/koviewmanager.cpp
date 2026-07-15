@@ -352,6 +352,17 @@ bool KOViewManager::isTodoListShown()
     return false;
 }
 
+void KOViewManager::todoListEnable(bool enable)
+{
+    const KActionCollection *ac = getActionCollection();
+    if (ac) {
+        QAction *action = ac->action(QStringLiteral("show_todoview"));
+        if (action) {
+            action->setEnabled(enable);
+        }
+    }
+}
+
 void KOViewManager::zoomInHorizontally()
 {
     if (mAgendaView == mCurrentView) {
