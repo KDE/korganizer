@@ -799,10 +799,12 @@ void CalendarView::updateView(const QDate &start, const QDate &end, const QDate 
     /* Never show the todolist in the sidebar when in todoview mode */
     if (currentViewIsTodoView) {
         mTodoList->setVisible(false);
+        mViewManager->todoListEnable(false);
         mLeftSplitter->setSizes(mLeftSplitterSizesTodo);
     } else {
         mTodoList->setVisible(mViewManager->isTodoListShown());
         mLeftSplitter->setSizes(mLeftSplitterSizes);
+        mViewManager->todoListEnable(true);
     }
 
     if (updateTodos && mTodoList->isVisible()) {
