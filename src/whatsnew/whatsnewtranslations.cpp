@@ -160,7 +160,11 @@ QList<TextAddonsWidgets::WhatsNewInfo> WhatsNewTranslations::createWhatsNewInfo(
             lst68 += l.toString();
         }
         info68.setNewFeatures(lst68);
-        // info68.setChanges({i18n()});
+        info68.setChanges({
+            i18n("CalDAV fix: calendars created in KOrganizer are created on the DAV server"),
+            i18n("CalDAV fix: calendar name/color changes in KOrganizer are replicated on the DAV server"),
+            i18n("CalDAV fix: handle creating/editing/deleting recurring event exceptions"),
+        });
         info68.setBugFixings({
             i18n("Fixed reminder toggling from menus"),
             i18n("Agenda view: improved timelabel vertical alignment with grid"),
