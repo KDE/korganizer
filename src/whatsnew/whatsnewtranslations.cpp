@@ -36,6 +36,7 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
                "Settings->Sidebar->Show Todo List option is enabled"),
         kli18n("Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and "
                "Journals have been added.  Select your preferences in the \"General->Personal Default Access Classification\" comboboxes."),
+        kli18n("Templates: tags (categories) can be added to incidence templates"),
     };
 
     return info;
