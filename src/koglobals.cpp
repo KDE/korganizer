@@ -11,10 +11,8 @@
 
 #include <CalendarSupport/KCalPrefs>
 
-#include <KHolidays/HolidayRegion>
-#if KHOLIDAYS_VERSION >= QT_VERSION_CHECK(6, 26, 0)
 #include <KHolidays/HolidayCategories>
-#endif
+#include <KHolidays/HolidayRegion>
 
 #include <QApplication>
 
@@ -55,9 +53,7 @@ QMap<QDate, QStringList> KOGlobals::holiday(const QDate &start, const QDate &end
     setHolidayCategories(CalendarSupport::KCalPrefs::instance()->holidayCategories());
     for (KHolidays::HolidayRegion *region : std::as_const(mHolidayRegions)) {
         if (region && region->isValid()) {
-#if KHOLIDAYS_VERSION >= QT_VERSION_CHECK(6, 26, 0)
             region->setCategories(holidayCategories());
-#endif
             const KHolidays::Holiday::List list = region->rawHolidaysWithAstroSeasons(start, end);
             const int listCount(list.count());
             for (int i = 0; i < listCount; ++i) {
@@ -107,13 +103,11 @@ QList<KHolidays::HolidayRegion *> &KOGlobals::holidays()
 void KOGlobals::setHolidayCategories(const QStringList &categories)
 {
     mHolidayCategories.clear();
-#if KHOLIDAYS_VERSION >= QT_VERSION_CHECK(6, 26, 0)
     for (const QString &category : categories) {
         if (KHolidays::isHolidayCategoryValid(category)) {
             mHolidayCategories.append(category);
         }
     }
-#endif
 }
 
 QStringList &KOGlobals::holidayCategories()
