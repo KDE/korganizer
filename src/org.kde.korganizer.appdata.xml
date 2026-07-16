@@ -466,6 +466,15 @@
     <release version="6.8.40" type="snapshot">
       <description>
         <p>Features</p>
+        <p xml:lang="ca">Característiques</p>
+        <p xml:lang="cs">Vlastnosti</p>
+        <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="nl">Mogelijkheden</p>
+        <p xml:lang="pt-BR">Funcionalidades</p>
+        <p xml:lang="sl">Zmožnosti</p>
+        <p xml:lang="sv">Funktioner</p>
+        <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Todo view: the mini todolist is no longer shown in the sidebar; the mini todolist can still be shown in all the other views if the Settings-&gt;Sidebar-&gt;Show Todo List option is enabled</li>
         </ul>
@@ -474,6 +483,15 @@
     <release version="6.8.0" type="snapshot">
       <description>
         <p>Bug Fixes</p>
+        <p xml:lang="ca">Correcció d'errors</p>
+        <p xml:lang="cs">Opravy chyb</p>
+        <p xml:lang="es">Corrección de errores</p>
+        <p xml:lang="nl">Reparaties van bugs</p>
+        <p xml:lang="pt-BR">Correções de bugs</p>
+        <p xml:lang="sl">Popravki napak</p>
+        <p xml:lang="sv">Felrättningar</p>
+        <p xml:lang="tr">Hata düzeltmeleri</p>
+        <p xml:lang="uk">Виправлення вад</p>
         <ul>
           <li>Fixed reminder toggling from menus</li>
           <li xml:lang="ar">إصلاح مشكلة تبديل التذكير من القوائم</li>
@@ -515,6 +533,15 @@
           <li xml:lang="uk">Панель порядку денного: удосконалено вертикальне вирівнювання мітки часу за ґраткою</li>
         </ul>
         <p>Features</p>
+        <p xml:lang="ca">Característiques</p>
+        <p xml:lang="cs">Vlastnosti</p>
+        <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="nl">Mogelijkheden</p>
+        <p xml:lang="pt-BR">Funcionalidades</p>
+        <p xml:lang="sl">Zmožnosti</p>
+        <p xml:lang="sv">Funktioner</p>
+        <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="uk">Можливості</p>
         <ul>
           <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu "Set as Default Todo Calendar"</li>
           <li xml:lang="ca">Es pot especificar un calendari de tasques pendents predeterminat per a fer que la creació de tasques pendents noves sigui més ràpida i fàcil amb menys possibilitats d'arxivar-les a la carpeta incorrecta. L'establiment d'un calendari d'esdeveniments predeterminat s'ha admès durant molt de temps. Vegeu el menú contextual del gestor de calendaris «Estableix com a carpeta predeterminada de tasques pendents»</li>
@@ -537,7 +564,7 @@
           <li xml:lang="ka">დღის წესრიგის ხედი: უფრო სქელი ჰორიზონტალური ბადის ხაზების არასავალდებულო დახატვა ყოველ ორ საათში. ამ ქცევის ჩასართავად დასვით თოლია "სქელი ჰორიზონტალური ბადის ხაზების დახატვა ლუწი საათებისთვის" მენიუში ხედი-&gt;დღის წესრიგის ხედის ჩანართში</li>
           <li xml:lang="nl">Agendaweergave: optioneel dikkere horizontale rasterlijnen tekenen om de twee uur. Om dit in te schakelen, activeert u de optie "Dikke horizontale rasterlijnen tekenen voor de even uren" aan in het tabblad Beeld-&gt;Agendaweergave.</li>
           <li xml:lang="pt-BR">Visão de Agenda: opcionalmente, desenhe linhas de grade horizontais mais grossas a cada duas horas. Para ativar esse comportamento, marque a opção "Desenhar linhas de grade horizontais grossas para as horas pares" na aba Exibir -&gt; Visão de Agenda.</li>
-          <li xml:lang="sl">Pogled dnevnega reda: po želji lahko vsaki dve uri narišete krepkejše/debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, v zavihku Pogled-&gt;Pogled dnevnega reda označite možnost »Za sode ure nariši krepke vodoravne mrežne črte«.</li>
+          <li xml:lang="sl">Pogled dnevnega reda: po želji lahko vsaki dve uri narišete krepkejše/debelejše vodoravne mrežne črte. Če želite omogočiti to delovanje, v zavihku Pogled-&gt;Pogled dnevnega reda označite možnost "Za sode ure nariši krepke vodoravne mrežne črte"</li>
           <li xml:lang="sv">Agendavy: rita valfritt grövre/tjockare horisontella rutnätslinjer varannan timme. För att aktivera beteendet, markera alternativet "Rita grova horisontella rutnätslinjer för jämna timmar" under fliken Visa -&gt; Agendavy</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak her iki saatte bir daha kalın yatay kılavuz çizgileri çizilir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Çift saatler için kalın yatay kılavuz çizgileri çiz” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд порядку денного: якщо потрібно, програма може малювати жирніші/товстіші горизонтальні лінії сітки через кожні дві години. Щоб увімкнути цю можливість, поставте позначку навпроти пункту «Малювати жирні горизонтальні лінії сітки для парних годин» на вкладці «Перегляд-&gt;Перегляд порядку денного».</li>
@@ -608,7 +635,7 @@
           <li xml:lang="ka">თვის ხედი: დაემატა დაწყებისა და დასრულების ჩვენების პარამეტრი. ადრე, მხოლოდ, დაწყების დროის ჩვენება იყო მხარდაჭერილი. ამ პარამეტრის ჩასართავად, ჩართეთ თოლია "დაწყებისა და დამთავრების დროების ჩვენება თვის ხედის ელემენტებში" მენიუდან ხედი-&gt;თვის ხედის ჩანართი</li>
           <li xml:lang="nl">Maandweergave: Er is een optie toegevoegd om de begin- en eindtijd weer te geven. Voorheen werd alleen de begintijd weergegeven. Om deze optie in te schakelen, activeert u de optie "Begin- en eindtijd weergeven in items in de maandweergave" aan in het tabblad Weergave-&gt;Maandweergave.</li>
           <li xml:lang="pt-BR">Visão mensal: Foi adicionada uma opção para exibir os horários de início e término. Anteriormente, apenas o horário de início era exibido. Para habilitar essa opção, marque a opção "Exibir os horários de início e término nos itens da visão mensal" na guia Exibir -&gt; Visão mensal.</li>
-          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost prikaza začetnega in končnega časa. Prej je bil podprt samo prikaz začetnega časa. Če želite omogočiti to možnost, označite možnost "Prikaži začetni in končni čas v elementih mesečnega pogleda" v zavihku Pogled--&gt;Mesec.</li>
+          <li xml:lang="sl">Mesečni pogled: Dodana je bila možnost prikaza začetnega in končnega časa. Prej je bil podprt samo prikaz začetnega časa. Če želite omogočiti to možnost, označite možnost "Prikaži začetni in končni čas v elementih mesečnega pogleda" v zavihku Pogled--&gt;Mesec</li>
           <li xml:lang="sv">Månadsvy: Ett alternativ har lagts till för att visa starttid och sluttid. Tidigare stöddes endast visning av starttid. För att aktivera alternativet, markera "Visa starttid och sluttid i månadsvyns objekt" under fliken Visa -&gt; Månadsvy</li>
           <li xml:lang="tr">Ay görünümü: Başlangıç ve bitiş zamanlarının gösterilmesini sağlayan bir seçenek eklendi. Önceden yalnızca başlangıç zamanının gösterilmesi destekleniyordu. Bu seçeneği etkinleştirmek için Görünüm → Ay Görünümü sekmesindeki “Ay görünümü ögelerinde başlangıç ve bitiş zamanını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Перегляд місяця: додано пункт, за допомогою якого можна наказати програмі показувати час початку і час завершення. Раніше у програмі було передбачено показ лише часу початку. Щоб увімкнути цю можливість, позначте пункт «Показувати час початку і час завершення у пунктах у перегляді місяця» на вкладці «Перегляд-&gt;Перегляд місяця».</li>
@@ -666,6 +693,15 @@
     <release version="6.7.0" date="2026-04-16">
       <description>
         <p>Features</p>
+        <p xml:lang="ca">Característiques</p>
+        <p xml:lang="cs">Vlastnosti</p>
+        <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="nl">Mogelijkheden</p>
+        <p xml:lang="pt-BR">Funcionalidades</p>
+        <p xml:lang="sl">Zmožnosti</p>
+        <p xml:lang="sv">Funktioner</p>
+        <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings Time-&gt;Default Values tab</li>
           <li xml:lang="ca">Els recordatoris estan activats de manera predeterminada per a tots els esdeveniments i tasques pendents noves. Per a desactivar aquest comportament, desmarqueu les opcions Habilita els recordatoris a la pestanya de configuració Data i hora-&gt;Valors predeterminats</li>
@@ -816,7 +852,7 @@
           <li xml:lang="ka">დღის წესრიგის ხედი: მოვლენის აღწერების არასავალდებულო ჩვენება დღის წესრიგის ელემენტებში. ამ ქცევის ჩასართავად დასვით თოლია "მოვლენის აღწერების ჩვენება დღის წესრიგის ხედის ელემენტებში" მენიუდან ხედი-&gt;დღის წესრიგის ხედის ჩანართი</li>
           <li xml:lang="nl">Agendaweergave: toon optioneel de incidentbeschrijvingen in de agenda-items. Om dit gedrag in te schakelen, activeer de optie "Incidentbeschrijvingen tonen in de items in de agenda" in het weergavetabblad Beeld-&gt;Agenda</li>
           <li xml:lang="pt-BR">Visão de Agenda: opcionalmente, mostre as descrições das ocorrências dentro dos itens da agenda. Para ativar esse comportamento, marque a opção "Mostrar descrições de incidência nos itens da visão de agenda" na aba Exibir -&gt; Visão da Agenda.</li>
-          <li xml:lang="sl">Pogled dnevnega reda: po želji prikazuje opise dogodkov znotraj elementov dnevnega reda. Če želite omogočiti to delovanje, izberite možnost "Prikazuj opise dogodkov v elementih pogleda dnevnega reda" v zavihku Pogled-&gt;Pogled dnevnega reda </li>
+          <li xml:lang="sl">Pogled dnevnega reda: po želji prikazuje opise dogodkov znotraj elementov dnevnega reda. Če želite omogočiti to delovanje, izberite možnost "Prikazuj opise dogodkov v elementih pogleda dnevnega reda" v zavihku Pogled-&gt;Pogled dnevnega reda</li>
           <li xml:lang="sv">Agendavy: visa valfritt förekomstbeskrivningar inne i agendans punkter. För att aktivera beteendet, markera alternativet "Visa förekomstbeskrivningar i agendavyns punkter" under fliken Visa -&gt; Agendavy.</li>
           <li xml:lang="tr">Ajanda görünümü: İsteğe bağlı olarak ajanda ögelerinin içinde olay açıklamalarını gösterir. Bu davranışı etkinleştirmek için Görünüm → Ajanda Görünümü sekmesindeki “Ajanda görünümü ögelerinde olay açıklamalarını göster” seçeneğini işaretleyin.</li>
           <li xml:lang="uk">Панель порядку денного: якщо потрібно, програма може показувати описи зустрічей у пунктах. Щоб увімкнути показ, позначте пункт «Показувати описи зустрічей для пунктів перегляду порядку денного» на вкладці «Перегляд -&gt; Перегляд порядку денного».</li>
@@ -848,6 +884,15 @@
     <release version="6.6.0" date="2025-12-11">
       <description>
         <p>Bug Fixes</p>
+        <p xml:lang="ca">Correcció d'errors</p>
+        <p xml:lang="cs">Opravy chyb</p>
+        <p xml:lang="es">Corrección de errores</p>
+        <p xml:lang="nl">Reparaties van bugs</p>
+        <p xml:lang="pt-BR">Correções de bugs</p>
+        <p xml:lang="sl">Popravki napak</p>
+        <p xml:lang="sv">Felrättningar</p>
+        <p xml:lang="tr">Hata düzeltmeleri</p>
+        <p xml:lang="uk">Виправлення вад</p>
         <ul>
           <li>Incidence editor: the tags are sorted alphabetically in the tags editor</li>
           <li xml:lang="ar">محرر الحدوث: الوسوم مرتبة أبجديًا في محرر الوسوم</li>
@@ -870,6 +915,15 @@
           <li xml:lang="uk">Редактор зустрічей: мітки у редакторі міток упорядковано з абеткою</li>
         </ul>
         <p>Features</p>
+        <p xml:lang="ca">Característiques</p>
+        <p xml:lang="cs">Vlastnosti</p>
+        <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="nl">Mogelijkheden</p>
+        <p xml:lang="pt-BR">Funcionalidades</p>
+        <p xml:lang="sl">Zmožnosti</p>
+        <p xml:lang="sv">Funktioner</p>
+        <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well</li>
           <li xml:lang="ar">عرض جدول الأعمال: إضافة قائمة سياق لإظهار/إخفاء التسميات الزمنية لمنطقة التوقيت للنظام على الجانب الأيمن (أو الأيسر) أيضًا.</li>
@@ -937,6 +991,15 @@
     <release version="6.5.0" date="2025-08-14">
       <description>
         <p>General</p>
+        <p xml:lang="ca">General</p>
+        <p xml:lang="cs">Obecné</p>
+        <p xml:lang="es">General</p>
+        <p xml:lang="nl">Algemeen</p>
+        <p xml:lang="pt-BR">Geral</p>
+        <p xml:lang="sl">Splošno</p>
+        <p xml:lang="sv">Allmänt</p>
+        <p xml:lang="tr">Genel</p>
+        <p xml:lang="uk">Загальне</p>
         <ul>
           <li>Semantics are changed from a "working schedule" concept to a "week schedule" concept to accommodate non-working users</li>
           <li xml:lang="ca">La semàntica es canvia del concepte d'«horari laboral» al concepte d'«horari setmanal» per admetre els usuaris no treballadors</li>
@@ -985,6 +1048,15 @@
           <li xml:lang="uk">Удосконалено обробку типового календаря подій</li>
         </ul>
         <p>Bug Fixes</p>
+        <p xml:lang="ca">Correcció d'errors</p>
+        <p xml:lang="cs">Opravy chyb</p>
+        <p xml:lang="es">Corrección de errores</p>
+        <p xml:lang="nl">Reparaties van bugs</p>
+        <p xml:lang="pt-BR">Correções de bugs</p>
+        <p xml:lang="sl">Popravki napak</p>
+        <p xml:lang="sv">Felrättningar</p>
+        <p xml:lang="tr">Hata düzeltmeleri</p>
+        <p xml:lang="uk">Виправлення вад</p>
         <ul>
           <li>Incidences with a long excluded dates list no longer create huge tooltips</li>
           <li xml:lang="ar">لم تعد الأحداث التي تحتوي على قائمة تواريخ مستثناة طويلة تنشئ تلميحات ضخمة</li>
@@ -1045,6 +1117,15 @@
           <li xml:lang="uk">Панель порядку денного: записи подій без тривалості буде показано із тривалістю 30 (а не 15 хвилин)</li>
         </ul>
         <p>Features</p>
+        <p xml:lang="ca">Característiques</p>
+        <p xml:lang="cs">Vlastnosti</p>
+        <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="nl">Mogelijkheden</p>
+        <p xml:lang="pt-BR">Funcionalidades</p>
+        <p xml:lang="sl">Zmožnosti</p>
+        <p xml:lang="sv">Funktioner</p>
+        <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Add What's New menu</li>
           <li xml:lang="ar">أضِف قائمة ما الجديد</li>
