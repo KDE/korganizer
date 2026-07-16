@@ -476,7 +476,7 @@
         <p xml:lang="tr">Özellikler</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
-          <li>Todo view: the mini todolist is no longer shown in the sidebar; the mini todolist can still be shown in all the other views if the Settings-&gt;Sidebar-&gt;Show Todo List option is enabled</li>
+          <li/>
         </ul>
       </description>
     </release>
@@ -684,6 +684,7 @@
           <li xml:lang="sv">Alternativ för att ställa in standardklassificering av åtkomst (öppen, konfidentiell eller privat) när nya händelser, uppgifter och journalanteckningar skapas har lagts till. Välj inställning i kombinationsrutorna under "Allmänt -&gt; Personligt Standardklassificering av åtkomst".</li>
           <li xml:lang="tr">Yeni Etkinlikler, Yapılacaklar ve Günlükler oluştururken öntanımlı erişim sınıflandırmalarını (Genel, Gizli veya Özel) ayarlama seçenekleri eklendi. Tercihlerinizi “Genel → Kişisel Öntanımlı Erişim Sınıflandırması” açılır kutularından seçin.</li>
           <li xml:lang="uk">Додано варіанти встановлення типової класифікації доступу (Відкритий, Конфіденційний або Приватний) під час створення записів подій, завдань та журналів. Виберіть свій варіант у спадному списку «Загальне-&gt;Типова особиста класифікація доступу».</li>
+          <li>Todo view: the mini todolist is no longer shown in the sidebar; the mini todolist can still be shown in all the other views if the Settings-&gt;Sidebar-&gt;Show Todo List option is enabled</li>
         </ul>
       </description>
     </release>
