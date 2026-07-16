@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-14 02:39+0000\n"
-"PO-Revision-Date: 2026-05-11 11:21+0200\n"
+"POT-Creation-Date: 2026-07-16 02:40+0000\n"
+"PO-Revision-Date: 2026-07-15 17:12+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -382,7 +382,7 @@ msgstr "Exporta calendario a file"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr "Exporta tu calendario a un filede iCalendar"
+msgstr "Exporta tu calendario a un file de iCalendar"
 
 #: actionmanager.cpp:257
 #, kde-format
@@ -952,7 +952,8 @@ msgstr ""
 "planification per seliger dies in le preferentia de  "
 "<placeholder>Planification Septimanal</placeholder>  in le pagina de "
 "<interface>Tempore e Data->Regional</interface> .<para>Typicamente iste "
-"vista es intendite per monstrar leseptimana sin dies de fin septimana.</para>"
+"vista es intendite per monstrar le septimana sin dies de fin septimana.</"
+"para>"
 
 #: actionmanager.cpp:538
 #, kde-format
@@ -1230,9 +1231,11 @@ msgid "Show Date Navigator"
 msgstr "Monstra navigator de data"
 
 #: actionmanager.cpp:709
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Show To-do View"
 msgctxt "@action:inmenu"
-msgid "Show To-do View"
+msgid "Show To-do List"
 msgstr "Monstra vista de activitates de facer"
 
 #: actionmanager.cpp:713
@@ -1282,7 +1285,7 @@ msgstr "&Configura KOrganizer..."
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] "1incidentia esseva importate con successo."
+msgstr[0] "1 incidentia esseva importate con successo."
 msgstr[1] "%1 incidentias esseva importate con successo."
 
 #: actionmanager.cpp:844
@@ -1478,7 +1481,7 @@ msgid ""
 "para><para>If you select add, then a new calendar will be created for you "
 "automatically.</para>"
 msgstr ""
-"<para>Tu volereoa fusionar iste elemento de calendario in un calendario "
+"<para>Tu volerea fusionar iste elemento de calendario in un calendario "
 "existente o usar lo pro crear un nove calendario?</para><para>Si selige "
 "fusionar, alora on dara te le opportunitate de seliger le calendario de "
 "destination,</para><para>Si tu selige adder, alora un nove calendario essera "
@@ -1530,7 +1533,7 @@ msgstr "Cerca de Calendario"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr "Starta typar per cercar uncalendario intra le collection."
+msgstr "Starta typar per cercar un calendario intra le collection."
 
 #: akonadicollectionview.cpp:397
 #, kde-format
@@ -1688,7 +1691,7 @@ msgid ""
 msgstr ""
 "Tu vermente vole deler le dossier <filename>%1</filename> ?"
 "<para><warning>Isto non pote esser annullate. Pro favor considera "
-"attentemente  ante pressare le button %2.</warning></para>"
+"attentemente  ante pressar le button %2.</warning></para>"
 
 #: akonadicollectionview.cpp:938
 #, kde-kuit-format
@@ -1702,10 +1705,10 @@ msgid ""
 msgstr ""
 "Tu vermente vole deler le dossier <filename>%1</filename> ?"
 "<para><warning>Isto non pote esser annullate. Pro favor considera "
-"attentemente  ante pressare le button %2.</warning></para> "
-"<para><warning>Isto es tu dossier de calendario de %3 predefinite. Si tu "
-"lodele tu poterea esser demandate a seliger un nove calkendario predefinite "
-"de %4.</warning></para>"
+"attentemente  ante pressar le button %2.</warning></para> "
+"<para><warning>Isto es tu dossier de calendario de %3 predefinite. Si tu lo "
+"dele tu poterea esser demandate a seliger un nove calendario predefinite de "
+"%4.</warning></para>"
 
 #: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, kde-format
@@ -1754,7 +1757,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Il falleva deler calendario : <message>%1</message>"
 
-#: calendarview.cpp:267
+#: calendarview.cpp:268
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1765,7 +1768,7 @@ msgstr ""
 "entrata de evento, activitate de facer o jornal per vider su detalios ci.</"
 "para>"
 
-#: calendarview.cpp:271
+#: calendarview.cpp:272
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1775,19 +1778,19 @@ msgstr ""
 "Vide ci le detalios de entratas de eventos, jornal o activitates de facer "
 "selectionate in le vista principal de KOrganizer."
 
-#: calendarview.cpp:693
+#: calendarview.cpp:704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Activitates de agenda o de facer completate: %1 (%2)"
 
-#: calendarview.cpp:702
+#: calendarview.cpp:713
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "Jornal de %1"
 
-#: calendarview.cpp:751
+#: calendarview.cpp:762
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1797,99 +1800,99 @@ msgstr ""
 "Le elemento <resource>%1</resource> es filtrate per tu regulas de filtro "
 "currente, assi si illo essera celate a non apparera in le vista."
 
-#: calendarview.cpp:820 kontactplugin/korganizer/apptsummarywidget.cpp:225
+#: calendarview.cpp:842 kontactplugin/korganizer/apptsummarywidget.cpp:225
 #: kontactplugin/korganizer/todosummarywidget.cpp:351
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Tu vermente vole remover permanentemente le elemento \"%1\"?"
 
-#: calendarview.cpp:821 kontactplugin/korganizer/apptsummarywidget.cpp:226
+#: calendarview.cpp:843 kontactplugin/korganizer/apptsummarywidget.cpp:226
 #: kontactplugin/korganizer/todosummarywidget.cpp:352
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Dele elemento?"
 
-#: calendarview.cpp:896
+#: calendarview.cpp:918
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Il falleva collar: incapace determinar un valide data objectivo."
 
-#: calendarview.cpp:1314
+#: calendarview.cpp:1336
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Rende sub-activitates independente"
 
-#: calendarview.cpp:1368
+#: calendarview.cpp:1390
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Marca rememoration"
 
-#: calendarview.cpp:1373
+#: calendarview.cpp:1395
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "<message>%1</message> memento es habilitate"
 
-#: calendarview.cpp:1375
+#: calendarview.cpp:1397
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> memento es dishabilitate"
 
-#: calendarview.cpp:1378
+#: calendarview.cpp:1400
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "<message>%1</message> comutar de memento falleva"
 
-#: calendarview.cpp:1409 calendarview.cpp:1467
+#: calendarview.cpp:1431 calendarview.cpp:1489
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Marca activitate completate"
 
-#: calendarview.cpp:1413
+#: calendarview.cpp:1435
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Activitate de facer <message>%1</message> %2 percent completate"
 
-#: calendarview.cpp:1416
+#: calendarview.cpp:1438
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "Activitate de facer <message>%1</message> falleva a cambiar completion"
 
-#: calendarview.cpp:1519
+#: calendarview.cpp:1541
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" esseva copiate con successo in %2."
 
-#: calendarview.cpp:1520
+#: calendarview.cpp:1542
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Copia succedite"
 
-#: calendarview.cpp:1524
+#: calendarview.cpp:1546
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Incapace de copiar le elemento\"%1\"  in  %2."
 
-#: calendarview.cpp:1525 calendarview.cpp:2501
+#: calendarview.cpp:1547 calendarview.cpp:2523
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Il falleva a copiar"
 
-#: calendarview.cpp:1584
+#: calendarview.cpp:1606
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1899,25 +1902,25 @@ msgstr ""
 "Incapace a remover elemento \"%1\" ex le calendario original. Totevia un "
 "copia de iste elemento ha essite ponite in %2."
 
-#: calendarview.cpp:1588 calendarview.cpp:1604 calendarview.cpp:2536
+#: calendarview.cpp:1610 calendarview.cpp:1626 calendarview.cpp:2558
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Il falleva a mover"
 
-#: calendarview.cpp:1593
+#: calendarview.cpp:1615
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" ha movite con successo ex %2 a %3"
 
-#: calendarview.cpp:1594
+#: calendarview.cpp:1616
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Movite con successo"
 
-#: calendarview.cpp:1600
+#: calendarview.cpp:1622
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
@@ -1925,26 +1928,26 @@ msgstr ""
 "Incapace de adder elemento \"%1\"  in %2. Iste elementos non ha essite "
 "movite."
 
-#: calendarview.cpp:1639
+#: calendarview.cpp:1661
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Tu vole dissociar le recurrentia de %1 ex le recurrentia?"
 
-#: calendarview.cpp:1643 calendarview.cpp:1656 calendarview.cpp:2317
-#: calendarview.cpp:2376 calendarview.cpp:2406
+#: calendarview.cpp:1665 calendarview.cpp:1678 calendarview.cpp:2339
+#: calendarview.cpp:2398 calendarview.cpp:2428
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "Confirmation de KOrganizer"
 
-#: calendarview.cpp:1644
+#: calendarview.cpp:1666
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Dissocia"
 
-#: calendarview.cpp:1651
+#: calendarview.cpp:1673
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1954,79 +1957,79 @@ msgstr ""
 "Tu vole dissociar le recurrentia de %1 ex le recurrentia o anque dissociar "
 "le futures?"
 
-#: calendarview.cpp:1657
+#: calendarview.cpp:1679
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "S&olmente dissocia iste sol"
 
-#: calendarview.cpp:1658
+#: calendarview.cpp:1680
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "&Anque dissocia le futures"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1698
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Dissocia future occurrentias"
 
-#: calendarview.cpp:1678
+#: calendarview.cpp:1700
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Dissocia occurrentia"
 
-#: calendarview.cpp:1685
+#: calendarview.cpp:1707
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Il falleva dissociar future occurrentias."
 
-#: calendarview.cpp:1685 calendarview.cpp:1687
+#: calendarview.cpp:1707 calendarview.cpp:1709
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Il falleva dissociar"
 
-#: calendarview.cpp:1687
+#: calendarview.cpp:1709
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Il falleva dissociar occurrentia."
 
-#: calendarview.cpp:1831
+#: calendarview.cpp:1853
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1850
+#: calendarview.cpp:1872
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Exporta calendario a file"
 
-#: calendarview.cpp:1863
+#: calendarview.cpp:1885
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Tu vole super scriber <filename>%1</filename>?"
 
-#: calendarview.cpp:1864
+#: calendarview.cpp:1886
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Exporta Calendario"
 
-#: calendarview.cpp:1878
+#: calendarview.cpp:1900
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Motivation incognite"
 
-#: calendarview.cpp:1880
+#: calendarview.cpp:1902
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2035,13 +2038,13 @@ msgstr ""
 "Non pote scriber file de iCalendar <filename>%1</filename>:<message>%2</"
 "message>"
 
-#: calendarview.cpp:1989 calendarview.cpp:2034
+#: calendarview.cpp:2011 calendarview.cpp:2056
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Necun filtro"
 
-#: calendarview.cpp:2312
+#: calendarview.cpp:2334
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2053,19 +2056,19 @@ msgstr ""
 "deler solo iste elemento e render tote su sub-activitates independente, o "
 "dele le activitates con tote su sub-activitates?"
 
-#: calendarview.cpp:2318
+#: calendarview.cpp:2340
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Dele solmente iste"
 
-#: calendarview.cpp:2319 calendarview.cpp:2377
+#: calendarview.cpp:2341 calendarview.cpp:2399
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Dele Toto"
 
-#: calendarview.cpp:2351
+#: calendarview.cpp:2373
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2075,13 +2078,13 @@ msgstr ""
 "Le elemento <resource>%1</resource> es marcate como de sol lectura e non "
 "pote esser delite; probabilemente il pertine a un calendario de sol lectura."
 
-#: calendarview.cpp:2354
+#: calendarview.cpp:2376
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Il non es possibile remover"
 
-#: calendarview.cpp:2373
+#: calendarview.cpp:2395
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2091,13 +2094,13 @@ msgstr ""
 "Le elemento de calendario <resource>%1</resource> recurre in multiple datas; "
 "tu es secur que tu vole deler lo con tote su recurrentias?"
 
-#: calendarview.cpp:2384
+#: calendarview.cpp:2406
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Dele anque &Future"
 
-#: calendarview.cpp:2388
+#: calendarview.cpp:2410
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2108,7 +2111,7 @@ msgstr ""
 "Le elemento de calendario <resource>%1</resource> recurre in multiple datas. "
 "Tu vole deler solmentele occurrentia in %2 o tote su recurrentias?"
 
-#: calendarview.cpp:2395
+#: calendarview.cpp:2417
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2118,25 +2121,25 @@ msgstr ""
 "Le elemento de calendario <resource>%1</resource> recurre in multiple datas. "
 "Tu vole deler solmentele occurrentia in %2 o tote su recurrentias?"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2429
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Dele c&urrente"
 
-#: calendarview.cpp:2409
+#: calendarview.cpp:2431
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Dele &Toto"
 
-#: calendarview.cpp:2440 calendarview.cpp:2447
+#: calendarview.cpp:2462 calendarview.cpp:2469
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Dele \"%1\""
 
-#: calendarview.cpp:2479
+#: calendarview.cpp:2501
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2145,49 +2148,49 @@ msgstr ""
 "Omne calendarios es non marcate in le Gerente de Calendario. Nulle action de "
 "facer esseva delite."
 
-#: calendarview.cpp:2484 calendarview.cpp:2766
+#: calendarview.cpp:2506 calendarview.cpp:2788
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Il ha nulle activitates de facer completate de deler."
 
-#: calendarview.cpp:2489
+#: calendarview.cpp:2511
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Dele omne actiones de facer completate ex calendarios marcate?"
 
-#: calendarview.cpp:2490
+#: calendarview.cpp:2512
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Remove actiones de facer"
 
-#: calendarview.cpp:2491
+#: calendarview.cpp:2513
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Remove"
 
-#: calendarview.cpp:2501
+#: calendarview.cpp:2523
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Incapace a copiar le elemento <resource>%1</resource> ."
 
-#: calendarview.cpp:2536
+#: calendarview.cpp:2558
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Incapace a mover le elemento <resource>%1</resource> ."
 
-#: calendarview.cpp:2758
+#: calendarview.cpp:2780
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 activitates de facer completate esseva delite.<nl/>"
 
-#: calendarview.cpp:2760 calendarview.cpp:2771
+#: calendarview.cpp:2782 calendarview.cpp:2793
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2200,7 +2203,7 @@ msgstr[1] ""
 "%1 actiones de facer esserva ignorate proque illos ha filios incomplete o de "
 "sol lectura."
 
-#: calendarview.cpp:2764 calendarview.cpp:2769
+#: calendarview.cpp:2786 calendarview.cpp:2791
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2208,7 +2211,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 activitate de facer completate esseva delite."
 msgstr[1] "%1 activitates de facer completate esseva delite."
 
-#: calendarview.cpp:2776
+#: calendarview.cpp:2798
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2216,7 +2219,7 @@ msgstr ""
 "Un error occurreva durante que on deleva  actiones de facer completate: "
 "<message>%1</message>"
 
-#: calendarview.cpp:2837
+#: calendarview.cpp:2859
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2228,7 +2231,7 @@ msgstr ""
 "<para>Per vider le incidentia tosto create, pro favor, habilita su "
 "calendario in le gerente de calendario.</para>"
 
-#: calendarview.cpp:2841
+#: calendarview.cpp:2863
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2288,7 +2291,7 @@ msgid ""
 "Check this box if you do not want to receive reminders from items associated "
 "with this calendar."
 msgstr ""
-"marca iste quadrato si tu non vole reciper mementos ex elementos associate "
+"Marca iste quadrato si tu non vole reciper mementos ex elementos associate "
 "con iste calendario."
 
 #: collectiongeneralpage.cpp:58
@@ -2308,7 +2311,7 @@ msgstr "Fixa un icone personalisate:"
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
 msgstr ""
-"marca iste box si tu vole fixar un icone personalisate per iste dossier."
+"Marca iste quadrato si tu vole fixar un icone personalisate per iste dossier."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:6
@@ -3018,9 +3021,7 @@ msgstr[0] "1 min"
 msgstr[1] "%1 minutas"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
 msgstr "in-progresso"
@@ -3032,8 +3033,8 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "finite un hora retro"
+msgstr[1] "finite %1 horas retro"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3042,8 +3043,8 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "finite 1 minutas retro"
+msgstr[1] "finite %1 minutas retro"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3311,17 +3312,13 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
 msgstr "%1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -3337,20 +3334,19 @@ msgstr[1] "%1 dies"
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "due any time today"
-msgstr ""
+msgstr "tempore perimite hodie mesme"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:253
-#, fuzzy, kde-format
-#| msgid "No due date"
+#, kde-format
 msgctxt "the to-do is due at specified time"
 msgid "is due at %1"
-msgstr "Nulle data de expiration"
+msgstr "expirate a %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:257
 #, kde-format
 msgctxt "the to-do was due at specified time"
 msgid "was due at %1"
-msgstr ""
+msgstr "expirava a %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
@@ -3785,8 +3781,7 @@ msgid "Display the specified incidence (by URL)"
 msgstr "Monstra le incidentia specificate (per URL)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid "Url"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Url"
 msgstr "Url"
@@ -3807,17 +3802,17 @@ msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
 msgstr "Lista le optiones disponibile per responsa de usator"
 
-#: koviewmanager.cpp:493
+#: koviewmanager.cpp:516
 #, kde-format
 msgid "Merged calendar"
 msgstr "Calendario fusionate"
 
-#: koviewmanager.cpp:508
+#: koviewmanager.cpp:531
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "Calendarios latere per latere"
 
-#: koviewmanager.cpp:546
+#: koviewmanager.cpp:569
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
@@ -4354,7 +4349,7 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
-"Selige le prime die de cata septimana. Normlmente tu pote ignorar isto "
+"Selige le prime die de cata septimana. Normalmente tu pote ignorar isto "
 "proque illo es fixate in tu localitate."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
@@ -4421,7 +4416,7 @@ msgstr ""
 "Marca iste quadrato si tu vole que le fundo del vista del mense essera "
 "plenate con un color differente sur dies que ha al minus un evento de tote "
 "die marcate como occupate. De plus, tu pote modificar le color de fundo "
-"usate pro iste option in le pagina de configuration de color.Cerca le "
+"usate pro iste option in le pagina de configuration de color. Cerca le "
 "preferentia de \"Color de fundo de dies occupate\"."
 
 #. i18n: ectx: label, entry, group (General View)
@@ -4437,8 +4432,8 @@ msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
 "event or a to-do."
 msgstr ""
-"Marca iste quadro pro monstrar consilios de summario quando on passa le mus "
-"super un evento o un activitate de facer."
+"Marca iste quadrato pro monstrar consilios de summario quando on passa le "
+"mus super un evento o un activitate de facer."
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:66
@@ -4664,8 +4659,8 @@ msgstr "Monstra descriptiones de incidentia in elementos de vista de agenda"
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
 msgstr ""
-"Marca iste quadrato pro monstrar le descriptionmes de incidentia in "
-"elementos de vista de agenda."
+"Marca iste quadrato pro monstrar le descriptiones de incidentia in elementos "
+"de vista de agenda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:132
@@ -4928,7 +4923,7 @@ msgstr ""
 "Marca iste quadrato si tu vole que le fundo de agenda essera plenate con un "
 "color differente sur dies que ha al minus un evento de tote die marcate como "
 "occupate. De plus, tu pote modificar le color de fundo usate pro iste option "
-"in le pagina de configuration de color.Cerca le preferentia de \"Color de "
+"in le pagina de configuration de color. Cerca le preferentia de \"Color de "
 "fundo de dies occupate\"."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
@@ -5022,7 +5017,7 @@ msgstr ""
 #: settings/korganizer.kcfg:223
 #, kde-format
 msgid "Display icons in month view items"
-msgstr "MOnstra icones in elementos de vista de mense"
+msgstr "Monstra icones in elementos de vista de mense"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
@@ -5365,7 +5360,7 @@ msgstr "Selige color de fundo de vista de agenda hic."
 #: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Color de linea de tempore currente (Mrcus Bains) de vista de agenda"
+msgstr "Color de linea de tempore currente (Marcus Bains) de vista de agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:335
@@ -5396,7 +5391,7 @@ msgid ""
 "agenda or month view background color for that day. Select the color here."
 msgstr ""
 "Quando tu ha un evento de tote die marcate como occupate, tu pote haber un "
-"differentecolor de fundo de  vista de agenda o de mense pro ille die. Tu "
+"differente color de fundo de  vista de agenda o de mense pro ille die. Tu "
 "selige hic le color."
 
 #. i18n: ectx: label, entry, group (Colors)
@@ -5410,7 +5405,7 @@ msgstr "Color de dies de travalio"
 #: settings/korganizer.kcfg:346
 #, kde-format
 msgid "Select the working hours color for the agenda view here."
-msgstr "Selige ci le color de horas de labor pro ;le vista de agenda."
+msgstr "Selige ci le color de horas de labor pro le vista de agenda."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: label, entry, group (Theme/Month view)
@@ -5493,7 +5488,7 @@ msgid ""
 msgstr ""
 "Pressa iste button pro configurar le font de vista de mense.Iste button "
 "aperira le dialogo de \"Selige font\", permittente te de seliger le font pro "
-"le elementosin le vista de tempore."
+"le elementos in le vista de tempore."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:377
@@ -5509,9 +5504,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the agenda view."
 msgstr ""
-"Pressa iste button pro configurar le font de vista de agenda.Iste button "
+"Pressa iste button pro configurar le font de vista de agenda. Iste button "
 "aperira le dialogo de \"Selige font\", permittente te de seliger le font  "
-"pro le eventosin le vista de agenda."
+"pro le eventos in le vista de agenda."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
@@ -6194,7 +6189,7 @@ msgid ""
 "pattern and have start dates or end dates in the given date range."
 msgstr ""
 "Marca iste quadrato si tu vole cercar eventos coincidente con patrono de "
-"cerca e ha datas de initio o datas de fin in le date intervllo de data."
+"cerca e ha datas de initio o datas de fin in le date intervallo de data."
 
 #. i18n: ectx: property (text), widget (QCheckBox, eventsCheck)
 #: ui/searchdialog_base.ui:79
@@ -6376,8 +6371,8 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
-"Marca iste quadro de cerca per eventos intra un intervallo de data "
-"specificate. Si le quadro non es marcate, omne eventos essera cercate."
+"Marca iste quadrato de cerca per eventos intra un intervallo de data "
+"specificate. Si le quadrato non es marcate, omne eventos essera cercate."
 
 #. i18n: ectx: property (text), widget (QCheckBox, dateRangeCheckbox)
 #: ui/searchdialog_base.ui:210
@@ -6610,8 +6605,8 @@ msgid ""
 "Manager context menu \"Set as Default Todo Calendar\""
 msgstr ""
 "Un calendario de agenda (cosas de facer) predefinite pote esser specificate "
-"per facer que crear nive activitates de facer es plus facile e rapide con "
-"minus probabilitate de poner los in le dossier erronee. Assignmar un evento "
+"per facer que crear nove activitates de facer es plus facile e rapide con "
+"minus probabilitate de poner los in le dossier erronee. Assignar un evento "
 "de calendario ha essite supportate per un longe tempore. Vide le menu de "
 "contexto de Gerente de Calendario \"Assigna como Calendario de Agenda "
 "Predefinite\""
@@ -6623,8 +6618,8 @@ msgid ""
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
 "Vista de Agenda: designa optionalmente lineas de grillia horizontal plus "
-"grasse cataduo horas. Per habilitar iste comportamento, marca le option "
-"\"DesignaLineas gressa de grillia horizontal perhoras par\" in le scheda "
+"grasse cata duo horas. Per habilitar iste comportamento, marca le option "
+"\"Designa Lineas grasse de grillia horizontal per horas par\" in le scheda "
 "Vista->Vista de Agenda "
 
 #: whatsnew/whatsnewtranslations.cpp:22
@@ -6633,8 +6628,8 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
-"l es ora possibile celar dies feriate que pertine a categorias specific, per "
-"exemplo  pro celar dies feriate religiose. Vide le lista combinate "
+"Il es ora possibile celar dies feriate que pertine a categorias specific, "
+"per exemplo  pro celar dies feriate religiose. Vide le lista combinate "
 "Categorias in le section Dies feriate del scheda Tempore e Data -> Regional."
 
 #: whatsnew/whatsnewtranslations.cpp:24
@@ -6715,7 +6710,7 @@ msgid ""
 "Time&Date->Default Values tab"
 msgstr ""
 "Rememorationes es habilitate per definition per omne nove eventos e cosas de "
-"facer. Per dishabilitar iste comportamento, leva lemarca a optionmes de "
+"facer. Per dishabilitar iste comportamento, leva le marca a optiones de "
 "Habilita Remorationes in le scheda de preferentias de Tempore&Data->Valores "
 "Predefinite"
 
@@ -6733,15 +6728,15 @@ msgid ""
 "days outside of the currently selected month"
 msgstr ""
 "Vista de mense: usa un color legiermente differente per designar le capites "
-"del die  per dies foradelmense seligite currentemente"
+"del die  per dies fora del mense seligite currentemente"
 
 #: whatsnew/whatsnewtranslations.cpp:49
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
-"Vista de mense: le controlos de navigation sur lelatere dextere a basso es "
-"removite in favor delbarre de navigatot de application meliorate"
+"Vista de mense: le controlos de navigation sur le latere dextere a basso es "
+"removite in favor del barra de navigatot de application meliorate"
 
 #: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
@@ -6749,7 +6744,7 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
-"Vosta de mense: le color de fundo per le cela del data de hodie pote esser "
+"Vista de mense: le color de fundo per le cella del data de hodie pote esser "
 "cambiate.  Per configurar le color,  assigna \"Color de Fundo de Hodie de "
 "Vista de Mense\" in le preferentias de Colores e Fonts"
 
@@ -7207,17 +7202,13 @@ msgid "Select a year"
 msgstr "Selectiona un anno"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"

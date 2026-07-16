@@ -1,14 +1,14 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2011, 2012, 2024, 2025 g.sora <g.sora@tiscali.it>
+# SPDX-FileCopyrightText: 2011, 2012, 2024, 2025, 2026 g.sora <g.sora@tiscali.it>
 # Giovanni Sora <g.sora@tiscali.it>, 2012, 2013, 2016, 2020, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:53+0000\n"
-"PO-Revision-Date: 2025-04-22 12:06+0200\n"
+"PO-Revision-Date: 2026-07-15 16:07+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -152,7 +152,7 @@ msgstr "Usa dies feriate de Israel"
 #: hebrew/configdialog.cpp:46
 #, kde-format
 msgid "Show weekly parsha"
-msgstr "Monstra pasrha septimanal"
+msgstr "Monstra parsha septimanal"
 
 #: hebrew/configdialog.cpp:50
 #, kde-format
@@ -180,7 +180,7 @@ msgstr ""
 #: hebrew/hebrew.cpp:67
 #, kde-format
 msgid "This plugin provides the date in the Jewish calendar."
-msgstr "Iste plugin forni le data secunde le calendario Judee. "
+msgstr "Iste plugin forni le data in le calendario Judee. "
 
 #: hebrew/holiday.cpp:75
 #, kde-format
@@ -680,7 +680,7 @@ msgid ""
 msgstr ""
 "Iste plugin monstra le phase lunar del die (Nove, Prime,Ultime,Plen). "
 "Actualmente, le phase es computate per meridie a UTC; ergo tu deberea "
-"expectar variuationes per 1 die in cata direction."
+"expectar variationes per 1 die in cata direction."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format
