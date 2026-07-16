@@ -12,10 +12,8 @@
 #include "koprefs.h"
 #include <CalendarSupport/KCalPrefs>
 #include <KComboBox>
-#include <KHolidays/HolidayRegion>
-#if KHOLIDAYS_VERSION >= QT_VERSION_CHECK(6, 26, 0)
 #include <KHolidays/HolidayCategories>
-#endif
+#include <KHolidays/HolidayRegion>
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <KTimeComboBox>
@@ -136,7 +134,6 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     mHolidayTypeCheckCombo->clear();
     mHolidayTypeCheckCombo->setDefaultText(i18nc("@item:inlistbox", "Select Holiday Categories"));
 
-#if KHOLIDAYS_VERSION >= QT_VERSION_CHECK(6, 26, 0)
     const QStringList categories = KHolidays::allHolidayCategories();
     int itemNo = 0;
     for (const auto &category : std::as_const(categories)) {
@@ -154,7 +151,6 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
             mHolidayTypeCheckCombo->setItemCheckState(mHolidayTypeCheckCombo->findData(type), Qt::Checked);
         }
     }
-#endif
 
     auto workingHoursGroupBox = new QGroupBox(i18nc("@title:group", "Weekly Schedule"), regionalPage);
     regionalLayout->addWidget(workingHoursGroupBox, 2, 0);
