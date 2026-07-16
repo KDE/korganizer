@@ -32,6 +32,8 @@ QList<KLazyLocalizedString> WhatsNewTranslations::lastNewFeatures() const
         kli18n("Agenda view: underline today's column header date"),
         kli18n("Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the \"Show incidence "
                "locations in agenda view items\" option in the View->Agenda View tab"),
+        kli18n("Todo view: the mini todolist is no longer shown in the sidebar; the mini todolist can still be shown in all the other views if the "
+               "Settings->Sidebar->Show Todo List option is enabled"),
         kli18n("Options for setting default access classifications (Public, Confidential or Private) when creating new Events, To-dos and "
                "Journals have been added.  Select your preferences in the \"General->Personal Default Access Classification\" comboboxes."),
     };
