@@ -476,7 +476,9 @@
         <p xml:lang="tr">Özellikler</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
-          <li/>
+          <li>Kontact summary: ask before deleting incidences</li>
+          <li>Kontact summary: Upcoming Events shows if an event has ended earlier today or currently in-progress</li>
+          <li>Kontact summary: Pending To-dos has improved grid alignment and date strings</li>
         </ul>
       </description>
     </release>
