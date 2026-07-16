@@ -484,6 +484,12 @@
     </release>
     <release version="6.8.0" type="snapshot">
       <description>
+        <p>CalDAV Fixes</p>
+        <ul>
+          <li>Calendars created in KOrganizer are created on the DAV server</li>
+          <li>Calendar name/color changes in KOrganizer are replicated on the DAV server</li>
+          <li>Properly handle creating/editing/deleting recurring event exceptions</li>
+        </ul>
         <p>Bug Fixes</p>
         <p xml:lang="ca">Correcció d'errors</p>
         <p xml:lang="cs">Opravy chyb</p>
