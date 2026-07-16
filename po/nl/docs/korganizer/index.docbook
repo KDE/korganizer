@@ -3378,10 +3378,12 @@
 ><guilabel
 >Weergaveopties</guilabel
 ></term>
-<listitem
-><para
->Met de eerste vier keuzevakjes kunt u het tonen van tijd, pictogrammen (herinneringen, herhalingen &etc; ), taken en journalen in de maandweergave instellen.</para
-></listitem>
+<listitem>
+  <para
+>Met de eerste twee keuzevakjes kunt u alleen de begintijd weergeven, of zowel de begin- als de eindtijd.</para>
+  <para
+>Gebruik de volgende vier keuzevakjes om optioneel pictogrammen, takenlijsten, dagboekvermeldingen of feestdagen in de maandweergave weer te geven.</para>
+</listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 
