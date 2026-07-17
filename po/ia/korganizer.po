@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 02:40+0000\n"
-"PO-Revision-Date: 2026-07-15 17:12+0200\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
+"PO-Revision-Date: 2026-07-16 18:21+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -487,8 +487,8 @@ msgid ""
 msgstr ""
 "Commuta al vista de  \"Qual es proxime\", que monstra tu eventos e actiones "
 "de facer que es \"in arrivata\" in un breve lista per lectura rapide. Omne "
-"actiones aperite essera monstate, ma solmente le eventos ab le dies seligite "
-"in le barra lateral de Navigator de Data essera monstrate."
+"actiones aperite essera monstrate, ma solmente le eventos ab le dies "
+"seligite in le barra lateral de Navigator de Data essera monstrate."
 
 #: actionmanager.cpp:345
 #, kde-format
@@ -515,7 +515,7 @@ msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
 msgstr ""
-"Commuta al Viste de Mese, que monstra omne eventos e debite actiones in un "
+"Commuta al Viste de Mense, que monstra omne eventos e debite actiones in un "
 "disposition familiar de calendario mensual."
 
 #: actionmanager.cpp:355
@@ -592,7 +592,7 @@ msgstr "Vista a lista de agenda"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "Commuta a vista de lista de aagenda"
+msgstr "Commuta a vista de lista de a agenda"
 
 #: actionmanager.cpp:382
 #, kde-format
@@ -630,7 +630,7 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr ""
 "Commuta a vista de jornal, que provide un loco ubi tu pote regstrar tu "
-"reflectiones, occurrentias o esperientias."
+"reflectiones, occurrentias o experientias."
 
 #: actionmanager.cpp:398
 #, kde-format
@@ -1231,12 +1231,10 @@ msgid "Show Date Navigator"
 msgstr "Monstra navigator de data"
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "Monstra vista de activitates de facer"
+msgstr "Monstra lista de activitates de facer"
 
 #: actionmanager.cpp:713
 #, kde-format
@@ -3291,7 +3289,7 @@ msgstr "In &retardo (non completate e ultra data de expiration)"
 #: kontactplugin/korganizer/todosummarywidget.cpp:47
 #, kde-format
 msgid "Pending To-dos"
-msgstr "Cargas a facer non-finite"
+msgstr "Cargas a facer pendente (i.e. non finite)"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:183
 #, kde-format
@@ -4060,7 +4058,7 @@ msgid ""
 msgstr ""
 "Marca iste quadrato per considerar %1 como parte de tu planification "
 "septimanal regular. Ulle horas %1 quotidian essera monstrate con colores "
-"differente que temporec foras de tu planification regular. Marca iste "
+"differente que tempores foras de tu planification regular. Marca iste "
 "quadrato si %1 es includite como parte de tu planification septimanal "
 "regular (anque si illo non functiona). Solitemente dies de fin de septimana "
 "deberea esser non marcate."
@@ -4120,7 +4118,7 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
-"Marca iste quadrato per evidentiardies feriate differentemente que le dies "
+"Marca iste quadrato per evidentiar dies feriate differentemente que le dies "
 "includite con tu planification regular."
 
 #: prefs/koprefsdialogtime.cpp:224
@@ -4466,9 +4464,9 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"Selectiona le numero de \"x\" dies que on debe monstrar in le vista de "
-"proxime dies.Pro acceder al vista de proxime \"x\" dies, selige le elemento "
-"de menu \"Proxime X dies\" ex le menu de \"Vista\"."
+"Selige le numero de \"x\" dies que on debe monstrar in le proxime vista de "
+"dies. Pro acceder al proxime vista de \"x\" dies, selige le elemento de menu "
+"\"Proxime X Dies\" ex le menu de \"Vista\"."
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:73
@@ -6693,6 +6691,13 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
+"Todo view: the mini todolist is no longer shown in the sidebar; the mini "
+"todolist can still be shown in all the other views if the Settings->Sidebar-"
+">Show Todo List option is enabled"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:37
+msgid ""
 "Options for setting default access classifications (Public, Confidential or "
 "Private) when creating new Events, To-dos and Journals have been added.  "
 "Select your preferences in the \"General->Personal Default Access "
@@ -6703,7 +6708,11 @@ msgstr ""
 "facer) e Jornales ha essite addite. Selige tu  preferentias in le campos de "
 "selection  \"General->Classification de Accesso Predefinite Personal\"."
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:39
+msgid "Templates: tags (categories) can be added to incidence templates"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
@@ -6714,7 +6723,7 @@ msgstr ""
 "Habilita Remorationes in le scheda de preferentias de Tempore&Data->Valores "
 "Predefinite"
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
@@ -6722,7 +6731,7 @@ msgstr ""
 "Vista de mense: non plus monstra lecapite de anno de mense per salveguardar "
 "spatio vertical e remover redundantia"
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
@@ -6730,7 +6739,7 @@ msgstr ""
 "Vista de mense: usa un color legiermente differente per designar le capites "
 "del die  per dies fora del mense seligite currentemente"
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
@@ -6738,7 +6747,7 @@ msgstr ""
 "Vista de mense: le controlos de navigation sur le latere dextere a basso es "
 "removite in favor del barra de navigatot de application meliorate"
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
@@ -6748,7 +6757,7 @@ msgstr ""
 "cambiate.  Per configurar le color,  assigna \"Color de Fundo de Hodie de "
 "Vista de Mense\" in le preferentias de Colores e Fonts"
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
@@ -6756,12 +6765,12 @@ msgstr ""
 "Barra de Navigator: meliorate per adder rolar de septimana e monstrar/celar "
 "le barra lateral sur un base de visualisation "
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:56
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 "Barra de Navigator: addite un button per rolar le vista al data currente"
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
@@ -6769,7 +6778,7 @@ msgstr ""
 "Vista de Agenda: eventos con duration breve es monstrate con lor tempore de "
 "initio in addition a lor summario"
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
@@ -6780,11 +6789,11 @@ msgstr ""
 "\"Monstra desctiptiones de incidentia in elementos de vista de agenda\" in "
 "le scheda Vista->Vista de Agenda "
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "Search: the search settings are saved/restored"
 msgstr "Cerca: le preferentias de cerca es salveguardate/restabilite"
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:69
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
@@ -6793,28 +6802,28 @@ msgstr ""
 "celar etiquettas temporal per le fuso horari de systema anque sul latere "
 "dextere (o sinistre)"
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:70
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 "Editor de incidentia: discoperi e avisa re crear incidentias in le passato"
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:71
 msgid "Incidence editor: add emoji support"
 msgstr "Editor de incidentia: adde supporto de emoji"
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:80
 msgid "Add What's New menu"
 msgstr "Adde menu de Que es de novo"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid "The current view is remembered"
 msgstr "Le vista currente es memorate"
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr "Adde un dialogo de Selector de Data disponibilein lemenu de Vader (Go)"
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
@@ -6823,7 +6832,7 @@ msgstr ""
 "X Die\", \"Plano de Labor\", \"Septimana\"in lebutton de instrumento de "
 "Agenda."
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
@@ -6832,31 +6841,31 @@ msgstr ""
 "(etiquettas de tempore) per commutar a un horologio de 24 horas (stilo "
 "militar)"
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 "Vista de Agenda: addeva menu de contexto per crear nove Evento o Activitate "
 "de facer (To-Do)"
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 "Vista de Cosas de Facer: addeva optiones de menu de contexto per commutar "
 "completion e  mementos"
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:87
 msgid "To-do view: save/restore fullview setting"
 msgstr ""
 "Vista de lista de cosas de facer : salveguarda/restabili configurationes de "
 "vista plen"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 "Vista de cosas de facer : salveguarda/restabili configurationes de vista plan"
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
@@ -6864,7 +6873,7 @@ msgstr ""
 "Navigator de data: addite un option in le preferentais de Configura->Vistas "
 "per celar lenumeros de septimana"
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:90
 msgid ""
 "Date navigator: the \"Week numbers select a work week when in work week mode"
 "\" setting is true by default"
@@ -6872,77 +6881,77 @@ msgstr ""
 "Navigator de data: le \"Numeros de septimana\"  selige un septimana de labor "
 "quando il es in modo de septimana de labor es ponite a ver per definition."
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 "Editor de incidentia:memora/restabili le geometris de gestor de patrono"
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr "Editor de incidentia:supporta attachamentos de traher e deponer"
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:93
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 "Le dialogo de calendario per exportar memora su location de dossier de "
 "ultime exportation"
 
-#: whatsnew/whatsnewtranslations.cpp:91
+#: whatsnew/whatsnewtranslations.cpp:94
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 "Le dialogo de calendario per importar memora su location de dossier de "
 "ultime importation"
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:95
 msgid "Get Hot New Stuff removed"
 msgstr "Obtene cosas nove e calide removite"
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:96
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr "Adde file de calendario: calendarios remote es sempre de sol lectura"
 
-#: whatsnew/whatsnewtranslations.cpp:94
+#: whatsnew/whatsnewtranslations.cpp:97
 msgid "Add calendar file: will not permit an empty file path"
 msgstr "Adde calendario: non permittera un percurso defile vacue "
 
-#: whatsnew/whatsnewtranslations.cpp:95
+#: whatsnew/whatsnewtranslations.cpp:98
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
-"Configuration de DAV: dialogo permitte vider lecontrasigno de conto durante "
+"Configuration de DAV: dialogo permitte vider le contrasigno de conto durante "
 "que il modifica"
 
-#: whatsnew/whatsnewtranslations.cpp:96
+#: whatsnew/whatsnewtranslations.cpp:99
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 "Configuration de DAV: assistente monstra icones per le varie fornitores"
 
-#: whatsnew/whatsnewtranslations.cpp:97
+#: whatsnew/whatsnewtranslations.cpp:100
 msgid "DAV configuration: wizard updated list of providers"
 msgstr "Configuration de DAV:assistente actualisava lista de fornitores"
 
-#: whatsnew/whatsnewtranslations.cpp:115
+#: whatsnew/whatsnewtranslations.cpp:118
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
 "Semantica ha cambiate ex un concepto de \"plano de travalio\" a un concepto "
-"de \"plano de septimana\" peraccomodar usatores non travaliante"
+"de \"plano de septimana\" per accomodar usatores non travaliante"
 
-#: whatsnew/whatsnewtranslations.cpp:116
+#: whatsnew/whatsnewtranslations.cpp:119
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 "Tempore de startar initial de \"Nove Evento\" es consistente trans omne "
 "vistas."
 
-#: whatsnew/whatsnewtranslations.cpp:117
+#: whatsnew/whatsnewtranslations.cpp:120
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr "Manear de calendario de evento predefinite meliorate"
 
-#: whatsnew/whatsnewtranslations.cpp:119
+#: whatsnew/whatsnewtranslations.cpp:122
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
@@ -6950,14 +6959,14 @@ msgstr ""
 "Incidentias conun longe lista de datas excludite non plus crea consilios "
 "enorme"
 
-#: whatsnew/whatsnewtranslations.cpp:120
+#: whatsnew/whatsnewtranslations.cpp:123
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 "Assignate le adresse de e-posta del organisator per incidentias con "
 "participantes"
 
-#: whatsnew/whatsnewtranslations.cpp:121
+#: whatsnew/whatsnewtranslations.cpp:124
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -6967,19 +6976,37 @@ msgstr ""
 "que longe de 15 minutas)"
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:135
+#: whatsnew/whatsnewtranslations.cpp:138
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 "Editor de incidentia: le etiquettas es ordinate alphabeticamente in le "
 "editor de etiquettas"
 
-#: whatsnew/whatsnewtranslations.cpp:162
+#: whatsnew/whatsnewtranslations.cpp:164
+#, kde-format
+msgid ""
+"CalDAV fix: calendars created in KOrganizer are created on the DAV server"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:165
+#, kde-format
+msgid ""
+"CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
+"DAV server"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:166
+#, kde-format
+msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format
 msgid "Fixed reminder toggling from menus"
 msgstr "Corrigite le commutation de mementos ab menus"
 
-#: whatsnew/whatsnewtranslations.cpp:163
+#: whatsnew/whatsnewtranslations.cpp:170
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
@@ -7090,7 +7117,7 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
-"Clicca iste button permonstrar/celar le barra lateral in levista currente. "
+"Clicca iste button permonstrar/celar le barra lateral in le vista currente. "
 "Cata vista pote celar/monstrar le barra lateral independentemente."
 
 #: widgets/navigatorbar.cpp:39

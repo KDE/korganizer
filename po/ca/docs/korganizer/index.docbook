@@ -944,9 +944,9 @@
 > mostra els esdeveniments o les tasques pendents del primer mes que es mostra en el navegador de dates (els dies seleccionats en el mes no canviaran la vista de mes, tan sols el mes).</para>
 
 <para
->El component de barra lateral que mostra les vostres tasques pendents, com a <link linkend="todo-view"
->vista de les tasques pendents</link
->. Aquesta és útil si voleu veure les vostres tasques pendents mentre s'usen les altres vistes.</para>
+>El component de barra lateral de Llista de tasques pendents llista les vostres tasques pendents, com la <link linkend="todo-view"
+>Vista de les tasques pendents</link
+>. És útil si voleu veure les vostres tasques pendents mentre s'utilitzen les altres vistes.</para>
 
 <para
 >El component visualitzador d'elements de la barra lateral mostra detalls dels esdeveniments, tasques pendents o entrades de diari seleccionades.</para>

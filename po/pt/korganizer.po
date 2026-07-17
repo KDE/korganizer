@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 02:40+0000\n"
+"POT-Creation-Date: 2026-07-17 02:42+0000\n"
 "PO-Revision-Date: 2022-10-16 11:38+0100\n"
 "Last-Translator: Pedro Morais <morais@kde.org>\n"
 "Language-Team: pt <kde-i18n-pt@kde.org>\n"
@@ -7002,137 +7002,148 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
+"Todo view: the mini todolist is no longer shown in the sidebar; the mini "
+"todolist can still be shown in all the other views if the Settings->Sidebar-"
+">Show Todo List option is enabled"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:37
+msgid ""
 "Options for setting default access classifications (Public, Confidential or "
 "Private) when creating new Events, To-dos and Journals have been added.  "
 "Select your preferences in the \"General->Personal Default Access "
 "Classification\" comboboxes."
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:45
+#: whatsnew/whatsnewtranslations.cpp:39
+msgid "Templates: tags (categories) can be added to incidence templates"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
 "Reminders are enabled by default for all new events and to-dos. To disable "
 "this behavior, uncheck the Enable reminders options in the settings "
 "Time&Date->Default Values tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:47
+#: whatsnew/whatsnewtranslations.cpp:50
 msgid ""
 "Month view: no longer display the month year header to save vertical space "
 "and remove redundancy"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:48
+#: whatsnew/whatsnewtranslations.cpp:51
 msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:49
+#: whatsnew/whatsnewtranslations.cpp:52
 msgid ""
 "Month view: the navigation controls on the lower right side are removed in "
 "favor of the improved application navigator bar"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:50
+#: whatsnew/whatsnewtranslations.cpp:53
 msgid ""
 "Month view: the background color for today's date cell can be changed. To "
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:52
+#: whatsnew/whatsnewtranslations.cpp:55
 msgid ""
 "Navigator bar: improved by adding week scrolling and showing/hiding the "
 "sidebar on a per-view basis"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:53
+#: whatsnew/whatsnewtranslations.cpp:56
 msgid "Navigator bar: added a button to scroll the view to the current date"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:54
+#: whatsnew/whatsnewtranslations.cpp:57
 msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:55
+#: whatsnew/whatsnewtranslations.cpp:58
 msgid ""
 "Agenda view: optionally show the incidence descriptions inside the agenda "
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:57
+#: whatsnew/whatsnewtranslations.cpp:60
 msgid "Search: the search settings are saved/restored"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:66
+#: whatsnew/whatsnewtranslations.cpp:69
 msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:67
+#: whatsnew/whatsnewtranslations.cpp:70
 msgid "Incidence editor: detect and warn about creating incidences in the past"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:68
+#: whatsnew/whatsnewtranslations.cpp:71
 msgid "Incidence editor: add emoji support"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:77
+#: whatsnew/whatsnewtranslations.cpp:80
 #, fuzzy
 #| msgid "Add as new calendar"
 msgid "Add What's New menu"
 msgstr "Adicionar como novo calendário"
 
-#: whatsnew/whatsnewtranslations.cpp:78
+#: whatsnew/whatsnewtranslations.cpp:81
 msgid "The current view is remembered"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:79
+#: whatsnew/whatsnewtranslations.cpp:82
 msgid "Add a Date Picker dialog available on the Go menu"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:80
+#: whatsnew/whatsnewtranslations.cpp:83
 msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:81
+#: whatsnew/whatsnewtranslations.cpp:84
 msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:82
+#: whatsnew/whatsnewtranslations.cpp:85
 msgid "Agenda view: added context menu to create new Event or To-do"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:83
+#: whatsnew/whatsnewtranslations.cpp:86
 msgid ""
 "To-do view: added context menu options for toggling completion and reminders"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:84
+#: whatsnew/whatsnewtranslations.cpp:87
 #, fuzzy
 #| msgid "To-do list view uses full window"
 msgid "To-do view: save/restore fullview setting"
 msgstr "A janela Por-Fazer ocupa a janela toda"
 
-#: whatsnew/whatsnewtranslations.cpp:85
+#: whatsnew/whatsnewtranslations.cpp:88
 msgid "To-do view: save/restore flatview setting"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:86
+#: whatsnew/whatsnewtranslations.cpp:89
 msgid ""
 "Date navigator: added an option in the Configure->Views settings for hiding "
 "the week numbers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:87
+#: whatsnew/whatsnewtranslations.cpp:90
 #, fuzzy
 #| msgid "Week numbers select a work week when in work week mode"
 msgid ""
@@ -7142,76 +7153,76 @@ msgstr ""
 "Os números das semanas seleccionam uma semana de trabalho no modo de semana "
 "de trabalho"
 
-#: whatsnew/whatsnewtranslations.cpp:88
+#: whatsnew/whatsnewtranslations.cpp:91
 msgid "Incidence editor: remember/restore the template manager geometry"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:89
+#: whatsnew/whatsnewtranslations.cpp:92
 msgid "Incidence editor: support drag-and-drop attachments"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:90
+#: whatsnew/whatsnewtranslations.cpp:93
 msgid "The export calendar dialog remembers its last export folder location"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:91
+#: whatsnew/whatsnewtranslations.cpp:94
 msgid "The import calendar dialog remembers its last import folder location"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:92
+#: whatsnew/whatsnewtranslations.cpp:95
 msgid "Get Hot New Stuff removed"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:93
+#: whatsnew/whatsnewtranslations.cpp:96
 msgid "Add calendar file: remote calendars are always read-only"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:94
+#: whatsnew/whatsnewtranslations.cpp:97
 msgid "Add calendar file: will not permit an empty file path"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:95
+#: whatsnew/whatsnewtranslations.cpp:98
 msgid ""
 "DAV configuration: dialog allows seeing the account password when editing"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:96
+#: whatsnew/whatsnewtranslations.cpp:99
 msgid "DAV configuration: wizard shows icons for the various providers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:97
+#: whatsnew/whatsnewtranslations.cpp:100
 msgid "DAV configuration: wizard updated list of providers"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:115
+#: whatsnew/whatsnewtranslations.cpp:118
 #, kde-format
 msgid ""
 "Semantics are changed from a \"working schedule\" concept to a \"week "
 "schedule\" concept to accommodate non-working users"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:116
+#: whatsnew/whatsnewtranslations.cpp:119
 #, kde-format
 msgid "Initial \"New Event\" start times are consistent across all the views"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:117
+#: whatsnew/whatsnewtranslations.cpp:120
 #, kde-format
 msgid "Improved default event calendar handling"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:119
+#: whatsnew/whatsnewtranslations.cpp:122
 #, kde-format
 msgid ""
 "Incidences with a long excluded dates list no longer create huge tooltips"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:120
+#: whatsnew/whatsnewtranslations.cpp:123
 #, kde-format
 msgid "Fixed the organizer email address for incidences with attendees"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:121
+#: whatsnew/whatsnewtranslations.cpp:124
 #, kde-format
 msgid ""
 "Agenda view: events without a duration are displayed as 30 long (rather than "
@@ -7219,17 +7230,35 @@ msgid ""
 msgstr ""
 
 #. i18n()});
-#: whatsnew/whatsnewtranslations.cpp:135
+#: whatsnew/whatsnewtranslations.cpp:138
 #, kde-format
 msgid "Incidence editor: the tags are sorted alphabetically in the tags editor"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:162
+#: whatsnew/whatsnewtranslations.cpp:164
+#, kde-format
+msgid ""
+"CalDAV fix: calendars created in KOrganizer are created on the DAV server"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:165
+#, kde-format
+msgid ""
+"CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
+"DAV server"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:166
+#, kde-format
+msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
+msgstr ""
+
+#: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format
 msgid "Fixed reminder toggling from menus"
 msgstr ""
 
-#: whatsnew/whatsnewtranslations.cpp:163
+#: whatsnew/whatsnewtranslations.cpp:170
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
 msgstr ""
