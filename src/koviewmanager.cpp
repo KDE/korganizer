@@ -18,7 +18,7 @@
 #include "views/agendaview/koagendaview.h"
 #include "views/journalview/kojournalview.h"
 #include "views/listview/kolistview.h"
-#include "views/monthview/monthview.h"
+#include "views/monthview/komonthview.h"
 #include "views/multiagendaview/multiagendaview.h"
 #include "views/timelineview/kotimelineview.h"
 #include "views/todoview/kotodoview.h"
@@ -447,7 +447,7 @@ void KOViewManager::viewActionEnable(QAction *action)
 void KOViewManager::showMonthView()
 {
     if (!mMonthView) {
-        mMonthView = new KOrg::MonthView(mMainView->viewStack());
+        mMonthView = new KOMonthView(mMainView->viewStack());
         mMonthView->setIdentifier("DefaultMonthView");
         addView(mMonthView);
     }

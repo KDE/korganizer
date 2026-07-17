@@ -29,7 +29,7 @@
 #include "pimmessagebox.h"
 #include "prefs/koprefs.h"
 #include "views/agendaview/koagendaview.h"
-#include "views/monthview/monthview.h"
+#include "views/monthview/komonthview.h"
 #include "views/todoview/kotodoview.h"
 #include "widgets/navigatorbar.h"
 
@@ -618,7 +618,7 @@ void CalendarView::goSelectADate()
 
 void CalendarView::goNext()
 {
-    if (qobject_cast<MonthView *>(mViewManager->currentView())) {
+    if (qobject_cast<KOMonthView *>(mViewManager->currentView())) {
         const QDate month = mDateNavigatorContainer->monthOfNavigator(0);
         KODayMatrix::MatrixRange const limits = KODayMatrix::matrixLimits(month);
         mDateNavigator->selectNextMonth(month, limits.start, limits.end);
@@ -629,7 +629,7 @@ void CalendarView::goNext()
 
 void CalendarView::goPrevious()
 {
-    if (qobject_cast<MonthView *>(mViewManager->currentView())) {
+    if (qobject_cast<KOMonthView *>(mViewManager->currentView())) {
         const QDate month = mDateNavigatorContainer->monthOfNavigator(0);
         KODayMatrix::MatrixRange const limits = KODayMatrix::matrixLimits(month);
         mDateNavigator->selectPreviousMonth(month, limits.start, limits.end);
@@ -888,7 +888,7 @@ void CalendarView::edit_paste()
 
     const KOrg::BaseView *curView = mViewManager->currentView();
     KOAgendaView *agendaView = mViewManager->agendaView();
-    MonthView *monthView = mViewManager->monthView();
+    KOMonthView *monthView = mViewManager->monthView();
 
     if (!curView) {
         qCWarning(KORGANIZER_LOG) << "No view is selected, can't paste";

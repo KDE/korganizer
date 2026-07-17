@@ -7,7 +7,7 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
 
-#include "monthview.h"
+#include "komonthview.h"
 #include "koeventpopupmenu.h"
 #include "prefs/koprefs.h"
 
@@ -15,9 +15,7 @@
 
 #include <QVBoxLayout>
 
-using namespace KOrg;
-
-MonthView::MonthView(QWidget *parent)
+KOMonthView::KOMonthView(QWidget *parent)
     : KOEventView(parent)
 {
     auto layout = new QVBoxLayout(this);
@@ -30,7 +28,7 @@ MonthView::MonthView(QWidget *parent)
 
     connect(mMonthView, &EventViews::MonthView::showIncidencePopupSignal, mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &MonthView::showNewEventPopup);
+    connect(mMonthView, &EventViews::MonthView::showNewEventPopupSignal, this, &KOMonthView::showNewEventPopup);
 
     connect(mMonthView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
@@ -60,19 +58,16 @@ MonthView::MonthView(QWidget *parent)
 
     connect(mMonthView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(mMonthView, qOverload<>(&EventViews::MonthView::newEventSignal), this, qOverload<>(&KOrg::MonthView::newEventSignal));
+    connect(mMonthView, qOverload<>(&EventViews::MonthView::newEventSignal), this, qOverload<>(&KOMonthView::newEventSignal));
 
-    connect(mMonthView, qOverload<const QDate &>(&EventViews::MonthView::newEventSignal), this, qOverload<const QDate &>(&KOrg::MonthView::newEventSignal));
+    connect(mMonthView, qOverload<const QDate &>(&EventViews::MonthView::newEventSignal), this, qOverload<const QDate &>(&KOMonthView::newEventSignal));
 
-    connect(mMonthView,
-            qOverload<const QDateTime &>(&EventViews::MonthView::newEventSignal),
-            this,
-            qOverload<const QDateTime &>(&KOrg::MonthView::newEventSignal));
+    connect(mMonthView, qOverload<const QDateTime &>(&EventViews::MonthView::newEventSignal), this, qOverload<const QDateTime &>(&KOMonthView::newEventSignal));
 
     connect(mMonthView,
             qOverload<const QDateTime &, const QDateTime &>(&EventViews::MonthView::newEventSignal),
             this,
-            qOverload<const QDateTime &, const QDateTime &>(&KOrg::MonthView::newEventSignal));
+            qOverload<const QDateTime &, const QDateTime &>(&KOMonthView::newEventSignal));
 
     connect(mMonthView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
@@ -81,132 +76,132 @@ MonthView::MonthView(QWidget *parent)
     connect(mMonthView, &EventViews::EventView::newJournalSignal, this, &BaseView::newJournalSignal);
 }
 
-MonthView::~MonthView() = default;
+KOMonthView::~KOMonthView() = default;
 
-CalendarSupport::CalPrinterBase::PrintType MonthView::printType() const
+CalendarSupport::CalPrinterBase::PrintType KOMonthView::printType() const
 {
     return CalendarSupport::CalPrinterBase::Month;
 }
 
-int MonthView::currentDateCount() const
+int KOMonthView::currentDateCount() const
 {
     return mMonthView->currentDateCount();
 }
 
-int MonthView::currentMonth() const
+int KOMonthView::currentMonth() const
 {
     return mMonthView->currentMonth();
 }
 
-KCalendarCore::DateList MonthView::selectedIncidenceDates()
+KCalendarCore::DateList KOMonthView::selectedIncidenceDates()
 {
     return mMonthView->selectedIncidenceDates();
 }
 
-QDateTime MonthView::selectionStart()
+QDateTime KOMonthView::selectionStart()
 {
     return mMonthView->selectionStart();
 }
 
-QDateTime MonthView::selectionEnd()
+QDateTime KOMonthView::selectionEnd()
 {
     return mMonthView->selectionEnd();
 }
 
-bool MonthView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
+bool KOMonthView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
 {
     return mMonthView->eventDurationHint(startDt, endDt, allDay);
 }
 
-QDate MonthView::averageDate() const
+QDate KOMonthView::averageDate() const
 {
     return mMonthView->averageDate();
 }
 
-bool MonthView::showSideBar()
+bool KOMonthView::showSideBar()
 {
     return KOPrefs::instance()->monthViewShowSidebar();
 }
 
-void MonthView::setShowSideBar(bool show)
+void KOMonthView::setShowSideBar(bool show)
 {
     KOPrefs::instance()->setMonthViewShowSidebar(show);
 }
 
-bool MonthView::supportsDateRangeSelection()
+bool KOMonthView::supportsDateRangeSelection()
 {
     return mMonthView->supportsDateRangeSelection();
 }
 
-void MonthView::updateView()
+void KOMonthView::updateView()
 {
     mMonthView->updateView();
 }
 
-void MonthView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
+void KOMonthView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
     mMonthView->showIncidences(incidenceList, date);
 }
 
-void MonthView::changeIncidenceDisplay(const Akonadi::Item &item, Akonadi::IncidenceChanger::ChangeType changeType)
+void KOMonthView::changeIncidenceDisplay(const Akonadi::Item &item, Akonadi::IncidenceChanger::ChangeType changeType)
 {
     mMonthView->changeIncidenceDisplay(item, changeType);
 }
 
-void MonthView::updateConfig()
+void KOMonthView::updateConfig()
 {
     mMonthView->updateConfig();
 }
 
-int MonthView::maxDatesHint() const
+int KOMonthView::maxDatesHint() const
 {
     return 6 * 7;
 }
 
-Akonadi::Item::List MonthView::selectedIncidences()
+Akonadi::Item::List KOMonthView::selectedIncidences()
 {
     return mMonthView->selectedIncidences();
 }
 
-void MonthView::setTypeAheadReceiver(QObject *o)
+void KOMonthView::setTypeAheadReceiver(QObject *o)
 {
     mMonthView->setTypeAheadReceiver(o);
 }
 
-void MonthView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth)
+void KOMonthView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &preferredMonth)
 {
     mMonthView->setDateRange(start, end, preferredMonth);
 }
 
-void MonthView::setModel(QAbstractItemModel *model)
+void KOMonthView::setModel(QAbstractItemModel *model)
 {
     KOEventView::setModel(model);
     mMonthView->setModel(model);
 }
 
-void MonthView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
+void KOMonthView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
     mMonthView->setIncidenceChanger(changer);
 }
 
-void MonthView::showDates(const QDate &start, const QDate &end, const QDate &preferredMonth)
+void KOMonthView::showDates(const QDate &start, const QDate &end, const QDate &preferredMonth)
 {
     Q_UNUSED(start)
     Q_UNUSED(end)
     Q_UNUSED(preferredMonth)
 }
 
-void MonthView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+void KOMonthView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
     if (calendar && calendar->collection().isValid()) {
         mMonthView->addCalendar(calendar);
     }
 }
 
-void MonthView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+void KOMonthView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
     if (calendar && calendar->collection().isValid()) {
         mMonthView->removeCalendar(calendar);
     }
 }
-#include "moc_monthview.cpp"
+#include "moc_komonthview.cpp"

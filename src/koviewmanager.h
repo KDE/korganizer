@@ -21,6 +21,7 @@ class CalendarView;
 class KOAgendaView;
 class KOJournalView;
 class KOListView;
+class KOMonthView;
 class KOTimelineView;
 class KOTodoView;
 class KOWhatsNextView;
@@ -28,7 +29,6 @@ namespace KOrg
 {
 class BaseView;
 class MultiAgendaView;
-class MonthView;
 }
 
 namespace Akonadi
@@ -92,7 +92,7 @@ public:
         return mAgendaView;
     }
 
-    KOrg::MonthView *monthView() const
+    KOMonthView *monthView() const
     {
         return mMonthView;
     }
@@ -175,7 +175,7 @@ private:
     KOWhatsNextView *mWhatsNextView = nullptr;
     KOJournalView *mJournalView = nullptr;
     KOTimelineView *mTimelineView = nullptr;
-    KOrg::MonthView *mMonthView = nullptr;
+    KOMonthView *mMonthView = nullptr;
     KOrg::BaseView *mCurrentView = nullptr;
 
     KOrg::BaseView *mLastEventView = nullptr;

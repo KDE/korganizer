@@ -332,7 +332,7 @@ set(korganizerprivate_LIB_SRCS
     views/agendaview/koagendaview.cpp
     views/journalview/kojournalview.cpp
     views/listview/kolistview.cpp
-    views/monthview/monthview.cpp
+    views/monthview/komonthview.cpp
     views/multiagendaview/multiagendaview.cpp
     views/timelineview/kotimelineview.cpp
     views/todoview/kotodoview.cpp
@@ -370,7 +370,7 @@ set(korganizerprivate_LIB_SRCS
     views/agendaview/koagendaview.h
     views/journalview/kojournalview.h
     views/listview/kolistview.h
-    views/monthview/monthview.h
+    views/monthview/komonthview.h
     views/multiagendaview/multiagendaview.h
     views/timelineview/kotimelineview.h
     views/todoview/kotodoview.h

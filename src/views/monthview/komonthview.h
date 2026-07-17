@@ -15,14 +15,12 @@ namespace EventViews
 {
 class MonthView;
 }
-namespace KOrg
-{
-class MonthView : public KOEventView
+class KOMonthView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit MonthView(QWidget *parent = nullptr);
-    ~MonthView() override;
+    explicit KOMonthView(QWidget *parent = nullptr);
+    ~KOMonthView() override;
 
     [[nodiscard]] int currentDateCount() const override;
     [[nodiscard]] int currentMonth() const;
@@ -81,4 +79,3 @@ private:
     EventViews::MonthView *mMonthView = nullptr;
     KOEventPopupMenu *mPopup = nullptr;
 };
-}
