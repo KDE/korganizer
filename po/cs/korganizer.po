@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-16 00:45+0000\n"
-"PO-Revision-Date: 2026-07-13 20:23+0200\n"
+"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"PO-Revision-Date: 2026-07-16 11:38+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -1236,12 +1236,10 @@ msgid "Show Date Navigator"
 msgstr "Zobrazit navigátora"
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "Zobrazit úkoly"
+msgstr "Zobrazit seznam úkolů"
 
 #: actionmanager.cpp:713
 #, kde-format
@@ -1823,79 +1821,79 @@ msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Vložení se nezdařilo: nelze určit platné cílové datum."
 
-#: calendarview.cpp:1338
+#: calendarview.cpp:1336
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Udělat podúkoly nezávislými"
 
-#: calendarview.cpp:1392
+#: calendarview.cpp:1390
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Přepnout upomínky"
 
-#: calendarview.cpp:1397
+#: calendarview.cpp:1395
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "Upomínka na <message>%1</message> je povolena"
 
-#: calendarview.cpp:1399
+#: calendarview.cpp:1397
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "Upomínka na <message>%1</message> je deaktivována"
 
-#: calendarview.cpp:1402
+#: calendarview.cpp:1400
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "<message>%1</message> – přepnutí připomenutí se nezdařilo"
 
-#: calendarview.cpp:1433 calendarview.cpp:1491
+#: calendarview.cpp:1431 calendarview.cpp:1489
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Přepnout úkoly na hotové"
 
-#: calendarview.cpp:1437
+#: calendarview.cpp:1435
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "Úkol <message>%1</message> z %2 procent dokončen"
 
-#: calendarview.cpp:1440
+#: calendarview.cpp:1438
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "Úkol <message>%1</message> se nepodařilo změnit"
 
-#: calendarview.cpp:1543
+#: calendarview.cpp:1541
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" byl úspěšně zkopírován do %2."
 
-#: calendarview.cpp:1544
+#: calendarview.cpp:1542
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopírování úspěšné"
 
-#: calendarview.cpp:1548
+#: calendarview.cpp:1546
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Nelze zkopírovat položku \"%1\" do %2."
 
-#: calendarview.cpp:1549 calendarview.cpp:2524
+#: calendarview.cpp:1547 calendarview.cpp:2522
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopírování selhalo"
 
-#: calendarview.cpp:1608
+#: calendarview.cpp:1606
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1905,50 +1903,50 @@ msgstr ""
 "Nelze odstranit položku \"%1\" z původního kalendáře. Kopie této položky "
 "však byla umístěna do %2"
 
-#: calendarview.cpp:1612 calendarview.cpp:1628 calendarview.cpp:2559
+#: calendarview.cpp:1610 calendarview.cpp:1626 calendarview.cpp:2557
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Přesun selhal"
 
-#: calendarview.cpp:1617
+#: calendarview.cpp:1615
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" bylo úspěšně přesunuto z %2 do %3."
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1616
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Přesun úspěšný"
 
-#: calendarview.cpp:1624
+#: calendarview.cpp:1622
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "Nelze přidat položku \"%1\" do %2. Tato položka nebyla přesunuta."
 
-#: calendarview.cpp:1663
+#: calendarview.cpp:1661
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Chcete oddělit výskyt v %1 od opakování?"
 
-#: calendarview.cpp:1667 calendarview.cpp:1680 calendarview.cpp:2340
-#: calendarview.cpp:2399 calendarview.cpp:2429
+#: calendarview.cpp:1665 calendarview.cpp:1678 calendarview.cpp:2338
+#: calendarview.cpp:2397 calendarview.cpp:2427
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer - potvrzení"
 
-#: calendarview.cpp:1668
+#: calendarview.cpp:1666
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "O&ddělit"
 
-#: calendarview.cpp:1675
+#: calendarview.cpp:1673
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1957,79 +1955,79 @@ msgid ""
 msgstr ""
 "Chcete oddělit výskyt v %1 od opakování nebo také oddělit budoucí výskyty?"
 
-#: calendarview.cpp:1681
+#: calendarview.cpp:1679
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "&Oddělit pouze tento jeden"
 
-#: calendarview.cpp:1682
+#: calendarview.cpp:1680
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Oddělit t&aké budoucí"
 
-#: calendarview.cpp:1700
+#: calendarview.cpp:1698
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Oddělit budoucí výskyty"
 
-#: calendarview.cpp:1702
+#: calendarview.cpp:1700
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Oddělit výskyt"
 
-#: calendarview.cpp:1709
+#: calendarview.cpp:1707
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Oddělení budoucích výskytů selhalo."
 
-#: calendarview.cpp:1709 calendarview.cpp:1711
+#: calendarview.cpp:1707 calendarview.cpp:1709
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Oddělení selhalo"
 
-#: calendarview.cpp:1711
+#: calendarview.cpp:1709
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Oddělení výskytu se nezdařilo."
 
-#: calendarview.cpp:1854
+#: calendarview.cpp:1852
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1873
+#: calendarview.cpp:1871
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Exportovat kalendář do souboru"
 
-#: calendarview.cpp:1886
+#: calendarview.cpp:1884
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "Chcete přepsat <filename>%1</filename>?"
 
-#: calendarview.cpp:1887
+#: calendarview.cpp:1885
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Exportovat kalendář"
 
-#: calendarview.cpp:1901
+#: calendarview.cpp:1899
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Neznámý důvod"
 
-#: calendarview.cpp:1903
+#: calendarview.cpp:1901
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2037,13 +2035,13 @@ msgid ""
 msgstr ""
 "Nelze zapsat soubor iCalendar <filename>%1</filename>: <message>%2</message>"
 
-#: calendarview.cpp:2012 calendarview.cpp:2057
+#: calendarview.cpp:2010 calendarview.cpp:2055
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Žádný filtr"
 
-#: calendarview.cpp:2335
+#: calendarview.cpp:2333
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2055,19 +2053,19 @@ msgstr ""
 "položku a všechny její podúkoly učinit nezávislými, nebo ji smazat i se "
 "všemi podúkoly?"
 
-#: calendarview.cpp:2341
+#: calendarview.cpp:2339
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Smazat pouze tuto"
 
-#: calendarview.cpp:2342 calendarview.cpp:2400
+#: calendarview.cpp:2340 calendarview.cpp:2398
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Smazat vše"
 
-#: calendarview.cpp:2374
+#: calendarview.cpp:2372
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2077,13 +2075,13 @@ msgstr ""
 "Položka <resource>%1</resource> je označena jako pouze pro čtení a nelze ji "
 "odstranit; pravděpodobně patří do kalendáře pouze pro čtení."
 
-#: calendarview.cpp:2377
+#: calendarview.cpp:2375
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Odstranění není možné"
 
-#: calendarview.cpp:2396
+#: calendarview.cpp:2394
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2093,13 +2091,13 @@ msgstr ""
 "Položka kalendáře <resource>%1</resource> se opakuje v několika termínech. "
 "Opravdu ji chcete smazat i se všemi opakováními?"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2405
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Smazat i &budoucí"
 
-#: calendarview.cpp:2411
+#: calendarview.cpp:2409
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2110,7 +2108,7 @@ msgstr ""
 "Položka kalendáře <resource>%1</resource> se opakuje v několika termínech. "
 "Chcete smazat pouze aktuální termín %2, budoucí termíny nebo všechny termíny?"
 
-#: calendarview.cpp:2418
+#: calendarview.cpp:2416
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2120,25 +2118,25 @@ msgstr ""
 "Položka kalendáře <resource>%1</resource> se opakuje v několika termínech. "
 "Chcete smazat pouze aktuální termín %2 nebo všechny termíny?"
 
-#: calendarview.cpp:2430
+#: calendarview.cpp:2428
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Smazat so&učasnou"
 
-#: calendarview.cpp:2432
+#: calendarview.cpp:2430
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Sm&azat vše"
 
-#: calendarview.cpp:2463 calendarview.cpp:2470
+#: calendarview.cpp:2461 calendarview.cpp:2468
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Smazat \"%1\""
 
-#: calendarview.cpp:2502
+#: calendarview.cpp:2500
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2147,49 +2145,49 @@ msgstr ""
 "Všechny kalendáře jsou ve Správci kalendářů nezaškrtnuté. Žádné úkoly nebyly "
 "smazány."
 
-#: calendarview.cpp:2507 calendarview.cpp:2789
+#: calendarview.cpp:2505 calendarview.cpp:2787
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Neexistují žádné dokončené úkoly, které by bylo možné odstranit."
 
-#: calendarview.cpp:2512
+#: calendarview.cpp:2510
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Smazat všechny dokončené úkoly z označených kalendářů?"
 
-#: calendarview.cpp:2513
+#: calendarview.cpp:2511
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Pročistit úkoly"
 
-#: calendarview.cpp:2514
+#: calendarview.cpp:2512
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Pročištění"
 
-#: calendarview.cpp:2524
+#: calendarview.cpp:2522
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Nelze zkopírovat položku <resource>%1</resource>."
 
-#: calendarview.cpp:2559
+#: calendarview.cpp:2557
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Nelze přesunout položku <resource>%1</resource>."
 
-#: calendarview.cpp:2781
+#: calendarview.cpp:2779
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Nebyly odstraněny žádné dokončené úkoly.<nl/>"
 
-#: calendarview.cpp:2783 calendarview.cpp:2794
+#: calendarview.cpp:2781 calendarview.cpp:2792
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2204,7 +2202,7 @@ msgstr[2] ""
 "%1 úkolů bylo ignorováno, protože mají podúkoly nedokončené nebo pouze pro "
 "čtení."
 
-#: calendarview.cpp:2787 calendarview.cpp:2792
+#: calendarview.cpp:2785 calendarview.cpp:2790
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2213,13 +2211,13 @@ msgstr[0] "%1 dokončený úkol byl odstraněn."
 msgstr[1] "%1 dokončené úkoly byly odstraněny."
 msgstr[2] "%1 dokončených úkolů bylo odstraněno."
 
-#: calendarview.cpp:2799
+#: calendarview.cpp:2797
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Při mazání dokončených úkolů došlo k chybě: <message>%1</message>"
 
-#: calendarview.cpp:2860
+#: calendarview.cpp:2858
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2231,7 +2229,7 @@ msgstr ""
 "<para>Chcete-li zobrazit nově vytvořenou událost, povolte její kalendář ve "
 "správci kalendáře.</para>"
 
-#: calendarview.cpp:2864
+#: calendarview.cpp:2862
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2979,7 +2977,7 @@ msgstr "Zítra"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:171
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
-#: kontactplugin/specialdates/sdsummarywidget.cpp:499
+#: kontactplugin/specialdates/sdsummarywidget.cpp:497
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -3626,49 +3624,49 @@ msgstr "Zobrazo&vat výročí"
 msgid "Upcoming Special Dates"
 msgstr "Nadcházející speciální data"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:460
+#: kontactplugin/specialdates/sdsummarywidget.cpp:458
 #, kde-format
 msgctxt "the special day is today"
 msgid "Today"
 msgstr "Dnes"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:462
+#: kontactplugin/specialdates/sdsummarywidget.cpp:460
 #, kde-format
 msgctxt "the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "Zítra"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:497
+#: kontactplugin/specialdates/sdsummarywidget.cpp:495
 #, kde-format
 msgid "now"
 msgstr "nyní"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:510
+#: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, kde-format
 msgid "Birthday"
 msgstr "Narozeniny"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:513
+#: kontactplugin/specialdates/sdsummarywidget.cpp:511
 #, kde-format
 msgid "Anniversary"
 msgstr "Výročí"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:516
+#: kontactplugin/specialdates/sdsummarywidget.cpp:514
 #, kde-format
 msgid "Holiday"
 msgstr "Svátek"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:519
+#: kontactplugin/specialdates/sdsummarywidget.cpp:517
 #, kde-format
 msgid "Change of Seasons"
 msgstr "Změna sezóny"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:522
+#: kontactplugin/specialdates/sdsummarywidget.cpp:520
 #, kde-format
 msgid "Special Occasion"
 msgstr "Speciální příležitost"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:564
+#: kontactplugin/specialdates/sdsummarywidget.cpp:562
 #, kde-format
 msgid "one year"
 msgid_plural "%1 years"
@@ -3676,7 +3674,7 @@ msgstr[0] "jeden rok"
 msgstr[1] "%1 roky"
 msgstr[2] "%1 let"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:574
+#: kontactplugin/specialdates/sdsummarywidget.cpp:572
 #, kde-format
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3684,17 +3682,17 @@ msgstr[0] "Žádné speciální události nejsou na blízku pro příští %1 de
 msgstr[1] "Žádné speciální události nejsou na blízku pro příští %1 dny"
 msgstr[2] "Žádné speciální události nejsou na blízku pro příštích %1 dní"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:668
+#: kontactplugin/specialdates/sdsummarywidget.cpp:666
 #, kde-format
 msgid "Send &Mail"
 msgstr "Poslat e&mail"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:669
+#: kontactplugin/specialdates/sdsummarywidget.cpp:667
 #, kde-format
 msgid "View &Contact"
 msgstr "Zobrazit &kontakt"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:684
+#: kontactplugin/specialdates/sdsummarywidget.cpp:682
 #, kde-format
 msgid "Mail to:\"%1\""
 msgstr "Poslat: \"%1\""
@@ -3904,7 +3902,7 @@ msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr "Výchozí úroveň přístupu"
 
-#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
+#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:238
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3977,67 +3975,67 @@ msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Nelze nakonfigurovat tento modul"
 
-#: prefs/koprefsdialogtime.cpp:48
+#: prefs/koprefsdialogtime.cpp:46
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Místní"
 
-#: prefs/koprefsdialogtime.cpp:52
+#: prefs/koprefsdialogtime.cpp:50
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Datum a čas"
 
-#: prefs/koprefsdialogtime.cpp:61
+#: prefs/koprefsdialogtime.cpp:59
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Svátky"
 
-#: prefs/koprefsdialogtime.cpp:72
+#: prefs/koprefsdialogtime.cpp:70
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Použít regiony svátků:"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:94
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:105
+#: prefs/koprefsdialogtime.cpp:103
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Zvolte regiony svátků"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:121
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "Použít kategorie svátků:"
 
-#: prefs/koprefsdialogtime.cpp:137
+#: prefs/koprefsdialogtime.cpp:135
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "Zvolte kategorie svátků"
 
-#: prefs/koprefsdialogtime.cpp:159
+#: prefs/koprefsdialogtime.cpp:155
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "Týdenní rozvrh"
 
-#: prefs/koprefsdialogtime.cpp:174
+#: prefs/koprefsdialogtime.cpp:170
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "Zahrnout %1 do svého týdenního rozvrhu"
 
-#: prefs/koprefsdialogtime.cpp:176
+#: prefs/koprefsdialogtime.cpp:172
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4053,55 +4051,55 @@ msgstr ""
 "pokud je %1 součástí vašeho pravidelného týdenního rozvrhu (i když "
 "nepracujete). Víkendové dny by obvykle měly být nezaškrtnuté."
 
-#: prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Pondělí"
 
-#: prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Úterý"
 
-#: prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Středa"
 
-#: prefs/koprefsdialogtime.cpp:191
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Čtvrtek"
 
-#: prefs/koprefsdialogtime.cpp:191
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Pátek"
 
-#: prefs/koprefsdialogtime.cpp:191
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Sobota"
 
-#: prefs/koprefsdialogtime.cpp:192
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Neděle"
 
-#: prefs/koprefsdialogtime.cpp:215
+#: prefs/koprefsdialogtime.cpp:211
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "Označit svátky jinak než běžný rozvrh"
 
-#: prefs/koprefsdialogtime.cpp:217
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4111,43 +4109,43 @@ msgstr ""
 "Zaškrtněte toto políčko, chcete-li zvýraznit svátky jinak než dny zahrnuté "
 "do vašeho běžného rozvrhu."
 
-#: prefs/koprefsdialogtime.cpp:224
+#: prefs/koprefsdialogtime.cpp:220
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Výchozí hodnoty"
 
-#: prefs/koprefsdialogtime.cpp:227
+#: prefs/koprefsdialogtime.cpp:223
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Schůzky"
 
-#: prefs/koprefsdialogtime.cpp:247
+#: prefs/koprefsdialogtime.cpp:243
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Výchozí čas upomínky:"
 
-#: prefs/koprefsdialogtime.cpp:260
+#: prefs/koprefsdialogtime.cpp:256
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minut"
 
-#: prefs/koprefsdialogtime.cpp:261
+#: prefs/koprefsdialogtime.cpp:257
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "hodin"
 
-#: prefs/koprefsdialogtime.cpp:262
+#: prefs/koprefsdialogtime.cpp:258
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "dnů"
 
-#: prefs/koprefsdialogtime.cpp:272
+#: prefs/koprefsdialogtime.cpp:268
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
