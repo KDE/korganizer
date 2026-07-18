@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-07 08:59+0300\n"
+"PO-Revision-Date: 2026-07-17 12:22+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1213,12 +1213,10 @@ msgid "Show Date Navigator"
 msgstr "הצגת תאריכון"
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "תצוגת מטלות"
+msgstr "הצגת רשימת מטלות"
 
 #: actionmanager.cpp:713
 #, kde-format
@@ -3251,17 +3249,13 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
 msgstr "%1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"

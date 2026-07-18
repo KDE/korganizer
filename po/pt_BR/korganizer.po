@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-16 08:17-0300\n"
+"PO-Revision-Date: 2026-07-17 07:35-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -6684,6 +6684,10 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"Visão de tarefas: a mini lista de tarefas não é mais exibida na barra "
+"lateral; ela ainda pode ser exibida em todas as outras visualizações se a "
+"opção Configurações -> Barra lateral -> Mostrar lista de tarefas estiver "
+"ativada."
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6700,6 +6704,7 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
 msgstr ""
+"Modelos: etiquetas (categorias) podem ser adicionadas a modelos de incidência"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -6972,6 +6977,8 @@ msgstr ""
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
 msgstr ""
+"Correção do CalDAV: calendários criados no KOrganizer são criados no "
+"servidor DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
@@ -6979,11 +6986,15 @@ msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
 msgstr ""
+"Correção do CalDAV: alterações no nome ou na cor do calendário no KOrganizer "
+"são replicadas no servidor DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
 msgstr ""
+"Correção do CalDAV: gerenciar corretamente a criação, edição e exclusão de "
+"exceções de eventos recorrentes"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format

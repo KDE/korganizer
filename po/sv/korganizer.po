@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-16 07:30+0200\n"
+"PO-Revision-Date: 2026-07-17 08:45+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -6570,6 +6570,9 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"Uppgiftsvy: Den minimala uppgiftslistan visas inte längre i sidoraden. Den "
+"minimala uppgiftslistan kan fortfarande visas i alla andra vyer om "
+"alternativet Inställningar -> Sidorad -> Visa uppgiftslista är aktiverat."
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6586,7 +6589,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
-msgstr ""
+msgstr "Mallar: etiketter (kategorier) kan läggas till i förekomstmallar"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -6843,7 +6846,7 @@ msgstr "Förekomsteditor: etiketterna sorteras alfabetiskt i etiketteditorn"
 #, kde-format
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
-msgstr ""
+msgstr "CalDAV-rättning: kalendrar skapade i Korganizer skapas på DAV-servern"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
@@ -6851,11 +6854,15 @@ msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
 msgstr ""
+"CalDAV-rättning: ändring av kalenderns namn/färg i Korganizer replikeras på "
+"DAV-servern"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
 msgstr ""
+"CalDAV-rättning: hantera skapa, redigera, och ta bort undantag för upprepade "
+"händelser"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format

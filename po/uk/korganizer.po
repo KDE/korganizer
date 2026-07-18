@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-16 18:41+0300\n"
+"PO-Revision-Date: 2026-07-17 10:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -6709,6 +6709,9 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"Перегляд завдань: у новій версії більше немає мінісписку завдань на бічній "
+"панелі; мінісписок завдань можна переглянути в усіх інших режимах перегляду, "
+"якщо позначено пункт «Параметри->Бічна панель->Показувати список завдань»"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6725,6 +6728,8 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
 msgstr ""
+"Шаблони: реалізовано можливість додавання міток (категорій) до шаблонів "
+"зустрічей"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -7004,6 +7009,8 @@ msgstr "Редактор зустрічей: мітки у редакторі м
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
 msgstr ""
+"Виправлення у CalDAV: програма створює для створених календарів KOrganizer "
+"календарі на сервері DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
@@ -7011,11 +7018,15 @@ msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
 msgstr ""
+"Виправлення у CalDAV: реалізовано відтворення змін у назві і кольорів у "
+"KOrganizer на сервері DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
 msgstr ""
+"Виправлення у CalDAV: реалізовано належну обробку створення, редагування, "
+"вилучення виключень для повторюваних подій"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format

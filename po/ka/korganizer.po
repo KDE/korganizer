@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-07 06:31+0200\n"
+"PO-Revision-Date: 2026-07-17 08:55+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1224,9 +1224,7 @@ msgid "Show Date Navigator"
 msgstr "თარიღის ნავიგატორის ჩვენება"
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
 msgstr "განრიგის ხედის ჩვენება"
@@ -3288,17 +3286,13 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
 msgstr "%1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -6629,6 +6623,9 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"გეგმის ხედი: მინი გეგმის ხედი გვერდით პანელზე ნაჩვენები აღარ იქნება. მინი "
+"გეგმის ხედის ჩვენება ჯერ კიდევ შეგიძლიათ ყველა ხედში, თუ ჩართულია პარამეტრი "
+"მენიუში მორგება -> გვერდითი პანელი -> გეგმის სიის ჩვენება"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6644,7 +6641,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
-msgstr ""
+msgstr "ნიმუშები: ახლა შეგიძლიათ ჭდეების (კატეგორიების) დამატება"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -6906,6 +6903,7 @@ msgstr "რედაქტორი: ჭდეების რედაქტო
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
 msgstr ""
+"გასწორდა CalDAV: KOrganizer-ში შექმნილი კალენდრები DAV სერვერზე იქმნება"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
@@ -6913,11 +6911,15 @@ msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
 msgstr ""
+"გასწორდა CalDAV: კალენდრის ფერის/სახელის ცვლილებები KOrganizer-ში ახლა DAV-"
+"ის სერვერზეც აისახება"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
 msgstr ""
+"გასწორდა CalDAV: სწორად მუშავდება გამეორებადი მოვლენის გამონაკლისების "
+"დამატება/ჩასწორება/წაშლა"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format
