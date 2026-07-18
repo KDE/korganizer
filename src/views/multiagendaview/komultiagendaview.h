@@ -21,17 +21,19 @@
 namespace KOrg
 {
 class CalendarViewBase;
-class MultiAgendaViewPrivate;
+}
+
+class KOMultiAgendaViewPrivate;
 
 /**
   Shows one agenda for every resource side-by-side.
 */
-class MultiAgendaView : public KOEventView
+class KOMultiAgendaView : public KOEventView
 {
     Q_OBJECT
 public:
-    explicit MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent = nullptr);
-    ~MultiAgendaView() override;
+    explicit KOMultiAgendaView(KOrg::CalendarViewBase *calendarView, QWidget *parent = nullptr);
+    ~KOMultiAgendaView() override;
 
     void setModel(QAbstractItemModel *model) override;
 
@@ -84,17 +86,17 @@ public Q_SLOTS:
     void calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar) override;
 
 private:
-    std::unique_ptr<MultiAgendaViewPrivate> const d;
+    std::unique_ptr<KOMultiAgendaViewPrivate> const d;
 };
 
-class MultiAgendaViewConfigDialogPrivate;
+class KOMultiAgendaViewConfigDialogPrivate;
 
-class MultiAgendaViewConfigDialog : public QDialog, public EventViews::ConfigDialogInterface
+class KOMultiAgendaViewConfigDialog : public QDialog, public EventViews::ConfigDialogInterface
 {
     Q_OBJECT
 public:
-    explicit MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent = nullptr);
-    ~MultiAgendaViewConfigDialog() override;
+    explicit KOMultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent = nullptr);
+    ~KOMultiAgendaViewConfigDialog() override;
 
     bool useCustomColumns() const override;
     void setUseCustomColumns(bool);
@@ -120,6 +122,5 @@ private Q_SLOTS:
     void titleEdited(const QString &text);
 
 private:
-    std::unique_ptr<MultiAgendaViewConfigDialogPrivate> const d;
+    std::unique_ptr<KOMultiAgendaViewConfigDialogPrivate> const d;
 };
-}

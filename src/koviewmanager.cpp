@@ -19,7 +19,7 @@
 #include "views/journalview/kojournalview.h"
 #include "views/listview/kolistview.h"
 #include "views/monthview/komonthview.h"
-#include "views/multiagendaview/multiagendaview.h"
+#include "views/multiagendaview/komultiagendaview.h"
 #include "views/timelineview/kotimelineview.h"
 #include "views/todoview/kotodoview.h"
 #include "views/whatsnextview/kowhatsnextview.h"
@@ -522,7 +522,7 @@ void KOViewManager::showAgendaView()
 
     if (showSideBySide) {
         if (!mAgendaSideBySideView) {
-            mAgendaSideBySideView = new MultiAgendaView(mMainView, parent);
+            mAgendaSideBySideView = new KOMultiAgendaView(mMainView, parent);
             mAgendaSideBySideView->setIdentifier("DefaultAgendaSideBySideView");
             mAgendaSideBySideView->setCollectionSelectionProxyModel(mMainView->calendar()->checkableProxyModel());
             addView(mAgendaSideBySideView, showBoth);

@@ -22,13 +22,13 @@ class KOAgendaView;
 class KOJournalView;
 class KOListView;
 class KOMonthView;
+class KOMultiAgendaView;
 class KOTimelineView;
 class KOTodoView;
 class KOWhatsNextView;
 namespace KOrg
 {
 class BaseView;
-class MultiAgendaView;
 }
 
 namespace Akonadi
@@ -169,7 +169,7 @@ private:
     QList<Akonadi::CollectionCalendar::Ptr> mCalendars;
 
     KOAgendaView *mAgendaView = nullptr;
-    KOrg::MultiAgendaView *mAgendaSideBySideView = nullptr;
+    KOMultiAgendaView *mAgendaSideBySideView = nullptr;
     KOListView *mListView = nullptr;
     KOTodoView *mTodoView = nullptr;
     KOWhatsNextView *mWhatsNextView = nullptr;

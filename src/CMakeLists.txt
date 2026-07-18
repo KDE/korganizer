@@ -333,7 +333,7 @@ set(korganizerprivate_LIB_SRCS
     views/journalview/kojournalview.cpp
     views/listview/kolistview.cpp
     views/monthview/komonthview.cpp
-    views/multiagendaview/multiagendaview.cpp
+    views/multiagendaview/komultiagendaview.cpp
     views/timelineview/kotimelineview.cpp
     views/todoview/kotodoview.cpp
     views/whatsnextview/kowhatsnextview.cpp
@@ -371,7 +371,7 @@ set(korganizerprivate_LIB_SRCS
     views/journalview/kojournalview.h
     views/listview/kolistview.h
     views/monthview/komonthview.h
-    views/multiagendaview/multiagendaview.h
+    views/multiagendaview/komultiagendaview.h
     views/timelineview/kotimelineview.h
     views/todoview/kotodoview.h
     views/whatsnextview/kowhatsnextview.h
@@ -414,7 +414,7 @@ set_property(
 ki18n_wrap_ui(korganizerprivate_LIB_SRCS
     ui/filteredit_base.ui
     ui/kogroupwareprefspage.ui
-    views/multiagendaview/multiagendaviewconfigwidget.ui
+    views/multiagendaview/komultiagendaviewconfigwidget.ui
     ui/searchdialog_base.ui
     views/collectionview/quickview.ui
 )

@@ -6,12 +6,13 @@
   SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#include "multiagendaview.h"
+#include "komultiagendaview.h"
 #include "akonadicollectionview.h"
 #include "calendarview.h"
 #include "koeventpopupmenu.h"
 #include "prefs/koprefs.h"
-#include "ui_multiagendaviewconfigwidget.h"
+
+#include "ui_komultiagendaviewconfigwidget.h"
 
 #include <EventViews/AgendaView>
 #include <EventViews/MultiAgendaView>
@@ -59,10 +60,10 @@ private:
 };
 }
 
-class KOrg::MultiAgendaViewPrivate
+class KOMultiAgendaViewPrivate
 {
 public:
-    MultiAgendaViewPrivate(CalendarViewBase *calendarView, MultiAgendaView *qq)
+    KOMultiAgendaViewPrivate(CalendarViewBase *calendarView, KOMultiAgendaView *qq)
         : q(qq)
     {
         auto layout = new QHBoxLayout(q);
@@ -79,13 +80,13 @@ public:
     Akonadi::Collection::Id mCollectionId = -1;
 
 private:
-    Q_DISABLE_COPY_MOVE(MultiAgendaViewPrivate)
-    MultiAgendaView *const q;
+    Q_DISABLE_COPY_MOVE(KOMultiAgendaViewPrivate)
+    KOMultiAgendaView *const q;
 };
 
-MultiAgendaView::MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent)
+KOMultiAgendaView::KOMultiAgendaView(CalendarViewBase *calendarView, QWidget *parent)
     : KOEventView(parent)
-    , d(new MultiAgendaViewPrivate(calendarView, this))
+    , d(new KOMultiAgendaViewPrivate(calendarView, this))
 {
     connect(d->mMultiAgendaView, &EventViews::EventView::datesSelected, this, &KOEventView::datesSelected);
 
@@ -93,7 +94,7 @@ MultiAgendaView::MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent
 
     connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showIncidencePopupSignal, d->mPopup, &KOEventPopupMenu::showIncidencePopup);
 
-    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showNewEventPopupSignal, this, &MultiAgendaView::showNewEventPopup);
+    connect(d->mMultiAgendaView, &EventViews::MultiAgendaView::showNewEventPopupSignal, this, &KOMultiAgendaView::showNewEventPopup);
 
     connect(d->mMultiAgendaView, &EventViews::EventView::incidenceSelected, this, &BaseView::incidenceSelected);
 
@@ -119,22 +120,22 @@ MultiAgendaView::MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent
 
     connect(d->mMultiAgendaView, &EventViews::EventView::dissociateOccurrencesSignal, this, &BaseView::dissociateOccurrencesSignal);
 
-    connect(d->mMultiAgendaView, qOverload<>(&EventViews::MultiAgendaView::newEventSignal), this, qOverload<>(&KOrg::MultiAgendaView::newEventSignal));
+    connect(d->mMultiAgendaView, qOverload<>(&EventViews::MultiAgendaView::newEventSignal), this, qOverload<>(&KOMultiAgendaView::newEventSignal));
 
     connect(d->mMultiAgendaView,
             qOverload<const QDate &>(&EventViews::MultiAgendaView::newEventSignal),
             this,
-            qOverload<const QDate &>(&KOrg::MultiAgendaView::newEventSignal));
+            qOverload<const QDate &>(&KOMultiAgendaView::newEventSignal));
 
     connect(d->mMultiAgendaView,
             qOverload<const QDateTime &>(&EventViews::MultiAgendaView::newEventSignal),
             this,
-            qOverload<const QDateTime &>(&KOrg::MultiAgendaView::newEventSignal));
+            qOverload<const QDateTime &>(&KOMultiAgendaView::newEventSignal));
 
     connect(d->mMultiAgendaView,
             qOverload<const QDateTime &, const QDateTime &>(&EventViews::MultiAgendaView::newEventSignal),
             this,
-            qOverload<const QDateTime &, const QDateTime &>(&KOrg::MultiAgendaView::newEventSignal));
+            qOverload<const QDateTime &, const QDateTime &>(&KOMultiAgendaView::newEventSignal));
 
     connect(d->mMultiAgendaView, &EventViews::EventView::newTodoSignal, this, &BaseView::newTodoSignal);
 
@@ -151,79 +152,79 @@ MultiAgendaView::MultiAgendaView(CalendarViewBase *calendarView, QWidget *parent
     });
 }
 
-MultiAgendaView::~MultiAgendaView() = default;
+KOMultiAgendaView::~KOMultiAgendaView() = default;
 
-void MultiAgendaView::setModel(QAbstractItemModel *model)
+void KOMultiAgendaView::setModel(QAbstractItemModel *model)
 {
     KOEventView::setModel(model);
     d->mMultiAgendaView->setModel(model);
 }
 
-Akonadi::Item::List MultiAgendaView::selectedIncidences()
+Akonadi::Item::List KOMultiAgendaView::selectedIncidences()
 {
     return d->mMultiAgendaView->selectedIncidences();
 }
 
-KCalendarCore::DateList MultiAgendaView::selectedIncidenceDates()
+KCalendarCore::DateList KOMultiAgendaView::selectedIncidenceDates()
 {
     return d->mMultiAgendaView->selectedIncidenceDates();
 }
 
-int MultiAgendaView::currentDateCount() const
+int KOMultiAgendaView::currentDateCount() const
 {
     return d->mMultiAgendaView->currentDateCount();
 }
 
-void MultiAgendaView::showDates(const QDate &start, const QDate &end, const QDate &)
+void KOMultiAgendaView::showDates(const QDate &start, const QDate &end, const QDate &)
 {
     d->mMultiAgendaView->showDates(start, end);
 }
 
-void MultiAgendaView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
+void KOMultiAgendaView::showIncidences(const Akonadi::Item::List &incidenceList, const QDate &date)
 {
     d->mMultiAgendaView->showIncidences(incidenceList, date);
 }
 
-void MultiAgendaView::updateView()
+void KOMultiAgendaView::updateView()
 {
     d->mMultiAgendaView->updateView();
 }
 
-Akonadi::Collection::Id MultiAgendaView::collectionId() const
+Akonadi::Collection::Id KOMultiAgendaView::collectionId() const
 {
     return d->mCollectionId;
 }
 
-void MultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
+void KOMultiAgendaView::changeIncidenceDisplay(const Akonadi::Item &, Akonadi::IncidenceChanger::ChangeType)
 {
 }
 
-int MultiAgendaView::maxDatesHint() const
+int KOMultiAgendaView::maxDatesHint() const
 {
     return EventViews::AgendaView::MAX_DAY_COUNT;
 }
 
-void MultiAgendaView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &)
+void KOMultiAgendaView::setDateRange(const QDateTime &start, const QDateTime &end, const QDate &)
 {
     d->mMultiAgendaView->setDateRange(start, end);
 }
 
-bool MultiAgendaView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
+bool KOMultiAgendaView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay)
 {
     return d->mMultiAgendaView->eventDurationHint(startDt, endDt, allDay);
 }
 
-void MultiAgendaView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
+void KOMultiAgendaView::setIncidenceChanger(Akonadi::IncidenceChanger *changer)
 {
     d->mMultiAgendaView->setIncidenceChanger(changer);
 }
 
-void MultiAgendaView::updateConfig()
+void KOMultiAgendaView::updateConfig()
 {
     d->mMultiAgendaView->updateConfig();
 }
 
-void MultiAgendaView::setChanges(EventViews::EventView::Changes changes)
+void KOMultiAgendaView::setChanges(EventViews::EventView::Changes changes)
 {
     // Only ConfigChanged and FilterChanged should go from korg->AgendaView
     // All other values are already detected inside AgendaView.
@@ -243,15 +244,15 @@ void MultiAgendaView::setChanges(EventViews::EventView::Changes changes)
     d->mMultiAgendaView->setChanges(c | d->mMultiAgendaView->changes());
 }
 
-bool MultiAgendaView::hasConfigurationDialog() const
+bool KOMultiAgendaView::hasConfigurationDialog() const
 {
     // It has. And it's implemented in korg, not libeventviews.
     return true;
 }
 
-void MultiAgendaView::showConfigurationDialog(QWidget *parent)
+void KOMultiAgendaView::showConfigurationDialog(QWidget *parent)
 {
-    const QPointer<MultiAgendaViewConfigDialog> dlg(new MultiAgendaViewConfigDialog(d->mCollectionSelectionModel, parent));
+    const QPointer<KOMultiAgendaViewConfigDialog> dlg(new KOMultiAgendaViewConfigDialog(d->mCollectionSelectionModel, parent));
 
     dlg->setUseCustomColumns(d->mMultiAgendaView->customColumnSetupUsed());
     dlg->setNumberOfColumns(d->mMultiAgendaView->customNumberOfColumns());
@@ -274,31 +275,31 @@ void MultiAgendaView::showConfigurationDialog(QWidget *parent)
     delete dlg;
 }
 
-KCheckableProxyModel *MultiAgendaView::takeCustomCollectionSelectionProxyModel()
+KCheckableProxyModel *KOMultiAgendaView::takeCustomCollectionSelectionProxyModel()
 {
     return d->mMultiAgendaView->takeCustomCollectionSelectionProxyModel();
 }
 
-void MultiAgendaView::setCustomCollectionSelectionProxyModel(KCheckableProxyModel *model)
+void KOMultiAgendaView::setCustomCollectionSelectionProxyModel(KCheckableProxyModel *model)
 {
     d->mMultiAgendaView->setCustomCollectionSelectionProxyModel(model);
 }
 
-void MultiAgendaView::setCollectionSelectionProxyModel(KCheckableProxyModel *model)
+void KOMultiAgendaView::setCollectionSelectionProxyModel(KCheckableProxyModel *model)
 {
     d->mCollectionSelectionModel = model;
 }
 
-class KOrg::MultiAgendaViewConfigDialogPrivate
+class KOMultiAgendaViewConfigDialogPrivate
 {
 public:
-    explicit MultiAgendaViewConfigDialogPrivate(QAbstractItemModel *base, MultiAgendaViewConfigDialog *qq)
+    explicit KOMultiAgendaViewConfigDialogPrivate(QAbstractItemModel *base, KOMultiAgendaViewConfigDialog *qq)
         : q(qq)
         , baseModel(base)
     {
     }
 
-    ~MultiAgendaViewConfigDialogPrivate()
+    ~KOMultiAgendaViewConfigDialogPrivate()
     {
         qDeleteAll(newlyCreated);
     }
@@ -306,51 +307,51 @@ public:
     void setUpColumns(int n);
     [[nodiscard]] AkonadiCollectionView *view(int index) const;
     AkonadiCollectionView *createView(KCheckableProxyModel *model);
-    MultiAgendaViewConfigDialog *const q;
+    KOMultiAgendaViewConfigDialog *const q;
     QList<KCheckableProxyModel *> newlyCreated;
     QList<KCheckableProxyModel *> selections;
     QList<QString> titles;
-    Ui::MultiAgendaViewConfigWidget ui;
+    Ui::KOMultiAgendaViewConfigWidget ui;
     QStandardItemModel listModel;
     QAbstractItemModel *baseModel = nullptr;
     int currentColumn = 0;
 };
 
-void MultiAgendaView::restoreConfig(const KConfigGroup &configGroup)
+void KOMultiAgendaView::restoreConfig(const KConfigGroup &configGroup)
 {
     d->mMultiAgendaView->restoreConfig(configGroup);
 }
 
-void MultiAgendaView::saveConfig(KConfigGroup &configGroup)
+void KOMultiAgendaView::saveConfig(KConfigGroup &configGroup)
 {
     d->mMultiAgendaView->saveConfig(configGroup);
 }
 
-void MultiAgendaView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
+void KOMultiAgendaView::calendarAdded(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
     d->mMultiAgendaView->addCalendar(calendar);
 }
 
-void MultiAgendaView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
+void KOMultiAgendaView::calendarRemoved(const Akonadi::CollectionCalendar::Ptr &calendar)
 {
     d->mMultiAgendaView->removeCalendar(calendar);
 }
 
-bool MultiAgendaView::showSideBar()
+bool KOMultiAgendaView::showSideBar()
 {
     // follow agenda view settings
     return KOPrefs::instance()->agendaViewShowSidebar();
 }
 
-void MultiAgendaView::setShowSideBar(bool show)
+void KOMultiAgendaView::setShowSideBar(bool show)
 {
     // follow agenda view settings
     KOPrefs::instance()->setAgendaViewShowSidebar(show);
 }
 
-MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent)
+KOMultiAgendaViewConfigDialog::KOMultiAgendaViewConfigDialog(QAbstractItemModel *baseModel, QWidget *parent)
     : QDialog(parent)
-    , d(new MultiAgendaViewConfigDialogPrivate(baseModel, this))
+    , d(new KOMultiAgendaViewConfigDialogPrivate(baseModel, this))
 {
     setWindowTitle(i18nc("@title:window", "Configure Side-By-Side View"));
     auto mainLayout = new QVBoxLayout(this);
@@ -360,21 +361,21 @@ MultiAgendaViewConfigDialog::MultiAgendaViewConfigDialog(QAbstractItemModel *bas
     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
     okButton->setDefault(true);
     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
-    connect(buttonBox, &QDialogButtonBox::accepted, this, &MultiAgendaViewConfigDialog::accept);
-    connect(buttonBox, &QDialogButtonBox::rejected, this, &MultiAgendaViewConfigDialog::reject);
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &KOMultiAgendaViewConfigDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &KOMultiAgendaViewConfigDialog::reject);
     mainLayout->addWidget(buttonBox);
     mainLayout->addWidget(widget);
 
     d->ui.columnList->setModel(&d->listModel);
-    connect(d->ui.columnList->selectionModel(), &QItemSelectionModel::currentChanged, this, &MultiAgendaViewConfigDialog::currentChanged);
-    connect(d->ui.useCustomRB, &QAbstractButton::toggled, this, &MultiAgendaViewConfigDialog::useCustomToggled);
-    connect(d->ui.columnNumberSB, &QSpinBox::valueChanged, this, &MultiAgendaViewConfigDialog::numberOfColumnsChanged);
-    connect(d->ui.titleLE, &QLineEdit::textEdited, this, &MultiAgendaViewConfigDialog::titleEdited);
+    connect(d->ui.columnList->selectionModel(), &QItemSelectionModel::currentChanged, this, &KOMultiAgendaViewConfigDialog::currentChanged);
+    connect(d->ui.useCustomRB, &QAbstractButton::toggled, this, &KOMultiAgendaViewConfigDialog::useCustomToggled);
+    connect(d->ui.columnNumberSB, &QSpinBox::valueChanged, this, &KOMultiAgendaViewConfigDialog::numberOfColumnsChanged);
+    connect(d->ui.titleLE, &QLineEdit::textEdited, this, &KOMultiAgendaViewConfigDialog::titleEdited);
     d->setUpColumns(d->ui.columnNumberSB->value());
     useCustomToggled(false);
 }
 
-void MultiAgendaViewConfigDialog::currentChanged(const QModelIndex &index)
+void KOMultiAgendaViewConfigDialog::currentChanged(const QModelIndex &index)
 {
     if (!index.isValid()) {
         return;
@@ -386,7 +387,7 @@ void MultiAgendaViewConfigDialog::currentChanged(const QModelIndex &index)
     d->currentColumn = idx;
 }
 
-void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
+void KOMultiAgendaViewConfigDialog::useCustomToggled(bool on)
 {
     d->ui.columnList->setEnabled(on);
     d->ui.columnNumberLabel->setEnabled(on);
@@ -404,7 +405,7 @@ void MultiAgendaViewConfigDialog::useCustomToggled(bool on)
     }
 }
 
-AkonadiCollectionView *MultiAgendaViewConfigDialogPrivate::createView(KCheckableProxyModel *model)
+AkonadiCollectionView *KOMultiAgendaViewConfigDialogPrivate::createView(KCheckableProxyModel *model)
 {
     auto cview = new AkonadiCollectionView(nullptr, false, q);
     cview->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
@@ -412,7 +413,7 @@ AkonadiCollectionView *MultiAgendaViewConfigDialogPrivate::createView(KCheckable
     return cview;
 }
 
-void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
+void KOMultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
 {
     Q_ASSERT(n > 0);
     const int oldN = selections.size();
@@ -449,7 +450,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
 
             auto sortProxy = new QSortFilterProxyModel;
             sortProxy->setSourceModel(baseModel);
-            sortProxy->setObjectName(QStringLiteral("MultiAgendaColumnSetupProxyModel-%1").arg(i));
+            sortProxy->setObjectName(QStringLiteral("KOMultiAgendaColumnSetupProxyModel-%1").arg(i));
 
             auto columnFilterProxy = new KRearrangeColumnsProxyModel(sortProxy);
             columnFilterProxy->setSourceColumns(QList<int>() << Akonadi::ETMCalendar::CollectionTitle);
@@ -458,7 +459,7 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
             auto qsm = new QItemSelectionModel(columnFilterProxy, columnFilterProxy);
 
             auto selection = new KCheckableProxyModel;
-            selection->setObjectName(QStringLiteral("MultiAgendaColumnCheckableProxy-%1").arg(i));
+            selection->setObjectName(QStringLiteral("KOMultiAgendaColumnCheckableProxy-%1").arg(i));
             selection->setSourceModel(columnFilterProxy);
             selection->setSelectionModel(qsm);
 
@@ -472,12 +473,12 @@ void MultiAgendaViewConfigDialogPrivate::setUpColumns(int n)
     }
 }
 
-bool MultiAgendaViewConfigDialog::useCustomColumns() const
+bool KOMultiAgendaViewConfigDialog::useCustomColumns() const
 {
     return d->ui.useCustomRB->isChecked();
 }
 
-void MultiAgendaViewConfigDialog::setUseCustomColumns(bool custom)
+void KOMultiAgendaViewConfigDialog::setUseCustomColumns(bool custom)
 {
     if (custom) {
         d->ui.useCustomRB->setChecked(true);
@@ -486,18 +487,18 @@ void MultiAgendaViewConfigDialog::setUseCustomColumns(bool custom)
     }
 }
 
-int MultiAgendaViewConfigDialog::numberOfColumns() const
+int KOMultiAgendaViewConfigDialog::numberOfColumns() const
 {
     return d->ui.columnNumberSB->value();
 }
 
-void MultiAgendaViewConfigDialog::setNumberOfColumns(int n)
+void KOMultiAgendaViewConfigDialog::setNumberOfColumns(int n)
 {
     d->ui.columnNumberSB->setValue(n);
     d->setUpColumns(n);
 }
 
-KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column)
+KCheckableProxyModel *KOMultiAgendaViewConfigDialog::takeSelectionModel(int column)
 {
     if (column < 0 || column >= d->selections.size()) {
         return nullptr;
@@ -508,12 +509,12 @@ KCheckableProxyModel *MultiAgendaViewConfigDialog::takeSelectionModel(int column
     return m;
 }
 
-AkonadiCollectionView *MultiAgendaViewConfigDialogPrivate::view(int index) const
+AkonadiCollectionView *KOMultiAgendaViewConfigDialogPrivate::view(int index) const
 {
     return qobject_cast<AkonadiCollectionView *>(ui.selectionStack->widget(index));
 }
 
-void MultiAgendaViewConfigDialog::setSelectionModel(int column, KCheckableProxyModel *model)
+void KOMultiAgendaViewConfigDialog::setSelectionModel(int column, KCheckableProxyModel *model)
 {
     Q_ASSERT(column >= 0 && column < d->selections.size());
 
@@ -534,24 +535,24 @@ void MultiAgendaViewConfigDialog::setSelectionModel(int column, KCheckableProxyM
     d->selections[column] = model;
 }
 
-void MultiAgendaViewConfigDialog::titleEdited(const QString &text)
+void KOMultiAgendaViewConfigDialog::titleEdited(const QString &text)
 {
     d->titles[d->currentColumn] = text;
     d->listModel.item(d->currentColumn)->setText(text);
 }
 
-void MultiAgendaViewConfigDialog::numberOfColumnsChanged(int number)
+void KOMultiAgendaViewConfigDialog::numberOfColumnsChanged(int number)
 {
     d->setUpColumns(number);
 }
 
-QString MultiAgendaViewConfigDialog::columnTitle(int column) const
+QString KOMultiAgendaViewConfigDialog::columnTitle(int column) const
 {
     Q_ASSERT(column >= 0);
     return column >= d->titles.count() ? QString() : d->titles[column];
 }
 
-void MultiAgendaViewConfigDialog::setColumnTitle(int column, const QString &title)
+void KOMultiAgendaViewConfigDialog::setColumnTitle(int column, const QString &title)
 {
     Q_ASSERT(column >= 0);
     d->titles.resize(qMax(d->titles.size(), column + 1));
@@ -562,12 +563,12 @@ void MultiAgendaViewConfigDialog::setColumnTitle(int column, const QString &titl
     // TODO update LE if item is selected
 }
 
-void MultiAgendaViewConfigDialog::accept()
+void KOMultiAgendaViewConfigDialog::accept()
 {
     d->newlyCreated.clear();
     QDialog::accept();
 }
 
-MultiAgendaViewConfigDialog::~MultiAgendaViewConfigDialog() = default;
+KOMultiAgendaViewConfigDialog::~KOMultiAgendaViewConfigDialog() = default;
 
-#include "moc_multiagendaview.cpp"
+#include "moc_komultiagendaview.cpp"
