@@ -1188,12 +1188,10 @@ msgid "Show Date Navigator"
 msgstr "显示日期导航器"
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "显示待办视图"
+msgstr ""
 
 #: actionmanager.cpp:713
 #, kde-format

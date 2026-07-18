@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 00:45+0000\n"
-"PO-Revision-Date: 2026-07-16 17:10+0200\n"
+"PO-Revision-Date: 2026-07-16 18:45+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -487,8 +487,8 @@ msgid ""
 msgstr ""
 "Commuta al vista de  \"Qual es proxime\", que monstra tu eventos e actiones "
 "de facer que es \"in arrivata\" in un breve lista per lectura rapide. Omne "
-"actiones aperite essera monstate, ma solmente le eventos ab le dies seligite "
-"in le barra lateral de Navigator de Data essera monstrate."
+"actiones aperite essera monstrate, ma solmente le eventos ab le dies "
+"seligite in le barra lateral de Navigator de Data essera monstrate."
 
 #: actionmanager.cpp:345
 #, kde-format
@@ -515,7 +515,7 @@ msgid ""
 "Switches to the Month View, which shows all the events and due to-dos in a "
 "familiar monthly calendar layout."
 msgstr ""
-"Commuta al Viste de Mese, que monstra omne eventos e debite actiones in un "
+"Commuta al Vista de Mense, que monstra omne eventos e debite actiones in un "
 "disposition familiar de calendario mensual."
 
 #: actionmanager.cpp:355
@@ -592,7 +592,7 @@ msgstr "Vista a lista de agenda"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
-msgstr "Commuta a vista de lista de aagenda"
+msgstr "Commuta a vista de lista de agenda"
 
 #: actionmanager.cpp:382
 #, kde-format
@@ -630,7 +630,7 @@ msgid ""
 "reflections, occurrences or experiences."
 msgstr ""
 "Commuta a vista de jornal, que provide un loco ubi tu pote regstrar tu "
-"reflectiones, occurrentias o esperientias."
+"reflectiones, occurrentias o experientias."
 
 #: actionmanager.cpp:398
 #, kde-format
@@ -4057,7 +4057,7 @@ msgid ""
 msgstr ""
 "Marca iste quadrato per considerar %1 como parte de tu planification "
 "septimanal regular. Ulle horas %1 quotidian essera monstrate con colores "
-"differente que temporec foras de tu planification regular. Marca iste "
+"differente que tempores foras de tu planification regular. Marca iste "
 "quadrato si %1 es includite como parte de tu planification septimanal "
 "regular (anque si illo non functiona). Solitemente dies de fin de septimana "
 "deberea esser non marcate."
@@ -4117,7 +4117,7 @@ msgid ""
 "Check this box to highlight holidays differently than days included with "
 "your regular schedule."
 msgstr ""
-"Marca iste quadrato per evidentiardies feriate differentemente que le dies "
+"Marca iste quadrato per evidentiar dies feriate differentemente que le dies "
 "includite con tu planification regular."
 
 #: prefs/koprefsdialogtime.cpp:220
@@ -6698,7 +6698,7 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
-"Clicca iste button permonstrar/celar le barra lateral in levista currente. "
+"Clicca iste button permonstrar/celar le barra lateral in le vista currente. "
 "Cata vista pote celar/monstrar le barra lateral independentemente."
 
 #: widgets/navigatorbar.cpp:39
