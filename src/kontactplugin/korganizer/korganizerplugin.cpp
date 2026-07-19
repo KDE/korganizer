@@ -18,7 +18,11 @@
 
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
+#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 29, 0)
 #include <KCalUtils/ICalDrag>
+#else
+#include <KCalendarCore/MimeData>
+#endif
 #include <KMime/Message>
 
 #include <KontactInterface/Core>
@@ -147,9 +151,14 @@ void KOrganizerPlugin::processDropEvent(QDropEvent *event)
         return;
     }
 
+#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 29, 0)
     if (KCalUtils::ICalDrag::canDecode(event->mimeData())) {
         const KCalendarCore::MemoryCalendar::Ptr cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
         if (KCalUtils::ICalDrag::fromMimeData(event->mimeData(), cal)) {
+#else
+    if (KCalendarCore::MimeData::canDecode(event->mimeData())) {
+        if (const KCalendarCore::Calendar::Ptr cal = KCalendarCore::MimeData::decodeCalendar(event->mimeData()); cal) {
+#endif
             KCalendarCore::Incidence::List incidences = cal->incidences();
             Q_ASSERT(incidences.count());
             if (!incidences.isEmpty()) {
