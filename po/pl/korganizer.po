@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1741552 $
+# Version: $Revision: 1741712 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"POT-Creation-Date: 2026-07-19 00:46+0000\n"
 "PO-Revision-Date: 2026-03-14 07:53+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -6513,45 +6513,45 @@ msgstr "Dzisiaj"
 msgid ">"
 msgstr ">"
 
-#: views/multiagendaview/multiagendaview.cpp:37
+#: views/multiagendaview/komultiagendaview.cpp:38
 #, kde-format
 msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Rozkład zajęć %1"
 
-#: views/multiagendaview/multiagendaview.cpp:355
+#: views/multiagendaview/komultiagendaview.cpp:356
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
 msgstr "Ustawienia widoku strona-obok-strony"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:17
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:17
 #, kde-format
 msgid "Show one calendar per agenda column"
 msgstr "Pokaż jeden kalendarz na kolumnę planu zajęć"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:27
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:27
 #, kde-format
 msgid "Use custom calendar setup"
 msgstr "Użyj własnych ustawień kalendarza"
 
 #. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:36
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:36
 #, kde-format
 msgid "Number of columns"
 msgstr "Liczba kolumn"
 
 #. i18n: ectx: property (text), widget (QLabel, titleLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:84
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:84
 #, kde-format
 msgctxt "Agenda title"
 msgid "Title"
 msgstr "Tytuł"
 
 #. i18n: ectx: property (text), widget (QLabel, selectedCalendarsLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:102
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:102
 #, kde-format
 msgid "Selected Calendars"
 msgstr "Wybrane kalendarze"

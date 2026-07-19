@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"POT-Creation-Date: 2026-07-19 00:46+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -6849,46 +6849,46 @@ msgstr "Hari Ini"
 msgid ">"
 msgstr ">"
 
-#: views/multiagendaview/multiagendaview.cpp:37
+#: views/multiagendaview/komultiagendaview.cpp:38
 #, fuzzy, kde-format
 #| msgid "Agenda %1"
 msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "Agenda %1"
 
-#: views/multiagendaview/multiagendaview.cpp:355
+#: views/multiagendaview/komultiagendaview.cpp:356
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
 msgstr "Konfigurasi Tampilan Berdampingan"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:17
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:17
 #, kde-format
 msgid "Show one calendar per agenda column"
 msgstr "Tampilkan satu kalender tiap kolom agenda"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:27
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:27
 #, kde-format
 msgid "Use custom calendar setup"
 msgstr "Gunakan pengaturan kalender kustom"
 
 #. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:36
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:36
 #, kde-format
 msgid "Number of columns"
 msgstr "Jumlah kolom"
 
 #. i18n: ectx: property (text), widget (QLabel, titleLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:84
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:84
 #, kde-format
 msgctxt "Agenda title"
 msgid "Title"
 msgstr "Judul"
 
 #. i18n: ectx: property (text), widget (QLabel, selectedCalendarsLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:102
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:102
 #, kde-format
 msgid "Selected Calendars"
 msgstr "Pilih Kalender"

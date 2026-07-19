@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-17 00:45+0000\n"
+"POT-Creation-Date: 2026-07-19 00:46+0000\n"
 "PO-Revision-Date: 2009-02-28 20:07+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -6413,14 +6413,14 @@ msgstr "आज"
 msgid ">"
 msgstr ""
 
-#: views/multiagendaview/multiagendaview.cpp:37
+#: views/multiagendaview/komultiagendaview.cpp:38
 #, fuzzy, kde-format
 #| msgid "Agenda view"
 msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "एजेंडा दृस्य"
 
-#: views/multiagendaview/multiagendaview.cpp:355
+#: views/multiagendaview/komultiagendaview.cpp:356
 #, fuzzy, kde-format
 #| msgid "Configure &Date && Time..."
 msgctxt "@title:window"
@@ -6428,33 +6428,33 @@ msgid "Configure Side-By-Side View"
 msgstr "तारीक अउ समय ल कान्फिगर करव... (&D)"
 
 #. i18n: ectx: property (text), widget (QRadioButton, useDefaultRB)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:17
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:17
 #, kde-format
 msgid "Show one calendar per agenda column"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, useCustomRB)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:27
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:27
 #, kde-format
 msgid "Use custom calendar setup"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, columnNumberLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:36
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:36
 #, fuzzy, kde-format
 #| msgid "Number of &pages:"
 msgid "Number of columns"
 msgstr "पेज मन के संख्या: (&p)"
 
 #. i18n: ectx: property (text), widget (QLabel, titleLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:84
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:84
 #, fuzzy, kde-format
 msgctxt "Agenda title"
 msgid "Title"
 msgstr "सीर्सकः (&T)"
 
 #. i18n: ectx: property (text), widget (QLabel, selectedCalendarsLabel)
-#: views/multiagendaview/multiagendaviewconfigwidget.ui:102
+#: views/multiagendaview/komultiagendaviewconfigwidget.ui:102
 #, fuzzy, kde-format
 #| msgid "New Calendar"
 msgid "Selected Calendars"
