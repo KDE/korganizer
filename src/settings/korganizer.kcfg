@@ -427,31 +427,38 @@
   </group>
   <!-- INTERNAL SETTINGS: Not for users to change -->
   <group name="Internal Settings">
-    <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
+    <entry type="Int" key="Work Week Mask" name="WorkWeekMask" hidden="true">
       <default>31</default>
     </entry>
-    <entry type="Int" key="DefaultResourceColorSeed">
+    <entry type="Int" key="DefaultResourceColorSeed" hidden="true">
       <default>0</default>
     </entry>
-    <entry type="StringList" key="DefaultResourceColors">
+    <entry type="StringList" key="DefaultResourceColors" hidden="true">
       <default>#c1d4e7,#d0e7c1,#e3e7c1,#e7c1e6,#a1b1c1</default>
     </entry>
     <entry type="Bool" key="AssignDefaultResourceColors">
       <default>true</default>
     </entry>
-    <entry key="Decorations At Month View Top" type="StringList">
+    <entry key="Decorations At Month View Top" type="StringList" hidden="true"/>
+    <entry key="Decorations At Agenda View Top" type="StringList" hidden="true"/>
+    <entry key="Decorations At Agenda View Bottom" type="StringList" hidden="true"/>
+    <entry type="Bool" key="AgendaView Show Sidebar" hidden="true"/>
+    <entry type="Bool" key="JournalView Show Sidebar" hidden="true"/>
+    <entry type="Bool" key="ListView Show Sidebar" hidden="true"/>
+    <entry type="Bool" key="MonthView Show Sidebar" hidden="true"/>
+    <entry type="Bool" key="TimelineView Show Sidebar" hidden="true"/>
+    <entry type="Bool" key="TodoView Show Sidebar" hidden="true"/>
+    <entry type="Bool" key="WhatsNextView Show Sidebar" hidden="true"/>
+  </group>
+  <group name="Activities">
+    <entry name="EnabledActivities" type="Bool" hidden="true">
+      <default>false</default>
     </entry>
-    <entry key="Decorations At Agenda View Top" type="StringList">
+  </group>
+  <group name="General">
+    <entry name="PreviousNewFeaturesMD5" type="String" hidden="true">
+      <default/>
     </entry>
-    <entry key="Decorations At Agenda View Bottom" type="StringList">
-    </entry>
-    <entry type="Bool" key="AgendaView Show Sidebar"/>
-    <entry type="Bool" key="JournalView Show Sidebar"/>
-    <entry type="Bool" key="ListView Show Sidebar"/>
-    <entry type="Bool" key="MonthView Show Sidebar"/>
-    <entry type="Bool" key="TimelineView Show Sidebar"/>
-    <entry type="Bool" key="TodoView Show Sidebar"/>
-    <entry type="Bool" key="WhatsNextView Show Sidebar"/>
   </group>
   <!-- Theming settings (not implemented yet) -->
   <group name="Theming">
@@ -643,15 +650,5 @@
     <entry key="Month Holidays Background Image" type="String">
     </entry>
     <!-- END:   These entries are the same for the Month and month views, please keep them in sync -->
-  </group>
-  <group name="Activities">
-    <entry name="EnabledActivities" type="Bool">
-      <default>false</default>
-    </entry>
-  </group>
-  <group name="General">
-    <entry name="PreviousNewFeaturesMD5" type="String">
-      <default/>
-    </entry>
   </group>
 </kcfg>
