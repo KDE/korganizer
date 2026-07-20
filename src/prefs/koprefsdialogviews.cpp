@@ -115,7 +115,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     adisplayBox->setLayout(adisplayLayout);
     agendaLayout->addWidget(adisplayBox);
 
-    // GroupBox: Views->Agenda View->Color Usage
+    // GroupBox: Views->Agenda View->Agenda Item Colors
     agendaLayout->addWidget(addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
 
     // GroupBox: Views->Agenda View->Multiple Calendars
@@ -149,7 +149,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
 
     monthLayout->addWidget(mdisplayBox);
 
-    // GroupBox: Views->Month View->Color Usage
+    // GroupBox: Views->Month View->Month Item Colors
     monthLayout->addWidget(addWidRadios(KOPrefs::instance()->monthViewColorsItem())->groupBox());
     monthLayout->addStretch(1);
 

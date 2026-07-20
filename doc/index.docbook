@@ -2297,25 +2297,25 @@ plan.</para></listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term><guilabel>Color Usage</guilabel></term>
-<listitem>
-<para>Select the <guilabel>Tag inside, calendar outside</guilabel> option if you would like to
-draw calendar items in their associated tag's color, with the item's
-border drawn in the color of its calendar.</para>
+  <term><guilabel>Agenda Item Colors</guilabel></term>
+  <listitem>
+    <para>Select the <guilabel>Tag inside, calendar outside</guilabel> option if you would like to
+    draw calendar items in their associated tag's color, with the item's
+    border drawn in the color of its calendar.</para>
 
-<para>Select the <guilabel>Calendar inside, tag outside</guilabel> option if you would like to
-draw calendar items in their associated calendar color, with the item's
-border drawn in the color of its tag.</para>
+    <para>Select the <guilabel>Calendar inside, tag outside</guilabel> option if you would like to
+    draw calendar items in their associated calendar color, with the item's
+    border drawn in the color of its tag.</para>
 
-<para>Select the <guilabel>Only tag</guilabel> option if you would like to draw calendar items
-(both inside and border) in the color of their associated tag.</para>
+    <para>Select the <guilabel>Only tag</guilabel> option if you would like to draw calendar items
+    (both inside and border) in the color of their associated tag.</para>
 
-<para>Select the <guilabel>Only calendar</guilabel> option if you would like to draw calendar items
-(both inside and border) in the color of their calendar.</para>
+    <para>Select the <guilabel>Only calendar</guilabel> option if you would like to draw calendar items
+    (both inside and border) in the color of their calendar.</para>
 
-<para>Please use the <link linkend="config-main-colors">Colors and Fonts</link>
-configuration page for setting these colors.</para>
-</listitem>
+    <para>Please use the <link linkend="config-main-colors">Colors and Fonts</link>
+    configuration page for setting these colors.</para>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -2359,9 +2359,10 @@ from the context menu.
 
 
 <varlistentry>
-<term><guilabel>Color Usage</guilabel></term>
-<listitem>
-<para>Configure the colors for the Month view as in <link linkend="config-main-views-agenda">Agenda view</link>.</para></listitem>
+  <term><guilabel>Month View Colors</guilabel></term>
+  <listitem>
+    <para>Configure the colors for the Month view as in <link linkend="config-main-views-agenda">Agenda view</link>.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>
