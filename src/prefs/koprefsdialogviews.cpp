@@ -101,6 +101,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableAgendaBoldEvenHoursItem())->checkBox());
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableAgendaItemDescItem())->checkBox());
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableAgendaItemLocationItem())->checkBox());
+    adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->colorBusyDaysEnabledItem())->checkBox());
     adisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showTodosAgendaViewItem())->checkBox());
     Korganizer::KPrefsWidBool *marcusBainsEnabled = addWidBool(KOPrefs::instance()->marcusBainsEnabledItem());
     adisplayLayout->addWidget(marcusBainsEnabled->checkBox());
@@ -116,8 +117,6 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
 
     // GroupBox: Views->Agenda View->Color Usage
     agendaLayout->addWidget(addWidRadios(KOPrefs::instance()->agendaViewColorsItem())->groupBox());
-
-    agendaLayout->addWidget(addWidBool(KOPrefs::instance()->colorBusyDaysEnabledItem())->checkBox());
 
     // GroupBox: Views->Agenda View->Multiple Calendars
     agendaLayout->addWidget(addWidRadios(KOPrefs::instance()->agendaViewCalendarDisplayItem())->groupBox());
@@ -138,6 +137,7 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showTimeInMonthViewItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showEndTimeInMonthViewItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->enableMonthItemIconsItem())->checkBox());
+    mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->colorMonthBusyDaysEnabledItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showTodosMonthViewItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showJournalsMonthViewItem())->checkBox());
     mdisplayLayout->addWidget(addWidBool(KOPrefs::instance()->showHolidaysMonthViewItem())->checkBox());
@@ -148,8 +148,6 @@ KOPrefsDialogViews::KOPrefsDialogViews(QObject *parent, const KPluginMetaData &d
     mdisplayLayout->addWidget(mMonthIconComboBox);
 
     monthLayout->addWidget(mdisplayBox);
-
-    monthLayout->addWidget(addWidBool(KOPrefs::instance()->colorMonthBusyDaysEnabledItem())->checkBox());
 
     // GroupBox: Views->Month View->Color Usage
     monthLayout->addWidget(addWidRadios(KOPrefs::instance()->monthViewColorsItem())->groupBox());

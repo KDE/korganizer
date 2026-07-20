@@ -2259,6 +2259,14 @@ in Agenda view items</para></listitem>
 </varlistentry>
 
 <varlistentry>
+  <term><guilabel>Color busy days with a different background color</guilabel></term>
+  <listitem><para>Check this box if you want Agenda view's background to be filled with a
+      different color on days which have at least one all day event marked as busy.</para>
+    <para>Please look in the Colors configuration area to select the Agenda view background
+      busy color of your choosing.</para></listitem>
+</varlistentry>
+
+<varlistentry>
 <term><guilabel>Show to-dos</guilabel></term>
 <listitem><para>This check box toggles the display of to-dos in the Day, Week
 and Month views in the Agenda view. If you have
@@ -2311,14 +2319,6 @@ configuration page for setting these colors.</para>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Color busy days with a different background color</guilabel></term>
-<listitem><para>Check this box if you want Agenda view's background to be filled with a
-different color on days which have at least one all day event marked as busy.</para>
-<para>Please look in the Colors configuration area to select the Agenda view background
-busy color of your choosing.</para></listitem>
-</varlistentry>
-
-<varlistentry>
 <term><guilabel>Multiple Calendar Display</guilabel></term>
 <listitem><para>
 Select if all calendars should be merged into one Agenda view, each calendar should
@@ -2342,18 +2342,21 @@ from the context menu.
 <term><guilabel>Display Options</guilabel></term>
 <listitem>
   <para>The first two check boxes allow displaying the start-time only, or both the start-time and end-time.</para>
+  <para>Set the option <guilabel>Color busy days with a different background color</guilabel> if you want Month view's background to be filled with a different color on days which have at least one all day event marked as busy.</para>
   <para>Use the next four check boxes to optionally display icons, to-dos, journals or holidays in the month view.</para>
 </listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term><guilabel>Color busy days with a different background color</guilabel></term>
-<listitem><para>Check this box if you want Month view's background to be filled with a
-different color on days which have at least one all day event marked as busy.</para>
-<para>Please look in the Colors configuration area to select the Agenda/Month view background
-busy color of your choosing.</para></listitem>
+  <term><guilabel>Color busy days with a different background color</guilabel></term>
+  <listitem><para>Check this box if you want Month view's background to be filled with a
+      different color on days which have at least one all day event marked as busy.</para>
+    <para>Please look in the Colors configuration area to select the Agenda/Month view background
+      busy color of your choosing.</para></listitem>
 </varlistentry>
+
+<!--FIXME Icons to use dropdown box missing-->
+
 
 <varlistentry>
 <term><guilabel>Color Usage</guilabel></term>
