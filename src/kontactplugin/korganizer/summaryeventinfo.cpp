@@ -130,6 +130,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         summaryEvent->ev = ev;
 
         // Start date label
+        const auto locale = QLocale::system();
         QString str;
         const QDate sD = occurrenceStartDate;
         if (currentDate >= sD) {
@@ -138,15 +139,16 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         } else if (sD == currentDate.addDays(1)) {
             str = i18nc("the appointment is tomorrow", "Tomorrow");
         } else {
-            const auto locale = QLocale::system();
             for (int i = 3; i < 8; ++i) {
-                if (sD < currentDate.addDays(i)) {
-                    str = locale.dayName(sD.dayOfWeek(), QLocale::LongFormat);
-                    break;
+                if (currentDate.daysTo(sD) < 6) {
+                    str = i18nc("1. weekday", "%1", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat));
+                } else {
+                    str = i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat), locale.toString(sD, QLocale::ShortFormat));
                 }
+                break;
             }
             if (str.isEmpty()) {
-                str = locale.toString(sD, QLocale::LongFormat);
+                str = i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat), locale.toString(sD, QLocale::ShortFormat));
             }
         }
         summaryEvent->startDate = str;
@@ -159,8 +161,12 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         // Print the date span for multiday, floating events, for the
         // first day of the event only.
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
-            str = QLocale().toString(ev->dtStart().toLocalTime().date(), QLocale::LongFormat) + QLatin1StringView(" -\n ")
-                + QLocale().toString(ev->dtEnd().toLocalTime().date(), QLocale::LongFormat);
+            const QDate dtStart = ev->dtStart().toLocalTime().date();
+            const QDate dtEnd = ev->dtEnd().toLocalTime().date();
+            str =
+                i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(dtStart.dayOfWeek(), QLocale::LongFormat), locale.toString(dtStart, QLocale::ShortFormat))
+                + QLatin1StringView(" -\n ")
+                + i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(dtEnd.dayOfWeek(), QLocale::LongFormat), locale.toString(dtEnd, QLocale::ShortFormat));
         }
         summaryEvent->dateSpan = str;
 

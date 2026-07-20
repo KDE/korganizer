@@ -526,6 +526,7 @@
           <li xml:lang="sv">Kontact-översikt: Väntande uppgifter har förbättrad rutnätsjustering och datumsträngar</li>
           <li xml:lang="tr">Kontak özet: Bekleyen yapılacakların tarih dizileri ve ızgara hizalaması iyileştirildi.</li>
           <li xml:lang="uk">Резюме Kontact: удосконалено вирівнювання у таблиці та рядки дат для завдань у черзі</li>
+          <li>Kontact summary: Consistent date string formats</li>
         </ul>
       </description>
     </release>

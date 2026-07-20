@@ -462,12 +462,20 @@ void SDSummaryWidget::createLabels()
                 const auto locale = QLocale::system();
                 for (int i = 3; i < 8; ++i) {
                     if ((*addrIt).daysTo < i) {
-                        datestr = locale.dayName(sD.dayOfWeek(), QLocale::LongFormat);
+                        if ((*addrIt).daysTo < 6) {
+                            datestr = i18nc("1. weekday", "%1", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat));
+                        } else {
+                            datestr = i18nc("1. weekday, 2. date",
+                                            "%1 %2",
+                                            locale.dayName(sD.dayOfWeek(), QLocale::LongFormat),
+                                            locale.toString(sD, QLocale::ShortFormat));
+                        }
                         break;
                     }
                 }
                 if (datestr.isEmpty()) {
-                    datestr = locale.toString(sD, QLocale::ShortFormat);
+                    datestr =
+                        i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat), locale.toString(sD, QLocale::ShortFormat));
                 }
             }
             // Print the date span for multiday, floating events, for the
