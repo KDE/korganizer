@@ -168,27 +168,23 @@
       <choices>
         <choice name="CategoryInsideResourceOutside">
           <label>Tag inside, calendar outside</label>
-          <tooltip>Use the tag's color for the inside of the item and the calendar's color for the item borders</tooltip>
-          <whatsthis>Select the "Tag inside, calendar outside" option if you would like to draw calendar items using their associated tag color, with the item's border drawn in the color of its calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw agenda items with their tag color inside and calendar color for their border</tooltip>
+          <whatsthis>Select the "Tag inside, calendar outside" option if you would like to draw calendar items using their associated tag color, with the item's border drawn in the color of its calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
         <choice name="ResourceInsideCategoryOutside">
           <label>Calendar inside, tag outside</label>
-          <tooltip>Use the calendar's color for the inside of the item and the tag's color for the item borders</tooltip>
-          <whatsthis>Select the "Calendar inside, tag outside" option if you would like to draw calendar items using their associated calendar color, with the item's border drawn in the color of its tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw agenda items with their calendar color inside and tag color for their border</tooltip>
+          <whatsthis>Select the "Calendar inside, tag outside" option if you would like to draw calendar items using their associated calendar color, with the item's border drawn in the color of its tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
         <choice name="CategoryOnly">
           <label>Only tag</label>
-          <tooltip>Use the tag's color for both the inside of the item and its borders</tooltip>
-          <whatsthis>Select the "Only tag" option if you would like to draw calendar items (both inside and border) using the color of their associated tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw agenda items using their tag color for the inside and border</tooltip>
+          <whatsthis>Select the "Only tag" option if you would like to draw calendar items (both inside and border) using the color of their associated tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
         <choice name="ResourceOnly">
           <label>Only calendar</label>
-          <tooltip>Use the calendar's color for both the inside of the item and its borders</tooltip>
-          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) using the color of their calendar. Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw agenda items using their calendar color for the inside and border</tooltip>
+          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) using the color of their calendar. Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
       </choices>
       <default>CategoryInsideResourceOutside</default>
@@ -276,27 +272,23 @@
       <choices>
         <choice name="MonthItemCategoryInsideResourceOutside">
           <label>Tag inside, calendar outside</label>
-          <tooltip>Use the tag's color for the inside of the item and the calendar's color for the item borders</tooltip>
-          <whatsthis>Select the "Tag inside, calendar outside" option if you would like to draw calendar items using their associated tag color, with the item's border drawn in the color of its calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw month items with their tag color inside and calendar color for their border</tooltip>
+          <whatsthis>Select the "Tag inside, calendar outside" option if you would like to draw calendar items using their associated tag color, with the item's border drawn in the color of its calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
         <choice name="MonthItemResourceInsideCategoryOutside">
           <label>Calendar inside, tag outside</label>
-          <tooltip>Use the calendar's color for the inside of the item and the tag's color for the item borders</tooltip>
-          <whatsthis>Select the "Calendar inside, tag outside" option if you would like to draw calendar items using their associated calendar color, with the item's border drawn in the color of its tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw month items with their calendar color inside and tag color for their border</tooltip>
+          <whatsthis>Select the "Calendar inside, tag outside" option if you would like to draw calendar items using their associated calendar color, with the item's border drawn in the color of its tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
         <choice name="MonthItemCategoryOnly">
           <label>Only tag</label>
-          <tooltip>Use the tag's color for both the inside of the item and its borders</tooltip>
-          <whatsthis>Select the "Only tag" option if you would like to draw calendar items (both inside and border) in the color of their associated tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw month items using their tag color for the inside and border</tooltip>
+          <whatsthis>Select the "Only tag" option if you would like to draw calendar items (both inside and border) in the color of their associated tag.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
         <choice name="MonthItemResourceOnly">
           <label>Only calendar</label>
-          <tooltip>Use the calendar's color for both the inside of the item and its borders</tooltip>
-          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
           <tooltip>Draw month items using their calendar color for the inside and border</tooltip>
+          <whatsthis>Select the "Only calendar" option if you would like to draw calendar items (both inside and border) in the color of their calendar.  Please use the Colors and Fonts configuration page for setting these colors.</whatsthis>
         </choice>
       </choices>
       <default>MonthItemCategoryInsideResourceOutside</default>
