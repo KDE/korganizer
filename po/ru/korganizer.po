@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-16 10:22+0300\n"
+"PO-Revision-Date: 2026-07-20 14:40+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -5140,7 +5140,7 @@ msgid ""
 msgstr ""
 "Использовать цвет пользовательского праздника в качестве фона даты, если на "
 "неё приходится хотя бы один праздник. Цвет праздника настраивается в разделе "
-"«Параметры» → «Цвета и шрифты»."
+"«Параметры -> Цвета и шрифты»."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -6566,7 +6566,7 @@ msgstr ""
 "Режим просмотра «Расписание»: возможность рисовать более жирные "
 "горизонтальные линии сетки каждые два часа. Для включения этой возможности "
 "отметьте параметр «Рисовать жирные горизонтальные линии сетки для чётных "
-"часов» во вкладке «Вид» → «Представление повестки дня»."
+"часов» во вкладке «Вид -> Представление повестки дня»."
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
@@ -6575,9 +6575,9 @@ msgid ""
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
 "Добавлена возможность скрытия праздников, относящихся к определённым "
-"категориям, например, религиозных праздников. См. выпадающий список "
-"«Категории» в разделе «Праздники» на вкладке «Дата и время → Региональные "
-"настройки»."
+"категориям, например, религиозных праздников. См. раскрывающийся список "
+"«Категории» в разделе «Праздники» на вкладке «Дата и время -> Региональные "
+"параметры»."
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
@@ -6595,7 +6595,7 @@ msgid ""
 msgstr ""
 "Режим просмотра «Месяц»: добавлена возможность скрывать праздники. Чтобы "
 "включить это поведение, снимите флажок «Показывать праздники в представлении "
-"месяца» на вкладке «Вид» → «Представление месяца»."
+"месяца» на вкладке «Вид -> Месяц»."
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
@@ -6608,7 +6608,7 @@ msgstr ""
 "пользовательский цвет праздника в качестве цвета фона ячейки даты, если на "
 "эту дату приходится хотя бы один праздник. Чтобы включить это поведение, "
 "отметьте параметр «Использовать цвет фона праздника, если на дату приходится "
-"праздник» на вкладке «Вид» → «Представление месяца»."
+"праздник» на вкладке «Вид -> Месяц»."
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
@@ -6635,9 +6635,9 @@ msgid ""
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
 "Режим просмотра «Расписание»: возможность показывать места проведения "
-"событий внутри  элементов повестки дня. Для включения этого поведения "
+"событий внутри элементов повестки дня. Для включения этого поведения "
 "отметьте параметр  «Показывать места проведения событий в элементах "
-"представления повестки дня» на  вкладке «Вид» → «Представление повестки дня»"
+"представления повестки дня» на  вкладке «Вид» → «Представление повестки дня»."
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
@@ -6645,6 +6645,9 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"Режим просмотра «Задачи»: мини-список с задачами больше не отображается на "
+"боковой панели, но его можно просматривать во всех других представлениях, "
+"если параметр «Настройка -> Боковая панель -> Задачи» включён."
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6660,7 +6663,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
-msgstr ""
+msgstr "Шаблоны: возможность добавлять метки (категории) к шаблонам событий"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -6933,6 +6936,8 @@ msgstr "Редактор событий: автоматическая сорти
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
 msgstr ""
+"Исправление CalDAV: календари, созданные в KOrganizer, создаются на сервере "
+"DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
@@ -6940,11 +6945,15 @@ msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
 msgstr ""
+"Исправление CalDAV: изменения в названии и цвете календаря, сделанные в "
+"KOrganizer, воспроизводятся на сервере DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
 msgstr ""
+"Исправление CalDAV: обработка исключений при создании/редактировании/"
+"удалении повторяющихся событий"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format
