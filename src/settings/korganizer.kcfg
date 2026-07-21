@@ -26,6 +26,11 @@
       <default>askDestination</default>
     </entry>
   </group>
+  <group name="Activities">
+    <entry name="EnabledActivities" type="Bool">
+      <default>false</default>
+    </entry>
+  </group>
   <!-- Time&Date Page: Regional Tab -->
   <group name="Time &amp; Date">
     <entry type="Enum" name="WeekStartDay">
@@ -314,11 +319,16 @@
   </group>
   <!-- Colors and Fonts Page: Colors Tab -->
   <group name="Colors">
-    <entry type="Color" key="Agenda MarcusBainsLine Line Color">
-      <label>Agenda view current-time (Marcus Bains) line color</label>
-      <whatsthis>Select a color to use for the current-time (Marcus Bains) line.</whatsthis>
-      <tooltip>Use this color for the Agenda View current-time (Marcus Bains) line</tooltip>
-      <default>255,0,0</default>
+    <entry type="Bool" key="Use System Color">
+      <label>Use system colors for some background colors</label>
+      <tooltip>Use system colors instead of custom colors for some background colors</tooltip>
+      <whatsthis>Use system colors instead of user defined colors for the "Agenda view background color", "Busy days background color" and the "Working hours color" (and possibly others).</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry key="Agenda Grid Background Color" type="Color">
+      <label>Agenda view background color</label>
+      <whatsthis>Select the agenda view background color here.</whatsthis>
+      <default>255, 255, 255</default>
     </entry>
     <entry type="Color" key="ViewBackgroundBusyColor" name="ViewBgBusyColor">
       <label>Busy days background color</label>
@@ -329,6 +339,17 @@
       <label>Working hours color</label>
       <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
       <default>255, 235, 154</default>
+    </entry>
+    <entry type="Color" key="Agenda MarcusBainsLine Line Color">
+      <label>Agenda view current-time (Marcus Bains) line color</label>
+      <whatsthis>Select a color to use for the current-time (Marcus Bains) line.</whatsthis>
+      <tooltip>Use this color for the Agenda View current-time (Marcus Bains) line</tooltip>
+      <default>255,0,0</default>
+    </entry>
+    <entry key="Agenda Holidays Background Color" type="Color">
+      <label>Holiday color</label>
+      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
+      <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
@@ -419,38 +440,15 @@
     <entry type="Bool" key="TimelineView Show Sidebar" hidden="true"/>
     <entry type="Bool" key="TodoView Show Sidebar" hidden="true"/>
     <entry type="Bool" key="WhatsNextView Show Sidebar" hidden="true"/>
-  </group>
-  <group name="Activities">
-    <entry name="EnabledActivities" type="Bool">
-      <default>false</default>
-    </entry>
-  </group>
-  <group name="General">
     <entry name="PreviousNewFeaturesMD5" type="String" hidden="true">
       <default/>
     </entry>
   </group>
   <group name="Theming">
-    <entry key="Agenda Grid Background Color" type="Color">
-      <label>Agenda view background color</label>
-      <whatsthis>Select the agenda view background color here.</whatsthis>
-      <default>255, 255, 255</default>
-    </entry>
     <entry key="Agenda Grid Highlight Color" type="Color">
       <label>Highlight color</label>
       <whatsthis>Select the highlight color here. The highlight color will be used for marking the currently selected area in your agenda and in the date navigator.</whatsthis>
       <default>100, 100, 255</default>
-    </entry>
-    <entry key="Agenda Holidays Background Color" type="Color">
-      <label>Holiday color</label>
-      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
-      <default>255, 100, 100</default>
-    </entry>
-    <entry type="Bool" key="Use System Color">
-      <label>Use system colors for some background colors</label>
-      <tooltip>Use system colors instead of custom colors for some background colors</tooltip>
-      <whatsthis>Use system colors instead of user defined colors for the "Agenda view background color", "Busy days background color" and the "Working hours color" (and possibly others).</whatsthis>
-      <default>true</default>
     </entry>
   </group>
 </kcfg>
