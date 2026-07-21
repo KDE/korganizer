@@ -668,7 +668,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
             row = 0;
         }
         column = mSelStart - row * 7;
-        const QColor selectionColor = KOPrefs::instance()->agendaGridHighlightColor();
+        const QColor selectionColor = KOPrefs::instance()->navigatorGridHighlightColor();
 
         if (row < 6 && row >= 0) {
             if (row == mSelEnd / 7) {

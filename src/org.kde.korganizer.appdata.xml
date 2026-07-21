@@ -484,6 +484,7 @@
         <p xml:lang="tr">Özellikler</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
+          <li>Navigator: the highlight color for the navigator grid can now be changed.  To configure the color, set the "Navigator grid highlight color" in the Colors and Fonts settings</li>
           <li>Kontact summary: ask before deleting incidences</li>
           <li xml:lang="ca">Resum del Kontact: pregunta abans de suprimir les incidències</li>
           <li xml:lang="ca-valencia">Resum de Kontact: pregunta abans de suprimir les incidències</li>

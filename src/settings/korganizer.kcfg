@@ -367,6 +367,12 @@
       <whatsthis>In Month View, select the background color for today's date.</whatsthis>
       <default>221, 251, 232</default>
     </entry>
+    <entry key="Navigator Grid Highlight Color" type="Color">
+      <label>Navigator grid highlight color</label>
+      <tooltip>Set the navigator grid highlight color here</tooltip>
+      <whatsthis>Select the color for highlighting the currently selected date range in the navigator.</whatsthis>
+      <default>100, 100, 255</default>
+    </entry>
   </group>
   <!-- Colors and Fonts Page: Fonts Tab -->
   <group name="Fonts">
@@ -442,13 +448,6 @@
     <entry type="Bool" key="WhatsNextView Show Sidebar" hidden="true"/>
     <entry name="PreviousNewFeaturesMD5" type="String" hidden="true">
       <default/>
-    </entry>
-  </group>
-  <group name="Theming">
-    <entry key="Agenda Grid Highlight Color" type="Color">
-      <label>Highlight color</label>
-      <whatsthis>Select the highlight color here. The highlight color will be used for marking the currently selected area in your agenda and in the date navigator.</whatsthis>
-      <default>100, 100, 255</default>
     </entry>
   </group>
 </kcfg>
