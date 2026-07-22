@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-16 19:48+0300\n"
+"PO-Revision-Date: 2026-07-21 21:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1217,7 +1217,7 @@ msgstr "&Değişiklik İste"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
-msgstr "&Uygun/Meşgul Bilgisini E-posta ile Gönder…"
+msgstr "&Uygun/Meşgûl Bilgisini E-posta ile Gönder…"
 
 #: actionmanager.cpp:684
 #, kde-format
@@ -1229,7 +1229,7 @@ msgstr "&iCalendar Olarak Gönder…"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
-msgstr "&Uygun/Meşgul Bilgisini Yükle"
+msgstr "&Uygun/Meşgûl Bilgisini Yükle"
 
 #: actionmanager.cpp:697
 #, kde-format
@@ -5834,7 +5834,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:75
 #, kde-format
 msgid "Publish your free/&busy information automatically"
-msgstr "Uygun/&Meşgul bilgilerimi kendiliğinden yayımla"
+msgstr "Uygun/&Meşgûl bilgilerimi kendiliğinden yayımla"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
@@ -6010,7 +6010,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:372
 #, kde-format
 msgid "Retrieve other people's free/&busy information automatically"
-msgstr "Diğer kişilerin &uygun/meşgul bilgilerini kendiliğinden al"
+msgstr "Diğer kişilerin &uygun/meşgûl bilgilerini kendiliğinden al"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:382

@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-06-30 09:51+0200\n"
+"PO-Revision-Date: 2026-07-21 23:18+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -1226,12 +1226,10 @@ msgid "Show Date Navigator"
 msgstr "Показване на датите"
 
 #: actionmanager.cpp:709
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "Показване на изглед „Задачи“"
+msgstr "Показване на списъка със задачи"
 
 #: actionmanager.cpp:713
 #, kde-format
@@ -3016,9 +3014,7 @@ msgstr[0] "1 м"
 msgstr[1] "%1 м"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
 msgstr "започнати "
@@ -3030,8 +3026,8 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "завършено преди 1 час"
+msgstr[1] "завършено преди %1 часа"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3040,8 +3036,8 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "завършено преди 1 мин"
+msgstr[1] "завършено преди %1 мин"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3308,20 +3304,16 @@ msgid "%1 %2"
 msgstr " %1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
 msgstr "%1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
-msgstr " %1 %2"
+msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:246
 #, kde-format
@@ -6667,6 +6659,10 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"Изглед със задачи: мини списъкът със задачи вече не се показва в страничната "
+"лента; мини списъкът със задачи все още може да се показва във всички "
+"останали изгледи, ако е активирана опцията Настройки->Странична лента-"
+">Показване на списъка със задачи"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6683,6 +6679,7 @@ msgstr ""
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
 msgstr ""
+"Шаблони: етикети (категории) могат да се добавят към шаблони за събития"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -6958,6 +6955,8 @@ msgstr ""
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
 msgstr ""
+"Корекция на CalDAV: календарите, създадени в KOrganizer, се създават на DAV "
+"сървъра"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
@@ -6965,11 +6964,15 @@ msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
 msgstr ""
+"Корекция на CalDAV: промените в името/цвета на календара в KOrganizer се "
+"репликират на DAV сървъра"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
 msgstr ""
+"Корекция към CalDAV: въвеждане на изображението/цвета на календара в "
+"KOrganizer, който се репликира към DAV сървъра"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format
