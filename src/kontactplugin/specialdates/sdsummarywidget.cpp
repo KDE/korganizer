@@ -104,7 +104,7 @@ SDSummaryWidget::SDSummaryWidget(KontactInterface::Plugin *plugin, QWidget *pare
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
-    QWidget *header = createHeader(this, QStringLiteral("view-calendar-special-occasion"), i18n("Upcoming Special Dates"));
+    QWidget *header = createHeader(this, QStringLiteral("view-calendar-special-occasion"), i18nc("@title:group", "Upcoming Special Dates"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -455,17 +455,17 @@ void SDSummaryWidget::createLabels()
             QDate const sD = QDate(year, (*addrIt).date.month(), (*addrIt).date.day());
 
             if ((*addrIt).daysTo == 0) {
-                datestr = i18nc("the special day is today", "Today");
+                datestr = i18nc("@label the special day is today", "Today");
             } else if ((*addrIt).daysTo == 1) {
-                datestr = i18nc("the special day is tomorrow", "Tomorrow");
+                datestr = i18nc("@label the special day is tomorrow", "Tomorrow");
             } else {
                 const auto locale = QLocale::system();
                 for (int i = 3; i < 8; ++i) {
                     if ((*addrIt).daysTo < i) {
                         if ((*addrIt).daysTo < 6) {
-                            datestr = i18nc("1. weekday", "%1", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat));
+                            datestr = i18nc("@label 1. weekday", "%1", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat));
                         } else {
-                            datestr = i18nc("1. weekday, 2. date",
+                            datestr = i18nc("@label 1. weekday, 2. date",
                                             "%1 %2",
                                             locale.dayName(sD.dayOfWeek(), QLocale::LongFormat),
                                             locale.toString(sD, QLocale::ShortFormat));
@@ -474,8 +474,10 @@ void SDSummaryWidget::createLabels()
                     }
                 }
                 if (datestr.isEmpty()) {
-                    datestr =
-                        i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat), locale.toString(sD, QLocale::ShortFormat));
+                    datestr = i18nc("@label 1. weekday, 2. date",
+                                    "%1 %2",
+                                    locale.dayName(sD.dayOfWeek(), QLocale::LongFormat),
+                                    locale.toString(sD, QLocale::ShortFormat));
                 }
             }
             // Print the date span for multiday, floating events, for the
@@ -500,9 +502,9 @@ void SDSummaryWidget::createLabels()
             // Countdown
             label = new QLabel(this);
             if ((*addrIt).daysTo == 0) {
-                label->setText(i18n("now"));
+                label->setText(i18nc("@label", "now"));
             } else {
-                label->setText(i18np("in 1 day", "in %1 days", (*addrIt).daysTo));
+                label->setText(i18ncp("@label", "in 1 day", "in %1 days", (*addrIt).daysTo));
             }
 
             label->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
@@ -513,19 +515,19 @@ void SDSummaryWidget::createLabels()
             QString what;
             switch ((*addrIt).category) {
             case CategoryBirthday:
-                what = i18n("Birthday");
+                what = i18nc("@label", "Birthday");
                 break;
             case CategoryAnniversary:
-                what = i18n("Anniversary");
+                what = i18nc("@label", "Anniversary");
                 break;
             case CategoryHoliday:
-                what = i18n("Holiday");
+                what = i18nc("@label", "Holiday");
                 break;
             case CategorySeasonal:
-                what = i18n("Change of Seasons");
+                what = i18nc("@label", "Change of Seasons");
                 break;
             case CategoryOther:
-                what = i18n("Special Occasion");
+                what = i18nc("@label", "Special Occasion");
                 break;
             }
             label = new QLabel(this);
@@ -567,7 +569,7 @@ void SDSummaryWidget::createLabels()
                 if ((*addrIt).yearsOld <= 0) {
                     label->setText(QString());
                 } else {
-                    label->setText(i18np("one year", "%1 years", (*addrIt).yearsOld));
+                    label->setText(i18ncp("@label", "one year", "%1 years", (*addrIt).yearsOld));
                 }
                 label->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
                 mLayout->addWidget(label, counter, 5);
@@ -577,7 +579,8 @@ void SDSummaryWidget::createLabels()
             counter++;
         }
     } else {
-        auto label = new QLabel(i18np("No special dates within the next 1 day", "No special dates pending within the next %1 days", mDaysAhead), this);
+        auto label =
+            new QLabel(i18ncp("@label", "No special dates within the next 1 day", "No special dates pending within the next %1 days", mDaysAhead), this);
         label->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         mLayout->addWidget(label, 0, 0);
         mLabels.append(label);
@@ -671,8 +674,8 @@ void SDSummaryWidget::viewContact(const QString &url)
 void SDSummaryWidget::popupMenu(const QString &url)
 {
     QMenu popup(this);
-    const QAction *sendMailAction = popup.addAction(QIcon::fromTheme(QStringLiteral("mail-message-new")), i18n("Send &Mail"));
-    const QAction *viewContactAction = popup.addAction(QIcon::fromTheme(QStringLiteral("view-pim-contacts")), i18n("View &Contact"));
+    const QAction *sendMailAction = popup.addAction(QIcon::fromTheme(QStringLiteral("mail-message-new")), i18nc("@action:inmenu", "Send &Mail"));
+    const QAction *viewContactAction = popup.addAction(QIcon::fromTheme(QStringLiteral("view-pim-contacts")), i18nc("@action:inmenu", "View &Contact"));
 
     const QAction *ret = popup.exec(QCursor::pos());
     if (ret == sendMailAction) {
@@ -687,7 +690,7 @@ bool SDSummaryWidget::eventFilter(QObject *obj, QEvent *e)
     if (obj->inherits("KUrlLabel")) {
         auto label = static_cast<KUrlLabel *>(obj);
         if (e->type() == QEvent::Enter) {
-            Q_EMIT message(i18n("Mail to:\"%1\"", label->text()));
+            Q_EMIT message(i18nc("@info:status", "Mail to:\"%1\"", label->text()));
         }
         if (e->type() == QEvent::Leave) {
             Q_EMIT message(QString());

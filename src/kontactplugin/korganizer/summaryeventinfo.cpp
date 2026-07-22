@@ -134,21 +134,27 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         QString str;
         const QDate sD = occurrenceStartDate;
         if (currentDate >= sD) {
-            str = i18nc("the appointment is today", "Today");
+            str = i18nc("@label the appointment is today", "Today");
             summaryEvent->makeBold = true;
         } else if (sD == currentDate.addDays(1)) {
-            str = i18nc("the appointment is tomorrow", "Tomorrow");
+            str = i18nc("@label the appointment is tomorrow", "Tomorrow");
         } else {
             for (int i = 3; i < 8; ++i) {
                 if (currentDate.daysTo(sD) < 6) {
-                    str = i18nc("1. weekday", "%1", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat));
+                    str = i18nc("@label 1. weekday", "%1", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat));
                 } else {
-                    str = i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat), locale.toString(sD, QLocale::ShortFormat));
+                    str = i18nc("@label 1. weekday, 2. date",
+                                "%1 %2",
+                                locale.dayName(sD.dayOfWeek(), QLocale::LongFormat),
+                                locale.toString(sD, QLocale::ShortFormat));
                 }
                 break;
             }
             if (str.isEmpty()) {
-                str = i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(sD.dayOfWeek(), QLocale::LongFormat), locale.toString(sD, QLocale::ShortFormat));
+                str = i18nc("@label 1. weekday, 2. date",
+                            "%1 %2",
+                            locale.dayName(sD.dayOfWeek(), QLocale::LongFormat),
+                            locale.toString(sD, QLocale::ShortFormat));
             }
         }
         summaryEvent->startDate = str;
@@ -163,10 +169,15 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         if (ev->isMultiDay() && ev->allDay() && firstDayOfMultiday && span > 1) {
             const QDate dtStart = ev->dtStart().toLocalTime().date();
             const QDate dtEnd = ev->dtEnd().toLocalTime().date();
-            str =
-                i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(dtStart.dayOfWeek(), QLocale::LongFormat), locale.toString(dtStart, QLocale::ShortFormat))
+            str = i18nc("@label 1. weekday, 2. date",
+                        "%1 %2",
+                        locale.dayName(dtStart.dayOfWeek(), QLocale::LongFormat),
+                        locale.toString(dtStart, QLocale::ShortFormat))
                 + QLatin1StringView(" -\n ")
-                + i18nc("1. weekday, 2. date", "%1 %2", locale.dayName(dtEnd.dayOfWeek(), QLocale::LongFormat), locale.toString(dtEnd, QLocale::ShortFormat));
+                + i18nc("@label 1. weekday, 2. date",
+                        "%1 %2",
+                        locale.dayName(dtEnd.dayOfWeek(), QLocale::LongFormat),
+                        locale.toString(dtEnd, QLocale::ShortFormat));
         }
         summaryEvent->dateSpan = str;
 
@@ -174,7 +185,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
         str.clear();
         const qint64 daysTo = currentDate.daysTo(occurrenceStartDate);
         if (daysTo > 0) {
-            str = i18np("in 1 day", "in %1 days", daysTo);
+            str = i18ncp("@label", "in 1 day", "in %1 days", daysTo);
         } else {
             if (!ev->allDay()) {
                 int secs;
@@ -187,16 +198,16 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                     secs = currentDateTime.secsTo(next);
                 }
                 if (secs > 0) {
-                    str = i18nc("eg. in 1 hour 2 minutes", "in ");
+                    str = i18nc("@label eg. in 1 hour 2 minutes", "in ");
                     const int hours = secs / 3600;
                     if (hours > 0) {
-                        str += i18ncp("use abbreviation for hour to keep the text short", "1 hr", "%1 hrs", hours);
+                        str += i18ncp("@label use abbreviation for hour to keep the text short", "1 hr", "%1 hrs", hours);
                         str += u' ';
                         secs -= (hours * 3600);
                     }
                     const int mins = secs / 60;
                     if (mins > 0) {
-                        str += i18ncp("use abbreviation for minute to keep the text short", "1 min", "%1 mins", mins);
+                        str += i18ncp("@label use abbreviation for minute to keep the text short", "1 min", "%1 mins", mins);
                         if (hours < 1) {
                             // happens in less than 1 hour
                             summaryEvent->makeUrgent = true;
@@ -215,18 +226,18 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                         secsToEnd = currentDateTime.secsTo(next);
                     }
                     if (secsToEnd > 0) {
-                        str = i18nc("the event is currently in-progress", "in-progress");
+                        str = i18nc("@label the event is currently in-progress", "in-progress");
                         summaryEvent->makeUrgent = true;
                     } else {
                         const int hours = -secsToEnd / 60 / 60;
                         if (hours > 0) {
-                            str = i18ncp("use abbreviation for hour to keep the text short. the event ended at least 1 hour ago",
+                            str = i18ncp("@label use abbreviation for hour to keep the text short. the event ended at least 1 hour ago",
                                          "ended 1 hr ago",
                                          "ended %1 hrs ago",
                                          hours);
                         } else {
                             const int mins = -secsToEnd / 60;
-                            str = i18ncp("use abbreviation for min to keep the text short. the event ended a few minutes ago",
+                            str = i18ncp("@label use abbreviation for min to keep the text short. the event ended a few minutes ago",
                                          "ended 1 min ago",
                                          "ended %1 mins ago",
                                          mins);
@@ -235,7 +246,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                     }
                 }
             } else {
-                str = i18n("all day");
+                str = i18nc("@label", "all day");
             }
         }
         summaryEvent->daysToGo = str;
@@ -274,7 +285,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                     sET = QTime(23, 59);
                 }
             }
-            str = i18nc("Time from - to",
+            str = i18nc("@label Time from - to",
                         "%1 - %2",
                         QLocale::system().toString(sST, QLocale::ShortFormat),
                         QLocale::system().toString(sET, QLocale::ShortFormat));
@@ -291,7 +302,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
                 summaryEvent->timeRange += QLatin1StringView("<br>");
             }
             summaryEvent->timeRange +=
-                QLatin1StringView("<font size=\"small\"><i>") + i18nc("next occurrence", "Next: %1", tmp) + QLatin1StringView("</i></font>");
+                QLatin1StringView("<font size=\"small\"><i>") + i18nc("@label next occurrence", "Next: %1", tmp) + QLatin1StringView("</i></font>");
         }
     }
 

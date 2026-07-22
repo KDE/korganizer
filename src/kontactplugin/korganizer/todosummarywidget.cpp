@@ -44,7 +44,7 @@ TodoSummaryWidget::TodoSummaryWidget(TodoPlugin *plugin, QWidget *parent)
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
-    QWidget *header = createHeader(this, QStringLiteral("view-calendar-tasks"), i18n("Pending To-dos"));
+    QWidget *header = createHeader(this, QStringLiteral("view-calendar-tasks"), i18nc("@title:group", "Pending To-dos"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -180,23 +180,23 @@ void TodoSummaryWidget::updateView()
 
                 if (daysTo == 0) {
                     makeBold = true;
-                    str = i18nc("the to-do is due today", "Today");
+                    str = i18nc("@label the to-do is due today", "Today");
                 } else if (daysTo == 1) {
-                    str = i18nc("the to-do is due tomorrow", "Tomorrow");
+                    str = i18nc("@label the to-do is due tomorrow", "Tomorrow");
                 } else {
                     const auto locale = QLocale::system();
                     for (int i = 3; i < 8; ++i) {
                         if (daysTo < i * 24 * 60 * 60) {
                             if (todo->dtDue().time() != QTime(0, 0)) {
-                                str = i18nc("1. weekday, 2. time",
+                                str = i18nc("@label 1. weekday, 2. time",
                                             "%1 %2",
                                             locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat),
                                             locale.toString(todo->dtDue().time(), QLocale::ShortFormat));
                             } else {
                                 if (daysTo < 6 && daysTo > 0) {
-                                    str = i18nc("1. weekday", "%1", locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat));
+                                    str = i18nc("@label 1. weekday", "%1", locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat));
                                 } else {
-                                    str = i18nc("1. weekday, 2. date",
+                                    str = i18nc("@label 1. weekday, 2. date",
                                                 "%1 %2",
                                                 locale.dayName(todo->dtDue().date().dayOfWeek(), QLocale::LongFormat),
                                                 locale.toString(todo->dtDue().date(), QLocale::ShortFormat));
@@ -241,19 +241,19 @@ void TodoSummaryWidget::updateView()
             str.clear();
             if (todo->hasDueDate() && todo->dtDue().date().isValid()) {
                 if (daysTo > 0) {
-                    str = i18np("in 1 day", "in %1 days", daysTo);
+                    str = i18ncp("@label", "in 1 day", "in %1 days", daysTo);
                 } else if (daysTo < 0) {
-                    str = i18np("1 day ago", "%1 days ago", -daysTo);
+                    str = i18ncp("@label", "1 day ago", "%1 days ago", -daysTo);
                 } else {
                     if (todo->allDay()) {
-                        str = i18nc("the to-do is due today", "due any time today");
+                        str = i18nc("@label the to-do is due today", "due any time today");
                     } else {
                         if (currTime < todo->dtDue().time()) {
-                            str = i18nc("the to-do is due at specified time",
+                            str = i18nc("@label the to-do is due at specified time",
                                         "is due at %1",
                                         QLocale::system().toString(todo->dtDue().time(), QLocale::ShortFormat));
                         } else {
-                            str = i18nc("the to-do was due at specified time",
+                            str = i18nc("@label the to-do was due at specified time",
                                         "was due at %1",
                                         QLocale::system().toString(todo->dtDue().time(), QLocale::ShortFormat));
                         }
@@ -321,7 +321,8 @@ void TodoSummaryWidget::updateView()
     } // foreach
 
     if (counter == 0) {
-        auto noTodos = new QLabel(i18np("No pending to-dos due within the next day", "No pending to-dos due within the next %1 days", mDaysToGo), this);
+        auto noTodos =
+            new QLabel(i18ncp("@label", "No pending to-dos due within the next day", "No pending to-dos due within the next %1 days", mDaysToGo), this);
         noTodos->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         mLayout->addWidget(noTodos, 0, 0);
         mLabels.append(noTodos);
@@ -378,15 +379,15 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     }
     Akonadi::Item const item = mCalendar->item(uid);
     QMenu popup(this);
-    QAction *editIt = popup.addAction(i18n("&Edit To-do…"));
+    QAction *editIt = popup.addAction(i18nc("@action:inmenu", "&Edit To-do…"));
     editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
-    QAction *delIt = popup.addAction(i18n("&Delete To-do"));
+    QAction *delIt = popup.addAction(i18nc("@action:inmenu", "&Delete To-do"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
     delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
 
     QAction *doneIt = nullptr;
     if (!todo->isCompleted()) {
-        doneIt = popup.addAction(i18n("&Mark To-do Completed"));
+        doneIt = popup.addAction(i18nc("@action:inmenu", "&Mark To-do Completed"));
         doneIt->setIcon(QIcon::fromTheme(QStringLiteral("task-complete")));
         doneIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem));
     }
@@ -406,7 +407,7 @@ bool TodoSummaryWidget::eventFilter(QObject *obj, QEvent *e)
     if (obj->inherits("KUrlLabel")) {
         auto label = static_cast<KUrlLabel *>(obj);
         if (e->type() == QEvent::Enter) {
-            Q_EMIT message(i18n("Edit To-do: \"%1\"", label->text()));
+            Q_EMIT message(i18nc("@info:status", "Edit To-do: \"%1\"", label->text()));
         }
         if (e->type() == QEvent::Leave) {
             Q_EMIT message(QString());
@@ -426,24 +427,24 @@ QString TodoSummaryWidget::stateStr(const KCalendarCore::Todo::Ptr &todo) const
     QString str2;
 
     if (todo->isOpenEnded()) {
-        str1 = i18n("open-ended");
+        str1 = i18nc("@label", "open-ended");
     } else if (todo->isOverdue()) {
-        str1 = QLatin1StringView("<font color=\"red\">") + i18nc("the to-do is overdue", "overdue") + QLatin1StringView("</font>");
+        str1 = QLatin1StringView("<font color=\"red\">") + i18nc("@label the to-do is overdue", "overdue") + QLatin1StringView("</font>");
     } else if (startsToday(todo)) {
-        str1 = i18nc("the to-do starts today", "starts today");
+        str1 = i18nc("@label the to-do starts today", "starts today");
     }
 
     if (todo->isNotStarted(false)) {
-        str2 += i18nc("the to-do has not been started yet", "not-started");
+        str2 += i18nc("@label the to-do has not been started yet", "not-started");
     } else if (todo->isCompleted()) {
-        str2 += i18nc("the to-do is completed", "completed");
+        str2 += i18nc("@label the to-do is completed", "completed");
     } else if (todo->isInProgress(false)) {
-        str2 += i18nc("the to-do is in-progress", "in-progress ");
+        str2 += i18nc("@label the to-do is in-progress", "in-progress ");
         str2 += QLatin1StringView(" (") + QString::number(todo->percentComplete()) + QLatin1StringView("%)");
     }
 
     if (!str1.isEmpty() && !str2.isEmpty()) {
-        str1 += i18nc("Separator for status like this: overdue, completed", ",");
+        str1 += i18nc("@label Separator for status like this: overdue, completed", ",");
     }
 
     return str1 + str2;

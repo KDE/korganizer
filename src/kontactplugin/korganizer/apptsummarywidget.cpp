@@ -46,7 +46,7 @@ ApptSummaryWidget::ApptSummaryWidget(KOrganizerPlugin *plugin, QWidget *parent)
     mainLayout->setSpacing(3);
     mainLayout->setContentsMargins(3, 3, 3, 3);
 
-    QWidget *header = createHeader(this, QStringLiteral("view-calendar-upcoming-events"), i18n("Upcoming Events"));
+    QWidget *header = createHeader(this, QStringLiteral("view-calendar-upcoming-events"), i18nc("@title:group", "Upcoming Events"));
     mainLayout->addWidget(header);
 
     mLayout = new QGridLayout();
@@ -196,7 +196,8 @@ void ApptSummaryWidget::updateView()
 
     if (!counter) {
         auto noEvents =
-            new QLabel(i18np("No upcoming events starting within the next day", "No upcoming events starting within the next %1 days", mDaysAhead), this);
+            new QLabel(i18ncp("@label", "No upcoming events starting within the next day", "No upcoming events starting within the next %1 days", mDaysAhead),
+                       this);
         noEvents->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         mLayout->addWidget(noEvents, 0, 0);
         mLabels.append(noEvents);
@@ -236,9 +237,9 @@ void ApptSummaryWidget::popupMenu(const QString &uid)
 
     // FIXME: Should say "Show Appointment" if we don't have rights to edit
     // Doesn't make sense to edit events from birthday resource for example
-    QAction *editIt = popup.addAction(i18n("&Edit Appointment…"));
+    QAction *editIt = popup.addAction(i18nc("@action:inmenu", "&Edit Appointment…"));
     editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
-    QAction *delIt = popup.addAction(i18n("&Delete Appointment"));
+    QAction *delIt = popup.addAction(i18nc("@action:inmenu", "&Delete Appointment"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
 
     const Akonadi::Item item = mCalendar->item(uid);
@@ -257,7 +258,7 @@ bool ApptSummaryWidget::eventFilter(QObject *obj, QEvent *e)
     if (obj->inherits("KUrlLabel")) {
         auto label = static_cast<KUrlLabel *>(obj);
         if (e->type() == QEvent::Enter) {
-            Q_EMIT message(i18n("Edit Event: \"%1\"", label->text()));
+            Q_EMIT message(i18nc("@info:status", "Edit Event: \"%1\"", label->text()));
         }
         if (e->type() == QEvent::Leave) {
             Q_EMIT message(QString());
