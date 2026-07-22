@@ -52,12 +52,16 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     // agenda view background color
     Korganizer::KPrefsWidColor *agendaBgColor = addWidColor(KOPrefs::instance()->agendaGridBackgroundColorItem(), colorFrame);
     KColorButton *agendaBgColorButton = agendaBgColor->button();
+    agendaBgColor->label()->setToolTip(agendaBgColorButton->toolTip());
+    agendaBgColor->label()->setWhatsThis(agendaBgColorButton->whatsThis());
     mButtonsDisable.push_back(agendaBgColorButton);
     colorLayout->addWidget(agendaBgColor->label(), 2, 0);
     colorLayout->addWidget(agendaBgColorButton, 2, 1);
 
     Korganizer::KPrefsWidColor *viewBgBusyColor = addWidColor(KOPrefs::instance()->viewBgBusyColorItem(), colorFrame);
     KColorButton *viewBgBusyColorButton = viewBgBusyColor->button();
+    viewBgBusyColor->label()->setToolTip(viewBgBusyColorButton->toolTip());
+    viewBgBusyColor->label()->setWhatsThis(viewBgBusyColorButton->whatsThis());
     mButtonsDisable.push_back(viewBgBusyColorButton);
     colorLayout->addWidget(viewBgBusyColor->label(), 3, 0);
     colorLayout->addWidget(viewBgBusyColorButton, 3, 1);
@@ -66,26 +70,36 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     Korganizer::KPrefsWidColor *agendaGridWorkHoursBackgroundColor = addWidColor(KOPrefs::instance()->workingHoursColorItem(), colorFrame);
     KColorButton *agendaGridWorkHoursBackgroundColorButton = agendaGridWorkHoursBackgroundColor->button();
     mButtonsDisable.push_back(agendaGridWorkHoursBackgroundColorButton);
+    agendaGridWorkHoursBackgroundColor->label()->setToolTip(agendaGridWorkHoursBackgroundColorButton->toolTip());
+    agendaGridWorkHoursBackgroundColor->label()->setWhatsThis(agendaGridWorkHoursBackgroundColorButton->whatsThis());
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->label(), 4, 0);
     colorLayout->addWidget(agendaGridWorkHoursBackgroundColor->button(), 4, 1);
 
     // agenda view Marcus Bains line color
     Korganizer::KPrefsWidColor *mblColor = addWidColor(KOPrefs::instance()->agendaMarcusBainsLineLineColorItem(), colorFrame);
+    mblColor->label()->setToolTip(mblColor->button()->toolTip());
+    mblColor->label()->setWhatsThis(mblColor->button()->whatsThis());
     colorLayout->addWidget(mblColor->label(), 5, 0);
     colorLayout->addWidget(mblColor->button(), 5, 1);
 
     // Holiday Color
     Korganizer::KPrefsWidColor *holidayColor = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
+    holidayColor->label()->setToolTip(holidayColor->button()->toolTip());
+    holidayColor->label()->setWhatsThis(holidayColor->button()->whatsThis());
     colorLayout->addWidget(holidayColor->label(), 6, 0);
     colorLayout->addWidget(holidayColor->button(), 6, 1);
 
     // Todo due today color
     Korganizer::KPrefsWidColor *todoDueTodayColor = addWidColor(KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
+    todoDueTodayColor->label()->setToolTip(todoDueTodayColor->button()->toolTip());
+    todoDueTodayColor->label()->setWhatsThis(todoDueTodayColor->button()->whatsThis());
     colorLayout->addWidget(todoDueTodayColor->label(), 7, 0);
     colorLayout->addWidget(todoDueTodayColor->button(), 7, 1);
 
     // Todo overdue color
     Korganizer::KPrefsWidColor *todoOverdueColor = addWidColor(KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
+    todoOverdueColor->label()->setToolTip(todoOverdueColor->button()->toolTip());
+    todoOverdueColor->label()->setWhatsThis(todoOverdueColor->button()->whatsThis());
     colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
     colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
 
@@ -167,6 +181,8 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
 
     Korganizer::KPrefsWidFont *timeBarFont =
         addWidFont(KOPrefs::instance()->agendaTimeLabelsFontItem(), fontFrame, QLocale().toString(QTime(12, 34), QLocale::ShortFormat));
+    timeBarFont->label()->setToolTip(timeBarFont->button()->toolTip());
+    timeBarFont->label()->setWhatsThis(timeBarFont->button()->whatsThis());
     fontLayout->addWidget(timeBarFont->label(), 0, 0);
     fontLayout->addWidget(timeBarFont->preview(), 0, 1);
     fontLayout->addWidget(timeBarFont->button(), 0, 2);
@@ -174,18 +190,23 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     Korganizer::KPrefsWidFont *monthViewFont = addWidFont(KOPrefs::instance()->monthViewFontItem(),
                                                           fontFrame,
                                                           QLocale().toString(QTime(12, 34), QLocale::ShortFormat) + u' ' + i18nc("@label", "Event text"));
-
+    monthViewFont->label()->setToolTip(monthViewFont->button()->toolTip());
+    monthViewFont->label()->setWhatsThis(monthViewFont->button()->whatsThis());
     fontLayout->addWidget(monthViewFont->label(), 1, 0);
     fontLayout->addWidget(monthViewFont->preview(), 1, 1);
     fontLayout->addWidget(monthViewFont->button(), 1, 2);
 
     Korganizer::KPrefsWidFont *agendaViewFont = addWidFont(KOPrefs::instance()->agendaViewFontItem(), fontFrame, i18nc("@label", "Event text"));
+    agendaViewFont->label()->setToolTip(agendaViewFont->button()->toolTip());
+    agendaViewFont->label()->setWhatsThis(agendaViewFont->button()->whatsThis());
     fontLayout->addWidget(agendaViewFont->label(), 2, 0);
     fontLayout->addWidget(agendaViewFont->preview(), 2, 1);
     fontLayout->addWidget(agendaViewFont->button(), 2, 2);
 
     Korganizer::KPrefsWidFont *marcusBainsFont =
         addWidFont(KOPrefs::instance()->agendaMarcusBainsLineFontItem(), fontFrame, QLocale().toString(QTime(12, 34, 23), QLocale::ShortFormat));
+    marcusBainsFont->label()->setToolTip(marcusBainsFont->button()->toolTip());
+    marcusBainsFont->label()->setWhatsThis(marcusBainsFont->button()->whatsThis());
     fontLayout->addWidget(marcusBainsFont->label(), 3, 0);
     fontLayout->addWidget(marcusBainsFont->preview(), 3, 1);
     fontLayout->addWidget(marcusBainsFont->button(), 3, 2);

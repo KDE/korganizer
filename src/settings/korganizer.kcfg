@@ -16,11 +16,13 @@
       <choices>
         <choice name="standardDestination">
           <label>Be added to the default calendar</label>
+          <tooltip>Always save to the default calendar</tooltip>
           <whatsthis>Select this option to always record new events, to-dos and journal entries using the current default calendar.</whatsthis>
         </choice>
         <choice name="askDestination">
           <label>Be asked which calendar to use</label>
-          <whatsthis>Select this option to choose the calendar to be used to record the item each time you create a new event, to-do or journal entry. This choice is recommended if you intend to use the shared folders functionality of the Kolab server or have to manage multiple accounts using Kontact as a KDE Kolab client. </whatsthis>
+          <tooltip>Always prompt for the calendar to use</tooltip>
+          <whatsthis>Select this option to choose the calendar to be used to record the item each time you create a new event, to-do or journal entry</whatsthis>
         </choice>
       </choices>
       <default>askDestination</default>
@@ -28,6 +30,9 @@
   </group>
   <group name="Activities">
     <entry name="EnabledActivities" type="Bool">
+      <label>Enable KDE Plasma Activities</label>
+      <tooltip>Enable KDE Plasma Activities for Mail accounts</tooltip>
+      <whatsthis>Select this option to the enable KDE Plasma Activities that allows setting different Mail accounts and transports for each activity.</whatsthis>
       <default>false</default>
     </entry>
   </group>
@@ -56,11 +61,13 @@
   <group name="General View">
     <entry type="Bool" key="Enable ToolTips">
       <label>Enable tooltips for displaying summaries</label>
+      <tooltip>Show event or to-do item tooltips</tooltip>
       <whatsthis>Check this box to display summary tooltips when hovering the mouse over an event or a to-do.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="TodosUseCategoryColors">
       <label>To-dos use tag colors</label>
+      <tooltip>Draw to-do items using tag colors</tooltip>
       <whatsthis>Check this box so that to-dos will use tag colors and not colors specific to their due, due today or overdue state</whatsthis>
       <default>false</default>
     </entry>
@@ -72,31 +79,37 @@
     </entry>
     <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
       <label>Show items that recur daily</label>
-      <whatsthis>Check this box to show the days containing daily recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non daily recurring) events.</whatsthis>
+      <tooltip>Use a bold typeface to more easily identify daily recurring incidences</tooltip>
+      <whatsthis>Check this box to show the days containing daily recurring incidences in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non daily recurring) incidences.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Show Weekly Recurrences" name="WeeklyRecur">
       <label>Show items that recur weekly</label>
+      <tooltip>Use a bold typeface to more easily identify weekly recurring incidences</tooltip>
       <whatsthis>Check this box to show the days containing weekly recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non weekly recurring) events.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Highlight To-dos" name="HighlightTodos">
       <label>Show to-dos instead of events when in Todo View</label>
+      <tooltip>In Todo View, use a bold typeface to more easily identify to-dos</tooltip>
       <whatsthis>Check this box to show the days containing to-dos in bold typeface in the Date Navigator when in to-do view.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Highlight Journals" name="HighlightJournals">
       <label>Show journals instead of events when in Journal View</label>
+      <tooltip>In journal view, use a bold typeface to more easily identify journals</tooltip>
       <whatsthis>Check this box to show the days containing journals in bold typeface in the Date Navigator when in journal view.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Show Week Numbers" name="WeekNumbersShow">
       <label>Show week numbers</label>
+      <tooltip>Display each week's number in the current year</tooltip>
       <whatsthis>Check this box to show the Date Navigator's week numbers.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Week Numbers Show Work Week" name="WeekNumbersShowWork">
       <label>Week numbers select a work week when in work week mode</label>
+      <tooltip>In work week mode, allow selecting a work week rather than the whole week</tooltip>
       <whatsthis>Check this box to select a working week when clicking on the Date Navigator's week numbers, or uncheck it to choose the whole week.  Ignored if week numbers are not shown.</whatsthis>
       <default>true</default>
     </entry>
@@ -112,9 +125,9 @@
       <max>30</max>
     </entry>
     <entry type="Bool" key="Show Icons in Agenda View" name="EnableAgendaItemIcons">
-      <label>Show icons in agenda view items</label>
-      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in agenda view items.</whatsthis>
-      <tooltip>Display icons in agenda view items</tooltip>
+      <label>Show icons in Agenda View items</label>
+      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in Agenda View items.</whatsthis>
+      <tooltip>Display icons in Agenda View items</tooltip>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Draw Bold Even Hour Grid Lines" name="EnableAgendaBoldEvenHours">
@@ -124,15 +137,15 @@
       <default>false</default>
     </entry>
     <entry type="Bool" key="Show Incidence Descriptions in Agenda View" name="EnableAgendaItemDesc">
-      <label>Show incidence descriptions in agenda view items</label>
-      <whatsthis>Check this box to display the incidence descriptions in agenda view items.</whatsthis>
-      <tooltip>Display incidence descriptions agenda view items</tooltip>
+      <label>Show incidence descriptions in Agenda View items</label>
+      <whatsthis>Check this box to display the incidence descriptions in Agenda View items.</whatsthis>
+      <tooltip>Display incidence descriptions Agenda View items</tooltip>
       <default>false</default>
     </entry>
-    <entry type="Bool" key="Show Incidence Locationss in Agenda View" name="EnableAgendaItemLocation">
-      <label>Show incidence locations in agenda view items</label>
-      <whatsthis>Check this box to display the incidence locations in agenda view items.</whatsthis>
-      <tooltip>Display incidence locations agenda view items</tooltip>
+    <entry type="Bool" key="Show Incidence Locations in Agenda View" name="EnableAgendaItemLocation">
+      <label>Show incidence locations in Agenda View items</label>
+      <whatsthis>Check this box to display the incidence locations in Agenda View items.</whatsthis>
+      <tooltip>Display incidence locations Agenda View items</tooltip>
       <default>false</default>
     </entry>
     <entry type="Bool" key="ColorBusyDaysEnabled" name="ColorBusyDaysEnabled">
@@ -143,8 +156,8 @@
     </entry>
     <entry type="Bool" name="ShowTodosAgendaView">
       <label>Show to-dos</label>
-      <whatsthis>Check this box to display to-dos in the agenda view.</whatsthis>
-      <tooltip>Display to-dos in the agenda view</tooltip>
+      <whatsthis>Check this box to display to-dos in the Agenda View.</whatsthis>
+      <tooltip>Display to-dos in the Agenda View</tooltip>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Show current-time line" name="MarcusBainsEnabled">
@@ -160,7 +173,7 @@
       <default>false</default>
     </entry>
     <entry type="Bool" name="SelectionStartsEditor">
-      <label>Time range selection in agenda view starts event editor</label>
+      <label>Time range selection in Agenda View starts event editor</label>
       <whatsthis>Check this box to start the event editor automatically when you select a time range in the daily and weekly view. To select a time range, drag the mouse from the start time to the end time of the event you are about to plan.</whatsthis>
       <tooltip>Enable automatic event editor with time range selection</tooltip>
       <default>false</default>
@@ -196,7 +209,7 @@
       <choices>
         <choice name="CalendarsMerged">
           <label>Merge all calendars into one view</label>
-          <whatsthis>Select the "Merge all calendars into one view" option if you would like all your calendars to be shown together in one agenda view.</whatsthis>
+          <whatsthis>Select the "Merge all calendars into one view" option if you would like all your calendars to be shown together in one Agenda View.</whatsthis>
           <tooltip>Show all calendars merged together</tooltip>
         </choice>
         <choice name="CalendarsSideBySide">
@@ -216,52 +229,52 @@
   <!-- Views Page: Month View Tab -->
   <group name="Month View">
     <entry type="Bool" key="Show Icons in Month View" name="EnableMonthItemIcons">
-      <label>Show icons in month view items</label>
-      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in month view items.</whatsthis>
-      <tooltip>Display icons in month view items</tooltip>
+      <label>Show icons in Month View items</label>
+      <whatsthis>Check this box to display icons (alarm, recursion, etc.) in Month View items.</whatsthis>
+      <tooltip>Display icons in Month View items</tooltip>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Show time in Month View" name="ShowTimeInMonthView">
-      <label>Show start-times without end-times in month view items</label>
-      <whatsthis>Check this box to display the start-time without the end-time in month view items.</whatsthis>
-      <tooltip>Display start-time without the end-time in month view items</tooltip>
+      <label>Show start-times without end-times in Month View items</label>
+      <whatsthis>Check this box to display the start-time without the end-time in Month View items.</whatsthis>
+      <tooltip>Display start-time without the end-time in Month View items</tooltip>
       <default>false</default>
     </entry>
     <entry type="Bool" key="Show end-time in Month View" name="ShowEndTimeInMonthView">
-      <label>Show the start-time and the end-time in month view items</label>
-      <whatsthis>Check this box to display the start and end times in month view items.</whatsthis>
-      <tooltip>Display the start and end times in month view items</tooltip>
+      <label>Show the start-time and the end-time in Month View items</label>
+      <whatsthis>Check this box to display the start and end times in Month View items.</whatsthis>
+      <tooltip>Display the start and end times in Month View items</tooltip>
       <default>false</default>
     </entry>
     <entry type="Bool" key="ColorMonthBusyDaysEnabled" name="ColorMonthBusyDaysEnabled">
       <label>Color busy days with a different background color</label>
       <tooltip>Use the busy days background color setting for busy days</tooltip>
-      <whatsthis>Check this box if you want month view's background to be filled with a different color on days which have at least one all day event marked as busy. Also, you can change the background color used for this option on the Colors configuration page. Look for the "Busy days background color" setting.</whatsthis>
+      <whatsthis>Check this box if you want Month View's background to be filled with a different color on days which have at least one all day event marked as busy. Also, you can change the background color used for this option on the Colors configuration page. Look for the "Busy days background color" setting.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Bool" name="ShowTodosMonthView">
       <label>Show to-dos</label>
-      <whatsthis>Check this box to display to-dos in the month view.</whatsthis>
-      <tooltip>Display to-dos in the month view</tooltip>
+      <whatsthis>Check this box to display to-dos in the Month View.</whatsthis>
+      <tooltip>Display to-dos in the Month View</tooltip>
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowJournalsMonthView">
       <label>Show journals</label>
-      <whatsthis>Check this box to display journals in the month view.</whatsthis>
-      <tooltip>Display journals in the month view</tooltip>
+      <whatsthis>Check this box to display journals in the Month View.</whatsthis>
+      <tooltip>Display journals in the Month View</tooltip>
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowHolidaysMonthView">
       <label>Show holidays</label>
-      <whatsthis>Check this box to display holidays in the month view.</whatsthis>
-      <tooltip>Display holidays in the month view</tooltip>
+      <whatsthis>Check this box to display holidays in the Month View.</whatsthis>
+      <tooltip>Display holidays in the Month View</tooltip>
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowHolidaysBackgroundMonthView">
       <label>Use the Holiday background color when a holiday lands on the date</label>
       <tooltip>Use the custom holiday color as the date's background color if a holiday lands on the date</tooltip>
       <whatsthis>Check this box to use the custom holiday as the date's background color when at least one holiday lands on a date. Configure the holiday color in the Settings-&gt;Colors and Fonts.</whatsthis>
-      <tooltip>Display holidays in the month view</tooltip>
+      <tooltip>Display holidays in the Month View</tooltip>
       <default>false</default>
     </entry>
     <entry type="Enum" key="MonthViewColors">
@@ -302,7 +315,7 @@
     <entry type="Bool" key="Full View Todo">
       <label>To-do list view uses full window</label>
       <tooltip>Display to-do list in a full KOrganizer window</tooltip>
-      <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the date navigator, the to-do details and the calendars list, will not be displayed.</whatsthis>
+      <whatsthis>Check this box to use the full KOrganizer window when displaying the to-do list view. If this box is checked, you will gain some space for the to-do list view, but other widgets, such as the Date Navigator, the to-do details and the calendars list, will not be displayed.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Bool" key="Flat List Todo">
@@ -313,6 +326,7 @@
     </entry>
     <entry type="Bool" key="Record Todos In Journals">
       <label>Record completed to-dos in journal entries</label>
+      <tooltip>Add a journal entry each time a to-do is marked as completed</tooltip>
       <whatsthis>Check this box to record the completion of a to-do in a new entry of your journal automatically.</whatsthis>
       <default>false</default>
     </entry>
@@ -322,55 +336,61 @@
     <entry type="Bool" key="Use System Color">
       <label>Use system colors for some background colors</label>
       <tooltip>Use system colors instead of custom colors for some background colors</tooltip>
-      <whatsthis>Use system colors instead of user defined colors for the "Agenda view background color", "Busy days background color" and the "Working hours color" (and possibly others).</whatsthis>
+      <whatsthis>Use system colors instead of user defined colors for the "Agenda View background color", "Busy days background color" and the "Working hours color" (and possibly others).</whatsthis>
       <default>true</default>
     </entry>
     <entry key="Agenda Grid Background Color" type="Color">
-      <label>Agenda view background color</label>
-      <whatsthis>Select the agenda view background color here.</whatsthis>
+      <label>Agenda View background color</label>
+      <tooltip>When not using system colors, set the color for the Agenda View background</tooltip>
+      <whatsthis>Select the Agenda View background color here.</whatsthis>
       <default>255, 255, 255</default>
     </entry>
     <entry type="Color" key="ViewBackgroundBusyColor" name="ViewBgBusyColor">
       <label>Busy days background color</label>
-      <whatsthis>When you have an all day event marked as busy, you can have a different agenda or month view background color for that day. Select the color here.</whatsthis>
+      <tooltip>When not using system colors, set the color for all day events marked as busy</tooltip>
+      <whatsthis>In Agenda and Month views, when you have an all day event marked as busy, draw that item's background using the specified color.</whatsthis>
       <default>136, 255, 219</default>
     </entry>
     <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color</label>
-      <whatsthis>Select the working hours color for the agenda view here.</whatsthis>
+      <tooltip>When not using system colors, set the color for the Agenda View working hours grid</tooltip>
+      <whatsthis>Select the working hours color for the Agenda View here.</whatsthis>
       <default>255, 235, 154</default>
     </entry>
     <entry type="Color" key="Agenda MarcusBainsLine Line Color">
-      <label>Agenda view current-time (Marcus Bains) line color</label>
+      <label>Agenda View current-time (Marcus Bains) line color</label>
+      <tooltip>Set the color for the Agenda View current-time (Marcus Bains) line</tooltip>
       <whatsthis>Select a color to use for the current-time (Marcus Bains) line.</whatsthis>
-      <tooltip>Use this color for the Agenda View current-time (Marcus Bains) line</tooltip>
       <default>255,0,0</default>
     </entry>
     <entry key="Agenda Holidays Background Color" type="Color">
       <label>Holiday color</label>
-      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
+      <tooltip>Set the color for Holidays in Agenda View</tooltip>
+      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the Month View and the holiday number in the Date Navigator.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
+      <tooltip>Set the color for to-dos that are due today</tooltip>
       <whatsthis>Select the to-do due today color here.</whatsthis>
       <default>255, 200, 50</default>
     </entry>
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
       <label>To-do overdue color</label>
+      <tooltip>Set the color for overdue to-dos</tooltip>
       <whatsthis>Select the to-do overdue color here.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Month Today Color" name="MonthTodayColor">
-      <label>Month view today background color</label>
-      <tooltip>Set the background color for today's date in month view</tooltip>
+      <label>Month View today background color</label>
+      <tooltip>Set the background color for today's date in Month View</tooltip>
       <whatsthis>In Month View, select the background color for today's date.</whatsthis>
       <default>221, 251, 232</default>
     </entry>
     <entry key="Navigator Grid Highlight Color" type="Color">
-      <label>Navigator grid highlight color</label>
-      <tooltip>Set the navigator grid highlight color here</tooltip>
-      <whatsthis>Select the color for highlighting the currently selected date range in the navigator.</whatsthis>
+      <label>Date Navigator grid highlight color</label>
+      <tooltip>Set the Date Navigator grid highlight color here</tooltip>
+      <whatsthis>Select the color for highlighting the currently selected date range in the Date Navigator.</whatsthis>
       <default>100, 100, 255</default>
     </entry>
   </group>
@@ -378,19 +398,23 @@
   <group name="Fonts">
     <entry key="Agenda TimeLabels Font" type="Font">
       <label>Time bar</label>
-      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the "Select Font" dialog, allowing you to choose the hour font for the time bar.</whatsthis>
+      <tooltip>Set the Agenda View time bar labels font</tooltip>
+      <whatsthis>Press this button to configure the time bar font. The time bar is the widget that shows the hours in the Agenda View. This button will open the "Select Font" dialog, allowing you to choose the hour font for the time bar.</whatsthis>
     </entry>
     <entry type="Font" key="MonthView Font">
-      <label>Month view</label>
-      <whatsthis>Press this button to configure the month view font. This button will open the "Select Font" dialog, allowing you to choose the font for the items in the month view.</whatsthis>
+      <label>Month View</label>
+      <tooltip>Set the font for Month View items</tooltip>
+      <whatsthis>Press this button to configure the month View font. This button will open the "Select Font" dialog, allowing you to choose the font for the items in the Month View.</whatsthis>
     </entry>
     <entry type="Font" key="AgendaView Font">
-      <label>Agenda view</label>
-      <whatsthis>Press this button to configure the agenda view font. This button will open the "Select Font" dialog, allowing you to choose the font for the events in the agenda view.</whatsthis>
+      <label>Agenda View</label>
+      <tooltip>Set the font for Agenda View items</tooltip>
+      <whatsthis>Press this button to configure the Agenda View font. This button will open the "Select Font" dialog, allowing you to choose the font for the events in the Agenda View.</whatsthis>
     </entry>
     <entry key="Agenda MarcusBainsLine Font" type="Font">
       <label>Current-time (Marcus Bains) line</label>
-      <whatsthis>Press this button to configure the current-time (Marcus Bains) line font. This button will open the "Select Font" dialog, allowing you to choose the font for the current-time line in the agenda view.</whatsthis>
+      <tooltip>Set the font for the current-time (Marcus Bains) line in Agenda View</tooltip>
+      <whatsthis>Press this button to configure the current-time (Marcus Bains) line font. This button will open the "Select Font" dialog, allowing you to choose the font for the current-time line in the Agenda View.</whatsthis>
     </entry>
   </group>
   <!-- Plugins Page -->
