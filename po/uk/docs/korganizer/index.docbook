@@ -3262,6 +3262,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Позначати зайняті дні іншим кольором тла</guilabel
+></term>
+  <listitem
+><para
+>Позначте цей пункт, якщо ви бажаєте, щоб пункти днів, на які заплановано хоча б одну подію, було позначено іншим кольором тла.</para>
+    <para
+>Вибрати колір тла зайнятих днів у порядку денному можна за допомогою сторінки налаштування кольорів.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Показати завдання</guilabel
@@ -3306,49 +3319,36 @@
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term
+  <term
 ><guilabel
->Використання кольорів</guilabel
+>Кольори записів порядку денного</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Позначте пункт <guilabel
 >Мітка всередині, календар ззовні</guilabel
 >, якщо ви надаєте перевагу показу пунктів календаря пов'язаним з їхньою міткою кольором з використанням рамки кольору відповідного календаря.</para>
 
-<para
+    <para
 >Позначте пункт <guilabel
 >Календар всередині, мітка ззовні</guilabel
 >, якщо ви надаєте перевагу показу пунктів календаря пов'язаним з їхнім календарем кольором з використанням рамки кольору відповідної мітки.</para>
 
-<para
+    <para
 >Позначте пункт <guilabel
 >Лише мітка</guilabel
 >, якщо всі пункти календаря має бути розфарбовано (всередині і рамку) кольором відповідної мітки.</para>
 
-<para
+    <para
 >Позначте пункт <guilabel
 >Лише календар</guilabel
 >, якщо всі пункти календаря має бути розфарбовано (всередині і рамку) кольором відповідного календаря.</para>
 
-<para
+    <para
 >Для встановлення кольорів, будь ласка, скористайтеся сторінкою налаштування <link linkend="config-main-colors"
 >Кольори і шрифти</link
 >.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Позначати зайняті дні іншим кольором тла</guilabel
-></term>
-<listitem
-><para
->Позначте цей пункт, якщо ви бажаєте, щоб пункти днів, на які заплановано хоча б одну подію, було позначено іншим кольором тла.</para>
-<para
->Вибрати колір тла зайнятих днів у порядку денному можна за допомогою сторінки налаштування кольорів.</para
-></listitem>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3387,35 +3387,41 @@
   <para
 >За допомогою перших двох пунктів можна наказати програмі показувати лише час початку або одразу час початку і час завершення.</para>
   <para
+>Позначте цей пункт <guilabel
+>Фарбувати зайняті дні іншим кольором тла</guilabel
+>, якщо ви бажаєте, щоб пункти днів перегляду місяця, на які заплановано хоча б одну подію, було позначено іншим кольором тла.</para>
+  <para
 >Наступними чотирма пунктами можна скористатися для необов'язкового визначення показу піктограм, завдань, журналів та свят на панелі перегляду подій місяця.</para>
 </listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term
+  <term
 ><guilabel
 >Позначати зайняті дні іншим кольором тла</guilabel
 ></term>
-<listitem
+  <listitem
 ><para
 >Позначте цей пункт, якщо ви бажаєте, щоб пункти днів перегляду місяця, на які заплановано хоча б одну подію, було позначено іншим кольором тла.</para>
-<para
+    <para
 >Вибрати колір тла зайнятих днів у порядку денному або перегляді місяця можна за допомогою сторінки налаштування кольорів.</para
 ></listitem>
 </varlistentry>
 
+<!--FIXME Icons to use dropdown box missing-->
+
+
 <varlistentry>
-<term
+  <term
 ><guilabel
->Використання кольорів</guilabel
+>Кольори перегляду місяця</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Налаштувати кольори панелі місяця можна у спосіб, подібний до налаштування кольорів <link linkend="config-main-views-agenda"
 >панелі порядку денного</link
->.</para
-></listitem>
+>.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>
@@ -3576,6 +3582,19 @@
 >, за допомогою якого ви зможете обрати колір тла для поточної дати на панелі перегляду місяцями.</para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+   <term
+><guilabel
+>Navigator grid highlight color</guilabel
+></term>
+   <listitem
+><para
+>This button opens the <guilabel
+>Select Color</guilabel
+> dialog, allowing you to select the color for highlighting the currently selected date range in the navigator.</para
+></listitem>
+ </varlistentry>
 
 <varlistentry>
 <term

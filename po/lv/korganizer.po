@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-21 00:45+0000\n"
+"POT-Creation-Date: 2026-07-22 00:46+0000\n"
 "PO-Revision-Date: 2026-02-06 15:02+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -3892,13 +3892,13 @@ msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Krāsas"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:100
+#: prefs/koprefsdialogcolorsandfonts.cpp:107
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "Birkas"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:114
+#: prefs/koprefsdialogcolorsandfonts.cpp:121
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3908,20 +3908,20 @@ msgstr ""
 "Atlasiet birku, ko vēlaties mainīt. Varat mainīt atlasītās birkas krāsu, "
 "izmantojot blakus esošo krāsas pogu."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:122
+#: prefs/koprefsdialogcolorsandfonts.cpp:129
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr ""
 "Izvēlieties birkas krāsu, kas ir atlasīta blakus esošajā kombinētajā lodziņā."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:130
+#: prefs/koprefsdialogcolorsandfonts.cpp:137
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Resursi"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:141
+#: prefs/koprefsdialogcolorsandfonts.cpp:148
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3931,21 +3931,21 @@ msgstr ""
 "Atlasiet kalendāru, ko vēlaties rediģēt. Varat mainīt atlasītā kalendāra "
 "krāsu, izmantojot podziņu zemāk."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:149
+#: prefs/koprefsdialogcolorsandfonts.cpp:156
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Choose here the color of the calendar selected using the combo box above."
 msgstr "Izvēlieties atlasītā kalendāra krāsu, izmantojot kombinēto lodziņu."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:157
+#: prefs/koprefsdialogcolorsandfonts.cpp:164
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Fonti"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:169
-#: prefs/koprefsdialogcolorsandfonts.cpp:175
+#: prefs/koprefsdialogcolorsandfonts.cpp:176
+#: prefs/koprefsdialogcolorsandfonts.cpp:182
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -4378,32 +4378,20 @@ msgstr ""
 "ieteicama, ja vēlaties izmantot „Kolab“ servera kopīgojamas mapes vai "
 "pārvaldīt vairākus kontus, izmantojot „Kontact“ kā KDE „Kolab“ klientu. "
 
-#. i18n: ectx: whatsthis, entry (TimeZoneId), group (Time &amp; Date)
-#: settings/korganizer.kcfg:32
-#, kde-format
-msgid ""
-"Select your timezone from the list of locations on this drop down box. If "
-"your city is not listed, select one which shares the same timezone. "
-"KOrganizer will automatically adjust for daylight savings."
-msgstr ""
-"Sarakstā atlasiet savu laika joslu. Ja neredzat savu pilsētu, atlasiet tādu, "
-"ar kuru jums ir kopīga laika josla. „KOrganizer“ automātiski koriģēs vasaras "
-"un ziemas laiku."
-
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
-#: settings/korganizer.kcfg:35
+#: settings/korganizer.kcfg:37
 #, kde-format
 msgid "Weekly start day:"
 msgstr "Nedēļas sākuma diena:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
-#: settings/korganizer.kcfg:36
+#: settings/korganizer.kcfg:38
 #, kde-format
 msgid "Select the first day of each week"
 msgstr "Atlasiet nedēļas pirmo dienu"
 
 #. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
-#: settings/korganizer.kcfg:37
+#: settings/korganizer.kcfg:39
 #, kde-format
 msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
@@ -4413,19 +4401,19 @@ msgstr ""
 "iestatījumu norādīs sistēmas lokāle."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
-#: settings/korganizer.kcfg:41
+#: settings/korganizer.kcfg:43
 #, kde-format
 msgid "Daily starting hour"
 msgstr "Darba dienas sākums"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursStart), group (Time &amp; Date)
-#: settings/korganizer.kcfg:42
+#: settings/korganizer.kcfg:44
 #, kde-format
 msgid "Set the time you typically start your day"
 msgstr "Norādiet laiku, kad parasti sākas jūsu diena"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
-#: settings/korganizer.kcfg:43
+#: settings/korganizer.kcfg:45
 #, kde-format
 msgid ""
 "Enter the start time for your daily schedule here. Your daily schedule hours "
@@ -4435,19 +4423,19 @@ msgstr ""
 "krāsā."
 
 #. i18n: ectx: label, entry (WorkingHoursEnd), group (Time &amp; Date)
-#: settings/korganizer.kcfg:47
+#: settings/korganizer.kcfg:49
 #, kde-format
 msgid "Daily ending hour"
 msgstr "Darba laiks beidzas"
 
 #. i18n: ectx: tooltip, entry (WorkingHoursEnd), group (Time &amp; Date)
-#: settings/korganizer.kcfg:48
+#: settings/korganizer.kcfg:50
 #, kde-format
 msgid "Set the time you typically end your day"
 msgstr "Norādiet laiku, kad parasti beidzat savu dienu"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
-#: settings/korganizer.kcfg:49
+#: settings/korganizer.kcfg:51
 #, kde-format
 msgid ""
 "Enter the ending time for your daily schedule here. Your daily schedule "
@@ -4457,13 +4445,13 @@ msgstr ""
 "citā krāsā."
 
 #. i18n: ectx: label, entry, group (General View)
-#: settings/korganizer.kcfg:56
+#: settings/korganizer.kcfg:58
 #, kde-format
 msgid "Enable tooltips for displaying summaries"
 msgstr "Kopsavilkumu parādīšanai izmantot paskaidres"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
-#: settings/korganizer.kcfg:57
+#: settings/korganizer.kcfg:59
 #, kde-format
 msgid ""
 "Check this box to display summary tooltips when hovering the mouse over an "
@@ -4473,13 +4461,13 @@ msgstr ""
 "peles kursoru virs notikuma vai uzdevuma."
 
 #. i18n: ectx: label, entry, group (General View)
-#: settings/korganizer.kcfg:61
+#: settings/korganizer.kcfg:63
 #, kde-format
 msgid "To-dos use tag colors"
 msgstr "Uzdevumi izmanto birku krāsas"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
-#: settings/korganizer.kcfg:62
+#: settings/korganizer.kcfg:64
 #, kde-format
 msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
@@ -4490,13 +4478,13 @@ msgstr ""
 "krāsai"
 
 #. i18n: ectx: label, entry, group (General View)
-#: settings/korganizer.kcfg:66
+#: settings/korganizer.kcfg:68
 #, kde-format
 msgid "Next x days"
 msgstr "Nākamās x dienas"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
-#: settings/korganizer.kcfg:67
+#: settings/korganizer.kcfg:69
 #, kde-format
 msgid ""
 "Select the number of \"x\" days to be displayed in the next days view. To "
@@ -4508,19 +4496,19 @@ msgstr ""
 "izvēlnē."
 
 #. i18n: ectx: tooltip, entry, group (General View)
-#: settings/korganizer.kcfg:68
+#: settings/korganizer.kcfg:70
 #, kde-format
 msgid "Show this many days at a time in the Next \"x\" days view"
 msgstr "Rādīt šādu dienu skaitu nākamo „x“ dienu skatā"
 
 #. i18n: ectx: label, entry (DailyRecur), group (General View)
-#: settings/korganizer.kcfg:72
+#: settings/korganizer.kcfg:74
 #, kde-format
 msgid "Show items that recur daily"
 msgstr "Rādīt vienumus, kas atkārtojas katru dienu"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
-#: settings/korganizer.kcfg:73
+#: settings/korganizer.kcfg:75
 #, kde-format
 msgid ""
 "Check this box to show the days containing daily recurring events in bold "
@@ -4532,13 +4520,13 @@ msgstr ""
 "liktu uz citiem notikumiem (kas neatkārtojas katru dienu)."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
-#: settings/korganizer.kcfg:77
+#: settings/korganizer.kcfg:79
 #, kde-format
 msgid "Show items that recur weekly"
 msgstr "Rādīt vienumus, kas atkārtojas katru nedēļu"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
-#: settings/korganizer.kcfg:78
+#: settings/korganizer.kcfg:80
 #, kde-format
 msgid ""
 "Check this box to show the days containing weekly recurring events in bold "
@@ -4550,13 +4538,13 @@ msgstr ""
 "liktu uz citiem notikumiem (kas neatkārtojas katru nedēļu)."
 
 #. i18n: ectx: label, entry (HighlightTodos), group (General View)
-#: settings/korganizer.kcfg:82
+#: settings/korganizer.kcfg:84
 #, kde-format
 msgid "Show to-dos instead of events when in Todo View"
 msgstr "Uzdevumu skatā notikumu vietā rādīt uzdevumus"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
-#: settings/korganizer.kcfg:83
+#: settings/korganizer.kcfg:85
 #, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
@@ -4566,13 +4554,13 @@ msgstr ""
 "uzdevumu skatā rādītu treknrakstā."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
-#: settings/korganizer.kcfg:87
+#: settings/korganizer.kcfg:89
 #, kde-format
 msgid "Show journals instead of events when in Journal View"
 msgstr "Žurnālu skatā notikumu vietā rādīt žurnālus"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
-#: settings/korganizer.kcfg:88
+#: settings/korganizer.kcfg:90
 #, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
@@ -4582,25 +4570,25 @@ msgstr ""
 "ieraksti, kad dienasgrāmatas skatā."
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
-#: settings/korganizer.kcfg:92
+#: settings/korganizer.kcfg:94
 #, kde-format
 msgid "Show week numbers"
 msgstr "Rādīt dienas numuru"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
-#: settings/korganizer.kcfg:93
+#: settings/korganizer.kcfg:95
 #, kde-format
 msgid "Check this box to show the Date Navigator's week numbers."
 msgstr "Atzīmējiet šo lauciņu, lai mēneša skata vienumos rādītu laiku."
 
 #. i18n: ectx: label, entry (WeekNumbersShowWork), group (General View)
-#: settings/korganizer.kcfg:97
+#: settings/korganizer.kcfg:99
 #, kde-format
 msgid "Week numbers select a work week when in work week mode"
 msgstr "Nedēļas skaitļi atlasa darba nedēļu, strādājot darba nedēļas režīmā"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
-#: settings/korganizer.kcfg:98
+#: settings/korganizer.kcfg:100
 #, kde-format
 msgid ""
 "Check this box to select a working week when clicking on the Date "
@@ -4612,13 +4600,13 @@ msgstr ""
 "visu nedēļu."
 
 #. i18n: ectx: label, entry, group (Agenda View)
-#: settings/korganizer.kcfg:105
+#: settings/korganizer.kcfg:107
 #, kde-format
 msgid "Hour size"
 msgstr "Stundas lielums"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:106
+#: settings/korganizer.kcfg:108
 #, kde-format
 msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
@@ -4628,19 +4616,19 @@ msgstr ""
 "palielināšana katru dienaskārtības rindu padarīs augstāku."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:107
+#: settings/korganizer.kcfg:109
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
 msgstr "Norādīt augstumu (pikseļos) stundai dienaskārtības režģī"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:113
+#: settings/korganizer.kcfg:115
 #, kde-format
 msgid "Show icons in agenda view items"
 msgstr "Rādīt ikonas dienaskārtības skata vienumos"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:114
+#: settings/korganizer.kcfg:116
 #, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in agenda view "
@@ -4650,38 +4638,38 @@ msgstr ""
 "dienaskārtības skata vienumos."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
-#: settings/korganizer.kcfg:115
+#: settings/korganizer.kcfg:117
 #, kde-format
 msgid "Display icons in agenda view items"
 msgstr "Dienaskārtības skatā rādīt ikonas."
 
 #. i18n: ectx: label, entry (EnableAgendaBoldEvenHours), group (Agenda View)
-#: settings/korganizer.kcfg:119
+#: settings/korganizer.kcfg:121
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
-#: settings/korganizer.kcfg:120
+#: settings/korganizer.kcfg:122
 #, kde-format
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
 msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
-#: settings/korganizer.kcfg:121
+#: settings/korganizer.kcfg:123
 #, kde-format
 msgid "Draw bolder even hour grid lines"
 msgstr ""
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
-#: settings/korganizer.kcfg:125
+#: settings/korganizer.kcfg:127
 #, kde-format
 msgid "Show incidence descriptions in agenda view items"
 msgstr "Pie dienaskārtības skata vienumiem rādīt notikumu aprakstus"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
-#: settings/korganizer.kcfg:126
+#: settings/korganizer.kcfg:128
 #, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
@@ -4690,20 +4678,20 @@ msgstr ""
 "notikumu aprakstus."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
-#: settings/korganizer.kcfg:127
+#: settings/korganizer.kcfg:129
 #, kde-format
 msgid "Display incidence descriptions agenda view items"
 msgstr "Pie dienaskārtības skata vienumiem parādīt notikumu aprakstus"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
-#: settings/korganizer.kcfg:131
+#: settings/korganizer.kcfg:133
 #, fuzzy, kde-format
 #| msgid "Show incidence descriptions in agenda view items"
 msgid "Show incidence locations in agenda view items"
 msgstr "Pie dienaskārtības skata vienumiem rādīt notikumu aprakstus"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
-#: settings/korganizer.kcfg:132
+#: settings/korganizer.kcfg:134
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to display the incidence descriptions in agenda view items."
@@ -4713,7 +4701,7 @@ msgstr ""
 "notikumu aprakstus."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
-#: settings/korganizer.kcfg:133
+#: settings/korganizer.kcfg:135
 #, fuzzy, kde-format
 #| msgid "Display incidence descriptions agenda view items"
 msgid "Display incidence locations agenda view items"
@@ -4721,21 +4709,21 @@ msgstr "Pie dienaskārtības skata vienumiem parādīt notikumu aprakstus"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Month View)
-#: settings/korganizer.kcfg:137 settings/korganizer.kcfg:235
+#: settings/korganizer.kcfg:139 settings/korganizer.kcfg:237
 #, kde-format
 msgid "Color busy days with a different background color"
 msgstr "Iekrāsot aizņemtās dienas atšķirīgā fona krāsā"
 
 #. i18n: ectx: tooltip, entry (ColorBusyDaysEnabled), group (Agenda View)
 #. i18n: ectx: tooltip, entry (ColorMonthBusyDaysEnabled), group (Month View)
-#: settings/korganizer.kcfg:138 settings/korganizer.kcfg:236
+#: settings/korganizer.kcfg:140 settings/korganizer.kcfg:238
 #, fuzzy, kde-format
 #| msgid "Set the background color for today's date in month view"
 msgid "Use the busy days background color setting for busy days"
 msgstr "Norādiet šodienas fona krāsu mēneša skatā"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:139
+#: settings/korganizer.kcfg:141
 #, kde-format
 msgid ""
 "Check this box if you want agenda's background to be filled with a different "
@@ -4750,31 +4738,31 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:143 settings/korganizer.kcfg:241
+#: settings/korganizer.kcfg:145 settings/korganizer.kcfg:243
 #, kde-format
 msgid "Show to-dos"
 msgstr "Rādīt uzdevumus"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
-#: settings/korganizer.kcfg:144
+#: settings/korganizer.kcfg:146
 #, kde-format
 msgid "Check this box to display to-dos in the agenda view."
 msgstr "Atzīmējiet šo lauciņu, lai dienaskārtības skatā parādītu uzdevumus."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
-#: settings/korganizer.kcfg:145
+#: settings/korganizer.kcfg:147
 #, kde-format
 msgid "Display to-dos in the agenda view"
 msgstr "Dienaskārtības skatā parāda uzdevumus"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:149
+#: settings/korganizer.kcfg:151
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
 msgstr "Rādīt pašreizējā laika (Markusa Beinsa) rindiņu"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:150
+#: settings/korganizer.kcfg:152
 #, kde-format
 msgid ""
 "Check this box to display a line in the day or week view indicating the "
@@ -4784,19 +4772,19 @@ msgstr ""
 "pašreizējo laiku (Markusa Beinsa rindiņa)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
-#: settings/korganizer.kcfg:151
+#: settings/korganizer.kcfg:153
 #, kde-format
 msgid "Display the current-time indicator"
 msgstr "Parādīt pašreizējā laika indikatoru"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:155
+#: settings/korganizer.kcfg:157
 #, kde-format
 msgid "Show seconds and timezone on the current-time (Marcus Bains) line"
 msgstr "Pašreizējā laika (Markusa Beina) rindiņā rādīt sekundes un laika joslu"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:156
+#: settings/korganizer.kcfg:158
 #, kde-format
 msgid ""
 "Check this box if you want to show seconds on the current-time (Marcus "
@@ -4807,7 +4795,7 @@ msgstr ""
 "laika joslu."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsShowSeconds), group (Agenda View)
-#: settings/korganizer.kcfg:157
+#: settings/korganizer.kcfg:159
 #, kde-format
 msgid ""
 "Display seconds (possibly with timezone) with the current-time indicator"
@@ -4815,14 +4803,14 @@ msgstr ""
 "Pašreizējā laika indikatorā rādīt sekundes (dažos gadījumos arī laika joslas)"
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:161
+#: settings/korganizer.kcfg:163
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
 msgstr ""
 "Laika diapazona atlasīšana dienaskārtības skatā palaiž notikumu redaktoru"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:162
+#: settings/korganizer.kcfg:164
 #, kde-format
 msgid ""
 "Check this box to start the event editor automatically when you select a "
@@ -4834,13 +4822,13 @@ msgstr ""
 "diapazonu, velciet peli no plānojamā notikuma sākuma laika uz beigu laiku."
 
 #. i18n: ectx: tooltip, entry (SelectionStartsEditor), group (Agenda View)
-#: settings/korganizer.kcfg:163
+#: settings/korganizer.kcfg:165
 #, kde-format
 msgid "Enable automatic event editor with time range selection"
 msgstr "Ieslēgt automātisku notikuma redaktoru ar laika diapazona atlasi"
 
 #. i18n: ectx: label, entry, group (Agenda View)
-#: settings/korganizer.kcfg:167
+#: settings/korganizer.kcfg:169
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgid "Agenda Item Colors"
@@ -4848,13 +4836,13 @@ msgstr "Kalendāri"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:170 settings/korganizer.kcfg:274
+#: settings/korganizer.kcfg:172 settings/korganizer.kcfg:271
 #, kde-format
 msgid "Tag inside, calendar outside"
 msgstr "Birka iekšpusē, kalendārs ārpusē"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:171
+#: settings/korganizer.kcfg:173
 #, kde-format
 msgid ""
 "Draw agenda items with their tag color inside and calendar color for their "
@@ -4865,7 +4853,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:172 settings/korganizer.kcfg:276
+#: settings/korganizer.kcfg:174 settings/korganizer.kcfg:273
 #, kde-format
 msgid ""
 "Select the \"Tag inside, calendar outside\" option if you would like to draw "
@@ -4880,13 +4868,13 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:175 settings/korganizer.kcfg:279
+#: settings/korganizer.kcfg:177 settings/korganizer.kcfg:276
 #, kde-format
 msgid "Calendar inside, tag outside"
 msgstr "Kalendārs iekšpusē, birka ārpusē"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:176
+#: settings/korganizer.kcfg:178
 #, kde-format
 msgid ""
 "Draw agenda items with their calendar color inside and tag color for their "
@@ -4897,7 +4885,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:177 settings/korganizer.kcfg:281
+#: settings/korganizer.kcfg:179 settings/korganizer.kcfg:278
 #, kde-format
 msgid ""
 "Select the \"Calendar inside, tag outside\" option if you would like to draw "
@@ -4912,19 +4900,19 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:180 settings/korganizer.kcfg:284
+#: settings/korganizer.kcfg:182 settings/korganizer.kcfg:281
 #, kde-format
 msgid "Only tag"
 msgstr "Tikai birka"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:181
+#: settings/korganizer.kcfg:183
 #, kde-format
 msgid "Draw agenda items using their tag color for the inside and border"
 msgstr "Attēlot dienaskārtības vienumus to birkas krāsā, ieskaitot apmali"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:182
+#: settings/korganizer.kcfg:184
 #, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
@@ -4937,19 +4925,19 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:185 settings/korganizer.kcfg:289
+#: settings/korganizer.kcfg:187 settings/korganizer.kcfg:286
 #, kde-format
 msgid "Only calendar"
 msgstr "Tikai kalendārs"
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
-#: settings/korganizer.kcfg:186
+#: settings/korganizer.kcfg:188
 #, kde-format
 msgid "Draw agenda items using their calendar color for the inside and border"
 msgstr "Attēlot dienaskārtības vienumus to kalendāra krāsā, ieskaitot apmali"
 
 #. i18n: ectx: whatsthis, entry, group (Agenda View)
-#: settings/korganizer.kcfg:187
+#: settings/korganizer.kcfg:189
 #, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
@@ -4961,19 +4949,19 @@ msgstr ""
 "fontu konfigurācijas lapu, lai iestatītu šīs krāsas."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:193
+#: settings/korganizer.kcfg:195
 #, kde-format
 msgid "Multiple Calendar Display"
 msgstr "Vairāku kalendāru parādīšana"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:196
+#: settings/korganizer.kcfg:198
 #, kde-format
 msgid "Merge all calendars into one view"
 msgstr "Apvienot visus kalendārus vienā skatā"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:197
+#: settings/korganizer.kcfg:199
 #, kde-format
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
@@ -4983,19 +4971,19 @@ msgstr ""
 "visi jūsu kalendāri būtu redzami vienā dienaskārtības skatā."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:198
+#: settings/korganizer.kcfg:200
 #, kde-format
 msgid "Show all calendars merged together"
 msgstr "Rādīt visos kalendārus apvienotus kopā"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:201
+#: settings/korganizer.kcfg:203
 #, kde-format
 msgid "Show calendars side by side"
 msgstr "Rādīt kalendārus blakus"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:202
+#: settings/korganizer.kcfg:204
 #, kde-format
 msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
@@ -5005,19 +4993,19 @@ msgstr ""
 "kalendārus vienlaicīgi sadalītā skatā."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:203
+#: settings/korganizer.kcfg:205
 #, kde-format
 msgid "Show two calendars side-by-side"
 msgstr "Rādīt divus kalendārus vienu otram blakus"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:206
+#: settings/korganizer.kcfg:208
 #, kde-format
 msgid "Switch between views with tabs"
 msgstr "Pārslēgties starp skatiem ar tabulatoru"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:207
+#: settings/korganizer.kcfg:209
 #, kde-format
 msgid ""
 "Select \"Switch between views with tabs\" if you would like to alternate "
@@ -5027,19 +5015,19 @@ msgstr ""
 "kalendāriem pārslēgties ar tabulācijas taustiņu."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
-#: settings/korganizer.kcfg:208
+#: settings/korganizer.kcfg:210
 #, kde-format
 msgid "Tab through calendars"
 msgstr "„Tab“ taustiņš pārslēdz kalendārus"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:217
+#: settings/korganizer.kcfg:219
 #, kde-format
 msgid "Show icons in month view items"
 msgstr "Rādīt ikonas mēneša skata vienumos"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:218
+#: settings/korganizer.kcfg:220
 #, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in month view items."
@@ -5048,20 +5036,20 @@ msgstr ""
 "atkārtošanās u.c.)."
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
-#: settings/korganizer.kcfg:219
+#: settings/korganizer.kcfg:221
 #, kde-format
 msgid "Display icons in month view items"
 msgstr "Rādīt ikonas mēneša skatu vienumos"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:223
+#: settings/korganizer.kcfg:225
 #, fuzzy, kde-format
 #| msgid "Show time in month view items"
 msgid "Show start-times without end-times in month view items"
 msgstr "Rādīt laiku mēneša skata vienumos"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:224
+#: settings/korganizer.kcfg:226
 #, fuzzy, kde-format
 #| msgid "Check this box to display the time in month view items."
 msgid ""
@@ -5070,35 +5058,35 @@ msgid ""
 msgstr "Atzīmējiet šo lauciņu, lai mēneša skata vienumos rādītu laiku."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:225
+#: settings/korganizer.kcfg:227
 #, fuzzy, kde-format
 #| msgid "Display time in month view items"
 msgid "Display start-time without the end-time in month view items"
 msgstr "Rādīt laiku mēneša skata vienumos"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:229
+#: settings/korganizer.kcfg:231
 #, fuzzy, kde-format
 #| msgid "Show time in month view items"
 msgid "Show the start-time and the end-time in month view items"
 msgstr "Rādīt laiku mēneša skata vienumos"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:230
+#: settings/korganizer.kcfg:232
 #, fuzzy, kde-format
 #| msgid "Check this box to display the time in month view items."
 msgid "Check this box to display the start and end times in month view items."
 msgstr "Atzīmējiet šo lauciņu, lai mēneša skata vienumos rādītu laiku."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
-#: settings/korganizer.kcfg:231
+#: settings/korganizer.kcfg:233
 #, fuzzy, kde-format
 #| msgid "Display time in month view items"
 msgid "Display the start and end times in month view items"
 msgstr "Rādīt laiku mēneša skata vienumos"
 
 #. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Month View)
-#: settings/korganizer.kcfg:237
+#: settings/korganizer.kcfg:239
 #, kde-format
 msgid ""
 "Check this box if you want month view's background to be filled with a "
@@ -5113,44 +5101,44 @@ msgstr ""
 "Meklējiet „Aizņemto dienu fona krāsa“ opciju."
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:242
+#: settings/korganizer.kcfg:244
 #, kde-format
 msgid "Check this box to display to-dos in the month view."
 msgstr "Atzīmējiet šo lauciņu, lai mēneša skatā parādītu uzdevumus."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
-#: settings/korganizer.kcfg:243
+#: settings/korganizer.kcfg:245
 #, kde-format
 msgid "Display to-dos in the month view"
 msgstr "Rādīt uzdevumus mēneša skatā"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:247
+#: settings/korganizer.kcfg:249
 #, kde-format
 msgid "Show journals"
 msgstr "Rādīt žurnālus"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:248
+#: settings/korganizer.kcfg:250
 #, kde-format
 msgid "Check this box to display journals in the month view."
 msgstr "Atzīmējiet šo, lai mēneša skatā rādītu žurnālu ierakstus."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
-#: settings/korganizer.kcfg:249
+#: settings/korganizer.kcfg:251
 #, kde-format
 msgid "Display journals in the month view"
 msgstr "Mēneša skatā rādīt žurnālus"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
-#: settings/korganizer.kcfg:253
+#: settings/korganizer.kcfg:255
 #, fuzzy, kde-format
 #| msgid "Show &holidays"
 msgid "Show holidays"
 msgstr "Rādīt &brīvdienas"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
-#: settings/korganizer.kcfg:254
+#: settings/korganizer.kcfg:256
 #, fuzzy, kde-format
 #| msgid "Check this box to display to-dos in the month view."
 msgid "Check this box to display holidays in the month view."
@@ -5158,21 +5146,21 @@ msgstr "Atzīmējiet šo lauciņu, lai mēneša skatā parādītu uzdevumus."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:255 settings/korganizer.kcfg:262
+#: settings/korganizer.kcfg:257 settings/korganizer.kcfg:264
 #, fuzzy, kde-format
 #| msgid "Display to-dos in the month view"
 msgid "Display holidays in the month view"
 msgstr "Rādīt uzdevumus mēneša skatā"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:259
+#: settings/korganizer.kcfg:261
 #, fuzzy, kde-format
 #| msgid "Set the background color for today's date in month view"
 msgid "Use the Holiday background color when a holiday lands on the date"
 msgstr "Norādiet šodienas fona krāsu mēneša skatā"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:260
+#: settings/korganizer.kcfg:262
 #, kde-format
 msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
@@ -5180,7 +5168,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
-#: settings/korganizer.kcfg:261
+#: settings/korganizer.kcfg:263
 #, kde-format
 msgid ""
 "Check this box to use the custom holiday as the date's background color when "
@@ -5189,34 +5177,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:266
-#, kde-format
-msgid "Month view uses full window"
-msgstr "Mēneša skats izmanto pilnu logu"
-
-#. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:267
-#, kde-format
-msgid ""
-"Check this box to use the full KOrganizer window when displaying the month "
-"view. If this box is checked, you will gain some space for the monthly view, "
-"but other widgets, such as the date navigator, the item details and the "
-"calendars list, will not be displayed."
-msgstr ""
-"Atzīmējiet šo lauciņu, lai izmantotu pilnu „KOrganizer“ logu, rādot mēneša "
-"skatu. Ja šis lauciņš ir atzīmēts, jūs iegūsiet vietu mēneša skatam, tomēr "
-"citas logdaļas, piemēram, datumu navigators, vienuma informācija un "
-"kalendāra saraksts būs paslēptas."
-
-#. i18n: ectx: label, entry, group (Month View)
-#: settings/korganizer.kcfg:271
+#: settings/korganizer.kcfg:268
 #, fuzzy, kde-format
 #| msgid "Print list"
 msgid "Month Item Colors"
 msgstr "Izdrukāt sarakstu"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:275
+#: settings/korganizer.kcfg:272
 #, kde-format
 msgid ""
 "Draw month items with their tag color inside and calendar color for their "
@@ -5226,7 +5194,7 @@ msgstr ""
 "kalendāra krāsā"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:280
+#: settings/korganizer.kcfg:277
 #, kde-format
 msgid ""
 "Draw month items with their calendar color inside and tag color for their "
@@ -5236,13 +5204,13 @@ msgstr ""
 "birkas krāsā"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:285
+#: settings/korganizer.kcfg:282
 #, kde-format
 msgid "Draw month items using their tag color for the inside and border"
 msgstr "Attēlot mēnešu vienumus to birkas krāsā, ieskaitot apmali"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:286
+#: settings/korganizer.kcfg:283
 #, kde-format
 msgid ""
 "Select the \"Only tag\" option if you would like to draw calendar items "
@@ -5254,13 +5222,13 @@ msgstr ""
 "fontu konfigurācijas lapu, lai iestatītu šīs krāsas."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
-#: settings/korganizer.kcfg:290
+#: settings/korganizer.kcfg:287
 #, kde-format
 msgid "Draw month items using their calendar color for the inside and border"
 msgstr "Attēlot mēneša vienumus to kalendāra krāsā, ieskaitot apmali"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
-#: settings/korganizer.kcfg:291
+#: settings/korganizer.kcfg:288
 #, kde-format
 msgid ""
 "Select the \"Only calendar\" option if you would like to draw calendar items "
@@ -5272,13 +5240,13 @@ msgstr ""
 "fontu konfigurācijas lapu, lai iestatītu šīs krāsas."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:300
+#: settings/korganizer.kcfg:297
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr "Saraksta apakšā vienmēr rādīt pabeigtos uzdevumus"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:301
+#: settings/korganizer.kcfg:298
 #, kde-format
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
@@ -5287,7 +5255,7 @@ msgstr ""
 "Pabeigtos uzdevumus parādīt saraksta apakšā, neskatoties uz to prioritāti"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:302
+#: settings/korganizer.kcfg:299
 #, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
@@ -5297,19 +5265,19 @@ msgstr ""
 "saraksta apakšā."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:306
+#: settings/korganizer.kcfg:303
 #, kde-format
 msgid "To-do list view uses full window"
 msgstr "Uzdevumu saraksts aizņem visu logu"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:307
+#: settings/korganizer.kcfg:304
 #, kde-format
 msgid "Display to-do list in a full KOrganizer window"
 msgstr "Rādīt uzdevumu sarakstu pilnā „KOrganizer“ logā"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:308
+#: settings/korganizer.kcfg:305
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
@@ -5323,19 +5291,19 @@ msgstr ""
 "informācija un kalendāra saraksts būs paslēptas."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:312
+#: settings/korganizer.kcfg:309
 #, kde-format
 msgid "Display to-dos in a flat list"
 msgstr "Uzdevumus parādīt vienkāršā sarakstā"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:313
+#: settings/korganizer.kcfg:310
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr "Parādīt uzdevumus vienkāršā sarakstā, bet ne hierarhiskā koka skatā"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:314
+#: settings/korganizer.kcfg:311
 #, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
@@ -5345,13 +5313,13 @@ msgstr ""
 "bet ne izkārtotus hierarhiska koka skatā."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:318
+#: settings/korganizer.kcfg:315
 #, kde-format
 msgid "Record completed to-dos in journal entries"
 msgstr "Pabeigtos uzdevumus reģistrēt žurnāla ierakstos"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:319
+#: settings/korganizer.kcfg:316
 #, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
@@ -5361,65 +5329,52 @@ msgstr ""
 "reģistrēt jaunā žurnāla ierakstā."
 
 #. i18n: ectx: label, entry, group (Colors)
-#. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:326 settings/korganizer.kcfg:466
-#, kde-format
-msgid "Holiday color"
-msgstr "Brīvdienas krāsa"
+#: settings/korganizer.kcfg:323
+#, fuzzy, kde-format
+#| msgid "Busy days background color"
+msgid "Use system colors for some background colors"
+msgstr "Aizņemto dienu fona krāsa"
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:324
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use system color instead of user defined color. If enabled will ignore "
+#| "all other color settings"
+msgid "Use system colors instead of custom colors for some background colors"
+msgstr ""
+"Definētās krāsas vietā lietot sistēmas krāsu. Ja ieslēgts, programma ignorēs "
+"visus pārējos krāsu iestatījumus"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:327 settings/korganizer.kcfg:467
+#: settings/korganizer.kcfg:325
 #, kde-format
 msgid ""
-"Select the holiday color here. The holiday color will be used for the "
-"holiday name in the month view and the holiday number in the date navigator."
+"Use system colors instead of user defined colors for the \"Agenda view "
+"background color\", \"Busy days background color\" and the \"Working hours "
+"color\" (and possibly others)."
 msgstr ""
-"Te varat norādīt brīvdienu krāsu. Brīvdienu krāsu izmantos brīvdienu "
-"nosaukumam mēneša skatā un brīvdienas skaitlim datumu navigatorā."
 
-#. i18n: ectx: label, entry (AgendaBgColor), group (Colors)
-#. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:331 settings/korganizer.kcfg:456
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:329
 #, kde-format
 msgid "Agenda view background color"
 msgstr "Dienaskārtības skata fona krāsa"
 
-#. i18n: ectx: whatsthis, entry (AgendaBgColor), group (Colors)
-#. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:332 settings/korganizer.kcfg:457
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:330
 #, kde-format
 msgid "Select the agenda view background color here."
 msgstr "Te varat atlasīt dienaskārtības skata fona krāsu."
 
-#. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:336
-#, kde-format
-msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Dienaskārtības skata pašreizējā laika (Markusa Beina) rindiņas krāsa"
-
-#. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:337
-#, kde-format
-msgid "Select a color to use for the current-time (Marcus Bains) line."
-msgstr "Atlasiet krāsu, ko lietot pašreizējā laika (Markusa Beinsa) rindiņai."
-
-#. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:338
-#, kde-format
-msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
-msgstr ""
-"Lietot šo krāsu dienaskārtības skata pašreizējā laika (Markusa Beinsa) "
-"rindiņai"
-
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:342
+#: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Busy days background color"
 msgstr "Aizņemto dienu fona krāsa"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:343
+#: settings/korganizer.kcfg:335
 #, kde-format
 msgid ""
 "When you have an all day event marked as busy, you can have a different "
@@ -5429,67 +5384,131 @@ msgstr ""
 "atšķirīgu dienaskārtības vai mēneša skata fona krāsu. Te varat norādīt krāsu."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:347
+#: settings/korganizer.kcfg:339
 #, kde-format
 msgid "Working hours color"
 msgstr "Darba stundu krāsa"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:348
+#: settings/korganizer.kcfg:340
 #, kde-format
 msgid "Select the working hours color for the agenda view here."
 msgstr "Norādiet darba stundu krāsu dienaskārtības skatam."
 
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:344
+#, kde-format
+msgid "Agenda view current-time (Marcus Bains) line color"
+msgstr "Dienaskārtības skata pašreizējā laika (Markusa Beina) rindiņas krāsa"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:345
+#, kde-format
+msgid "Select a color to use for the current-time (Marcus Bains) line."
+msgstr "Atlasiet krāsu, ko lietot pašreizējā laika (Markusa Beinsa) rindiņai."
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:346
+#, kde-format
+msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
+msgstr ""
+"Lietot šo krāsu dienaskārtības skata pašreizējā laika (Markusa Beinsa) "
+"rindiņai"
+
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:350
+#, kde-format
+msgid "Holiday color"
+msgstr "Brīvdienas krāsa"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:351
+#, kde-format
+msgid ""
+"Select the holiday color here. The holiday color will be used for the "
+"holiday name in the month view and the holiday number in the date navigator."
+msgstr ""
+"Te varat norādīt brīvdienu krāsu. Brīvdienu krāsu izmantos brīvdienu "
+"nosaukumam mēneša skatā un brīvdienas skaitlim datumu navigatorā."
+
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:352
+#: settings/korganizer.kcfg:355
 #, kde-format
 msgid "To-do due today color"
 msgstr "Krāsa uzdevumiem, kuru termiņš ir šodiena"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:353
+#: settings/korganizer.kcfg:356
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "Atlasiet šodien paveicamo uzdevumu krāsu."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:357
+#: settings/korganizer.kcfg:360
 #, kde-format
 msgid "To-do overdue color"
 msgstr "Kavēto uzdevumu krāsa"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:358
+#: settings/korganizer.kcfg:361
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "Norādiet kavēto uzdevumu krāsu."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:362
+#: settings/korganizer.kcfg:365
 #, kde-format
 msgid "Month view today background color"
 msgstr "Mēneša skata šodienas fona krāsa"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:363
+#: settings/korganizer.kcfg:366
 #, kde-format
 msgid "Set the background color for today's date in month view"
 msgstr "Norādiet šodienas fona krāsu mēneša skatā"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:364
+#: settings/korganizer.kcfg:367
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr "Mēneša skatā atlasiet fona krāsu šodienas datumam."
 
-#. i18n: ectx: label, entry, group (Fonts)
+#. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:371
+#, fuzzy, kde-format
+#| msgid "Highlight color"
+msgid "Navigator grid highlight color"
+msgstr "Izcelšanas krāsa"
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:372
+#, fuzzy, kde-format
+#| msgid "Select the to-do due today color here."
+msgid "Set the navigator grid highlight color here"
+msgstr "Atlasiet šodien paveicamo uzdevumu krāsu."
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:373
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the highlight color here. The highlight color will be used for "
+#| "marking the currently selected area in your agenda and in the date "
+#| "navigator."
+msgid ""
+"Select the color for highlighting the currently selected date range in the "
+"navigator."
+msgstr ""
+"Atlasiet izcelšanas krāsu. Izcelšanas krāsu programma izmantos atlasīto "
+"apgabalu marķēšanai dienaskārtībā un datumu navigatorā."
+
+#. i18n: ectx: label, entry, group (Fonts)
+#: settings/korganizer.kcfg:380
 #, kde-format
 msgid "Time bar"
 msgstr "Laika josla"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:372
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
@@ -5501,13 +5520,13 @@ msgstr ""
 "atlasīšanas lodziņu un ļaus izvēlēties laika joslas fonta stundu."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:384
 #, kde-format
 msgid "Month view"
 msgstr "Mēneša skats"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:376
+#: settings/korganizer.kcfg:385
 #, kde-format
 msgid ""
 "Press this button to configure the month view font. This button will open "
@@ -5518,13 +5537,13 @@ msgstr ""
 "atlases lodziņu, kurā varēsiet izvēlēties mēneša skata vienumu fontu."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:379
+#: settings/korganizer.kcfg:388
 #, kde-format
 msgid "Agenda view"
 msgstr "Dienaskārtības skats"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:389
 #, kde-format
 msgid ""
 "Press this button to configure the agenda view font. This button will open "
@@ -5536,13 +5555,13 @@ msgstr ""
 "fontu."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:383
+#: settings/korganizer.kcfg:392
 #, kde-format
 msgid "Current-time (Marcus Bains) line"
 msgstr "Pašreizējā laika (Markusa Beinsa) rindiņa"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:384
+#: settings/korganizer.kcfg:393
 #, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
@@ -5554,77 +5573,34 @@ msgstr ""
 "pašreizējā laika rindiņas fontu."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:397
+#: settings/korganizer.kcfg:406
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "Noklusējuma uzdevumu pievienošanas metode"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:398
+#: settings/korganizer.kcfg:407
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr "Noklusējuma veids nomesto e-pastu pievienošanai uzdevumam"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:401
+#: settings/korganizer.kcfg:410
 #, kde-format
 msgid "Always ask"
 msgstr "Vienmēr vaicāt"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:404
+#: settings/korganizer.kcfg:413
 #, kde-format
 msgid "Only attach link to message"
 msgstr "Pievienot tikai saiti uz vēstuli"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:407
+#: settings/korganizer.kcfg:416
 #, kde-format
 msgid "Attach complete message"
 msgstr "Pievienot visu vēstuli"
-
-#. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:461
-#, kde-format
-msgid "Highlight color"
-msgstr "Izcelšanas krāsa"
-
-#. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:462
-#, kde-format
-msgid ""
-"Select the highlight color here. The highlight color will be used for "
-"marking the currently selected area in your agenda and in the date navigator."
-msgstr ""
-"Atlasiet izcelšanas krāsu. Izcelšanas krāsu programma izmantos atlasīto "
-"apgabalu marķēšanai dienaskārtībā un datumu navigatorā."
-
-#. i18n: ectx: label, entry, group (Theming)
-#: settings/korganizer.kcfg:471
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
-msgid "Use system colors for some background colors"
-msgstr "Aizņemto dienu fona krāsa"
-
-#. i18n: ectx: tooltip, entry, group (Theming)
-#: settings/korganizer.kcfg:472
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
-msgid "Use system colors instead of custom colors for some background colors"
-msgstr ""
-"Definētās krāsas vietā lietot sistēmas krāsu. Ja ieslēgts, programma ignorēs "
-"visus pārējos krāsu iestatījumus"
-
-#. i18n: ectx: whatsthis, entry, group (Theming)
-#: settings/korganizer.kcfg:473
-#, kde-format
-msgid ""
-"Use system colors instead of user defined colors for the \"Agenda view "
-"background color\", \"Busy days background color\" and the \"Working hours "
-"color\" (and possibly others)."
-msgstr ""
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -6781,6 +6757,29 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid ""
+#~ "Select your timezone from the list of locations on this drop down box. If "
+#~ "your city is not listed, select one which shares the same timezone. "
+#~ "KOrganizer will automatically adjust for daylight savings."
+#~ msgstr ""
+#~ "Sarakstā atlasiet savu laika joslu. Ja neredzat savu pilsētu, atlasiet "
+#~ "tādu, ar kuru jums ir kopīga laika josla. „KOrganizer“ automātiski "
+#~ "koriģēs vasaras un ziemas laiku."
+
+#~ msgid "Month view uses full window"
+#~ msgstr "Mēneša skats izmanto pilnu logu"
+
+#~ msgid ""
+#~ "Check this box to use the full KOrganizer window when displaying the "
+#~ "month view. If this box is checked, you will gain some space for the "
+#~ "monthly view, but other widgets, such as the date navigator, the item "
+#~ "details and the calendars list, will not be displayed."
+#~ msgstr ""
+#~ "Atzīmējiet šo lauciņu, lai izmantotu pilnu „KOrganizer“ logu, rādot "
+#~ "mēneša skatu. Ja šis lauciņš ir atzīmēts, jūs iegūsiet vietu mēneša "
+#~ "skatam, tomēr citas logdaļas, piemēram, datumu navigators, vienuma "
+#~ "informācija un kalendāra saraksts būs paslēptas."
 
 #~ msgid "Color Usage"
 #~ msgstr "Krāsu lietojums"

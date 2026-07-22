@@ -3215,6 +3215,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Acoloreix els dies feiners amb un color de fons diferent</guilabel
+></term>
+  <listitem
+><para
+>Marqueu aquesta casella si voleu que el fons a la vista d'agenda s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
+    <para
+>Si us plau, mireu en l'àrea de configuració dels colors per a seleccionar el color de fons per a ocupat a la vista d'agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostra les tasques pendents</guilabel
@@ -3259,49 +3272,36 @@
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term
+  <term
 ><guilabel
->Ús del color</guilabel
+>Colors dels elements d'agenda</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Seleccioneu l'opció <guilabel
 >Etiqueta a dins, calendari a fora</guilabel
 > si voleu dibuixar els elements de calendari en el color associat a la seva etiqueta, amb la vora de l'element dibuixat en el color del seu calendari.</para>
 
-<para
+    <para
 >Seleccioneu l'opció <guilabel
 >Calendari a dins, etiqueta a fora</guilabel
 > si voleu dibuixar els elements de calendari en el color associat al seu calendari, amb la vora de l'element dibuixat en el color de la seva etiqueta.</para>
 
-<para
+    <para
 >Seleccioneu l'opció <guilabel
 >Només l'etiqueta</guilabel
 > si voleu dibuixar elements de calendari (tant a dins com les vores) en el color de la seva etiqueta associada.</para>
 
-<para
+    <para
 >Seleccioneu l'opció <guilabel
 >Només el calendari</guilabel
 > si voleu dibuixar elements de l'agenda (tant a dins com les vores) en el color del seu calendari.</para>
 
-<para
+    <para
 >Si us plau, useu la pàgina de configuració <link linkend="config-main-colors"
 >Colors i lletres</link
 > per a establir aquests colors.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Acoloreix els dies feiners amb un color de fons diferent</guilabel
-></term>
-<listitem
-><para
->Marqueu aquesta casella si voleu que el fons a la vista d'agenda s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
-<para
->Si us plau, mireu en l'àrea de configuració dels colors per a seleccionar el color de fons per a ocupat a la vista d'agenda.</para
-></listitem>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3340,35 +3340,41 @@
   <para
 >Les dues primeres caselles de selecció permeten mostrar només l'hora d'inici, o tant l'hora d'inici com l'hora final.</para>
   <para
+>Estableix l'opció <guilabel
+>Acoloreix els dies feiners amb un color de fons diferent</guilabel
+> si voleu que el fons de la vista mensual s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
+  <para
 >Utilitzeu les quatre caselles de selecció següents per a mostrar les icones, tasques pendents, diaris o festius en la vista mensual.</para>
 </listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term
+  <term
 ><guilabel
 >Acoloreix els dies feiners amb un color de fons diferent</guilabel
 ></term>
-<listitem
+  <listitem
 ><para
 >Marqueu aquesta casella si voleu que el fons de la vista mensual s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
-<para
+    <para
 >Si us plau, mireu en l'àrea de configuració de colors per a seleccionar el color de fons per a ocupat en la vista mensual de l'agenda.</para
 ></listitem>
 </varlistentry>
 
+<!--FIXME Icons to use dropdown box missing-->
+
+
 <varlistentry>
-<term
+  <term
 ><guilabel
->Ús del color</guilabel
+>Colors de la vista mensual</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Configureu els colors per a la vista mensual com en la <link linkend="config-main-views-agenda"
 >vista d'agenda</link
->.</para
-></listitem>
+>.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>

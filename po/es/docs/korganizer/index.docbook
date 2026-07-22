@@ -3273,6 +3273,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Colorear los días ocupados con un color de fondo diferente</guilabel
+></term>
+  <listitem
+><para
+>Marque esta casilla si quiere que el fondo de la vista de agenda se rellene con un color diferente en los días que tienen al menos un evento marcado como ocupado.</para>
+    <para
+>Consulte el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda de su elección.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostrar tareas pendientes</guilabel
@@ -3317,49 +3330,36 @@
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term
+  <term
 ><guilabel
->Uso del color</guilabel
+>Colores de los elementos de la agenda</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Seleccione la opción <guilabel
 >Etiqueta dentro, calendario fuera</guilabel
 > si le gustaría pintar elementos de calendario en el color de la etiqueta asociada, con el borde del elemento dibujado en el color de su calendario.</para>
 
-<para
+    <para
 >Seleccione la opción <guilabel
 >Calendario dentro, etiqueta fuera</guilabel
 > si le gustaría pintar elementos de calendario en el color de su calendario asociado, con el borde del elemento dibujado en el color de la etiqueta.</para>
 
-<para
+    <para
 >Seleccione la opción <guilabel
 >Solo etiqueta</guilabel
 > si le gustaría pintar elementos de calendario (tanto el interior como el borde) en el color de la etiqueta asociada.</para>
 
-<para
+    <para
 >Seleccione la opción <guilabel
 >Solo calendario</guilabel
 > si le gustaría pintar elementos de calendario (tanto el interior como el borde) en el color de su calendario asociado.</para>
 
-<para
+    <para
 >Use la página de configuración <link linkend="config-main-colors"
 >Colores y tipos de letra</link
 > para establecer esos colores.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Colorear los días ocupados con un color de fondo diferente</guilabel
-></term>
-<listitem
-><para
->Marque esta casilla si quiere que el fondo de la vista de agenda se rellene con un color diferente en los días que tienen al menos un evento marcado como ocupado.</para>
-<para
->Consulte el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda de su elección.</para
-></listitem>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3398,35 +3398,41 @@
   <para
 >Las dos primeras casillas permiten mostrar solo la hora de inicio, o tanto la hora de inicio como la de finalización.</para>
   <para
+>Marque la casilla <guilabel
+>Colorear los días ocupados con un color distinto al del fondo</guilabel
+> si quiere que el fondo de la vista de mes se rellene con un color diferente en los días que tengan al menos un evento de día completo marcado como ocupado.</para>
+  <para
 >Use las siguientes cuatro casillas para mostrar opcionalmente iconos, tareas pendientes, entradas de diario o días festivos en la vista mensual.</para>
 </listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term
+  <term
 ><guilabel
 >Colorear los días ocupados con un color de fondo diferente</guilabel
 ></term>
-<listitem
+  <listitem
 ><para
 >Marque esta casilla si quiere que el fondo de la vista de mes se rellene con un color diferente en los días que tengan al menos un evento de día completo marcado como ocupado.</para>
-<para
+    <para
 >Consulte el área de configuración de colores para seleccionar el color de fondo para la vista de ocupado de la agenda/vista de mes de su elección.</para
 ></listitem>
 </varlistentry>
 
+<!--FIXME Icons to use dropdown box missing-->
+
+
 <varlistentry>
-<term
+  <term
 ><guilabel
->Uso del color</guilabel
+>Colores de la vista del mes</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Configure los colores para la vista de mes como en la <link linkend="config-main-views-agenda"
 >Vista de agenda</link
->.</para
-></listitem>
+>.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>
@@ -3587,6 +3593,19 @@
 > para permitirle seleccionar el color de fondo de la fecha actual en la vista mensual.</para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+   <term
+><guilabel
+>Navigator grid highlight color</guilabel
+></term>
+   <listitem
+><para
+>This button opens the <guilabel
+>Select Color</guilabel
+> dialog, allowing you to select the color for highlighting the currently selected date range in the navigator.</para
+></listitem>
+ </varlistentry>
 
 <varlistentry>
 <term

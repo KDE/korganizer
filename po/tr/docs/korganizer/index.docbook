@@ -599,14 +599,14 @@
 > iki veya daha çok özkaynağı sorunsuzca birleştirebilir. </para>
 
 <para
->Öntanımlı özkaynak birçok kullanım durumu için iyi bir seçimdir; ancak özellikle desteklenen bir grup yazılımı sunucusu kullanıyorsanız başka bir özkaynak kullanmak isteyebilirsiniz. Lütfen sunucu yöneticisinden uygun/meşgul bilgisini yayınlama ve alma içerilmek üzere grup yazılımı özkaynağını yapılandırmak için gereken bilgileri isteyin. Uygun/Meşgul bilgilerine erişim, bir etkinlik organizatörünün katılımcıyı etkinliğin katılımcı listesine eklerken onun takvimini dikkate almasını sağlar.</para>
+>Öntanımlı özkaynak birçok kullanım durumu için iyi bir seçimdir; ancak özellikle desteklenen bir grup yazılımı sunucusu kullanıyorsanız başka bir özkaynak kullanmak isteyebilirsiniz. Lütfen sunucu yöneticisinden uygun/meşgûl bilgisini yayınlama ve alma içerilmek üzere grup yazılımı özkaynağını yapılandırmak için gereken bilgileri isteyin. Uygun/meşgûl bilgilerine erişim, bir etkinlik organizatörünün katılımcıyı etkinliğin katılımcı listesine eklerken onun takvimini dikkate almasını sağlar.</para>
 
 <note
 ><para
 >Takvim depolamasının yanı sıra, grup yazılımı sunucuları genellikle kişiler, posta ve <link linkend="glossary" endterm="gloss-freebusy"
->uygun/meşgul</link
+>uygun/meşgûl</link
 > bilgisi depolaması sunarlar. Bundan dolayı, burada belirtilen özkaynakların bazıları &kmail; ve &kaddressbook; (&kontact;’ın posta ve kişi yönetimi bileşeni) veya <link linkend="config-main-free-busy"
->ana yapılandırmadaki uygun/meşgul bilgisine</link
+>ana yapılandırmadaki uygun/meşgûl bilgisine</link
 > ait olabilir.</para>
 <para
 >&korganizer;’ün <link linkend="group-scheduling"
@@ -2079,16 +2079,16 @@
 <!--FIXME works with certain type of calendars e.g. google calendar ?-->
 <sect2 id="entering-data-events-freebusy">
 <title
->Uygun/Meşgul</title>
+>Uygun/Meşgûl</title>
 
 <para
->Etkinliğinize katılımcı eklerken, o belirli zamanda meşgul veya uygun olup olmadıklarını bilmeniz gerekir. Katılımcılar uygun/meşgul bilgilerini kullanıma sunarsa davetleri göndermeden önce programlarını burada görüntüleyebilirsiniz.</para>
+>Etkinliğinize katılımcı eklerken, o belirli zamanda meşgûl veya uygun olup olmadıklarını bilmeniz gerekir. Katılımcılar uygun/meşgûl bilgilerini kullanıma sunarsa davetleri göndermeden önce programlarını burada görüntüleyebilirsiniz.</para>
 
 <para
->Bu, sağda uygun/meşgul programı çizelgesini gösterir, burada her satır solda listelenen katılımcılardan birini temsil eder. Çizelgedeki işaretli alanlar diğer etkinlikler tarafından hâlihazırda alınan zamanı temsil eder, işaretsiz alanlar diğer etkinliklerden boş zamanı temsil eder. Etkinliği fareyle sürükleyerek farklı bir zaman noktasına taşıyabilir veya vurgulanan alanın kenarlarını fareyle hareket ettirerek yeniden boyutlandırabilirsiniz.</para>
+>Bu, sağda uygun/meşgûl programı çizelgesini gösterir, burada her satır solda listelenen katılımcılardan birini temsil eder. Çizelgedeki işaretli alanlar diğer etkinlikler tarafından hâlihazırda alınan zamanı temsil eder, işaretsiz alanlar diğer etkinliklerden boş zamanı temsil eder. Etkinliği fareyle sürükleyerek farklı bir zaman noktasına taşıyabilir veya vurgulanan alanın kenarlarını fareyle hareket ettirerek yeniden boyutlandırabilirsiniz.</para>
 
 <para
->Uygun/meşgul bilgisi yalnızca katılımcı uygun/meşgul programını yayınlarsa ve &korganizer; bunu almak üzere doğru bir biçimde yapılandırılmışsa kullanılabilir. &korganizer;’ü uygun/meşgul bilgisini almak/yayınlamak ile ilgili daha fazla bilgi için <xref linkend="config"/> bölümüne bakın. Listedeki katılımcı girişine çift tıklandığında, katılımcının uygun/meşgul bilgilerinin bulunduğu yer girilebilir. </para>
+>Uygun/meşgûl bilgisi yalnızca katılımcı uygun/meşgûl programını yayınlarsa ve &korganizer; bunu almak üzere doğru bir biçimde yapılandırılmışsa kullanılabilir. &korganizer;’ü uygun/meşgûl bilgisini almak/yayınlamak ile ilgili daha fazla bilgi için <xref linkend="config"/> bölümüne bakın. Listedeki katılımcı girişine çift tıklandığında, katılımcının uygun/meşgûl bilgilerinin bulunduğu yer girilebilir. </para>
 
 <variablelist>
 
@@ -2120,7 +2120,7 @@
 ></term>
 <listitem
 ><para
->Bu düğmeye basarak uygun/meşgul programı çizelgesini bu etkinliğin başlangıç ​​saatine ve gününe göre ortalayabilirsiniz.</para
+>Bu düğmeye basarak uygun/meşgûl programı çizelgesini bu etkinliğin başlangıç ​​saatine ve gününe göre ortalayabilirsiniz.</para
 ></listitem>
 </varlistentry>
 
@@ -2142,7 +2142,7 @@
 ></term>
 <listitem
 ><para
->İlgili sunuculardan tüm katılımcılar için uygun/meşgul verisini yeniden yüklemek için bu düğmeye basın.</para
+>İlgili sunuculardan tüm katılımcılar için uygun/meşgûl verisini yeniden yüklemek için bu düğmeye basın.</para
 ></listitem>
 </varlistentry>
 
@@ -2301,7 +2301,7 @@
 >Grup Programı</title>
 
 <para
->&korganizer;’ün grup programı işlevi, randevuları, toplantıları ve paylaşılan yapılacakları düzenlemenize, katılımcılardan yanıt istemenize ve ögeleri yayımlamanıza olanak tanır. Bir etkinliğe veya yapılacaklar listesine davet ediliyorsanız katılıp katılamayacağınızı belirterek yanıtlayabilir veya farklı bir zaman veya konum gibi farklı düzenlemelerle karşı teklif gönderebilirsiniz. Ayrıca, uygun olduğunuzda insanlara bildirmek için uygun/meşgul programınızı yayınlayabilir ve aynı bilgileri başkalarından isteyebilirsiniz.</para>
+>&korganizer;’ün grup programı işlevi, randevuları, toplantıları ve paylaşılan yapılacakları düzenlemenize, katılımcılardan yanıt istemenize ve ögeleri yayımlamanıza olanak tanır. Bir etkinliğe veya yapılacaklar listesine davet ediliyorsanız katılıp katılamayacağınızı belirterek yanıtlayabilir veya farklı bir zaman veya konum gibi farklı düzenlemelerle karşı teklif gönderebilirsiniz. Ayrıca, uygun olduğunuzda insanlara bildirmek için uygun/meşgûl programınızı yayınlayabilir ve aynı bilgileri başkalarından isteyebilirsiniz.</para>
 
 <para
 >Şu anda &korganizer;, etkinlikleri ve yapılacakları ulaştırmak için standart bir veri şemasıyla e-posta kullanır (Grup Programı için IMIP protokolü). IMIP standardı başka istemciler tarafından da kullanılır. Örnek olarak; &Microsoft;<application
@@ -2546,38 +2546,38 @@
 
 <sect1 id="free-busy">
 <title
->Uygun/Meşgul Bilgisi</title>
+>Uygun/Meşgûl Bilgisi</title>
 
 <para
->Uygun/Meşgul bilgisi, bir müsaitlik programını temsil eder. Birinin daha önceden taahhütleri olduğu aralıkları sunarak, diğerleri bu dönemler için randevu ayarlamaktan kaçınabilir. Yalnızca zamanların yayınlandığını, etkinliklerin, nedenlerin veya katılımcıların yayınlanmadığını unutmayın.</para>
+>Uygun/Meşgûl bilgisi, bir müsaitlik programını temsil eder. Birinin daha önceden taahhütleri olduğu aralıkları sunarak, diğerleri bu dönemler için randevu ayarlamaktan kaçınabilir. Yalnızca zamanların yayınlandığını, etkinliklerin, nedenlerin veya katılımcıların yayınlanmadığını unutmayın.</para>
 
 <para
->&korganizer;, uygun/meşgul bilgilerinin elle veya kendiliğinden yayınlanmasını ve alınmasını destekler.</para>
+>&korganizer;, uygun/meşgûl bilgilerinin elle veya kendiliğinden yayınlanmasını ve alınmasını destekler.</para>
 
 <para
->Uygun/Meşgul bilginizi e-posta ile göndermek için <menuchoice
+>Uygun/Meşgûl bilginizi e-posta ile göndermek için <menuchoice
 ><guimenu
 >Program</guimenu
 > <guimenuitem
->Uygun/Meşgul Bilgisini E-posta ile Gönder…</guimenuitem
+>Uygun/Meşgûl Bilgisini E-posta ile Gönder…</guimenuitem
 ></menuchoice
 > menü ögesini seçin. İletişim kutusunda göndermek istediğiniz e-posta adreslerini girin ve <guilabel
 >Tamam</guilabel
 > düğmesine basın.</para>
 
 <para
->Grup Yazılımı sunucuları genellikle uygun/meşgul bilgilerinizi yüklemek için standart bir konuma sahiptir, böylece diğer kullanıcılar verilerinize erişebilir ve siz de diğer kullanıcıların uygun/meşgul programlarına erişebilirsiniz. &korganizer;’ün uygun/meşgul bilgisini kendiliğinden indirmesini/yüklemesini istiyorsanız bunu &korganizer; <guilabel
+>Grup Yazılımı sunucuları genellikle uygun/meşgûl bilgilerinizi yüklemek için standart bir konuma sahiptir, böylece diğer kullanıcılar verilerinize erişebilir ve siz de diğer kullanıcıların uygun/meşgûl programlarına erişebilirsiniz. &korganizer;’ün uygun/meşgûl bilgisini kendiliğinden indirmesini/yüklemesini istiyorsanız bunu &korganizer; <guilabel
 >Yapılandırma</guilabel
 > iletişim kutusunun <link linkend="config-main-free-busy"
->Uygun/Meşgul Tercihleri</link
+>Uygun/meşgûl Tercihleri</link
 > sayfasından yapılandırabilirsiniz.</para>
 
 <para
->&korganizer; tercihlerinde ayarlanan sunucuya uygun/meşgul bilgilerinizi yüklemek için <menuchoice
+>&korganizer; tercihlerinde ayarlanan sunucuya uygun/meşgûl bilgilerinizi yüklemek için <menuchoice
 ><guimenu
 >Program</guimenu
 > <guimenuitem
->Uygun/Meşgul Bilgisini Yükle</guimenuitem
+>Uygun/Meşgûl Bilgisini Yükle</guimenuitem
 ></menuchoice
 > menü ögesini seçin.</para>
 
@@ -3263,6 +3263,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Meşgûl günleri başka bir arka plan rengiyle renklendir</guilabel
+></term>
+  <listitem
+><para
+>En azından bir tam gün etkinliğinin yoğun olarak işaretlendiği günlerde Ajanda görünümünün arka planının farklı bir renkle doldurulmasını istiyorsanız bu kutuyu işaretleyin.</para>
+    <para
+>Lütfen istediğiniz Ajanda görünümü arka plan meşgûl rengini seçmek için Renkler yapılandırma alanına bakın.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Yapılacakları göster</guilabel
@@ -3307,49 +3320,36 @@
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term
+  <term
 ><guilabel
->Renk Kullanımı</guilabel
+>Ajanda ögesi renkleri</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Takvim ögelerini ilişkili künyelerinin renginde ve ögenin kenarlığını da kendi takviminin renginde çizmek istiyorsanız <guilabel
 >Künye içeride, takvim dışarıda</guilabel
 > seçeneğini seçin.</para>
 
-<para
+    <para
 >Takvim ögelerini ilişkili takvim renklerinde ve ögenin kenarlıklarının künyesinin renginde çizilmesini istiyorsanız <guilabel
 >Takvim içeride, künye dışarıda</guilabel
 > seçeneğini seçin.</para>
 
-<para
+    <para
 >Takvim ögelerini (hem iç hem de kenarlık) ilişkili künyelerinin renginde çizmek istiyorsanız <guilabel
 >Yalnızca künye</guilabel
 > seçeneğini seçin.</para>
 
-<para
+    <para
 >Takvim ögelerini (hem iç hem de kenarlık) takvimlerinin renginde çizmek istiyorsanız <guilabel
 >Yalnızca takvim</guilabel
 > seçeneğini seçin.</para>
 
-<para
+    <para
 >Bu renkleri ayarlamak için <link linkend="config-main-colors"
 >Renkler ve Yazıtipleri</link
 > yapılandırma sayfasını kullanın.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Meşgul günleri başka bir arka plan rengiyle renklendir</guilabel
-></term>
-<listitem
-><para
->En azından bir tam gün etkinliğinin yoğun olarak işaretlendiği günlerde Ajanda görünümünün arka planının farklı bir renkle doldurulmasını istiyorsanız bu kutuyu işaretleyin.</para>
-<para
->Lütfen istediğiniz Ajanda görünümü arka plan meşgul rengini seçmek için Renkler yapılandırma alanına bakın.</para
-></listitem>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3388,35 +3388,41 @@
   <para
 >İlk iki onay kutusu; yalnızca başlangıç zamanını veya hem başlangıç hem de bitiş zamanını göstermeye olanak tanır.</para>
   <para
+>En azından bir tam gün etkinliğinin meşgûl olarak işaretlendiği günlerde Ay görünümünün arka planının farklı bir renkle doldurulmasını istiyorsanız <guilabel
+>meşgûl günleri farklı arka plan rengi ile renklendir</guilabel
+> seçeneğini işaretleyin.</para>
+  <para
 >İsteğe bağlı olarak simgeleri, yapılacak işleri, günlükleri veya tatilleri görüntülemek için ilk dört onay kutusunu kullanın.</para>
 </listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term
+  <term
 ><guilabel
->Meşgul günleri başka bir arka plan rengiyle renklendir</guilabel
+>Meşgûl günleri başka bir arka plan rengiyle renklendir</guilabel
 ></term>
-<listitem
+  <listitem
 ><para
 >En azından bir tam gün etkinliğinin yoğun olarak işaretlendiği günlerde Ay görünümünün arka planının farklı bir renkle doldurulmasını istiyorsanız bu kutuyu işaretleyin.</para>
-<para
->Lütfen istediğiniz Ajanda/Ay görünümü arka plan meşgul rengini seçmek için Renkler yapılandırma alanına bakın.</para
+    <para
+>Lütfen istediğiniz Ajanda/Ay görünümü arka plan meşgûl rengini seçmek için Renkler yapılandırma alanına bakın.</para
 ></listitem>
 </varlistentry>
 
+<!--FIXME Icons to use dropdown box missing-->
+
+
 <varlistentry>
-<term
+  <term
 ><guilabel
->Renk Kullanımı</guilabel
+>Ay görünümü renkleri</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Ay görünümü için olan renkleri <link linkend="config-main-views-agenda"
 >Ajanda Görünümü</link
-> içinde olduğu gibi yapılandırın.</para
-></listitem>
+> içinde olduğu gibi yapılandırın.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>
@@ -3503,13 +3509,13 @@
 <varlistentry>
 <term
 ><guilabel
->Meşgul günler arka plan rengi</guilabel
+>Meşgûl günler arka plan rengi</guilabel
 ></term>
 <listitem
 ><para
->Bu düğme, Ajanda veya Ay görünümü arka plan meşgul rengini seçmenize olanak tanıyan <guilabel
+>Bu düğme, Ajanda veya Ay görünümü arka plan meşgûl rengini seçmenize olanak tanıyan <guilabel
 >Renk Seç</guilabel
-> iletişim kutusunu açar. Bu renk, yalnızca bu görünümlerden herhangi birinde meşgul günleri farklı bir renkle çizme seçeneği ayarlandığında kullanılır.</para
+> iletişim kutusunu açar. Bu renk, yalnızca bu görünümlerden herhangi birinde meşgûl günleri farklı bir renkle çizme seçeneği ayarlandığında kullanılır.</para
 ></listitem>
 </varlistentry>
 
@@ -3577,6 +3583,19 @@
 > iletişim kutusunu açar ve Ay görünümünde bugünün tarihinin arka plan rengini seçmenize olanak tanır.</para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+   <term
+><guilabel
+>Navigator grid highlight color</guilabel
+></term>
+   <listitem
+><para
+>This button opens the <guilabel
+>Select Color</guilabel
+> dialog, allowing you to select the color for highlighting the currently selected date range in the navigator.</para
+></listitem>
+ </varlistentry>
 
 <varlistentry>
 <term
@@ -3717,30 +3736,30 @@
 
 <sect2 id="config-main-free-busy">
 <title
->Uygun/Meşgul</title>
+>Uygun/Meşgûl</title>
 
 <para
->Uygun/Meşgul bilgisi, bir müsaitlik programını temsil eder. Birinin daha önceden taahhütleri olduğu aralıkları sunarak, diğerleri bu dönemler için randevu ayarlamaktan kaçınabilir. Yalnızca zamanların yayınlandığını, etkinliklerin, nedenlerin veya katılımcıların yayınlanmadığını unutmayın.</para>
+>Uygun/Meşgûl bilgisi, bir müsaitlik programını temsil eder. Birinin daha önceden taahhütleri olduğu aralıkları sunarak, diğerleri bu dönemler için randevu ayarlamaktan kaçınabilir. Yalnızca zamanların yayınlandığını, etkinliklerin, nedenlerin veya katılımcıların yayınlanmadığını unutmayın.</para>
 
 <para
->&korganizer;, uygun/meşgul bilgilerinin elle veya kendiliğinden yayınlanmasını ve alınmasını destekler.</para>
+>&korganizer;, uygun/meşgûl bilgilerinin elle veya kendiliğinden yayınlanmasını ve alınmasını destekler.</para>
 
 <sect3 id="config-main-free-busy-publish">
 <title
 >Yayınla</title>
 <para
->Uygun/Meşgul bilgilerinizi yayınlayarak, başkalarının sizi bir etkinliğe davet ederken yoğun zaman programınızı hesaba katmalarını sağlarsınız.</para>
+>Uygun/Meşgûl bilgilerinizi yayınlayarak, başkalarının sizi bir etkinliğe davet ederken yoğun zaman programınızı hesaba katmalarını sağlarsınız.</para>
 
 <variablelist>
 
 <varlistentry>
 <term
 ><guilabel
->Uygun/Meşgul bilgisini kendiliğinden yayınla</guilabel
+>Uygun/Meşgûl bilgisini kendiliğinden yayınla</guilabel
 ></term>
 <listitem
 ><para
->Uygun/Meşgul bilgilerinizin kendiliğinden yüklenmesini istiyorsanız bu seçeneği etkinleştirin. Bu seçeneği atlayıp Uygun/Meşgul bilgilerinizi &korganizer;’ün <guilabel
+>Uygun/Meşgûl bilgilerinizin kendiliğinden yüklenmesini istiyorsanız bu seçeneği etkinleştirin. Bu seçeneği atlayıp Uygun/Meşgûl bilgilerinizi &korganizer;’ün <guilabel
 >Program</guilabel
 > menüsü aracılığıyla postayla göndermeyi veya yüklemeyi seçebilirsiniz.</para>
 
@@ -3749,7 +3768,7 @@
 >&kde; Kolab istemcisi</guilabel
 > olarak çalışacak şekilde ayarlanmışsa bu gerekli değildir. <guilabel
 >Kolab2</guilabel
-> sunucusu, Uygun/Meşgul bilgilerinizin yayınlanmasını ve diğer kullanıcıların bu bilgilere erişimini yönetebilir.</para>
+> sunucusu, Uygun/Meşgûl bilgilerinizin yayınlanmasını ve diğer kullanıcıların bu bilgilere erişimini yönetebilir.</para>
 </listitem>
 </varlistentry>
 
@@ -3767,7 +3786,7 @@
 <varlistentry>
 <term
 ><guilabel
->(Öntanımlı 60) günlük uygun/meşgul bilgisini yayınla</guilabel
+>(Öntanımlı 60) günlük uygun/meşgûl bilgisini yayınla</guilabel
 ></term>
 <listitem
 ><para
@@ -3782,7 +3801,7 @@
 ></term>
 <listitem
 ><para
->Uygun/Meşgul bilgilerinizin yayınlanacağı sunucunun &URL; adresini girin. Bu bilgiyi sunucu yöneticisinden isteyin.</para>
+>Uygun/Meşgûl bilgilerinizin yayınlanacağı sunucunun &URL; adresini girin. Bu bilgiyi sunucu yöneticisinden isteyin.</para>
 <para
 >Kolab2 sunucusu örneği: <userinput
 >webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
@@ -3821,7 +3840,7 @@
 ></term>
 <listitem
 ><para
->&korganizer;’ün parolanızı anımsamasını ve her Uygun/Meşgul bilginizi yüklerken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
+>&korganizer;’ün parolanızı anımsamasını ve her Uygun/Meşgûl bilginizi yüklerken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
 <warning
 ><para
 >Güvenlik nedeniyle parolanızı yapılandırma dosyasında saklamanız önerilmez.</para
@@ -3838,18 +3857,18 @@
 >Al</title>
 
 <para
->Başkalarının uygun/meşgul bilgilerini alarak, onları bir etkinliğe davet ederken yoğun zamanlarını da hesaba katabilirsiniz.</para>
+>Başkalarının uygun/meşgûl bilgilerini alarak, onları bir etkinliğe davet ederken yoğun zamanlarını da hesaba katabilirsiniz.</para>
 
 <variablelist>
 
 <varlistentry>
 <term
 ><guilabel
->Diğer kişilerin uygun/meşgul bilgisni kendiliğinden al</guilabel
+>Diğer kişilerin uygun/meşgûl bilgisni kendiliğinden al</guilabel
 ></term>
 <listitem
 ><para
->Diğer kullanıcıların uygun/meşgul zamanlarını alma sürecini otomatikleştirin. Bu seçeneği etkinleştirmek için aşağıdaki sunucu bilgileri bölümünü doldurun.</para
+>Diğer kullanıcıların uygun/meşgûl zamanlarını alma sürecini otomatikleştirin. Bu seçeneği etkinleştirmek için aşağıdaki sunucu bilgileri bölümünü doldurun.</para
 ></listitem>
 </varlistentry>
 
@@ -3862,7 +3881,7 @@
 ><para
 >Bu ayar, sunucudan alınacak dosyanın adını değiştirmenize olanak tanır. Bu seçeneği işaretlerseniz <userinput
 >user@domain.ifb</userinput
-> adlı bir uygun/meşgul dosyası indirilir, aksi takdirde <userinput
+> adlı bir uygun/meşgûl dosyası indirilir, aksi takdirde <userinput
 >user.ifb</userinput
 > dosyası indirilir. Bu seçeneği nasıl yapılandıracağınızdan emin değilseniz sunucu yöneticisine danışın.</para>
 <para
@@ -3881,7 +3900,7 @@
 ></term>
 <listitem
 ><para
->Uygun/Meşgul bilgilerinizin alınacağı sunucunun &URL; adresini girin. Bu bilgiyi sunucu yöneticisinden isteyin.</para>
+>Uygun/Meşgûl bilgilerinizin alınacağı sunucunun &URL; adresini girin. Bu bilgiyi sunucu yöneticisinden isteyin.</para>
 <para
 ><guilabel
 >Kolab2 sunucusu örneği: </guilabel
@@ -3920,7 +3939,7 @@
 ></term>
 <listitem
 ><para
->&korganizer;’ün parolanızı anımsamasını ve her uygun/meşgul dosyasını alırken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
+>&korganizer;’ün parolanızı anımsamasını ve her uygun/meşgûl dosyasını alırken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
 <warning
 ><para
 >Güvenlik nedeniyle parolanızı yapılandırma dosyasında saklamanız önerilmez.</para
@@ -5289,12 +5308,12 @@ format="PNG"/></imageobject
 ><guimenu
 >Program</guimenu
 > <guimenuitem
->Uygun/Meşgul Bilgisini E-posta ile Gönder…</guimenuitem
+>Uygun/Meşgûl Bilgisini E-posta ile Gönder…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
->Uygun/Meşgul bilgilerinizi bir veya daha fazla e-posta adresine e-postayla gönderin.</para>
+>Uygun/Meşgûl bilgilerinizi bir veya daha fazla e-posta adresine e-postayla gönderin.</para>
 <para
 >Bu eylem hakkında daha fazla bilgi için <xref linkend="free-busy"/> bakın.</para
 ></listitem>
@@ -5306,12 +5325,12 @@ format="PNG"/></imageobject
 ><guimenu
 >Program</guimenu
 > <guimenuitem
->Uygun/Meşgul Bilgisini Yükle</guimenuitem
+>Uygun/Meşgûl Bilgisini Yükle</guimenuitem
 > </menuchoice
 ></term>
 <listitem
 ><para
->Uygun/Meşgul bilgilerinizi grup yazılımı sunucusuna yükleyin. Diğer kullanıcılar bu bilgilere erişebilecektir.</para>
+>Uygun/Meşgûl bilgilerinizi grup yazılımı sunucusuna yükleyin. Diğer kullanıcılar bu bilgilere erişebilecektir.</para>
 <para
 >Bu eylem hakkında daha fazla bilgi için <xref linkend="free-busy"/> bakın.</para
 ></listitem>
@@ -5474,12 +5493,12 @@ format="PNG"/></imageobject
 <qandaentry>
 <question>
 <para
->&korganizer; ile Uygun/Meşgul sistemini kullanabilir miyim?</para>
+>&korganizer; ile Uygun/Meşgûl sistemini kullanabilir miyim?</para>
 </question>
 <answer
 ><para
 >Evet, <link linkend="config-main-free-busy"
->Uygun/Meşgul</link
+>Uygun/Meşgûl</link
 > içindeki yönergeleri izleyin.</para>
 </answer>
 </qandaentry>
@@ -5642,15 +5661,15 @@ Preferences</link
 
 <glossentry id="gloss-freebusy">
 <glossterm
->Uygun/Meşgul</glossterm>
+>Uygun/Meşgûl</glossterm>
 <glossdef>
 <para
->Uygun/Meşgul bilgisi, yoğun zaman aralıklarından oluşan bir kümedir. Kişinin daha önce taahhütleri olduğu zaman aralıklarını sunarak, diğer kişilerin bu zaman dilimleri için randevu ayarlaması gerekmez. Etkinlik başlıkları, açıklamaları veya katılımcıların değil, yalnızca saatlerin yayınlandığını unutmayın. Başka bir deyişle, uygun/meşgul bilgisi, müsaitlik programıdır.</para>
+>Uygun/meşgûl bilgisi, yoğun zaman aralıklarından oluşan bir kümedir. Kişinin daha önce taahhütleri olduğu zaman aralıklarını sunarak, diğer kişilerin bu zaman dilimleri için randevu ayarlaması gerekmez. Etkinlik başlıkları, açıklamaları veya katılımcıların değil, yalnızca saatlerin yayınlandığını unutmayın. Başka bir deyişle, uygun/meşgûl bilgisi, müsaitlik programıdır.</para>
 <para
->Etkinliğinize katılımcı eklerken, davetleri göndermeden önce katılımcıların o anda meşgul mü yoksa uygun mu olduklarını bilmeniz gerekir. Katılımcılar uygun/meşgul bilgilerini açık yaparlarsa &korganizer; bu bilgiyi alıp onu <guilabel
+>Etkinliğinize katılımcı eklerken, davetleri göndermeden önce katılımcıların o anda meşgûl mü yoksa uygun mu olduklarını bilmeniz gerekir. Katılımcılar uygun/meşgûl bilgilerini açık yaparlarsa &korganizer; bu bilgiyi alıp onu <guilabel
 >Etkinliği Düzenle</guilabel
 > iletişim kutusunun <guilabel
->Uygun/Meşgul</guilabel
+>Uygun/meşgûl</guilabel
 > sekmesinde görüntüleyebilir.</para>
 </glossdef>
 </glossentry>
