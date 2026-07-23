@@ -7,7 +7,10 @@
   SPDX-License-Identifier: GPL-2.0-or-later WITH LicenseRef-Qt-Commercial-exception-1.0
 */
 
+// clang-format off
+#include "config-korganizer.h"
 #include "koprefsdialogmain.h"
+// clang-format on
 
 #include "koprefs.h"
 #include <KPluginFactory>
@@ -107,15 +110,12 @@ KOPrefsDialogMain::KOPrefsDialogMain(QObject *parent, const KPluginMetaData &dat
 #if HAVE_ACTIVITY_SUPPORT
     auto activitiesFrame = new QFrame(widget());
     tabWidget->addTab(activitiesFrame, QIcon::fromTheme(QStringLiteral("activities")), i18nc("@title:tab activities settings", "Activities"));
+    auto activitiesLayout = new QVBoxLayout(activitiesFrame);
 
-    auto activitiesFrameLayout = new QVBoxLayout;
-    activitiesFrame->setLayout(activitiesFrameLayout);
+    Korganizer::KPrefsWidBool *activitiesItem = addWidBool(KOPrefs::instance()->enabledActivitiesItem(), activitiesFrame);
+    activitiesLayout->addWidget(activitiesItem->checkBox());
 
-    mActivities = new QCheckBox(i18nc("@option:check", "Enabled"), widget());
-    activitiesFrameLayout->addWidget(mActivities);
-    activitiesFrameLayout->addStretch(1);
-    mActivities->setChecked(KOPrefs::instance()->enabledActivities());
-    connect(mActivities, &QCheckBox::clicked, this, &KOPrefsDialogMain::slotWidChanged);
+    activitiesLayout->addStretch(1);
 #endif
     load();
 }
@@ -125,7 +125,7 @@ void KOPrefsDialogMain::usrWriteConfig()
     Korganizer::KPrefsModule::usrWriteConfig();
     IncidenceEditorNG::IncidenceEditorSettings::self()->save();
 #if HAVE_ACTIVITY_SUPPORT
-    KOPrefs::instance()->setEnabledActivities(mActivities->isChecked());
+    KOPrefs::instance()->setEnabledActivities(KOPrefs::instance()->enabledActivities());
 #endif
     CalendarSupport::KCalPrefs::instance()->save();
     setNeedsSave(false);
