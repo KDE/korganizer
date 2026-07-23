@@ -39,6 +39,14 @@ KOEventViewerDialog::KOEventViewerDialog(Akonadi::ETMCalendar *calendar, QWidget
     setModal(false);
     KGuiItem::assign(mUser1Button, KGuiItem(i18nc("@action:button", "Edit…"), QIcon::fromTheme(QStringLiteral("document-edit"))));
     KGuiItem::assign(user2Button, KGuiItem(i18nc("@action:button", "Show in Context")));
+
+    // toolip and whatsthis must be set after that KGuiItem::assign calls above
+    mUser1Button->setToolTip(i18nc("@info:tooltip", "Start the editor for this incidence"));
+    mUser1Button->setWhatsThis(i18nc("@info:whatsthis", "Press the Edit button to pop-up the incidence editor dialog"));
+    user2Button->setToolTip(i18nc("@info:tooltip", "Scroll to the appropriate calendar view so the incidence can be seen in context"));
+    user2Button->setWhatsThis(i18nc("@info:whatsthis",
+                                    "Press this button to show an incidence in context. This means showing the to-do, agenda or journal view (as appropriate) "
+                                    "and scrolling it to show the incidence."));
     mEventViewer = new CalendarSupport::IncidenceViewer(calendar->entityTreeModel(), this);
     mainLayout->addWidget(mEventViewer);
     mainLayout->addWidget(buttonBox);
