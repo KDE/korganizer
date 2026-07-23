@@ -2742,7 +2742,7 @@ Configure &korganizer;</guimenuitem></menuchoice> and click the
 <title>Available Plugins</title>
 
 <sect2 id="date-numbers-plugin">
-<title>Date Numbers Plugin for Calendars</title>
+<title>Date Numbers</title>
 <para>
 This plugin adds the number of the day in the year to the Agenda view. For
 instance, February 1 is day number 32.
@@ -2750,7 +2750,7 @@ instance, February 1 is day number 32.
 </sect2>
 
 <sect2 id="wikipedia-thisday-plugin">
-<title>Wikipedia 'This Day in History' Plugin</title>
+<title>Wikipedia 'This Day in History'</title>
 <para>
 This plugin provides links to Wikipedia's <quote>This Day in History</quote> pages.
 </para>

@@ -122,7 +122,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
 
     const QStringList selectedPlugins = viewPrefs->selectedPlugins();
 
-    mDecorations = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Calendar Decorations")));
+    mDecorations = new QTreeWidgetItem(mTreeWidget, QStringList(i18nc("@title:group", "Agenda View Decorations")));
 
     for (const KPluginMetaData &plugin : std::as_const(plugins)) {
         PluginItem *item = new PluginItem(mDecorations, plugin);
@@ -150,6 +150,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
     }
 
     mDecorations->setExpanded(true);
+    mTreeWidget->sortItems(1, Qt::DescendingOrder);
 
     const auto monthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop();
     mDecorationsAtMonthViewTop = QSet<QString>(monthViewTop.begin(), monthViewTop.end());

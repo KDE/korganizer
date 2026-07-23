@@ -44,12 +44,14 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     auto groupLayout = new QVBoxLayout(aspectRatioBox);
 
     auto btn = new QRadioButton(i18nc("@option:radio", "Ignore aspect ratio"), aspectRatioBox);
+    btn->setToolTip(i18nc("@info:tooltip", "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"));
     btn->setWhatsThis(i18nc("@info:whatsthis",
                             "The thumbnail will be scaled freely. "
                             "The aspect ratio will not be preserved."));
     mAspectRatioGroup->addButton(btn, int(Qt::IgnoreAspectRatio));
     groupLayout->addWidget(btn);
     btn = new QRadioButton(i18nc("@option:radio", "Keep aspect ratio"), aspectRatioBox);
+    btn->setToolTip(i18nc("@info:tooltip", "Scale the thumbnail as large as possible with the same aspect ratio"));
     btn->setWhatsThis(i18nc("@info:whatsthis",
                             "The thumbnail will be scaled to a rectangle "
                             "as large as possible inside a given rectangle, "
@@ -57,6 +59,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     mAspectRatioGroup->addButton(btn, int(Qt::KeepAspectRatio));
     groupLayout->addWidget(btn);
     btn = new QRadioButton(i18nc("@option:radio", "Keep aspect ratio by expanding"), aspectRatioBox);
+    btn->setToolTip(i18nc("@info:tooltip", "Scale the thumbnail to fill the space, possibly cropping the image"));
     btn->setWhatsThis(i18nc("@info:whatsthis",
                             "The thumbnail will be scaled to a rectangle "
                             "as small as possible outside a given rectangle, "

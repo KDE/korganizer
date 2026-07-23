@@ -46,12 +46,21 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     auto groupLayout = new QVBoxLayout(dayNumBox);
 
     auto btn = new QRadioButton(i18nc("@option:radio", "Show day number"), dayNumBox);
+    btn->setToolTip(i18nc("@info:tooltip", "Show the year's day number"));
+    btn->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show the day number of the current year."));
     mDayNumGroup->addButton(btn, int(Datenums::DayOfYear));
     groupLayout->addWidget(btn);
     btn = new QRadioButton(i18nc("@option:radio", "Show days to end of year"), dayNumBox);
+    btn->setToolTip(i18nc("@info:tooltip", "Show the number of days remaining in the year"));
+    btn->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show the number of days remaining in the current year."));
     mDayNumGroup->addButton(btn, int(Datenums::DaysRemaining));
     groupLayout->addWidget(btn);
     btn = new QRadioButton(i18nc("@option:radio", "Show both"), dayNumBox);
+    btn->setToolTip(i18nc("@info:tooltip", "Show both the year's day number and the number of days remaining in the year"));
+    btn->setWhatsThis(i18nc("@info:whatsthis",
+                            "Select this option to show both the year's day number and the number of days remaining in the current year. The format is "
+                            "dayOfYear / daysTillEndOfYear"));
+
     mDayNumGroup->addButton(btn, int(Datenums::DayOfYear | Datenums::DaysRemaining));
     groupLayout->addWidget(btn);
 
