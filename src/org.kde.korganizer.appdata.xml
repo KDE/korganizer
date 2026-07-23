@@ -531,6 +531,18 @@
           <li xml:lang="tr">Kontak özet: Bekleyen yapılacakların tarih dizileri ve ızgara hizalaması iyileştirildi.</li>
           <li xml:lang="uk">Резюме Kontact: удосконалено вирівнювання у таблиці та рядки дат для завдань у черзі</li>
           <li>Kontact summary: Consistent date string formats</li>
+          <li xml:lang="ca">Resum del Kontact: formats coherents de les cadenes de dates</li>
+          <li xml:lang="ca-valencia">Resum de Kontact: formats coherents de les cadenes de dates</li>
+          <li xml:lang="cs">Souhrn z Kontaktu: Jednotné formáty řetězců s daty</li>
+          <li xml:lang="es">Resumen de Kontact: Formatos consistentes de cadenas de fecha.</li>
+          <li xml:lang="he">תקציר Kontact: תבניות עקביות של מחרוזות תאריך</li>
+          <li xml:lang="ka">Kontact-ის შეჯამება: მუდმივი თარიღის სტრიქონის ფორმატები</li>
+          <li xml:lang="nl">Kontactoverzicht: consistente tekenreeksformaten voor datums</li>
+          <li xml:lang="pt-BR">Resumo do Kontact: Formatos consistentes de strings de data</li>
+          <li xml:lang="sl">Povzetek Kontacta: Dosledne oblike zapisa datumskih nizov</li>
+          <li xml:lang="sv">Kontact-sammanfattning: Konsekventa strängformat för datum</li>
+          <li xml:lang="tr">Kontak özet: Tutarlı tarih dizisi biçimleri</li>
+          <li xml:lang="uk">Резюме Kontact: сумісні формати рядків дат</li>
         </ul>
       </description>
     </release>
