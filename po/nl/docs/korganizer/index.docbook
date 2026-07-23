@@ -3257,6 +3257,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Kleur bezette dagen met een andere achtergrondkleur</guilabel
+></term>
+  <listitem
+><para
+>Kies dit als u wilt dat dagen met minstens een afspraak voor de gehele dag, in uw agenda's met een andere achtergrondkleur als bezet worden gemarkeerd.</para>
+    <para
+>Kies in de instellingen voor de kleuren naar de "Achtergrondkleur bezette dagen in agenda".</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Taken tonen</guilabel
@@ -3301,49 +3314,36 @@
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term
+  <term
 ><guilabel
->Kleurgebruik</guilabel
+>Kleuren van agenda-items</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Selecteer de optie <guilabel
 >Tag binnen, agenda buiten</guilabel
 >, als u de agenda-ingangen met hun tagkleur wilt weergeven, omgeven door een rand in de kleur van de agenda waarin ze staan.</para>
 
-<para
+    <para
 >Selecteer de optie <guilabel
 >Agenda binnen, tag  buiten</guilabel
 >, als u de agenda-ingangen met hun agendakleur wilt weergeven, omgeven door een rand in de kleur van hun categorie.</para>
 
-<para
+    <para
 >Selecteer de optie <guilabel
 >Alleen tag</guilabel
 >, als u de agenda-ingangen, en de rand, in de kleur wilt weergeven behorend bij hun tag.</para>
 
-<para
+    <para
 >Selecteer de optie <guilabel
 >Alleen agenda</guilabel
 >, als u de agenda-ingangen, en de rand, in de kleur wilt weergeven van hun agenda.</para>
 
-<para
+    <para
 >Gebruik de instellingenpagina <link linkend="config-main-colors"
 >Kleuren en lettertypen</link
 > voor het instellen van deze kleuren.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Kleur bezette dagen met een andere achtergrondkleur</guilabel
-></term>
-<listitem
-><para
->Kies dit als u wilt dat dagen met minstens een afspraak voor de gehele dag, in uw agenda's met een andere achtergrondkleur als bezet worden gemarkeerd.</para>
-<para
->Kies in de instellingen voor de kleuren naar de "Achtergrondkleur bezette dagen in agenda".</para
-></listitem>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3382,35 +3382,41 @@
   <para
 >Met de eerste twee keuzevakjes kunt u alleen de begintijd weergeven, of zowel de begin- als de eindtijd.</para>
   <para
+>Stel de optie <guilabel
+>Drukke dagen met een andere achtergrondkleur markeren</guilabel
+> in als u wilt dat dagen met minstens één afspraak voor de gehele dag, in een maandweergave met een andere achtergrondkleur als bezet worden gemarkeerd.</para>
+  <para
 >Gebruik de volgende vier keuzevakjes om optioneel pictogrammen, takenlijsten, dagboekvermeldingen of feestdagen in de maandweergave weer te geven.</para>
 </listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term
+  <term
 ><guilabel
 >Kleur bezette dagen met een andere achtergrondkleur</guilabel
 ></term>
-<listitem
+  <listitem
 ><para
 >Kies dit als u wilt dat dagen met minstens één afspraak voor de gehele dag, in een maandweergave met een andere achtergrondkleur als bezet worden gemarkeerd.</para>
-<para
+    <para
 >Kies in de instellingen voor de kleuren een kleur voor de achtergrond  voor bezette dagen in de maandweergave van de agenda.</para
 ></listitem>
 </varlistentry>
 
+<!--FIXME Icons to use dropdown box missing-->
+
+
 <varlistentry>
-<term
+  <term
 ><guilabel
->Kleurgebruik</guilabel
+>Kleuren in maandweergave</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Stel de kleuren voor de maandweergave in in de <link linkend="config-main-views-agenda"
 >Agendaweergave</link
->.</para
-></listitem>
+>.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>
@@ -3571,6 +3577,19 @@
 >, waarin u de achtergrondkleur kunt kiezen voor de datum van vandaag in de maandweergave.</para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+   <term
+><guilabel
+>Accentueringskleur van het navigatieraster</guilabel
+></term>
+   <listitem
+><para
+>Met deze knop opent u het dialoogvenster <guilabel
+>Kleur selecteren</guilabel
+>, waarmee u de kleur kiest voor het accentueren van het momenteel geselecteerde datumbereik in de navigator.</para
+></listitem>
+ </varlistentry>
 
 <varlistentry>
 <term

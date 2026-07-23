@@ -3587,13 +3587,13 @@
 <varlistentry>
    <term
 ><guilabel
->Navigator grid highlight color</guilabel
+>Gezgin ızgarası vurgu rengi</guilabel
 ></term>
    <listitem
 ><para
->This button opens the <guilabel
->Select Color</guilabel
-> dialog, allowing you to select the color for highlighting the currently selected date range in the navigator.</para
+>Bu düğme, <guilabel
+>Renk Seç</guilabel
+> iletişim kutusunu açar ve gezginde şu anda seçili olan tarih erimi için olan vurgulama rengini değiştirmenize olanak tanır.</para
 ></listitem>
  </varlistentry>
 

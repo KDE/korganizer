@@ -3537,6 +3537,19 @@
 </varlistentry>
 
 <varlistentry>
+   <term
+><guilabel
+>Color de ressaltat de la quadrícula del navegador</guilabel
+></term>
+   <listitem
+><para
+>Aquest botó obre el diàleg <guilabel
+>Selecció de color</guilabel
+>, el qual us permetrà seleccionar el color per ressaltar l'interval de dades seleccionat actualment al navegador.</para
+></listitem>
+ </varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Etiquetes</guilabel
