@@ -485,6 +485,17 @@
         <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Navigator: the highlight color for the navigator grid can now be changed.  To configure the color, set the "Navigator grid highlight color" in the Colors and Fonts settings</li>
+          <li xml:lang="ca">Navegador: el color de ressaltat de la quadrícula del navegador ara es pot canviar. Per a configurar el color, establiu el «Color de ressaltat de la quadrícula del navegador» a la configuració Colors i lletres</li>
+          <li xml:lang="cs">Navigátor: Nyní lze změnit barvu zvýraznění mřížky navigátoru. Chcete-li tuto barvu nastavit, upravte parametr "Barva zvýraznění mřížky navigátoru" v nastavení "Barvy a písma".</li>
+          <li xml:lang="es">Vista mensual: Ahora se puede cambiar el color para resaltar la cuadrícula del navegador. Para configurar el color, defina el «Color para resaltar la cuadrícula del navegador» en los ajustes de «Colores y tipos de letra».</li>
+          <li xml:lang="ia">Navigator: le color de evidentiar per le grillia delnavigator pote nunc esser cambiate. Per configurar le color, assigna le "Colore de evidentia de grillia de navigator" in le preferentias de Colores e Fonts</li>
+          <li xml:lang="ka">ნავიგატორი: შესაძლებელია ნავიგატორის ბადის გამოკვეთის ფერის შეცვლა. ფერის მოსარგებად დააყენეთ "ნავიგატორის ბადის გამოკვეთის ფერი" ფერებისა და ფონტის მორგების დიალოგში</li>
+          <li xml:lang="nl">Navigator: de accentueringskleur voor het navigatorraster kan nu worden gewijzigd. Om de kleur te configureren, stelt u de "Accentueringskleur van het navigatorraster" in bij de instellingen voor kleuren en lettertypen.</li>
+          <li xml:lang="pt-BR">Navegador: agora a cor de realce da grade de navegação pode ser mudada. Para configurar a cor, defina "Cor de realce da grade de navegação" nas configurações de Cores e Fontes.</li>
+          <li xml:lang="sl">Navigator: barvo označevanja navigacijske mreže je zdaj mogoče spremeniti. Za konfiguracijo barve v nastavitvah Barve in pisave nastavite "Barva označevanja navigacijske mreže".</li>
+          <li xml:lang="sv">Navigering: Markeringsfärgen för navigeringsrutnätet kan nu ändras. För att ställa in färgen, använd "Färg för markering av navigeringsrutnät" i inställningarna för Färger och teckensnitt.</li>
+          <li xml:lang="tr">Tarih gezgini: Gezgin için olan vurgu rengi artık değiştirilebiliyor. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Gezgin ızgarası vurgu rengi”ni ayarlayın.</li>
+          <li xml:lang="uk">Панель навігації: можна змінювати колір тла підсвічування. Щоб налаштувати колір, встановіть значення для пункту «Колір підсвічування у таблиці навігації» у параметра кольорів і шрифтів програми.</li>
           <li>Kontact summary: ask before deleting incidences</li>
           <li xml:lang="ca">Resum del Kontact: pregunta abans de suprimir les incidències</li>
           <li xml:lang="ca-valencia">Resum de Kontact: pregunta abans de suprimir les incidències</li>
@@ -536,6 +547,7 @@
           <li xml:lang="cs">Souhrn z Kontaktu: Jednotné formáty řetězců s daty</li>
           <li xml:lang="es">Resumen de Kontact: Formatos consistentes de cadenas de fecha.</li>
           <li xml:lang="he">תקציר Kontact: תבניות עקביות של מחרוזות תאריך</li>
+          <li xml:lang="ia">Summario de Kontact: formatosde catena data consistente</li>
           <li xml:lang="ka">Kontact-ის შეჯამება: მუდმივი თარიღის სტრიქონის ფორმატები</li>
           <li xml:lang="nl">Kontactoverzicht: consistente tekenreeksformaten voor datums</li>
           <li xml:lang="pt-BR">Resumo do Kontact: Formatos consistentes de strings de data</li>
@@ -1034,7 +1046,7 @@
           <li xml:lang="sk">Navigačný panel: vylepšený pridaním posúvania po týždňoch a zobrazovaním/skrývaním bočného panela podľa jednotlivých pohľadov</li>
           <li xml:lang="sl">Navigacijska vrstica: izboljšana z dodajanjem tedenskega drsenja in prikazovanjem/skrivanjem stranske vrstice za vsak pogled posebej</li>
           <li xml:lang="sv">Navigeringsrad: förbättrat genom tillägg av veckovis förflyttning och visa/dölj sidorad per vy</li>
-          <li xml:lang="tr">Gezinti çubuğu: Hafta kaydırma özelliği eklenerek ve yan çubuğun görünüm bazında gösterilmesi/gizlenmesi sağlanarak iyileştirildi.</li>
+          <li xml:lang="tr">Dolaşım çubuğu: Hafta kaydırma özelliği eklenerek ve yan çubuğun görünüm bazında gösterilmesi/gizlenmesi sağlanarak iyileştirildi.</li>
           <li xml:lang="uk">Панель навігації: удосконалення шляхом додавання панелі гортання тижнів та показу або приховування бічної панелі на основі вибраного режиму перегляду</li>
           <li>Navigator bar: added a button to scroll the view to the current date</li>
           <li xml:lang="ar">شريط التنقل: إضافة زر للتمرير إلى التاريخ الحالي</li>
