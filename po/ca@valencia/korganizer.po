@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-23 00:44+0000\n"
-"PO-Revision-Date: 2026-07-21 09:30+0200\n"
+"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"PO-Revision-Date: 2026-07-22 13:04+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -2500,6 +2500,37 @@ msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Mostra en el context"
 
+#: dialog/koeventviewerdialog.cpp:44
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Start the editor for this incidence"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:45
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to remove the currently active filter."
+msgctxt "@info:whatsthis"
+msgid "Press the Edit button to pop-up the incidence editor dialog"
+msgstr "Premeu este botó per a eliminar el filtre actiu."
+
+#: dialog/koeventviewerdialog.cpp:46
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scroll to the appropriate calendar view so the incidence can be seen in "
+"context"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:48
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Press this button to show an incidence in context. This means showing the to-"
+"do, agenda or journal view (as appropriate) and scrolling it to show the "
+"incidence."
+msgstr ""
+
 #: dialog/searchdialog.cpp:40
 #, kde-format
 msgctxt "@title:window"
@@ -4025,59 +4056,53 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Transport de correu:"
 
-#: prefs/koprefsdialogmain.cpp:44
+#: prefs/koprefsdialogmain.cpp:47
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Personal"
 
-#: prefs/koprefsdialogmain.cpp:50
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Configureu el correu electrònic"
 
-#: prefs/koprefsdialogmain.cpp:64
+#: prefs/koprefsdialogmain.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr "Classificació d'accés predeterminada"
 
-#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Recordatoris"
 
-#: prefs/koprefsdialogmain.cpp:84
+#: prefs/koprefsdialogmain.cpp:87
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Guarda"
 
-#: prefs/koprefsdialogmain.cpp:96
+#: prefs/koprefsdialogmain.cpp:99
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Calendaris"
 
-#: prefs/koprefsdialogmain.cpp:100
+#: prefs/koprefsdialogmain.cpp:103
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Comptes del calendari"
 
-#: prefs/koprefsdialogmain.cpp:109
+#: prefs/koprefsdialogmain.cpp:112
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
 msgstr "Activitats"
-
-#: prefs/koprefsdialogmain.cpp:114
-#, kde-format
-msgctxt "@option:check"
-msgid "Enabled"
-msgstr "Activat"
 
 #: prefs/koprefsdialogplugins.cpp:64
 #, kde-format
@@ -5786,30 +5811,29 @@ msgstr "En la vista mensual, tria el color de fons de la data d'hui."
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
 #, fuzzy, kde-format
-#| msgid "Highlight color"
+#| msgid "Navigator grid highlight color"
 msgid "Date Navigator grid highlight color"
-msgstr "Color de ressaltat"
+msgstr "Color de ressaltat de la quadrícula del navegador"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
 #, fuzzy, kde-format
-#| msgid "Select the to-do due today color here."
+#| msgid "Set the navigator grid highlight color here"
 msgid "Set the Date Navigator grid highlight color here"
-msgstr "Trieu ací el color de les tasques pendents que vencen hui."
+msgstr "Establiu ací el color de ressaltat de la quadrícula del navegador"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
 #, fuzzy, kde-format
 #| msgid ""
-#| "Select the highlight color here. The highlight color will be used for "
-#| "marking the currently selected area in your agenda and in the date "
-#| "navigator."
+#| "Select the color for highlighting the currently selected date range in "
+#| "the navigator."
 msgid ""
 "Select the color for highlighting the currently selected date range in the "
 "Date Navigator."
 msgstr ""
-"Trieu ací el color de ressaltat. Este color s'utilitzarà per a marcar l'àrea "
-"seleccionada en l'agenda i en el navegador de dates."
+"Trieu el color per ressaltar l'interval de dades seleccionat actualment al "
+"navegador."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:400
@@ -7154,87 +7178,6 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
-#~ msgctxt "the appointment is today"
-#~ msgid "Today"
-#~ msgstr "Hui"
-
-#~ msgctxt "the to-do is due today"
-#~ msgid "Today"
-#~ msgstr "Hui"
-
-#~ msgctxt "the to-do is due tomorrow"
-#~ msgid "Tomorrow"
-#~ msgstr "Demà"
-
-#~ msgctxt "1. weekday, 2. time"
-#~ msgid "%1 %2"
-#~ msgstr "%1 %2"
-
-#~ msgid "&Edit To-do…"
-#~ msgstr "&Edita la tasca pendent…"
-
-#~ msgid "&Delete To-do"
-#~ msgstr "Sup&rimix la tasca pendent"
-
-#~ msgctxt "Separator for status like this: overdue, completed"
-#~ msgid ","
-#~ msgstr ","
-
-#~ msgctxt "the special day is today"
-#~ msgid "Today"
-#~ msgstr "Hui"
-
-#~ msgctxt "the special day is tomorrow"
-#~ msgid "Tomorrow"
-#~ msgstr "Demà"
-
-#~ msgid ""
-#~ "Select this option to choose the calendar to be used to record the item "
-#~ "each time you create a new event, to-do or journal entry. This choice is "
-#~ "recommended if you intend to use the shared folders functionality of the "
-#~ "Kolab server or have to manage multiple accounts using Kontact as a KDE "
-#~ "Kolab client. "
-#~ msgstr ""
-#~ "Trieu esta opció per a triar el calendari que s'utilitzarà per a "
-#~ "registrar l'element cada vegada que creeu un nou esdeveniment, tasca "
-#~ "pendent o entrada de diari. Es recomana esta opció si teniu intenció "
-#~ "d'utilitzar la funcionalitat de carpetes compartides del servidor Kolab o "
-#~ "heu de gestionar múltiples comptes utilitzant Kontact com a client KDE de "
-#~ "Kolab. "
-
-#~ msgid ""
-#~ "When you have an all day event marked as busy, you can have a different "
-#~ "agenda or month view background color for that day. Select the color here."
-#~ msgstr ""
-#~ "Quan teniu un esdeveniment de tot el dia marcat com a ocupat, podeu "
-#~ "tindre un color de fons diferent de la vista d'agenda o mensual per a "
-#~ "este dia. Trieu el color ací."
-
-#~ msgid "Month view"
-#~ msgstr "Vista mensual"
-
-#~ msgid "Agenda view"
-#~ msgstr "Vista d'agenda"
-
-#~ msgid ""
-#~ "Select your timezone from the list of locations on this drop down box. If "
-#~ "your city is not listed, select one which shares the same timezone. "
-#~ "KOrganizer will automatically adjust for daylight savings."
-#~ msgstr ""
-#~ "Trieu el vostre fus horari de la llista d'ubicacions d'esta llista "
-#~ "desplegable. Si la vostra ciutat no hi és, trieu-ne una amb el mateix fus "
-#~ "horari. KOrganizer ajustarà automàticament el canvi d'hora."
-
-#~ msgid "Month view uses full window"
-#~ msgstr "La vista mensual utilitza tota la finestra"
-
-#~ msgid ""
-#~ "Check this box to use the full KOrganizer window when displaying the "
-#~ "month view. If this box is checked, you will gain some space for the "
-#~ "monthly view, but other widgets, such as the date navigator, the item "
-#~ "details and the calendars list, will not be displayed."
-#~ msgstr ""
-#~ "Marqueu esta casella per a utilitzar tota la finestra de KOrganizer en "
-#~ "mostrar la vista mensual. Si es marca esta casella, guanyareu una mica "
-#~ "d'espai en la vista mensual, però no es mostraran altres ginys, com ara "
-#~ "el navegador de dates, els detalls de l'element i la llista de calendaris."
+#~ msgctxt "@option:check"
+#~ msgid "Enabled"
+#~ msgstr "Activat"

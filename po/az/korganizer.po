@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-23 00:44+0000\n"
+"POT-Creation-Date: 2026-07-24 00:45+0000\n"
 "PO-Revision-Date: 2023-05-29 22:20+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -2706,6 +2706,37 @@ msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Məzmununda göstərmək"
 
+#: dialog/koeventviewerdialog.cpp:44
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Start the editor for this incidence"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:45
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to remove the currently active filter."
+msgctxt "@info:whatsthis"
+msgid "Press the Edit button to pop-up the incidence editor dialog"
+msgstr "Hazırkı aktiv süzgəci silmək üçün bu düyməyə vurun."
+
+#: dialog/koeventviewerdialog.cpp:46
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scroll to the appropriate calendar view so the incidence can be seen in "
+"context"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:48
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Press this button to show an incidence in context. This means showing the to-"
+"do, agenda or journal view (as appropriate) and scrolling it to show the "
+"incidence."
+msgstr ""
+
 #: dialog/searchdialog.cpp:40
 #, kde-format
 msgctxt "@title:window"
@@ -4237,58 +4268,52 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Poçt göndərişi:"
 
-#: prefs/koprefsdialogmain.cpp:44
+#: prefs/koprefsdialogmain.cpp:47
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Şəxsi"
 
-#: prefs/koprefsdialogmain.cpp:50
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "E-poçt ayarları"
 
-#: prefs/koprefsdialogmain.cpp:64
+#: prefs/koprefsdialogmain.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Xatırladıcılar"
 
-#: prefs/koprefsdialogmain.cpp:84
+#: prefs/koprefsdialogmain.cpp:87
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Saxlayın"
 
-#: prefs/koprefsdialogmain.cpp:96
+#: prefs/koprefsdialogmain.cpp:99
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Təqvimlər"
 
-#: prefs/koprefsdialogmain.cpp:100
+#: prefs/koprefsdialogmain.cpp:103
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Təqvim hesabı"
 
-#: prefs/koprefsdialogmain.cpp:109
+#: prefs/koprefsdialogmain.cpp:112
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
-msgstr ""
-
-#: prefs/koprefsdialogmain.cpp:114
-#, kde-format
-msgctxt "@option:check"
-msgid "Enabled"
 msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:64

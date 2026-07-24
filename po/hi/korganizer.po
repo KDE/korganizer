@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-23 00:44+0000\n"
+"POT-Creation-Date: 2026-07-24 00:45+0000\n"
 "PO-Revision-Date: 2024-12-15 19:31+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2527,6 +2527,37 @@ msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "संदर्भ में दिखाएँ"
 
+#: dialog/koeventviewerdialog.cpp:44
+#, fuzzy, kde-format
+#| msgid "Sets the due date for this to-do."
+msgctxt "@info:tooltip"
+msgid "Start the editor for this incidence"
+msgstr "इस कार्य के लिए नियत तिथि सेट करता है."
+
+#: dialog/koeventviewerdialog.cpp:45
+#, fuzzy, kde-format
+#| msgid "Press this button to remove the currently active filter."
+msgctxt "@info:whatsthis"
+msgid "Press the Edit button to pop-up the incidence editor dialog"
+msgstr "वर्तमान में सक्रिय फ़िल्टर को मिटाने के लिए इस बटन को दबाएँ."
+
+#: dialog/koeventviewerdialog.cpp:46
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scroll to the appropriate calendar view so the incidence can be seen in "
+"context"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:48
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Press this button to show an incidence in context. This means showing the to-"
+"do, agenda or journal view (as appropriate) and scrolling it to show the "
+"incidence."
+msgstr ""
+
 #: dialog/searchdialog.cpp:40
 #, fuzzy, kde-format
 #| msgid "Print Calendar"
@@ -3966,61 +3997,55 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:44
+#: prefs/koprefsdialogmain.cpp:47
 #, fuzzy, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "निजी"
 
-#: prefs/koprefsdialogmain.cpp:50
+#: prefs/koprefsdialogmain.cpp:53
 #, fuzzy, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "ईमेल विन्यास"
 
-#: prefs/koprefsdialogmain.cpp:64
+#: prefs/koprefsdialogmain.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
 #, fuzzy, kde-format
 #| msgid "Reminder"
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "स्मरण"
 
-#: prefs/koprefsdialogmain.cpp:84
+#: prefs/koprefsdialogmain.cpp:87
 #, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "सहेजें"
 
-#: prefs/koprefsdialogmain.cpp:96
+#: prefs/koprefsdialogmain.cpp:99
 #, fuzzy, kde-format
 #| msgid "Calendars"
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "कैलेण्डर"
 
-#: prefs/koprefsdialogmain.cpp:100
+#: prefs/koprefsdialogmain.cpp:103
 #, fuzzy, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "कैलेण्डर सजावट"
 
-#: prefs/koprefsdialogmain.cpp:109
+#: prefs/koprefsdialogmain.cpp:112
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
 msgstr ""
-
-#: prefs/koprefsdialogmain.cpp:114
-#, fuzzy, kde-format
-msgctxt "@option:check"
-msgid "Enabled"
-msgstr "स्मरण संपादित करें"
 
 #: prefs/koprefsdialogplugins.cpp:64
 #, fuzzy, kde-format
@@ -6760,6 +6785,11 @@ msgstr "%1%"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1%"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Enabled"
+#~ msgstr "स्मरण संपादित करें"
 
 #, fuzzy
 #~ msgctxt "the appointment is today"
@@ -10551,12 +10581,6 @@ msgstr "%1%"
 #~ msgctxt "@item:intext sample attendee email name"
 #~ msgid "name"
 #~ msgstr "नाम"
-
-#, fuzzy
-#~| msgid "Sets the due date for this to-do."
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Select the identity to use as the organizer for this incidence."
-#~ msgstr "इस कार्य के लिए नियत तिथि सेट करता है."
 
 #, fuzzy
 #~ msgctxt "@label"

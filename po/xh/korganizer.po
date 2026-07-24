@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-23 00:44+0000\n"
+"POT-Creation-Date: 2026-07-24 00:45+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -2393,6 +2393,35 @@ msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Bonisa okukhethiweyo kuphela"
 
+#: dialog/koeventviewerdialog.cpp:44
+#, fuzzy, kde-format
+msgctxt "@info:tooltip"
+msgid "Start the editor for this incidence"
+msgstr "Ukwenza umbala ogqithelwe lixesha:"
+
+#: dialog/koeventviewerdialog.cpp:45
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press the Edit button to pop-up the incidence editor dialog"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:46
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scroll to the appropriate calendar view so the incidence can be seen in "
+"context"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:48
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Press this button to show an incidence in context. This means showing the to-"
+"do, agenda or journal view (as appropriate) and scrolling it to show the "
+"incidence."
+msgstr ""
+
 #: dialog/searchdialog.cpp:40
 #, fuzzy, kde-format
 msgctxt "@title:window"
@@ -3780,61 +3809,55 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:44
+#: prefs/koprefsdialogmain.cpp:47
 #, fuzzy, kde-format
 #| msgid "Personal"
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Ubuqu"
 
-#: prefs/koprefsdialogmain.cpp:50
+#: prefs/koprefsdialogmain.cpp:53
 #, fuzzy, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Idibana"
 
-#: prefs/koprefsdialogmain.cpp:64
+#: prefs/koprefsdialogmain.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Umkhumbuzi:"
 
-#: prefs/koprefsdialogmain.cpp:84
+#: prefs/koprefsdialogmain.cpp:87
 #, fuzzy, kde-format
 #| msgid "Travel"
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Ukuhamba"
 
-#: prefs/koprefsdialogmain.cpp:96
+#: prefs/koprefsdialogmain.cpp:99
 #, fuzzy, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "i Khalenda"
 
-#: prefs/koprefsdialogmain.cpp:100
+#: prefs/koprefsdialogmain.cpp:103
 #, fuzzy, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "i Khalenda"
 
-#: prefs/koprefsdialogmain.cpp:109
+#: prefs/koprefsdialogmain.cpp:112
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
 msgstr ""
-
-#: prefs/koprefsdialogmain.cpp:114
-#, fuzzy, kde-format
-msgctxt "@option:check"
-msgid "Enabled"
-msgstr "Umkhumbuzi:"
 
 #: prefs/koprefsdialogplugins.cpp:64
 #, fuzzy, kde-format
@@ -6503,6 +6526,11 @@ msgstr "%1 %"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1 %"
+
+#, fuzzy
+#~ msgctxt "@option:check"
+#~ msgid "Enabled"
+#~ msgstr "Umkhumbuzi:"
 
 #, fuzzy
 #~| msgid "day"
@@ -9653,11 +9681,6 @@ msgstr "%1 %"
 #~ msgctxt "@item:intext sample attendee email name"
 #~ msgid "name"
 #~ msgstr "Igama"
-
-#, fuzzy
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Select the identity to use as the organizer for this incidence."
-#~ msgstr "Ukwenza umbala ogqithelwe lixesha:"
 
 #, fuzzy
 #~ msgctxt "@label"

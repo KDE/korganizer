@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-23 00:44+0000\n"
+"POT-Creation-Date: 2026-07-24 00:45+0000\n"
 "PO-Revision-Date: 2025-06-21 12:21+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -2522,6 +2522,39 @@ msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Amosar en contexto"
 
+#: dialog/koeventviewerdialog.cpp:44
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Dismiss the reminders for the selected incidences"
+msgctxt "@info:tooltip"
+msgid "Start the editor for this incidence"
+msgstr "Descarta as lembranzas das incidencias seleccionadas"
+
+#: dialog/koeventviewerdialog.cpp:45
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to remove the currently active filter."
+msgctxt "@info:whatsthis"
+msgid "Press the Edit button to pop-up the incidence editor dialog"
+msgstr "Prema este botón para retirar o filtro activo actual."
+
+#: dialog/koeventviewerdialog.cpp:46
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scroll to the appropriate calendar view so the incidence can be seen in "
+"context"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:48
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Press this button to show an incidence in context. This means showing the to-"
+"do, agenda or journal view (as appropriate) and scrolling it to show the "
+"incidence."
+msgstr ""
+
 #: dialog/searchdialog.cpp:40
 #, kde-format
 msgctxt "@title:window"
@@ -4019,59 +4052,53 @@ msgctxt "@label"
 msgid "Mail transport:"
 msgstr "Transporte de correo:"
 
-#: prefs/koprefsdialogmain.cpp:44
+#: prefs/koprefsdialogmain.cpp:47
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
 msgstr "Persoal"
 
-#: prefs/koprefsdialogmain.cpp:50
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Configuración do correo electrónico"
 
-#: prefs/koprefsdialogmain.cpp:64
+#: prefs/koprefsdialogmain.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Lembranzas"
 
-#: prefs/koprefsdialogmain.cpp:84
+#: prefs/koprefsdialogmain.cpp:87
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Gardar"
 
-#: prefs/koprefsdialogmain.cpp:96
+#: prefs/koprefsdialogmain.cpp:99
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Calendarios"
 
-#: prefs/koprefsdialogmain.cpp:100
+#: prefs/koprefsdialogmain.cpp:103
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Contas de calendario"
 
-#: prefs/koprefsdialogmain.cpp:109
+#: prefs/koprefsdialogmain.cpp:112
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
 msgstr "Actividades"
-
-#: prefs/koprefsdialogmain.cpp:114
-#, kde-format
-msgctxt "@option:check"
-msgid "Enabled"
-msgstr "Activada"
 
 #: prefs/koprefsdialogplugins.cpp:64
 #, kde-format
@@ -7113,6 +7140,10 @@ msgstr "%1."
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1."
+
+#~ msgctxt "@option:check"
+#~ msgid "Enabled"
+#~ msgstr "Activada"
 
 #~ msgctxt "the appointment is today"
 #~ msgid "Today"
@@ -10415,10 +10446,6 @@ msgstr "%1."
 #~ msgctxt "@action:button"
 #~ msgid "Dismiss Reminder"
 #~ msgstr "Descartar a lembranza"
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Dismiss the reminders for the selected incidences"
-#~ msgstr "Descarta as lembranzas das incidencias seleccionadas"
 
 #~ msgctxt "@action:button"
 #~ msgid "Dismiss All"

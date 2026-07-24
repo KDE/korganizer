@@ -24,8 +24,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-23 00:44+0000\n"
-"PO-Revision-Date: 2026-07-17 09:20+0200\n"
+"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"PO-Revision-Date: 2026-07-22 14:43+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -2571,6 +2571,39 @@ msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Afficher dans le contexte"
 
+#: dialog/koeventviewerdialog.cpp:44
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Select the identity to use as the organizer for this incidence."
+msgctxt "@info:tooltip"
+msgid "Start the editor for this incidence"
+msgstr "Sélectionnez l'identité à utiliser en tant qu'organisateur."
+
+#: dialog/koeventviewerdialog.cpp:45
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to remove the currently active filter."
+msgctxt "@info:whatsthis"
+msgid "Press the Edit button to pop-up the incidence editor dialog"
+msgstr "Utilisez ce bouton pour supprimer le filtre actuellement sélectionné."
+
+#: dialog/koeventviewerdialog.cpp:46
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scroll to the appropriate calendar view so the incidence can be seen in "
+"context"
+msgstr ""
+
+#: dialog/koeventviewerdialog.cpp:48
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Press this button to show an incidence in context. This means showing the to-"
+"do, agenda or journal view (as appropriate) and scrolling it to show the "
+"incidence."
+msgstr ""
+
 #: dialog/searchdialog.cpp:40
 #, kde-format
 msgctxt "@title:window"
@@ -4123,7 +4156,7 @@ msgid "Mail transport:"
 msgstr "Transport de courrier électronique :"
 
 # unreviewed-context
-#: prefs/koprefsdialogmain.cpp:44
+#: prefs/koprefsdialogmain.cpp:47
 #, kde-format
 msgctxt "@title:tab personal settings"
 msgid "Personal"
@@ -4131,55 +4164,49 @@ msgstr "Personnel"
 
 # unreviewed-context
 # unreviewed-context
-#: prefs/koprefsdialogmain.cpp:50
+#: prefs/koprefsdialogmain.cpp:53
 #, kde-format
 msgctxt "@title:group email settings"
 msgid "Email Settings"
 msgstr "Configuration messagerie"
 
-#: prefs/koprefsdialogmain.cpp:64
+#: prefs/koprefsdialogmain.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr "Classification d'accès par défaut"
 
-#: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
 msgstr "Rappels"
 
 # unreviewed-context
-#: prefs/koprefsdialogmain.cpp:84
+#: prefs/koprefsdialogmain.cpp:87
 #, kde-format
 msgctxt "@title:tab"
 msgid "Save"
 msgstr "Enregistrer"
 
-#: prefs/koprefsdialogmain.cpp:96
+#: prefs/koprefsdialogmain.cpp:99
 #, kde-format
 msgctxt "@title:tab calendar account settings"
 msgid "Calendars"
 msgstr "Agendas"
 
 # unreviewed-context
-#: prefs/koprefsdialogmain.cpp:100
+#: prefs/koprefsdialogmain.cpp:103
 #, kde-format
 msgctxt "@title"
 msgid "Calendar Accounts"
 msgstr "Comptes de l'agenda"
 
-#: prefs/koprefsdialogmain.cpp:109
+#: prefs/koprefsdialogmain.cpp:112
 #, kde-format
 msgctxt "@title:tab activities settings"
 msgid "Activities"
 msgstr "Activités"
-
-#: prefs/koprefsdialogmain.cpp:114
-#, kde-format
-msgctxt "@option:check"
-msgid "Enabled"
-msgstr "Activé"
 
 # unreviewed-context
 #: prefs/koprefsdialogplugins.cpp:64
@@ -5019,12 +5046,11 @@ msgstr "Remplir les jours occupés avec une couleur d'arrière-plan différente"
 #. i18n: ectx: tooltip, entry (ColorBusyDaysEnabled), group (Agenda View)
 #. i18n: ectx: tooltip, entry (ColorMonthBusyDaysEnabled), group (Month View)
 #: settings/korganizer.kcfg:153 settings/korganizer.kcfg:251
-#, fuzzy, kde-format
-#| msgid "Use the Holiday background color when a holiday lands on the date"
+#, kde-format
 msgid "Use the busy days background color setting for busy days"
 msgstr ""
-"Utilisez la couleur d'arrière-plan des jours fériés lorsqu'un jour férié est "
-"placé à cette date"
+"Utilisez le paramètre de couleur d'arrière-plan pour les jours fériés pour "
+"ces derniers"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:154
@@ -5147,10 +5173,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:182
-#, fuzzy, kde-format
-#| msgid "Calendar Colors"
+#, kde-format
 msgid "Agenda Item Colors"
-msgstr "Couleurs de l'agenda"
+msgstr "Couleurs des éléments d'agenda"
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -5550,10 +5575,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:281
-#, fuzzy, kde-format
-#| msgid "Print Item list"
+#, kde-format
 msgid "Month Item Colors"
-msgstr "Imprimer la liste des éléments"
+msgstr "Couleurs des éléments de mois"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:285
@@ -7326,6 +7350,10 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgctxt "@option:check"
+#~ msgid "Enabled"
+#~ msgstr "Activé"
 
 #~ msgctxt "the appointment is today"
 #~ msgid "Today"
@@ -13015,10 +13043,6 @@ msgstr "%1"
 #~ msgctxt "@item:intext sample attendee email name"
 #~ msgid "name"
 #~ msgstr "nom"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Select the identity to use as the organizer for this incidence."
-#~ msgstr "Sélectionnez l'identité à utiliser en tant qu'organisateur."
 
 #~ msgctxt "@label"
 #~ msgid "Delegated to %1"

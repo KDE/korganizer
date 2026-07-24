@@ -1056,7 +1056,7 @@
 > són variacions de la vista d'agenda. De fet, podeu establir els dies que s'han de mostrar a la vista d'agenda a qualsevol hora seleccionant-la en el navegador de dates.</para>
 <!--check bell + chasing-arrows icon here-->
 <para
->L'hora s'indica en una barra de temps que hi ha al costat esquerre de la vista. Es disposa una barra de desplaçament a la dreta quan no es pot mostrar el dia sencer en una sola pantalla (el qual sol ser habitual). Cada rectangle de la vista representa un esdeveniment individual o una tasca pendent que venç en aquest moment, i mostra les hores d'inici i de fi a més d'un resum. Es mostra una icona de <guiicon
+>L'hora s'indica en una barra d'hores que hi ha al costat esquerre de la vista. Es disposa una barra de desplaçament a la dreta quan no es pot mostrar el dia sencer en una sola pantalla (el qual sol ser habitual). Cada rectangle de la vista representa un esdeveniment individual o una tasca pendent que venç en aquest moment, i mostra les hores d'inici i de fi a més d'un resum. Es mostra una icona de <guiicon
 >campana</guiicon
 > quan hi ha establert un recordatori, i una icona de <guiicon
 >fletxes de reciclatge</guiicon
@@ -3592,11 +3592,11 @@
 <varlistentry>
 <term
 ><guilabel
->Barra de l'hora</guilabel
+>Barra d'hores</guilabel
 ></term>
 <listitem
 ><para
->Premeu aquest botó per a triar la lletra, estil i mida per a la barra de l'hora.</para
+>Premeu aquest botó per a triar la lletra, estil i mida per a la barra d'hores.</para
 ></listitem>
 </varlistentry>
 
