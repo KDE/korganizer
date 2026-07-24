@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-17 11:38+0200\n"
+"PO-Revision-Date: 2026-07-23 19:37+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -5494,7 +5494,7 @@ msgstr "A la vista mensual, selecciona el color de fons de la data d'avui."
 #: settings/korganizer.kcfg:369
 #, kde-format
 msgid "Time bar"
-msgstr "Barra de l'hora"
+msgstr "Barra d'hores"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:370
@@ -5504,10 +5504,10 @@ msgid ""
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"Premeu aquest botó per a configurar la lletra de la barra de l'hora. La "
-"barra de l'hora és el giny que mostra les hores a la vista d'agenda. Aquest "
-"botó obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra de "
-"l'hora per a la barra de l'hora."
+"Premeu aquest botó per a configurar la lletra de la barra d'hores. La barra "
+"d'hores és el giny que mostra les hores a la vista d'agenda. Aquest botó "
+"obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra de l'hora "
+"per a la barra d'hores."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:373
