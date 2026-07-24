@@ -37,6 +37,7 @@ class ETMViewStateSaver;
 }
 
 class QAction;
+class QItemSelectionModel;
 class QMenuBar;
 class QToolBar;
 class KSelectAction;
@@ -361,6 +362,8 @@ private:
 
     AkonadiCollectionView *mCollectionView = nullptr;
     KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionViewStateSaver = nullptr;
-    KViewStateMaintainer<Akonadi::ETMViewStateSaver> *mCollectionSelectionModelStateSaver = nullptr;
+    // The checked calendars are saved/restored directly (see actionmanager.cpp), because they need
+    // a non-default key format and the safer save. Not owned.
+    QItemSelectionModel *mCollectionSelectionModel = nullptr;
     KHamburgerMenu *mHamburgerMenu = nullptr;
 };

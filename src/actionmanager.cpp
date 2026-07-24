@@ -76,6 +76,14 @@
 #include <QToolBar>
 #include <QWindow>
 
+namespace
+{
+KConfigGroup collectionSelectionGroup()
+{
+    return KSharedConfig::openConfig()->group(QStringLiteral("GlobalCollectionSelection"));
+}
+}
+
 KOWindowList *ActionManager::mWindowList = nullptr;
 
 ActionManager::ActionManager(KXMLGUIClient *client,
@@ -109,7 +117,6 @@ ActionManager::~ActionManager()
     // Take this window out of the window list.
     mWindowList->removeWindow(mMainWindow);
 
-    delete mCollectionSelectionModelStateSaver;
     delete mCollectionViewStateSaver;
 
     delete mCalendarView;
@@ -186,8 +193,7 @@ void ActionManager::createCalendarAkonadi()
     Q_ASSERT(calendar());
 
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
-    mCollectionSelectionModelStateSaver = new KViewStateMaintainer<Akonadi::ETMViewStateSaver>(config->group(QStringLiteral("GlobalCollectionSelection")));
-    mCollectionSelectionModelStateSaver->setSelectionModel(calendar()->checkableProxyModel()->selectionModel());
+    mCollectionSelectionModel = calendar()->checkableProxyModel()->selectionModel();
 
     AkonadiCollectionViewFactory factory(mCalendarView);
     mCalendarView->addExtension(&factory);
@@ -871,7 +877,12 @@ void ActionManager::readSettings()
 
 void ActionManager::restoreCollectionViewSetting()
 {
-    mCollectionSelectionModelStateSaver->restoreState();
+    // The saver deletes itself once the model is populated (or after its own timeout).
+    auto *selectionSaver = new Akonadi::ETMViewStateSaver;
+    selectionSaver->setSelectionModel(mCollectionSelectionModel);
+    const KConfigGroup group = collectionSelectionGroup();
+    selectionSaver->restoreState(group);
+
     mCollectionViewStateSaver->restoreState();
 }
 
@@ -898,10 +909,14 @@ void ActionManager::writeSettings()
     }
 
     mCollectionViewStateSaver->saveState();
-    mCollectionSelectionModelStateSaver->saveState();
+
+    Akonadi::ETMViewStateSaver selectionSaver;
+    selectionSaver.setKeyFormat(Akonadi::ETMViewStateSaver::RemotePathKeys);
+    selectionSaver.setSelectionModel(mCollectionSelectionModel);
+    KConfigGroup selectionGroup = collectionSelectionGroup();
+    selectionSaver.saveState(selectionGroup);
 
     KConfigGroup selectionViewGroup = config->group(QStringLiteral("GlobalCollectionView"));
-    KConfigGroup selectionGroup = config->group(QStringLiteral("GlobalCollectionSelection"));
     selectionGroup.sync();
     selectionViewGroup.sync();
     config->sync();
