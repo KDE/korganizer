@@ -32,8 +32,9 @@
 #include <KLocalizedString>
 #include <KUrlLabel>
 
+#include <QDBusConnection>
+#include <QDBusMessage>
 #include <QDate>
-#include <QDesktopServices>
 #include <QEvent>
 #include <QGridLayout>
 #include <QLabel>
@@ -654,7 +655,20 @@ void SDSummaryWidget::slotItemFetchJobDone(KJob *job)
     }
     const auto contact = lst.first().payload<KContacts::Addressee>();
 
-    QDesktopServices::openUrl(QUrl(contact.fullEmail()));
+    const QString to = contact.preferredEmail();
+    const QString name = contact.realName();
+    const QString subject = i18nc("@info/plain default subject line for a new mail message", "New Message to %1", name);
+
+    mPlugin->core()->selectPlugin(QStringLiteral("kontact_kmailplugin")); // ensure loaded
+
+    QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.kmail"),
+                                                          QStringLiteral("/KMail"),
+                                                          QStringLiteral("org.kde.kmail.kmail"),
+                                                          QStringLiteral("openComposer"));
+
+    // see PREFIX/share/dbus-1/interfaces/org.kde.kmail.kmail.xml for more openComposer variants
+    message.setArguments(QList<QVariant>() << to << QString() << QString() << subject << QString() << false);
+    QDBusConnection::sessionBus().send(message);
 }
 
 void SDSummaryWidget::viewContact(const QString &url)
