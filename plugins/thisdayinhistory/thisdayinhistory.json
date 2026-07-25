@@ -34,8 +34,7 @@
         "Description[uk]": "За допомогою цього додатка створюються посилання на сторінки Вікіпедії «Цей день у історії».",
         "Description[zh_CN]": "此插件提供了对维基百科上“历史上的今天”页面的链接",
         "Description[zh_TW]": "這個外掛程式提供到維基百科「歷史上的今天」頁面的連結",
-        "Name": "Wikipedia 'This Day in History'",
-        "Name[en_GB]": "Wikipedia 'This Day in History' Plugin"
+        "Name": "Wikipedia 'This Day in History'"
     },
     "X-KDE-KOrganizer-HasSettings": false,
     "X-KDE-PluginInterfaceVersion": 2

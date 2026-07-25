@@ -34,8 +34,7 @@
         "Description[uk]": "Цей додаток показує зверху перегляду щоденника номер для кожного дня року. Наприклад, 1-го лютого — це 32 день року.",
         "Description[zh_CN]": "此插件可在日程视图的顶部显示当天在一年中的序号。例如，2 月 1 日是一年的第 32 天。",
         "Description[zh_TW]": "這個外掛程式會為每一天在行程檢視上方顯示它在一年當中是第幾天。舉例來說，二月一號是年中的第 32 天。",
-        "Name": "Date Numbers",
-        "Name[en_GB]": "Date Numbers"
+        "Name": "Date Numbers"
     },
     "X-KDE-KOrganizer-HasSettings": true,
     "X-KDE-PluginInterfaceVersion": 2
