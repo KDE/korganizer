@@ -372,32 +372,23 @@ void TodoSummaryWidget::completeTodo(Akonadi::Item::Id id)
 
 void TodoSummaryWidget::popupMenu(const QString &uid)
 {
-    const Akonadi::Item item = mCalendar->item(uid);
-    if (!item.isValid()) {
+    KCalendarCore::Todo::Ptr const todo = mCalendar->todo(uid);
+    if (!todo) {
         return;
     }
-
+    Akonadi::Item const item = mCalendar->item(uid);
     QMenu popup(this);
-
-    QAction *editIt;
-    const bool writeable = mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem);
-    if (writeable) {
-        editIt = popup.addAction(i18nc("@action:inmenu", "&Edit To-do…"));
-        editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
-    } else {
-        editIt = popup.addAction(i18nc("@action:inmenu", "&Show To-do…"));
-        editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-preview")));
-    }
-
-    QAction *delIt = popup.addAction(i18nc("@action:inmenu", "&Delete To-do"));
+    QAction *editIt = popup.addAction(i18n("&Edit To-do…"));
+    editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
+    QAction *delIt = popup.addAction(i18n("&Delete To-do"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
-    delIt->setEnabled(writeable);
+    delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
 
     QAction *doneIt = nullptr;
-    if (!mCalendar->todo(uid)->isCompleted()) {
-        doneIt = popup.addAction(i18nc("@action:inmenu", "&Mark To-do Completed"));
+    if (!todo->isCompleted()) {
+        doneIt = popup.addAction(i18n("&Mark To-do Completed"));
         doneIt->setIcon(QIcon::fromTheme(QStringLiteral("task-complete")));
-        doneIt->setEnabled(writeable);
+        doneIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanChangeItem));
     }
 
     const QAction *selectedAction = popup.exec(QCursor::pos());
