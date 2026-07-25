@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-17 13:02+0200\n"
+"PO-Revision-Date: 2026-07-24 10:26+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -414,7 +414,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
-msgstr "O&ude voorvallen archiveren…"
+msgstr "O&ude afspraken archiveren…"
 
 #: actionmanager.cpp:264
 #, kde-format
@@ -436,9 +436,9 @@ msgid ""
 "dos that you can archive into an iCalendar file.  They will be removed from "
 "your existing calendar collection."
 msgstr ""
-"Hierdoor wordt een dialoog geopend waarin u oude voorvallen en taken kunt "
+"Hierdoor wordt een dialoog geopend waarin u oude afspraken en taken kunt "
 "selecteren die u kunt archiveren in een bestand voor iCalendar. De "
-"gearchiveerde voorvallen worden verwijderd uit uw bestaande agenda's."
+"gearchiveerde afspraken worden verwijderd uit uw bestaande agenda's."
 
 #: actionmanager.cpp:275
 #, kde-format
@@ -716,13 +716,13 @@ msgstr "F&ilter"
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr "Voorvallen filteren"
+msgstr "Afspraken filteren"
 
 #: actionmanager.cpp:426
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "Voorvallen uit de agenda filteren "
+msgstr "Afspraken uit de agenda filteren "
 
 #: actionmanager.cpp:428
 #, kde-format
@@ -1298,8 +1298,8 @@ msgstr "KOrganizer &configureren…"
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] "1 voorval is met succes geïmporteerd."
-msgstr[1] "%1 voorvallen zijn met succes geïmporteerd."
+msgstr[0] "1 afspraak is met succes geïmporteerd."
+msgstr[1] "%1 afspraken zijn met succes geïmporteerd."
 
 #: actionmanager.cpp:844
 #, kde-kuit-format
@@ -1988,7 +1988,7 @@ msgstr "Toekomstige voorvallen loskoppelen"
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
-msgstr "Voorval loskoppelen"
+msgstr "Voorvallen loskoppelen"
 
 #: calendarview.cpp:1707
 #, kde-format
@@ -2547,14 +2547,14 @@ msgstr[1] "%1 overeenkomsten"
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "Voorval uit Akonadi kon niet worden opgehaald"
+msgstr "Afspraak uit Akonadi kon niet worden opgehaald"
 
 #: koapp.cpp:68
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
 msgstr ""
-"Ophalen van voorval uit Akonadi is mislukt: gevraagd voorval bestaat niet."
+"Ophalen van afspraak uit Akonadi is mislukt: gevraagd afspraak bestaat niet."
 
 #: kocorehelper.cpp:29
 #, kde-format
@@ -3781,7 +3781,7 @@ msgstr "Voeg de gespecificeerde bestanden in in een bestaande agenda"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
-msgstr "Het genoemde voorval tonen (middels URL)"
+msgstr "De genoemde afspraak tonen (middels URL)"
 
 #: korganizer_options.h:25
 #, kde-format
@@ -6470,7 +6470,7 @@ msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
 msgstr ""
-"Deactiveer dit vakje om voorvallen die overeenkomen met het nu geselecteerde "
+"Deactiveer dit vakje om afspraken die overeenkomen met het nu geselecteerde "
 "weergavefilter over te slaan."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
@@ -6480,7 +6480,7 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
-"Wanneer dit vakje is geactiveerd zullen alle voorvallen beschouwd worden in "
+"Wanneer dit vakje is geactiveerd zullen alle afspraken beschouwd worden in "
 "de zoekopdracht, zelfs die die niet getoond worden volgens het nu "
 "geselecteerde weergavefilter"
 
@@ -6488,7 +6488,7 @@ msgstr ""
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr "Neem alle voorvallen mee overeenkomend met het weergavefilter"
+msgstr "Neem alle afspraken mee overeenkomend met het weergavefilter"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34
