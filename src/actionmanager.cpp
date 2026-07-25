@@ -600,7 +600,7 @@ void ActionManager::initActions()
                                              "In the multi-calendar view, starts a dialog that allows configuring the view. "
                                              "Currently only the multi-calendar view is supported. "
                                              "See the Multiple Calendars options in the Views->Agenda Views settings."));
-    mConfigureViewAction->setEnabled(mCalendarView->currentView() && mCalendarView->currentView()->hasConfigurationDialog());
+    mConfigureViewAction->setVisible(mCalendarView->currentView() && mCalendarView->currentView()->hasConfigurationDialog());
     mACollection->addAction(QStringLiteral("configure_view"), mConfigureViewAction);
     connect(mConfigureViewAction, &QAction::triggered, mCalendarView, &CalendarView::configureCurrentView);
 

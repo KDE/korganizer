@@ -212,7 +212,7 @@ void KOViewManager::showView(KOrg::BaseView *view)
     const KActionCollection *ac = getActionCollection();
     if (ac) {
         if (QAction *action = ac->action(QStringLiteral("configure_view"))) {
-            action->setEnabled(view->hasConfigurationDialog());
+            action->setVisible(view->hasConfigurationDialog());
         }
 
         const QStringList zoomActions = QStringList() << QStringLiteral("zoom_in_horizontally") << QStringLiteral("zoom_out_horizontally")
