@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -4249,9 +4249,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Mostrer al valêye des vuwes adjinda"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Gåliotaedjes do calindrî"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4261,7 +4263,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Apontyî"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

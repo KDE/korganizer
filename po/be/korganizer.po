@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -4010,7 +4010,7 @@ msgstr "Паказаць толькі вылучаныя"
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Каляндар"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4020,7 +4020,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Настроіць сьвяты"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"

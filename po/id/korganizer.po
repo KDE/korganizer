@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -4355,9 +4355,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Tampilkan di sebelah bawah tampilan agenda"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Dekorasi Kalender"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4367,7 +4369,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Konfigurasi"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

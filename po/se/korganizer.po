@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2006-01-10 20:33+0100\n"
 "Last-Translator: Børre Gaup <boerre@skolelinux.no>\n"
 "Language-Team: Northern Sami <l10n-no@nuug.no>\n"
@@ -3835,11 +3835,14 @@ msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr ""
 
+# unreviewed-context
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Agenda View"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
-msgstr ""
+msgid "Agenda View Decorations"
+msgstr "Plánenčájeheapmi"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
@@ -3849,7 +3852,7 @@ msgid "Configure"
 msgstr "Heivet"
 
 # unreviewed-context
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6445,26 +6448,3 @@ msgstr ""
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr ""
-
-#~ msgctxt "the appointment is today"
-#~ msgid "Today"
-#~ msgstr "Otne"
-
-#~ msgctxt "the to-do is due today"
-#~ msgid "Today"
-#~ msgstr "Otne"
-
-#~ msgctxt "the to-do is due tomorrow"
-#~ msgid "Tomorrow"
-#~ msgstr "Ihttin"
-
-#~ msgctxt "1. weekday, 2. time"
-#~ msgid "%1 %2"
-#~ msgstr "%1 %2"
-
-#~ msgctxt "the special day is today"
-#~ msgid "Today"
-#~ msgstr "Otne"
-
-#~ msgid "Month view"
-#~ msgstr "Mánnočájeheapmi"

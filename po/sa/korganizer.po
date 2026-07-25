@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -4236,9 +4236,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "कार्यसूचनादृश्यानां अधः दर्शयतु"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "पञ्चाङ्ग अलङ्कार"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4248,7 +4250,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "विन्यस्तं कुर्वन्तु"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

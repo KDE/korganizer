@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
-"PO-Revision-Date: 2026-07-23 11:19+0200\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
+"PO-Revision-Date: 2026-07-24 09:26+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -2461,21 +2461,16 @@ msgid "Show in Context"
 msgstr "Visa i sammanhang"
 
 #: dialog/koeventviewerdialog.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select the identity to use as the organizer for this incidence."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr "Välj identitet att använda som organisatör av den här händelsen."
+msgstr "Starta editorn för den här förekomsten"
 
 #: dialog/koeventviewerdialog.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press the Edit button to pop-up the incidence editor dialog"
-msgstr ""
-"Klicka på knappen för att ta bort filtret som för närvarande är aktivt."
+msgstr "Klicka på knappen Redigera för att visa förekomsteditorns dialogruta"
 
 #: dialog/koeventviewerdialog.cpp:46
 #, kde-format
@@ -2483,7 +2478,7 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
-msgstr ""
+msgstr "Rulla till lämplig kalendervy så förekomsten kan ses i sammanhang"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2493,6 +2488,9 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"Tryck på knappen för att visa en händelse i sitt sammanhang. Det betyder att "
+"visa uppgiftsvy, agendavy eller journalvyn (beroende på vad som är lämpligt) "
+"och att rulla för att visa händelsen."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -3978,9 +3976,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Visa längst ner i agendan"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Kalenderdekorationer"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -3989,7 +3989,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Anpassa"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

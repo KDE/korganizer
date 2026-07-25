@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2024-12-20 12:26+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -38,7 +38,21 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "दिवससङ्ख्यां दर्शयतु"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@option:radio"
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "दिवससङ्ख्यां दर्शयतु"
+
+#: datenums/configdialog.cpp:50
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr ""
+
+#: datenums/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
@@ -46,9 +60,37 @@ msgstr "वर्षस्य अन्ते यावत् दिवसान
 
 #: datenums/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+
+#: datenums/configdialog.cpp:58
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "उभयम् अपि दर्शयतु"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -700,7 +742,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "आस्पेक्ट रेश्यो इत्यस्य अवहेलना कुर्वन्तु"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled freely. The aspect ratio will not be "
@@ -710,13 +759,19 @@ msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "लघुचित्रं स्वतन्त्रतया स्केल भविष्यति । आस्पेक्ट रेश्यो न रक्षिता भविष्यति।"
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "आस्पेक्ट रेश्यो रखें"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -729,13 +784,19 @@ msgstr ""
 "लघुचित्रं दत्तस्य आयतस्य अन्तः यथासम्भवं विशालं आयतं यावत् स्केल भविष्यति, आस्पेक्ट् रेश्यो रक्षति "
 "।"
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "विस्तारं कृत्वा आस्पेक्ट रेश्यो रक्षन्तु"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as small as possible outside "

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2009-07-28 20:21+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: Icelandic <kde-isl@molar.is>\n"
@@ -4072,7 +4072,7 @@ msgstr "Sýna aðeins það sem er valið"
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Dagatal"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4082,7 +4082,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Stilla frídaga"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -3882,7 +3882,7 @@ msgstr "Bonisa okukhethiweyo kuphela"
 #: prefs/koprefsdialogplugins.cpp:125
 #, fuzzy, kde-format
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "i Khalenda"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -3891,7 +3891,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Qwalasela..."
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"

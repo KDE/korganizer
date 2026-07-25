@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2024-02-02 21:30+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -43,7 +43,23 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Rodyti dienos numerį"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Rodyti dienos numerį"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click here to scroll the display to week number %1 of the currently "
+#| "displayed year."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "Spauskite čia norėdami pereiti į šiuo metu rodomų metų savaitę Nr. %1."
+
+#: datenums/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Show days to end of year"
 msgctxt "@option:radio"
@@ -51,11 +67,40 @@ msgid "Show days to end of year"
 msgstr "Rodyti dienų iki metų galo skaičių"
 
 #: datenums/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+
+#: datenums/configdialog.cpp:58
 #, fuzzy, kde-format
 #| msgid "Show both"
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Rodyti abu"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -722,7 +767,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignoruoti formą"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled freely. The aspect ratio will not be "
@@ -732,7 +784,7 @@ msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "Miniatiūra bus laisvai didinama ar mažinama. Forma nebus išsaugota."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
 msgctxt "@option:radio"
@@ -740,6 +792,12 @@ msgid "Keep aspect ratio"
 msgstr "Išlaikyti formą"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -752,14 +810,20 @@ msgstr ""
 "Miniatiūros dydis bus pakeistas į didžiausią galimą duoto stačiakampį, "
 "išlaikant proporcijas."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio by expanding"
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Išlaikyti formą išplečiant"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as small as possible outside "
@@ -2308,15 +2372,6 @@ msgstr "MMMM_yyyy"
 #~ "Check this box if you want to see events that start sometime during the "
 #~ "next 31 days."
 #~ msgstr "Pažymėkite šį laukelį, jei norite eksportuoti įvykių dalyvius."
-
-#, fuzzy
-#~| msgid ""
-#~| "Check this box if you want to show seconds on the current-time line."
-#~ msgid ""
-#~ "Check this box if you want to specify the number of days in the future "
-#~ "for upcoming events."
-#~ msgstr ""
-#~ "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
 
 #, fuzzy
 #~| msgctxt "@label suffix in the N days spin box"
@@ -4443,12 +4498,6 @@ msgstr "MMMM_yyyy"
 
 #~ msgid "Scroll to week number %1"
 #~ msgstr "Keliauti į savaitę Nr. %1"
-
-#~ msgid ""
-#~ "Click here to scroll the display to week number %1 of the currently "
-#~ "displayed year."
-#~ msgstr ""
-#~ "Spauskite čia norėdami pereiti į šiuo metu rodomų metų savaitę Nr. %1."
 
 #~ msgid "%1"
 #~ msgstr "%1"

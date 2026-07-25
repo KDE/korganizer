@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer_calendarplugins.po 1723087 2025-11-17 12:44:32Z scripty $
+# $Id: korganizer_calendarplugins.po 1742194 2026-07-25 01:30:04Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2025-04-19 06:58+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -45,17 +45,69 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Pokaži številko dneva"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@option:radio"
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Pokaži številko dneva"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click here to scroll the display to week number %1 of the currently "
+#| "displayed year."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr ""
+"Kliknite sem, da se premaknete na %1. teden v trenutno prikazanem letu."
+
+#: datenums/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Pokaži dneve do konca leta"
 
 #: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "Set the number of days to show upcoming events"
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr "Nastavite število dni za prikazovanje prihajajočih dogodkov"
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
+#| "year in the future."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+"Uporabite to vrtilno polje, da nastavite število dni za prikazovanje "
+"čakajočih opravil, ki so lahko največ eno leto v prihodnosti."
+
+#: datenums/configdialog.cpp:58
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Pokaži oboje"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -721,7 +773,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Prezri razmerje stranic"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -729,13 +788,19 @@ msgid ""
 msgstr ""
 "Sličici bo prosto spremenjeno merilo. Razmerje stranic ne bo ohranjeno."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Ohrani razmerje stranic"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -745,13 +810,19 @@ msgstr ""
 "Sličici bo spremenjeno merilo v največji mogoči pravokotnik, ki je ves "
 "znotraj okvirja. da bo pri tem ohranjeno razmerje stranic."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Ohranjaj razmerje stranic z razširjanjem"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2375,9 +2446,6 @@ msgstr "MMMM_yyyy"
 #~ msgid "Within the &next:"
 #~ msgstr "Znotraj &naslednjih:"
 
-#~ msgid "Set the number of days to show upcoming events"
-#~ msgstr "Nastavite število dni za prikazovanje prihajajočih dogodkov"
-
 #~ msgid ""
 #~ "Use this spinbox to set the number of days to show upcoming events up to "
 #~ "1 year in the future."
@@ -2677,13 +2745,6 @@ msgstr "MMMM_yyyy"
 
 #~ msgid "Set the number of days to show pending To-dos"
 #~ msgstr "Nastavite število dni za prikazovanje čakajočih opravil"
-
-#~ msgid ""
-#~ "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#~ "year in the future."
-#~ msgstr ""
-#~ "Uporabite to vrtilno polje, da nastavite število dni za prikazovanje "
-#~ "čakajočih opravil, ki so lahko največ eno leto v prihodnosti."
 
 #~ msgid "Hide Following To-do Types"
 #~ msgstr "Skrij naslednje vrste opravil"
@@ -4937,12 +4998,6 @@ msgstr "MMMM_yyyy"
 
 #~ msgid "Scroll to week number %1"
 #~ msgstr "Premakni se na %1. teden"
-
-#~ msgid ""
-#~ "Click here to scroll the display to week number %1 of the currently "
-#~ "displayed year."
-#~ msgstr ""
-#~ "Kliknite sem, da se premaknete na %1. teden v trenutno prikazanem letu."
 
 #~ msgid "%1"
 #~ msgstr "%1"

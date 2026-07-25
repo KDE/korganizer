@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2026-07-05 16:40+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
@@ -40,17 +40,57 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Vis dagnummer"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Vis dagnummer"
+
+#: datenums/configdialog.cpp:50
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr ""
+
+#: datenums/configdialog.cpp:53
 #, fuzzy, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Vis kor mange dagar til slutten av året"
 
 #: datenums/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+
+#: datenums/configdialog.cpp:58
 #, fuzzy, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Vis begge delar"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -709,7 +749,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignorer storleiksforhold"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled freely. The aspect ratio will not be "
@@ -721,13 +768,19 @@ msgstr ""
 "Miniatyrbildet vert skalert fritt. Storleiksforholdet vert ikkje teke vare "
 "på."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, fuzzy, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Ta vare på storleiksforhold"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -741,13 +794,19 @@ msgstr ""
 "mogleg frå eit oppgjeve rektangel, samtidig som det vert teke vare på "
 "storleiksforholdet."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, fuzzy, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Ta vare på storleiksforhold ved å utvida."
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as small as possible outside "

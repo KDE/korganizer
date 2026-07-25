@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2015-02-07 22:17+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@nuug.no>\n"
@@ -4005,9 +4005,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Vis på bunnen av planleggervisningene"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Kalenderdekorasjoner"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4017,7 +4019,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Sett opp"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6902,83 +6904,3 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgctxt "1. weekday, 2. time"
-#~ msgid "%1 %2"
-#~ msgstr "%1 %2"
-
-#~ msgid "&Delete To-do"
-#~ msgstr "&Slett gjøremål"
-
-#~ msgid ""
-#~ "Select this option to choose the calendar to be used to record the item "
-#~ "each time you create a new event, to-do or journal entry. This choice is "
-#~ "recommended if you intend to use the shared folders functionality of the "
-#~ "Kolab server or have to manage multiple accounts using Kontact as a KDE "
-#~ "Kolab client. "
-#~ msgstr ""
-#~ "Velg dette alternativet hvis du vil velge den kalenderen som skal ta opp "
-#~ "nye hendelser, gjøremål eller dagboknotiser. Dette alternativet er "
-#~ "anbefalt hvis du vil bruke de delte mappene på Kolabtjeneren eller hvis "
-#~ "du skal administrere flere kontoer ved å bruke Kontact som en KDE-"
-#~ "Kolabklient. "
-
-#~ msgid ""
-#~ "When you have an all day event marked as busy, you can have a different "
-#~ "agenda or month view background color for that day. Select the color here."
-#~ msgstr ""
-#~ "Når du har en heldagshendelse markert som opptatt, så kan du få en annen "
-#~ "bakgrunnsfarge for den fargen i planlegger/månedsvisningen. Velg farge "
-#~ "her."
-
-#~ msgid "Month view"
-#~ msgstr "Månedsvisning"
-
-#~ msgid "Agenda view"
-#~ msgstr "Timeplanvising"
-
-#~ msgid ""
-#~ "Select your timezone from the list of locations on this drop down box. If "
-#~ "your city is not listed, select one which shares the same timezone. "
-#~ "KOrganizer will automatically adjust for daylight savings."
-#~ msgstr ""
-#~ "Velg tidssonen din fra lista i nedtrekksboksen. Dersom din by ikke er på "
-#~ "lista, bruk en som har samme tidssone. KOrganizer justerer automatisk for "
-#~ "sommertid."
-
-#~ msgid "Month view uses full window"
-#~ msgstr "Månedsvisning i fullt vindu"
-
-#~ msgid ""
-#~ "Check this box to use the full KOrganizer window when displaying the "
-#~ "month view. If this box is checked, you will gain some space for the "
-#~ "monthly view, but other widgets, such as the date navigator, the item "
-#~ "details and the calendars list, will not be displayed."
-#~ msgstr ""
-#~ "Velg dette alternativet for å bruke hele KOrganizervinduet til "
-#~ "månedsvisningen. Hvis du gjør dette vil månedsvisningen få større plass, "
-#~ "på bekostning av andre elementer, så som datonavigatøren, "
-#~ "elementdetaljene og kalenderlista, som ikke vil bli vist."
-
-#~ msgid "Color Usage"
-#~ msgstr "Fargebruk"
-
-#~ msgid "Month view background color"
-#~ msgstr "Bakgrunnsfarge i månedsvisning"
-
-#~ msgid "Select the Month view background color here."
-#~ msgstr "Velg bakgrunnsfarge i månedsvisning her."
-
-#~ msgid ""
-#~ "Select the highlight color here. The highlight color will be used for "
-#~ "marking the currently selected area in your Month and in the date "
-#~ "navigator."
-#~ msgstr ""
-#~ "Velg farge for framheving her. Denne fargen vil brukes for å markere det "
-#~ "valgte området i din planlegger og i datonavigatøren."
-
-#~ msgid "Select the working hours background color for the Month view here."
-#~ msgstr "Velg farge for visning av arbeidstid i månedsvisning her."
-
-#~ msgid "Default event color"
-#~ msgstr "Standard hendelsesfarge"

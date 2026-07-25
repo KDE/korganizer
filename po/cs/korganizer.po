@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
-"PO-Revision-Date: 2026-07-22 17:39+0200\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
+"PO-Revision-Date: 2026-07-24 20:26+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2480,15 +2480,13 @@ msgstr "Zobrazit v kontextu"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr ""
+msgstr "Spustit editor pro tuto položku"
 
 #: dialog/koeventviewerdialog.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press the Edit button to pop-up the incidence editor dialog"
-msgstr "Toto tlačítko stiskněte pro odstranění právě aktivního filtru."
+msgstr "Stisknutím tlačítka Upravit otevřete dialogové okno pro úpravy položky"
 
 #: dialog/koeventviewerdialog.cpp:46
 #, kde-format
@@ -2497,6 +2495,8 @@ msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
 msgstr ""
+"Přejděte na příslušné zobrazení kalendáře, aby bylo možné událost vidět v "
+"kontextu"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2506,6 +2506,9 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"Stisknutím tohoto tlačítka zobrazíte událost v kontextu. To znamená, že se "
+"zobrazí zobrazení úkolů, agendy nebo deníku (podle situace) a obrazovka se "
+"posune tak, aby byla událost viditelná."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -2889,16 +2892,13 @@ msgid "Show &anniversaries"
 msgstr "Zobr&azovat výročí"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:49
-#, fuzzy, kde-format
-#| msgid "Upcoming Events"
+#, kde-format
 msgctxt "@title:group"
 msgid "Upcoming Events"
 msgstr "Nadcházející události"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:199
-#, fuzzy, kde-format
-#| msgid "No upcoming events starting within the next day"
-#| msgid_plural "No upcoming events starting within the next %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
@@ -2907,22 +2907,19 @@ msgstr[1] "Žádné schůzky nejsou na blízku pro příští %1 dny"
 msgstr[2] "Žádné schůzky nejsou na blízku pro příštích %1 dní"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:240
-#, fuzzy, kde-format
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Appointment…"
 msgstr "&Upravit schůzku…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:242
-#, fuzzy, kde-format
-#| msgid "&Delete Appointment"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Appointment"
 msgstr "S&mazat schůzku"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Edit Event: \"%1\""
 msgstr "Upravit událost: \"%1\""
@@ -3006,16 +3003,13 @@ msgstr ""
 "><emphasis>Předmět:</emphasis> %3"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:137
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@label the appointment is today"
 msgid "Today"
 msgstr "Dnes"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:140
-#, fuzzy, kde-format
-#| msgctxt "the appointment is tomorrow"
-#| msgid "Tomorrow"
+#, kde-format
 msgctxt "@label the appointment is tomorrow"
 msgid "Tomorrow"
 msgstr "Zítra"
@@ -3023,9 +3017,7 @@ msgstr "Zítra"
 #: kontactplugin/korganizer/summaryeventinfo.cpp:144
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
 #: kontactplugin/specialdates/sdsummarywidget.cpp:466
-#, fuzzy, kde-format
-#| msgctxt "1. weekday"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 1. weekday"
 msgid "%1"
 msgstr "%1"
@@ -3037,9 +3029,7 @@ msgstr "%1"
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
 #: kontactplugin/specialdates/sdsummarywidget.cpp:469
 #: kontactplugin/specialdates/sdsummarywidget.cpp:478
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. date"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "@label 1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -3047,9 +3037,7 @@ msgstr "%1 %2"
 #: kontactplugin/korganizer/summaryeventinfo.cpp:188
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
 #: kontactplugin/specialdates/sdsummarywidget.cpp:507
-#, fuzzy, kde-format
-#| msgid "in 1 day"
-#| msgid_plural "in %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -3058,18 +3046,13 @@ msgstr[1] "za %1 dny"
 msgstr[2] "za %1 dnů"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:201
-#, fuzzy, kde-format
-#| msgctxt "eg. in 1 hour 2 minutes"
-#| msgid "in "
+#, kde-format
 msgctxt "@label eg. in 1 hour 2 minutes"
 msgid "in "
 msgstr "za "
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:204
-#, fuzzy, kde-format
-#| msgctxt "use abbreviation for hour to keep the text short"
-#| msgid "1 hr"
-#| msgid_plural "%1 hrs"
+#, kde-format
 msgctxt "@label use abbreviation for hour to keep the text short"
 msgid "1 hr"
 msgid_plural "%1 hrs"
@@ -3078,10 +3061,7 @@ msgstr[1] "%1 hod"
 msgstr[2] "%1 hod"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:210
-#, fuzzy, kde-format
-#| msgctxt "use abbreviation for minute to keep the text short"
-#| msgid "1 min"
-#| msgid_plural "%1 mins"
+#, kde-format
 msgctxt "@label use abbreviation for minute to keep the text short"
 msgid "1 min"
 msgid_plural "%1 mins"
@@ -3090,20 +3070,13 @@ msgstr[1] "%1 min"
 msgstr[2] "%1 min"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:229
-#, fuzzy, kde-format
-#| msgctxt "the event is currently in-progress"
-#| msgid "in-progress"
+#, kde-format
 msgctxt "@label the event is currently in-progress"
 msgid "in-progress"
-msgstr "probíhající "
+msgstr "probíhající"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:235
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "use abbreviation for hour to keep the text short. the event ended at "
-#| "least 1 hour ago"
-#| msgid "ended 1 hr ago"
-#| msgid_plural "ended %1 hrs ago"
+#, kde-format
 msgctxt ""
 "@label use abbreviation for hour to keep the text short. the event ended at "
 "least 1 hour ago"
@@ -3114,12 +3087,7 @@ msgstr[1] "skončilo před %1 hodinami"
 msgstr[2] "skončilo před %1 hodinami"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:241
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "use abbreviation for min to keep the text short. the event ended a few "
-#| "minutes ago"
-#| msgid "ended 1 min ago"
-#| msgid_plural "ended %1 mins ago"
+#, kde-format
 msgctxt ""
 "@label use abbreviation for min to keep the text short. the event ended a "
 "few minutes ago"
@@ -3130,24 +3098,19 @@ msgstr[1] "skončilo před %1 minutami"
 msgstr[2] "skončilo před %1 minutami"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:249
-#, fuzzy, kde-format
-#| msgid "all day"
+#, kde-format
 msgctxt "@label"
 msgid "all day"
 msgstr "celý den"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:289
-#, fuzzy, kde-format
-#| msgctxt "Time from - to"
-#| msgid "%1 - %2"
+#, kde-format
 msgctxt "@label Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:305
-#, fuzzy, kde-format
-#| msgctxt "next occurrence"
-#| msgid "Next: %1"
+#, kde-format
 msgctxt "@label next occurrence"
 msgid "Next: %1"
 msgstr "Následující: %1"
@@ -3372,39 +3335,31 @@ msgid "Over&due (not completed and beyond due-date)"
 msgstr "V pro&dlení (nedokončení a po termínu)"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:47
-#, fuzzy, kde-format
-#| msgid "Pending To-dos"
+#, kde-format
 msgctxt "@title:group"
 msgid "Pending To-dos"
 msgstr "Nevyřízené úkoly"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:183
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@label the to-do is due today"
 msgid "Today"
 msgstr "Dnes"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:185
-#, fuzzy, kde-format
-#| msgctxt "the appointment is tomorrow"
-#| msgid "Tomorrow"
+#, kde-format
 msgctxt "@label the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "Zítra"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:192
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. date"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "@label 1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:246
-#, fuzzy, kde-format
-#| msgid "1 day ago"
-#| msgid_plural "%1 days ago"
+#, kde-format
 msgctxt "@label"
 msgid "1 day ago"
 msgid_plural "%1 days ago"
@@ -3413,33 +3368,25 @@ msgstr[1] "před %1 dny"
 msgstr[2] "před %1 dny"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:249
-#, fuzzy, kde-format
-#| msgctxt "the to-do is due today"
-#| msgid "due any time today"
+#, kde-format
 msgctxt "@label the to-do is due today"
 msgid "due any time today"
 msgstr "termín dnes kdykoli"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:253
-#, fuzzy, kde-format
-#| msgctxt "the to-do is due at specified time"
-#| msgid "is due at %1"
+#, kde-format
 msgctxt "@label the to-do is due at specified time"
 msgid "is due at %1"
 msgstr "je plánováno na %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:257
-#, fuzzy, kde-format
-#| msgctxt "the to-do was due at specified time"
-#| msgid "was due at %1"
+#, kde-format
 msgctxt "@label the to-do was due at specified time"
 msgid "was due at %1"
 msgstr "bylo plánováno na %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:325
-#, fuzzy, kde-format
-#| msgid "No pending to-dos due within the next day"
-#| msgid_plural "No pending to-dos due within the next %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
@@ -3448,70 +3395,55 @@ msgstr[1] "Žádné úkoly nejsou na blízku pro příští %1 dny"
 msgstr[2] "Žádné úkoly nejsou na blízku pro příštích %1 dní"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:390
-#, fuzzy, kde-format
-#| msgid "&Mark To-do Completed"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mark To-do Completed"
 msgstr "Oz&načit úkol za dokončený"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:410
-#, fuzzy, kde-format
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Edit To-do: \"%1\""
 msgstr "Upravit úkol: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:430
-#, fuzzy, kde-format
-#| msgid "open-ended"
+#, kde-format
 msgctxt "@label"
 msgid "open-ended"
 msgstr "bez konce"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:432
-#, fuzzy, kde-format
-#| msgctxt "the to-do is overdue"
-#| msgid "overdue"
+#, kde-format
 msgctxt "@label the to-do is overdue"
 msgid "overdue"
 msgstr "ve zpoždění"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:434
-#, fuzzy, kde-format
-#| msgctxt "the to-do starts today"
-#| msgid "starts today"
+#, kde-format
 msgctxt "@label the to-do starts today"
 msgid "starts today"
 msgstr "začíná dnes"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:438
-#, fuzzy, kde-format
-#| msgctxt "the to-do has not been started yet"
-#| msgid "not-started"
+#, kde-format
 msgctxt "@label the to-do has not been started yet"
 msgid "not-started"
 msgstr "nezapočaté"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:440
-#, fuzzy, kde-format
-#| msgctxt "the to-do is completed"
-#| msgid "completed"
+#, kde-format
 msgctxt "@label the to-do is completed"
 msgid "completed"
 msgstr "dokončené"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:442
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "@label the to-do is in-progress"
 msgid "in-progress "
 msgstr "probíhající "
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:447
-#, fuzzy, kde-format
-#| msgctxt "@item:intext delimiter for joining holiday names"
-#| msgid ","
+#, kde-format
 msgctxt "@label Separator for status like this: overdue, completed"
 msgid ","
 msgstr ","
@@ -3733,30 +3665,25 @@ msgid "Show anni&versaries"
 msgstr "Zobrazo&vat výročí"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:107
-#, fuzzy, kde-format
-#| msgid "Upcoming Special Dates"
+#, kde-format
 msgctxt "@title:group"
 msgid "Upcoming Special Dates"
 msgstr "Nadcházející speciální data"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:458
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@label the special day is today"
 msgid "Today"
 msgstr "Dnes"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:460
-#, fuzzy, kde-format
-#| msgctxt "the appointment is tomorrow"
-#| msgid "Tomorrow"
+#, kde-format
 msgctxt "@label the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "Zítra"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:505
-#, fuzzy, kde-format
-#| msgid "now"
+#, kde-format
 msgctxt "@label"
 msgid "now"
 msgstr "nyní"
@@ -3774,30 +3701,25 @@ msgid "Anniversary"
 msgstr "Výročí"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:524
-#, fuzzy, kde-format
-#| msgid "Holiday"
+#, kde-format
 msgctxt "@label"
 msgid "Holiday"
 msgstr "Svátek"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:527
-#, fuzzy, kde-format
-#| msgid "Change of Seasons"
+#, kde-format
 msgctxt "@label"
 msgid "Change of Seasons"
 msgstr "Změna sezóny"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:530
-#, fuzzy, kde-format
-#| msgid "Special Occasion"
+#, kde-format
 msgctxt "@label"
 msgid "Special Occasion"
 msgstr "Speciální příležitost"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:572
-#, fuzzy, kde-format
-#| msgid "one year"
-#| msgid_plural "%1 years"
+#, kde-format
 msgctxt "@label"
 msgid "one year"
 msgid_plural "%1 years"
@@ -3806,9 +3728,7 @@ msgstr[1] "%1 roky"
 msgstr[2] "%1 let"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:583
-#, fuzzy, kde-format
-#| msgid "No special dates within the next 1 day"
-#| msgid_plural "No special dates pending within the next %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3817,22 +3737,19 @@ msgstr[1] "Žádné speciální události nejsou na blízku pro příští %1 dn
 msgstr[2] "Žádné speciální události nejsou na blízku pro příštích %1 dní"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:677
-#, fuzzy, kde-format
-#| msgid "Send &Mail"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Mail"
 msgstr "Poslat e&mail"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:678
-#, fuzzy, kde-format
-#| msgid "View &Contact"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "View &Contact"
 msgstr "Zobrazit &kontakt"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:693
-#, fuzzy, kde-format
-#| msgid "Mail to:\"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Mail to:\"%1\""
 msgstr "Poslat: \"%1\""
@@ -4092,9 +4009,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Zobrazit v dolní části zobrazení agendy"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Dekorace kalendářů"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4103,7 +4022,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Nastavit"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -4408,10 +4327,9 @@ msgstr "Přidat do výchozího kalendáře"
 
 #. i18n: ectx: tooltip, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:19
-#, fuzzy, kde-format
-#| msgid "Be added to the default calendar"
+#, kde-format
 msgid "Always save to the default calendar"
-msgstr "Přidat do výchozího kalendáře"
+msgstr "Vždy uložit do výchozího kalendáře"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:20
@@ -4433,7 +4351,7 @@ msgstr "Zeptat se, který kalendář použít"
 #: settings/korganizer.kcfg:24
 #, kde-format
 msgid "Always prompt for the calendar to use"
-msgstr ""
+msgstr "Vždy se dotázat, který kalendář se má použít"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
@@ -4442,18 +4360,21 @@ msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry"
 msgstr ""
+"Tuto možnost vyberte, chcete-li určit kalendář, který se bude používat k "
+"zaznamenání položky při každém vytvoření nové události, úkolu nebo záznamu "
+"do deníku"
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
 #, kde-format
 msgid "Enable KDE Plasma Activities"
-msgstr ""
+msgstr "Povolit aktivity KDE Plasma"
 
 #. i18n: ectx: tooltip, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:34
 #, kde-format
 msgid "Enable KDE Plasma Activities for Mail accounts"
-msgstr ""
+msgstr "Povolit aktivity KDE Plasma pro e-mailové účty"
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
@@ -4462,6 +4383,8 @@ msgid ""
 "Select this option to the enable KDE Plasma Activities that allows setting "
 "different Mail accounts and transports for each activity."
 msgstr ""
+"Tuto možnost vyberte, chcete-li povolit funkce aktivit KDE Plasma, které "
+"umožňují nastavit pro každou aktivitu různé e-mailové účty a transporty."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
@@ -4537,10 +4460,9 @@ msgstr "Povolit zobrazování tipů se souhrnem událostí"
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:64
-#, fuzzy, kde-format
-#| msgid "Show events for today only"
+#, kde-format
 msgid "Show event or to-do item tooltips"
-msgstr "Zobrazit pouze dnešní úkoly"
+msgstr "Zobrazit popisky událostí nebo úkolů"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:65
@@ -4560,10 +4482,9 @@ msgstr "Úkoly používají barvy značek"
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:70
-#, fuzzy, kde-format
-#| msgid "To-dos use tag colors"
+#, kde-format
 msgid "Draw to-do items using tag colors"
-msgstr "Úkoly používají barvy značek"
+msgstr "Označit úkoly podle barev štítků"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:71
@@ -4610,22 +4531,19 @@ msgstr "Zobrazit položky, které se opakují denně"
 #, kde-format
 msgid "Use a bold typeface to more easily identify daily recurring incidences"
 msgstr ""
+"Pro snazší rozpoznání každodenních opakujících se událostí použít tučné písmo"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:83
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing daily recurring events in bold "
-#| "typeface in the Date Navigator, or uncheck it to give more prominence to "
-#| "other (non daily recurring) events."
+#, kde-format
 msgid ""
 "Check this box to show the days containing daily recurring incidences in "
 "bold typeface in the Date Navigator, or uncheck it to give more prominence "
 "to other (non daily recurring) incidences."
 msgstr ""
-"Zaškrtněte, pokud si přejete v Navigátoru zobrazit dny, které obsahují denně "
-"se opakující události, tučným písmem. Zrušte zaškrtnutí, pokud si přejete "
-"dát větší význam ostatním událostem (neopakujícím se každý den)."
+"Zaškrtněte toto políčko, chcete-li v navigátoru dat zobrazit dny obsahující "
+"denně se opakující události tučným písmem, nebo zaškrtnutí zrušte, chcete-li "
+"více zdůraznit ostatní (denně se neopakující) události."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:87
@@ -4638,6 +4556,8 @@ msgstr "Zobrazit položky, které se opakují týdně"
 #, kde-format
 msgid "Use a bold typeface to more easily identify weekly recurring incidences"
 msgstr ""
+"Pro snazší rozpoznání událostí, které se opakují každý týden, použít tučné "
+"písmo"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:89
@@ -4762,17 +4682,13 @@ msgstr "Nastavit výšku (v pixelech) pro hodiny v mřížce agendy"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:128
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show icons in Agenda View items"
 msgstr "Zobrazit ikony v položkách zobrazení agendy"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:129
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in Agenda View "
 "items."
@@ -4782,8 +4698,7 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:130
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display icons in Agenda View items"
 msgstr "Zobrazit ikony v položkách zobrazení agendy"
 
@@ -4810,16 +4725,13 @@ msgstr "Nakreslit výraznější čáry hodinové mřížky"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:140
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in Agenda View items"
 msgstr "Zobrazit popisy položek v zobrazení agendy"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:141
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in Agenda View items."
 msgstr ""
@@ -4828,23 +4740,19 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence descriptions Agenda View items"
 msgstr "Zobrazit popisy položek v zobrazení agendy"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:146
-#, fuzzy, kde-format
-#| msgid "Show incidence locations in agenda view items"
+#, kde-format
 msgid "Show incidence locations in Agenda View items"
 msgstr "Zobrazit umístění položek v zobrazení agendy"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence locations in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in Agenda View items."
 msgstr ""
 "Zaškrtněte toto políčko, chcete-li v zobrazení agendy zobrazit umístění "
@@ -4852,8 +4760,7 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Display incidence locations agenda view items"
+#, kde-format
 msgid "Display incidence locations Agenda View items"
 msgstr "Zobrazit umístění položek v zobrazení agendy"
 
@@ -4896,15 +4803,13 @@ msgstr "Zobrazit úkoly"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:159
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the agenda view."
+#, kde-format
 msgid "Check this box to display to-dos in the Agenda View."
 msgstr "Zaškrtněte toto políčko, chcete-li zobrazit úkoly v zobrazení agendy."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the agenda view"
+#, kde-format
 msgid "Display to-dos in the Agenda View"
 msgstr "Zobrazit úkoly v zobrazení agendy"
 
@@ -4957,8 +4862,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:176
-#, fuzzy, kde-format
-#| msgid "Time range selection in agenda view starts event editor"
+#, kde-format
 msgid "Time range selection in Agenda View starts event editor"
 msgstr "Označení časového intervalu v agendě spustí editor událostí"
 
@@ -5117,10 +5021,7 @@ msgstr "Sloučit všechny kalendáře do jednoho zobrazení"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:212
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the \"Merge all calendars into one view\" option if you would like "
-#| "all your calendars to be shown together in one agenda view."
+#, kde-format
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one Agenda View."
@@ -5181,17 +5082,13 @@ msgstr "Přejít mezi kalendáři pomocí Tab"
 
 #. i18n: ectx: label, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:232
-#, fuzzy, kde-format
-#| msgid "Show icons in month view items"
+#, kde-format
 msgid "Show icons in Month View items"
 msgstr "Zobrazit ikony v položkách měsíčního zobrazení"
 
 #. i18n: ectx: whatsthis, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in month view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in Month View items."
 msgstr ""
@@ -5200,25 +5097,20 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableMonthItemIcons), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Display icons in month view items"
+#, kde-format
 msgid "Display icons in Month View items"
 msgstr "Zobrazit ikony v položkách měsíčního zobrazení"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:238
-#, fuzzy, kde-format
-#| msgid "Show start-times without end-times in month view items"
+#, kde-format
 msgid "Show start-times without end-times in Month View items"
 msgstr ""
 "Zobrazit časy začátku bez časů ukončení v položkách měsíčního zobrazení"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:239
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the start-time without the end-time in month "
-#| "view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in Month View "
 "items."
@@ -5228,23 +5120,19 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
-#, fuzzy, kde-format
-#| msgid "Display start-time without the end-time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in Month View items"
 msgstr "V položkách měsíčního zobrazení zobrazit čas začátku bez času ukončení"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:244
-#, fuzzy, kde-format
-#| msgid "Show the start-time and the end-time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in Month View items"
 msgstr "Zobrazit čas začátku a konce v položkách měsíčního zobrazení"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:245
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the start and end times in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in Month View items."
 msgstr ""
 "Zaškrtněte toto políčko, chcete-li v položkách měsíčního zobrazení zobrazit "
@@ -5252,20 +5140,13 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:246
-#, fuzzy, kde-format
-#| msgid "Display the start and end times in month view items"
+#, kde-format
 msgid "Display the start and end times in Month View items"
 msgstr "Zobrazit čas začátku a konce v položkách měsíčního zobrazení"
 
 #. i18n: ectx: whatsthis, entry (ColorMonthBusyDaysEnabled), group (Month View)
 #: settings/korganizer.kcfg:252
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box if you want month view's background to be filled with a "
-#| "different color on days which have at least one all day event marked as "
-#| "busy. Also, you can change the background color used for this option on "
-#| "the Colors configuration page. Look for the \"Busy days background color"
-#| "\" setting."
+#, kde-format
 msgid ""
 "Check this box if you want Month View's background to be filled with a "
 "different color on days which have at least one all day event marked as "
@@ -5281,16 +5162,14 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display to-dos in the Month View."
 msgstr ""
 "Zaškrtněte toto políčko, chcete-li zobrazit úkoly v měsíčním zobrazení."
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display to-dos in the Month View"
 msgstr "Zobrazit úkoly v měsíčním zobrazení"
 
@@ -5302,16 +5181,14 @@ msgstr "Zobrazit deníky"
 
 #. i18n: ectx: whatsthis, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:263
-#, fuzzy, kde-format
-#| msgid "Check this box to display journals in the month view."
+#, kde-format
 msgid "Check this box to display journals in the Month View."
 msgstr ""
 "Zaškrtněte toto políčko, chcete-li zobrazit deníky v měsíčním zobrazení."
 
 #. i18n: ectx: tooltip, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:264
-#, fuzzy, kde-format
-#| msgid "Display journals in the month view"
+#, kde-format
 msgid "Display journals in the Month View"
 msgstr "Zobrazit deníky v měsíčním zobrazení"
 
@@ -5323,8 +5200,7 @@ msgstr "Zobrazit svátky"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:269
-#, fuzzy, kde-format
-#| msgid "Check this box to display holidays in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the Month View."
 msgstr ""
 "Zaškrtněte toto políčko, chcete-li zobrazit svátky v měsíčním zobrazení."
@@ -5332,8 +5208,7 @@ msgstr ""
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:270 settings/korganizer.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Display holidays in the month view"
+#, kde-format
 msgid "Display holidays in the Month View"
 msgstr "Zobrazit svátky v měsíčním zobrazení"
 
@@ -5468,12 +5343,7 @@ msgstr "Zobrazit seznam úkolů v plném okně KOrganizeru"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:318
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the to-"
-#| "do list view. If this box is checked, you will gain some space for the to-"
-#| "do list view, but other widgets, such as the date navigator, the to-do "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
 "list view. If this box is checked, you will gain some space for the to-do "
@@ -5544,11 +5414,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:339
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system colors instead of user defined colors for the \"Agenda view "
-#| "background color\", \"Busy days background color\" and the \"Working "
-#| "hours color\" (and possibly others)."
+#, kde-format
 msgid ""
 "Use system colors instead of user defined colors for the \"Agenda View "
 "background color\", \"Busy days background color\" and the \"Working hours "
@@ -5560,8 +5426,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:343
-#, fuzzy, kde-format
-#| msgid "Agenda view background color"
+#, kde-format
 msgid "Agenda View background color"
 msgstr "Barva pozadí zobrazení agendy"
 
@@ -5577,8 +5442,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:345
-#, fuzzy, kde-format
-#| msgid "Select the agenda view background color here."
+#, kde-format
 msgid "Select the Agenda View background color here."
 msgstr "Zde zvolte barvu pozadí zobrazení agendy."
 
@@ -5619,15 +5483,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:357
-#, fuzzy, kde-format
-#| msgid "Select the working hours color for the agenda view here."
+#, kde-format
 msgid "Select the working hours color for the Agenda View here."
 msgstr "Zde vyberte barvu pro pracovní hodiny v zobrazení agendy."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:361
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time (Marcus Bains) line color"
+#, kde-format
 msgid "Agenda View current-time (Marcus Bains) line color"
 msgstr "Barva čáry aktuálního času v zobrazení agendy (Marcus Bains)"
 
@@ -5662,11 +5524,7 @@ msgstr "Nastavit barvu pozadí pro dnešní datum v měsíčním zobrazení"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:369
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the month view and the holiday number in the date "
-#| "navigator."
+#, kde-format
 msgid ""
 "Select the holiday color here. The holiday color will be used for the "
 "holiday name in the Month View and the holiday number in the Date Navigator."
@@ -5713,15 +5571,13 @@ msgstr "Zde zvolte barvu pro prošlé úkoly."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:385
-#, fuzzy, kde-format
-#| msgid "Month view today background color"
+#, kde-format
 msgid "Month View today background color"
 msgstr "Barva pozadí dnešku v měsíčním zobrazení"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:386
-#, fuzzy, kde-format
-#| msgid "Set the background color for today's date in month view"
+#, kde-format
 msgid "Set the background color for today's date in Month View"
 msgstr "Nastavit barvu pozadí pro dnešní datum v měsíčním zobrazení"
 
@@ -5771,12 +5627,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:402
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the time bar font. The time bar is the "
-#| "widget that shows the hours in the agenda view. This button will open the "
-#| "\"Select Font\" dialog, allowing you to choose the hour font for the time "
-#| "bar."
+#, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
 "that shows the hours in the Agenda View. This button will open the \"Select "
@@ -5802,11 +5653,7 @@ msgstr "Zobrazit ikony v položkách měsíčního zobrazení"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:407
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the month view font. This button will open "
-#| "the \"Select Font\" dialog, allowing you to choose the font for the items "
-#| "in the month view."
+#, kde-format
 msgid ""
 "Press this button to configure the month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
@@ -5818,9 +5665,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:410
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Agenda View"
+#, kde-format
 msgid "Agenda View"
 msgstr "Zobrazení agendy"
 
@@ -5833,11 +5678,7 @@ msgstr "Zobrazit ikony v položkách zobrazení agendy"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:412
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the agenda view font. This button will "
-#| "open the \"Select Font\" dialog, allowing you to choose the font for the "
-#| "events in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the Agenda View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
@@ -5863,11 +5704,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:417
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the current-time (Marcus Bains) line font. "
-#| "This button will open the \"Select Font\" dialog, allowing you to choose "
-#| "the font for the current-time line in the agenda view."
+#, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
 "This button will open the \"Select Font\" dialog, allowing you to choose the "

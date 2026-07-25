@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2025-05-05 16:06+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -40,7 +40,22 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Rādīt dienas numuru"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@option:radio"
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Rādīt dienas numuru"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid "Sets options related to the date and time of the event or to-do."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "Uzstāda šī notikuma vai darba datuma un laika opcijas."
+
+#: datenums/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
@@ -48,9 +63,39 @@ msgstr "Rādīt dienas līdz gada beigām"
 
 #: datenums/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+"Atzīmējiet šo, ja vēlaties, lai pie pašreizējā laika līnijas rādītu sekundes."
+
+#: datenums/configdialog.cpp:58
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Rādīt abus"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -710,20 +755,33 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignorēt malu attiecību"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "Sīktēla izmēri brīvi mainīsies. Malu attiecība netiks saglabāta."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Saglabāt malu attiecību"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -733,13 +791,19 @@ msgstr ""
 "Sīktēla izmērs būs lielākais iespējamais dotajā taisnstūrī, saglabājot malu "
 "attiecību."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Saglabāt malu attiecību izvēršot"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2371,16 +2435,6 @@ msgstr "MMMM_yyyy"
 #~| msgid "Select the ending date for this event."
 #~ msgid "Select the days for showing upcoming events"
 #~ msgstr "Izvēlieties notikuma beigu laiku."
-
-#, fuzzy
-#~| msgid ""
-#~| "Check this box if you want to show seconds on the current-time line."
-#~ msgid ""
-#~ "Check this box if you want to specify the number of days in the future "
-#~ "for upcoming events."
-#~ msgstr ""
-#~ "Atzīmējiet šo, ja vēlaties, lai pie pašreizējā laika līnijas rādītu "
-#~ "sekundes."
 
 #, fuzzy
 #~| msgid "1 day"
@@ -8619,12 +8673,6 @@ msgstr "MMMM_yyyy"
 #~ msgctxt "@title:group"
 #~ msgid "Date && Time"
 #~ msgstr "Datums un laiks"
-
-#, fuzzy
-#~| msgid "Sets options related to the date and time of the event or to-do."
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Sets options related to the date and time of the event or to-do."
-#~ msgstr "Uzstāda šī notikuma vai darba datuma un laika opcijas."
 
 #~ msgctxt "@label event start time"
 #~ msgid "&Start:"

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
-"PO-Revision-Date: 2026-07-23 12:52+0300\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
+"PO-Revision-Date: 2026-07-24 08:39+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2506,15 +2506,14 @@ msgstr "Показати у контексті"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr ""
+msgstr "Запустити редактор з цією зустріччю"
 
 #: dialog/koeventviewerdialog.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press the Edit button to pop-up the incidence editor dialog"
-msgstr "Натисніть цю кнопку, щоб вилучити вибраний фільтр."
+msgstr ""
+"Натисніть кнопку «Змінити», щоб відкрити діалогове вікно редактора зустрічей"
 
 #: dialog/koeventviewerdialog.cpp:46
 #, kde-format
@@ -2523,6 +2522,8 @@ msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
 msgstr ""
+"Гортати до відповідного перегляду календаря, щоб зустріч можна було бачити у "
+"контексті"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2532,6 +2533,9 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"Натисніть цю кнопку для перегляду зустрічі у контексті. Це означає перегляд "
+"завдань, порядку денного або журналу (якщо є відповідним) і гортання списку "
+"до області, де буде видимою зустріч."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -4060,9 +4064,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Показати внизу переглядів порядку денного"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Додаток оздоблення календаря"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4071,7 +4077,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Налаштувати"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -38,7 +38,25 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "दिवसाचा क्रमांक दाखवा"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "दिवसाचा क्रमांक दाखवा"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click here to scroll the display to week number %1 of the currently "
+#| "displayed year."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr ""
+"सध्या प्रदर्शित केलेल्या वर्षात %1या क्रमांकाचा सप्ताह दाखविण्यासाठी येथे क्लिक करून "
+"समायोजन/स्क्रोल करा."
+
+#: datenums/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Show days to end of year"
 msgctxt "@option:radio"
@@ -46,11 +64,42 @@ msgid "Show days to end of year"
 msgstr "वर्षाच्य शेवटी दिवस दाखवा"
 
 #: datenums/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+"सध्याची/आताची वेळ दर्शविणाऱ्या रेषेवर (Marcus Bains) line) सेकंद दाखवायचे असतील तर हे "
+"निवडा"
+
+#: datenums/configdialog.cpp:58
 #, fuzzy, kde-format
 #| msgid "Show both"
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "दोन्ही दाखवा"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -710,7 +759,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "प्रसर गुणोत्तराकडे दुर्लक्ष करा."
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled freely. The aspect ratio will not be "
@@ -720,7 +776,7 @@ msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "लघुचित्राचे प्रमाण मुक्तपणे ठरविले जाईल. प्रसर गुणोत्तर कायम ठेवले जाणार नाही."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
 msgctxt "@option:radio"
@@ -728,6 +784,12 @@ msgid "Keep aspect ratio"
 msgstr "स्वरूपाचे गुणोत्तर ठेवा"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -740,14 +802,20 @@ msgstr ""
 "लघुचित्राचे प्रमाण दिलेल्या चौकोनात शक्य तेवढ्या मोठ्या आकाराच्या चौकोनात त्याचे प्रसर "
 "गुणोत्तर कायम ठेवून ठरविले जाईल."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio by expanding"
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "प्रसर गुणोत्तर विस्तार करून ठेवा"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as small as possible outside "
@@ -2341,16 +2409,6 @@ msgstr " MMMM_yyyy "
 #~ "next 31 days."
 #~ msgstr ""
 #~ "तुम्हाला कार्यक्रमाला उपस्थित असलेल्यांची नावे निर्यात करायची असतील तर हे निवडा. "
-
-#, fuzzy
-#~| msgid ""
-#~| "Check this box if you want to show seconds on the current-time line."
-#~ msgid ""
-#~ "Check this box if you want to specify the number of days in the future "
-#~ "for upcoming events."
-#~ msgstr ""
-#~ "सध्याची/आताची वेळ दर्शविणाऱ्या रेषेवर (Marcus Bains) line) सेकंद दाखवायचे असतील तर "
-#~ "हे निवडा"
 
 #, fuzzy
 #~| msgid "1 day"
@@ -4729,13 +4787,6 @@ msgstr " MMMM_yyyy "
 
 #~ msgid "Scroll to week number %1"
 #~ msgstr "%1 क्रमांकाच्या सप्ताहाकडे समायोजन/स्क्रोल करा"
-
-#~ msgid ""
-#~ "Click here to scroll the display to week number %1 of the currently "
-#~ "displayed year."
-#~ msgstr ""
-#~ "सध्या प्रदर्शित केलेल्या वर्षात %1या क्रमांकाचा सप्ताह दाखविण्यासाठी येथे क्लिक करून "
-#~ "समायोजन/स्क्रोल करा."
 
 #~ msgid "%1"
 #~ msgstr "%1"

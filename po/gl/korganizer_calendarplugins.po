@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2025-05-22 13:13+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.gal>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
@@ -44,17 +44,69 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Amosar o día do mes."
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@option:radio"
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Amosar o día do mes."
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click here to scroll the display to week number %1 of the currently "
+#| "displayed year."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr ""
+"Prema aquí para mover a vista á semana número %1 do ano que se está vendo."
+
+#: datenums/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Amosar os restantes días do ano."
 
 #: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "Set the number of days to show upcoming events"
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr "Indicar o número de días para mostrar as actividades vindeiras"
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
+#| "year in the future."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+"Empregue este selector para indicar o número de días para mostrar as tarefas "
+"pendentes até un ano no futuro."
+
+#: datenums/configdialog.cpp:58
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Amosar ambos os dous."
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -709,7 +761,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Ignorar a proporción."
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -717,13 +776,19 @@ msgid ""
 msgstr ""
 "A miniatura cambiarase de dimensións libremente. Non se mantén a proporción."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Manter a proporción."
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -733,13 +798,19 @@ msgstr ""
 "A miniatura cambiarase de dimensións ata ocupar un rectángulo tan grande "
 "como for posíbel dentro dun rectángulo dado e mantendo a proporción."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Manter a proporción aumentando."
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2362,9 +2433,6 @@ msgstr "MMMM_aaaa"
 #~ msgid "Within the &next:"
 #~ msgstr "Nos pró&ximos:"
 
-#~ msgid "Set the number of days to show upcoming events"
-#~ msgstr "Indicar o número de días para mostrar as actividades vindeiras"
-
 #~ msgid ""
 #~ "Use this spinbox to set the number of days to show upcoming events up to "
 #~ "1 year in the future."
@@ -2655,13 +2723,6 @@ msgstr "MMMM_aaaa"
 
 #~ msgid "Set the number of days to show pending To-dos"
 #~ msgstr "Indicar o número de días para mostrar as tarefas pendentes"
-
-#~ msgid ""
-#~ "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#~ "year in the future."
-#~ msgstr ""
-#~ "Empregue este selector para indicar o número de días para mostrar as "
-#~ "tarefas pendentes até un ano no futuro."
 
 #~ msgid "Hide Following To-do Types"
 #~ msgstr "Agochar os tipos de tarefas seguintes"
@@ -4957,12 +5018,6 @@ msgstr "MMMM_aaaa"
 
 #~ msgid "Scroll to week number %1"
 #~ msgstr "Ir para a semana número %1"
-
-#~ msgid ""
-#~ "Click here to scroll the display to week number %1 of the currently "
-#~ "displayed year."
-#~ msgstr ""
-#~ "Prema aquí para mover a vista á semana número %1 do ano que se está vendo."
 
 #~ msgid "%1"
 #~ msgstr "%1"

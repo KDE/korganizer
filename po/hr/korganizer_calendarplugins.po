@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -38,17 +38,57 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Pokaži dan Omera"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Pokaži dan Omera"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "Obriši stare događaje"
+
+#: datenums/configdialog.cpp:53
 #, fuzzy, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Pokaži dan Omera"
 
 #: datenums/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
+
+#: datenums/configdialog.cpp:58
 #, fuzzy, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Pokaži"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -703,14 +743,21 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr ""
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
@@ -718,19 +765,31 @@ msgstr ""
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr ""
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2013,12 +2072,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Select the days for showing upcoming events"
 #~ msgstr "Boja zadataka koji su probili krajnji rok:"
-
-#, fuzzy
-#~ msgid ""
-#~ "Check this box if you want to specify the number of days in the future "
-#~ "for upcoming events."
-#~ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
 
 #, fuzzy
 #~ msgid "1 day"
@@ -6171,11 +6224,6 @@ msgstr ""
 #~ msgctxt "@title:group"
 #~ msgid "Date && Time"
 #~ msgstr "Vrijeme krajnjeg roka"
-
-#, fuzzy
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Sets options related to the date and time of the event or to-do."
-#~ msgstr "Obriši stare događaje"
 
 #, fuzzy
 #~| msgid "&Start:"

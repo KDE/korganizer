@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
-"PO-Revision-Date: 2026-07-23 21:32+0300\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
+"PO-Revision-Date: 2026-07-24 19:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2461,7 +2461,7 @@ msgstr "“%1” süzgecini silmeyi gerçekten istediğinizden emin misiniz?"
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Filter?"
-msgstr "Süzgeç Silinsin mi?"
+msgstr "Süzgeci Sil?"
 
 #: dialog/koeventviewerdialog.cpp:32
 #, kde-format
@@ -2485,15 +2485,14 @@ msgstr "Bağlamda Göster"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr ""
+msgstr "Bu olay için düzenleyiciyi başlat"
 
 #: dialog/koeventviewerdialog.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press the Edit button to pop-up the incidence editor dialog"
-msgstr "Etkin süzgeci silmek için bu düğmeye basın."
+msgstr ""
+"Olay düzenleyicisi iletişim kutusunu açmak için “Düzenle” düğmesine basın."
 
 #: dialog/koeventviewerdialog.cpp:46
 #, kde-format
@@ -2502,6 +2501,7 @@ msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
 msgstr ""
+"Olayın ilgili bağlamda görülebilmesi için gereken takvim görünümüne sar"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2511,6 +2511,9 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"Bu düğmeye basarak bir olayı bağlamı içinde görüntüleyebilirsiniz. Bu, "
+"yapılacaklar listesi, ajanda veya günce görünümünü (duruma göre) göstermek "
+"ve olayı görüntülemek için sarmak anlamına gelir."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -4009,9 +4012,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Ajanda görünümlerinin en altında göster"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Takvim Dekorasyonları"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4020,7 +4025,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Yapılandır"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -4348,7 +4353,7 @@ msgstr "Hangi takvimin kullanılacağını sor"
 #: settings/korganizer.kcfg:24
 #, kde-format
 msgid "Always prompt for the calendar to use"
-msgstr ""
+msgstr "Kullanılacak takvimi her zaman sor"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
@@ -4357,18 +4362,21 @@ msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry"
 msgstr ""
+"Yeni bir etkinlik, yapılacaklar listesi veya günce kaydı oluşturduğunuzda, "
+"ögeyi kaydetmek için kullanılacak takvimi seçmek üzere bu seçeneği "
+"belirleyin."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
 #, kde-format
 msgid "Enable KDE Plasma Activities"
-msgstr ""
+msgstr "KDE Plasma Etkinlikler’ini etkinleştir"
 
 #. i18n: ectx: tooltip, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:34
 #, kde-format
 msgid "Enable KDE Plasma Activities for Mail accounts"
-msgstr ""
+msgstr "Posta hesapları için KDE Plasma Etkinlikler’i etkinleştir"
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
@@ -4377,6 +4385,9 @@ msgid ""
 "Select this option to the enable KDE Plasma Activities that allows setting "
 "different Mail accounts and transports for each activity."
 msgstr ""
+"Her etkinlik için farklı posta hesaplarının ve aktarımlarının ayarlanmasına "
+"olanak tanıyan KDE Plasma Etkinlikler’ini etkinleştirmek için bu seçeneği "
+"seçin."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
@@ -4524,34 +4535,34 @@ msgstr "Her gün yinelenen ögeleri göster"
 #, kde-format
 msgid "Use a bold typeface to more easily identify daily recurring incidences"
 msgstr ""
+"Günlük olarak yinelenen olayları daha kolay tanımlamak için kalın yazıyüzü "
+"kullan"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:83
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing daily recurring events in bold "
-#| "typeface in the Date Navigator, or uncheck it to give more prominence to "
-#| "other (non daily recurring) events."
+#, kde-format
 msgid ""
 "Check this box to show the days containing daily recurring incidences in "
 "bold typeface in the Date Navigator, or uncheck it to give more prominence "
 "to other (non daily recurring) incidences."
 msgstr ""
-"Günlük yinelenen etkinlikleri Tarih Gezgini’nde kalın yazıyüzü ile göstermek "
-"için bu kutuyu işaretleyin veya başka etkinliklere (günlük yinelenmeyen) "
-"daha çok önem vermek için işareti kaldırın."
+"Günlük yinelenen olayları Tarih Gezgini’nde kalın yazıyüzü ile göstermek "
+"için bu kutuyu işaretleyin veya başka olaylara (günlük yinelenmeyen) daha "
+"çok önem vermek için işaretini kaldırın."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:87
 #, kde-format
 msgid "Show items that recur weekly"
-msgstr "Her hafta yinelenen ögeleri göster"
+msgstr "Haftalık yinelenen ögeleri göster"
 
 #. i18n: ectx: tooltip, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:88
 #, kde-format
 msgid "Use a bold typeface to more easily identify weekly recurring incidences"
 msgstr ""
+"Haftalık olarak yinelenen olayları daha kolay tanımlamak için kalın yazıyüzü "
+"kullan"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:89
@@ -4576,6 +4587,8 @@ msgstr "Yapılacaklar Görünümü’nde etkinlikler yerine yapılacakları gös
 #, kde-format
 msgid "In Todo View, use a bold typeface to more easily identify to-dos"
 msgstr ""
+"Yapılacakları daha kolay ayırt etmek için yapılacaklar görünümünde kalın "
+"yazıyüzü kullan"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
@@ -4598,6 +4611,7 @@ msgstr "Günce Görünümünde etkinlikler yerine günceleri göster"
 #, kde-format
 msgid "In journal view, use a bold typeface to more easily identify journals"
 msgstr ""
+"Günceleri daha kolay ayırt etmek için günce görünümünde kalın yazıyüzü kullan"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
@@ -4619,7 +4633,7 @@ msgstr "Hafta numaralarını göster"
 #: settings/korganizer.kcfg:106
 #, kde-format
 msgid "Display each week's number in the current year"
-msgstr ""
+msgstr "Geçerli yıl bünyesinde her bir haftanın numarasını görüntüle"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4640,6 +4654,8 @@ msgstr "Çalışma haftası kipinde iken hafta sayıları bir çalışma haftas�
 msgid ""
 "In work week mode, allow selecting a work week rather than the whole week"
 msgstr ""
+"Çalışma haftası kipinde, tüm hafta yerine yalnızca bir çalışma günleri "
+"seçimine olanak tanı"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:113
@@ -5379,6 +5395,7 @@ msgstr "Tamamlanmış yapılacakları günce girdilerine kaydet"
 #, kde-format
 msgid "Add a journal entry each time a to-do is marked as completed"
 msgstr ""
+"Ne zaman bir yapılacak tamamlandı olarak imlenirse bir günce girdisi ekle"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:330
@@ -5449,6 +5466,8 @@ msgstr "Meşgûl gün arka plan rengi"
 msgid ""
 "When not using system colors, set the color for all day events marked as busy"
 msgstr ""
+"Sistem renklerini kullanılmıyorken meşgûl olarak imlenen tüm gün "
+"etkinliklerinin rengini ayarla"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:351
@@ -5457,6 +5476,8 @@ msgid ""
 "In Agenda and Month views, when you have an all day event marked as busy, "
 "draw that item's background using the specified color."
 msgstr ""
+"Ajanda ve ay görünümlerinde, tüm gün sürecek bir etkinliği meşgûl olarak "
+"işaretlediğinizde, o ögenin arka planını belirtilen renkle çizin."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:355
@@ -5471,6 +5492,8 @@ msgid ""
 "When not using system colors, set the color for the Agenda View working "
 "hours grid"
 msgstr ""
+"Sistem renkleri kullanılmıyorken ajanda görünümü çalışma saatleri tablosunun "
+"rengini ayarla"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:357
@@ -5530,7 +5553,7 @@ msgstr "Bitiş tarihi bugün olan yapılacak ögelerinin rengi"
 #: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for to-dos that are due today"
-msgstr ""
+msgstr "Bitiş tarihi bugün olan yapılacakların rengini ayarla"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #: settings/korganizer.kcfg:375
@@ -5606,7 +5629,7 @@ msgstr "Zaman çubuğu"
 #: settings/korganizer.kcfg:401
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
-msgstr ""
+msgstr "Ajanda görünümü zaman çubuğu etiket yazıtipini ayarla"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:402

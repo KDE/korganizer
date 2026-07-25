@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2025-12-03 11:03+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -51,17 +51,71 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Показывать номер дня"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@option:radio"
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Показывать номер дня"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid ""
+#| "Click here to scroll the display to week number %1 of the currently "
+#| "displayed year."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "Прокрутить экран к %1 неделе отображаемого года."
+
+#: datenums/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
 msgstr "Показывать количество дней до конца года"
 
 #: datenums/configdialog.cpp:54
+#, fuzzy, kde-format
+#| msgid "Set the number of days to show upcoming events"
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+"Укажите число дней начиная с текущей даты, за которые\n"
+"будут показаны предстоящие события."
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
+#| "year in the future."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+"Укажите здесь число дней начиная с текущей даты,\n"
+"за которые будут показаны крайние сроки выполнения задач.\n"
+"Максимальный период времени — 1 год с текущей даты."
+
+#: datenums/configdialog.cpp:58
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Показывать и то, и другое"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -727,20 +781,33 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Игнорировать соотношение сторон"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "Миниатюра будет масштабирована без сохранения пропорций."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Сохранять &пропорции"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -750,13 +817,19 @@ msgstr ""
 "Миниатюра будет масштабирована до максимального размера внутри "
 "прямоугольника при сохранении пропорций."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Сохранять соотношение сторон при увеличении"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2386,11 +2459,6 @@ msgstr "MMMM_yyyy"
 #~ msgid "Within the &next:"
 #~ msgstr "В бл&ижайшие:"
 
-#~ msgid "Set the number of days to show upcoming events"
-#~ msgstr ""
-#~ "Укажите число дней начиная с текущей даты, за которые\n"
-#~ "будут показаны предстоящие события."
-
 #~ msgid ""
 #~ "Use this spinbox to set the number of days to show upcoming events up to "
 #~ "1 year in the future."
@@ -2691,14 +2759,6 @@ msgstr "MMMM_yyyy"
 #~ msgstr ""
 #~ "Укажите число дней начиная с текущей даты, за которые\n"
 #~ "будут показаны крайние сроки выполнения задач."
-
-#~ msgid ""
-#~ "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#~ "year in the future."
-#~ msgstr ""
-#~ "Укажите здесь число дней начиная с текущей даты,\n"
-#~ "за которые будут показаны крайние сроки выполнения задач.\n"
-#~ "Максимальный период времени — 1 год с текущей даты."
 
 #~ msgid "Hide Following To-do Types"
 #~ msgstr "Скрывать задачи из этих категорий"
@@ -4903,11 +4963,6 @@ msgstr "MMMM_yyyy"
 
 #~ msgid "Scroll to week number %1"
 #~ msgstr "Прокрутить к %1 неделе"
-
-#~ msgid ""
-#~ "Click here to scroll the display to week number %1 of the currently "
-#~ "displayed year."
-#~ msgstr "Прокрутить экран к %1 неделе отображаемого года."
 
 #~ msgid "%1"
 #~ msgstr "%1"

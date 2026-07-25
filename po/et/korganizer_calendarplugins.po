@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2019-12-18 19:36+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -39,7 +39,22 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Päevanumbri näitamine"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Päevanumbri näitamine"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Sets options related to the date and time of the event or to-do."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "Määrab sündmuse või ülesande kuupäeva ja kellaajaga seotud valikud."
+
+#: datenums/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Show days to end of year"
 msgctxt "@option:radio"
@@ -48,10 +63,44 @@ msgstr "Aasta lõpuni jäänud päevade arvu näitamine"
 
 #: datenums/configdialog.cpp:54
 #, fuzzy, kde-format
+#| msgid "Set the number of days to show upcoming events"
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr "Tulevaste sündmuste näidatavate päevade arvu määramine"
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
+#| "year in the future."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+"Kerimiskastis saab määrata päevade arvu, mille kohta näidatakse veel "
+"täitmata ülesandeid (kuni üks aasta)."
+
+#: datenums/configdialog.cpp:58
+#, fuzzy, kde-format
 #| msgid "Show both"
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Näidatakse mõlemat"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -708,7 +757,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Proportsiooni eiratakse"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled freely. The aspect ratio will not be "
@@ -718,7 +774,7 @@ msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "Pisipilti skaleeritakse vabalt, proportsiooni ei säilitata"
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
 msgctxt "@option:radio"
@@ -726,6 +782,12 @@ msgid "Keep aspect ratio"
 msgstr "Proportsioon säilitatakse"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -738,14 +800,20 @@ msgstr ""
 "Pisipilt skaleeritakse proportsiooni säilitades antud ristküliku sees nii "
 "suureks, kui võimalik."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio by expanding"
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Proportsioon säilitatakse võimendades"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as small as possible outside "
@@ -2353,9 +2421,6 @@ msgstr "MMMM"
 #~ msgid "Within the &next:"
 #~ msgstr "Järg&mise"
 
-#~ msgid "Set the number of days to show upcoming events"
-#~ msgstr "Tulevaste sündmuste näidatavate päevade arvu määramine"
-
 #~ msgid ""
 #~ "Use this spinbox to set the number of days to show upcoming events up to "
 #~ "1 year in the future."
@@ -2638,13 +2703,6 @@ msgstr "MMMM"
 
 #~ msgid "Set the number of days to show pending To-dos"
 #~ msgstr "Veel täitmata ülesannete näidatavate päevade arvu määramine"
-
-#~ msgid ""
-#~ "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#~ "year in the future."
-#~ msgstr ""
-#~ "Kerimiskastis saab määrata päevade arvu, mille kohta näidatakse veel "
-#~ "täitmata ülesandeid (kuni üks aasta)."
 
 #~ msgid "Hide Following To-do Types"
 #~ msgstr "Järgmiste ülesandetüüpide peitmine"
@@ -8940,10 +8998,6 @@ msgstr "MMMM"
 #~ msgctxt "@title:group"
 #~ msgid "Date && Time"
 #~ msgstr "Kuupäev ja kellaaeg"
-
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Sets options related to the date and time of the event or to-do."
-#~ msgstr "Määrab sündmuse või ülesande kuupäeva ja kellaajaga seotud valikud."
 
 #~ msgctxt "@label event start time"
 #~ msgid "&Start:"

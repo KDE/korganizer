@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2026-06-25 21:32+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -36,7 +36,22 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "A nap számának megjelenítése"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@option:radio"
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "A nap számának megjelenítése"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid "Sets options related to the date and time of the event or to-do."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "Az esemény vagy feladat dátum- és időjellemzőit állítja be."
+
+#: datenums/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
@@ -44,9 +59,40 @@ msgstr "Az év végéig hátralevő napok számának megjelenítése"
 
 #: datenums/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgid "Check this box if you want to show seconds on the current-time line."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr ""
+"Jelölje be ezt az opciót, ha a másodperceket is meg szeretné jeleníttetni a "
+"Marcus Bains-vonalon."
+
+#: datenums/configdialog.cpp:58
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Mindkettő megjelenítése"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -700,7 +746,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Oldalarány figyelmen kívül hagyása"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -708,13 +761,19 @@ msgid ""
 msgstr ""
 "A bélyegkép szabadon lesz méretezve. Az eredeti oldalarány nem marad meg."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "Oldalarány megőrzése"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -724,13 +783,19 @@ msgstr ""
 "A bélyegkép megőrzi az eredeti arányt, amennyire lehet kitöltve az adott "
 "téglalapot."
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Oldalarány megőrzése nyújtással"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2406,16 +2471,6 @@ msgstr "MMMM_yyyy"
 #~| msgid "Select the ending date for this event."
 #~ msgid "Select the days for showing upcoming events"
 #~ msgstr "Beállítja az esemény befejezési dátumát."
-
-#, fuzzy
-#~| msgid ""
-#~| "Check this box if you want to show seconds on the current-time line."
-#~ msgid ""
-#~ "Check this box if you want to specify the number of days in the future "
-#~ "for upcoming events."
-#~ msgstr ""
-#~ "Jelölje be ezt az opciót, ha a másodperceket is meg szeretné jeleníttetni "
-#~ "a Marcus Bains-vonalon."
 
 #, fuzzy
 #~| msgid "1 day"
@@ -9085,12 +9140,6 @@ msgstr "MMMM_yyyy"
 #~ msgctxt "@title:group"
 #~ msgid "Date && Time"
 #~ msgstr "Dátum és idő"
-
-#, fuzzy
-#~| msgid "Sets options related to the date and time of the event or to-do."
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Sets options related to the date and time of the event or to-do."
-#~ msgstr "Az esemény vagy feladat dátum- és időjellemzőit állítja be."
 
 #~ msgctxt "@label event start time"
 #~ msgid "&Start:"

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1742089 2026-07-24 01:28:05Z scripty $
+# $Id: korganizer.po 1742194 2026-07-25 01:30:04Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
-"PO-Revision-Date: 2026-07-23 07:47+0200\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
+"PO-Revision-Date: 2026-07-24 07:08+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -407,7 +407,7 @@ msgstr "Omogoča izvoz celotne zbirke koledarja v eno datoteko iCalendar."
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
-msgstr "Arhiviraj stare pojavitve…"
+msgstr "Arhiviraj stare pogostosti…"
 
 #: actionmanager.cpp:264
 #, kde-format
@@ -708,13 +708,13 @@ msgstr "F&ilter"
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
-msgstr "Filter vnosov"
+msgstr "Filter pogostosti"
 
 #: actionmanager.cpp:426
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
-msgstr "Filtriraj vnose tega koledarja"
+msgstr "Filtriraj pogostosti iz koledarja"
 
 #: actionmanager.cpp:428
 #, kde-format
@@ -1291,10 +1291,10 @@ msgstr "Konfiguriraj KOrganizer…"
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
-msgstr[0] "%1 pojavitev je bilo uspešno uvoženih."
-msgstr[1] "%1 pojavitev je bila uspešno uvožena."
-msgstr[2] "%1 pojavitvi sta bili uspešno uvoženi."
-msgstr[3] "%1 pojavitve so bile uspešno uvožene."
+msgstr[0] "%1 pogostosti je bilo uspešno uvoženih."
+msgstr[1] "%1 pogostost je bila uspešno uvožena."
+msgstr[2] "%1 pogostosti sta bili uspešno uvoženi."
+msgstr[3] "%1 pogostosti so bile uspešno uvožene."
 
 #: actionmanager.cpp:844
 #, kde-kuit-format
@@ -2240,8 +2240,8 @@ msgid ""
 "<para>To see the newly created incidence, please enable its calendar in the "
 "calendar manager.</para>"
 msgstr ""
-"V koledarju ste ustvarili dogodek, ki je trenutno filtriran.<para>Če si "
-"želite ogledati novo ustvarjen dogodek, omogočite njegov koledar v "
+"V koledarju ste ustvarili pogostost, ki je trenutno filtrirana.<para>Če si "
+"želite ogledati novo ustvarjeno pogostost, omogočite njen koledar v "
 "upravljalniku koledarjev.</para>"
 
 #: calendarview.cpp:2862
@@ -2254,8 +2254,8 @@ msgid ""
 "the manager using the <interface>Settings->Sidebar->Show Calendar Manager</"
 "interface> menu.</para>"
 msgstr ""
-"V koledarju ste ustvarili dogodek, ki je trenutno filtriran.<para>Če si "
-"želite ogledati novo ustvarjen dogodek, omogočite njegov koledar v "
+"V koledarju ste ustvarili pogostost, ki je trenutno filtrirana.<para>Če si "
+"želite ogledati novo ustvarjeno pogostost, omogočite njen koledar v "
 "upravljalniku koledarjev.</para><para>Upravljalnik koledarjev je trenutno "
 "skrit. Prikažite ga v meniju <interface>Nastavitve->Stranska vrstica-"
 ">Prikaži upravljalnika koledarjev</interface>.</para>"
@@ -2495,15 +2495,14 @@ msgstr "Prikaži v kontekstu"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr ""
+msgstr "Zaženi urejevalnik za to pogostost"
 
 #: dialog/koeventviewerdialog.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press the Edit button to pop-up the incidence editor dialog"
-msgstr "Pritisnite ta gumb, da odstranite trenutno dejaven filter."
+msgstr ""
+"Pritisnite gumb Uredi, da odprete pogovorno okno urejevalnika pogostosti"
 
 #: dialog/koeventviewerdialog.cpp:46
 #, kde-format
@@ -2512,6 +2511,8 @@ msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
 msgstr ""
+"Pomaknite se do ustreznega pogleda koledarja, da si lahko pogostost ogledate "
+"v kontekstu"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2521,6 +2522,9 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"Pritisnite ta gumb za prikaz pogostosti v kontekstu. To pomeni prikaz "
+"opravila, dnevnega reda ali dnevnika (kot je primerno) in pomikanje po njem "
+"za prikaz pogostosti."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -2583,13 +2587,14 @@ msgstr[3] "%1 ujemanja"
 #: koapp.cpp:63
 #, kde-format
 msgid "Failed to retrieve incidence from Akonadi"
-msgstr "Ni uspelo pridobiti vnosov iz Akonadija"
+msgstr "Ni uspelo pridobiti pogostosti iz Akonadija"
 
 #: koapp.cpp:68
 #, kde-format
 msgid ""
 "Failed to retrieve incidence from Akonadi: requested incidence doesn't exist."
-msgstr "Ni uspelo pridobiti vnosov iz Akonadija: zahtevan vnos ne obstaja."
+msgstr ""
+"Ni uspelo pridobiti pogostosti iz Akonadija: zahtevana pogostost ne obstaja."
 
 #: kocorehelper.cpp:29
 #, kde-format
@@ -3857,7 +3862,7 @@ msgstr "Zlij navedene datoteke v obstoječi koledar"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Display the specified incidence (by URL)"
-msgstr "Prikaži dane incidence (po URL)"
+msgstr "Prikaži dane pogostosti (po URL)"
 
 #: korganizer_options.h:25
 #, kde-format
@@ -4041,9 +4046,11 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Pokaži na dnu prikazov dnevnega reda"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Calendar Decorations"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
+msgid "Agenda View Decorations"
 msgstr "Okraski koledarja"
 
 #: prefs/koprefsdialogplugins.cpp:144
@@ -4052,7 +4059,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr "Konfiguriraj"
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -4391,7 +4398,7 @@ msgid ""
 "time you create a new event, to-do or journal entry"
 msgstr ""
 "Izberite to možnost, da izberete koledar, ki bo uporabljen za beleženje "
-"postavke vsakič, ko ustvarite nov dogodek, opravilo ali vnos v dnevnik."
+"postavke vsakič, ko ustvarite nov dogodek, opravilo ali vnos v dnevnik"
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4560,8 +4567,8 @@ msgstr "Pokaži vsakodnevne predmete"
 #, kde-format
 msgid "Use a bold typeface to more easily identify daily recurring incidences"
 msgstr ""
-"Uporabi krepko pisavo za lažje prepoznavanje vsakodnevnih ponavljajočih se "
-"dogodkov"
+"Uporabi krepko pisavo za lažje prepoznavanje vsakodnevnih ponavljajočih "
+"pogostosti"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:83
@@ -4572,8 +4579,8 @@ msgid ""
 "to other (non daily recurring) incidences."
 msgstr ""
 "Označite to polje, če želite, da so dnevi z dnevnimi ponavljajočimi se "
-"dogodki v navigatorju datuma prikazani s krepko pisavo, ali pa ga počistite, "
-"če želite, da so drugi (ne-dnevni) dogodki bolj poudarjeni."
+"pogostosti v navigatorju datuma prikazani s krepko pisavo, ali pa ga "
+"počistite, če želite, da so drugi (ne-dnevne) pogostosti bolj poudarjene."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:87
@@ -4586,8 +4593,8 @@ msgstr "Pokaži vsakotedenske predmete"
 #, kde-format
 msgid "Use a bold typeface to more easily identify weekly recurring incidences"
 msgstr ""
-"Uporabi krepko pisavo za lažje prepoznavanje tedensko ponavljajočih se "
-"dogodkov"
+"Uporabi krepko pisavo za lažje prepoznavanje tedensko ponavljajočih "
+"pogostosti"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:89
@@ -4760,7 +4767,7 @@ msgstr "Nariši krepkejše črte mreže za sode ure"
 #: settings/korganizer.kcfg:140
 #, kde-format
 msgid "Show incidence descriptions in Agenda View items"
-msgstr "Prikaži opise incidence v postavkah pogleda dnevnega reda"
+msgstr "Prikaži opise pogostosti v postavkah pogleda dnevnega reda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:141
@@ -4768,34 +4775,34 @@ msgstr "Prikaži opise incidence v postavkah pogleda dnevnega reda"
 msgid ""
 "Check this box to display the incidence descriptions in Agenda View items."
 msgstr ""
-"Označite to polje, če želite prikazati opise incidence v postavkah pogleda "
+"Označite to polje, če želite prikazati opise pogostosti v postavkah pogleda "
 "dnevnega reda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
 #, kde-format
 msgid "Display incidence descriptions Agenda View items"
-msgstr "Prikaži opise incidence postavk dnevnega reda"
+msgstr "Prikaži opise pogostosti postavk dnevnega reda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:146
 #, kde-format
 msgid "Show incidence locations in Agenda View items"
-msgstr "Prikaži mesta incidence v postavkah pogleda dnevnega reda"
+msgstr "Prikaži mesta pogostosti v postavkah pogleda dnevnega reda"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:147
 #, kde-format
 msgid "Check this box to display the incidence locations in Agenda View items."
 msgstr ""
-"Označite to polje, za prikaz mesta incidence v postavkah pogleda dnevnega "
+"Označite to polje, za prikaz mesta pogostosti v postavkah pogleda dnevnega "
 "reda."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
 #, kde-format
 msgid "Display incidence locations Agenda View items"
-msgstr "Prikaži mesta incidence postavk dnevnega reda"
+msgstr "Prikaži mesta pogostosti postavk dnevnega reda"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Month View)
@@ -5521,7 +5528,7 @@ msgstr "Tu izberite barvo delovnih ur za pogled dnevnega reda."
 #: settings/korganizer.kcfg:361
 #, kde-format
 msgid "Agenda View current-time (Marcus Bains) line color"
-msgstr "Barva vrstice dnevnega reda trenutnega časa (Marcus Bains)."
+msgstr "Barva vrstice dnevnega reda trenutnega časa (Marcus Bains)"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:362
@@ -6598,8 +6605,8 @@ msgid ""
 "Uncheck this box to skip incidences matching the currently selected view "
 "filter"
 msgstr ""
-"Počistite to polje, če želite preskočiti primere, ki se ujemajo s trenutno "
-"izbranim filtrom pogleda"
+"Počistite to polje, če želite preskočiti pogostosti, ki se ujemajo s "
+"trenutno izbranim filtrom pogleda"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:328
@@ -6608,14 +6615,14 @@ msgid ""
 "When this box is checked all incidences will be considered in the search, "
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
-"Ko je to polje potrjeno, bodo pri iskanju upoštevani vsi dogodki, tudi "
-"tisti, ki niso prikazani v skladu s trenutno izbranim filtrom pogleda"
+"Kadar je to polje potrjeno, bodo pri iskanju upoštevane vse pogostosti, tudi "
+"tiste, ki niso prikazane v skladu s trenutno izbranim filtrom pogleda"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
 #, kde-format
 msgid "Include all incidences matched by view filter"
-msgstr "Vključi vse primere, ki se ujemajo s filtrom pogleda"
+msgstr "Vključi vse pogostosti, ki se ujemajo s filtrom pogleda"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDayBtn)
 #: views/collectionview/quickview.ui:34

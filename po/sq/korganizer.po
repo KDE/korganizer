@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-24 00:45+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2009-06-08 01:08+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -3986,10 +3986,12 @@ msgid "Show at the bottom of the agenda views"
 msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@title:tab"
+#| msgid "Month View"
 msgctxt "@title:group"
-msgid "Calendar Decorations"
-msgstr ""
+msgid "Agenda View Decorations"
+msgstr "Paraqitja mujore"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, kde-format
@@ -3997,7 +3999,7 @@ msgctxt "@info:tooltip"
 msgid "Configure"
 msgstr ""
 
-#: prefs/koprefsdialogplugins.cpp:204
+#: prefs/koprefsdialogplugins.cpp:205
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

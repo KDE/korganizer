@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2024-10-20 16:22+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -47,7 +47,21 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "நாள் எண்ணை காட்டு"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgctxt "@option:radio"
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "நாள் எண்ணை காட்டு"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "இந்த பத்திரிகையின் தலைப்பை அமைக்கிறது"
+
+#: datenums/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
@@ -55,9 +69,37 @@ msgstr "வருடம் முடியும் வரை எத்தனை
 
 #: datenums/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr "நொடிகளை மார்க்கஸ் பெயின் கோடில் காட்டு."
+
+#: datenums/configdialog.cpp:58
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "இரண்டையும் காட்டு"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -712,7 +754,14 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "உருவ விகிதத்தை பொருட்படுத்தாதே"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled freely. The aspect ratio will not be "
@@ -722,13 +771,19 @@ msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr "சிறுபடத்தின் அளவு தேவைக்கேற்ப மாற்றப்படும். உருவ விகிதம் மாறலாம்."
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
 msgstr "உருவ விகித‍த்தை வைத்திரு"
 
 #: picoftheday/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as large as possible inside a "
@@ -739,13 +794,19 @@ msgid ""
 "given rectangle, preserving the aspect ratio."
 msgstr "உருவ விகிதத்தை மாற்றாமல், முடிந்த அளவுக்கு பெரிதாக்கி சிறுபடத்தை காட்டும்"
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "பெருக்கி உருவ விகித‍த்தை வைத்திரு"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, fuzzy, kde-format
 #| msgid ""
 #| "The thumbnail will be scaled to a rectangle as small as possible outside "
@@ -2208,12 +2269,6 @@ msgstr ""
 #~| msgid "Sets the due date for this to-do."
 #~ msgid "Select the days for showing upcoming events"
 #~ msgstr "இந்த செய்யவேண்டியதிற்கான முடிவு தேதியை அமைக்கிறது."
-
-#, fuzzy
-#~ msgid ""
-#~ "Check this box if you want to specify the number of days in the future "
-#~ "for upcoming events."
-#~ msgstr "நொடிகளை மார்க்கஸ் பெயின் கோடில் காட்டு."
 
 #, fuzzy
 #~ msgid "1 day"
@@ -7576,11 +7631,6 @@ msgstr ""
 #~ msgctxt "@title:group"
 #~ msgid "Date && Time"
 #~ msgstr "தேதி && நேரம்"
-
-#, fuzzy
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Sets options related to the date and time of the event or to-do."
-#~ msgstr "இந்த பத்திரிகையின் தலைப்பை அமைக்கிறது"
 
 #, fuzzy
 #~| msgid "&Start:"

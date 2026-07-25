@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-07-25 00:45+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -38,7 +38,21 @@ msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Mostrer l' limero do djoû"
 
-#: datenums/configdialog.cpp:51
+#: datenums/configdialog.cpp:49
+#, fuzzy, kde-format
+#| msgid "Show day number"
+msgctxt "@info:tooltip"
+msgid "Show the year's day number"
+msgstr "Mostrer l' limero do djoû"
+
+#: datenums/configdialog.cpp:50
+#, fuzzy, kde-format
+#| msgid "Sets the Title of this event or to-do."
+msgctxt "@info:whatsthis"
+msgid "Select this option to show the day number of the current year."
+msgstr "Defini l' tite di cist envenmint ou d' cist afé."
+
+#: datenums/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Show days to end of year"
 msgctxt "@option:radio"
@@ -46,11 +60,41 @@ msgid "Show days to end of year"
 msgstr "Mostrer les djoûs disk' al fén d' l' anêye"
 
 #: datenums/configdialog.cpp:54
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:55
+#, fuzzy, kde-format
+#| msgctxt "@option:check"
+#| msgid "Show in the month view"
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the number of days remaining in the current year."
+msgstr "Mostrer el vuwe pås moes"
+
+#: datenums/configdialog.cpp:58
 #, fuzzy, kde-format
 #| msgid "Show both"
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Mostrer les deus"
+
+#: datenums/configdialog.cpp:59
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Show both the year's day number and the number of days remaining in the year"
+msgstr ""
+
+#: datenums/configdialog.cpp:61
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show both the year's day number and the number of days "
+"remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
+msgstr ""
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -705,14 +749,21 @@ msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
 msgstr "Passer houte li rapoirt lårdjeu/hôteu"
 
-#: picoftheday/configdialog.cpp:48
+#: picoftheday/configdialog.cpp:47
+#, kde-format
+msgctxt "@info:tooltip"
+msgid ""
+"Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
 msgstr ""
 
-#: picoftheday/configdialog.cpp:52
+#: picoftheday/configdialog.cpp:53
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio"
 msgctxt "@option:radio"
@@ -721,20 +772,32 @@ msgstr "Wårder l' rapoirt lårdjeu/hôteu"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail as large as possible with the same aspect ratio"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:56
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
 
-#: picoftheday/configdialog.cpp:59
+#: picoftheday/configdialog.cpp:61
 #, fuzzy, kde-format
 #| msgid "Keep aspect ratio by expanding"
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
 msgstr "Wårder l' rapoirt lårdjeu/hôteu e l' agrandixhant"
 
-#: picoftheday/configdialog.cpp:61
+#: picoftheday/configdialog.cpp:62
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Scale the thumbnail to fill the space, possibly cropping the image"
+msgstr ""
+
+#: picoftheday/configdialog.cpp:64
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2318,14 +2381,6 @@ msgstr "MMMM_yyyy"
 #~ msgid ""
 #~ "Check this box if you want to see To-dos that are due sometime during the "
 #~ "next 31 days."
-#~ msgstr "Mostrer el vuwe pås moes"
-
-#, fuzzy
-#~| msgctxt "@option:check"
-#~| msgid "Show in the month view"
-#~ msgid ""
-#~ "Check this box if you want specify the number of days in the future for "
-#~ "pending To-dos."
 #~ msgstr "Mostrer el vuwe pås moes"
 
 #, fuzzy
@@ -5432,12 +5487,6 @@ msgstr "MMMM_yyyy"
 #~ msgctxt "@title:group"
 #~ msgid "Date && Time"
 #~ msgstr "Date et eure"
-
-#, fuzzy
-#~| msgid "Sets the Title of this event or to-do."
-#~ msgctxt "@info:whatsthis"
-#~ msgid "Sets options related to the date and time of the event or to-do."
-#~ msgstr "Defini l' tite di cist envenmint ou d' cist afé."
 
 #~ msgctxt "@label event start time"
 #~ msgid "&Start:"
