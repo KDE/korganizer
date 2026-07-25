@@ -341,13 +341,16 @@ void TodoSummaryWidget::updateView()
 
 void TodoSummaryWidget::viewTodo(const QString &uid)
 {
-    const Akonadi::Item::Id id = mCalendar->item(uid).id();
+    const Akonadi::Item item = mCalendar->item(uid);
 
-    if (id != -1) {
+    if (item.isValid()) {
         mPlugin->core()->selectPlugin(QStringLiteral("kontact_todoplugin")); // ensure loaded
         OrgKdeKorganizerKorganizerInterface korganizer(QStringLiteral("org.kde.korganizer"), QStringLiteral("/Korganizer"), QDBusConnection::sessionBus());
-
-        korganizer.editIncidence(QString::number(id));
+        if (mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem)) {
+            korganizer.editIncidence(QString::number(item.id()));
+        } else {
+            korganizer.showIncidence(QString::number(item.id()));
+        }
     }
 }
 
