@@ -233,17 +233,26 @@ void ApptSummaryWidget::removeEvent(const Akonadi::Item &item)
 
 void ApptSummaryWidget::popupMenu(const QString &uid)
 {
+    const Akonadi::Item item = mCalendar->item(uid);
+    if (!item.isValid()) {
+        return;
+    }
+
     QMenu popup(this);
 
-    // FIXME: Should say "Show Appointment" if we don't have rights to edit
-    // Doesn't make sense to edit events from birthday resource for example
-    QAction *editIt = popup.addAction(i18nc("@action:inmenu", "&Edit Appointment…"));
-    editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
+    QAction *editIt;
+    const bool writeable = mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem);
+    if (writeable) {
+        editIt = popup.addAction(i18nc("@action:inmenu", "&Edit Appointment…"));
+        editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-edit")));
+    } else {
+        editIt = popup.addAction(i18nc("@action:inmenu", "&Show Appointment…"));
+        editIt->setIcon(QIcon::fromTheme(QStringLiteral("document-preview")));
+    }
+
     QAction *delIt = popup.addAction(i18nc("@action:inmenu", "&Delete Appointment"));
     delIt->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
-
-    const Akonadi::Item item = mCalendar->item(uid);
-    delIt->setEnabled(mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem));
+    delIt->setEnabled(writeable);
 
     const QAction *selectedAction = popup.exec(QCursor::pos());
     if (selectedAction == editIt) {
