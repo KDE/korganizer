@@ -486,8 +486,10 @@
         <ul>
           <li>Navigator: the highlight color for the navigator grid can now be changed.  To configure the color, set the "Navigator grid highlight color" in the Colors and Fonts settings</li>
           <li xml:lang="ca">Navegador: el color de ressaltat de la quadrícula del navegador ara es pot canviar. Per a configurar el color, establiu el «Color de ressaltat de la quadrícula del navegador» a la configuració Colors i lletres</li>
+          <li xml:lang="ca-valencia">Navegador: el color de ressaltat de la quadrícula del navegador ara es pot canviar. Per a configurar el color, establiu el «Color de ressaltat de la quadrícula del navegador» a la configuració Colors i lletres</li>
           <li xml:lang="cs">Navigátor: Nyní lze změnit barvu zvýraznění mřížky navigátoru. Chcete-li tuto barvu nastavit, upravte parametr "Barva zvýraznění mřížky navigátoru" v nastavení "Barvy a písma".</li>
           <li xml:lang="es">Vista mensual: Ahora se puede cambiar el color para resaltar la cuadrícula del navegador. Para configurar el color, defina el «Color para resaltar la cuadrícula del navegador» en los ajustes de «Colores y tipos de letra».</li>
+          <li xml:lang="he">נווטן: אפשר להחליף את צבע ההדגשה של רשת הנווטן. כדי להגדיר את הצבע, יש להגדיר את „צבע הדגשת רשת נווטן” בהגדרות הצבעים והגופנים</li>
           <li xml:lang="ia">Navigator: le color de evidentiar per le grillia delnavigator pote nunc esser cambiate. Per configurar le color, assigna le "Colore de evidentia de grillia de navigator" in le preferentias de Colores e Fonts</li>
           <li xml:lang="ka">ნავიგატორი: შესაძლებელია ნავიგატორის ბადის გამოკვეთის ფერის შეცვლა. ფერის მოსარგებად დააყენეთ "ნავიგატორის ბადის გამოკვეთის ფერი" ფერებისა და ფონტის მორგების დიალოგში</li>
           <li xml:lang="nl">Navigator: de accentueringskleur voor het navigatorraster kan nu worden gewijzigd. Om de kleur te configureren, stelt u de "Accentueringskleur van het navigatorraster" in bij de instellingen voor kleuren en lettertypen.</li>
@@ -504,6 +506,7 @@
           <li xml:lang="fr">Résumé de Kontact : demander avant de supprimer des occurrences</li>
           <li xml:lang="he">תקציר של Kontact: לשאול בטרם מחיקת מופעים</li>
           <li xml:lang="ia">Summario de Kontact: demanda ante de deler incidentias</li>
+          <li xml:lang="it">Sommario di Kontact: chiede prima di eliminare delle incidenze</li>
           <li xml:lang="ka">Kontact-ის შეჯამება: კითხვა შემთხვევების წაშლამდე</li>
           <li xml:lang="nl">Kontact overzicht: vraag alvorens incidenten te verwijderen</li>
           <li xml:lang="pt-BR">Resumo do Kontact: perguntar antes de excluir ocorrências</li>
@@ -519,6 +522,7 @@
           <li xml:lang="fr">Résumé de Kontact : les évènements à venir indiquent si un événement s'est terminé plus tôt dans la journée ou est actuellement en cours</li>
           <li xml:lang="he">תקציר של Kontact: אירועים קרובים מוצגים אם אירוע הסתיים מוקדם היום או שהוא מתרחש כרגע</li>
           <li xml:lang="ia">Summario de Kontact: Eventos proxime monstra si un evento ha finite plus tosto hodie o es actualmente in curso.</li>
+          <li xml:lang="it">Sommario di Kontact: le informazioni sui prossimi eventi mostrano se un evento è terminato prima oggi o è attualmente in corso</li>
           <li xml:lang="ka">Kontact-ის შეჯამება: მომავალი მოვლენები აჩვენებს, დასრულდა, თუ არა მოვლენა უფრო ადრე დღეს, თუ ჯერ კიდევ მიმდინარეობს</li>
           <li xml:lang="nl">Kontact-overzicht: Aankomende evenementen geeft aan of een evenement eerder vandaag is afgelopen of momenteel aan de gang is.</li>
           <li xml:lang="pt-BR">Resumo do Kontact: "Próximos eventos" indica se um evento terminou mais cedo hoje ou se está em andamento</li>
@@ -534,6 +538,7 @@
           <li xml:lang="fr">Résumé de Kontact : les tâches à faire en attente ont amélioré l'alignement de la grille et les chaînes de date</li>
           <li xml:lang="he">תקציר של Kontact: במטלות הממתינות יש יישור רשת משופר ומחרוזות תאריכים</li>
           <li xml:lang="ia">Summario de Kontact: Tareas (cosas de facer) pendente ha meliorate le alineamento  del grillia e le catenas de data.</li>
+          <li xml:lang="it">Sommario di Kontact: sono migliorati l'allineamento alla griglia e le stringhe della data per le cose da fare in scadenza</li>
           <li xml:lang="ka">Kontact-ის შეჯამება: დარჩენილი გეგმებისთვის გაუმჯობესდა ბადის სწორება და თარიღის სტრიქონები</li>
           <li xml:lang="nl">Kontact-overzicht: de weergave van openstaande taken is verbeterd wat betreft rasteruitlijning en datumreeksen.</li>
           <li xml:lang="pt-BR">Resumo do Kontact: a seção de tarefas pendentes teve o alinhamento da grade e as strings de data aprimorados</li>
@@ -546,8 +551,10 @@
           <li xml:lang="ca-valencia">Resum de Kontact: formats coherents de les cadenes de dates</li>
           <li xml:lang="cs">Souhrn z Kontaktu: Jednotné formáty řetězců s daty</li>
           <li xml:lang="es">Resumen de Kontact: Formatos consistentes de cadenas de fecha.</li>
+          <li xml:lang="fr">Résumé de Kontact : cohérence des formats de chaines de date</li>
           <li xml:lang="he">תקציר Kontact: תבניות עקביות של מחרוזות תאריך</li>
           <li xml:lang="ia">Summario de Kontact: formatosde catena data consistente</li>
+          <li xml:lang="it">Sommario di Kontact: formati di stringe della data consistenti</li>
           <li xml:lang="ka">Kontact-ის შეჯამება: მუდმივი თარიღის სტრიქონის ფორმატები</li>
           <li xml:lang="nl">Kontactoverzicht: consistente tekenreeksformaten voor datums</li>
           <li xml:lang="pt-BR">Resumo do Kontact: Formatos consistentes de strings de data</li>
@@ -568,6 +575,7 @@
         <p xml:lang="fr">Correctifs pour CalDAV</p>
         <p xml:lang="he">תיקוני CalDAV</p>
         <p xml:lang="ia">Correctiones de  CalDAV</p>
+        <p xml:lang="it">Correzioni CalDAV</p>
         <p xml:lang="ka">გასწორდა CalDAV-ის შეცდომები</p>
         <p xml:lang="nl">Reparaties aan CalDAV</p>
         <p xml:lang="pt-BR">Correções no CalDAV</p>
@@ -584,6 +592,7 @@
           <li xml:lang="fr">Les calendriers créés dans KOrganizer sont créés sur le serveur « DAV »</li>
           <li xml:lang="he">לוחות שנה שנוצרו ב־KOrganizer נוצרים בשרת ה־DAV</li>
           <li xml:lang="ia">Calendarios create in KOrganizer es create sur le servitor DAV</li>
+          <li xml:lang="it">I calendari creati in KOrganizer sono creati sul server DAV</li>
           <li xml:lang="ka">KOrganizer-ში შექმნილი კალენდრები DAV სერვერზე იქმნება</li>
           <li xml:lang="nl">In KOrganizer aangemaakte agenda's worden op de DAV-server aangemaakt</li>
           <li xml:lang="pt-BR">Calendários criados no KOrganizer são criados no servidor DAV</li>
@@ -599,6 +608,7 @@
           <li xml:lang="fr">Les modifications de nom / couleur de calendrier dans KOrganizer sont répliqués sur le serveur « DAV »</li>
           <li xml:lang="he">שינויי שם/צבע של לוח השנה ב־KOrganizer משוקפים בשרת ה־DAV</li>
           <li xml:lang="ia">Cambios de nomine/color de calendario in KOrganizer es replicate sur le servitor DAV.</li>
+          <li xml:lang="it">Le modifiche al nome/colore del calendario in KOrganizer sono replicate sul server DAV</li>
           <li xml:lang="ka">კალენდრის ფერის/სახელის ცვლილებები KOrganizer-ში ახლა DAV-ის სერვერზეც აისახება</li>
           <li xml:lang="nl">Wijzigingen in de naam of kleur van een agenda in KOrganizer worden gesynchroniseerd met de DAV-server.</li>
           <li xml:lang="pt-BR">Alterações no nome ou na cor do calendário no KOrganizer são replicadas no servidor DAV</li>
@@ -614,6 +624,7 @@
           <li xml:lang="fr">Gérer correctement la création / modification / suppression d'exceptions d'événements récurrents</li>
           <li xml:lang="he">טיפול ביצירת/עריכת/מחיקת חריגות באירועים חוזרים כראוי</li>
           <li xml:lang="ia">Gere correctemente le creation, modification e deletion de exceptiones  de eventos recurrente.</li>
+          <li xml:lang="it">Sono gestite correttamente le eccezioni in creazione/modifica/eliminazione di eventi ricorrenti</li>
           <li xml:lang="ka">სწორად მუშავდება გამეორებადი მოვლენის გამონაკლისების დამატება/ჩასწორება/წაშლა</li>
           <li xml:lang="nl">Correcte afhandeling van het aanmaken, bewerken en verwijderen van uitzonderingen op terugkerende afspraken</li>
           <li xml:lang="pt-BR">Gerenciar corretamente a criação, edição e exclusão de exceções de eventos recorrentes</li>
@@ -884,6 +895,7 @@
           <li xml:lang="fr">Vue des tâches à faire : la mini liste de tâches n'est plus affichée dans la barre latérale. Elle peut toujours être affichée dans toutes les autres vues si l'option « Configuration / Barre latérale / Afficher la liste des tâches à faire » est activée.</li>
           <li xml:lang="he">תצוגת מטלות: רשימת המטלות הממוזערת לא מופיעה עוד בסרגל הצד, עדיין אפשר להציג את רשימת המטלות הממוזערת בכל התצוגות האחרות דרך הגדרות-&gt;סרגל צד-&gt;האפשרות הצגת רשימת מטלות פעילה</li>
           <li xml:lang="ia">Vista de facer (Todo): le mini todolist (lista de facer) non es plus monstrate in le barra lateral; le mini todolist pote ancora esser monstrate in tote le altere vistas si le option Preferentias-&gt;BarraLateral-&gt;Monstra Lista de Actiones de facer es  habilitate</li>
+          <li xml:lang="it">Vista delle cose da fare: il mini-elenco delle cose da fare non è più mostrato nella barra laterale; può essere ancora mostrato in tutte le altre viste se l'opzione Impostazioni-&gt;Barra laterale-&gt;Mostra elenco delle cose da fare è abilitata</li>
           <li xml:lang="ka">განრიგის ხედი: განრიგის მინისია გვერდით პანელში ნაჩვენები აღარაა. განრიგის მინი სიის ჩვენება ჯერ კიდევ შეგიძლიათ ყველა ხედში მენიუდან მორგება-&gt;გვერდითი პანელი-&gt;განრიგის სიის ჩვენების პარამეტრის ჩართვით</li>
           <li xml:lang="nl">Takenweergave: de mini-takenlijst wordt niet langer in de zijbalk getoond; de mini-takenlijst kan nog steeds in alle andere weergaven worden weergegeven als de optie  Instellingen -&gt; Zijbalk -&gt; Takenlijst tonen is ingeschakeld.</li>
           <li xml:lang="pt-BR">Visualização de tarefas: a mini lista de tarefas não é mais exibida na barra lateral; ela ainda pode ser exibida em todas as outras visualizações se a opção Configurações -&gt; Barra lateral -&gt; Mostrar lista de tarefas estiver ativada.</li>
@@ -900,6 +912,7 @@
           <li xml:lang="fr">Modèles : des étiquettes (Catégories) peuvent être ajoutées aux modèles d'occurrences</li>
           <li xml:lang="he">תבניות: אפשר להוסיף תגיות (קטגוריות) לתבניות מופעים</li>
           <li xml:lang="ia">Patronos: etiquettas (categorias) pote esser addite a patronos de incidentias</li>
+          <li xml:lang="it">Modelli: etichette (categorie) possono essere aggiunte ai modelli di occorrenza</li>
           <li xml:lang="ka">ნიმუშები: ახლა შეგიძლიათ ჭდეების (კატეგორიების) დამატება ინციდენტების ნიმუშებზე</li>
           <li xml:lang="nl">Sjablonen: er kunnen tags (categorieën) aan incident-sjablonen worden toegevoegd</li>
           <li xml:lang="pt-BR">Modelos: etiquetas (categorias) podem ser adicionadas a modelos de incidência</li>
