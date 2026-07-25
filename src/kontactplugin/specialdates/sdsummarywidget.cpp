@@ -539,11 +539,11 @@ void SDSummaryWidget::createLabels()
             // Description
             if ((*addrIt).type == IncidenceTypeContact) {
                 auto urlLabel = new KUrlLabel(this);
-                urlLabel->installEventFilter(this);
                 urlLabel->setUrl((*addrIt).item.url(Akonadi::Item::UrlWithMimeType).url());
                 urlLabel->setText((*addrIt).addressee.realName());
                 urlLabel->setTextFormat(Qt::RichText);
                 urlLabel->setWordWrap(true);
+                urlLabel->setStatusTip(i18nc("@info:status", "Mail to:\"%1\"", urlLabel->text()));
                 mLayout->addWidget(urlLabel, counter, 4);
                 mLabels.append(urlLabel);
                 connect(urlLabel, &KUrlLabel::leftClickedUrl, this, [this, urlLabel] {
@@ -683,21 +683,6 @@ void SDSummaryWidget::popupMenu(const QString &url)
     } else if (ret == viewContactAction) {
         viewContact(url);
     }
-}
-
-bool SDSummaryWidget::eventFilter(QObject *obj, QEvent *e)
-{
-    if (obj->inherits("KUrlLabel")) {
-        auto label = static_cast<KUrlLabel *>(obj);
-        if (e->type() == QEvent::Enter) {
-            Q_EMIT message(i18nc("@info:status", "Mail to:\"%1\"", label->text()));
-        }
-        if (e->type() == QEvent::Leave) {
-            Q_EMIT message(QString());
-        }
-    }
-
-    return KontactInterface::Summary::eventFilter(obj, e);
 }
 
 void SDSummaryWidget::dateDiff(const QDate &date, int &days, int &years) const

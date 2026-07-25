@@ -166,7 +166,6 @@ void ApptSummaryWidget::updateView()
         auto urlLabel = new KUrlLabel(this);
         urlLabel->setText(event->summaryText);
         urlLabel->setUrl(event->summaryUrl);
-        urlLabel->installEventFilter(this);
         urlLabel->setTextFormat(Qt::RichText);
         urlLabel->setWordWrap(true);
         mLayout->addWidget(urlLabel, counter, 3);
@@ -177,8 +176,11 @@ void ApptSummaryWidget::updateView()
         connect(urlLabel, &KUrlLabel::rightClickedUrl, this, [this, urlLabel] {
             popupMenu(urlLabel->url());
         });
-        if (!event->summaryTooltip.isEmpty()) {
-            urlLabel->setToolTip(event->summaryTooltip);
+        if (!event->summaryToolTip.isEmpty()) {
+            urlLabel->setToolTip(event->summaryToolTip);
+        }
+        if (!event->summaryStatusTip.isEmpty()) {
+            urlLabel->setStatusTip(event->summaryStatusTip);
         }
 
         // Time range label (only for non-floating events)
@@ -260,21 +262,6 @@ void ApptSummaryWidget::popupMenu(const QString &uid)
     } else if (selectedAction == delIt) {
         removeEvent(item);
     }
-}
-
-bool ApptSummaryWidget::eventFilter(QObject *obj, QEvent *e)
-{
-    if (obj->inherits("KUrlLabel")) {
-        auto label = static_cast<KUrlLabel *>(obj);
-        if (e->type() == QEvent::Enter) {
-            Q_EMIT message(i18nc("@info:status", "Edit Event: \"%1\"", label->text()));
-        }
-        if (e->type() == QEvent::Leave) {
-            Q_EMIT message(QString());
-        }
-    }
-
-    return KontactInterface::Summary::eventFilter(obj, e);
 }
 
 #include "moc_apptsummarywidget.cpp"

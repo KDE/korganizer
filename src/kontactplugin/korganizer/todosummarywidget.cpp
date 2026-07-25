@@ -287,20 +287,26 @@ void TodoSummaryWidget::updateView()
 
             QString displayName;
             Akonadi::Item item = mCalendar->item(todo);
+            bool writeable = false;
             if (item.isValid()) {
                 const Akonadi::Collection col = item.parentCollection();
                 if (col.isValid()) {
                     displayName = col.displayName();
                 }
+                writeable = mCalendar->hasRight(item, Akonadi::Collection::CanDeleteItem);
             }
 
             auto urlLabel = new KUrlLabel(this);
             urlLabel->setText(str);
             urlLabel->setUrl(todo->uid());
-            urlLabel->installEventFilter(this);
             urlLabel->setTextFormat(Qt::RichText);
             urlLabel->setWordWrap(true);
             urlLabel->setToolTip(KCalUtils::IncidenceFormatter::toolTipStr(displayName, todo, currDate, true));
+            if (writeable) {
+                urlLabel->setStatusTip(i18nc("@info:status", "Edit To-do: \"%1\"", todo->summary()));
+            } else {
+                urlLabel->setStatusTip(i18nc("@info:status", "Show To-do: \"%1\"", todo->summary()));
+            }
             mLayout->addWidget(urlLabel, counter, 4);
             mLabels.append(urlLabel);
             connect(urlLabel, &KUrlLabel::leftClickedUrl, this, [this, urlLabel] {
@@ -409,20 +415,6 @@ void TodoSummaryWidget::popupMenu(const QString &uid)
     } else if (doneIt && selectedAction == doneIt) {
         completeTodo(item.id());
     }
-}
-
-bool TodoSummaryWidget::eventFilter(QObject *obj, QEvent *e)
-{
-    if (obj->inherits("KUrlLabel")) {
-        auto label = static_cast<KUrlLabel *>(obj);
-        if (e->type() == QEvent::Enter) {
-            Q_EMIT message(i18nc("@info:status", "Edit To-do: \"%1\"", label->text()));
-        }
-        if (e->type() == QEvent::Leave) {
-            Q_EMIT message(QString());
-        }
-    }
-    return KontactInterface::Summary::eventFilter(obj, e);
 }
 
 bool TodoSummaryWidget::startsToday(const KCalendarCore::Todo::Ptr &todo) const

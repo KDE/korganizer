@@ -264,14 +264,20 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
 
         QString displayName;
         Akonadi::Item item = calendar->item(ev);
+        bool writeable = false;
         if (item.isValid()) {
             const Akonadi::Collection col = item.parentCollection();
             if (col.isValid()) {
                 displayName = col.displayName();
             }
+            writeable = calendar->hasRight(item, Akonadi::Collection::CanDeleteItem);
         }
-        summaryEvent->summaryTooltip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start, true);
-
+        summaryEvent->summaryToolTip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start, true);
+        if (writeable) {
+            summaryEvent->summaryStatusTip = i18nc("@info:status", "Edit Event: \"%1\"", ev->summary());
+        } else {
+            summaryEvent->summaryStatusTip = i18nc("@info:status", "Show Event: \"%1\"", ev->summary());
+        }
         // Time range label (only for non-floating events)
         str.clear();
         if (!ev->allDay()) {

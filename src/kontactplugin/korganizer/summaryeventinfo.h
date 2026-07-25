@@ -32,7 +32,8 @@ public:
     QString timeRange;
     QString summaryText;
     QString summaryUrl;
-    QString summaryTooltip;
+    QString summaryToolTip;
+    QString summaryStatusTip;
     bool makeBold = false;
     bool makeUrgent = false;
 

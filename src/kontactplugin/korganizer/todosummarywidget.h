@@ -46,9 +46,6 @@ public Q_SLOTS:
         updateView();
     }
 
-protected:
-    bool eventFilter(QObject *obj, QEvent *e) override;
-
 private Q_SLOTS:
     void updateView();
     void popupMenu(const QString &uid);
