@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:45+0000\n"
+"POT-Creation-Date: 2026-07-26 00:45+0000\n"
 "PO-Revision-Date: 2007-09-17 14:45+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -1488,14 +1488,14 @@ msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "गर्नुपर्ने कार्य देखाउनुहोस्"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:382
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:395
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "गर्नुपर्ने कार्य सम्पादन गर्नुहोस्..."
 
-#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:384
+#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:402
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
@@ -1903,16 +1903,16 @@ msgstr ""
 "वस्तु \"%1\" तपाईँको हालको फिल्टर नियम अनुरुप फिल्टर गरिएको छ, त्यसैले यसलाई लुकाइन्छ र "
 "दृश्यमा देखिदैन ।"
 
-#: calendarview.cpp:844 kontactplugin/korganizer/apptsummarywidget.cpp:226
-#: kontactplugin/korganizer/todosummarywidget.cpp:352
+#: calendarview.cpp:844 kontactplugin/korganizer/apptsummarywidget.cpp:232
+#: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, fuzzy, kde-format
 #| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "<qt>तपाईँ वास्तवमै स्रोत <b>%1</b> मेट्न चाहनुहुन्छ ?</qt>"
 
-#: calendarview.cpp:845 kontactplugin/korganizer/apptsummarywidget.cpp:227
-#: kontactplugin/korganizer/todosummarywidget.cpp:353
+#: calendarview.cpp:845 kontactplugin/korganizer/apptsummarywidget.cpp:233
+#: kontactplugin/korganizer/todosummarywidget.cpp:362
 #, fuzzy, kde-format
 #| msgid "Delete Old Items"
 msgctxt "@title:window"
@@ -3086,7 +3086,7 @@ msgctxt "@title:group"
 msgid "Upcoming Events"
 msgstr ""
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:199
+#: kontactplugin/korganizer/apptsummarywidget.cpp:201
 #, fuzzy, kde-format
 #| msgid "Print only to-dos due in the &range:"
 msgctxt "@label"
@@ -3095,26 +3095,26 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "दायरामा म्याद समाप्त भएका गर्नुपर्ने कार्य मात्र मुद्रण गर्नुहोस्:"
 msgstr[1] "दायरामा म्याद समाप्त भएका गर्नुपर्ने कार्य मात्र मुद्रण गर्नुहोस्:"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:240
+#: kontactplugin/korganizer/apptsummarywidget.cpp:252
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgctxt "@action:inmenu"
 msgid "&Edit Appointment…"
 msgstr "नियुक्ति"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:242
+#: kontactplugin/korganizer/apptsummarywidget.cpp:255
+#, fuzzy, kde-format
+#| msgid "Appointment"
+msgctxt "@action:inmenu"
+msgid "&Show Appointment…"
+msgstr "नियुक्ति"
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgctxt "@action:inmenu"
 msgid "&Delete Appointment"
 msgstr "नियुक्ति"
-
-#: kontactplugin/korganizer/apptsummarywidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "Edit Event"
-msgctxt "@info:status"
-msgid "Edit Event: \"%1\""
-msgstr "घटना सम्पादन गर्नुहोस्"
 
 #: kontactplugin/korganizer/journalplugin.cpp:27
 #, fuzzy, kde-format
@@ -3215,7 +3215,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:144
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#: kontactplugin/specialdates/sdsummarywidget.cpp:466
+#: kontactplugin/specialdates/sdsummarywidget.cpp:467
 #, fuzzy, kde-format
 #| msgid "%1%"
 msgctxt "@label 1. weekday"
@@ -3227,8 +3227,8 @@ msgstr "%1%"
 #: kontactplugin/korganizer/summaryeventinfo.cpp:173
 #: kontactplugin/korganizer/summaryeventinfo.cpp:178
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:469
-#: kontactplugin/specialdates/sdsummarywidget.cpp:478
+#: kontactplugin/specialdates/sdsummarywidget.cpp:470
+#: kontactplugin/specialdates/sdsummarywidget.cpp:479
 #, fuzzy, kde-format
 #| msgctxt "monthname year"
 #| msgid "%1 %2"
@@ -3238,7 +3238,7 @@ msgstr "%1 %2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:188
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, fuzzy, kde-format
 #| msgid "1 day"
 #| msgid_plural "%1 days"
@@ -3307,14 +3307,28 @@ msgctxt "@label"
 msgid "all day"
 msgstr "1 दिन"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:289
+#: kontactplugin/korganizer/summaryeventinfo.cpp:277
+#, fuzzy, kde-format
+#| msgid "Edit Event"
+msgctxt "@info:status"
+msgid "Edit Event: \"%1\""
+msgstr "घटना सम्पादन गर्नुहोस्"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:279
+#, fuzzy, kde-format
+#| msgid "Edit Event"
+msgctxt "@info:status"
+msgid "Show Event: \"%1\""
+msgstr "घटना सम्पादन गर्नुहोस्"
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, fuzzy, kde-format
 #| msgid "%1 - %2"
 msgctxt "@label Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:305
+#: kontactplugin/korganizer/summaryeventinfo.cpp:311
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgctxt "@label next occurrence"
@@ -3603,7 +3617,21 @@ msgctxt "@label the to-do was due at specified time"
 msgid "was due at %1"
 msgstr "म्याद समाप्त हुने मिति छैन"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:325
+#: kontactplugin/korganizer/todosummarywidget.cpp:306
+#, fuzzy, kde-format
+#| msgid "Edit To-do"
+msgctxt "@info:status"
+msgid "Edit To-do: \"%1\""
+msgstr "गर्नुपर्ने कार्य सम्पादन गर्नुहोस्"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:308
+#, fuzzy, kde-format
+#| msgid "Edit To-do"
+msgctxt "@info:status"
+msgid "Show To-do: \"%1\""
+msgstr "गर्नुपर्ने कार्य सम्पादन गर्नुहोस्"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, fuzzy, kde-format
 #| msgid "Print only to-dos due in the &range:"
 msgctxt "@label"
@@ -3612,7 +3640,14 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "दायरामा म्याद समाप्त भएका गर्नुपर्ने कार्य मात्र मुद्रण गर्नुहोस्:"
 msgstr[1] "दायरामा म्याद समाप्त भएका गर्नुपर्ने कार्य मात्र मुद्रण गर्नुहोस्:"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:390
+#: kontactplugin/korganizer/todosummarywidget.cpp:398
+#, fuzzy, kde-format
+#| msgid "&Show To-do"
+msgctxt "@action:inmenu"
+msgid "&Show To-do…"
+msgstr "गर्नुपर्ने कार्य देखाउनुहोस्"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, fuzzy, kde-format
 #| msgctxt "delete completed to-dos"
 #| msgid "Pur&ge Completed"
@@ -3620,53 +3655,46 @@ msgctxt "@action:inmenu"
 msgid "&Mark To-do Completed"
 msgstr "शुद्धीकरण समाप्त"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:410
-#, fuzzy, kde-format
-#| msgid "Edit To-do"
-msgctxt "@info:status"
-msgid "Edit To-do: \"%1\""
-msgstr "गर्नुपर्ने कार्य सम्पादन गर्नुहोस्"
-
-#: kontactplugin/korganizer/todosummarywidget.cpp:430
+#: kontactplugin/korganizer/todosummarywidget.cpp:434
 #, kde-format
 msgctxt "@label"
 msgid "open-ended"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:432
+#: kontactplugin/korganizer/todosummarywidget.cpp:436
 #, kde-format
 msgctxt "@label the to-do is overdue"
 msgid "overdue"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:434
+#: kontactplugin/korganizer/todosummarywidget.cpp:438
 #, fuzzy, kde-format
 #| msgid "No start date"
 msgctxt "@label the to-do starts today"
 msgid "starts today"
 msgstr "सुरु मिति छैन"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:438
+#: kontactplugin/korganizer/todosummarywidget.cpp:442
 #, kde-format
 msgctxt "@label the to-do has not been started yet"
 msgid "not-started"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:440
+#: kontactplugin/korganizer/todosummarywidget.cpp:444
 #, fuzzy, kde-format
 #| msgid "co&mpleted"
 msgctxt "@label the to-do is completed"
 msgid "completed"
 msgstr "समाप्त"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:442
+#: kontactplugin/korganizer/todosummarywidget.cpp:446
 #, fuzzy, kde-format
 #| msgid "Hide &inactive to-dos"
 msgctxt "@label the to-do is in-progress"
 msgid "in-progress "
 msgstr "निस्क्रिय गर्नुपर्ने कार्य लुकाउनुहोस्"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:447
+#: kontactplugin/korganizer/todosummarywidget.cpp:451
 #, fuzzy, kde-format
 #| msgctxt "delimiter for joining holiday names"
 #| msgid ","
@@ -3878,66 +3906,73 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:107
+#: kontactplugin/specialdates/sdsummarywidget.cpp:108
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@title:group"
 msgid "Upcoming Special Dates"
 msgstr "क्यालेन्डर"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:458
+#: kontactplugin/specialdates/sdsummarywidget.cpp:459
 #, fuzzy, kde-format
 #| msgid "day"
 msgctxt "@label the special day is today"
 msgid "Today"
 msgstr "दिन"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:460
+#: kontactplugin/specialdates/sdsummarywidget.cpp:461
 #, kde-format
 msgctxt "@label the special day is tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:505
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgctxt "@label"
 msgid "now"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:518
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, fuzzy, kde-format
 #| msgid "Birthday"
 msgctxt "@label"
 msgid "Birthday"
 msgstr "जन्मदिन"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:521
+#: kontactplugin/specialdates/sdsummarywidget.cpp:522
 #, kde-format
 msgctxt "@label"
 msgid "Anniversary"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:524
+#: kontactplugin/specialdates/sdsummarywidget.cpp:525
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@label"
 msgid "Holiday"
 msgstr "छुट्टि"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:527
+#: kontactplugin/specialdates/sdsummarywidget.cpp:528
 #, kde-format
 msgctxt "@label"
 msgid "Change of Seasons"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:530
+#: kontactplugin/specialdates/sdsummarywidget.cpp:531
 #, fuzzy, kde-format
 #| msgid "Special Occasion"
 msgctxt "@label"
 msgid "Special Occasion"
 msgstr "विशेष अवसर"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:572
+#: kontactplugin/specialdates/sdsummarywidget.cpp:547
+#, fuzzy, kde-format
+#| msgid "KMail"
+msgctxt "@info:status"
+msgid "Mail to:\"%1\""
+msgstr "केडीई मेल"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:573
 #, fuzzy, kde-format
 #| msgid "Next year"
 msgctxt "@label"
@@ -3946,7 +3981,7 @@ msgid_plural "%1 years"
 msgstr[0] "पछिल्लो वर्ष"
 msgstr[1] "पछिल्लो वर्ष"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:583
+#: kontactplugin/specialdates/sdsummarywidget.cpp:584
 #, fuzzy, kde-format
 #| msgid "Print only to-dos due in the &range:"
 msgctxt "@label"
@@ -3955,26 +3990,26 @@ msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] "दायरामा म्याद समाप्त भएका गर्नुपर्ने कार्य मात्र मुद्रण गर्नुहोस्:"
 msgstr[1] "दायरामा म्याद समाप्त भएका गर्नुपर्ने कार्य मात्र मुद्रण गर्नुहोस्:"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:677
+#: kontactplugin/specialdates/sdsummarywidget.cpp:660
+#, fuzzy, kde-format
+#| msgid "Delegated to"
+msgctxt "@info/plain default subject line for a new mail message"
+msgid "New Message to %1"
+msgstr "यसलाई प्रत्यायोजन"
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, fuzzy, kde-format
 #| msgid "Send Email"
 msgctxt "@action:inmenu"
 msgid "Send &Mail"
 msgstr "इमेल पठाउनुहोस्"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:678
+#: kontactplugin/specialdates/sdsummarywidget.cpp:692
 #, fuzzy, kde-format
 #| msgid "All Visible Columns"
 msgctxt "@action:inmenu"
 msgid "View &Contact"
 msgstr "सबै दृश्यात्मक स्तम्भ"
-
-#: kontactplugin/specialdates/sdsummarywidget.cpp:693
-#, fuzzy, kde-format
-#| msgid "KMail"
-msgctxt "@info:status"
-msgid "Mail to:\"%1\""
-msgstr "केडीई मेल"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
 #, fuzzy, kde-format
@@ -12342,12 +12377,6 @@ msgstr "%1%"
 #~ msgctxt "@item:intext sample attendee email name"
 #~ msgid "name"
 #~ msgstr "नाम"
-
-#, fuzzy
-#~| msgid "Delegated to"
-#~ msgctxt "@label"
-#~ msgid "Delegated to %1"
-#~ msgstr "यसलाई प्रत्यायोजन"
 
 #, fuzzy
 #~| msgid "No item selected."

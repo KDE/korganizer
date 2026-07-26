@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kdepim-addons\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2025-04-19 04:27+0200\n"
+"PO-Revision-Date: 2026-07-25 04:27+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -37,18 +37,16 @@ msgid "Show day number"
 msgstr "დღის რიცხვის ჩვენება"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "დღის რიცხვის ჩვენება"
+msgstr "წელიწადის დღის ნომრის ჩვენება"
 
 #: datenums/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr ""
+msgstr "ჩართეთ ეს, თუ გნებავთ მიმდინარე წლის დღის ნომრის ჩვენება."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -60,14 +58,14 @@ msgstr "წლის ბოლომდე დარჩენილი დღე
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "ამ წელში დარჩენილი დღეების რაოდენობის ჩვენება"
 
 #: datenums/configdialog.cpp:55
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
-msgstr ""
+msgstr "ჩართეთ ეს, მიმდინარე წელში დარჩენილი დღეების რაოდენობის საჩვენებლად."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -81,6 +79,7 @@ msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
 msgstr ""
+"ორივეს, წლის დღის ნომრისა და წელში დარჩენილი დღეების რაოდენობის ჩვენება"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -89,6 +88,8 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"ჩართეთ ეს, თუ გნებავთ ორივეს, წელიწადში დღის ნომრისა და მიმდინარე წელიწადში "
+"დარჩენილი დღეების რაოდენობის ჩვენება. ფორმატია dayOfYear / daysTillEndOfYear"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -748,6 +749,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"მინიატურის გადიდება საჭიროებისამებრ სივრცის შესავსებად გვერდების ფარდობის "
+"უგულებელყოფით"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -769,6 +772,7 @@ msgstr "საწყისი ფარდობის შენარჩუნ�
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
 msgstr ""
+"მინიატურის გადიდება რაც შეიძლება დიდად, გვერდების ფარდობის შენარჩუნებით"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -791,6 +795,7 @@ msgstr "ასპექტის ფარდობის შენარჩუ�
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
 msgstr ""
+"მინიატურის მასშტაბი სივრცის შესავსებად, გამოსახულების ამოჭრის შესაძლებლობით"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

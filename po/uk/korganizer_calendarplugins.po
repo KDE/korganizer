@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2016, 2018, 2019, 2024, 2025.
+# SPDX-FileCopyrightText: 2016, 2018, 2019, 2024, 2025, 2026 Yuri Chornoivan <yurchor@ukr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer_plugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2025-04-19 18:58+0300\n"
+"PO-Revision-Date: 2026-07-25 12:45+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -39,18 +39,17 @@ msgid "Show day number"
 msgstr "Показувати номер дня"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "Показувати номер дня"
+msgstr "Показувати номер дня у році"
 
 #: datenums/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
 msgstr ""
+"Позначте цей пункт, щоб програма показувала номер дня у поточному році."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -62,7 +61,7 @@ msgstr "Показувати кількість днів до кінця рок�
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "Показувати кількість днів у році, що лишилася"
 
 #: datenums/configdialog.cpp:55
 #, kde-format
@@ -70,6 +69,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
 msgstr ""
+"Позначте цей пункт, щоб програма показувала кількість днів, що лишилися у "
+"поточному році."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -82,7 +83,7 @@ msgstr "Показати обидва"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "Показувати номер дня у році і кількість днів у році, що лишилася"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -91,6 +92,9 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"Позначте цей пункт, щоб програма показувала і номер дня у році, і кількість "
+"днів, що лишилися у поточному році. Формат: день_року/"
+"кількість_днів_до_кінця_року"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -763,6 +767,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"За потреби масштабувати мініатюру для заповнення місця, ігнорувати "
+"співвідношення сторін"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -783,7 +789,7 @@ msgstr "Зберігати пропорції"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
-msgstr ""
+msgstr "Максимально збільшувати мініатюру, зберігаючи співвідношення сторін"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -806,6 +812,8 @@ msgstr "Зберігати співвідношення збільшенням"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
 msgstr ""
+"Масштабувати мініатюру з метою заповнення місця, можливо, обрізаючи "
+"зображення"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

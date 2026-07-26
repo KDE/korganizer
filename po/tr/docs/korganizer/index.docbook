@@ -4002,14 +4002,14 @@
 
 <sect2 id="date-numbers-plugin">
 <title
->Takvimler için Tarih Numaraları Eklentisi</title>
+>Tarih Numaraları</title>
 <para
 >Bu eklenti, Ajanda görünümüne yıl içindeki gün sayısını ekler. Örneğin 1 Şubat, 32. gündür. </para>
 </sect2>
 
 <sect2 id="wikipedia-thisday-plugin">
 <title
->Vikipedi “Tarihte Bugün” Eklentisi</title>
+>Vikipedi “Tarihte Bugün”</title>
 <para
 >Bu eklenti, Vikipedi’deki <quote
 >Tarihte Bugün</quote

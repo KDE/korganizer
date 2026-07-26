@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2026-07-24 06:34+0200\n"
+"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"PO-Revision-Date: 2026-07-25 04:22+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1377,13 +1377,13 @@ msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&გეგმის ჩვენება"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:382
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:395
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&გეგმის ჩასწორება…"
 
-#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:384
+#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:402
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
@@ -1789,15 +1789,15 @@ msgstr ""
 "ელემენტი <resource>%1</resource> გაიფილტრა თქვენი მიმდინარე ფილტრის წესებით, "
 "ასე რომ, ის დამალულია და ხედში არ გამოჩნდება."
 
-#: calendarview.cpp:844 kontactplugin/korganizer/apptsummarywidget.cpp:226
-#: kontactplugin/korganizer/todosummarywidget.cpp:352
+#: calendarview.cpp:844 kontactplugin/korganizer/apptsummarywidget.cpp:232
+#: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "მართლა გნებავთ, სამუდამოდ წაშალოთ ელემენტი \"%1\"?"
 
-#: calendarview.cpp:845 kontactplugin/korganizer/apptsummarywidget.cpp:227
-#: kontactplugin/korganizer/todosummarywidget.cpp:353
+#: calendarview.cpp:845 kontactplugin/korganizer/apptsummarywidget.cpp:233
+#: kontactplugin/korganizer/todosummarywidget.cpp:362
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
@@ -2886,7 +2886,7 @@ msgctxt "@title:group"
 msgid "Upcoming Events"
 msgstr "უახლოესი მოვლენები"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:199
+#: kontactplugin/korganizer/apptsummarywidget.cpp:201
 #, kde-format
 msgctxt "@label"
 msgid "No upcoming events starting within the next day"
@@ -2894,23 +2894,25 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "ხვალ მომავალი მოვლენები არ გაქვთ"
 msgstr[1] "შემდეგ %1 დღეში მომავალი მოვლენები არ გაქვთ"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:240
+#: kontactplugin/korganizer/apptsummarywidget.cpp:252
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Appointment…"
 msgstr "შეხვედრის ჩასწორება…"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:242
+#: kontactplugin/korganizer/apptsummarywidget.cpp:255
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Edit Appointment…"
+msgctxt "@action:inmenu"
+msgid "&Show Appointment…"
+msgstr "შეხვედრის ჩასწორება…"
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Appointment"
 msgstr "&შეხვედრის წაშლა"
-
-#: kontactplugin/korganizer/apptsummarywidget.cpp:261
-#, kde-format
-msgctxt "@info:status"
-msgid "Edit Event: \"%1\""
-msgstr "მოვლენის ჩასწორება: \"%1\""
 
 #: kontactplugin/korganizer/journalplugin.cpp:27
 #, kde-format
@@ -3006,7 +3008,7 @@ msgstr "ხვალ"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:144
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#: kontactplugin/specialdates/sdsummarywidget.cpp:466
+#: kontactplugin/specialdates/sdsummarywidget.cpp:467
 #, kde-format
 msgctxt "@label 1. weekday"
 msgid "%1"
@@ -3017,8 +3019,8 @@ msgstr "%1"
 #: kontactplugin/korganizer/summaryeventinfo.cpp:173
 #: kontactplugin/korganizer/summaryeventinfo.cpp:178
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:469
-#: kontactplugin/specialdates/sdsummarywidget.cpp:478
+#: kontactplugin/specialdates/sdsummarywidget.cpp:470
+#: kontactplugin/specialdates/sdsummarywidget.cpp:479
 #, kde-format
 msgctxt "@label 1. weekday, 2. date"
 msgid "%1 %2"
@@ -3026,7 +3028,7 @@ msgstr "%1 %2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:188
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, kde-format
 msgctxt "@label"
 msgid "in 1 day"
@@ -3088,13 +3090,27 @@ msgctxt "@label"
 msgid "all day"
 msgstr "მთელი დღე"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:289
+#: kontactplugin/korganizer/summaryeventinfo.cpp:277
+#, kde-format
+msgctxt "@info:status"
+msgid "Edit Event: \"%1\""
+msgstr "მოვლენის ჩასწორება: \"%1\""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:279
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Edit Event: \"%1\""
+msgctxt "@info:status"
+msgid "Show Event: \"%1\""
+msgstr "მოვლენის ჩასწორება: \"%1\""
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
 msgctxt "@label Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:305
+#: kontactplugin/korganizer/summaryeventinfo.cpp:311
 #, kde-format
 msgctxt "@label next occurrence"
 msgid "Next: %1"
@@ -3372,7 +3388,21 @@ msgctxt "@label the to-do was due at specified time"
 msgid "was due at %1"
 msgstr "უნდა მომხდარიყო %1-ზე"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:325
+#: kontactplugin/korganizer/todosummarywidget.cpp:306
+#, kde-format
+msgctxt "@info:status"
+msgid "Edit To-do: \"%1\""
+msgstr "გასაკეთებლის ჩასწორება: \"%1\""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:308
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Edit To-do: \"%1\""
+msgctxt "@info:status"
+msgid "Show To-do: \"%1\""
+msgstr "გასაკეთებლის ჩასწორება: \"%1\""
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
 msgctxt "@label"
 msgid "No pending to-dos due within the next day"
@@ -3380,55 +3410,57 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "ხვალისთვის დარჩენილი გასაკეთებლები არ გაქვთ"
 msgstr[1] "შემდეგ %1 დღეში დარჩენილი გასაკეთებლები არ გაქვთ"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:390
+#: kontactplugin/korganizer/todosummarywidget.cpp:398
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "&Show To-do"
+msgctxt "@action:inmenu"
+msgid "&Show To-do…"
+msgstr "&გეგმის ჩვენება"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mark To-do Completed"
 msgstr "გასაკეთებლის დასრულებულად &მონიშვნა"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:410
-#, kde-format
-msgctxt "@info:status"
-msgid "Edit To-do: \"%1\""
-msgstr "გასაკეთებლის ჩასწორება: \"%1\""
-
-#: kontactplugin/korganizer/todosummarywidget.cpp:430
+#: kontactplugin/korganizer/todosummarywidget.cpp:434
 #, kde-format
 msgctxt "@label"
 msgid "open-ended"
 msgstr "ღია-ბოლოთი"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:432
+#: kontactplugin/korganizer/todosummarywidget.cpp:436
 #, kde-format
 msgctxt "@label the to-do is overdue"
 msgid "overdue"
 msgstr "ვადაგადაცილებული"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:434
+#: kontactplugin/korganizer/todosummarywidget.cpp:438
 #, kde-format
 msgctxt "@label the to-do starts today"
 msgid "starts today"
 msgstr "იწყება დღეს"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:438
+#: kontactplugin/korganizer/todosummarywidget.cpp:442
 #, kde-format
 msgctxt "@label the to-do has not been started yet"
 msgid "not-started"
 msgstr "არ-დაწყებულა"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:440
+#: kontactplugin/korganizer/todosummarywidget.cpp:444
 #, kde-format
 msgctxt "@label the to-do is completed"
 msgid "completed"
 msgstr "დასრულდა"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:442
+#: kontactplugin/korganizer/todosummarywidget.cpp:446
 #, kde-format
 msgctxt "@label the to-do is in-progress"
 msgid "in-progress "
 msgstr "მიმდინარე "
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:447
+#: kontactplugin/korganizer/todosummarywidget.cpp:451
 #, kde-format
 msgctxt "@label Separator for status like this: overdue, completed"
 msgid ","
@@ -3648,61 +3680,67 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr "&იუბილეების ჩვენება"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:107
+#: kontactplugin/specialdates/sdsummarywidget.cpp:108
 #, kde-format
 msgctxt "@title:group"
 msgid "Upcoming Special Dates"
 msgstr "უახლოესი განსაკუთრებული თარიღები"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:458
+#: kontactplugin/specialdates/sdsummarywidget.cpp:459
 #, kde-format
 msgctxt "@label the special day is today"
 msgid "Today"
 msgstr "დღეს"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:460
+#: kontactplugin/specialdates/sdsummarywidget.cpp:461
 #, kde-format
 msgctxt "@label the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "ხვალ"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:505
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgctxt "@label"
 msgid "now"
 msgstr "ახლა"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:518
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, kde-format
 msgctxt "@label"
 msgid "Birthday"
 msgstr "დაბადების დღე"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:521
+#: kontactplugin/specialdates/sdsummarywidget.cpp:522
 #, kde-format
 msgctxt "@label"
 msgid "Anniversary"
 msgstr "აღნიშვნა"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:524
+#: kontactplugin/specialdates/sdsummarywidget.cpp:525
 #, kde-format
 msgctxt "@label"
 msgid "Holiday"
 msgstr "დასვენება"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:527
+#: kontactplugin/specialdates/sdsummarywidget.cpp:528
 #, kde-format
 msgctxt "@label"
 msgid "Change of Seasons"
 msgstr "სეზონების ცვლილება"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:530
+#: kontactplugin/specialdates/sdsummarywidget.cpp:531
 #, kde-format
 msgctxt "@label"
 msgid "Special Occasion"
 msgstr "განსაკუთრებული თარიღები"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:572
+#: kontactplugin/specialdates/sdsummarywidget.cpp:547
+#, kde-format
+msgctxt "@info:status"
+msgid "Mail to:\"%1\""
+msgstr "ელფოსტა ვის: \"%1\""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:573
 #, kde-format
 msgctxt "@label"
 msgid "one year"
@@ -3710,7 +3748,7 @@ msgid_plural "%1 years"
 msgstr[0] "1 წელი"
 msgstr[1] "%1 წელი"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:583
+#: kontactplugin/specialdates/sdsummarywidget.cpp:584
 #, kde-format
 msgctxt "@label"
 msgid "No special dates within the next 1 day"
@@ -3718,23 +3756,23 @@ msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] "ხვალ განსაკუთრებული თარიღი არაა"
 msgstr[1] "შემდეგი %1 დღე განსაკუთრებული თარიღი არაა"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:677
+#: kontactplugin/specialdates/sdsummarywidget.cpp:660
+#, kde-format
+msgctxt "@info/plain default subject line for a new mail message"
+msgid "New Message to %1"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Mail"
 msgstr "ელფოსტის &გაგზავნა"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:678
+#: kontactplugin/specialdates/sdsummarywidget.cpp:692
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "View &Contact"
 msgstr "კონტაქტის &ნახვა"
-
-#: kontactplugin/specialdates/sdsummarywidget.cpp:693
-#, kde-format
-msgctxt "@info:status"
-msgid "Mail to:\"%1\""
-msgstr "ელფოსტა ვის: \"%1\""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
 #, kde-format
@@ -3989,12 +4027,10 @@ msgid "Show at the bottom of the agenda views"
 msgstr "დღის წესრიგის ხედის ბოლოში ჩვენება"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@title:group"
 msgid "Agenda View Decorations"
-msgstr "კალენდრის დეკორაციები"
+msgstr "დღის წესრიგის ხედის დეკორაციები"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, kde-format

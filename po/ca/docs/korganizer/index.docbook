@@ -3952,14 +3952,14 @@
 
 <sect2 id="date-numbers-plugin">
 <title
->Connector de números de data per als calendaris</title>
+>Números de les dates</title>
 <para
 >Aquest connector afegeix el número del dia al llarg de l'any a la vista d'agenda. Per exemple, l'1 de febrer és el dia número 32. </para>
 </sect2>
 
 <sect2 id="wikipedia-thisday-plugin">
 <title
->Connector «Aquest dia en la història» de la Viquipèdia</title>
+>«Aquest dia en la història» de la Viquipèdia</title>
 <para
 >Aquest connector proporciona enllaços a les pàgines d'«efemèrides» de la Viquipèdia. </para>
 </sect2>

@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer_calendarplugins.po 1742194 2026-07-25 01:30:04Z scripty $
+# $Id: korganizer_calendarplugins.po 1742258 2026-07-26 01:28:10Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2025-04-19 06:58+0200\n"
+"PO-Revision-Date: 2026-07-25 07:35+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -46,22 +46,17 @@ msgid "Show day number"
 msgstr "Pokaži številko dneva"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "Pokaži številko dneva"
+msgstr "Pokaži številko dneva v letu"
 
 #: datenums/configdialog.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click here to scroll the display to week number %1 of the currently "
-#| "displayed year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
 msgstr ""
-"Kliknite sem, da se premaknete na %1. teden v trenutno prikazanem letu."
+"Izberite to možnost, če želite prikazati številko dneva v tekočem letu."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -70,23 +65,19 @@ msgid "Show days to end of year"
 msgstr "Pokaži dneve do konca leta"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Set the number of days to show upcoming events"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr "Nastavite število dni za prikazovanje prihajajočih dogodkov"
+msgstr "Prikazuj število preostalih dni v letu"
 
 #: datenums/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#| "year in the future."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
 msgstr ""
-"Uporabite to vrtilno polje, da nastavite število dni za prikazovanje "
-"čakajočih opravil, ki so lahko največ eno leto v prihodnosti."
+"Izberite to možnost, če želite prikazati število preostalih dni v tekočem "
+"letu."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -99,7 +90,7 @@ msgstr "Pokaži oboje"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "Prikzuj tako številko dneva v letu kot število preostalih dni v letu"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -108,6 +99,9 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"To možnost izberite, če želite prikazati tako številko dneva v letu kot "
+"število preostalih dni v tekočem letu. Oblika zapisa je danVLetu / "
+"dniDoKoncaLeta"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -779,6 +773,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"Po potrebi prilagodi velikost sličice, da se zapolni prostor ne upoštevaje "
+"razmerja stranic"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -798,7 +794,7 @@ msgstr "Ohrani razmerje stranic"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
-msgstr ""
+msgstr "Prilagodi čim večjo sličico z enakim razmerjem stranic"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -820,7 +816,7 @@ msgstr "Ohranjaj razmerje stranic z razširjanjem"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
-msgstr ""
+msgstr "Prilagodi sličico tako, da zapolni prostor lahko tudi z obrezom"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-25 00:45+0000\n"
+"POT-Creation-Date: 2026-07-26 00:45+0000\n"
 "PO-Revision-Date: 2009-06-08 01:08+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Albanian <sq@li.org>\n"
@@ -1440,14 +1440,14 @@ msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Shfaqe"
 
-#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:382
+#: actionmanager.cpp:1283 kontactplugin/korganizer/todosummarywidget.cpp:395
 #, fuzzy, kde-format
 #| msgid "&Edit..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Modifiko..."
 
-#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:384
+#: actionmanager.cpp:1286 kontactplugin/korganizer/todosummarywidget.cpp:402
 #, fuzzy, kde-format
 #| msgid "&Delete"
 msgctxt "@action:inmenu"
@@ -1829,15 +1829,15 @@ msgid ""
 "so it will be hidden and not appear in the view."
 msgstr ""
 
-#: calendarview.cpp:844 kontactplugin/korganizer/apptsummarywidget.cpp:226
-#: kontactplugin/korganizer/todosummarywidget.cpp:352
+#: calendarview.cpp:844 kontactplugin/korganizer/apptsummarywidget.cpp:232
+#: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr ""
 
-#: calendarview.cpp:845 kontactplugin/korganizer/apptsummarywidget.cpp:227
-#: kontactplugin/korganizer/todosummarywidget.cpp:353
+#: calendarview.cpp:845 kontactplugin/korganizer/apptsummarywidget.cpp:233
+#: kontactplugin/korganizer/todosummarywidget.cpp:362
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
@@ -2898,7 +2898,7 @@ msgctxt "@title:group"
 msgid "Upcoming Events"
 msgstr ""
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:199
+#: kontactplugin/korganizer/apptsummarywidget.cpp:201
 #, kde-format
 msgctxt "@label"
 msgid "No upcoming events starting within the next day"
@@ -2906,7 +2906,7 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:240
+#: kontactplugin/korganizer/apptsummarywidget.cpp:252
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Appointments"
@@ -2914,20 +2914,21 @@ msgctxt "@action:inmenu"
 msgid "&Edit Appointment…"
 msgstr "Takime"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:242
+#: kontactplugin/korganizer/apptsummarywidget.cpp:255
+#, fuzzy, kde-format
+#| msgctxt "@title:group"
+#| msgid "Appointments"
+msgctxt "@action:inmenu"
+msgid "&Show Appointment…"
+msgstr "Takime"
+
+#: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Appointments"
 msgctxt "@action:inmenu"
 msgid "&Delete Appointment"
 msgstr "Takime"
-
-#: kontactplugin/korganizer/apptsummarywidget.cpp:261
-#, fuzzy, kde-format
-#| msgid "&Edit..."
-msgctxt "@info:status"
-msgid "Edit Event: \"%1\""
-msgstr "&Modifiko..."
 
 #: kontactplugin/korganizer/journalplugin.cpp:27
 #, fuzzy, kde-format
@@ -3023,7 +3024,7 @@ msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:144
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#: kontactplugin/specialdates/sdsummarywidget.cpp:466
+#: kontactplugin/specialdates/sdsummarywidget.cpp:467
 #, fuzzy, kde-format
 #| msgid "%1"
 msgctxt "@label 1. weekday"
@@ -3035,8 +3036,8 @@ msgstr "%1"
 #: kontactplugin/korganizer/summaryeventinfo.cpp:173
 #: kontactplugin/korganizer/summaryeventinfo.cpp:178
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#: kontactplugin/specialdates/sdsummarywidget.cpp:469
-#: kontactplugin/specialdates/sdsummarywidget.cpp:478
+#: kontactplugin/specialdates/sdsummarywidget.cpp:470
+#: kontactplugin/specialdates/sdsummarywidget.cpp:479
 #, fuzzy, kde-format
 #| msgctxt "start/end week number of line in date picker"
 #| msgid "%1/%2"
@@ -3046,7 +3047,7 @@ msgstr "%1/%2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:188
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
-#: kontactplugin/specialdates/sdsummarywidget.cpp:507
+#: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, fuzzy, kde-format
 #| msgctxt "@item@intable alarm offset specified in days"
 #| msgid "1 day"
@@ -3113,13 +3114,27 @@ msgctxt "@label"
 msgid "all day"
 msgstr " ditë"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:289
+#: kontactplugin/korganizer/summaryeventinfo.cpp:277
+#, fuzzy, kde-format
+#| msgid "&Edit..."
+msgctxt "@info:status"
+msgid "Edit Event: \"%1\""
+msgstr "&Modifiko..."
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:279
+#, fuzzy, kde-format
+#| msgid "&Edit..."
+msgctxt "@info:status"
+msgid "Show Event: \"%1\""
+msgstr "&Modifiko..."
+
+#: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
 msgctxt "@label Time from - to"
 msgid "%1 - %2"
 msgstr ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:305
+#: kontactplugin/korganizer/summaryeventinfo.cpp:311
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgctxt "@label next occurrence"
@@ -3387,7 +3402,21 @@ msgctxt "@label the to-do was due at specified time"
 msgid "was due at %1"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:325
+#: kontactplugin/korganizer/todosummarywidget.cpp:306
+#, fuzzy, kde-format
+#| msgid "&Edit..."
+msgctxt "@info:status"
+msgid "Edit To-do: \"%1\""
+msgstr "&Modifiko..."
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:308
+#, fuzzy, kde-format
+#| msgid "&Edit..."
+msgctxt "@info:status"
+msgid "Show To-do: \"%1\""
+msgstr "&Modifiko..."
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
 msgctxt "@label"
 msgid "No pending to-dos due within the next day"
@@ -3395,56 +3424,56 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:390
+#: kontactplugin/korganizer/todosummarywidget.cpp:398
+#, fuzzy, kde-format
+#| msgid "&Show"
+msgctxt "@action:inmenu"
+msgid "&Show To-do…"
+msgstr "&Shfaqe"
+
+#: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mark To-do Completed"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:410
-#, fuzzy, kde-format
-#| msgid "&Edit..."
-msgctxt "@info:status"
-msgid "Edit To-do: \"%1\""
-msgstr "&Modifiko..."
-
-#: kontactplugin/korganizer/todosummarywidget.cpp:430
+#: kontactplugin/korganizer/todosummarywidget.cpp:434
 #, kde-format
 msgctxt "@label"
 msgid "open-ended"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:432
+#: kontactplugin/korganizer/todosummarywidget.cpp:436
 #, kde-format
 msgctxt "@label the to-do is overdue"
 msgid "overdue"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:434
+#: kontactplugin/korganizer/todosummarywidget.cpp:438
 #, kde-format
 msgctxt "@label the to-do starts today"
 msgid "starts today"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:438
+#: kontactplugin/korganizer/todosummarywidget.cpp:442
 #, kde-format
 msgctxt "@label the to-do has not been started yet"
 msgid "not-started"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:440
+#: kontactplugin/korganizer/todosummarywidget.cpp:444
 #, kde-format
 msgctxt "@label the to-do is completed"
 msgid "completed"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:442
+#: kontactplugin/korganizer/todosummarywidget.cpp:446
 #, kde-format
 msgctxt "@label the to-do is in-progress"
 msgid "in-progress "
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:447
+#: kontactplugin/korganizer/todosummarywidget.cpp:451
 #, fuzzy, kde-format
 #| msgctxt "@item:intext delimiter for joining holiday names"
 #| msgid ","
@@ -3646,45 +3675,45 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:107
+#: kontactplugin/specialdates/sdsummarywidget.cpp:108
 #, kde-format
 msgctxt "@title:group"
 msgid "Upcoming Special Dates"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:458
+#: kontactplugin/specialdates/sdsummarywidget.cpp:459
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "@label the special day is today"
 msgid "Today"
 msgstr "Sot"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:460
+#: kontactplugin/specialdates/sdsummarywidget.cpp:461
 #, kde-format
 msgctxt "@label the special day is tomorrow"
 msgid "Tomorrow"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:505
+#: kontactplugin/specialdates/sdsummarywidget.cpp:506
 #, kde-format
 msgctxt "@label"
 msgid "now"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:518
+#: kontactplugin/specialdates/sdsummarywidget.cpp:519
 #, fuzzy, kde-format
 #| msgid "Birthdays"
 msgctxt "@label"
 msgid "Birthday"
 msgstr "Ditëlindjet"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:521
+#: kontactplugin/specialdates/sdsummarywidget.cpp:522
 #, kde-format
 msgctxt "@label"
 msgid "Anniversary"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:524
+#: kontactplugin/specialdates/sdsummarywidget.cpp:525
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Holidays"
@@ -3692,19 +3721,25 @@ msgctxt "@label"
 msgid "Holiday"
 msgstr "Pushimet"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:527
+#: kontactplugin/specialdates/sdsummarywidget.cpp:528
 #, kde-format
 msgctxt "@label"
 msgid "Change of Seasons"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:530
+#: kontactplugin/specialdates/sdsummarywidget.cpp:531
 #, kde-format
 msgctxt "@label"
 msgid "Special Occasion"
 msgstr ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:572
+#: kontactplugin/specialdates/sdsummarywidget.cpp:547
+#, kde-format
+msgctxt "@info:status"
+msgid "Mail to:\"%1\""
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:573
 #, kde-format
 msgctxt "@label"
 msgid "one year"
@@ -3712,7 +3747,7 @@ msgid_plural "%1 years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:583
+#: kontactplugin/specialdates/sdsummarywidget.cpp:584
 #, kde-format
 msgctxt "@label"
 msgid "No special dates within the next 1 day"
@@ -3720,23 +3755,23 @@ msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:677
+#: kontactplugin/specialdates/sdsummarywidget.cpp:660
+#, kde-format
+msgctxt "@info/plain default subject line for a new mail message"
+msgid "New Message to %1"
+msgstr ""
+
+#: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, fuzzy, kde-format
 #| msgid "Send Email"
 msgctxt "@action:inmenu"
 msgid "Send &Mail"
 msgstr "Dërgo Email"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:678
+#: kontactplugin/specialdates/sdsummarywidget.cpp:692
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "View &Contact"
-msgstr ""
-
-#: kontactplugin/specialdates/sdsummarywidget.cpp:693
-#, kde-format
-msgctxt "@info:status"
-msgid "Mail to:\"%1\""
 msgstr ""
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36

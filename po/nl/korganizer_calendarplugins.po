@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2016, 2018, 2019, 2024, 2025 Freek de Kruijf <freekdekruijf@kde.nl>
+# SPDX-FileCopyrightText: 2016, 2018-2019, 2024-2026 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2025-04-19 15:59+0200\n"
+"PO-Revision-Date: 2026-07-25 09:52+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -36,18 +36,16 @@ msgid "Show day number"
 msgstr "Dagnummer tonen"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "Dagnummer tonen"
+msgstr "Dagnummer van het jaar tonen"
 
 #: datenums/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr ""
+msgstr "Selecteer deze optie om de dagnummer-van het huidige jaar te tonen."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -59,7 +57,7 @@ msgstr "Aantal dagen tot het einde van het jaar tonen"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "Het aantal resterende dagen in het jaar tonen"
 
 #: datenums/configdialog.cpp:55
 #, kde-format
@@ -67,6 +65,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
 msgstr ""
+"Selecteer deze optie om het aantal resterende dagen van het huidige jaar te "
+"tonen."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -79,7 +79,7 @@ msgstr "Beide tonen"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "Toon zowel het dagnummer als het aantal resterende dagen in het jaar"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -88,6 +88,8 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"Selecteer deze optie om het dagnummer van het jaar en het aantal resterende "
+"dagen in het huidige jaar. Het formaat is dayOfYear / daysTillEndOfYear"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -748,6 +750,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"Schaal de miniatuur nodig om de ruimte te vullen, met negeren van de "
+"beeldverhouding"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -768,7 +772,7 @@ msgstr "Beeldverhouding behouden"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
-msgstr ""
+msgstr "Schaal de miniatuur zo groot als mogelijk met dezelfde beeldverhouding"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -792,6 +796,8 @@ msgstr "Aspectverhouding handhaven bij vergroten"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
 msgstr ""
+"Schaal de miniatuur om de ruimte te vullen, mogelijk met afsnijden van de "
+"afbeelding"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

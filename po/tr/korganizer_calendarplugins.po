@@ -14,21 +14,21 @@
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014, 2015.
 # Yaşar Şentürk <yasar@kde.org.tr>, 2005.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2025-04-21 10:56+0300\n"
-"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
+"PO-Revision-Date: 2026-07-25 19:59+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 26.04.2\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -51,18 +51,16 @@ msgid "Show day number"
 msgstr "Gün numarasını göster"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "Gün numarasını göster"
+msgstr "Yılın gününün numarasını göster"
 
 #: datenums/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr ""
+msgstr "Şu anki yılın gün numarasını göstermek için bu seçeneği işaretleyin."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -74,7 +72,7 @@ msgstr "Yılın sonuna kadar günleri göster"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "Yılda kalan günlerin sayısını göster"
 
 #: datenums/configdialog.cpp:55
 #, kde-format
@@ -82,6 +80,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
 msgstr ""
+"Şu anki yılda kalan günlerin sayısını göstermek için bu seçeneği işaretleyin."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -94,7 +93,7 @@ msgstr "Her ikisini de göster"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "Hem yılın gün numarasını hem de kalan gün sayısını göster"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -103,6 +102,9 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"Hem geçerli yılın gün numarasını hem de yılda kalan gün sayısını göstermek "
+"için bu seçeneği işaretleyin. Biçim, yılın_günü / kalan_gün_sayısı "
+"şeklindedir."
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -762,14 +764,14 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"En–boy oranını yok sayarak küçük görseli alanı dolduracak şekilde ölçekle"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
-msgstr ""
-"Küçük görsel serbestçe boyutlandırılacak. En–boy oranı korunmayacaktır."
+msgstr "Küçük görsel serbestçe boyutlandırılacaktır. En–boy oranı korunmaz."
 
 #: picoftheday/configdialog.cpp:53
 #, kde-format
@@ -782,6 +784,7 @@ msgstr "En–boy oranını koru"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
 msgstr ""
+"Aynı en–boy oranı ile küçük görseli olabilecek en büyük şekilde ölçekle"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -791,7 +794,7 @@ msgid ""
 "given rectangle, preserving the aspect ratio."
 msgstr ""
 "Küçük görsel, en–boy oranını koruyarak, belirli bir dikdörtgen içinde "
-"olabildiğince büyük bir dikdörtgen içine sığdırılacak."
+"olabildiğince büyük bir dikdörtgen içine sığdırılacaktır."
 
 #: picoftheday/configdialog.cpp:61
 #, kde-format
@@ -803,7 +806,7 @@ msgstr "Genişleterek en–boy oranını koru"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
-msgstr ""
+msgstr "Gerekirse kırparak küçük görseli alanı dolduracak şekilde ölçekle"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format
@@ -813,7 +816,7 @@ msgid ""
 "given rectangle, preserving the aspect ratio."
 msgstr ""
 "Küçük görsel, en–boy oranı korunarak, belirli bir dikdörtgen içine "
-"olabildiğince küçük bir dikdörtgen şeklinde sığdırılacak."
+"olabildiğince küçük bir dikdörtgen şeklinde sığdırılacaktır."
 
 #: picoftheday/element.cpp:209
 #, kde-format

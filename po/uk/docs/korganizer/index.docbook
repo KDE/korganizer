@@ -3586,13 +3586,13 @@
 <varlistentry>
    <term
 ><guilabel
->Navigator grid highlight color</guilabel
+>Колір підсвічування у таблиці навігації</guilabel
 ></term>
    <listitem
 ><para
->This button opens the <guilabel
->Select Color</guilabel
-> dialog, allowing you to select the color for highlighting the currently selected date range in the navigator.</para
+>За допомогою натискання цієї кнопки ви можете відкрити діалогове вікно <guilabel
+>Виберіть колір</guilabel
+> для підсвічування поточного позначеного діапазону дат у таблиці навігації.</para
 ></listitem>
  </varlistentry>
 
@@ -4001,14 +4001,14 @@
 
 <sect2 id="date-numbers-plugin">
 <title
->Додаток дат для календарів</title>
+>Номери дат</title>
 <para
 >Цей додаток додає номер дня у році у перегляд розкладу. Наприклад, перше лютого буде днем номер 32. </para>
 </sect2>
 
 <sect2 id="wikipedia-thisday-plugin">
 <title
->Додаток сторінки Вікіпедії «Цей день в історії»</title>
+>Сторінка Вікіпедії «Цей день в історії»</title>
 <para
 >За допомогою цього додатка створюються посилання на сторінки Вікіпедії «Цей день у історії». </para>
 </sect2>
