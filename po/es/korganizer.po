@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-17 11:29+0100\n"
+"PO-Revision-Date: 2026-07-27 01:07+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2916,7 +2916,7 @@ msgstr "&Borrar cita"
 #: kontactplugin/korganizer/apptsummarywidget.cpp:260
 #, kde-format
 msgid "Edit Event: \"%1\""
-msgstr "Editar evento:«%1»"
+msgstr "Editar evento: «%1»"
 
 #: kontactplugin/korganizer/journalplugin.cpp:27
 #, kde-format
@@ -3393,7 +3393,7 @@ msgstr "&Marcar tarea pendiente como terminada"
 #: kontactplugin/korganizer/todosummarywidget.cpp:409
 #, kde-format
 msgid "Edit To-do: \"%1\""
-msgstr "Editar tarea pendiente:«%1»"
+msgstr "Editar tarea pendiente: «%1»"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:429
 #, kde-format
@@ -3724,7 +3724,7 @@ msgstr "Ver &contacto"
 #: kontactplugin/specialdates/sdsummarywidget.cpp:684
 #, kde-format
 msgid "Mail to:\"%1\""
-msgstr "Correo a:«%1»"
+msgstr "Correo a: «%1»"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:36
 #, kde-format
