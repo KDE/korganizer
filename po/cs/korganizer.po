@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-25 19:14+0200\n"
+"PO-Revision-Date: 2026-07-26 12:04+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -2913,12 +2913,10 @@ msgid "&Edit Appointment…"
 msgstr "&Upravit schůzku…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "&Upravit schůzku…"
+msgstr "&Zobrazit schůzku…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3112,12 +3110,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Upravit událost: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Upravit událost: \"%1\""
+msgstr "Zobrazit událost: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3408,12 +3404,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "Upravit úkol: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Upravit úkol: \"%1\""
+msgstr "Zobrazit úkol: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3425,12 +3419,10 @@ msgstr[1] "Žádné úkoly nejsou na blízku pro příští %1 dny"
 msgstr[2] "Žádné úkoly nejsou na blízku pro příštích %1 dní"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "&Zobrazit úkol"
+msgstr "&Zobrazit úkol…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3778,7 +3770,7 @@ msgstr[2] "Žádné speciální události nejsou na blízku pro příštích %1 
 #, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr ""
+msgstr "Nová zpráva pro %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format
@@ -4047,12 +4039,10 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Zobrazit v dolní části zobrazení agendy"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@title:group"
 msgid "Agenda View Decorations"
-msgstr "Dekorace kalendářů"
+msgstr "Dekorace zobrazení agendy"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, kde-format

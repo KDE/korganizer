@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-25 12:39+0300\n"
+"PO-Revision-Date: 2026-07-26 14:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2950,12 +2950,10 @@ msgid "&Edit Appointment…"
 msgstr "&Редагувати зустріч..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "&Редагувати зустріч..."
+msgstr "&Показати зустріч…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3159,12 +3157,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Редагувати подію: «%1»"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Редагувати подію: «%1»"
+msgstr "Показ події: «%1»"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3462,12 +3458,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "Редагувати завдання: «%1»"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Редагувати завдання: «%1»"
+msgstr "Показ завдання: «%1»"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3480,12 +3474,10 @@ msgstr[2] "Немає призначених завдань в найближч�
 msgstr[3] "Немає призначених завдань в найближчий %1 день"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "&Показати завдання"
+msgstr "&Показати завдання…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3833,7 +3825,7 @@ msgstr[3] "Немає призначених особливих дат в най
 #, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr ""
+msgstr "Нове повідомлення до %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format

@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-25 23:43+0100\n"
+"PO-Revision-Date: 2026-07-27 01:07+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -2947,12 +2947,10 @@ msgid "&Edit Appointment…"
 msgstr "&Editar cita…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "&Editar cita…"
+msgstr "&Mostrar cita…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3139,15 +3137,13 @@ msgstr "todo el día"
 #, kde-format
 msgctxt "@info:status"
 msgid "Edit Event: \"%1\""
-msgstr "Editar evento:«%1»"
+msgstr "Editar evento: «%1»"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Editar evento:«%1»"
+msgstr "Mostrar evento: «%1»"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3440,15 +3436,13 @@ msgstr "ha vencido a las %1"
 #, kde-format
 msgctxt "@info:status"
 msgid "Edit To-do: \"%1\""
-msgstr "Editar tarea pendiente:«%1»"
+msgstr "Editar tarea pendiente: «%1»"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Editar tarea pendiente:«%1»"
+msgstr "Mostrar tarea pendiente: «%1»"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3459,12 +3453,10 @@ msgstr[0] "Ninguna tarea pendiente vence la próxima semana"
 msgstr[1] "Ninguna tarea pendiente vence durante los próximos %1 días"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "Mo&strar tareas pendientes"
+msgstr "Mo&strar tarea pendiente…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3786,7 +3778,7 @@ msgstr "Ocasión especial"
 #, kde-format
 msgctxt "@info:status"
 msgid "Mail to:\"%1\""
-msgstr "Correo a:«%1»"
+msgstr "Correo a: «%1»"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:573
 #, kde-format
@@ -3808,7 +3800,7 @@ msgstr[1] "Ninguna fecha especial durante los próximos %1 días"
 #, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr ""
+msgstr "Nuevo mensaje para %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format

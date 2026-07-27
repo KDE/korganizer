@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-25 04:22+0200\n"
+"PO-Revision-Date: 2026-07-26 05:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -2901,12 +2901,10 @@ msgid "&Edit Appointment…"
 msgstr "შეხვედრის ჩასწორება…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "შეხვედრის ჩასწორება…"
+msgstr "შეხვედრი&ს ჩასწორება…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3097,12 +3095,10 @@ msgid "Edit Event: \"%1\""
 msgstr "მოვლენის ჩასწორება: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "მოვლენის ჩასწორება: \"%1\""
+msgstr "მოვლენის ჩვენება: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3395,12 +3391,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "გასაკეთებლის ჩასწორება: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "გასაკეთებლის ჩასწორება: \"%1\""
+msgstr "გასაკეთებლის ჩვენება: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3411,12 +3405,10 @@ msgstr[0] "ხვალისთვის დარჩენილი გას�
 msgstr[1] "შემდეგ %1 დღეში დარჩენილი გასაკეთებლები არ გაქვთ"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "&გეგმის ჩვენება"
+msgstr "გეგმი&ს ჩვენება…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3760,7 +3752,7 @@ msgstr[1] "შემდეგი %1 დღე განსაკუთრებ�
 #, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr ""
+msgstr "ახალი შეტყობინება %1-ისთვის"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format

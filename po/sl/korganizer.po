@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1742258 2026-07-26 01:28:10Z scripty $
+# $Id: korganizer.po 1742332 2026-07-27 01:29:56Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-25 07:29+0200\n"
+"PO-Revision-Date: 2026-07-26 07:29+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -2936,12 +2936,10 @@ msgid "&Edit Appointment…"
 msgstr "Ur&edi sestanek…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "Ur&edi sestanek…"
+msgstr "Prikaži sestanek…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3144,12 +3142,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Uredi dogodek: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Uredi dogodek: \"%1\""
+msgstr "Prikaži dogodek: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3443,12 +3439,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "Uredi opravilo: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Uredi opravilo: \"%1\""
+msgstr "Prikaži opravilo: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3461,12 +3455,10 @@ msgstr[2] "V naslednjih %1 dneh ne zapade nobeno čakajoče opravilo"
 msgstr[3] "V naslednjih %1 dneh ne zapade nobeno čakajoče opravilo"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "Pokaži opravilo"
+msgstr "Pokaži opravilo…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3815,7 +3807,7 @@ msgstr[3] "Naslednje %1 dni ni posebnih datumov"
 #, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr ""
+msgstr "Novo sporočilo za %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format

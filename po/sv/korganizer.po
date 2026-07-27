@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-25 09:20+0200\n"
+"PO-Revision-Date: 2026-07-26 07:40+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -2895,12 +2895,10 @@ msgid "&Edit Appointment…"
 msgstr "&Redigera möte…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "&Redigera möte…"
+msgstr "&Visa möte…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3088,12 +3086,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Redigera händelse: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Redigera händelse: \"%1\""
+msgstr "Visa händelse: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3380,12 +3376,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "Redigera uppgift: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Redigera uppgift: \"%1\""
+msgstr "Visa uppgift: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3396,12 +3390,10 @@ msgstr[0] "Inga väntande uppgifter under följande dag"
 msgstr[1] "Inga väntande uppgifter under följande %1 dagar"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "Vi&sa uppgift"
+msgstr "Vi&sa uppgift…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3742,12 +3734,10 @@ msgstr[0] "Inga speciella datum förestående under följande dag"
 msgstr[1] "Inga speciella datum förestående under följande %1 dagar"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:660
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Delegated to %1"
+#, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr "Delegerad till %1"
+msgstr "Nytt brev till %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format

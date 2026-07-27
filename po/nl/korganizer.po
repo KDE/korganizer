@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-25 09:53+0200\n"
+"PO-Revision-Date: 2026-07-26 09:30+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -2933,12 +2933,10 @@ msgid "&Edit Appointment…"
 msgstr "Afspraak bew&erken…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "Afspraak bew&erken…"
+msgstr "Afspraak &tonen…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3129,12 +3127,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Evenement bewerken: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Evenement bewerken: \"%1\""
+msgstr "Evenement tonen: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3427,12 +3423,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "Taak bewerken: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Taak bewerken: \"%1\""
+msgstr "Taak tonen: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3443,12 +3437,10 @@ msgstr[0] "Geen openstaande taken binnen 1 dag"
 msgstr[1] "Geen openstaande taken binnen %1 dagen"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "Taak &tonen"
+msgstr "Taak &tonen…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3791,12 +3783,10 @@ msgstr[0] "Geen speciale datums genoteerd binnen 1 dag"
 msgstr[1] "Geen speciale datums genoteerd binnen %1 dagen"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:660
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Delegated to %1"
+#, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr "Gedelegeerd aan %1"
+msgstr "Nieuw bericht aan %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format
