@@ -8,14 +8,14 @@
 # Pino Toscano <toscano.pino@tiscali.it>, 2007.
 # Dario Panico <Dareus_Persarumrex@fastwebnet.it>, 2008, 2009.
 # Leonardo Finetti <finex@finex.org>, 2008.
-# SPDX-FileCopyrightText: 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2024, 2025 Luigi Toscano <luigi.toscano@tiscali.it>
+# SPDX-FileCopyrightText: 2010-2016, 2018-2019, 2024-2026 Luigi Toscano <luigi.toscano@tiscali.it>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2025-04-27 14:48+0200\n"
+"PO-Revision-Date: 2026-07-25 23:04+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.0\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -44,22 +44,17 @@ msgid "Show day number"
 msgstr "Mostra numero del giorno"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "Mostra numero del giorno"
+msgstr "Mostra numero del giorno dell'anno"
 
 #: datenums/configdialog.cpp:50
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Sets options related to the date and time of the event or to-do."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
 msgstr ""
-"Imposta le opzioni relative alla data e all'orario di un evento o di una "
-"cosa da fare."
+"Seleziona questa opzione per mostrare il numero del giorno dell'anno attuale."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -68,23 +63,18 @@ msgid "Show days to end of year"
 msgstr "Mostra giorni mancanti alla fine dell'anno"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Set the number of days to show upcoming events"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr "Seleziona il numero di giorni per cui mostrare i prossimi eventi"
+msgstr "Mostra il totale dei giorni rimanenti nell'anno"
 
 #: datenums/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#| "year in the future."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
 msgstr ""
-"Usa questa casella numerica per impostare il numero di giorni per cui "
-"mostrare le cose da fare in scadenza fino a un anno nel futuro."
+"Seleziona questa opzione per mostrare il numero del giorno dell'anno attuale."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -98,6 +88,7 @@ msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
 msgstr ""
+"Mostra sia il numero del giorno sia il totale dei giorni rimanenti per l'anno"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -106,6 +97,9 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"Seleziona questa opzione per mostrare sia il numero del giorno sia il totale "
+"dei giorni rimanenti per l'anno attuale. Il formato è giorno_dell_Anno / "
+"giorni_fino_all_fine_dell_anno"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -767,6 +761,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"Scala la miniatura per quanto serve per riempire lo spazio, ignorandone le "
+"proporzioni"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -788,6 +784,7 @@ msgstr "Mantieni proporzioni aspetto"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
 msgstr ""
+"Scala la miniatura perché sia più grande possible con le stesse proporzioni"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -809,7 +806,7 @@ msgstr "Mantieni proporzioni di aspetto espandendo se necessario"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
-msgstr ""
+msgstr "Scala la miniatura per riempire lo spazio, forse tagliando l'immagine"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2026-07-16 17:21+0200\n"
+"PO-Revision-Date: 2026-07-27 11:34+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -37,23 +37,16 @@ msgid "Show day number"
 msgstr "Monstra numero de die"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "Monstra numero de die"
+msgstr "Monstra numero de die del anno"
 
 #: datenums/configdialog.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click here to scroll the display to week number %1 of the currently "
-#| "displayed year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr ""
-"Pulsa ci pro rolar le monstrator al numero de septimana %1 del anno "
-"currentemente monstrate."
+msgstr "Selige iste option per monstrar le numero de die del anno currente."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -65,16 +58,15 @@ msgstr "Monstra dies al fin del anno"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "Monstra le numero de dies remanente in le anno"
 
 #: datenums/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
 msgstr ""
-"Marca iste quadrato si tu vole monstrar secundas sur le linea de tempore "
+"Selige iste option per monstrar le numero de dies remanente in le anno "
 "currente."
 
 #: datenums/configdialog.cpp:58
@@ -89,6 +81,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
 msgstr ""
+"Monstra ambe le numero de die del anno e le numero de dies remanente in le "
+"anno"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -97,6 +91,9 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"Selige le optionper monstrar ambe le numero de dies del anno e le numero de "
+"dies remanente in le anno currente. Le formto es dayOfYear / "
+"daysTillEndOfYea (i.e dieDelAnno / dies UsqueLeFinDelAnno)"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -756,6 +753,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"Scala le miniatura como necessitate per eemplir le spatio,ignorante le "
+"proportion (aspect ratio)"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -776,6 +775,8 @@ msgstr "Mantene proportiones"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
 msgstr ""
+"Scala le  miniatura le plus grande possibile con le mesme proportion (aspect "
+"ratio)"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -798,6 +799,8 @@ msgstr "Mantene proportiones per expander"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
 msgstr ""
+"Scala le miniatura per eeimpler le spatio, possibilmente retaliante le "
+"imagine"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

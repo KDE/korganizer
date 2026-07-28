@@ -2804,12 +2804,10 @@ msgid "&Edit Appointment…"
 msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Appointments"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "预约"
+msgstr ""
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -2991,12 +2989,10 @@ msgid "Edit Event: \"%1\""
 msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "显示事件(&S)"
+msgstr ""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3271,12 +3267,10 @@ msgid "Edit To-do: \"%1\""
 msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "显示待办事项(&S)"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3286,12 +3280,10 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "显示待办事项(&S)"
+msgstr ""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format

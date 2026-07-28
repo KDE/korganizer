@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-23 16:02+0200\n"
+"PO-Revision-Date: 2026-07-27 08:28+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2498,20 +2498,18 @@ msgid "Show in Context"
 msgstr "Mostra nel contesto"
 
 #: dialog/koeventviewerdialog.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select the identity to use as the organizer for this incidence."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr "Seleziona l'identità da usare come organizzatore di questa occorrenza."
+msgstr "Avvia l'editor per questa occorrenza"
 
 #: dialog/koeventviewerdialog.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press the Edit button to pop-up the incidence editor dialog"
-msgstr "Premi questo pulsante per rimuovere il filtro attivo."
+msgstr ""
+"Premi il pulsante Modifica per far apparire la finestra dell'editor di "
+"occorrenze"
 
 #: dialog/koeventviewerdialog.cpp:46
 #, kde-format
@@ -2520,6 +2518,8 @@ msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
 msgstr ""
+"Scorri la vista di calendario appropriata in modo che l'occorrenza possa "
+"essere vista nel contesto"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2529,6 +2529,9 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"Premere questo pulsante per mostrare un'occorrenza nel suo contesto. Questo "
+"vuol dire mostrare la vista delle cose da fare,  agenda o diario (quella più "
+"appropriata) e spostarsi in essa per mostrare l'occorrenza."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -2922,14 +2925,12 @@ msgid "Upcoming Events"
 msgstr "Prossimi eventi"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:201
-#, fuzzy, kde-format
-#| msgid "No upcoming events starting within the next day"
-#| msgid_plural "No upcoming events starting within the next %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
-msgstr[0] "Nessun evento con inizio entro il prossimo giorno"
-msgstr[1] "Nessun evento con inizio entro i prossimi %1 giorni"
+msgstr[0] "Nessun prossimo evento con inizio entro il prossimo giorno"
+msgstr[1] "Nessun prossimo evento con inizio entro i prossimi %1 giorni"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:252
 #, kde-format
@@ -2938,12 +2939,10 @@ msgid "&Edit Appointment…"
 msgstr "&Modifica appuntamento…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "&Modifica appuntamento…"
+msgstr "Mo&stra appuntamento…"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3134,12 +3133,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Modifica evento: «%1»"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Modifica evento: «%1»"
+msgstr "Mostra evento: «%1»"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3434,12 +3431,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "Modifica cosa da fare: «%1»"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Modifica cosa da fare: «%1»"
+msgstr "Mostra cosa da fare: «%1»"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3450,12 +3445,10 @@ msgstr[0] "Nessuna cosa da fare in scadenza entro il prossimo giorno"
 msgstr[1] "Nessuna cosa da fare in scadenza entro i prossimi %1 giorni"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "&Mostra cosa da fare"
+msgstr "Mo&stra cosa da fare…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3798,12 +3791,10 @@ msgstr[0] "Nessuna data speciale entro il prossimo giorno"
 msgstr[1] "Nessuna data speciale entro i prossimi %1 giorni"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:660
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Delegated to %1"
+#, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr "Delegato a %1"
+msgstr "Nuovo messaggio per %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format
@@ -4075,12 +4066,10 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Mostra in basso nelle viste agenda"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@title:group"
 msgid "Agenda View Decorations"
-msgstr "Decorazioni calendario"
+msgstr "Decorazioni vista agenda"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, kde-format
@@ -4427,6 +4416,8 @@ msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry"
 msgstr ""
+"Seleziona questa opzione per scegliere il calendario da usare per registrare "
+"la voce ogni volta che crei un nuovo evento, cosa da fare o voce di diario."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4438,7 +4429,7 @@ msgstr "Abilita le attività di KDE Plasma"
 #: settings/korganizer.kcfg:34
 #, kde-format
 msgid "Enable KDE Plasma Activities for Mail accounts"
-msgstr ""
+msgstr "Abilita le attività di KDE Plasma per gli account di posta elettronica"
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
@@ -4447,6 +4438,9 @@ msgid ""
 "Select this option to the enable KDE Plasma Activities that allows setting "
 "different Mail accounts and transports for each activity."
 msgstr ""
+"Seleziona questa opzione per abilitare le attività di KDE Plasma, che "
+"permettono di associare diversi account e trasporti di posta per ogni "
+"attività."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
@@ -4595,6 +4589,7 @@ msgstr "Mostra le voci che hanno ricorrenza quotidiana"
 #, kde-format
 msgid "Use a bold typeface to more easily identify daily recurring incidences"
 msgstr ""
+"Usa il grassetto per identificare più facilmente delle occorrenze giornaliere"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:83
@@ -4620,6 +4615,7 @@ msgstr "Mostra le voci che hanno ricorrenza settimanale"
 #, kde-format
 msgid "Use a bold typeface to more easily identify weekly recurring incidences"
 msgstr ""
+"Usa il grassetto per identificare più facilmente delle occorrenze settimanali"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:89
@@ -4644,6 +4640,8 @@ msgstr "Mostra cose da fare invece che eventi nella vista cose da fare"
 #, kde-format
 msgid "In Todo View, use a bold typeface to more easily identify to-dos"
 msgstr ""
+"Nella vista delle cose da fare, usa il grassetto per identificare più "
+"facilmente delle cose da fare"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
@@ -4667,6 +4665,8 @@ msgstr "Mostra voci di diario invece che eventi nella vista diario"
 #, kde-format
 msgid "In journal view, use a bold typeface to more easily identify journals"
 msgstr ""
+"Nella vista diario, usa il grassetto per identificare più facilmente dei "
+"diari"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
@@ -4712,6 +4712,8 @@ msgstr ""
 msgid ""
 "In work week mode, allow selecting a work week rather than the whole week"
 msgstr ""
+"Nella modalità settimana lavorativa, permette di selezionare una settimana "
+"lavorativa invece della settimana intera"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:113
@@ -5467,6 +5469,8 @@ msgstr "Memorizza nel diario le cose da fare completate"
 #, kde-format
 msgid "Add a journal entry each time a to-do is marked as completed"
 msgstr ""
+"Aggiunge una voce di diario ogni volta che una cosa da fare è marcata come "
+"completata"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:330
@@ -5547,6 +5551,9 @@ msgid ""
 "In Agenda and Month views, when you have an all day event marked as busy, "
 "draw that item's background using the specified color."
 msgstr ""
+"Nella viste agenda e mensile, quando c'è un evento che dura tutto il giorno "
+"marcato come occupato, disegna lo sfondo di quella voce usando il colore "
+"specificato."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:355
@@ -5623,7 +5630,7 @@ msgstr "Colore delle cose fare che scadono oggi"
 #: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for to-dos that are due today"
-msgstr ""
+msgstr "Imposta il colore delle cose fare in scadenza oggi"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #: settings/korganizer.kcfg:375
@@ -5670,17 +5677,17 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Highlight color"
+#, kde-format
 msgid "Date Navigator grid highlight color"
-msgstr "Colore evidenziazione"
+msgstr "Colore di evidenziazione della griglia del navigatore delle date"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Select the to-do due today color here."
+#, kde-format
 msgid "Set the Date Navigator grid highlight color here"
-msgstr "Scegli qui il colore delle cose fare che scadono oggi."
+msgstr ""
+"Imposta qui il colore di evidenziazione della griglia del navigatore delle "
+"date"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
@@ -5703,6 +5710,7 @@ msgstr "Barra orologio"
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
 msgstr ""
+"Imposta il carattere delle etichette della barra orologio nella vista agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:402

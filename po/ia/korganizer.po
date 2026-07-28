@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-23 12:03+0200\n"
+"PO-Revision-Date: 2026-07-27 11:46+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -2478,20 +2478,18 @@ msgid "Show in Context"
 msgstr "Monstra in contexto"
 
 #: dialog/koeventviewerdialog.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Dismiss the reminders for the selected incidences"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr "Dimite le mementos del incidentias seligite"
+msgstr "Starta le editor pro iste incidentia"
 
 #: dialog/koeventviewerdialog.cpp:45
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to remove the currently active filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press the Edit button to pop-up the incidence editor dialog"
-msgstr "Pressa iste button pro remover le filtro currentemente active."
+msgstr ""
+"Pressa iste button de Editar pro vider le fenestra emergente (pop up) de "
+"dialogo del editor de  incidentia"
 
 #: dialog/koeventviewerdialog.cpp:46
 #, kde-format
@@ -2500,6 +2498,8 @@ msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
 msgstr ""
+"Rola  al vista de calendario appropriate assi que le incidentia pote esser "
+"vidite in contexto"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2509,6 +2509,9 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"Pressa iste button pro monstrar un incidentia in contexto. Isto significa "
+"monstrar  le vista de cosas a facer, agenda o diario (secundo le caso) e "
+"rolar lo pro monstrar  le incidentia."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -2920,12 +2923,10 @@ msgid "&Edit Appointment…"
 msgstr "&Edita appunctamento..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "&Edita appunctamento..."
+msgstr "Mon&stra appunctamento..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
 #, kde-format
@@ -3117,12 +3118,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Edita evento: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Edita evento: \"%1\""
+msgstr "Monstra evento: \"%1\""
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3418,12 +3417,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "Edita lista de activitates: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Edita lista de activitates: \"%1\""
+msgstr "Monstra Activitate (cosas)  de facer: \"%1\""
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3435,12 +3432,10 @@ msgstr[1] ""
 "Nulle retardo pendente de activitates de facer intra le proxime %1 dies"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "Mon&stra Activitate de facer"
+msgstr "Mon&stra Activitate (cosas) de facer…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3784,7 +3779,7 @@ msgstr[1] "Nulle datas special pendente intra le proxime %1 dies"
 #, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr ""
+msgstr "Nove message a %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format
@@ -4056,12 +4051,10 @@ msgid "Show at the bottom of the agenda views"
 msgstr "Monstra al fundo del vistas de agenda"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@title:group"
 msgid "Agenda View Decorations"
-msgstr "Decorationes de calendario"
+msgstr "Decorationes de vista de agenda"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, kde-format
