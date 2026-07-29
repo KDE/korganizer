@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-23 09:26+0300\n"
+"PO-Revision-Date: 2026-07-28 09:23+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -2435,7 +2435,7 @@ msgstr "הצגה בהקשר"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr ""
+msgstr "התחלת העורך למופע הזה"
 
 #: dialog/koeventviewerdialog.cpp:45
 #, fuzzy, kde-format
@@ -3080,12 +3080,10 @@ msgid "Edit Event: \"%1\""
 msgstr "עריכת אירוע: „%1”"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "עריכת אירוע: „%1”"
+msgstr "הצגת אירוע: „%1”"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:295
 #, kde-format
@@ -3311,8 +3309,7 @@ msgid "Over&due (not completed and beyond due-date)"
 msgstr "חל&פו (לא הושלמו אך תאריך היעד עבר)"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:47
-#, fuzzy, kde-format
-#| msgid "Pending To-dos"
+#, kde-format
 msgctxt "@title:group"
 msgid "Pending To-dos"
 msgstr "מטלות ממתינות"
@@ -3370,12 +3367,10 @@ msgid "Edit To-do: \"%1\""
 msgstr "עריכת מטלה: „%1”"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "עריכת מטלה: „%1”"
+msgstr "הצגת מטלה: „%1”"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3388,12 +3383,10 @@ msgstr[2] "אין מטלות ממתינות שאמורות להסתיים ב־%1
 msgstr[3] "אין מטלות ממתינות שאמורות להסתיים ב־%1 הימים הקרובים"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "ה&צגת מטלה"
+msgstr "ה&צגת מטלה…"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3696,30 +3689,25 @@ msgid "Holiday"
 msgstr "חג"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:528
-#, fuzzy, kde-format
-#| msgid "Change of Seasons"
+#, kde-format
 msgctxt "@label"
 msgid "Change of Seasons"
 msgstr "החלפת עונות"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:531
-#, fuzzy, kde-format
-#| msgid "Special Occasion"
+#, kde-format
 msgctxt "@label"
 msgid "Special Occasion"
 msgstr "אירוע מיוחד"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:547
-#, fuzzy, kde-format
-#| msgid "Mail to:\"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Mail to:\"%1\""
 msgstr "דוא״ל אל:„%1”"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:573
-#, fuzzy, kde-format
-#| msgid "one year"
-#| msgid_plural "%1 years"
+#, kde-format
 msgctxt "@label"
 msgid "one year"
 msgid_plural "%1 years"
@@ -3729,9 +3717,7 @@ msgstr[2] "%1 שנים"
 msgstr[3] "%1 שנים"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:584
-#, fuzzy, kde-format
-#| msgid "No special dates within the next 1 day"
-#| msgid_plural "No special dates pending within the next %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
@@ -3744,18 +3730,16 @@ msgstr[3] "אין תאריכים מיוחדים במהלך %1 הימים הקר�
 #, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr ""
+msgstr "הודעה חדשה אל %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
-#, fuzzy, kde-format
-#| msgid "Send &Mail"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Mail"
 msgstr "&שליחת דוא״ל"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:692
-#, fuzzy, kde-format
-#| msgid "View &Contact"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "View &Contact"
 msgstr "ה&צגת פרטי קשר"
@@ -4013,12 +3997,10 @@ msgid "Show at the bottom of the agenda views"
 msgstr "להציג בתחתית תצוגות סדר היום"
 
 #: prefs/koprefsdialogplugins.cpp:125
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Calendar Decorations"
+#, kde-format
 msgctxt "@title:group"
 msgid "Agenda View Decorations"
-msgstr "עיטורי לוח שנה"
+msgstr "עיטורי תצוגת סדר יום"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, kde-format
@@ -4327,10 +4309,9 @@ msgstr "להתווסף ללוח השנה כברירת המחדל"
 
 #. i18n: ectx: tooltip, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:19
-#, fuzzy, kde-format
-#| msgid "Be added to the default calendar"
+#, kde-format
 msgid "Always save to the default calendar"
-msgstr "להתווסף ללוח השנה כברירת המחדל"
+msgstr "תמיד לשמור ללוח השנה כברירת המחדל"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:20
@@ -4677,17 +4658,13 @@ msgstr "נא להגדיר את הגובה (בפיקסלים) לשעה ברשת �
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:128
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show icons in Agenda View items"
 msgstr "הצגת סמלים בפריטי תצוגת סדר היום"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:129
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display icons (alarm, recursion, etc.) in Agenda View "
 "items."
@@ -4697,8 +4674,7 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:130
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display icons in Agenda View items"
 msgstr "הצגת סמלים בפריטי תצוגת סדר היום"
 
@@ -4724,46 +4700,38 @@ msgstr "ציור קווי רשת מודגשים יותר לשעות זוגיות
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:140
-#, fuzzy, kde-format
-#| msgid "Show incidence descriptions in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in Agenda View items"
 msgstr "להציג תיאורי חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:141
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence descriptions in agenda view items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in Agenda View items."
 msgstr "יש לסמן את התיבה הזאת כדי להציג את תיאורי החזרות בפריטי תצוגת סדר יום."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions agenda view items"
+#, kde-format
 msgid "Display incidence descriptions Agenda View items"
 msgstr "הצגת תיאורי חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:146
-#, fuzzy, kde-format
-#| msgid "Show incidence locations in agenda view items"
+#, kde-format
 msgid "Show incidence locations in Agenda View items"
 msgstr "להציג מקומות חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:147
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display the incidence locations in agenda view items."
+#, kde-format
 msgid "Check this box to display the incidence locations in Agenda View items."
 msgstr "יש לסמן את התיבה הזאת כדי להציג את מקומות החזרות בפריטי תצוגת סדר יום."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Display incidence locations agenda view items"
+#, kde-format
 msgid "Display incidence locations Agenda View items"
 msgstr "הצגת מקומות חזרות בפריטי תצוגת סדר יום"
 
@@ -4804,15 +4772,13 @@ msgstr "הצגת מטלות"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:159
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the agenda view."
+#, kde-format
 msgid "Check this box to display to-dos in the Agenda View."
 msgstr "יש לסמן את התיבה הזאת כדי להציג מטלות בתצוגת סדר היום."
 
 #. i18n: ectx: tooltip, entry (ShowTodosAgendaView), group (Agenda View)
 #: settings/korganizer.kcfg:160
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the agenda view"
+#, kde-format
 msgid "Display to-dos in the Agenda View"
 msgstr "הצגת מטלות בתצוגת סדר היום"
 
@@ -4863,8 +4829,7 @@ msgstr "הצגת השניות (אפשר גם עם אזור הזמן) במחוו�
 
 #. i18n: ectx: label, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:176
-#, fuzzy, kde-format
-#| msgid "Time range selection in agenda view starts event editor"
+#, kde-format
 msgid "Time range selection in Agenda View starts event editor"
 msgstr "טווח הזמנים הנבחר בתצוגת סדר היום מפעיל את עורך האירועים"
 
@@ -5014,10 +4979,7 @@ msgstr "מיזוג כל לוחות השנה לתצוגה אחת"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:212
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the \"Merge all calendars into one view\" option if you would like "
-#| "all your calendars to be shown together in one agenda view."
+#, kde-format
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one Agenda View."
@@ -5559,10 +5521,9 @@ msgstr "בתצוגת חודש, לבחור את צבע הרקע לתאריך של
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Highlight color"
+#, kde-format
 msgid "Date Navigator grid highlight color"
-msgstr "צבע הדגשה"
+msgstr "צבע הדגשת רשת בבורר התאריכים"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392

@@ -12,20 +12,20 @@
 # Diego Iastrubni <elcuco@kde.org>, 2006, 2009.
 # Chen Levy <contrib@chenlevy.com>, 2006.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2024-2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer_plugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-25 00:45+0000\n"
-"PO-Revision-Date: 2025-04-19 19:41+0300\n"
+"PO-Revision-Date: 2026-07-28 09:20+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -48,18 +48,16 @@ msgid "Show day number"
 msgstr "הצגת מספר היום"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "הצגת מספר היום"
+msgstr "הצגת מספר היום בשנה"
 
 #: datenums/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr ""
+msgstr "בחירה באפשרות הזאת תציג את מספר היום בשנה הנוכחית."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -71,14 +69,14 @@ msgstr "הצגת מספר הימים לסוף השנה"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "הצגת מספר הימים שנותרו לשנה"
 
 #: datenums/configdialog.cpp:55
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
-msgstr ""
+msgstr "בחירה באפשרות הזאת מציג את מספר הימים שנותרו בשנה הנוכחית."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -91,7 +89,7 @@ msgstr "הצגה של שניהם"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "הצגת היום בשנה וגם את מספר הימים שנותרו לשנה"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -100,6 +98,8 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"בחירה באפשרות הזאת תציג גם את מספר היום בשנה וגם כמה ימים נותרו לשנה "
+"הנוכחית. התבנית היא „יום בשנה” / „ימים עד סוף השנה”"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -771,6 +771,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"שינוי קנה במידה של התמונה הממוזערת כך שתמלא את החלל, תוך התעלמות מיחס גובה־"
+"רוחב"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -790,6 +792,8 @@ msgstr "שמירה על יחס גובה־רוחב"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
 msgstr ""
+"שינוי קנה המידה של התמונה הממוזערת כך שתהיה הכי גדולה שאפשר ותשמור על יחס "
+"גובה־רוחב"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -812,6 +816,7 @@ msgstr "לשמור על יחס גובה־רוחב על ידי הרחבה"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
 msgstr ""
+"שינוי קנה המידה של התמונה הממוזערת כך שתמלא את החלל, כנראה תוך חיתוך התמונה"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

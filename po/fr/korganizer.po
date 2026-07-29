@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-26 09:19+0200\n"
+"PO-Revision-Date: 2026-07-27 09:24+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -3022,11 +3022,10 @@ msgid "&Edit Appointment…"
 msgstr "Modifi&er un rendez-vous..."
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:255
-#, fuzzy, kde-format
-#| msgid "&Edit Appointment…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
-msgstr "Modifi&er un rendez-vous..."
+msgstr "A&fficher le rendez-vous..."
 
 # unreviewed-context
 #: kontactplugin/korganizer/apptsummarywidget.cpp:259
@@ -3220,11 +3219,10 @@ msgid "Edit Event: \"%1\""
 msgstr "Modifier l'évènement : « %1 »"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:279
-#, fuzzy, kde-format
-#| msgid "Edit Event: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
-msgstr "Modifier l'évènement : « %1 »"
+msgstr "Afficher l'évènement : « %1 »"
 
 # unreviewed-context
 # unreviewed-context
@@ -3526,11 +3524,10 @@ msgstr "Modifier la tâche : « %1 »"
 # unreviewed-context
 # unreviewed-context
 #: kontactplugin/korganizer/todosummarywidget.cpp:308
-#, fuzzy, kde-format
-#| msgid "Edit To-do: \"%1\""
+#, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
-msgstr "Modifier la tâche : « %1 »"
+msgstr "Modifier la tâche à faire : « %1 »"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:331
 #, kde-format
@@ -3541,12 +3538,10 @@ msgstr[0] "Aucune tâche en attente d'ici demain"
 msgstr[1] "Aucune tâche en attente d'ici les %1 prochains jours"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:398
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "&Show To-do"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
-msgstr "&Afficher une tâche à faire"
+msgstr "&Afficher la tâche à faire..."
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:408
 #, kde-format
@@ -3892,12 +3887,10 @@ msgstr[0] "Aucune occasion spéciale d'ici demain"
 msgstr[1] "Aucune occasion spéciale d'ici les %1 prochains jours"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:660
-#, fuzzy, kde-format
-#| msgctxt "@label"
-#| msgid "Delegated to %1"
+#, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
-msgstr "Déléguer à %1"
+msgstr "Nouveau message à %1"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:691
 #, kde-format
@@ -4652,10 +4645,9 @@ msgstr "Activer les bulles d'aide de résumé"
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:64
-#, fuzzy, kde-format
-#| msgid "Show events for today only"
+#, kde-format
 msgid "Show event or to-do item tooltips"
-msgstr "N'afficher que les évènements d'aujourd'hui "
+msgstr "Afficher les infobulles des éléments d'évènements et de tâches à faire"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:65
@@ -5424,10 +5416,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display to-dos in the Month View"
-msgstr "Afficher les tâches dans la vue mensuelle"
+msgstr "Afficher les tâches à faire dans la vue en mois"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:262
@@ -5706,10 +5697,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:343
-#, fuzzy, kde-format
-#| msgid "Agenda view background color"
+#, kde-format
 msgid "Agenda View background color"
-msgstr "Couleur de fond de la vue agenda"
+msgstr "Couleur d'arrière-plan de la vue en calendrier"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:344
@@ -5851,10 +5841,9 @@ msgstr "Couleur des tâches en retard"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Select the to-do overdue color here."
+#, kde-format
 msgid "Set the color for overdue to-dos"
-msgstr "Sélectionnez la couleur des tâches en retard"
+msgstr "Sélectionnez la couleur des tâches à faire en retard"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #: settings/korganizer.kcfg:381
