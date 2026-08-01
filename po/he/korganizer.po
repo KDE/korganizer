@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-30 09:10+0300\n"
+"PO-Revision-Date: 2026-07-31 12:50+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2989,9 +2989,7 @@ msgstr "%1 %2"
 #: kontactplugin/korganizer/summaryeventinfo.cpp:188
 #: kontactplugin/korganizer/todosummarywidget.cpp:244
 #: kontactplugin/specialdates/sdsummarywidget.cpp:508
-#, fuzzy, kde-format
-#| msgid "in 1 day"
-#| msgid_plural "in %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "in 1 day"
 msgid_plural "in %1 days"
@@ -3027,20 +3025,13 @@ msgstr[2] "%1 דקות"
 msgstr[3] "%1 דקות"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:229
-#, fuzzy, kde-format
-#| msgctxt "the event is currently in-progress"
-#| msgid "in-progress"
+#, kde-format
 msgctxt "@label the event is currently in-progress"
 msgid "in-progress"
 msgstr "מתרחש כרגע"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:235
-#, fuzzy, kde-format
-#| msgctxt ""
-#| "use abbreviation for hour to keep the text short. the event ended at "
-#| "least 1 hour ago"
-#| msgid "ended 1 hr ago"
-#| msgid_plural "ended %1 hrs ago"
+#, kde-format
 msgctxt ""
 "@label use abbreviation for hour to keep the text short. the event ended at "
 "least 1 hour ago"
@@ -4431,10 +4422,9 @@ msgstr "הפעלת חלוניות עצה כדי להציג תקצירים"
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:64
-#, fuzzy, kde-format
-#| msgid "Show events for today only"
+#, kde-format
 msgid "Show event or to-do item tooltips"
-msgstr "הצגת אירועים להיום בלבד"
+msgstr "הצגת חלוניות עצה לאירועים או פריטי או מטלות"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:65
@@ -4453,10 +4443,9 @@ msgstr "מטלות משתמשות בצבעים לתגיות"
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:70
-#, fuzzy, kde-format
-#| msgid "To-dos use tag colors"
+#, kde-format
 msgid "Draw to-do items using tag colors"
-msgstr "מטלות משתמשות בצבעים לתגיות"
+msgstr "ציור פריטי מטלות בצבעי התגית"
 
 #. i18n: ectx: whatsthis, entry, group (General View)
 #: settings/korganizer.kcfg:71
@@ -5445,10 +5434,9 @@ msgstr "צבע חגים"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:368
-#, fuzzy, kde-format
-#| msgid "Set the background color for today's date in month view"
+#, kde-format
 msgid "Set the color for Holidays in Agenda View"
-msgstr "הגדרת צבע הרקע לתאריך של היום בתצוגת חודש"
+msgstr "הגדרת צבע הרקע לחגים בתצוגת סדר יום"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:369
@@ -5470,7 +5458,7 @@ msgstr "צבע למשימות שתאריך היעד שלהן הוא היום"
 #: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for to-dos that are due today"
-msgstr ""
+msgstr "הגדרת הצבע למטלות שאמורות להסתיים היום"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #: settings/korganizer.kcfg:375
