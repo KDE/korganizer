@@ -69,3 +69,10 @@ ecm_add_test(testtoggletodo.cpp
     korganizer_core
     korganizerprivate
 )
+
+ecm_add_test(pastehelpertest.cpp
+  LINK_LIBRARIES
+    Qt::Test
+    KF6::CalendarCore
+    korganizerprivate
+)

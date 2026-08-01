@@ -26,6 +26,7 @@
 #include "kodialogmanager.h"
 #include "koglobals.h"
 #include "koviewmanager.h"
+#include "pastehelper.h"
 #include "pimmessagebox.h"
 #include "prefs/koprefs.h"
 #include "views/agendaview/koagendaview.h"
@@ -63,7 +64,6 @@
 #include <KCalendarCore/FileStorage>
 #include <KCalendarCore/ICalFormat>
 
-#include <KCalUtils/DndFactory>
 #include <KCalUtils/Stringify>
 
 #include <TextAddonsWidgets/WhatsNewNgDialog>
@@ -884,7 +884,7 @@ void CalendarView::edit_paste()
     QDateTime endDT;
     QDateTime finalDateTime;
     bool useEndTime = false;
-    KCalUtils::DndFactory::PasteFlags pasteFlags = {};
+    PasteHelper::PasteFlags pasteFlags = {};
 
     const KOrg::BaseView *curView = mViewManager->currentView();
     KOAgendaView *agendaView = mViewManager->agendaView();
@@ -906,13 +906,13 @@ void CalendarView::edit_paste()
         }
     } else if (curView == monthView && monthView->selectionStart().isValid()) {
         finalDateTime = QDateTime(monthView->selectionStart().date().startOfDay());
-        pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
+        pasteFlags = PasteHelper::FlagPasteAtOriginalTime;
     } else if (!mDateNavigator->selectedDates().isEmpty() && curView->supportsDateNavigation()) {
         // default to the selected date from the navigator
         const KCalendarCore::DateList dates = mDateNavigator->selectedDates();
         if (!dates.isEmpty()) {
             finalDateTime = QDateTime(dates.first().startOfDay());
-            pasteFlags = KCalUtils::DndFactory::FlagPasteAtOriginalTime;
+            pasteFlags = PasteHelper::FlagPasteAtOriginalTime;
         }
     }
 
@@ -921,7 +921,7 @@ void CalendarView::edit_paste()
         return;
     }
 
-    KCalendarCore::Incidence::List pastedIncidences = KCalUtils::DndFactory::pasteIncidences(finalDateTime, pasteFlags);
+    KCalendarCore::Incidence::List pastedIncidences = PasteHelper::pasteIncidences(finalDateTime, pasteFlags);
     KCalendarCore::Incidence::List::Iterator it;
 
     for (it = pastedIncidences.begin(); it != pastedIncidences.end(); ++it) {

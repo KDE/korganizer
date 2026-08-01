@@ -379,6 +379,7 @@ set(korganizerprivate_LIB_SRCS
     korganizer_options.h
     collectionsortfilterproxymodel.h
     collectionsortfilterproxymodel.cpp
+    pastehelper.cpp
 )
 
 if(HAVE_ACTIVITY_SUPPORT)
