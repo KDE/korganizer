@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-28 07:32+0200\n"
+"PO-Revision-Date: 2026-07-30 09:14+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -2572,12 +2572,10 @@ msgid "Show in Context"
 msgstr "Afficher dans le contexte"
 
 #: dialog/koeventviewerdialog.cpp:44
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select the identity to use as the organizer for this incidence."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the editor for this incidence"
-msgstr "Sélectionnez l'identité à utiliser en tant qu'organisateur."
+msgstr "Démarrer l'éditeur pour cette récurrence"
 
 #: dialog/koeventviewerdialog.cpp:45
 #, fuzzy, kde-format
@@ -4514,10 +4512,9 @@ msgstr "Être ajouté dans l'agenda par défaut"
 
 #. i18n: ectx: tooltip, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:19
-#, fuzzy, kde-format
-#| msgid "Be added to the default calendar"
+#, kde-format
 msgid "Always save to the default calendar"
-msgstr "Être ajouté dans l'agenda par défaut"
+msgstr "Toujours enregistrer dans l'agenda par défaut"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:20
@@ -4537,10 +4534,9 @@ msgstr "Être ajoutés à un agenda sélectionné dans la liste"
 
 #. i18n: ectx: tooltip, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:24
-#, fuzzy, kde-format
-#| msgid "Email of the calendar owner"
+#, kde-format
 msgid "Always prompt for the calendar to use"
-msgstr "Adresse électronique du propriétaire de l'agenda"
+msgstr "Toujours demander le calendrier à utiliser"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
@@ -5457,8 +5453,7 @@ msgstr ""
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:270 settings/korganizer.kcfg:277
-#, fuzzy, kde-format
-#| msgid "Display holidays in the month view"
+#, kde-format
 msgid "Display holidays in the Month View"
 msgstr "Afficher les jours fériés dans la vue en mois"
 
@@ -5793,12 +5788,9 @@ msgstr "Couleur des vacances"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:368
-#, fuzzy, kde-format
-#| msgid "Set the background color for today's date in month view"
+#, kde-format
 msgid "Set the color for Holidays in Agenda View"
-msgstr ""
-"Sélectionnez la couleur d'arrière plan pour la date d'aujourd'hui dans la "
-"vue mensuelle."
+msgstr "Définit la couleur pour les jours fériés dans la vue de calendrier."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:369
@@ -5853,8 +5845,7 @@ msgstr "Sélectionnez la couleur des tâches en retard"
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:385
-#, fuzzy, kde-format
-#| msgid "Month view today background color"
+#, kde-format
 msgid "Month View today background color"
 msgstr ""
 "Couleur d'arrière plan pour la date d'aujourd'hui dans la vue mensuelle"
@@ -5878,10 +5869,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Highlight color"
+#, kde-format
 msgid "Date Navigator grid highlight color"
-msgstr "Couleur de surbrillance"
+msgstr "Couleur de surbrillance pour la grille du navigateur"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
@@ -5916,6 +5906,7 @@ msgstr "Barre de temps"
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
 msgstr ""
+"Définir la police des étiquettes de la barre de temps de la vue en Calendrier"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:402

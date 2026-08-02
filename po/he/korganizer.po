@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-26 00:45+0000\n"
-"PO-Revision-Date: 2026-07-31 12:50+0300\n"
+"PO-Revision-Date: 2026-08-01 16:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -2449,7 +2449,7 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
-msgstr ""
+msgstr "לגלול לתצוגת לוח השנה המתאימה כדי להציג את המופע בהקשר שלו"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2459,6 +2459,8 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
+"לחיצה על הכפתור הזה תציג מופע לפי ההקשר. המשמעות היא שהצגת תצוגת המטלות, סדר "
+"היום או היומן (כפי שנדרש) וגלילה שלה כדי להציג את המופע."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -2846,9 +2848,7 @@ msgid "Upcoming Events"
 msgstr "אירועים קרובים"
 
 #: kontactplugin/korganizer/apptsummarywidget.cpp:201
-#, fuzzy, kde-format
-#| msgid "No upcoming events starting within the next day"
-#| msgid_plural "No upcoming events starting within the next %1 days"
+#, kde-format
 msgctxt "@label"
 msgid "No upcoming events starting within the next day"
 msgid_plural "No upcoming events starting within the next %1 days"
@@ -4351,6 +4351,8 @@ msgid ""
 "Select this option to the enable KDE Plasma Activities that allows setting "
 "different Mail accounts and transports for each activity."
 msgstr ""
+"יש לבחור באפשרות הזאת כדי להפעיל את פעילויות פלזמה מבית KDE שמאפשרות להגדיר "
+"חשבונות דוא״ל ותעבורות שונות לכל פעילות."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
@@ -4490,23 +4492,19 @@ msgstr "הצגת פריטים שחוזרים מדי יום"
 #: settings/korganizer.kcfg:82
 #, kde-format
 msgid "Use a bold typeface to more easily identify daily recurring incidences"
-msgstr ""
+msgstr "להשתמש בפני גופן עבים כדי לזהות מופעים בחזרה יומית"
 
 #. i18n: ectx: whatsthis, entry (DailyRecur), group (General View)
 #: settings/korganizer.kcfg:83
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing daily recurring events in bold "
-#| "typeface in the Date Navigator, or uncheck it to give more prominence to "
-#| "other (non daily recurring) events."
+#, kde-format
 msgid ""
 "Check this box to show the days containing daily recurring incidences in "
 "bold typeface in the Date Navigator, or uncheck it to give more prominence "
 "to other (non daily recurring) incidences."
 msgstr ""
-"סימון תיבה זו יציג את הימים שמכילים אירועים במחזוריות יומית בכתב מודגש "
-"בתאריכון או לבטל את הסימון כדי להדגיש אותו יותר מאחרים (אירועים שלא חוזרים "
-"כל יום)."
+"סימון תיבה זו יציג את הימים שמכילים מופעים במחזוריות יומית בכתב מודגש "
+"בתאריכון או לבטל את הסימון כדי להדגיש אותו יותר מאחרים (מופעים שלא חוזרים כל "
+"יום)."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:87
@@ -4518,7 +4516,7 @@ msgstr "הצגת פריטים שחוזרים מדי שבוע"
 #: settings/korganizer.kcfg:88
 #, kde-format
 msgid "Use a bold typeface to more easily identify weekly recurring incidences"
-msgstr ""
+msgstr "להשתמש בפני גופן עבים כדי לזהות מופעים בחזרה שבועית"
 
 #. i18n: ectx: whatsthis, entry (WeeklyRecur), group (General View)
 #: settings/korganizer.kcfg:89
@@ -4542,7 +4540,7 @@ msgstr "הצגת מטלות במקום אירועים בתצוגת מטלות"
 #: settings/korganizer.kcfg:94
 #, kde-format
 msgid "In Todo View, use a bold typeface to more easily identify to-dos"
-msgstr ""
+msgstr "בתצוגת מטלות, להשתמש בפני גופן עבים כדי לזהות מטלות ביתר קלות"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
@@ -4564,7 +4562,7 @@ msgstr "הצגת יומנים במקום אירועים בתצוגת יומן"
 #: settings/korganizer.kcfg:100
 #, kde-format
 msgid "In journal view, use a bold typeface to more easily identify journals"
-msgstr ""
+msgstr "בתצוגת יומן, להשתמש בפני גופן עבים כדי לזהות יומנים ביתר קלות"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
@@ -4586,7 +4584,7 @@ msgstr "הצגת מספרי השבועות"
 #: settings/korganizer.kcfg:106
 #, kde-format
 msgid "Display each week's number in the current year"
-msgstr ""
+msgstr "הצגת המספר של כל אחד מהשבועות בשנה הנוכחית"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4605,7 +4603,7 @@ msgstr "מספרי השבועות בוחרים מספר שבוע כאשר נמצ
 #, kde-format
 msgid ""
 "In work week mode, allow selecting a work week rather than the whole week"
-msgstr ""
+msgstr "במצב שבוע עבודה, לאפשר לבחור שבוע עבודה במקום את כל השבוע"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShowWork), group (General View)
 #: settings/korganizer.kcfg:113
@@ -5312,7 +5310,7 @@ msgstr "תיעוד משימות שהושלמו בתור רשומות ליומן"
 #: settings/korganizer.kcfg:329
 #, kde-format
 msgid "Add a journal entry each time a to-do is marked as completed"
-msgstr ""
+msgstr "להוסיף רשומת יומן בכל פעם שמטלה מסומנת כך שהושלמה"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:330
@@ -5354,12 +5352,10 @@ msgstr "צבע רקע לתצוגת סדר יום"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:344
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system colors instead of custom colors for some background colors"
+#, kde-format
 msgid ""
 "When not using system colors, set the color for the Agenda View background"
-msgstr "להשתמש בצבעי המערכת במקום בצבעים המוגדרים לחלק מצבעי הרקע"
+msgstr "כשלא נעשה שימוש בצבעי המערכת, אפשר להגדיר את צבע הרקע של סדר היום"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:345
@@ -5379,6 +5375,8 @@ msgstr "צבע רקע לימים עסוקים"
 msgid ""
 "When not using system colors, set the color for all day events marked as busy"
 msgstr ""
+"כשלא נעשה שימוש בצבעי המערכת, אפשר להגדיר את הצבע של אירועי יום שלם כסימון "
+"של עסוק"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:351
@@ -5387,6 +5385,8 @@ msgid ""
 "In Agenda and Month views, when you have an all day event marked as busy, "
 "draw that item's background using the specified color."
 msgstr ""
+"בתצוגת סדר יום וחודש, כשיש לך אירוע של יום שלם שמסומן כעסוק, לצייר את הרקע "
+"של הפריט הזה באמצעות צבע מסוים."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:355
@@ -5401,6 +5401,7 @@ msgid ""
 "When not using system colors, set the color for the Agenda View working "
 "hours grid"
 msgstr ""
+"כשלא נעשה שימוש בצבעי המערכת, אפשר להגדיר את צבע הרקע של רשת שעות העבודה"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:357
@@ -5474,10 +5475,9 @@ msgstr "צבע מטלה שתאריך היעד שלה עבר"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
 #: settings/korganizer.kcfg:380
-#, fuzzy, kde-format
-#| msgid "Select the to-do overdue color here."
+#, kde-format
 msgid "Set the color for overdue to-dos"
-msgstr "כאן אפשר לבחור צבע מטלה שתאריך היעד שלה עבר."
+msgstr "הגדרת צבע של מטלות שמועד הסיום שלהן חלף."
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
 #: settings/korganizer.kcfg:381
@@ -5511,24 +5511,17 @@ msgstr "צבע הדגשת רשת בבורר התאריכים"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Select the to-do due today color here."
+#, kde-format
 msgid "Set the Date Navigator grid highlight color here"
-msgstr "כאן אפשר לבחור צבע למטלות שתאריך היעד שלהן הוא היום."
+msgstr "הגדרת צבע הדגשת רשת התאריכון כאן"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the highlight color here. The highlight color will be used for "
-#| "marking the currently selected area in your agenda and in the date "
-#| "navigator."
+#, kde-format
 msgid ""
 "Select the color for highlighting the currently selected date range in the "
 "Date Navigator."
-msgstr ""
-"נא לבחור כאן בצבע ההדגשה. צבע ההדגשה ישמש להדגשת האזורים הנבחרים כעת בסדר "
-"היום ובתאריכון."
+msgstr "הגדרת הצבע להדגשת טווח התאריכים הנבחר בתאריכון."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:400
@@ -5540,7 +5533,7 @@ msgstr "סרגל השעות"
 #: settings/korganizer.kcfg:401
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
-msgstr ""
+msgstr "הגדרת גופן תוויות פסי הזמן בתצוגת סדר היום"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:402
