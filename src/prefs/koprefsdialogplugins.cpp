@@ -150,7 +150,8 @@ void KOPrefsDialogPlugins::usrReadConfig()
     }
 
     mDecorations->setExpanded(true);
-    mTreeWidget->sortItems(1, Qt::DescendingOrder);
+    mTreeWidget->setSortingEnabled(true);
+    mTreeWidget->sortByColumn(0, Qt::AscendingOrder);
 
     const auto monthViewTop = KOPrefs::instance()->decorationsAtMonthViewTop();
     mDecorationsAtMonthViewTop = QSet<QString>(monthViewTop.begin(), monthViewTop.end());
