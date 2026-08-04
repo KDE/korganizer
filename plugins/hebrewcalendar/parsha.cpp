@@ -131,7 +131,7 @@ QString Parsha::findParshaName(int dayNumber, int kvia, bool isLeapYear, bool us
     };
 
     /* Make the calculations */
-    int week = dayNumber / 7; // week of the year
+    const int week = dayNumber / 7; // week of the year
     const quint8 *array = nullptr;
     int index;
 
@@ -166,6 +166,8 @@ QString Parsha::findParshaName(int dayNumber, int kvia, bool isLeapYear, bool us
                 array = ThuLong;
             }
             break;
+        default:
+            break;
         }
     } else { /* leap year */
         switch (dayNumber % 7) {
@@ -194,6 +196,8 @@ QString Parsha::findParshaName(int dayNumber, int kvia, bool isLeapYear, bool us
             } else if (kvia == 2) {
                 array = ThuLongLeap;
             }
+            break;
+        default:
             break;
         }
     }

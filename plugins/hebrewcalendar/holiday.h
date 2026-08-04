@@ -15,7 +15,7 @@
 
 #pragma once
 
-#include "converter.h"
+#include <KHolidays/HebrewConverter>
 
 #include <QStringList>
 
@@ -36,7 +36,7 @@ public:
       whether we will use the settings corresponding to Israel or to the
       diaspora.
     */
-    static QStringList findHoliday(const HebrewDate &hd, bool useIsraelSettings, bool showParsha, bool showChol, bool showOmer);
+    static QStringList findHoliday(const KHolidays::HebrewDate &hd, bool useIsraelSettings, bool showParsha, bool showChol, bool showOmer);
 
 private:
     /**
@@ -66,9 +66,9 @@ private:
                                    int day,
                                    int weekday,
                                    int kvia,
-                                   bool leap_year_p,
+                                   bool isLeapYear,
                                    bool useIsraelSettings,
-                                   int day_number,
+                                   int dayNumber,
                                    int year,
                                    bool showParsha,
                                    bool showChol,

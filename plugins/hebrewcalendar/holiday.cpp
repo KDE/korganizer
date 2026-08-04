@@ -18,7 +18,9 @@
 
 #include <KLocalizedString>
 
-QStringList Holiday::findHoliday(const HebrewDate &hd, bool useIsraelSettings, bool showParsha, bool showChol, bool showOmer)
+// NOLINTBEGIN(bugprone-switch-missing-default-case)
+
+QStringList Holiday::findHoliday(const KHolidays::HebrewDate &hd, bool useIsraelSettings, bool showParsha, bool showChol, bool showOmer)
 {
     return findHoliday(hd.month(),
                        hd.day(),
@@ -56,7 +58,7 @@ QStringList Holiday::findHoliday(int month,
     };
 
     QStringList holidays;
-    bool isAShabbat = (weekday == Saturday);
+    const bool isAShabbat = (weekday == Saturday);
 
     // Treat Adar in a non-leap year as if it were Adar II.
     if ((month == Adar) && !isLeapYear) {
@@ -482,3 +484,5 @@ QString Holiday::sfirah(int day)
     //                           2nd instead of 2, etc.
     return buffer;
 }
+
+// NOLINTEND(bugprone-switch-missing-default-case)

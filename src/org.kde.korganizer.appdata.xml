@@ -571,6 +571,10 @@
           <li xml:lang="tr">Kontak özet: Tutarlı tarih dizisi biçimleri</li>
           <li xml:lang="uk">Резюме Kontact: сумісні формати рядків дат</li>
         </ul>
+        <p>Plugins</p>
+        <ul>
+          <li>The Jewish calendar plugin is restored (gone since KDE4). This plugin shows dates and Jewish holidays in the Hebrew calendar system</li>
+        </ul>
       </description>
     </release>
     <release version="6.8.0" type="snapshot">

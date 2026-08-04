@@ -3,8 +3,10 @@
 add_definitions(-DTRANSLATION_DOMAIN=\"korganizer_calendarplugins\")
 
 add_subdirectory(datenums)
-#the hebrew plugin depends on kdelibs4support
-#add_subdirectory(hebrew)
 add_subdirectory(lunarphases)
 add_subdirectory(picoftheday)
 add_subdirectory(thisdayinhistory)
+
+if(${KF6Holidays_VERSION} VERSION_GREATER_EQUAL "6.29.0")
+    add_subdirectory(hebrewcalendar)
+endif()

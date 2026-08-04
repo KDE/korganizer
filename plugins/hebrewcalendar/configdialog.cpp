@@ -39,19 +39,27 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     topLayout->setContentsMargins(0, 0, 0, 0);
 
     mIsraelBox = new QCheckBox(topFrame);
-    mIsraelBox->setText(i18n("Use Israeli holidays"));
+    mIsraelBox->setText(i18nc("@option:check", "Use Israeli holidays"));
+    mIsraelBox->setToolTip(i18nc("@info:tooltip", "Include Israeli holidays"));
+    mIsraelBox->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show Israeli holidays; including national, non-religious holidays."));
     topLayout->addWidget(mIsraelBox);
 
     mParshaBox = new QCheckBox(topFrame);
-    mParshaBox->setText(i18n("Show weekly parsha"));
+    mParshaBox->setText(i18nc("@option:check", "Show weekly parsha"));
+    mParshaBox->setToolTip(i18nc("@info:tooltip", "Include weekly parsha days"));
+    mParshaBox->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show weekly parsha days."));
     topLayout->addWidget(mParshaBox);
 
     mOmerBox = new QCheckBox(topFrame);
-    mOmerBox->setText(i18n("Show day of Omer"));
+    mOmerBox->setText(i18nc("@option:check", "Show day of Omer"));
+    mOmerBox->setToolTip(i18nc("@info:tooltip", "Include days of the Omer"));
+    mOmerBox->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show days of the Omer period."));
     topLayout->addWidget(mOmerBox);
 
     mCholBox = new QCheckBox(topFrame);
-    mCholBox->setText(i18n("Show Chol HaMoed"));
+    mCholBox->setText(i18nc("@option:check", "Show Chol HaMoed"));
+    mCholBox->setToolTip(i18nc("@info:tooltip", "Include days of the Chol HaMoed"));
+    mCholBox->setWhatsThis(i18nc("@info:whatsthis", "Select this option to dhow days of the Chol HaMoed."));
     topLayout->addWidget(mCholBox);
     topLayout->addStretch(1);
     connect(okButton, &QPushButton::clicked, this, &ConfigDialog::slotOk);
@@ -66,7 +74,7 @@ void ConfigDialog::load()
 {
     KConfig config(QStringLiteral("korganizerrc"));
 
-    KConfigGroup group(&config, QStringLiteral("Hebrew Calendar Plugin"));
+    const KConfigGroup group(&config, QStringLiteral("Hebrew Calendar Plugin"));
     mIsraelBox->setChecked(group.readEntry("UseIsraelSettings", QLocale::territoryToString(QLocale().territory()) == QLatin1StringView(".il")));
     mParshaBox->setChecked(group.readEntry("ShowParsha", true));
     mCholBox->setChecked(group.readEntry("ShowChol_HaMoed", true));

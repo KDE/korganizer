@@ -3,5 +3,3 @@ EXTRA camelcase,defines,null,qenums,tipsandthis
 PRIORITY all
 
 STRICT all
-
-SKIP plugins/hebrew

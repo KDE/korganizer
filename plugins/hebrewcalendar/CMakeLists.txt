@@ -1,15 +1,19 @@
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: BSD-3-Clause
+
 ########### next target ###############
-find_package(KF6KDELibs4Support ${KF_MIN_VERSION} CONFIG REQUIRED) #for the korganizer hebrew plugin
 add_library(hebrew MODULE)
 target_sources(
     hebrew
     PRIVATE
-        qcalendarsystem.cpp
         configdialog.cpp
-        converter.cpp
+        configdialog.h
         hebrew.cpp
+        hebrew.h
         holiday.cpp
+        holiday.h
         parsha.cpp
+        parsha.h
 )
 
 ecm_qt_declare_logging_category(hebrew HEADER korganizer_hebrew_debug.h IDENTIFIER KORGANIZER_HEBREWPLUGIN_LOG CATEGORY_NAME org.kde.pim.korganizer_hebrew_plugin)
@@ -17,8 +21,7 @@ ecm_qt_declare_logging_category(hebrew HEADER korganizer_hebrew_debug.h IDENTIFI
 target_link_libraries(
     hebrew
     KPim6::EventViews
-    KF6::I18n
-    KF6::KDELibs4Support
+    KF6::Holidays
 )
 
-install(TARGETS hebrew DESTINATION ${KDE_INSTALL_PLUGINDIR}/korganizer)
+install(TARGETS hebrew DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/korganizer)
