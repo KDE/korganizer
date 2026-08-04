@@ -141,7 +141,8 @@ void KOPrefsDialogPlugins::usrReadConfig()
             but->setDefaultAction(act);
             but->setIcon(QIcon::fromTheme(QStringLiteral("configure")));
             but->setFixedWidth(28);
-            but->setToolTip(i18nc("@info:tooltip", "Configure"));
+            but->setToolTip(i18nc("@info:tooltip", "Configure the %1 plugin", item->service().name()));
+            but->setWhatsThis(i18nc("@info:whatsthis", "Press this button to configure the %1 plugin.", item->service().name()));
             but->setAutoFillBackground(true);
             but->setEnabled(true);
             mTreeWidget->setItemWidget(item, 1, but);
