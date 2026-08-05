@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-17 02:42+0000\n"
-"PO-Revision-Date: 2026-07-19 20:57+0200\n"
+"PO-Revision-Date: 2026-08-03 17:39+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -3995,7 +3995,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
-msgstr "Polices"
+msgstr "Fontes"
 
 # unreviewed-context
 #: prefs/koprefsdialogcolorsandfonts.cpp:169
@@ -4968,7 +4968,7 @@ msgstr ""
 "Sélectionnez l'option « Catégorie à l'intérieur, agenda à l'extérieur » si "
 "vous souhaitez que les éléments de l'agenda utilisent la couleur de leur "
 "catégorie avec une bordure de la couleur de l'agenda. Veuillez utiliser la "
-"page de configuration « Couleurs et Polices » pour définir ces couleurs."
+"page de configuration « Couleurs et Fontes » pour définir ces couleurs."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:171
@@ -5000,7 +5000,7 @@ msgstr ""
 "Sélectionnez l'option « Agenda à l'intérieur, catégorie à l'extérieur » si "
 "vous souhaitez que les éléments des agendas utilisent leurs couleurs "
 "associées d'agenda avec une bordure de la couleur de leur catégorie. "
-"Veuillez utiliser la page de configuration « Couleurs et Polices » pour "
+"Veuillez utiliser la page de configuration « Couleurs et Fontes » pour "
 "définir ces couleurs."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
@@ -5031,7 +5031,7 @@ msgstr ""
 "Sélectionnez l'option « Uniquement la catégorie » si vous souhaitez dessiner "
 "les éléments d'agenda (à la fois intérieur et bordure) avec la couleur de "
 "leur catégorie. Veuillez utiliser la page de configuration « Couleurs et "
-"Polices » pour définir ces couleurs."
+"Fontes » pour définir ces couleurs."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:181
@@ -5058,7 +5058,7 @@ msgid ""
 msgstr ""
 "Sélectionnez l'option « Uniquement l'agenda » si vous souhaitez dessiner les "
 "éléments d'agenda (à la fois intérieur et bordure) avec la couleur de "
-"l'agenda. Veuillez utiliser la page de configuration « Couleurs et Polices » "
+"l'agenda. Veuillez utiliser la page de configuration « Couleurs et Fontes » "
 "pour définir ces couleurs."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
@@ -5312,7 +5312,7 @@ msgstr ""
 "Veuillez cocher cette case pour utiliser le jour férié personnalisé comme "
 "couleur d'arrière-plan de date lorsqu'au moins un jour férié se place à "
 "cette date. Veuillez configurer la couleur du jour férié dans "
-"« Configuration / Couleurs et polices »."
+"« Configuration / Couleurs et Fontes »."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -5366,7 +5366,7 @@ msgstr ""
 "Sélectionnez l'option « Uniquement la catégorie » si vous souhaitez "
 "représenter les éléments de l'agenda (intérieur et bordure) avec la couleur "
 "de leurs catégories. Veuillez utiliser la page de configuration « Couleurs "
-"et Polices » pour définir ces couleurs."
+"et Fontes » pour définir ces couleurs."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:284
@@ -5386,8 +5386,8 @@ msgid ""
 msgstr ""
 "Sélectionnez l'option « Uniquement l'agenda » si vous souhaitez représenter "
 "les éléments de l'agenda (intérieur et bordure) avec la couleur de l'agenda. "
-"Ces couleurs et polices peuvent être définies dans la page de configuration "
-"des couleurs et polices."
+"Ces couleurs et fontes peuvent être définies dans la page de configuration "
+"« Couleurs et Fontes »."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:289
@@ -5643,9 +5643,9 @@ msgid ""
 "that shows the hours in the agenda view. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"Cliquez sur ce bouton pour configurer la police utilisée pour les heures. Il "
+"Cliquez sur ce bouton pour configurer la fonte utilisée pour les heures. Il "
 "s'agit des heures indiquées à gauche dans la vue agenda. Ce bouton permet "
-"d'ouvrir une boite de dialogue de sélection de police."
+"d'ouvrir une boite de dialogue « Sélection de fontes »."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:373
@@ -5661,8 +5661,8 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the month view."
 msgstr ""
-"Cliquez sur ce bouton pour configurer la police de vue mensuelle. Ce bouton "
-"permet d'ouvrir une boite de dialogue de sélection de police."
+"Cliquez sur ce bouton pour configurer la fonte de la vue en mois. Ce bouton "
+"permet d'ouvrir une boite de dialogue de sélection de fontes."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:377
@@ -5678,9 +5678,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the agenda view."
 msgstr ""
-"Cliquez sur ce bouton pour configurer la police de vue agenda. Ce bouton "
-"permet d'ouvrir une boite de dialogue de sélection de police qui sera "
-"utilisée pour les évènements dans la vue agenda."
+"Cliquez sur ce bouton pour configurer la fonte de la vue d'agenda. Ce bouton "
+"permet d'ouvrir une boite de dialogue de sélection de fontes qui sera "
+"utilisée pour les évènements dans la vue d'agenda."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:381
@@ -5696,9 +5696,9 @@ msgid ""
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the agenda view."
 msgstr ""
-"Veuillez appuyer sur ce bouton pour configurer la police utilisée pour la "
+"Veuillez appuyer sur ce bouton pour configurer la fonte utilisée pour la "
 "ligne d'heure courante (De Marcus Bains). Ce bouton permettra l'ouverture de "
-"la boite de dialogue de sélection de polices pour la ligne d'heure courante "
+"la boite de dialogue de sélection de fontes pour la ligne d'heure courante "
 "dans l'affichage du calendrier."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
@@ -6970,10 +6970,10 @@ msgid ""
 "configure the color,  set the \"Month view today background color\" in the "
 "Colors and Fonts settings"
 msgstr ""
-"Vue « Mois » : la couleur d'arrière-plan de la cellule de la date "
+"Vue en mois : la couleur d'arrière-plan de la cellule de la date "
 "d'aujourd'hui peut être modifiée. Pour configurer la couleur, veuillez "
 "définir la « Couleur d'arrière-plan » pour la date d'aujourd'hui dans la vue "
-"« Mois » dans les paramètres « Couleurs et polices »."
+"« Mois » dans les paramètres « Couleurs et Fontes »."
 
 #: whatsnew/whatsnewtranslations.cpp:55
 msgid ""
