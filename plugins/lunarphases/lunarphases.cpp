@@ -27,34 +27,36 @@ static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase, Hemisphere hemisphere
     QString iconName;
     switch (phase) {
     case KHolidays::LunarPhase::NewMoon:
-        iconName = QStringLiteral("moon-new");
+        iconName = QStringLiteral("realmoon-new");
         break;
     case KHolidays::LunarPhase::FullMoon:
-        iconName = QStringLiteral("moon-full");
+        iconName = QStringLiteral("realmoon-full");
         break;
     case KHolidays::LunarPhase::FirstQuarter:
-        iconName = QStringLiteral("moon-waxing-first-quarter");
+        iconName = QStringLiteral("realmoon-waxing-first-quarter");
         break;
     case KHolidays::LunarPhase::LastQuarter:
-        iconName = QStringLiteral("moon-waning-last-quarter");
+        iconName = QStringLiteral("realmoon-waning-last-quarter");
         break;
-    case KHolidays::LunarPhase::WaxingCrescent:
-        iconName = QStringLiteral("moon-waxing-crescent");
-        break;
-    case KHolidays::LunarPhase::WaningCrescent:
-        iconName = QStringLiteral("moon-waning-crescent");
-        break;
-    case KHolidays::LunarPhase::WaxingGibbous:
-        iconName = QStringLiteral("moon-waxing-gibbous");
-        break;
-    case KHolidays::LunarPhase::WaningGibbous:
-        iconName = QStringLiteral("moon-waning-gibbous");
-        break;
-    case KHolidays::LunarPhase::None:
+        // TODO find/create matching icons for these.
+        // any new icon set must also look good in dark-mode.
+    // case KHolidays::LunarPhase::WaxingCrescent:
+    //     iconName = QStringLiteral("realmoon-waxing-crescent");
+    //     break;
+    // case KHolidays::LunarPhase::WaningCrescent:
+    //    iconName = QStringLiteral("realmoon-waning-crescent");
+    //    break;
+    // case KHolidays::LunarPhase::WaxingGibbous:
+    //    iconName = QStringLiteral("realmoon-waxing-gibbous");
+    //    break;
+    // case KHolidays::LunarPhase::WaningGibbous:
+    //    iconName = QStringLiteral("realmoon-waning-gibbous");
+    //    break;
+    default:
         break;
     }
-    if (iconName != QStringLiteral("moon-new") && iconName != QStringLiteral("moon-full")) {
-        if (hemisphere == Hemisphere::NorthernHemisphere) {
+    if (!iconName.isEmpty() && iconName != QStringLiteral("realmoon-new") && iconName != QStringLiteral("realmoon-full")) {
+        if (hemisphere == NorthernHemisphere) {
             iconName += QStringLiteral("-north");
         } else {
             iconName += QStringLiteral("-south");
@@ -73,17 +75,25 @@ LunarphasesElement::LunarphasesElement(KHolidays::LunarPhase::Phase phase)
 
 QString LunarphasesElement::shortText() const
 {
-    return mName;
+    // don't clutter with phase name texts if we don't have an icon
+    if (!mIcon.isNull()) {
+        return mName;
+    }
+    return {};
 }
 
 QString LunarphasesElement::longText() const
 {
-    return mName;
+    // don't clutter with phase name tooltips if we don't have an icon
+    if (!mIcon.isNull()) {
+        return mName;
+    }
+    return {};
 }
 
 QPixmap LunarphasesElement::newPixmap(const QSize &size)
 {
-    return mIcon.pixmap(size * 3 / 4);
+    return mIcon.pixmap(size * 3 / 4); // I think a bit smaller than 48 pixels looks better
 }
 
 Lunarphases::Lunarphases(QObject *parent, const QVariantList &args)
