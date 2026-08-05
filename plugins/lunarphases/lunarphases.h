@@ -24,6 +24,7 @@ public:
 class LunarphasesElement : public Element
 {
     Q_OBJECT
+
 public:
     explicit LunarphasesElement(KHolidays::LunarPhase::Phase phase);
 
