@@ -59,7 +59,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     mCholBox = new QCheckBox(topFrame);
     mCholBox->setText(i18nc("@option:check", "Show Chol HaMoed"));
     mCholBox->setToolTip(i18nc("@info:tooltip", "Include days of the Chol HaMoed"));
-    mCholBox->setWhatsThis(i18nc("@info:whatsthis", "Select this option to dhow days of the Chol HaMoed."));
+    mCholBox->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show days of the Chol HaMoed."));
     topLayout->addWidget(mCholBox);
     topLayout->addStretch(1);
     connect(okButton, &QPushButton::clicked, this, &ConfigDialog::slotOk);
