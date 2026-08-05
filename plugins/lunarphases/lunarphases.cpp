@@ -106,7 +106,8 @@ QString Lunarphases::info() const
 {
     return i18n(
         "This plugin displays the day's lunar phase (New, First, Last, Full). "
-        "The phase is computed for noon in the system timezone.");
+        "The phase is computed for noon in the system timezone. "
+        "Crescent and Gibbous phases are not displayed.");
 }
 
 Element::List Lunarphases::createDayElements(const QDate &date)

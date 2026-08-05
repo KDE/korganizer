@@ -1,6 +1,6 @@
 {
     "KPlugin": {
-        "Description": "This plugin shows the day's lunar phase (New, First, Last, Full)",
+        "Description": "This plugin shows the day's lunar phase (New, First, Last, Full) at noon according to your system timezone.",
         "Description[ar]": "تعرض هذا المحلق أيام مراحل القمر (جديد، الأول، الأخير، مكتمل)",
         "Description[bg]": "Тази приставка показва лунната фаза на деня (Нова, Първа, Последна, Пълна)",
         "Description[ca@valencia]": "Este connector mostra la fase lunar del dia (nova, creixent, plena, minvant)",
