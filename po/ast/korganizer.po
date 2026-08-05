@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2024-03-15 01:17+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: Assamese <alministradores@softastur.org>\n"
@@ -3803,10 +3803,16 @@ msgstr ""
 #: prefs/koprefsdialogplugins.cpp:144
 #, kde-format
 msgctxt "@info:tooltip"
-msgid "Configure"
+msgid "Configure the %1 plugin"
 msgstr ""
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr ""
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"

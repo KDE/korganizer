@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-20 14:40+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -4199,12 +4199,22 @@ msgid "Agenda View Decorations"
 msgstr "Оформление календаря"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Настроить"
+msgid "Configure the %1 plugin"
+msgstr "Настройка режима просмотра"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Нажмите эту кнопку, чтобы начать поиск."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7119,6 +7129,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Настроить"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Включено"
@@ -7710,10 +7724,6 @@ msgstr "%1"
 #~ msgstr ""
 #~ "При включении этой опции этот день недели будет считаться рабочим "
 #~ "(показаны рабочие часы)."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Настройка режима просмотра"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

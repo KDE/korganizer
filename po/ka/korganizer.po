@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-26 05:57+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -4025,12 +4025,22 @@ msgid "Agenda View Decorations"
 msgstr "დღის წესრიგის ხედის დეკორაციები"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "მორგება"
+msgid "Configure the %1 plugin"
+msgstr "ხედის მორგება"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "დააწექით ამ ღილაკს ძებნის დასაწყებად."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6917,6 +6927,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "მორგება"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "ჩართულია"
@@ -7506,10 +7520,6 @@ msgstr "%1"
 #~ "დასვით ეს თოლია, რათა KOrganizer-ს აიძულოთ, ამ კვირის დღის სამუშაო "
 #~ "საათები დანიშნოს. თუ ეს თქვენთვის სამუშაო დღეა, დასვით ეს თოლია, ან "
 #~ "სამუშაო საათები ფერით არ დაინიშნება."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "ხედის მორგება"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

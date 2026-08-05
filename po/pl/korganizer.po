@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1742258 $
+# Version: $Revision: 1743035 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-03-14 07:53+0100\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -4136,12 +4136,22 @@ msgid "Agenda View Decorations"
 msgstr "Ozdoby kalendarza"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Ustawienia"
+msgid "Configure the %1 plugin"
+msgstr "Ustawienia widoku"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Naciśnij ten przycisk, aby rozpocząć wyszukiwanie."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7096,6 +7106,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Ustawienia"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Włączone"
@@ -7622,10 +7636,6 @@ msgstr "%1"
 #~ "Zaznacz opcję by KOrganizer zaznaczał godziny pracy dla tego dnia "
 #~ "tygodnia. Jeśli to jest twój dzień pracy zaznacz opcję albo godziny pracy "
 #~ "nie zostaną wyróżnione."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Ustawienia widoku"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

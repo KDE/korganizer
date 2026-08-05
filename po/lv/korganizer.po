@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-02-06 15:02+0200\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -4185,12 +4185,22 @@ msgid "Agenda View Decorations"
 msgstr "Kalendāra dekorācijas"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Pielāgot"
+msgid "Configure the %1 plugin"
+msgstr "Pielāgot skatu"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Spiediet šo pogu, lai sāktu meklēšanu."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7133,6 +7143,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Pielāgot"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Ieslēgts"
@@ -7686,10 +7700,6 @@ msgstr "%1"
 #~ "Atzīmējiet lauciņu, lai „KOrganizer“ izceltu jūsu darba laiku šajā "
 #~ "nedēļas dienā. Ja jums šī ir darba diena, atzīmējiet to, jo pretējā "
 #~ "gadījumā šajā dienā darba laiks rādīts netiks."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Pielāgot skatu"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

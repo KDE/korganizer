@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2012-07-09 10:04+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer\n"
@@ -4306,12 +4306,20 @@ msgstr "ការ​តុបតែង​ប្រតិទិន"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "កំណត់រចនាសម្ព័ន្ធ​"
+msgid "Configure the %1 plugin"
+msgstr "កំណត់រចនាសម្ព័ន្ធទិដ្ឋភាព​"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "ចុច​ប៊ូតុង​នេះ ដើម្បី​កំណត់​តម្រង​ថ្មី​មួយ ។​"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7358,6 +7366,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "កំណត់រចនាសម្ព័ន្ធ​"
+
+#, fuzzy
 #~| msgctxt "@action:inmenu"
 #~| msgid "Enable Reminders"
 #~ msgctxt "@option:check"
@@ -7628,12 +7642,6 @@ msgstr "%1"
 #~ msgstr ""
 #~ "គូស​ធីក​ប្រអប់​នេះដើម្បី​ឲ្យ KOrganizer សម្គាល់​ម៉ោង​ធ្វើ​ការ​សម្រាប់​ថ្ងៃ​នេះនៃ​សប្ដាហ៍ ។ បើ​វា​ជា​ថ្ងៃ​"
 #~ "ធ្វើការសម្រាប់​អ្នក សូម​ធីក​ប្រអប់​នេះ ឬ​បើ​ពុំ​នោះ​ទេ ម៉ោង​ធ្វើការ​នឹង​មិន​ត្រូវ​បាន​សម្គាល់​ដោយ​ពណ៌​ឡើយ ។"
-
-#, fuzzy
-#~| msgid "Configure the view"
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "កំណត់រចនាសម្ព័ន្ធទិដ្ឋភាព​"
 
 #, fuzzy
 #~| msgid "Do you really want to delete calendar %1?"

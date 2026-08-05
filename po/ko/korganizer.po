@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2025-10-12 12:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -4085,12 +4085,22 @@ msgid "Agenda View Decorations"
 msgstr "캘린더 장식"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "설정"
+msgid "Configure the %1 plugin"
+msgstr "보기 설정"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "이 단추를 클릭하면 검색을 시작합니다."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6993,6 +7003,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "설정"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "활성화됨"
@@ -7262,10 +7276,6 @@ msgstr "%1"
 #~ "이 옵션을 사용하면 KOrganizer에서 해당 요일에 업무 시간을 표시합니다. 해"
 #~ "당 요일이 업무일이라면 상자를 선택하십시오. 선택하지 않은 요일은 업무 시간"
 #~ "을 별도로 표시하지 않습니다."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "보기 설정"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-26 09:30+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -4062,12 +4062,22 @@ msgid "Agenda View Decorations"
 msgstr "Decoraties van agendaweergave"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Configureren"
+msgid "Configure the %1 plugin"
+msgstr "De weergave instellen"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Klik op deze knop om het zoeken te starten.."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6978,6 +6988,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Configureren"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Ingeschakeld"
@@ -7584,10 +7598,6 @@ msgstr "%1"
 #~ "Selecteer deze optie om KOrganizer de werkuren te laten markeren voor "
 #~ "deze dag van de week. Wanneer dit voor u een werkdag is, selecteer deze "
 #~ "optie, anders worden de werkuren niet met een kleur gemerkt."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "De weergave instellen"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

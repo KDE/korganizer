@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -3875,12 +3875,22 @@ msgid "Agenda View Decorations"
 msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info"
+#| msgid "Unable to configure this plugin"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "配置"
+msgid "Configure the %1 plugin"
+msgstr "无法配置此插件"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "按下按钮开始搜索。"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6538,3 +6548,7 @@ msgstr ""
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr ""
+
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "配置"

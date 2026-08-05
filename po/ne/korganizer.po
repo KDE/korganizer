@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2007-09-17 14:45+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -4304,12 +4304,19 @@ msgstr "क्यालेन्डर"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "बिदा दिन कन्फिगर गर्नुहोस्"
+msgid "Configure the %1 plugin"
+msgstr "मिति र समय कन्फिगर गर्नुहोस्..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "नयाँ फिल्टर परिभाषित गर्न यो बटन थिच्नुहोस् ।"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -7264,6 +7271,12 @@ msgid "%1"
 msgstr "%1%"
 
 #, fuzzy
+#~| msgid "Configure Holidays"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "बिदा दिन कन्फिगर गर्नुहोस्"
+
+#, fuzzy
 #~| msgid "Edit Reminders"
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
@@ -7549,12 +7562,6 @@ msgstr "%1%"
 #~ "हप्ताको यो दिनका लागि केडीई आयोजकमा कार्य घण्टा चिन्ह लगाउने बनाउन यो बाकस जाँच "
 #~ "गर्नुहोस् । यदि यो तपाईँको कार्य दिन भएमा, यो बाकस जाँच गर्नुहोस्, वा कार्य घण्टा "
 #~ "रङले चिन्ह लागाइने छैनन् ।"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "मिति र समय कन्फिगर गर्नुहोस्..."
 
 #, fuzzy
 #~| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -4328,12 +4328,19 @@ msgstr "การตกแต่งปฏิทิน"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "ปรับแต่งวันหยุด"
+msgid "Configure the %1 plugin"
+msgstr "ปรับแต่งวันที่และเวลา..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "กดที่ปุ่มนี้เพื่อนิยามตัวกรองใหม่"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7201,6 +7208,12 @@ msgid "%1"
 msgstr "%1%"
 
 #, fuzzy
+#~| msgid "Configure Holidays"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "ปรับแต่งวันหยุด"
+
+#, fuzzy
 #~| msgctxt "@title"
 #~| msgid "Edit Reminders"
 #~ msgctxt "@option:check"
@@ -7435,12 +7448,6 @@ msgstr "%1%"
 #~ msgstr ""
 #~ "กาเลือกกล่องตัวเลือกนี้ เพื่อให้ KOrganizer ทำการเน้นสีชั่วโมงทำงานของวันในสัปดาห์ "
 #~ "หากนี่เป็นวันทำงานของคุณ ให้กาเลือกกล่องนี้ หากไม่กาเลือก ชั่วโมงทำงานจะไม่ถูกทำการเน้นสี"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "ปรับแต่งวันที่และเวลา..."
 
 #, fuzzy
 #~| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"

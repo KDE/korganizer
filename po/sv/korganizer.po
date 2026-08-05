@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-26 07:40+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -4012,12 +4012,22 @@ msgid "Agenda View Decorations"
 msgstr "Agendavydekorationer"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Anpassa"
+msgid "Configure the %1 plugin"
+msgstr "Anpassa vyn"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Klicka på knappen för att starta sökningen."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6866,6 +6876,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Anpassa"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Aktiverade"
@@ -7430,10 +7444,6 @@ msgstr "%1"
 #~ "Markera rutan för att låta Korganizer visa arbetstiden för veckodagen. Om "
 #~ "det är en arbetsdag för dig, markera rutan, annars visas inte arbetstiden "
 #~ "med färg."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Anpassa vyn"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2023-05-29 22:20+0400\n"
 "Last-Translator: Kheyyam <xxmn77@gmail.com>\n"
 "Language-Team: Azerbaijani <kde-i18n-doc@kde.org>\n"
@@ -4379,12 +4379,21 @@ msgstr "Təqvimin xarici görünüşü"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Tənzimləyin"
+msgid "Configure the %1 plugin"
+msgstr "Baxış rejimini tənzimləməyin"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Axtarışa başlamaq üçün bu düyməyə vurun"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7420,6 +7429,12 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Tənzimləyin"
+
 #~ msgctxt "the appointment is today"
 #~ msgid "Today"
 #~ msgstr "Bugün"
@@ -7693,10 +7708,6 @@ msgstr "%1"
 #~ "Həftənin bu gününün iş saatlarını işarələmək üçün bu xananı işarələyin. "
 #~ "Əgər bu sizin iş gününüzdürsə, bu xananı işarələyin əks halda iş saatları "
 #~ "rəngli olaraq işarələnməyəcəkdir."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Baxış rejimini tənzimləməyin"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2006-12-17 13:34+0000\n"
 "Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
 "Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
@@ -4030,12 +4030,19 @@ msgstr "Календар"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "&Configure..."
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "&Мослаш..."
+msgid "Configure the %1 plugin"
+msgstr "Сана ва вақтни &мослаш"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Sets the Title of this event or to-do."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Ушбу ҳодиса ёки вазифа сарлавҳасини мослаш."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6716,6 +6723,12 @@ msgid "%1"
 msgstr "%1 %2"
 
 #, fuzzy
+#~| msgid "&Configure..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "&Мослаш..."
+
+#, fuzzy
 #~| msgid "Edit Reminders"
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
@@ -6834,12 +6847,6 @@ msgstr "%1 %2"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "Иш вақти"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Сана ва вақтни &мослаш"
 
 #, fuzzy
 #~| msgid "Could not load calendar '%1'."

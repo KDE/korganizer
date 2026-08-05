@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-26 14:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -4100,12 +4100,22 @@ msgid "Agenda View Decorations"
 msgstr "Оформлення панелі порядку денного"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Налаштувати"
+msgid "Configure the %1 plugin"
+msgstr "Налаштувати цей перегляд"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Натисніть цю кнопку, щоб розпочати пошук."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7009,6 +7019,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Налаштувати"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Увімкнено"
@@ -7623,10 +7637,6 @@ msgstr "%1"
 #~ "Позначте, щоб програма KOrganizer позначала робочі години для цього дня "
 #~ "тижня. Якщо це ваш робочий день, позначте цей пункт, щоб робочі години "
 #~ "позначались кольором."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Налаштувати цей перегляд"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

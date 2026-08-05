@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -3904,10 +3904,16 @@ msgstr "Kalendar"
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Podešavanje..."
+msgid "Configure the %1 plugin"
+msgstr "Podesi &datum i vrijeme..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Ne mogu da podesim ovaj umetak"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6527,6 +6533,11 @@ msgid "%1"
 msgstr "- %1"
 
 #, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Podešavanje..."
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Podsjetnik"
@@ -6699,11 +6710,6 @@ msgstr "- %1"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "Radni časovi"
-
-#, fuzzy
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Podesi &datum i vrijeme..."
 
 #, fuzzy
 #~ msgctxt "@info"

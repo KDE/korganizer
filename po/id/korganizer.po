@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -4398,12 +4398,21 @@ msgstr "Dekorasi Kalender"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Konfigurasi"
+msgid "Configure the %1 plugin"
+msgstr "Konfigurasi tampilan"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Tekan tombol ini untuk mulai mencari."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7457,6 +7466,12 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Konfigurasi"
+
 #~ msgctxt "the appointment is today"
 #~ msgid "Today"
 #~ msgstr "Hari Ini"
@@ -7724,10 +7739,6 @@ msgstr "%1"
 #~ "Centang kotak ini untuk membuat tanda KOrganizer pada pekan untuk jam "
 #~ "kerja hari ini. Jika ini adalah hari kerja untukmu, centang kotak ini, "
 #~ "atau jam kerja tidak akan ditandai dengan warna."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Konfigurasi tampilan"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

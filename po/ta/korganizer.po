@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-05-10 16:10+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -3997,12 +3997,19 @@ msgstr "நாள்காட்டி"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "அமை"
+msgid "Configure the %1 plugin"
+msgstr "தேதி &&  நேரம் அமைக்கவும்..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "ஒரு புதிய அல்ங்காரத்தை வரையறுக்க இந்த பட்டனை அழுத்தவும்."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6715,6 +6722,12 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "அமை"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "இயக்கு"
@@ -6914,12 +6927,6 @@ msgstr "%1"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "வேலை நேரம்"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "தேதி &&  நேரம் அமைக்கவும்..."
 
 #~ msgctxt "@info"
 #~ msgid "Do you really want to delete calendar %1?"

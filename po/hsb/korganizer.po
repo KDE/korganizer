@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2021-10-18 13:48+0200\n"
 "Last-Translator: Prof. Dr. Eduard Werner <e.werner@rz.uni-leipzig.de>\n"
 "Language-Team: Upper Sorbian\n"
@@ -3972,12 +3972,19 @@ msgstr "Nadawki pokazać"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Připrawić"
+msgid "Configure the %1 plugin"
+msgstr "Napohlad připrawić"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, kde-format
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr ""
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6579,6 +6586,12 @@ msgid "%1"
 msgstr ""
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Připrawić"
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Titl"
@@ -6640,10 +6653,6 @@ msgstr ""
 #~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
 #~ msgid "Search…"
 #~ msgstr "Konfiguracija &skrótšenkow..."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Napohlad připrawić"
 
 #, fuzzy
 #~ msgid "Show events belonging to my calendars only"

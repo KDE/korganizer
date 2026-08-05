@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2008-01-01 23:20+0200\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@gmail.com>\n"
 "Language-Team: Belarusian (Official spelling) <i18n@mova.org>\n"
@@ -4050,12 +4050,19 @@ msgstr "Каляндар"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Настроіць сьвяты"
+msgid "Configure the %1 plugin"
+msgstr "Настроіць &дату і час..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Націсніце на гэтую кнопку для стварэння новага фільтра."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6787,6 +6794,12 @@ msgid "%1"
 msgstr "%1%"
 
 #, fuzzy
+#~| msgid "Configure Holidays"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Настроіць сьвяты"
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "На&паміны"
@@ -7041,12 +7054,6 @@ msgstr "%1%"
 #~ msgstr ""
 #~ "Пры ўключэнні гэтай опцыі, бягучы дзень будзе лічыцца працоўным "
 #~ "(паказаныя працоўныя гадзіны)."
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Настроіць &дату і час..."
 
 #, fuzzy
 #~ msgctxt "@info"

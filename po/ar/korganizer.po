@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-17 11:21+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -4130,12 +4130,22 @@ msgid "Agenda View Decorations"
 msgstr "زخرفة التقاويم"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "اضبط"
+msgid "Configure the %1 plugin"
+msgstr "اضبط المنظور"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "انقر هذا الزر لبدء البحث."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7012,6 +7022,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "اضبط"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "ممكّن"
@@ -7566,10 +7580,6 @@ msgstr "%1"
 #~ "hours will not be marked with color."
 #~ msgstr ""
 #~ "ضع علامة في هذا المربع لجعل منظمك يحدد ساعات العمل لهذا اليوم من الأسبوع. "
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "اضبط المنظور"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

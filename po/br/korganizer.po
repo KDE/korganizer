@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -4054,12 +4054,19 @@ msgstr "Deiziadur"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "&Configure..."
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "&Kefluniañ ..."
+msgid "Configure the %1 plugin"
+msgstr "Kefluniañ &Deiziad hag Eur ..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Unable to configure this plugin"
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Ne m'eus ket gallet kefluniañ al lugent-mañ"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6742,6 +6749,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "&Configure..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "&Kefluniañ ..."
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Aozañ siloù an deiziadur"
@@ -6882,12 +6895,6 @@ msgstr "%1"
 #~ "@info/plain Displayed grayed-out inside the textbox, verb to search"
 #~ msgid "Search…"
 #~ msgstr "Klask"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Kefluniañ &Deiziad hag Eur ..."
 
 #, fuzzy
 #~ msgctxt "@info"

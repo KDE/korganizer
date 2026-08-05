@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-27 08:28+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -4072,12 +4072,22 @@ msgid "Agenda View Decorations"
 msgstr "Decorazioni vista agenda"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Configura"
+msgid "Configure the %1 plugin"
+msgstr "Configura la vista"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Premi questo pulsante per avviare la ricerca."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7011,6 +7021,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Configura"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Abilitate"
@@ -7633,10 +7647,6 @@ msgstr "%1"
 #~ "Se marchi questa casella, KOrganizer segnerà le ore lavorative per questo "
 #~ "giorno della settimana. Se questo giorno è lavorativo, marca la casella o "
 #~ "le ore lavorative non verranno colorate."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Configura la vista"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

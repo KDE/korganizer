@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -4001,12 +4001,19 @@ msgstr "Calendr"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "&Configure..."
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "&Ffurfweddu..."
+msgid "Configure the %1 plugin"
+msgstr "Ffurfweddu &Dyddiad && Amser..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Unable to configure this plugin"
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Wedi methu ffurfweddu yr ategyn hwn"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6694,6 +6701,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "&Configure..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "&Ffurfweddu..."
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "&Atgof:"
@@ -6875,12 +6888,6 @@ msgstr "%1"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "Oriau Gweithio"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Ffurfweddu &Dyddiad && Amser..."
 
 #, fuzzy
 #~ msgctxt "@info"

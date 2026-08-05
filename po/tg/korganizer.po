@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2019-09-27 23:59+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -3970,11 +3970,19 @@ msgstr "Тақвим"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Танзимот..."
+msgid "Configure the %1 plugin"
+msgstr "Танзими &Таърих ва вақт..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Unable to configure this plugin"
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Наметавонам модулро танзим кунам"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6673,6 +6681,11 @@ msgid "%1"
 msgstr "- %1"
 
 #, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Танзимот..."
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Ба ёд овардан"
@@ -6851,12 +6864,6 @@ msgstr "- %1"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "Вақти корӣ"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Танзими &Таърих ва вақт..."
 
 #, fuzzy
 #~ msgctxt "@info"

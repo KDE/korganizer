@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2012-01-28 16:07-0800\n"
 "Last-Translator: Fumiaki Okushi <okushi@kde.gr.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -4254,12 +4254,20 @@ msgstr "カレンダーの装飾"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "設定"
+msgid "Configure the %1 plugin"
+msgstr "ビューの設定"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "このボタンを押して新しいフィルタを定義します。"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7273,6 +7281,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "設定"
+
+#, fuzzy
 #~| msgid "Today"
 #~ msgctxt "the appointment is today"
 #~ msgid "Today"
@@ -7504,12 +7518,6 @@ msgstr "%1"
 #~ "勤務時間帯を色付きで表示させる曜日にチェックを入れてください。チェックされ"
 #~ "ていない曜日には、それがあなたにとって仕事をする曜日であっても、勤務時間帯"
 #~ "が表示されません。"
-
-#, fuzzy
-#~| msgid "Configure the view"
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "ビューの設定"
 
 #, fuzzy
 #~| msgid "Do you really want to delete calendar %1?"

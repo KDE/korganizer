@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1742332 2026-07-27 01:29:56Z scripty $
+# $Id: korganizer.po 1743035 2026-08-05 01:31:23Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-07-26 07:29+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -4082,12 +4082,22 @@ msgid "Agenda View Decorations"
 msgstr "Okraski dnevnega reda"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Konfiguriraj"
+msgid "Configure the %1 plugin"
+msgstr "Nastavi prikaz"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Pritisnite ta gumb, da začnete iskanje."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6959,6 +6969,10 @@ msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
 
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Konfiguriraj"
+
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Omogočeno"
@@ -7551,10 +7565,6 @@ msgstr "%1"
 #~ "Označite to polje, če želite, da KOrganizer označi delovne ure za ta dan "
 #~ "v tednu. Če je to vaš delovni dan, označite to polje. V nasprotnem "
 #~ "primeru delovne ure ne bodo označene s posebno barvo."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Nastavi prikaz"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

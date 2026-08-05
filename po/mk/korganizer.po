@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -4094,12 +4094,19 @@ msgstr "Календар"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "&Configure..."
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "&Конфигурирај..."
+msgid "Configure the %1 plugin"
+msgstr "Конфигурирај &датум и време..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Притиснете го ова копче за да дефинирате нов филтер."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6764,6 +6771,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "&Configure..."
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "&Конфигурирај..."
+
+#, fuzzy
 #~| msgid "Edit Reminders"
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
@@ -6935,12 +6948,6 @@ msgstr "%1"
 #~ "Обележете го ова поле за КОрганизатор да го означува работното време за "
 #~ "овој ден од неделата. Ако е ова работен ден за вас обележете го ова поле "
 #~ "или работното време нема да биде означено со боја."
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Конфигурирај &датум и време..."
 
 #, fuzzy
 #~| msgid "<qt>Do you really want to delete the resource <b>%1</b>?</qt>"

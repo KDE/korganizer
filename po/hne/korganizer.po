@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2009-02-28 20:07+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -4213,12 +4213,19 @@ msgstr "कलेन्डर सजावट"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "अवकास कान्फिगर करव"
+msgid "Configure the %1 plugin"
+msgstr "तारीक अउ समय ल कान्फिगर करव... (&D)"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "एक नवा छनइया परिभासित करे बर ए बटन ल दबाव."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6895,6 +6902,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "Configure Holidays"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "अवकास कान्फिगर करव"
+
+#, fuzzy
 #~| msgctxt "@action:inmenu"
 #~| msgid "Enable Reminders"
 #~ msgctxt "@option:check"
@@ -7087,12 +7100,6 @@ msgstr "%1"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "काम घंटे"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "तारीक अउ समय ल कान्फिगर करव... (&D)"
 
 #, fuzzy
 #~| msgid "<qt>Do you really want to remove the resource <b>%1</b>?</qt>"

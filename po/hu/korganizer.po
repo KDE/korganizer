@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2026-06-18 21:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -4341,12 +4341,21 @@ msgstr "Naptárdíszítések"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Beállítás"
+msgid "Configure the %1 plugin"
+msgstr "A nézet beállítása"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Nyomja meg ezt a gombot a keresés elindításához."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7476,6 +7485,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Beállítás"
+
+#, fuzzy
 #~| msgctxt "@action:inmenu"
 #~| msgid "Enable Reminders"
 #~ msgctxt "@option:check"
@@ -7753,10 +7768,6 @@ msgstr "%1"
 #~ "Ha ez be van jelölve, akkor a KOrganizer ennél a napnál megjelöli a "
 #~ "munkaidőt. Jelölje be, ha a nap munkanapnak számít, különben a munkaidő "
 #~ "nem lesz színezve."
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "A nézet beállítása"
 
 #~ msgctxt "@info"
 #~ msgid "Do you really want to delete calendar %1?"

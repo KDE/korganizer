@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -4279,12 +4279,21 @@ msgstr "पञ्चाङ्ग अलङ्कार"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgctxt "@info:status"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "विन्यस्तं कुर्वन्तु"
+msgid "Configure the %1 plugin"
+msgstr "दृश्यं विन्यस्यताम्"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to start the search."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "अन्वेषणं आरभ्य एतत् बटन् नुदन्तु ।"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7251,6 +7260,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "विन्यस्तं कुर्वन्तु"
+
+#, fuzzy
 #~| msgid "Enabled"
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
@@ -7506,10 +7521,6 @@ msgstr "%1"
 #~ "सप्ताहस्य अस्य दिवसस्य कार्यसमयान् KOrganizer चिह्नितुं कर्तुं एतत् पेटीम् चिह्नयन्तु। यदि "
 #~ "एषः भवतः कृते कार्यदिवसः अस्ति तर्हि एतत् पेटीम् अवलोकयन्तु, अन्यथा कार्यसमयाः वर्णेन न "
 #~ "चिह्निताः भविष्यन्ति ।"
-
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "दृश्यं विन्यस्यताम्"
 
 #~ msgctxt "@info:whatsthis"
 #~ msgid ""

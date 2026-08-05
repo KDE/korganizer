@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -3919,11 +3919,19 @@ msgstr "i Khalenda"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
+#| msgid "Configure &Date && Time..."
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Qwalasela..."
+msgid "Configure the %1 plugin"
+msgstr "Qwalasela &Umhla && Ixesha..."
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Unable to configure this plugin"
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Ayikwazi ukuqwalasela leplugin"
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, fuzzy, kde-format
 #| msgid "Unable to configure this plugin"
 msgctxt "@info"
@@ -6560,6 +6568,11 @@ msgid "%1"
 msgstr "%1 %"
 
 #, fuzzy
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Qwalasela..."
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Umkhumbuzi:"
@@ -6728,12 +6741,6 @@ msgstr "%1 %"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "Iiyure Zokusebenza"
-
-#, fuzzy
-#~| msgid "Configure &Date && Time..."
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Qwalasela &Umhla && Ixesha..."
 
 #, fuzzy
 #~ msgctxt "@info"

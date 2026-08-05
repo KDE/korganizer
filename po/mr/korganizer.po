@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -4355,12 +4355,20 @@ msgstr "दिनदर्शिकेची सजावट"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "संयोजीत करा"
+msgid "Configure the %1 plugin"
+msgstr "दृश्याची संयोजना करा"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "नवीन गाळणी निश्चीत करण्यासाठी हे बटण दाबा."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7458,6 +7466,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "संयोजीत करा"
+
+#, fuzzy
 #~| msgctxt "@action:inmenu"
 #~| msgid "Enable Reminders"
 #~ msgctxt "@option:check"
@@ -7736,12 +7750,6 @@ msgstr "%1"
 #~ " के-ऑर्गनायझरला आठवड्याच्या ह्या दिवसाचे कामकाजाच्या तासांवर खुणा करण्यासाठी हे "
 #~ "निवडा. हा तुमचा कामाचा दिवस असेल तर ही पेटी तपासा, अथवा कामाच्या तासांवर "
 #~ "रंगांच्या सहाय्याने खुणा केल्या जाणार नाहीत."
-
-#, fuzzy
-#~| msgid "Configure the view"
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "दृश्याची संयोजना करा"
 
 #, fuzzy
 #~| msgid "Do you really want to delete calendar %1?"

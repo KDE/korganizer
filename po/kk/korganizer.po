@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2013-09-30 02:22+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -4364,12 +4364,20 @@ msgstr "Күнтізбе безендіруі"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Баптау"
+msgid "Configure the %1 plugin"
+msgstr "Көрнісін баптау"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Жаңа сүзгіні орнату үшін осы батырманы басыңыз."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -7442,6 +7450,12 @@ msgid "%1"
 msgstr "%1"
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Баптау"
+
+#, fuzzy
 #~| msgctxt "@action:inmenu"
 #~| msgid "Enable Reminders"
 #~ msgctxt "@option:check"
@@ -7715,12 +7729,6 @@ msgstr "%1"
 #~ "Белгілеп қойған күндерді KOrganizer аптаның жұмыс күндері деп есептейді "
 #~ "де жұмыс уақыттарын көрсетеді. Егерде бұл күн жұмыс күніңіз болса "
 #~ "белгісін қойңыз, әйтпесе, жұмыс сағаттры түспен боялмайды."
-
-#, fuzzy
-#~| msgid "Configure the view"
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Көрнісін баптау"
 
 #, fuzzy
 #~| msgid "Do you really want to delete calendar %1?"

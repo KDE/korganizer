@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer-1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-07-26 00:45+0000\n"
+"POT-Creation-Date: 2026-08-05 00:47+0000\n"
 "PO-Revision-Date: 2022-02-06 19:07+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian\n"
@@ -4094,12 +4094,19 @@ msgstr "Decorații calendar"
 
 #: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
-#| msgid "Configure"
+#| msgid "Configure the view"
 msgctxt "@info:tooltip"
-msgid "Configure"
-msgstr "Configurează"
+msgid "Configure the %1 plugin"
+msgstr "Configurează vizualizarea"
 
-#: prefs/koprefsdialogplugins.cpp:205
+#: prefs/koprefsdialogplugins.cpp:145
+#, fuzzy, kde-format
+#| msgid "Press this button to define a new filter."
+msgctxt "@info:whatsthis"
+msgid "Press this button to configure the %1 plugin."
+msgstr "Apăsați acest buton pentru a defini un filtru nou."
+
+#: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
@@ -6767,6 +6774,12 @@ msgid "%1"
 msgstr "De făcut: %1"
 
 #, fuzzy
+#~| msgid "Configure"
+#~ msgctxt "@info:tooltip"
+#~ msgid "Configure"
+#~ msgstr "Configurează"
+
+#, fuzzy
 #~ msgctxt "@option:check"
 #~ msgid "Enabled"
 #~ msgstr "Amintire:"
@@ -6953,12 +6966,6 @@ msgstr "De făcut: %1"
 #~ msgctxt "@title:group"
 #~ msgid "Working Period"
 #~ msgstr "Ore de lucru"
-
-#, fuzzy
-#~| msgid "Configure the view"
-#~ msgctxt "@info:status"
-#~ msgid "Configure the view"
-#~ msgstr "Configurează vizualizarea"
 
 #, fuzzy
 #~ msgctxt "@info"
