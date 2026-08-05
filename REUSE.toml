@@ -22,3 +22,9 @@ path = ["README.md"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2020 Allen Winter <winter@kde.org>"
 SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["plugins/lunarphases/pics/*.png"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "Daniel Kmiec at Wikipedia"
+SPDX-License-Identifier = "CC-BY-3.0"

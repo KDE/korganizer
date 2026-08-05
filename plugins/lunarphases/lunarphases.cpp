@@ -1,5 +1,5 @@
 /*
-  SPDX-FileCopyrightText: 2018 Allen Winter <winter@kde.org>
+  SPDX-FileCopyrightText: Allen Winter <winter@kde.org>
   SPDX-FileCopyrightText: 2021 Friedrich W. H. Kossebau <kossebau@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later
@@ -14,21 +14,60 @@
 
 K_PLUGIN_CLASS_WITH_JSON(Lunarphases, "lunarphases.json")
 
-static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase)
+namespace
 {
-    const QString iconName = (phase == KHolidays::LunarPhase::NewMoon) ? QStringLiteral("moon-phase-new")
-        : (phase == KHolidays::LunarPhase::FullMoon)                   ? QStringLiteral("moon-phase-full")
-        : (phase == KHolidays::LunarPhase::FirstQuarter)               ? QStringLiteral("moon-phase-first-quarter")
-        : (phase == KHolidays::LunarPhase::LastQuarter)                ? QStringLiteral("moon-phase-last-quarter")
-                                                                       :
-                                                                       /* else */ QString();
+enum Hemisphere {
+    NorthernHemisphere,
+    SouthernHemisphere,
+};
+}
+
+static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase, Hemisphere hemisphere)
+{
+    QString iconName;
+    switch (phase) {
+    case KHolidays::LunarPhase::NewMoon:
+        iconName = QStringLiteral("moon-new");
+        break;
+    case KHolidays::LunarPhase::FullMoon:
+        iconName = QStringLiteral("moon-full");
+        break;
+    case KHolidays::LunarPhase::FirstQuarter:
+        iconName = QStringLiteral("moon-waxing-first-quarter");
+        break;
+    case KHolidays::LunarPhase::LastQuarter:
+        iconName = QStringLiteral("moon-waning-last-quarter");
+        break;
+    case KHolidays::LunarPhase::WaxingCrescent:
+        iconName = QStringLiteral("moon-waxing-crescent");
+        break;
+    case KHolidays::LunarPhase::WaningCrescent:
+        iconName = QStringLiteral("moon-waning-crescent");
+        break;
+    case KHolidays::LunarPhase::WaxingGibbous:
+        iconName = QStringLiteral("moon-waxing-gibbous");
+        break;
+    case KHolidays::LunarPhase::WaningGibbous:
+        iconName = QStringLiteral("moon-waning-gibbous");
+        break;
+    case KHolidays::LunarPhase::None:
+        break;
+    }
+    if (iconName != QStringLiteral("moon-new") && iconName != QStringLiteral("moon-full")) {
+        if (hemisphere == Hemisphere::NorthernHemisphere) {
+            iconName += QStringLiteral("-north");
+        } else {
+            iconName += QStringLiteral("-south");
+        }
+    }
     return iconName.isEmpty() ? QIcon() : QIcon::fromTheme(iconName);
 }
 
 LunarphasesElement::LunarphasesElement(KHolidays::LunarPhase::Phase phase)
     : Element(QStringLiteral("main element"))
     , mName(KHolidays::LunarPhase::phaseName(phase))
-    , mIcon(phaseIcon(phase))
+    , mIcon(phaseIcon(phase, Hemisphere::NorthernHemisphere)) // TODO: handle southern hemisphere
+
 {
 }
 
@@ -44,8 +83,7 @@ QString LunarphasesElement::longText() const
 
 QPixmap LunarphasesElement::newPixmap(const QSize &size)
 {
-    // TODO: support south hemisphere & equator by rotating by 90 and 180 degrees
-    return mIcon.pixmap(size);
+    return mIcon.pixmap(size * 3 / 4);
 }
 
 Lunarphases::Lunarphases(QObject *parent, const QVariantList &args)
