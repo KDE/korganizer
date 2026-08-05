@@ -6,6 +6,7 @@
 */
 
 #include "lunarphases.h"
+#include "configdialog.h"
 
 #include <KConfig>
 #include <KConfigGroup>
@@ -14,15 +15,7 @@
 
 K_PLUGIN_CLASS_WITH_JSON(Lunarphases, "lunarphases.json")
 
-namespace
-{
-enum Hemisphere {
-    NorthernHemisphere,
-    SouthernHemisphere,
-};
-}
-
-static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase, Hemisphere hemisphere)
+static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase, Lunarphases::Hemisphere hemisphere)
 {
     QString iconName;
     switch (phase) {
@@ -54,7 +47,7 @@ static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase, Hemisphere hemisphere
         break;
     }
     if (iconName != QStringLiteral("moon-new") && iconName != QStringLiteral("moon-full")) {
-        if (hemisphere == Hemisphere::NorthernHemisphere) {
+        if (hemisphere == Lunarphases::NorthernHemisphere) {
             iconName += QStringLiteral("-north");
         } else {
             iconName += QStringLiteral("-south");
@@ -63,11 +56,10 @@ static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase, Hemisphere hemisphere
     return iconName.isEmpty() ? QIcon() : QIcon::fromTheme(iconName);
 }
 
-LunarphasesElement::LunarphasesElement(KHolidays::LunarPhase::Phase phase)
+LunarphasesElement::LunarphasesElement(KHolidays::LunarPhase::Phase phase, Lunarphases::Hemisphere hemisphere)
     : Element(QStringLiteral("main element"))
     , mName(KHolidays::LunarPhase::phaseName(phase))
-    , mIcon(phaseIcon(phase, Hemisphere::NorthernHemisphere)) // TODO: handle southern hemisphere
-
+    , mIcon(phaseIcon(phase, hemisphere))
 {
 }
 
@@ -91,14 +83,20 @@ Lunarphases::Lunarphases(QObject *parent, const QVariantList &args)
 {
     KConfig _config(QStringLiteral("korganizerrc"));
     KConfigGroup const config(&_config, QStringLiteral("Calendar/Lunar Phases Plugin"));
+    mHemisphere = (Hemisphere)config.readEntry("Hemisphere", int(NorthernHemisphere));
+}
+
+void Lunarphases::configure(QWidget *parent)
+{
+    ConfigDialog dlg(parent);
+    dlg.exec();
 }
 
 QString Lunarphases::info() const
 {
     return i18n(
         "This plugin displays the day's lunar phase (New, First, Last, Full). "
-        "Currently, the phase is computed for noon at UTC; therefore, you should "
-        "expect variations by 1 day in either direction.");
+        "The phase is computed for noon in the system timezone.");
 }
 
 Element::List Lunarphases::createDayElements(const QDate &date)
@@ -107,7 +105,7 @@ Element::List Lunarphases::createDayElements(const QDate &date)
 
     KHolidays::LunarPhase::Phase const phase = KHolidays::LunarPhase::phaseAtDate(date);
     if (phase != KHolidays::LunarPhase::None) {
-        auto e = new LunarphasesElement(phase);
+        auto e = new LunarphasesElement(phase, mHemisphere);
         result.append(e);
     }
 

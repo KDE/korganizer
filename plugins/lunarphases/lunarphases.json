@@ -50,6 +50,6 @@
         "Name[tr]": "Ay’ın Evreleri",
         "Name[uk]": "Фази Місяця"
     },
-    "X-KDE-KOrganizer-HasSettings": false,
+    "X-KDE-KOrganizer-HasSettings": true,
     "X-KDE-PluginInterfaceVersion": 2
 }

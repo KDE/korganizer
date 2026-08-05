@@ -6,6 +6,8 @@
 add_library(
     lunarphases
     MODULE
+    configdialog.cpp
+    configdialog.h
     lunarphases.cpp
     lunarphases.h
 )
