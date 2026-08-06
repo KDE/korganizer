@@ -1,7 +1,27 @@
 [Desktop Entry]
 X-KDE-Library=korg_hebrew
 Name=Jewish Calendar
+Name[ca]=Calendari jueu
+Name[ca@valencia]=Calendari jueu
+Name[cs]=Židovský kalendář
+Name[es]=Calendario hebreo
+Name[ka]=ებრაული კალენდარი
+Name[pt_BR]=Calendário judaico
+Name[sl]=Židovski koledar
+Name[sv]=Judisk kalender
+Name[tr]=Musevî Takvimi
+Name[uk]=Єврейський календар
 Comment=Shows dates and Jewish holidays in the Hebrew calendar system.
+Comment[ca]=Mostra les dates i els festius jueus en el sistema del calendari hebreu.
+Comment[ca@valencia]=Mostra les dates i els festius jueus en el sistema del calendari hebreu.
+Comment[cs]=Zobrazuje data a židovské svátky podle hebrejského kalendáře.
+Comment[es]=Muestra las fechas y las festividades judías según el calendario hebreo.
+Comment[ka]=აჩვენებს თარიღებს და ებრაულ დღესასწაულებს ებრაული კალენდრის სისტემაში.
+Comment[pt_BR]=Exibe datas e feriados judaicos no sistema do calendário hebraico.
+Comment[sl]=Pokaže datume in judovske praznike v hebrejskem koledarskem sistemu.
+Comment[sv]=Visar datum och judiska högtider med det hebreiska kalendersystemet.
+Comment[tr]=Musevî takvim sistemindeki tüm tarihleri ve Yahudi tatillerini gösterir
+Comment[uk]=Показує дати і єврейські свята у єврейській системі календаря.
 Type=Service
 X-KDE-KOrganizer-HasSettings=true
 X-KDE-PluginInterfaceVersion=2
