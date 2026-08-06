@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim/korganizer.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
+"POT-Creation-Date: 2026-08-06 02:45+0000\n"
 "PO-Revision-Date: 2004-09-20 15:44+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: Breton <LL@li.org>\n"
@@ -684,7 +684,7 @@ msgstr "Vayelech"
 msgid "Haazinu"
 msgstr "Haazinu"
 
-#: lunarphases/lunarphases.cpp:61
+#: lunarphases/lunarphases.cpp:109
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). "

@@ -1,15 +1,15 @@
 # Spanish translations for korganizer_calendarplugins.po package.
-# Copyright (C) 2016-2025 This_file_is_part_of_KDE
+# Copyright (C) 2016-2026 This file is copyright:
 # This file is distributed under the same license as the korganizer package.
 #
-# SPDX-FileCopyrightText: 2016, 2018, 2019 Javier Vinal <fjvinal@gmail.com>
-# SPDX-FileCopyrightText: 2019, 2020, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2016, 2018-2019 Javier Vinal <fjvinal@gmail.com>
+# SPDX-FileCopyrightText: 2019-2020, 2024-2026 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer_calendarplugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
-"PO-Revision-Date: 2025-04-19 19:48+0100\n"
+"POT-Creation-Date: 2026-08-06 02:45+0000\n"
+"PO-Revision-Date: 2026-08-06 00:21+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -144,12 +144,12 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Holidays"
-msgstr "Configurar días festivos"
+msgstr "Configurar festividades"
 
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "Usar días festivos israelíes"
+msgstr "Usar festividades israelíes"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
@@ -159,7 +159,7 @@ msgstr "Mostrar parashá semanal"
 #: hebrew/configdialog.cpp:50
 #, kde-format
 msgid "Show day of Omer"
-msgstr "Mostrar día de Omer"
+msgstr "Mostrar día del Omer"
 
 #: hebrew/configdialog.cpp:54
 #, kde-format
@@ -673,7 +673,7 @@ msgstr "Vayelech"
 msgid "Haazinu"
 msgstr "Haazinu"
 
-#: lunarphases/lunarphases.cpp:61
+#: lunarphases/lunarphases.cpp:109
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). "

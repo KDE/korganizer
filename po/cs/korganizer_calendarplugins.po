@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:53+0000\n"
-"PO-Revision-Date: 2026-03-16 15:08+0100\n"
-"Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
+"POT-Creation-Date: 2026-08-06 02:45+0000\n"
+"PO-Revision-Date: 2026-08-05 22:07+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -156,22 +156,22 @@ msgstr "Nastavit svátky"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "Použít Izraelské svátky"
+msgstr "Použít izraelské svátky"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
 msgid "Show weekly parsha"
-msgstr "Ukázat týdenní parsha"
+msgstr "Zobrazit týdenní paršu"
 
 #: hebrew/configdialog.cpp:50
 #, kde-format
 msgid "Show day of Omer"
-msgstr "Ukázat den Omer"
+msgstr "Zobrazit den Ómeru"
 
 #: hebrew/configdialog.cpp:54
 #, kde-format
 msgid "Show Chol HaMoed"
-msgstr "Ukázat Chol HaMoed"
+msgstr "Zobrazit Chol HaMoed"
 
 #: hebrew/hebrew.cpp:60
 #, kde-format
@@ -680,7 +680,7 @@ msgstr "Vayelech"
 msgid "Haazinu"
 msgstr "Haazinu"
 
-#: lunarphases/lunarphases.cpp:61
+#: lunarphases/lunarphases.cpp:109
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). "
