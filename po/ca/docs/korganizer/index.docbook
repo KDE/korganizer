@@ -3957,6 +3957,13 @@
 >Aquest connector afegeix el número del dia al llarg de l'any a la vista d'agenda. Per exemple, l'1 de febrer és el dia número 32. </para>
 </sect2>
 
+<sect2 id="lunar-phases-plugin">
+  <title
+>Fases lunars</title>
+  <para
+>Aquest connector mostra la fase lunar del dia (Nova, Creixent, Plena, Minvant) Actualment, la fase es calcula al migdia d'UTC. Per tant, podeu esperar variacions d'1 dia en qualsevol direcció. </para>
+</sect2>
+
 <sect2 id="wikipedia-thisday-plugin">
 <title
 >«Aquest dia en la història» de la Viquipèdia</title>

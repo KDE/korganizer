@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:47+0000\n"
+"POT-Creation-Date: 2026-08-06 00:45+0000\n"
 "PO-Revision-Date: 2024-10-20 16:22+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -273,7 +273,7 @@ msgstr ""
 #: hebrewcalendar/configdialog.cpp:62
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
-msgid "Select this option to dhow days of the Chol HaMoed."
+msgid "Select this option to show days of the Chol HaMoed."
 msgstr "இந்த பத்திரிகையின் தலைப்பை அமைக்கிறது"
 
 #: hebrewcalendar/hebrew.cpp:87
@@ -882,12 +882,64 @@ msgstr "வேயேலெச்"
 msgid "Haazinu"
 msgstr "ஹாசினு"
 
-#: lunarphases/lunarphases.cpp:61
+#: lunarphases/configdialog.cpp:26
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Configure Day Numbers"
+msgctxt "@title:window"
+msgid "Configure Lunar Phases"
+msgstr "நாள் எண்களை அமைத்தல்"
+
+#: lunarphases/configdialog.cpp:41
 #, kde-format
+msgctxt "@title:group"
+msgid "Choose your hemisphere"
+msgstr ""
+
+#: lunarphases/configdialog.cpp:46
+#, kde-format
+msgctxt "@option:radio"
+msgid "Northern Hemisphere"
+msgstr ""
+
+#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the northern hemisphere"
+msgstr ""
+
+#: lunarphases/configdialog.cpp:48
+#, fuzzy, kde-format
+msgctxt "@info:whatsthis"
 msgid ""
-"This plugin displays the day's lunar phase (New, First, Last, Full). "
-"Currently, the phase is computed for noon at UTC; therefore, you should "
-"expect variations by 1 day in either direction."
+"Select this option to show the moon phases if you live in the northern "
+"hemisphere."
+msgstr "நொடிகளை மார்க்கஸ் பெயின் கோடில் காட்டு."
+
+#: lunarphases/configdialog.cpp:51
+#, kde-format
+msgctxt "@option:radio"
+msgid "Southern Hemisphere"
+msgstr ""
+
+#: lunarphases/configdialog.cpp:53
+#, fuzzy, kde-format
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the moon phases if you live in the southern "
+"hemisphere."
+msgstr "நொடிகளை மார்க்கஸ் பெயின் கோடில் காட்டு."
+
+#: lunarphases/lunarphases.cpp:108
+#, fuzzy, kde-format
+#| msgid ""
+#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
+#| "Currently, the phase is computed for noon at UTC; therefore, you should "
+#| "expect variations by 1 day in either direction."
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). The "
+"phase is computed for noon in the system timezone. Crescent and Gibbous "
+"phases are not displayed."
 msgstr ""
 "சந்திர கட்டத்தை (அமாவாசை, வளர்பிறை, தேய்பிறை, முழுநிலவு) இந்த செருகுநிரல் காட்டும். "
 "தற்போது இது UTC-யின் மதியத்தை பொறுத்து கணிக்கப் படுவதால், 1 நாள் முந்தி/பிந்தி "

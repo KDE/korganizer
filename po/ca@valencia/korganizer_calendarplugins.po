@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-05 00:47+0000\n"
-"PO-Revision-Date: 2026-07-25 09:59+0200\n"
+"POT-Creation-Date: 2026-08-06 00:45+0000\n"
+"PO-Revision-Date: 2026-08-05 11:17+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -196,18 +196,16 @@ msgid "Configure Holidays"
 msgstr "Configureu els festius"
 
 #: hebrewcalendar/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use Israeli holidays"
 msgstr "Utilitza els festius israelians"
 
 #: hebrewcalendar/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include Israeli holidays"
-msgstr "Utilitza els festius israelians"
+msgstr "Inclou els festius israelians"
 
 #: hebrewcalendar/configdialog.cpp:44
 #, kde-format
@@ -216,54 +214,47 @@ msgid ""
 "Select this option to show Israeli holidays; including national, non-"
 "religious holidays."
 msgstr ""
+"Trieu esta opció per a mostrar els festius d'Israel, inclosos els festius "
+"nacionals no religiosos."
 
 #: hebrewcalendar/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show weekly parsha"
 msgstr "Mostra «parsha» setmanal"
 
 #: hebrewcalendar/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include weekly parsha days"
-msgstr "Mostra «parsha» setmanal"
+msgstr "Inclou els dies «parsha» setmanals"
 
 #: hebrewcalendar/configdialog.cpp:50
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select this option to show the day number of the current year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show weekly parsha days."
-msgstr "Trieu esta opció per a mostrar el número del dia de l'any actual."
+msgstr "Trieu esta opció per a mostrar els dies «parsha» setmanalment."
 
 #: hebrewcalendar/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show day of Omer"
 msgstr "Mostra el dia d'Omer"
 
 #: hebrewcalendar/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Omer"
-msgstr "Mostra el dia d'Omer"
+msgstr "Inclou els dies d'Omer"
 
 #: hebrewcalendar/configdialog.cpp:56
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select this option to show the day number of the current year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Omer period."
-msgstr "Trieu esta opció per a mostrar el número del dia de l'any actual."
+msgstr "Trieu esta opció per a mostrar els dies del període d'Omer."
 
 #: hebrewcalendar/configdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "Show Chol HaMoed"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show Chol HaMoed"
 msgstr "Mostra el Chol HaMoed"
@@ -272,107 +263,105 @@ msgstr "Mostra el Chol HaMoed"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Chol HaMoed"
-msgstr ""
+msgstr "Inclou els dies de Chol HaMoed"
 
 #: hebrewcalendar/configdialog.cpp:62
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
-#| msgid "Select this option to show the day number of the current year."
+#| msgid "Select this option to dhow days of the Chol HaMoed."
 msgctxt "@info:whatsthis"
-msgid "Select this option to dhow days of the Chol HaMoed."
-msgstr "Trieu esta opció per a mostrar el número del dia de l'any actual."
+msgid "Select this option to show days of the Chol HaMoed."
+msgstr "Trieu esta opció per a mostrar els dies de Chol HaMoed."
 
 #: hebrewcalendar/hebrew.cpp:87
 #, kde-format
 msgctxt "Hebrew month 1 - KLocale::LongName"
 msgid "Tishrey"
-msgstr ""
+msgstr "Tishrey"
 
 #: hebrewcalendar/hebrew.cpp:89
 #, kde-format
 msgctxt "Hebrew month 2 - KLocale::LongName"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
 #: hebrewcalendar/hebrew.cpp:91
 #, kde-format
 msgctxt "Hebrew month 3 - KLocale::LongName"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
 #: hebrewcalendar/hebrew.cpp:93
-#, fuzzy, kde-format
-#| msgid "Tzom Tevet"
+#, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
-msgstr "Tzom Tevet"
+msgstr "Tevet"
 
 #: hebrewcalendar/hebrew.cpp:95
-#, fuzzy, kde-format
-#| msgid "Tu B'Shvat"
+#, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
-msgstr "Tu B'Shvat"
+msgstr "Shvat"
 
 #: hebrewcalendar/hebrew.cpp:97
 #, kde-format
 msgctxt "Hebrew month 6 - KLocale::LongName"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
 #: hebrewcalendar/hebrew.cpp:99
 #, kde-format
 msgctxt "Hebrew month 7 - KLocale::LongName"
 msgid "Nisan"
-msgstr ""
+msgstr "Nisan"
 
 #: hebrewcalendar/hebrew.cpp:101
 #, kde-format
 msgctxt "Hebrew month 8 - KLocale::LongName"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
 #: hebrewcalendar/hebrew.cpp:103
 #, kde-format
 msgctxt "Hebrew month 9 - KLocale::LongName"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
 #: hebrewcalendar/hebrew.cpp:105
 #, kde-format
 msgctxt "Hebrew month 10 - KLocale::LongName"
 msgid "Tamuz"
-msgstr ""
+msgstr "1"
 
 #: hebrewcalendar/hebrew.cpp:107
 #, kde-format
 msgctxt "Hebrew month 11 - KLocale::LongName"
 msgid "Av"
-msgstr ""
+msgstr "Av"
 
 #: hebrewcalendar/hebrew.cpp:109
 #, kde-format
 msgctxt "Hebrew month 12 - KLocale::LongName"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
 #: hebrewcalendar/hebrew.cpp:111
 #, kde-format
 msgctxt "Hebrew month 13 - KLocale::LongName"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
 #: hebrewcalendar/hebrew.cpp:113
 #, kde-format
 msgctxt "Hebrew month 14 - KLocale::LongName"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
 #: hebrewcalendar/hebrew.cpp:125
 #, kde-format
 msgctxt "1. day of the month 2. hebrew month"
 msgid "%1 %2"
-msgstr ""
+msgstr "%1 %2"
 
 #: hebrewcalendar/hebrew.cpp:131
 #, kde-format
@@ -884,16 +873,78 @@ msgstr "Vayelech"
 msgid "Haazinu"
 msgstr "Haazinu"
 
-#: lunarphases/lunarphases.cpp:61
+#: lunarphases/configdialog.cpp:26
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Configure Day Numbers"
+msgctxt "@title:window"
+msgid "Configure Lunar Phases"
+msgstr "Configureu els números de dia"
+
+#: lunarphases/configdialog.cpp:41
 #, kde-format
-msgid ""
-"This plugin displays the day's lunar phase (New, First, Last, Full). "
-"Currently, the phase is computed for noon at UTC; therefore, you should "
-"expect variations by 1 day in either direction."
+msgctxt "@title:group"
+msgid "Choose your hemisphere"
 msgstr ""
-"Este connector mostra la fase lunar del dia (Noca, Creixent, Plena, "
-"Minvant). Actualment, la fase es calcula per al migdia a l'UTC. Per tant, "
-"hauríeu d'esperar variacions d'1 dia en qualsevol direcció."
+
+#: lunarphases/configdialog.cpp:46
+#, kde-format
+msgctxt "@option:radio"
+msgid "Northern Hemisphere"
+msgstr ""
+
+#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the northern hemisphere"
+msgstr ""
+
+#: lunarphases/configdialog.cpp:48
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Select this option to show the number of days remaining in the current "
+#| "year."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the moon phases if you live in the northern "
+"hemisphere."
+msgstr ""
+"Trieu esta opció per a mostrar el nombre de dies restants a l'any actual."
+
+#: lunarphases/configdialog.cpp:51
+#, kde-format
+msgctxt "@option:radio"
+msgid "Southern Hemisphere"
+msgstr ""
+
+#: lunarphases/configdialog.cpp:53
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "Select this option to show the number of days remaining in the current "
+#| "year."
+msgctxt "@info:whatsthis"
+msgid ""
+"Select this option to show the moon phases if you live in the southern "
+"hemisphere."
+msgstr ""
+"Trieu esta opció per a mostrar el nombre de dies restants a l'any actual."
+
+#: lunarphases/lunarphases.cpp:108
+#, fuzzy, kde-format
+#| msgid ""
+#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
+#| "Currently, the phase is computed for noon at UTC; therefore, you should "
+#| "expect variations by 1 day in either direction."
+msgid ""
+"This plugin displays the day's lunar phase (New, First, Last, Full). The "
+"phase is computed for noon in the system timezone. Crescent and Gibbous "
+"phases are not displayed."
+msgstr ""
+"Este connector mostra la fase lunar del dia (Nova, Creixent, Plena, Minvant) "
+"Actualment, la fase es calcula al migdia d'UTC Per tant, podeu esperar "
+"variacions d'1 dia en qualsevol direcció."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format

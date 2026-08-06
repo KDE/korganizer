@@ -3597,13 +3597,13 @@
 <varlistentry>
    <term
 ><guilabel
->Navigator grid highlight color</guilabel
+>Color para resaltar la cuadrícula del navegador</guilabel
 ></term>
    <listitem
 ><para
->This button opens the <guilabel
->Select Color</guilabel
-> dialog, allowing you to select the color for highlighting the currently selected date range in the navigator.</para
+>Este botón abre el diálogo <guilabel
+>Seleccionar color</guilabel
+> para permitirle seleccionar el color para resaltar el intervalo de fechas seleccionado en el navegador.</para
 ></listitem>
  </varlistentry>
 
@@ -4012,14 +4012,21 @@
 
 <sect2 id="date-numbers-plugin">
 <title
->Complemento de números de fechas para calendarios</title>
+>Números de fechas</title>
 <para
 >Este complemento añade a la vista de la agenda el número del día en el año. Por ejemplo, el 1 de febrero es el día número 32. </para>
 </sect2>
 
+<sect2 id="lunar-phases-plugin">
+  <title
+>Fases lunares</title>
+  <para
+>Este complemento muestra la fase lunar del día (nueva, creciente, llena, menguante) para cada fecha. En la actualidad, la fase se calcula para el mediodía UTC, por lo que cabe esperar variaciones de un día en cualquier dirección. </para>
+</sect2>
+
 <sect2 id="wikipedia-thisday-plugin">
 <title
->Complemento de «Este día en la historia» de la Wikipedia</title>
+>«Este día en la historia» de la Wikipedia</title>
 <para
 >Este complemento provee un enlace a la página <quote
 >Este día en la historia</quote
