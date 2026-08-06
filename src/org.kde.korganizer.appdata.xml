@@ -574,6 +574,7 @@
         <p>Plugins</p>
         <ul>
           <li>The Jewish calendar plugin is restored (gone since KDE4). This plugin shows dates and Jewish holidays in the Hebrew calendar system</li>
+          <li>The lunar phase calendar plugin now allows a configuration for northern versus southern hemispheres</li>
         </ul>
       </description>
     </release>
