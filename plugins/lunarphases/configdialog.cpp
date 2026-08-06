@@ -49,7 +49,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
     mLunarPhaseGroup->addButton(btn, int(Lunarphases::NorthernHemisphere));
     groupLayout->addWidget(btn);
     btn = new QRadioButton(i18nc("@option:radio", "Southern Hemisphere"), lunarPhaseBox);
-    btn->setToolTip(i18nc("@info:tooltip", "Show the lunar phases for the northern hemisphere"));
+    btn->setToolTip(i18nc("@info:tooltip", "Show the lunar phases for the southern hemisphere"));
     btn->setWhatsThis(i18nc("@info:whatsthis", "Select this option to show the moon phases if you live in the southern hemisphere."));
     mLunarPhaseGroup->addButton(btn, int(Lunarphases::SouthernHemisphere));
     groupLayout->addWidget(btn);
