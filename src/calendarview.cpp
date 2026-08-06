@@ -124,6 +124,9 @@ CalendarView::CalendarView(QWidget *parent)
 
     mChanger->setEntityTreeModel(mCalendar->entityTreeModel());
 
+    // Let KCalPrefs resolve the default calendars, which are stored by stable remote path.
+    CalendarSupport::KCalPrefs::instance()->setCollectionModel(mCalendar->entityTreeModel());
+
     mPartStatFilterProxy = new Akonadi::CalFilterPartStatusProxyModel(this);
     if (Akonadi::CalendarSettings::self()->hideDeclinedInvitations()) {
         mPartStatFilterProxy->setBlockedStatusList({KCalendarCore::Attendee::Declined});
