@@ -498,7 +498,7 @@
           <li xml:lang="ka">ნავიგატორი: შესაძლებელია ნავიგატორის ბადის გამოკვეთის ფერის შეცვლა. ფერის მოსარგებად დააყენეთ "ნავიგატორის ბადის გამოკვეთის ფერი" ფერებისა და ფონტის მორგების დიალოგში</li>
           <li xml:lang="nl">Navigator: de accentueringskleur voor het navigatorraster kan nu worden gewijzigd. Om de kleur te configureren, stelt u de "Accentueringskleur van het navigatorraster" in bij de instellingen voor kleuren en lettertypen.</li>
           <li xml:lang="pt-BR">Navegador: agora a cor de realce da grade de navegação pode ser mudada. Para configurar a cor, defina "Cor de realce da grade de navegação" nas configurações de Cores e Fontes.</li>
-          <li xml:lang="sl">Navigator: barvo označevanja navigacijske mreže je zdaj mogoče spremeniti. Za konfiguracijo barve v nastavitvah Barve in pisave nastavite "Barva označevanja navigacijske mreže".</li>
+          <li xml:lang="sl">Navigator: barvo označevanja navigacijske mreže je zdaj mogoče spremeniti. Za konfiguracijo barve v nastavitvah Barve in pisave nastavite "Barva označevanja navigacijske mreže"</li>
           <li xml:lang="sv">Navigering: Markeringsfärgen för navigeringsrutnätet kan nu ändras. För att ställa in färgen, använd "Färg för markering av navigeringsrutnät" i inställningarna för Färger och teckensnitt.</li>
           <li xml:lang="tr">Tarih gezgini: Gezgin için olan vurgu rengi artık değiştirilebiliyor. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Gezgin ızgarası vurgu rengi”ni ayarlayın.</li>
           <li xml:lang="uk">Панель навігації: можна змінювати колір тла підсвічування. Щоб налаштувати колір, встановіть значення для пункту «Колір підсвічування у таблиці навігації» у параметра кольорів і шрифтів програми.</li>
@@ -532,7 +532,7 @@
           <li xml:lang="ka">Kontact-ის შეჯამება: მომავალი მოვლენები აჩვენებს, დასრულდა, თუ არა მოვლენა უფრო ადრე დღეს, თუ ჯერ კიდევ მიმდინარეობს</li>
           <li xml:lang="nl">Kontact-overzicht: Aankomende evenementen geeft aan of een evenement eerder vandaag is afgelopen of momenteel aan de gang is.</li>
           <li xml:lang="pt-BR">Resumo do Kontact: "Próximos eventos" indica se um evento terminou mais cedo hoje ou se está em andamento</li>
-          <li xml:lang="sl">Povzetek kontakta: Prihajajoči dogodki prikazujejo, ali se je dogodek končal že prej danes ali je trenutno v teku.</li>
+          <li xml:lang="sl">Povzetek kontakta: Prihajajoči dogodki prikazujejo, ali se je dogodek končal že prej danes ali je trenutno v teku</li>
           <li xml:lang="sv">Kontact-översikt: Kommande händelser visas om en händelse har slutat tidigare idag eller för närvarande pågår</li>
           <li xml:lang="tr">Kontak özet: Gelecekteki etkinlikler, bir etkinlik aynı gün erkenden bittiyse veya şu anda sürüyorsa bunu gösterir.</li>
           <li xml:lang="uk">Резюме Kontact: реалізовано показ для майбутніх подій того, завершилася подія раніше сьогодні чи триває</li>
@@ -572,8 +572,28 @@
           <li xml:lang="uk">Резюме Kontact: сумісні формати рядків дат</li>
         </ul>
         <p>Plugins</p>
+        <p xml:lang="ca">Connectors</p>
+        <p xml:lang="ca-valencia">Connectors</p>
+        <p xml:lang="cs">Moduly</p>
+        <p xml:lang="es">Complementos</p>
+        <p xml:lang="ka">დამატებები</p>
+        <p xml:lang="pt-BR">Plugins</p>
+        <p xml:lang="sl">Vtičniki</p>
+        <p xml:lang="sv">Insticksprogram</p>
+        <p xml:lang="tr">Eklentiler</p>
+        <p xml:lang="uk">Додатки</p>
         <ul>
           <li>The Jewish calendar plugin is restored (gone since KDE4). This plugin shows dates and Jewish holidays in the Hebrew calendar system</li>
+          <li xml:lang="ca">Restaura el connector del calendari jueu (eliminat des del KDE4). Mostra les dates i els festius jueus en el sistema del calendari hebreu</li>
+          <li xml:lang="ca-valencia">Restaura el connector del calendari jueu (eliminat des de KDE4). Mostra les dates i els festius jueus en el sistema del calendari hebreu</li>
+          <li xml:lang="cs">Modul pro židovský kalendář byl obnoven (od verze KDE4 chyběl). Tento modul zobrazuje data a židovské svátky podle hebrejského kalendáře.</li>
+          <li xml:lang="es">Se ha restaurado el complemento de calendario hebreo (ausente desde KDE4). Este complemento muestra las fechas y las festividades judías según el calendario hebreo.</li>
+          <li xml:lang="ka">აღდგენილია ებრაული კალენდრის დამატება (გაქრა KDE4-ის შემდეგ). ეს დამატება აჩვენებს თარიღებს და ებრაულ დასვენების დღეებს ებრაული კალენდრის სისტემაში</li>
+          <li xml:lang="pt-BR">O plugin do calendário judaico foi restaurado (estava ausente desde o KDE4). Este plugin exibe datas e feriados judaicos no sistema do calendário hebraico.</li>
+          <li xml:lang="sl">Vtičnik za judovski koledar je obnovljen (od KDE4 ga ni bilo več). Ta vtičnik prikazuje datume in judovske praznike v hebrejskem koledarskem sistemu.</li>
+          <li xml:lang="sv">Det judiska kalenderinsticksprogrammet har återställts (borta sedan KDE4). Insticksprogrammet visar datum och judiska högtider med det hebreiska kalendersystemet</li>
+          <li xml:lang="tr">Yahudi takvimi eklentisi geri yüklendi (KDE4’ten beri yoktu). Bu eklenti İbrânî takvim sistemindeki tarihleri ve Yahudi tatillerini gösterir.</li>
+          <li xml:lang="uk">Відновлено додаток єврейського календаря (зник з часів KDE4). Цей додаток показує дати і єврейські свята у єврейській системі календаря</li>
           <li>The lunar phase calendar plugin now allows a configuration for northern versus southern hemispheres</li>
         </ul>
       </description>
