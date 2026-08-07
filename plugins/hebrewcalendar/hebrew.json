@@ -1,7 +1,27 @@
 {
     "KPlugin": {
         "Description": "Shows dates and Jewish holidays in the Hebrew calendar system.",
-        "Name": "Jewish Calendar"
+        "Description[ca@valencia]": "Mostra les dates i els festius jueus en el sistema del calendari hebreu.",
+        "Description[ca]": "Mostra les dates i els festius jueus en el sistema del calendari hebreu.",
+        "Description[cs]": "Zobrazuje data a židovské svátky podle hebrejského kalendáře.",
+        "Description[es]": "Muestra las fechas y las festividades judías según el calendario hebreo.",
+        "Description[ka]": "აჩვენებს თარიღებს და ებრაულ დღესასწაულებს ებრაული კალენდრის სისტემაში.",
+        "Description[pt_BR]": "Exibe datas e feriados judaicos no sistema do calendário hebraico.",
+        "Description[sl]": "Pokaže vse datume in judovske praznike v hebrejskem koledarskem sistemu.",
+        "Description[sv]": "Visar datum och judiska högtider i det hebreiska kalendersystemet.",
+        "Description[tr]": "Musevî takvim sistemindeki tüm tarihleri ve Yahudi tatillerini gösterir",
+        "Description[uk]": "Показує дати і єврейські свята у єврейській системі календаря.",
+        "Name": "Jewish Calendar",
+        "Name[ca@valencia]": "Calendari jueu",
+        "Name[ca]": "Calendari jueu",
+        "Name[cs]": "Židovský kalendář",
+        "Name[es]": "Calendario hebreo",
+        "Name[ka]": "ებრაული კალენდარი",
+        "Name[pt_BR]": "Calendário judaico",
+        "Name[sl]": "Judovski koledar",
+        "Name[sv]": "Judisk kalender",
+        "Name[tr]": "Musevî Takvimi",
+        "Name[uk]": "Єврейський календар"
     },
     "X-KDE-KOrganizer-HasSettings": true,
     "X-KDE-PluginInterfaceVersion": 2
