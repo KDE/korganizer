@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
-"PO-Revision-Date: 2026-08-05 09:18+0300\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
+"PO-Revision-Date: 2026-08-06 20:33+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -228,19 +228,19 @@ msgstr ""
 #, kde-format
 msgctxt "@option:check"
 msgid "Show weekly parsha"
-msgstr "Haftalık parşayı göster"
+msgstr "Haftalık Parşa’yı göster"
 
 #: hebrewcalendar/configdialog.cpp:49
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include weekly parsha days"
-msgstr "Haftalık parşa günlerini içer"
+msgstr "Haftalık Parşa günlerini içer"
 
 #: hebrewcalendar/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show weekly parsha days."
-msgstr "Haftalık parşa günlerini göstermek için bu seçeneği işaretleyin."
+msgstr "Haftalık Parşa günlerini göstermek için bu seçeneği işaretleyin."
 
 #: hebrewcalendar/configdialog.cpp:54
 #, kde-format
@@ -264,21 +264,19 @@ msgstr "Omer döneminin günlerini göstermek için bu seçeneği işaretleyin."
 #, kde-format
 msgctxt "@option:check"
 msgid "Show Chol HaMoed"
-msgstr "Çol HaMöd’ü göster"
+msgstr "Çol HaMoed’i göster"
 
 #: hebrewcalendar/configdialog.cpp:61
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Chol HaMoed"
-msgstr "Çol HaMöd günlerini içer"
+msgstr "Çol HaMoed günlerini içer"
 
 #: hebrewcalendar/configdialog.cpp:62
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select this option to dhow days of the Chol HaMoed."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
-msgstr "Çol HaMöd günlerini göstermek için bu seçeneği işaretleyin."
+msgstr "Çol HaMoed günlerini göstermek için bu seçeneği işaretleyin."
 
 #: hebrewcalendar/hebrew.cpp:87
 #, kde-format
@@ -386,7 +384,7 @@ msgstr ""
 #: hebrewcalendar/hebrew.cpp:138
 #, kde-format
 msgid "This plugin provides the date in the Jewish calendar."
-msgstr "Bu eklenti, tarihi Musevi takvimine göre göstermeyi sağlar."
+msgstr "Bu eklenti, tarihi Mûsevî takvimine göre göstermeyi sağlar."
 
 #: hebrewcalendar/holiday.cpp:77
 #, kde-format
@@ -415,7 +413,7 @@ msgstr "Pesah"
 #: hebrewcalendar/holiday.cpp:115 hebrewcalendar/holiday.cpp:309
 #, kde-format
 msgid "Chol Hamoed"
-msgstr "Çol Hamöd"
+msgstr "Çol Hamoed"
 
 #: hebrewcalendar/holiday.cpp:126 hebrewcalendar/holiday.cpp:131
 #: hebrewcalendar/holiday.cpp:140
@@ -881,77 +879,73 @@ msgid "Haazinu"
 msgstr "Haazinu"
 
 #: lunarphases/configdialog.cpp:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Lunar Phases"
-msgstr "Gün Numaralarını Yapılandır"
+msgstr "Ay’ın Evrelerini Yapılandır"
 
 #: lunarphases/configdialog.cpp:41
 #, kde-format
 msgctxt "@title:group"
 msgid "Choose your hemisphere"
-msgstr ""
+msgstr "Yarım Küreyi Seç"
 
 #: lunarphases/configdialog.cpp:46
 #, kde-format
 msgctxt "@option:radio"
 msgid "Northern Hemisphere"
-msgstr ""
+msgstr "Kuzey yarım küre"
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
-msgstr ""
+msgstr "Kuzey yarım küre için Ay’ın evrelerini göster"
 
 #: lunarphases/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the number of days remaining in the current "
-#| "year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the northern "
 "hemisphere."
 msgstr ""
-"Şu anki yılda kalan günlerin sayısını göstermek için bu seçeneği işaretleyin."
+"Kuzey yarım kürede yaşıyorsanız Ay’ın evrelerini göstermek için bu seçeneği "
+"kullanın."
 
 #: lunarphases/configdialog.cpp:51
 #, kde-format
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
-msgstr ""
+msgstr "Güney yarım küre"
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Show the lunar phases for the northern hemisphere"
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr "Kuzey yarım küre için Ay’ın evrelerini göster"
 
 #: lunarphases/configdialog.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the number of days remaining in the current "
-#| "year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the southern "
 "hemisphere."
 msgstr ""
-"Şu anki yılda kalan günlerin sayısını göstermek için bu seçeneği işaretleyin."
+"Güney yarım kürede yaşıyorsanız Ay’ın evrelerini göstermek için bu seçeneği "
+"kullanın."
 
 #: lunarphases/lunarphases.cpp:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
-#| "Currently, the phase is computed for noon at UTC; therefore, you should "
-#| "expect variations by 1 day in either direction."
+#, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
 "phase is computed for noon in the system timezone. Crescent and Gibbous "
 "phases are not displayed."
 msgstr ""
-"Bu eklenti, günün Ay evresini görüntüler (Yeniay, İlkdördün, Sondördün, "
-"Dolunay). Şu anda evre, UTC zaman diliminde gün ortası için hesaplanır; bu "
-"nedenle her iki yönde de bir günlük bir sapma beklemelisiniz."
+"Bu eklenti günün Ay evresini gösterir (Yeni, İlk, Son, Tam). Aşama, sistem "
+"saat diliminde öğle vakti için hesaplanır. Hilâl ve Kambur evreleri "
+"görüntülenmez."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format

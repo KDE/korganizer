@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer_calendarplugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
 "PO-Revision-Date: 2025-08-19 13:47+0200\n"
 "Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -923,7 +923,7 @@ msgctxt "@option:radio"
 msgid "Northern Hemisphere"
 msgstr ""
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
@@ -948,6 +948,18 @@ msgstr ""
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
 msgstr ""
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+#| msgid ""
+#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
+#| "year in the future."
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr ""
+"Mit dem Drehregler können Sie die Anzahl Tage in die Zukunft festlegen, für "
+"die anstehende Aufgaben angezeigt werden sollen. Der maximale Einstellung "
+"ist ein Jahr."
 
 #: lunarphases/configdialog.cpp:53
 #, fuzzy, kde-format

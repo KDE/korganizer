@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
 "PO-Revision-Date: 2002-11-07 11:37+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -876,7 +876,7 @@ msgctxt "@option:radio"
 msgid "Northern Hemisphere"
 msgstr ""
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
@@ -896,6 +896,13 @@ msgstr "Aktiveer rolbalk in maand besigtig selle"
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
 msgstr ""
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+#| msgid "Enable scrollbars in month view cells"
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr "Aktiveer rolbalk in maand besigtig selle"
 
 #: lunarphases/configdialog.cpp:53
 #, fuzzy, kde-format

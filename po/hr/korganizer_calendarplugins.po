@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -882,7 +882,7 @@ msgctxt "@option:radio"
 msgid "Northern Hemisphere"
 msgstr ""
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
@@ -901,6 +901,12 @@ msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
 msgstr ""
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr "Pokaži sekunde na liniji Markusa Bejnsa"
 
 #: lunarphases/configdialog.cpp:53
 #, fuzzy, kde-format

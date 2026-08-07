@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
 "PO-Revision-Date: 2009-02-28 20:07+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -903,7 +903,7 @@ msgctxt "@option:radio"
 msgid "Northern Hemisphere"
 msgstr ""
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
@@ -922,6 +922,12 @@ msgstr "ये तारीक ल एक्सेप्सन के रूप 
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
 msgstr ""
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr "ये तारीक ल एक्सेप्सन के रूप मं एखर घटना या काम बर पुनरावृत्ति नियम मं सामिल करव."
 
 #: lunarphases/configdialog.cpp:53
 #, fuzzy, kde-format

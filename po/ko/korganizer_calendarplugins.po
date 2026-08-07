@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
 "PO-Revision-Date: 2025-04-22 22:56+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -898,7 +898,7 @@ msgctxt "@option:radio"
 msgid "Northern Hemisphere"
 msgstr ""
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
@@ -921,6 +921,16 @@ msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
 msgstr ""
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+#| msgctxt "@info:whatsthis"
+#| msgid ""
+#| "A date that should be considered an exception to the recurrence rules for "
+#| "this event or to-do."
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
 
 #: lunarphases/configdialog.cpp:53
 #, fuzzy, kde-format

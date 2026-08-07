@@ -4007,6 +4007,13 @@
 >Bu eklenti, Ajanda görünümüne yıl içindeki gün sayısını ekler. Örneğin 1 Şubat, 32. gündür. </para>
 </sect2>
 
+<sect2 id="lunar-phases-plugin">
+  <title
+>Ay’ın Evreleri</title>
+  <para
+>Bu eklenti, her tarih için günün Ay evresini (Yeni, İlk, Son, Tam) gösterir. Şu anda aşama UTC’de öğle vakti için hesaplanıyor; bu nedenle her iki yönde de 1 günlük değişiklikleri beklemelisiniz. </para>
+</sect2>
+
 <sect2 id="wikipedia-thisday-plugin">
 <title
 >Vikipedi “Tarihte Bugün”</title>
@@ -4027,9 +4034,9 @@
 
 <sect2 id="jewish-calendar-plugin">
 <title
->Musevî Takvimi Eklentisi</title>
+>Mûsevî Takvimi Eklentisi</title>
 <para
->Bu eklenti, Miladî takvim tarihlerine ek olarak Musevî takvimi tarihlerini de sunar. Eklentinin yapılandırma iletişim kutusunda, İsrail bayramlarını, haftalık Parşa’yı, Ömer gününü ve/veya Chol HaMoed’i görüntülemek isteyip istemediğinizi seçebilirsiniz. </para>
+>Bu eklenti, Miladî takvim tarihlerine ek olarak Musevî takvimi tarihlerini de sunar. Eklentinin yapılandırma iletişim kutusunda, İsrail bayramlarını, haftalık Parşa’yı, Omer gününü ve/veya Çol HaMoed’i görüntülemek isteyip istemediğinizi seçebilirsiniz. </para>
 </sect2>
 
 </sect1>

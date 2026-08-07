@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
-"PO-Revision-Date: 2026-08-05 16:01+0200\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
+"PO-Revision-Date: 2026-08-06 16:55+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -258,9 +258,7 @@ msgid "Include days of the Chol HaMoed"
 msgstr "Inkludera dagar i Chol HaMoed"
 
 #: hebrewcalendar/configdialog.cpp:62
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select this option to dhow days of the Chol HaMoed."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
 msgstr "Markera alternativet för att visa dagar i Chol HaMoed."
@@ -867,79 +865,70 @@ msgid "Haazinu"
 msgstr "Haazinu"
 
 #: lunarphases/configdialog.cpp:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Lunar Phases"
-msgstr "Anpassa dagnummer"
+msgstr "Anpassa månfaser"
 
 #: lunarphases/configdialog.cpp:41
 #, kde-format
 msgctxt "@title:group"
 msgid "Choose your hemisphere"
-msgstr ""
+msgstr "Välj halvklot"
 
 #: lunarphases/configdialog.cpp:46
 #, kde-format
 msgctxt "@option:radio"
 msgid "Northern Hemisphere"
-msgstr ""
+msgstr "Norra halvklotet"
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
-msgstr ""
+msgstr "Visa månfaserna för norra halvklotet"
 
 #: lunarphases/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the number of days remaining in the current "
-#| "year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the northern "
 "hemisphere."
 msgstr ""
-"Markera alternativet för att visa antal dagar som återstår under innevarande "
-"år"
+"Markera alternativet för att visa månfaserna om du bor på norra halvklotet."
 
 #: lunarphases/configdialog.cpp:51
 #, kde-format
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
-msgstr ""
+msgstr "Södra halvklotet"
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Show the lunar phases for the northern hemisphere"
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr "Visa månfaserna för norra halvklotet"
 
 #: lunarphases/configdialog.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the number of days remaining in the current "
-#| "year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the southern "
 "hemisphere."
 msgstr ""
-"Markera alternativet för att visa antal dagar som återstår under innevarande "
-"år"
+"Markera alternativet för att visa månfaserna om du bor på södra halvklotet."
 
 #: lunarphases/lunarphases.cpp:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
-#| "Currently, the phase is computed for noon at UTC; therefore, you should "
-#| "expect variations by 1 day in either direction."
+#, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
 "phase is computed for noon in the system timezone. Crescent and Gibbous "
 "phases are not displayed."
 msgstr ""
-"Insticksprogrammet visar dagens månfas (ny, första, sista, full). För "
-"närvarande beräknas fasen för middag i UTC. Förvänta dig därför variationer "
-"på en dag i vardera riktningen."
+"Insticksprogrammet visar dagens månfas (ny, första, sista, full). Månfasen "
+"beräknas för middag i systemets tidszon. Månskära och oval måne visas inte."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format

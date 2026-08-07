@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-06 00:45+0000\n"
-"PO-Revision-Date: 2026-08-01 16:11+0300\n"
+"PO-Revision-Date: 2026-08-06 09:24+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -3990,20 +3990,16 @@ msgid "Agenda View Decorations"
 msgstr "עיטורי תצוגת סדר יום"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the %1 plugin"
-msgstr "הגדרת התצוגה"
+msgstr "הגדרת התוסף %1"
 
 #: prefs/koprefsdialogplugins.cpp:145
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to start the search."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to configure the %1 plugin."
-msgstr "יש ללחוץ על הכפתור הזה כדי להתחיל את החיפוש."
+msgstr "יש ללחוץ על הכפתור הזה כדי להגדיר את התוסף %1."
 
 #: prefs/koprefsdialogplugins.cpp:207
 #, kde-format

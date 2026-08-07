@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer_plugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 00:45+0000\n"
-"PO-Revision-Date: 2026-08-05 05:53-0300\n"
+"POT-Creation-Date: 2026-08-07 00:47+0000\n"
+"PO-Revision-Date: 2026-08-06 07:10-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -272,9 +272,7 @@ msgid "Include days of the Chol HaMoed"
 msgstr "Mostrar os dias do Chol HaMoed"
 
 #: hebrewcalendar/configdialog.cpp:62
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select this option to dhow days of the Chol HaMoed."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
 msgstr "Selecione esta opção para exibir os dias de Chol HaMoed."
@@ -880,77 +878,73 @@ msgid "Haazinu"
 msgstr "Haazinu"
 
 #: lunarphases/configdialog.cpp:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Lunar Phases"
-msgstr "Configurar números de dias"
+msgstr "Configurar fases da lua"
 
 #: lunarphases/configdialog.cpp:41
 #, kde-format
 msgctxt "@title:group"
 msgid "Choose your hemisphere"
-msgstr ""
+msgstr "Selecione seu hemisfério"
 
 #: lunarphases/configdialog.cpp:46
 #, kde-format
 msgctxt "@option:radio"
 msgid "Northern Hemisphere"
-msgstr ""
+msgstr "Hemisfério Norte"
 
-#: lunarphases/configdialog.cpp:47 lunarphases/configdialog.cpp:52
+#: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
-msgstr ""
+msgstr "Mostre as fases da Lua para o hemisfério norte"
 
 #: lunarphases/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the number of days remaining in the current "
-#| "year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the northern "
 "hemisphere."
 msgstr ""
-"Selecione esta opção para exibir o número de dias restantes no ano atual."
+"Selecione esta opção para exibir as fases da lua se você mora no hemisfério "
+"norte."
 
 #: lunarphases/configdialog.cpp:51
 #, kde-format
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
-msgstr ""
+msgstr "Hemisfério Sul"
+
+#: lunarphases/configdialog.cpp:52
+#, fuzzy, kde-format
+#| msgctxt "@info:tooltip"
+#| msgid "Show the lunar phases for the northern hemisphere"
+msgctxt "@info:tooltip"
+msgid "Show the lunar phases for the southern hemisphere"
+msgstr "Mostre as fases da Lua para o hemisfério norte"
 
 #: lunarphases/configdialog.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "Select this option to show the number of days remaining in the current "
-#| "year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the southern "
 "hemisphere."
 msgstr ""
-"Selecione esta opção para exibir o número de dias restantes no ano atual."
+"Selecione esta opção para exibir as fases da lua se você mora no hemisfério "
+"sul."
 
 #: lunarphases/lunarphases.cpp:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
-#| "Currently, the phase is computed for noon at UTC; therefore, you should "
-#| "expect variations by 1 day in either direction."
+#, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
 "phase is computed for noon in the system timezone. Crescent and Gibbous "
 "phases are not displayed."
 msgstr ""
-"Este plugin mostra a fase da Lua do dia (Nova, Minguante, Crescente, Cheia). "
-"No momento, a fase é calculada para o meio-dia em UTC; assim, você deve "
-"esperar variações de 1 dia em qualquer uma das direções."
+"Este plugin exibe a fase lunar do dia (Nova, Quarto Crescente, Quarto "
+"Minguante, Cheia). A fase é calculada para o meio-dia no fuso horário do "
+"sistema. As fases crescente e gibosa não são exibidas."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format

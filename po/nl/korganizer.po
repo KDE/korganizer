@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-06 00:45+0000\n"
-"PO-Revision-Date: 2026-07-26 09:30+0200\n"
+"PO-Revision-Date: 2026-08-05 18:46+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -4062,20 +4062,16 @@ msgid "Agenda View Decorations"
 msgstr "Decoraties van agendaweergave"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the %1 plugin"
-msgstr "De weergave instellen"
+msgstr "De %1-plug-in configureren"
 
 #: prefs/koprefsdialogplugins.cpp:145
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to start the search."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to configure the %1 plugin."
-msgstr "Klik op deze knop om het zoeken te starten.."
+msgstr "Druk op deze knop om de %1-plug-in te configureren."
 
 #: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
