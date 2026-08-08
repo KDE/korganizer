@@ -61,10 +61,13 @@
 #include <IncidenceEditor/IndividualMailComponentFactory>
 
 #include <KCalendarCore/CalFilter>
+#include <KCalendarCore/Exceptions>
 #include <KCalendarCore/FileStorage>
 #include <KCalendarCore/ICalFormat>
 
+#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 30, 0)
 #include <KCalUtils/Stringify>
+#endif
 
 #include <TextAddonsWidgets/WhatsNewNgDialog>
 
@@ -1894,7 +1897,11 @@ void CalendarView::exportICalendar()
         if (!storage.save()) {
             QString errmess;
             if (format->exception()) {
+#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 30, 0)
                 errmess = KCalUtils::Stringify::errorMessage(*format->exception());
+#else
+                errmess = format->exception()->errorMessage();
+#endif
             } else {
                 errmess = i18nc("@info save failure cause unknown", "Reason unknown");
             }
