@@ -1,6 +1,18 @@
 {
     "KPlugin": {
         "Description": "This plugin shows the day's lunar phase (New, First, Last, Full) at noon according to your system timezone.",
+        "Description[ca@valencia]": "Este connector mostra la fase lunar del dia (nova, creixent, plena, minvant) segons el fus horari del vostre sistema.",
+        "Description[ca]": "Aquest connector mostra la fase lunar del dia (nova, creixent, plena, minvant) segons el fus horari del vostre sistema.",
+        "Description[cs]": "Tento modul zobrazuje aktuální fázi Měsíce (nov, první čtvrť, poslední čtvrť, úplněk) v poledne podle časového pásma vašeho systému.",
+        "Description[es]": "Este complemento muestra la fase lunar del día (nueva, creciente, llena, menguante) a mediodía según la zona horaria del sistema.",
+        "Description[he]": "התוסף הזה מציג את מופע הירח היומי (מולד, ראשון, אחרון, מלא) בצוהריים לפי אזור הזמן של המערכת שלך.",
+        "Description[ka]": "ეს დამატება დღის მთვარის ფაზას გაჩვენებთ (ახალი, პირველი, ბოლო, სრული) შუადღისით, თქვენი სისტემის დროის სარტყელზე დამოკიდებულებით.",
+        "Description[nl]": "Deze plug-in toont de maanfase van de dag (Nieuwe, Eerste, Laatste, Volle) bij noon volgens de tijdzone van uw systeem.",
+        "Description[pt_BR]": "Este plugin exibe a fase lunar do dia (Nova, Quarto Crescente, Quarto Minguante, Cheia) para o meio-dia no fuso horário do sistema.",
+        "Description[sl]": "Ta vtičnik prikazuje dnevno lunino meno (mlaj, prvi krajec, zadnji krajec, polno luno) opoldne glede na vaš časovni pas.",
+        "Description[sv]": "Insticksprogrammet visar dagens månfas (ny, skära, oval, full) vid middag enligt systemets tidszon.",
+        "Description[tr]": "Bu eklenti, sistem zaman diliminize göre günün Ay evresini gösterir (Yeniay, İlkdördün, Sondördün, Dolunay).",
+        "Description[uk]": "Цей додаток показує фазу місяця (новий, перша чверть, остання чверть, повня) опівдні відповідно до часового поясу, який встановлено у вашій системі.",
         "Name": "Lunar Phases",
         "Name[ca@valencia]": "Fases lunars",
         "Name[ca]": "Fases lunars",
