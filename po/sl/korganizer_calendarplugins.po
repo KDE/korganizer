@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer_calendarplugins.po 1743193 2026-08-07 01:30:49Z scripty $
+# $Id: korganizer_calendarplugins.po 1743268 2026-08-08 01:29:42Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-07 00:47+0000\n"
-"PO-Revision-Date: 2026-08-06 07:30+0200\n"
+"POT-Creation-Date: 2026-08-08 00:46+0000\n"
+"PO-Revision-Date: 2026-08-07 06:19+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -287,97 +287,97 @@ msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
 msgstr "Izberite to možnost za prikaz dni Chol HaMoed."
 
-#: hebrewcalendar/hebrew.cpp:87
+#: hebrewcalendar/hebrew.cpp:189
 #, kde-format
 msgctxt "Hebrew month 1 - KLocale::LongName"
 msgid "Tishrey"
 msgstr "Tishrey"
 
-#: hebrewcalendar/hebrew.cpp:89
+#: hebrewcalendar/hebrew.cpp:191
 #, kde-format
 msgctxt "Hebrew month 2 - KLocale::LongName"
 msgid "Heshvan"
 msgstr "Heshvan"
 
-#: hebrewcalendar/hebrew.cpp:91
+#: hebrewcalendar/hebrew.cpp:193
 #, kde-format
 msgctxt "Hebrew month 3 - KLocale::LongName"
 msgid "Kislev"
 msgstr "Kislev"
 
-#: hebrewcalendar/hebrew.cpp:93
+#: hebrewcalendar/hebrew.cpp:195
 #, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
 msgstr "Tevet"
 
-#: hebrewcalendar/hebrew.cpp:95
+#: hebrewcalendar/hebrew.cpp:197
 #, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
 msgstr "Shvat"
 
-#: hebrewcalendar/hebrew.cpp:97
+#: hebrewcalendar/hebrew.cpp:199
 #, kde-format
 msgctxt "Hebrew month 6 - KLocale::LongName"
 msgid "Adar"
 msgstr "Adar"
 
-#: hebrewcalendar/hebrew.cpp:99
+#: hebrewcalendar/hebrew.cpp:201
 #, kde-format
 msgctxt "Hebrew month 7 - KLocale::LongName"
 msgid "Nisan"
 msgstr "Nisan"
 
-#: hebrewcalendar/hebrew.cpp:101
+#: hebrewcalendar/hebrew.cpp:203
 #, kde-format
 msgctxt "Hebrew month 8 - KLocale::LongName"
 msgid "Iyar"
 msgstr "Iyar"
 
-#: hebrewcalendar/hebrew.cpp:103
+#: hebrewcalendar/hebrew.cpp:205
 #, kde-format
 msgctxt "Hebrew month 9 - KLocale::LongName"
 msgid "Sivan"
 msgstr "Sivan"
 
-#: hebrewcalendar/hebrew.cpp:105
+#: hebrewcalendar/hebrew.cpp:207
 #, kde-format
 msgctxt "Hebrew month 10 - KLocale::LongName"
 msgid "Tamuz"
 msgstr "Tamuz"
 
-#: hebrewcalendar/hebrew.cpp:107
+#: hebrewcalendar/hebrew.cpp:209
 #, kde-format
 msgctxt "Hebrew month 11 - KLocale::LongName"
 msgid "Av"
 msgstr "Av"
 
-#: hebrewcalendar/hebrew.cpp:109
+#: hebrewcalendar/hebrew.cpp:211
 #, kde-format
 msgctxt "Hebrew month 12 - KLocale::LongName"
 msgid "Elul"
 msgstr "Elul"
 
-#: hebrewcalendar/hebrew.cpp:111
+#: hebrewcalendar/hebrew.cpp:213
 #, kde-format
 msgctxt "Hebrew month 13 - KLocale::LongName"
 msgid "Adar I"
 msgstr "Adar I"
 
-#: hebrewcalendar/hebrew.cpp:113
+#: hebrewcalendar/hebrew.cpp:215
 #, kde-format
 msgctxt "Hebrew month 14 - KLocale::LongName"
 msgid "Adar II"
 msgstr "Adar II"
 
-#: hebrewcalendar/hebrew.cpp:125
+#: hebrewcalendar/hebrew.cpp:227
 #, kde-format
 msgctxt "1. day of the month 2. hebrew month"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: hebrewcalendar/hebrew.cpp:131
+#: hebrewcalendar/hebrew.cpp:233
 #, kde-format
 msgctxt ""
 "Change the next two strings if emphasis is done differently in your language."
@@ -390,7 +390,7 @@ msgstr ""
 "%1\n"
 "</i></p></qt>"
 
-#: hebrewcalendar/hebrew.cpp:138
+#: hebrewcalendar/hebrew.cpp:240
 #, kde-format
 msgid "This plugin provides the date in the Jewish calendar."
 msgstr "Ta vstavek ponuja datum v judovskem koledarju."
@@ -927,12 +927,10 @@ msgid "Southern Hemisphere"
 msgstr "Južna polobla"
 
 #: lunarphases/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Show the lunar phases for the northern hemisphere"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the southern hemisphere"
-msgstr "Prikaži lunine mene za severno poloblo"
+msgstr "Prikaži lunine mene za južno poloblo"
 
 #: lunarphases/configdialog.cpp:53
 #, kde-format

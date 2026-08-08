@@ -23,8 +23,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-07 00:47+0000\n"
-"PO-Revision-Date: 2026-07-26 08:50+0200\n"
+"POT-Creation-Date: 2026-08-08 00:46+0000\n"
+"PO-Revision-Date: 2026-08-06 17:54+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -224,18 +224,16 @@ msgid "Configure Holidays"
 msgstr "Configurer les vacances"
 
 #: hebrewcalendar/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use Israeli holidays"
-msgstr "Utiliser les vacances israéliennes"
+msgstr "Utiliser les jours fériés israéliens"
 
 #: hebrewcalendar/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include Israeli holidays"
-msgstr "Utiliser les vacances israéliennes"
+msgstr "Inclure les jours fériés israéliens"
 
 #: hebrewcalendar/configdialog.cpp:44
 #, kde-format
@@ -244,67 +242,58 @@ msgid ""
 "Select this option to show Israeli holidays; including national, non-"
 "religious holidays."
 msgstr ""
+"Sélectionnez cette option pour afficher les jours fériés israéliens, y "
+"compris les jours fériés nationaux  ou non religieux."
 
 #: hebrewcalendar/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show weekly parsha"
 msgstr "Afficher le « parsha » hebdomadaire"
 
 #: hebrewcalendar/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include weekly parsha days"
-msgstr "Afficher le « parsha » hebdomadaire"
+msgstr "Afficher les jours du « parsha » hebdomadaire"
 
 #: hebrewcalendar/configdialog.cpp:50
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select this option to show the day number of the current year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show weekly parsha days."
 msgstr ""
-"Sélectionnez cette option pour afficher le numéro du jour de l'année en "
-"cours."
+"Sélectionnez cette option pour afficher les jours du « parsha » hebdomadaire."
 
 #: hebrewcalendar/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show day of Omer"
-msgstr "Afficher le jour « Omer »"
+msgstr "Afficher le jour de Omer"
 
 #: hebrewcalendar/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Omer"
-msgstr "Afficher le jour « Omer »"
+msgstr "Afficher le jour de Omer"
 
 #: hebrewcalendar/configdialog.cpp:56
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Select this option to show the day number of the current year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Omer period."
 msgstr ""
-"Sélectionnez cette option pour afficher le numéro du jour de l'année en "
-"cours."
+"Sélectionnez cette option pour afficher les jours de la période de Omer."
 
 #: hebrewcalendar/configdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "Show Chol HaMoed"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show Chol HaMoed"
-msgstr "Afficher le « Chol HaMoed »"
+msgstr "Afficher Chol HaMoed"
 
 #: hebrewcalendar/configdialog.cpp:61
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Chol HaMoed"
-msgstr ""
+msgstr "Inclure les jours de Chol HaMoed"
 
 #: hebrewcalendar/configdialog.cpp:62
 #, fuzzy, kde-format
@@ -316,101 +305,97 @@ msgstr ""
 "Sélectionnez cette option pour afficher le numéro du jour de l'année en "
 "cours."
 
-#: hebrewcalendar/hebrew.cpp:87
+#: hebrewcalendar/hebrew.cpp:189
 #, kde-format
 msgctxt "Hebrew month 1 - KLocale::LongName"
 msgid "Tishrey"
-msgstr ""
+msgstr "Tishrey"
 
-#: hebrewcalendar/hebrew.cpp:89
+#: hebrewcalendar/hebrew.cpp:191
 #, kde-format
 msgctxt "Hebrew month 2 - KLocale::LongName"
 msgid "Heshvan"
-msgstr ""
+msgstr "Heshvan"
 
-#: hebrewcalendar/hebrew.cpp:91
+#: hebrewcalendar/hebrew.cpp:193
 #, kde-format
 msgctxt "Hebrew month 3 - KLocale::LongName"
 msgid "Kislev"
-msgstr ""
+msgstr "Kislev"
 
-#: hebrewcalendar/hebrew.cpp:93
-#, fuzzy, kde-format
-#| msgid "Tzom Tevet"
+#: hebrewcalendar/hebrew.cpp:195
+#, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
-msgstr "Tzom Tevet"
+msgstr "Tevet"
 
-#: hebrewcalendar/hebrew.cpp:95
-#, fuzzy, kde-format
-#| msgid "Tu B'Shvat"
+#: hebrewcalendar/hebrew.cpp:197
+#, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
-msgstr "Tu B'Shvat"
+msgstr "Shvat"
 
-#: hebrewcalendar/hebrew.cpp:97
+#: hebrewcalendar/hebrew.cpp:199
 #, kde-format
 msgctxt "Hebrew month 6 - KLocale::LongName"
 msgid "Adar"
-msgstr ""
+msgstr "Adar"
 
-#: hebrewcalendar/hebrew.cpp:99
+#: hebrewcalendar/hebrew.cpp:201
 #, kde-format
 msgctxt "Hebrew month 7 - KLocale::LongName"
 msgid "Nisan"
-msgstr ""
+msgstr "Nisan"
 
-#: hebrewcalendar/hebrew.cpp:101
+#: hebrewcalendar/hebrew.cpp:203
 #, kde-format
 msgctxt "Hebrew month 8 - KLocale::LongName"
 msgid "Iyar"
-msgstr ""
+msgstr "Iyar"
 
-#: hebrewcalendar/hebrew.cpp:103
+#: hebrewcalendar/hebrew.cpp:205
 #, kde-format
 msgctxt "Hebrew month 9 - KLocale::LongName"
 msgid "Sivan"
-msgstr ""
+msgstr "Sivan"
 
-#: hebrewcalendar/hebrew.cpp:105
+#: hebrewcalendar/hebrew.cpp:207
 #, kde-format
 msgctxt "Hebrew month 10 - KLocale::LongName"
 msgid "Tamuz"
-msgstr ""
+msgstr "Tamuz"
 
-#: hebrewcalendar/hebrew.cpp:107
+#: hebrewcalendar/hebrew.cpp:209
 #, kde-format
 msgctxt "Hebrew month 11 - KLocale::LongName"
 msgid "Av"
-msgstr ""
+msgstr "De"
 
-#: hebrewcalendar/hebrew.cpp:109
+#: hebrewcalendar/hebrew.cpp:211
 #, kde-format
 msgctxt "Hebrew month 12 - KLocale::LongName"
 msgid "Elul"
-msgstr ""
+msgstr "Elul"
 
-#: hebrewcalendar/hebrew.cpp:111
+#: hebrewcalendar/hebrew.cpp:213
 #, kde-format
 msgctxt "Hebrew month 13 - KLocale::LongName"
 msgid "Adar I"
-msgstr ""
+msgstr "Adar I"
 
-#: hebrewcalendar/hebrew.cpp:113
+#: hebrewcalendar/hebrew.cpp:215
 #, kde-format
 msgctxt "Hebrew month 14 - KLocale::LongName"
 msgid "Adar II"
-msgstr ""
+msgstr "Adar II"
 
-#: hebrewcalendar/hebrew.cpp:125
-#, fuzzy, kde-format
-#| msgctxt "@title month and year"
-#| msgid "%1 %2"
+#: hebrewcalendar/hebrew.cpp:227
+#, kde-format
 msgctxt "1. day of the month 2. hebrew month"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: hebrewcalendar/hebrew.cpp:131
+#: hebrewcalendar/hebrew.cpp:233
 #, kde-format
 msgctxt ""
 "Change the next two strings if emphasis is done differently in your language."
@@ -423,7 +408,7 @@ msgstr ""
 "%1\n"
 "</i></p></qt>"
 
-#: hebrewcalendar/hebrew.cpp:138
+#: hebrewcalendar/hebrew.cpp:240
 #, kde-format
 msgid "This plugin provides the date in the Jewish calendar."
 msgstr "Ce module fournit la date avec le calendrier juif."

@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-06 00:45+0000\n"
-"PO-Revision-Date: 2026-08-03 17:39+0200\n"
+"PO-Revision-Date: 2026-08-06 17:50+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -4185,20 +4185,16 @@ msgid "Agenda View Decorations"
 msgstr "Décorations de la vue en calendrier"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the %1 plugin"
-msgstr "Configurer la vue"
+msgstr "Configurer le module externe %1"
 
 #: prefs/koprefsdialogplugins.cpp:145
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to start the search."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to configure the %1 plugin."
-msgstr "Cliquer sur ce bouton pour démarrer la recherche."
+msgstr "Appuyer sur ce bouton pour démarrer le module externe %1."
 
 # unreviewed-context
 #: prefs/koprefsdialogplugins.cpp:207

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-addons\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-07 00:47+0000\n"
-"PO-Revision-Date: 2026-08-06 05:30+0200\n"
+"POT-Creation-Date: 2026-08-08 00:46+0000\n"
+"PO-Revision-Date: 2026-08-07 06:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -263,97 +263,97 @@ msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
 msgstr "ჩართეთ, თუ გნებავთ ხოლ ჰამოედის დღეების ჩვენება."
 
-#: hebrewcalendar/hebrew.cpp:87
+#: hebrewcalendar/hebrew.cpp:189
 #, kde-format
 msgctxt "Hebrew month 1 - KLocale::LongName"
 msgid "Tishrey"
 msgstr "თიშრი"
 
-#: hebrewcalendar/hebrew.cpp:89
+#: hebrewcalendar/hebrew.cpp:191
 #, kde-format
 msgctxt "Hebrew month 2 - KLocale::LongName"
 msgid "Heshvan"
 msgstr "ხეშვანი"
 
-#: hebrewcalendar/hebrew.cpp:91
+#: hebrewcalendar/hebrew.cpp:193
 #, kde-format
 msgctxt "Hebrew month 3 - KLocale::LongName"
 msgid "Kislev"
 msgstr "ქისლევი"
 
-#: hebrewcalendar/hebrew.cpp:93
+#: hebrewcalendar/hebrew.cpp:195
 #, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
 msgstr "ტევეთი"
 
-#: hebrewcalendar/hebrew.cpp:95
+#: hebrewcalendar/hebrew.cpp:197
 #, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
 msgstr "შვატი"
 
-#: hebrewcalendar/hebrew.cpp:97
+#: hebrewcalendar/hebrew.cpp:199
 #, kde-format
 msgctxt "Hebrew month 6 - KLocale::LongName"
 msgid "Adar"
 msgstr "ადარი"
 
-#: hebrewcalendar/hebrew.cpp:99
+#: hebrewcalendar/hebrew.cpp:201
 #, kde-format
 msgctxt "Hebrew month 7 - KLocale::LongName"
 msgid "Nisan"
 msgstr "ნისანი"
 
-#: hebrewcalendar/hebrew.cpp:101
+#: hebrewcalendar/hebrew.cpp:203
 #, kde-format
 msgctxt "Hebrew month 8 - KLocale::LongName"
 msgid "Iyar"
 msgstr "იარი"
 
-#: hebrewcalendar/hebrew.cpp:103
+#: hebrewcalendar/hebrew.cpp:205
 #, kde-format
 msgctxt "Hebrew month 9 - KLocale::LongName"
 msgid "Sivan"
 msgstr "სივანი"
 
-#: hebrewcalendar/hebrew.cpp:105
+#: hebrewcalendar/hebrew.cpp:207
 #, kde-format
 msgctxt "Hebrew month 10 - KLocale::LongName"
 msgid "Tamuz"
 msgstr "თამუზი"
 
-#: hebrewcalendar/hebrew.cpp:107
+#: hebrewcalendar/hebrew.cpp:209
 #, kde-format
 msgctxt "Hebrew month 11 - KLocale::LongName"
 msgid "Av"
 msgstr "ავი"
 
-#: hebrewcalendar/hebrew.cpp:109
+#: hebrewcalendar/hebrew.cpp:211
 #, kde-format
 msgctxt "Hebrew month 12 - KLocale::LongName"
 msgid "Elul"
 msgstr "ელული"
 
-#: hebrewcalendar/hebrew.cpp:111
+#: hebrewcalendar/hebrew.cpp:213
 #, kde-format
 msgctxt "Hebrew month 13 - KLocale::LongName"
 msgid "Adar I"
 msgstr "ადარი I"
 
-#: hebrewcalendar/hebrew.cpp:113
+#: hebrewcalendar/hebrew.cpp:215
 #, kde-format
 msgctxt "Hebrew month 14 - KLocale::LongName"
 msgid "Adar II"
 msgstr "ადარი II"
 
-#: hebrewcalendar/hebrew.cpp:125
+#: hebrewcalendar/hebrew.cpp:227
 #, kde-format
 msgctxt "1. day of the month 2. hebrew month"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: hebrewcalendar/hebrew.cpp:131
+#: hebrewcalendar/hebrew.cpp:233
 #, kde-format
 msgctxt ""
 "Change the next two strings if emphasis is done differently in your language."
@@ -366,7 +366,7 @@ msgstr ""
 "%1\n"
 "</i></p></qt>"
 
-#: hebrewcalendar/hebrew.cpp:138
+#: hebrewcalendar/hebrew.cpp:240
 #, kde-format
 msgid "This plugin provides the date in the Jewish calendar."
 msgstr "ეს დამატება ებრალური კალენდრის მხარდაჭერას ჩართავს."
@@ -904,12 +904,10 @@ msgid "Southern Hemisphere"
 msgstr "სამხრეთი ნახევარსფერო"
 
 #: lunarphases/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Show the lunar phases for the northern hemisphere"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the southern hemisphere"
-msgstr "მთვარის ფაზების ჩვენება ჩრდილოეთ ნახევარსფეროსთვის"
+msgstr "მთვარის ფაზების ჩვენება სამხრეთ ნახევარსფეროსთვის"
 
 #: lunarphases/configdialog.cpp:53
 #, kde-format
