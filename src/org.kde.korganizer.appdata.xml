@@ -576,7 +576,9 @@
         <p xml:lang="ca-valencia">Connectors</p>
         <p xml:lang="cs">Moduly</p>
         <p xml:lang="es">Complementos</p>
+        <p xml:lang="he">תוספים</p>
         <p xml:lang="ka">დამატებები</p>
+        <p xml:lang="nl">Plug-ins</p>
         <p xml:lang="pt-BR">Plugins</p>
         <p xml:lang="sl">Vtičniki</p>
         <p xml:lang="sv">Insticksprogram</p>
@@ -588,11 +590,13 @@
           <li xml:lang="ca-valencia">Restaura el connector del calendari jueu (eliminat des de KDE4). Mostra les dates i els festius jueus en el sistema del calendari hebreu</li>
           <li xml:lang="cs">Modul pro židovský kalendář byl obnoven (od verze KDE4 chyběl). Tento modul zobrazuje data a židovské svátky podle hebrejského kalendáře.</li>
           <li xml:lang="es">Se ha restaurado el complemento de calendario hebreo (ausente desde KDE4). Este complemento muestra las fechas y las festividades judías según el calendario hebreo.</li>
+          <li xml:lang="he">תוסף לוח השנה העברי שוחזר (לא היה קיים מ־KDE4). התוסף הזה מציג תאריכים וחגים יהודיים במערכת לוח השנה העברי</li>
           <li xml:lang="ka">აღდგენილია ებრაული კალენდრის დამატება (გაქრა KDE4-ის შემდეგ). ეს დამატება აჩვენებს თარიღებს და ებრაულ დასვენების დღეებს ებრაული კალენდრის სისტემაში</li>
+          <li xml:lang="nl">De Joodse kalender-plug-in is hersteld (verdween sinds KDE4). Deze plug-in toont datums en Joodse feestdagen in het Hebreeuwse kalendersysteem</li>
           <li xml:lang="pt-BR">O plugin do calendário judaico foi restaurado (estava ausente desde o KDE4). Este plugin exibe datas e feriados judaicos no sistema do calendário hebraico.</li>
           <li xml:lang="sl">Vtičnik za judovski koledar je obnovljen (od KDE4 ga ni bilo več). Ta vtičnik prikazuje datume in judovske praznike v hebrejskem koledarskem sistemu.</li>
           <li xml:lang="sv">Det judiska kalenderinsticksprogrammet har återställts (borta sedan KDE4). Insticksprogrammet visar datum och judiska högtider med det hebreiska kalendersystemet</li>
-          <li xml:lang="tr">Yahudi takvimi eklentisi geri yüklendi (KDE4’ten beri yoktu). Bu eklenti İbrânî takvim sistemindeki tarihleri ve Yahudi tatillerini gösterir.</li>
+          <li xml:lang="tr">Mûsevî takvimi eklentisi geri yüklendi (KDE4’ten beri yoktu). Bu eklenti İbrânî takvim sistemindeki tarihleri ve tatilleri gösterir.</li>
           <li xml:lang="uk">Відновлено додаток єврейського календаря (зник з часів KDE4). Цей додаток показує дати і єврейські свята у єврейській системі календаря</li>
           <li>The lunar phase calendar plugin now allows a configuration for northern versus southern hemispheres</li>
         </ul>
