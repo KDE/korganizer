@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-07 02:44+0000\n"
-"PO-Revision-Date: 2026-07-17 11:21+0400\n"
+"PO-Revision-Date: 2026-08-10 16:41+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -530,7 +530,7 @@ msgstr "منظور جدول الأعمال"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
-msgstr "بدّل إلى عرض جدول الأعمال"
+msgstr "بدّل إلى منظور جدول الأعمال"
 
 #: actionmanager.cpp:367
 #, kde-format
@@ -540,8 +540,9 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
-"التبديل إلى عرض جدول الأعمال، الذي يعرض أحداثك أو المهام المستحقة ليوم واحد "
-"أو أكثر، مرتبة ترتيبًا زمنيًا.  "
+"التبديل إلى منظور جدول الأعمال، الذي يعرض أحداثك أو المهام المستحقة ليوم "
+"واحد أو أكثر، مرتبة ترتيبًا زمنيًا. يمكنك أيضًا الاطلاع على مدة كل فعالية في "
+"الجدول الزمني اليومي."
 
 #: actionmanager.cpp:374
 #, kde-format
@@ -4607,7 +4608,7 @@ msgstr "ارسم خطوطًا أكثر سمكًا لشبكة الساعات"
 #: settings/korganizer.kcfg:130
 #, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "اعرض أوصاف الأحداث في عناصر عرض جدول الأعمال"
+msgstr "اعرض أوصاف الأحداث في عناصر منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:131
@@ -4626,7 +4627,7 @@ msgstr "اعرض أوصاف الأحداث في عناصر منظور جدول �
 #: settings/korganizer.kcfg:136
 #, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "اعرض أماكن الأحداث في عناصر عرض جدول الأعمال"
+msgstr "اعرض أماكن الأحداث في عناصر منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
@@ -4708,7 +4709,7 @@ msgstr "اعرض الثواني (ربما مع المنطقة الزمنية) ب
 #: settings/korganizer.kcfg:160
 #, kde-format
 msgid "Time range selection in agenda view starts event editor"
-msgstr "تحديد النطاق الزمني في عرض جدول الأعمال يبدأ محرر الأحداث"
+msgstr "تحديد النطاق الزمني في منظور جدول الأعمال يبدأ محرر الأحداث"
 
 #. i18n: ectx: whatsthis, entry (SelectionStartsEditor), group (Agenda View)
 #: settings/korganizer.kcfg:161
@@ -5259,7 +5260,7 @@ msgstr "اختر من هنا لون خلفية منظور جدول الأعما�
 #: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "لون خط عرض جدول الأعمال في الوقت الحالي (ماركوس باينز)"
+msgstr "لون خط منظور جدول الأعمال في الوقت الحالي (ماركوس باينز)"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:335
@@ -6463,9 +6464,9 @@ msgid ""
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"عرض جدول الأعمال: يمكنك اختيارياً رسم خطوط شبكية أفقية أكثر سمكاً كل ساعتين. "
+"منظور جدول الأعمال: يمكنك اختيارياً رسم خطوط شبكية أفقية أكثر سمكاً كل ساعتين. "
 "لتمكين هذه الميزة، حدد الخيار ”ارسم خطوطًا أفقية سميكة للساعات الزوجية“ في "
-"علامة التبويب ”عرض->عرض جدول الأعمال“"
+"علامة التبويب ”عرض->منظور جدول الأعمال“"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
@@ -6518,7 +6519,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:32
 msgid "Agenda view: underline today's column header date"
-msgstr "عرض جدول الأعمال: تسطير تاريخ عنوان العمود الخاص بيوم اليوم"
+msgstr "منظور جدول الأعمال: تسطير تاريخ عنوان العمود الخاص بيوم اليوم"
 
 #: whatsnew/whatsnewtranslations.cpp:33
 msgid ""
@@ -6526,9 +6527,9 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"عرض جدول الأعمال: اختيارياً، اعرض أماكن الحوادث داخل بنود جدول الأعمال. "
-"لتمكين هذا السلوك، حدد خيار ”عرض أماكن الأحداث في بنود عرض جدول الأعمال” في "
-"لسان عرض->عرض جدول الأعمال."
+"منظور جدول الأعمال: اختيارياً، اعرض أماكن الحوادث داخل بنود جدول الأعمال. "
+"لتمكين هذا السلوك، حدد خيار ”عرض أماكن الأحداث في بنود منظور جدول الأعمال” "
+"في لسان عرض->منظور جدول الأعمال."
 
 #: whatsnew/whatsnewtranslations.cpp:35
 msgid ""
@@ -6536,6 +6537,9 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"عرض المهام: لم يعد يتم عرض قائمة المهام المصغرة في الشريط الجانبي؛ لا يزال "
+"يمكن عرض قائمة المهام المصغرة في جميع العروض الأخرى إذا كان خيار الإعدادات ← "
+"الشريط الجانبي ← إظهار قائمة المهام مفعّلًا"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6550,7 +6554,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
-msgstr ""
+msgstr "القوالب: يمكن إضافة وسوم (فئات) إلى قوالب الأحداث"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -6612,7 +6616,8 @@ msgid ""
 "Agenda view: events with short durations are displayed with their starting "
 "time in addition to their summary"
 msgstr ""
-"عرض جدول الأعمال: تُعرض الأحداث قصيرة المدة مع وقت بدايتها بالإضافة إلى ملخصها"
+"منظور جدول الأعمال: تُعرض الأحداث قصيرة المدة مع وقت بدايتها بالإضافة إلى "
+"ملخصها"
 
 #: whatsnew/whatsnewtranslations.cpp:58
 msgid ""
@@ -6620,9 +6625,9 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"عرض جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. "
-"لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود عرض جدول الأعمال” في "
-"لسان عرض->عرض جدول الأعمال."
+"منظور جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. "
+"لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود منظور جدول الأعمال” "
+"في لسان عرض->منظور جدول الأعمال."
 
 #: whatsnew/whatsnewtranslations.cpp:60
 msgid "Search: the search settings are saved/restored"
@@ -6633,7 +6638,7 @@ msgid ""
 "Agenda view: added timelabels context menu to show/hide time labels for the "
 "system timezone on the right (or left) side as well"
 msgstr ""
-"عرض جدول الأعمال: إضافة قائمة سياق لإظهار/إخفاء التسميات الزمنية لمنطقة "
+"منظور جدول الأعمال: إضافة قائمة سياق لإظهار/إخفاء التسميات الزمنية لمنطقة "
 "التوقيت للنظام على الجانب الأيمن (أو الأيسر) أيضًا."
 
 #: whatsnew/whatsnewtranslations.cpp:70
@@ -6661,7 +6666,7 @@ msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
-"عرض جدول الأعمال: دمج النطاقات الزمنية ”اليوم“ و”الأيام X التالية“ و”جدول "
+"منظور جدول الأعمال: دمج النطاقات الزمنية ”اليوم“ و”الأيام X التالية“ و”جدول "
 "العمل“ و”الأسبوع“ في زر أداة جدول الأعمال"
 
 #: whatsnew/whatsnewtranslations.cpp:84
@@ -6669,12 +6674,12 @@ msgid ""
 "Agenda view: added timelabels context menu option to toggle a 24-hour "
 "(military style) clock"
 msgstr ""
-"عرض جدول الأعمال: إضافة خيار قائمة سياق علامات الوقت لتبديل ساعة 24 ساعة "
+"منظور جدول الأعمال: إضافة خيار قائمة سياق علامات الوقت لتبديل ساعة 24 ساعة "
 "(النمط العسكري)"
 
 #: whatsnew/whatsnewtranslations.cpp:85
 msgid "Agenda view: added context menu to create new Event or To-do"
-msgstr "عرض جدول الأعمال: إضافة قائمة سياق لإنشاء حدث أو مهمة جديدة"
+msgstr "منظور جدول الأعمال: إضافة قائمة سياق لإنشاء حدث أو مهمة جديدة"
 
 #: whatsnew/whatsnewtranslations.cpp:86
 msgid ""
@@ -6797,19 +6802,19 @@ msgstr "محرر الحدوث: الوسوم مرتبة أبجديًا في مح�
 #, kde-format
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
-msgstr ""
+msgstr "إصلاح CalDAV: التقويمات المنشأة في KOrganizer تُنشأ على خادم DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
 msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
-msgstr ""
+msgstr "إصلاح CalDAV: تغييرات اسم/لون التقويم في KOrganizer تُنسخ على خادم DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
-msgstr ""
+msgstr "إصلاح CalDAV: التعامل مع إنشاء/تحرير/حذف استثناءات الأحداث المتكررة"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format
@@ -6819,7 +6824,7 @@ msgstr "إصلاح مشكلة تبديل التذكير من القوائم"
 #: whatsnew/whatsnewtranslations.cpp:170
 #, kde-format
 msgid "Agenda view: improved timelabel vertical alignment with grid"
-msgstr "عرض جدول الأعمال: تحسين محاذاة العلامات الزمنية عموديًا مع الشبكة"
+msgstr "منظور جدول الأعمال: تحسين محاذاة العلامات الزمنية عموديًا مع الشبكة"
 
 #: widgets/kdatenavigator.cpp:176
 #, kde-format

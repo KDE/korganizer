@@ -20,15 +20,15 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-07 02:44+0000\n"
-"PO-Revision-Date: 2026-05-16 14:17+0200\n"
-"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
+"PO-Revision-Date: 2026-08-08 14:02+0200\n"
+"Last-Translator: Alexander Becker <alex-at-kde-l10n-de@freenet.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.04.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1137,20 +1137,16 @@ msgid "Configure"
 msgstr "Einrichten"
 
 #: actionmanager.cpp:603
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
-msgstr "Die aktuelle Ansicht einrichten"
+msgstr "Die Mehrkalender-Ansicht einrichten"
 
 #: actionmanager.cpp:604
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "Configure the current view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
-msgstr "Die aktuelle Ansicht einrichten"
+msgstr "Die Mehrkalender-Ansicht einrichten"
 
 #: actionmanager.cpp:606
 #, kde-format
@@ -1252,12 +1248,10 @@ msgid "Show Date Navigator"
 msgstr "Datumsnavigator anzeigen"
 
 #: actionmanager.cpp:715
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "Aufgabenansicht anzeigen"
+msgstr "Aufgabenliste anzeigen"
 
 #: actionmanager.cpp:719
 #, kde-format
@@ -3035,24 +3029,22 @@ msgstr "in "
 msgctxt "use abbreviation for hour to keep the text short"
 msgid "1 hr"
 msgid_plural "%1 hrs"
-msgstr[0] "1 Stunde"
-msgstr[1] "%1 Stunden"
+msgstr[0] "1 Std."
+msgstr[1] "%1 Std."
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:193
 #, kde-format
 msgctxt "use abbreviation for minute to keep the text short"
 msgid "1 min"
 msgid_plural "%1 mins"
-msgstr[0] "1 Minute"
-msgstr[1] "%1 Minuten"
+msgstr[0] "1 Min."
+msgstr[1] "%1 Min."
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
-msgstr "in Bearbeitung"
+msgstr "laufend"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:218
 #, kde-format
@@ -3077,13 +3069,13 @@ msgstr[1] ""
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
 msgid "all day"
-msgstr "den ganzen Tag"
+msgstr "ganztägig"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:272
 #, kde-format
 msgctxt "Time from - to"
 msgid "%1 - %2"
-msgstr "%1 – %2"
+msgstr "%1–%2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:288
 #, kde-format
@@ -3275,7 +3267,7 @@ msgstr "Nicht &begonnene (Startdatum liegt in der Zukunft)"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:184
 #, kde-format
 msgid "Hide in-progress To-dos"
-msgstr "Aufgaben in Bearbeitung ausblenden"
+msgstr "Laufende Aufgaben ausblenden"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideInProgressBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:187
@@ -3291,7 +3283,7 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:190
 #, kde-format
 msgid "&In-progress (started but not completed)"
-msgstr "In &Bearbeitung (begonnen, aber nicht erledigt)"
+msgstr "&Laufend (begonnen, aber nicht erledigt)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOverdueBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:197
@@ -3336,23 +3328,19 @@ msgstr "Morgen"
 #, kde-format
 msgctxt "1. weekday, 2. time"
 msgid "%1 %2"
-msgstr "%1 %2"
+msgstr "%1, %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
 msgstr "%1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
-msgstr "%1 %2"
+msgstr "%1, %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:246
 #, kde-format
@@ -3441,7 +3429,7 @@ msgstr "abgeschlossen"
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
-msgstr "in Bearbeitung"
+msgstr "laufend "
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:446
 #, kde-format
@@ -3726,7 +3714,7 @@ msgstr[1] "%1 Jahre"
 msgid "No special dates within the next 1 day"
 msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] "Heute stehen keine besonderen Termine an"
-msgstr[1] "Kein besonderen Termine in den nächsten %1 Tagen"
+msgstr[1] "Keine besonderen Termine in den nächsten %1 Tagen"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:668
 #, kde-format
@@ -4971,13 +4959,13 @@ msgstr ""
 #: settings/korganizer.kcfg:197
 #, kde-format
 msgid "Multiple Calendar Display"
-msgstr "Multi-Kalender-Ansicht"
+msgstr "Mehrkalender-Ansicht"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:200
 #, kde-format
 msgid "Merge all calendars into one view"
-msgstr "Alle Kalender in eine Ansicht zusammenführen"
+msgstr "Alle Kalender in einer Ansicht zusammenführen"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:201
@@ -4986,7 +4974,7 @@ msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
 msgstr ""
-"Wählen Sie die Einstellung „Alle Kalender in eine Ansicht zusammenführen“, "
+"Wählen Sie die Einstellung „Alle Kalender in einer Ansicht zusammenführen“, "
 "wenn alle Kalender in einer zusammengeführten Terminplanansicht gemeinsam "
 "angezeigt werden sollen."
 
@@ -5141,7 +5129,7 @@ msgstr ""
 #: settings/korganizer.kcfg:247
 #, kde-format
 msgid "Display journals in the month view"
-msgstr "Journale In der Monatsansicht anzeigen"
+msgstr "Journale in der Monatsansicht anzeigen"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
@@ -5151,11 +5139,10 @@ msgstr "Feiertage anzeigen"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:252
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
 msgstr ""
-"Aktivieren Sie diese Einstellung, um Aufgaben in der Monatsansicht "
+"Aktivieren Sie diese Einstellung, um Feiertage in der Monatsansicht "
 "anzuzeigen."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
@@ -5274,7 +5261,7 @@ msgstr ""
 #: settings/korganizer.kcfg:298
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
-msgstr "Erledigte Aufgaben immer an Ende der Liste anzeigen"
+msgstr "Erledigte Aufgaben immer am Ende der Liste anzeigen"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
 #: settings/korganizer.kcfg:299
@@ -5283,7 +5270,7 @@ msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
 "priority"
 msgstr ""
-"Erledigte Aufgaben werden unabhängig von ihrer Priorität immer an Ende der "
+"Erledigte Aufgaben werden unabhängig von ihrer Priorität immer am Ende der "
 "Liste angezeigt"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
@@ -5317,10 +5304,10 @@ msgid ""
 "list view, but other widgets, such as the date navigator, the to-do details "
 "and the calendars list, will not be displayed."
 msgstr ""
-"Kreuzen Sie dieses Feld an, wenn bei der Aufgabenansicht die gesamte "
-"Fenstergröße des KOrganizer Fensters verwendet werden soll. Dadurch erhalten "
-"Sie mehr Platz für die Aufgabenansicht. Allerdings werden andere Elemente, "
-"wie zum Beispiel der Datumsnavigator, die Detailansicht von Aufgaben und die "
+"Kreuzen Sie dieses Feld an, wenn in der Aufgabenansicht die gesamte Größe "
+"des KOrganizer-Fensters verwendet werden soll. Dadurch erhalten Sie mehr "
+"Platz für die Aufgabenansicht. Allerdings werden andere Elemente, wie zum "
+"Beispiel der Datumsnavigator, die Detailansicht von Aufgaben und die "
 "Kalenderliste nicht angezeigt."
 
 #. i18n: ectx: label, entry, group (Todo View)
@@ -5400,10 +5387,10 @@ msgstr "Wählen Sie hier die Hintergrundfarbe für die Terminplanansicht aus."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:334
-#, fuzzy, kde-format
-#| msgid "Agenda view current-time line color"
+#, kde-format
 msgid "Agenda view current-time (Marcus Bains) line color"
-msgstr "Farbe der Marcus-Bains-Linie in der Terminplanansicht"
+msgstr ""
+"Farbe der Marcus-Bains-Linie für die aktuelle Zeit in der Terminplanansicht"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:335
@@ -7188,17 +7175,13 @@ msgid "Select a year"
 msgstr "Ein Jahr auswählen"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
