@@ -5,13 +5,13 @@
 # Munzir Taha <munzir@kacst.edu.sa>, 2004.
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# SPDX-FileCopyrightText: 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-08 00:46+0000\n"
-"PO-Revision-Date: 2025-08-06 17:26+0400\n"
+"PO-Revision-Date: 2026-08-10 16:43+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -32,7 +32,7 @@ msgstr "اضبط أرقام الأيّام"
 #, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
-msgstr "أعرض رقم التاريخ"
+msgstr "اعرض رقم التاريخ"
 
 #: datenums/configdialog.cpp:48
 #, kde-format
@@ -41,18 +41,16 @@ msgid "Show day number"
 msgstr "اعرض رقم اليوم"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "اعرض رقم اليوم"
+msgstr "اعرض رقم يوم السنة"
 
 #: datenums/configdialog.cpp:50
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr "المجموعات خيارات إلى التاريخ و وقت من الحدث أو إلى."
+msgstr "اختر هذا الخيار لعرض رقم يوم السنة الحالية."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -64,14 +62,14 @@ msgstr "اعرض الأيام إلى نهاية السنة"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "اعرض عدد الأيام المتبقية في السنة"
 
 #: datenums/configdialog.cpp:55
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
-msgstr "كِش مربّع IF إلى إظهار ثوان يعمل الحالي وقت سطر."
+msgstr "اختر هذا الخيار لعرض عدد الأيام المتبقية في السنة الحالية."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -84,7 +82,7 @@ msgstr "اعرض الإثنين"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "اعرض كلاً من رقم يوم السنة وعدد الأيام المتبقية في السنة"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -93,6 +91,8 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"اختر هذا الخيار لعرض كلاً من رقم يوم السنة وعدد الأيام المتبقية في السنة "
+"الحالية. الصيغة هي يوم_السنة / أيام_حتى_نهاية_السنة"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -215,18 +215,16 @@ msgid "Configure Holidays"
 msgstr "اضبط أيّام الأعياد"
 
 #: hebrewcalendar/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use Israeli holidays"
 msgstr "استعمل الأعياد الإسرائيلية"
 
 #: hebrewcalendar/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include Israeli holidays"
-msgstr "استعمل الأعياد الإسرائيلية"
+msgstr "ضمّن الأعياد الإسرائيلية"
 
 #: hebrewcalendar/configdialog.cpp:44
 #, kde-format
@@ -235,50 +233,47 @@ msgid ""
 "Select this option to show Israeli holidays; including national, non-"
 "religious holidays."
 msgstr ""
+"اختر هذا الخيار لعرض الأعياد الإسرائيلية؛ بما فيها الأعياد الوطنية غير "
+"الدينية."
 
 #: hebrewcalendar/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show weekly parsha"
 msgstr "اعرض البارشا الأسبوعية"
 
 #: hebrewcalendar/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include weekly parsha days"
-msgstr "اعرض البارشا الأسبوعية"
+msgstr "ضمّن أيام الباراشا الأسبوعية"
 
 #: hebrewcalendar/configdialog.cpp:50
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show weekly parsha days."
-msgstr "المجموعات خيارات إلى التاريخ و وقت من الحدث أو إلى."
+msgstr "اختر هذا الخيار لعرض أيام الباراشا الأسبوعية."
 
 #: hebrewcalendar/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show day of Omer"
 msgstr "اعرض يوم عمر"
 
 #: hebrewcalendar/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Omer"
-msgstr "اعرض يوم عمر"
+msgstr "ضمّن أيام العومر"
 
 #: hebrewcalendar/configdialog.cpp:56
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Omer period."
-msgstr "المجموعات خيارات إلى التاريخ و وقت من الحدث أو إلى."
+msgstr "اختر هذا الخيار لعرض أيام فترة العومر."
 
 #: hebrewcalendar/configdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "Show Chol HaMoed"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show Chol HaMoed"
 msgstr "أظهر تشول هامويد"
@@ -287,102 +282,100 @@ msgstr "أظهر تشول هامويد"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Chol HaMoed"
-msgstr ""
+msgstr "ضمّن أيام خول هموعيد"
 
 #: hebrewcalendar/configdialog.cpp:62
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
-msgstr "المجموعات خيارات إلى التاريخ و وقت من الحدث أو إلى."
+msgstr "اختر هذا الخيار لعرض أيام خول هموعيد."
 
 #: hebrewcalendar/hebrew.cpp:189
 #, kde-format
 msgctxt "Hebrew month 1 - KLocale::LongName"
 msgid "Tishrey"
-msgstr ""
+msgstr "تشريه"
 
 #: hebrewcalendar/hebrew.cpp:191
 #, kde-format
 msgctxt "Hebrew month 2 - KLocale::LongName"
 msgid "Heshvan"
-msgstr ""
+msgstr "حشوان"
 
 #: hebrewcalendar/hebrew.cpp:193
 #, kde-format
 msgctxt "Hebrew month 3 - KLocale::LongName"
 msgid "Kislev"
-msgstr ""
+msgstr "كسليف"
 
 #: hebrewcalendar/hebrew.cpp:195
-#, fuzzy, kde-format
-#| msgid "Tzom Tevet"
+#, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
-msgstr "تزوم تيفيت"
+msgstr "طيفيت"
 
 #: hebrewcalendar/hebrew.cpp:197
-#, fuzzy, kde-format
-#| msgid "Tu B'Shvat"
+#, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
-msgstr "طو بشفاط"
+msgstr "شباط"
 
 #: hebrewcalendar/hebrew.cpp:199
 #, kde-format
 msgctxt "Hebrew month 6 - KLocale::LongName"
 msgid "Adar"
-msgstr ""
+msgstr "آذار"
 
 #: hebrewcalendar/hebrew.cpp:201
 #, kde-format
 msgctxt "Hebrew month 7 - KLocale::LongName"
 msgid "Nisan"
-msgstr ""
+msgstr "نيسان"
 
 #: hebrewcalendar/hebrew.cpp:203
 #, kde-format
 msgctxt "Hebrew month 8 - KLocale::LongName"
 msgid "Iyar"
-msgstr ""
+msgstr "أيار"
 
 #: hebrewcalendar/hebrew.cpp:205
 #, kde-format
 msgctxt "Hebrew month 9 - KLocale::LongName"
 msgid "Sivan"
-msgstr ""
+msgstr "سيفان"
 
 #: hebrewcalendar/hebrew.cpp:207
 #, kde-format
 msgctxt "Hebrew month 10 - KLocale::LongName"
 msgid "Tamuz"
-msgstr ""
+msgstr "طموز"
 
 #: hebrewcalendar/hebrew.cpp:209
 #, kde-format
 msgctxt "Hebrew month 11 - KLocale::LongName"
 msgid "Av"
-msgstr ""
+msgstr "آب"
 
 #: hebrewcalendar/hebrew.cpp:211
 #, kde-format
 msgctxt "Hebrew month 12 - KLocale::LongName"
 msgid "Elul"
-msgstr ""
+msgstr "أيلول"
 
 #: hebrewcalendar/hebrew.cpp:213
 #, kde-format
 msgctxt "Hebrew month 13 - KLocale::LongName"
 msgid "Adar I"
-msgstr ""
+msgstr "آذار الأول"
 
 #: hebrewcalendar/hebrew.cpp:215
 #, kde-format
 msgctxt "Hebrew month 14 - KLocale::LongName"
 msgid "Adar II"
-msgstr ""
+msgstr "آذار الثاني"
 
 #: hebrewcalendar/hebrew.cpp:227
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "1. day of the month 2. hebrew month"
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -898,73 +891,66 @@ msgid "Haazinu"
 msgstr "هازينو"
 
 #: lunarphases/configdialog.cpp:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Lunar Phases"
-msgstr "اضبط أرقام الأيّام"
+msgstr "اضبط أطوار القمر"
 
 #: lunarphases/configdialog.cpp:41
 #, kde-format
 msgctxt "@title:group"
 msgid "Choose your hemisphere"
-msgstr ""
+msgstr "اختر نصف الكرة الأرضية الخاص بك"
 
 #: lunarphases/configdialog.cpp:46
 #, kde-format
 msgctxt "@option:radio"
 msgid "Northern Hemisphere"
-msgstr ""
+msgstr "نصف الأرض الشمالي"
 
 #: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
-msgstr ""
+msgstr "اعرض أطوار القمر لنصف الكرة الشمالي"
 
 #: lunarphases/configdialog.cpp:48
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the northern "
 "hemisphere."
-msgstr "كِش مربّع IF إلى إظهار ثوان يعمل الحالي وقت سطر."
+msgstr "اختر هذا الخيار لعرض أطوار القمر إذا كنت تعيش في نصف الكرة الشمالي."
 
 #: lunarphases/configdialog.cpp:51
 #, kde-format
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
-msgstr ""
+msgstr "نصف الأرض الجنوبي"
 
 #: lunarphases/configdialog.cpp:52
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the southern hemisphere"
-msgstr "كِش مربّع IF إلى إظهار ثوان يعمل الحالي وقت سطر."
+msgstr "اعرض أطوار القمر لنصف الكرة الجنوبي"
 
 #: lunarphases/configdialog.cpp:53
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the southern "
 "hemisphere."
-msgstr "كِش مربّع IF إلى إظهار ثوان يعمل الحالي وقت سطر."
+msgstr "اختر هذا الخيار لعرض أطوار القمر إذا كنت تعيش في نصف الكرة الجنوبي."
 
 #: lunarphases/lunarphases.cpp:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
-#| "Currently, the phase is computed for noon at UTC; therefore, you should "
-#| "expect variations by 1 day in either direction."
+#, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
 "phase is computed for noon in the system timezone. Crescent and Gibbous "
 "phases are not displayed."
 msgstr ""
-"يعرض هذا المحلق مرحلة القمر في اليوم (جديد، أولاً، آخر، كامل).حاليا، تحسب "
-"المرحلة للظهر حسب توقيت UTC؛ لذلك، يجب أن تتوقع الاختلافات في يوم واحد في أي "
-"من الاتجاهين."
+"يعرض هذا الملحق طور القمر لليوم (محاق، هلال أول، هلال آخر، بدر). يُحسب الطور "
+"عند الظهيرة حسب المنطقة الزمنية للنظام. لا تُعرض أطوار الهلال والأحدب."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format
@@ -989,7 +975,7 @@ msgstr "تجاهل النسبة الباعية"
 msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
-msgstr ""
+msgstr "غيّر حجم الصورة المصغرة حسب الحاجة لملء المساحة، متجاهلاً نسبة الأبعاد"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -1008,7 +994,7 @@ msgstr "أبقِ النّسبة الباعيّة"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
-msgstr ""
+msgstr "غيّر حجم الصورة المصغرة بأكبر حجم ممكن مع الحفاظ على نسبة الأبعاد"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -1030,7 +1016,7 @@ msgstr "أبقِ النّسبة الباعيّة بواسطة التمديد"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
-msgstr ""
+msgstr "غيّر حجم الصورة المصغرة لملء المساحة، مع احتمال قص الصورة"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

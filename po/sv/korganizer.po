@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-10 00:46+0000\n"
-"PO-Revision-Date: 2026-08-05 15:57+0200\n"
+"PO-Revision-Date: 2026-08-09 07:42+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -3240,7 +3240,7 @@ msgstr "&Färdiga"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
 #, kde-format
 msgid "Hide To-dos without a due date"
-msgstr "Dölj uppgifter utan datumfrist"
+msgstr "Dölj uppgifter utan färdigdatum"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:158
@@ -4495,7 +4495,7 @@ msgid ""
 "their due, due today or overdue state"
 msgstr ""
 "Markera rutan så att uppgifter använder etikettfärger och inte färger "
-"specifika för deras tidsfrist, färdiga idag eller försenade"
+"specifika för deras färdigtid, färdiga idag eller försenade"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:75
@@ -5829,7 +5829,7 @@ msgid ""
 "item.)"
 msgstr ""
 "Det här alternativet döljer alla uppgifter från listan där startdatumet inte "
-"har nåtts. (Observera att startdatumet är inte uppgiftspostens datumfrist.)"
+"har nåtts. (Observera att startdatumet är inte uppgiftspostens färdigdatum.)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:221
