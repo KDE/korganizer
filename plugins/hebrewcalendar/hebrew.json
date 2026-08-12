@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Shows dates and Jewish holidays in the Hebrew calendar system.",
+        "Description[ar]": "يعرض التواريخ والأعياد اليهودية وفقًا لنظام التقويم العبري.",
         "Description[ca@valencia]": "Mostra les dates i els festius jueus en el sistema del calendari hebreu.",
         "Description[ca]": "Mostra les dates i els festius jueus en el sistema del calendari hebreu.",
         "Description[cs]": "Zobrazuje data a židovské svátky podle hebrejského kalendáře.",
@@ -15,6 +16,7 @@
         "Description[tr]": "İbrânî takvim sistemindeki tüm tarihleri ve Mûsevî tatillerini gösterir",
         "Description[uk]": "Показує дати і єврейські свята у єврейській системі календаря.",
         "Name": "Jewish Calendar",
+        "Name[ar]": "التّقويم اليهوديّ",
         "Name[ca@valencia]": "Calendari jueu",
         "Name[ca]": "Calendari jueu",
         "Name[cs]": "Židovský kalendář",

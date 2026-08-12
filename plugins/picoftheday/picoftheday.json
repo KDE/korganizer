@@ -35,6 +35,7 @@
         "Description[zh_CN]": "此插件提供对维基百科“每日图片”的支持",
         "Description[zh_TW]": "這個外掛程式提供維基百科的「本日圖片」",
         "Name": "Wikipedia Picture Of the Day",
+        "Name[ar]": "صورة اليوم من ويكيبديا",
         "Name[ca@valencia]": "Imatge del dia de la Viquipèdia",
         "Name[ca]": "Imatge del dia de la Viquipèdia",
         "Name[cs]": "Obrázek dne na Wikipedii",
