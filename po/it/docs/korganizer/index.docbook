@@ -92,6 +92,15 @@
 >Sviluppatore</contrib>
 </othercredit>
 
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>Sviluppatore</contrib>
+</othercredit>
+
 <othercredit role="reviewer"
 ><firstname
 >Lauri</firstname
@@ -985,9 +994,7 @@
 > mostrerà eventi o cose da fare del primo mese mostrato nel Navigatore date (i giorni selezionati non cambiano la vista Mese, solo il mese cambia).</para>
 
 <para
->Il componente <quote
->vista delle cose da fare</quote
-> della barra laterale elenca le cose da fare, esattamente come la <link linkend="todo-view"
+>Il componente elenco delle cose da fare della barra laterale elenca le cose da fare, esattamente come la <link linkend="todo-view"
 >vista delle cose da fare</link
 >. È utile quando si vogliono vedere le cose da fare mentre si usano le altre viste.</para>
 
@@ -1136,6 +1143,21 @@
 <listitem
 ><para
 >Seleziona una regione libera di tempo, e fai un doppio clic per iniziare a scrivere il sommario dell'evento. &korganizer; imposterà automaticamente la durata e l'ora di inizio a quelle che hai definito selezionando un'area sulla vista Agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>Suggerimenti per migliorare la visualizzazione degli eventi: <itemizedlist>
+<listitem
+><para
+>Usare la scorciatoia shift-rotellina per ingrandire/restringere l'altezza della riga della griglia oraria. Questo è utile per vedere i dettagli degli eventi se più eventi si verificano nello stesso intervallo di tempo. </para
+></listitem>
+<listitem
+><para
+>Mostrare le etichette dell'orario su entrambi i lati della griglia oraria selezionando Mostra/Nascondi le etichette dell'orario a destra nel menu contestuale delle etichette dell'orario.</para
 ></listitem>
 </itemizedlist>
 </para
@@ -2910,6 +2932,17 @@
 >Nota che allegare un messaggio di posta senza allegati può rendere la firma non valida. </para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Categoria di accesso predefinito</guilabel
+></term>
+<listitem
+><para
+>Questa opzione ti permette di selezionare la categoria di accesso predefinito (pubblica, confidenziale, privata) da usare durante la creazione di eventi, cose da fare o diari. Si veda la sezione 3.8.1.3 dell'RFC 5545 intitolata «Classification« (categorie in questo caso) per saperne di più sulle proprietà delle categorie di 'accesso per il formato iCalendar.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>
@@ -2984,13 +3017,22 @@
 <varlistentry>
 <term
 ><guilabel
->Festività</guilabel
+>Zone delle festività</guilabel
 ></term>
 <listitem
 ><para
->Seleziona il tuo paese dal menu a discesa o, se non è elencato, scegli <guilabel
->(Nessuno)</guilabel
->. Se scegli uno stato, &korganizer; riconoscerà e mostrerà le date importanti ed i giorni festivi nella vista del calendario.</para
+>Seleziona le zone della festività dall'elenco a discesa. Per ogni zona selezionata, &korganizer; riconoscerà e mostrerà le relative date e festività importanti nelle vista agenda e mensile. Puoi configurare i tipi delle festività per mostrare l'elenco a discesa Categorie delle festività (vedi la voce successiva). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Categorie delle festività</guilabel
+></term>
+<listitem
+><para
+>Seleziona le categorie delle festività dall'elenco a discesa. Come impostazioni predefinite sono abilitati tutti i tipi di festività. Seleziona le categorie delle festività che vuoi nascondere, ad esempio alcune persone non sono interessate alle festività religiose. </para
 ></listitem>
 </varlistentry>
 
@@ -3242,6 +3284,39 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Disegna linee della griglia orizzontali spesse per le ore pari</guilabel
+></term>
+  <listitem
+><para
+>Marca questa casella per disegnare linee della griglia orizzontali più spesse/grosse per le ore pari (mezzanotte, 2, 4, ecc).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Mostra descrizioni delle occorrenze nelle voci della vista agenda.</guilabel
+></term>
+  <listitem
+><para
+>Marca questa casella per mostrare le descrizioni delle occorrenze nelle voci della vista agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Mostra posizioni delle occorrenze nelle voci della vista agenda.</guilabel
+></term>
+  <listitem
+><para
+>Marca questa casella per mostrare le posizioni delle occorrenze nelle voci della vista agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostra cose da fare</guilabel
@@ -3363,10 +3438,12 @@
 ><guilabel
 >Opzioni di visualizzazione</guilabel
 ></term>
-<listitem
-><para
->Usa le prime quattro caselle per mostrare l'ora, le icone (promemoria, ricorrenza &etc;), le cose da fare o i diari nella vista Mese.</para
-></listitem>
+<listitem>
+  <para
+>Le prime due caselle permettono di mostrare solo l'ora di inizio, oppure sia l'ora di inizio sia quella di fine.</para>
+  <para
+>Usa le prossime quattro caselle per mostrare opzionalmente icone, cose da fare, diari o festività nella vista mensile.</para>
+</listitem>
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 
@@ -3539,6 +3616,19 @@
 >Questo pulsante apre la finestra di <guilabel
 >Selezione colore</guilabel
 > per scegliere il colore delle cose da fare in ritardo.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Colore di sfondo odierna della vista mensile</guilabel
+></term>
+  <listitem
+><para
+>Questo pulsante apre la finestra di <guilabel
+>Selezione colore</guilabel
+> e permette di scegliere il colore di sfondo della data di oggi nella vista mensile.</para
 ></listitem>
 </varlistentry>
 

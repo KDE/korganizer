@@ -1060,7 +1060,7 @@ msgstr "بدء مربع حوار يسمح لك بإنشاء إدخال دفتر 
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
-msgstr "ا&ختر تاريخاً"
+msgstr "ا&ختر تاريخًا"
 
 #: actionmanager.cpp:593
 #, kde-format
@@ -4481,7 +4481,7 @@ msgstr ""
 #: settings/korganizer.kcfg:87
 #, kde-format
 msgid "Show to-dos instead of events when in Todo View"
-msgstr "اعرض المهام بدلاً من الأحداث عندما تكون في عرض المهام"
+msgstr "اعرض المهام بدلًا من الأحداث عندما تكون في عرض المهام"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:88
@@ -5193,7 +5193,7 @@ msgstr "اعرض قائمة المهام كقائمة مسطحة"
 #: settings/korganizer.kcfg:311
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
-msgstr "عرض المهام كقائمة مسطحة بدلاً من شجرة هرمية"
+msgstr "عرض المهام كقائمة مسطحة بدلًا من شجرة هرمية"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
 #: settings/korganizer.kcfg:312
@@ -5202,7 +5202,7 @@ msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
 "being arranged in a hierarchical tree."
 msgstr ""
-"أشّر على هذا المربع إذا كنت تريد رؤية كافة مهامك في قائمة مسطحة بدلاً من "
+"أشّر على هذا المربع إذا كنت تريد رؤية كافة مهامك في قائمة مسطحة بدلًا من "
 "ترتيبها في شجرة هرمية."
 
 #. i18n: ectx: label, entry, group (Todo View)
@@ -5476,7 +5476,7 @@ msgstr "استخدم ألوان النظام لبعض ألوان الخلفية"
 #: settings/korganizer.kcfg:535
 #, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
-msgstr "استخدم ألوان النظام بدلاً من الألوان المخصصة لبعض ألوان الخلفية"
+msgstr "استخدم ألوان النظام بدلًا من الألوان المخصصة لبعض ألوان الخلفية"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:536
@@ -5486,7 +5486,7 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
-"استخدم ألوان النظام بدلاً من الألوان المحددة من قبل المستخدم في ”لون خلفية "
+"استخدم ألوان النظام بدلًا من الألوان المحددة من قبل المستخدم في ”لون خلفية "
 "عرض جدول الأعمال“ و”لون خلفية الأيام المشغولة“ و”لون ساعات العمل“ (وربما "
 "عناصر أخرى)."
 
@@ -5732,7 +5732,7 @@ msgid ""
 "already busy are published, not why they are busy."
 msgstr ""
 "من خلال نشر معلومات \"متوفر/مشغول\"، فإنك تسمح للآخرين بأخذ تقويمك في "
-"الاعتبار عند دعوتك لحضور اجتماع. تُنشر الأوقات التي تكون مشغولاً فيها فقط، "
+"الاعتبار عند دعوتك لحضور اجتماع. تُنشر الأوقات التي تكون مشغولًا فيها فقط، "
 "وليس سبب انشغالهم."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, publishEnable)
@@ -5769,7 +5769,7 @@ msgid ""
 "information automatically."
 msgstr ""
 "اضبط الحد الأدنى للفاصل الزمني بالدقائق بين كل تحميل هنا. لا يكون هذا الضبط "
-"فعالاً إلا في حالة اختيارك نشر معلوماتك آليًّا."
+"فعالًا إلا في حالة اختيارك نشر معلوماتك آليًّا."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
 #: ui/kogroupwareprefspage.ui:102
@@ -5934,7 +5934,7 @@ msgstr "اجلب معلومات مت&فرّغ/مشغول لبقية الأشخا
 #, kde-format
 msgid ""
 "Set this to retrieve user@domain.ifb instead of user.ifb from the server"
-msgstr "عيّن هذا لاسترداد user@domain.ifb بدلاً من user.ifb من الخادم"
+msgstr "عيّن هذا لاسترداد user@domain.ifb بدلًا من user.ifb من الخادم"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, fullDomainRetrieval)
 #: ui/kogroupwareprefspage.ui:385
@@ -5979,7 +5979,7 @@ msgstr ""
 "\n"
 "https://kolab2.example.com/freebusy/\n"
 "\n"
-"بدلاً من ذلك، يمكنك تحديد مسار كامل لمعلومات \"متوفر/مشغول\". على سبيل "
+"بدلًا من ذلك، يمكنك تحديد مسار كامل لمعلومات \"متوفر/مشغول\". على سبيل "
 "المثال: \n"
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
@@ -6464,7 +6464,7 @@ msgid ""
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
-"منظور جدول الأعمال: يمكنك اختيارياً رسم خطوط شبكية أفقية أكثر سمكاً كل ساعتين. "
+"منظور جدول الأعمال: يمكنك اختياريًا رسم خطوط شبكية أفقية أكثر سمكًا كل ساعتين. "
 "لتمكين هذه الميزة، حدد الخيار ”ارسم خطوطًا أفقية سميكة للساعات الزوجية“ في "
 "علامة التبويب ”عرض->منظور جدول الأعمال“"
 
@@ -6527,7 +6527,7 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence locations in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"منظور جدول الأعمال: اختيارياً، اعرض أماكن الحوادث داخل بنود جدول الأعمال. "
+"منظور جدول الأعمال: اختياريًا، اعرض أماكن الحوادث داخل بنود جدول الأعمال. "
 "لتمكين هذا السلوك، حدد خيار ”عرض أماكن الأحداث في بنود منظور جدول الأعمال” "
 "في لسان عرض->منظور جدول الأعمال."
 
@@ -6579,7 +6579,7 @@ msgid ""
 "Month view: use a slightly different color for drawing the day headers for "
 "days outside of the currently selected month"
 msgstr ""
-"عرض الشهر: استخدم لونًا مختلفًا قليلاً لرسم عناوين الأيام خارج الشهر المحدد "
+"عرض الشهر: استخدم لونًا مختلفًا قليلًا لرسم عناوين الأيام خارج الشهر المحدد "
 "حاليًا"
 
 #: whatsnew/whatsnewtranslations.cpp:52
@@ -6625,7 +6625,7 @@ msgid ""
 "items. To enable this behavior, check the \"Show incidence descriptions in "
 "agenda view items\" option in the View->Agenda View tab"
 msgstr ""
-"منظور جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. "
+"منظور جدول الأعمال: اختياريًا، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. "
 "لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود منظور جدول الأعمال” "
 "في لسان عرض->منظور جدول الأعمال."
 
@@ -6732,7 +6732,7 @@ msgstr "إزالة احصل على بيانات جديدة"
 
 #: whatsnew/whatsnewtranslations.cpp:96
 msgid "Add calendar file: remote calendars are always read-only"
-msgstr "إضافة ملف تقويم: التقويمات عن بُعد تكون دائماً للقراءة فقط"
+msgstr "إضافة ملف تقويم: التقويمات عن بُعد تكون دائمًا للقراءة فقط"
 
 #: whatsnew/whatsnewtranslations.cpp:97
 msgid "Add calendar file: will not permit an empty file path"
@@ -6790,7 +6790,7 @@ msgid ""
 "15 minutes long)"
 msgstr ""
 "منظور جدول الأعمال: تُعرض الأحداث التي لا تحتوي على مدة زمنية على أنها مدتها "
-"30 دقيقة (بدلاً من 15 دقيقة)."
+"30 دقيقة (بدلًا من 15 دقيقة)."
 
 #. i18n()});
 #: whatsnew/whatsnewtranslations.cpp:138
