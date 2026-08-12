@@ -648,7 +648,7 @@
         </ul>
       </description>
     </release>
-    <release version="6.8.0" type="snapshot">
+    <release version="6.8.0" date="2026-08-20">
       <description>
         <p>CalDAV Fixes</p>
         <p xml:lang="ar">إصلاحات CalDAV</p>
