@@ -92,6 +92,15 @@
 >Sviluppatore</contrib>
 </othercredit>
 
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>Sviluppatore</contrib>
+</othercredit>
+
 <othercredit role="reviewer"
 ><firstname
 >Lauri</firstname
@@ -985,9 +994,7 @@
 > mostrerà eventi o cose da fare del primo mese mostrato nel Navigatore date (i giorni selezionati non cambiano la vista Mese, solo il mese cambia).</para>
 
 <para
->Il componente <quote
->vista delle cose da fare</quote
-> della barra laterale elenca le cose da fare, esattamente come la <link linkend="todo-view"
+>Il componente elenco delle cose da fare della barra laterale elenca le cose da fare, esattamente come la <link linkend="todo-view"
 >vista delle cose da fare</link
 >. È utile quando si vogliono vedere le cose da fare mentre si usano le altre viste.</para>
 
@@ -1136,6 +1143,21 @@
 <listitem
 ><para
 >Seleziona una regione libera di tempo, e fai un doppio clic per iniziare a scrivere il sommario dell'evento. &korganizer; imposterà automaticamente la durata e l'ora di inizio a quelle che hai definito selezionando un'area sulla vista Agenda.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>Suggerimenti per migliorare la visualizzazione degli eventi: <itemizedlist>
+<listitem
+><para
+>Usare la scorciatoia shift-rotellina per ingrandire/restringere l'altezza della riga della griglia oraria. Questo è utile per vedere i dettagli degli eventi se più eventi si verificano nello stesso intervallo di tempo. </para
+></listitem>
+<listitem
+><para
+>Mostrare le etichette dell'orario su entrambi i lati della griglia oraria selezionando Mostra/Nascondi le etichette dell'orario a destra nel menu contestuale delle etichette dell'orario.</para
 ></listitem>
 </itemizedlist>
 </para
@@ -2910,6 +2932,17 @@
 >Nota che allegare un messaggio di posta senza allegati può rendere la firma non valida. </para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Categoria di accesso predefinito</guilabel
+></term>
+<listitem
+><para
+>Questa opzione ti permette di selezionare la categoria di accesso predefinito (pubblica, confidenziale, privata) da usare durante la creazione di eventi, cose da fare o diari. Si veda la sezione 3.8.1.3 dell'RFC 5545 intitolata «Classification« (categorie in questo caso) per saperne di più sulle proprietà delle categorie di 'accesso per il formato iCalendar.</para>
+</listitem>
+</varlistentry>
 </variablelist>
 
 </sect3>
@@ -2984,13 +3017,22 @@
 <varlistentry>
 <term
 ><guilabel
->Festività</guilabel
+>Zone delle festività</guilabel
 ></term>
 <listitem
 ><para
->Seleziona il tuo paese dal menu a discesa o, se non è elencato, scegli <guilabel
->(Nessuno)</guilabel
->. Se scegli uno stato, &korganizer; riconoscerà e mostrerà le date importanti ed i giorni festivi nella vista del calendario.</para
+>Seleziona le zone della festività dall'elenco a discesa. Per ogni zona selezionata, &korganizer; riconoscerà e mostrerà le relative date e festività importanti nelle vista agenda e mensile. Puoi configurare i tipi delle festività per mostrare l'elenco a discesa Categorie delle festività (vedi la voce successiva). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Categorie delle festività</guilabel
+></term>
+<listitem
+><para
+>Seleziona le categorie delle festività dall'elenco a discesa. Come impostazioni predefinite sono abilitati tutti i tipi di festività. Seleziona le categorie delle festività che vuoi nascondere, ad esempio alcune persone non sono interessate alle festività religiose. </para
 ></listitem>
 </varlistentry>
 
@@ -3242,6 +3284,52 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Disegna linee della griglia orizzontali spesse per le ore pari</guilabel
+></term>
+  <listitem
+><para
+>Marca questa casella per disegnare linee della griglia orizzontali più spesse/grosse per le ore pari (mezzanotte, 2, 4, ecc).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Mostra descrizioni delle occorrenze nelle voci della vista agenda.</guilabel
+></term>
+  <listitem
+><para
+>Marca questa casella per mostrare le descrizioni delle occorrenze nelle voci della vista agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Mostra posizioni delle occorrenze nelle voci della vista agenda.</guilabel
+></term>
+  <listitem
+><para
+>Marca questa casella per mostrare le posizioni delle occorrenze nelle voci della vista agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Usa un colore di sfondo diverso per i giorni occupati</guilabel
+></term>
+  <listitem
+><para
+>Marca questa casella se vuoi che lo sfondo della vista Agenda sia riempito con un colore diverso nei giorni in cui almeno un evento che dura tutta la giornata è segnato come occupato.</para>
+    <para
+>Controlla l'area di configurazione dei colori per selezionare un colore di sfondo a tua scelta per lo stato occupato nella vista agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostra cose da fare</guilabel
@@ -3286,49 +3374,36 @@
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term
+  <term
 ><guilabel
->Uso dei colori</guilabel
+>Colori degli elementi dell'agenda</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Seleziona l'opzione <guilabel
 >Etichetta all'interno, calendario all'esterno</guilabel
 > se vuoi disegnare le voci del calendario con il colore associato all'etichetta ed il relativo bordo con il colore associato al calendario.</para>
 
-<para
+    <para
 >Seleziona l'opzione <guilabel
 >Calendario all'interno, etichetta all'esterno</guilabel
 > se vuoi disegnare le voci del calendario con il colore associato al calendario ed il relativo bordo con il colore associato all'etichetta. </para>
 
-<para
+    <para
 >Seleziona l'opzione <guilabel
 >Solo etichetta</guilabel
 > se vuoi disegnare le voci di calendario (sia all'interno che sul bordo) nel colore dell'etichetta associata.</para>
 
-<para
+    <para
 >Seleziona l'opzione <guilabel
 >Solo calendario</guilabel
 > se vuoi disegnare le voci di calendario (sia all'interno che sul bordo) nel colore del relativo calendario.</para>
 
-<para
+    <para
 >Usa la pagine di configurazione <link linkend="config-main-colors"
 >Colori e caratteri</link
 > per impostare questi colori.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Usa un colore di sfondo diverso per i giorni occupati</guilabel
-></term>
-<listitem
-><para
->Marca questa casella se vuoi che lo sfondo della vista Agenda sia riempito con un colore diverso nei giorni in cui almeno un evento che dura tutta la giornata è segnato come occupato.</para>
-<para
->Controlla l'area di configurazione dei colori per selezionare un colore di sfondo a tua scelta per lo stato occupato nella vista agenda.</para
-></listitem>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3363,37 +3438,45 @@
 ><guilabel
 >Opzioni di visualizzazione</guilabel
 ></term>
-<listitem
-><para
->Usa le prime quattro caselle per mostrare l'ora, le icone (promemoria, ricorrenza &etc;), le cose da fare o i diari nella vista Mese.</para
-></listitem>
+<listitem>
+  <para
+>Le prime due caselle permettono di mostrare solo l'ora di inizio, oppure sia l'ora di inizio sia quella di fine.</para>
+  <para
+>Imposta l'opzione <guilabel
+>Usa un colore di sfondo diverso per i giorni occupati</guilabel
+> se si desidera che lo sfondo della vista Mese sia riempito con un colore diverso nei giorni in cui almeno un evento che dura tutta la giornata è segnato come occupato.</para>
+  <para
+>Usa le prossime quattro caselle per mostrare opzionalmente icone, cose da fare, diari o festività nella vista mensile.</para>
+</listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term
+  <term
 ><guilabel
 >Usa un colore di sfondo diverso per i giorni occupati</guilabel
 ></term>
-<listitem
+  <listitem
 ><para
 >Marca questa casella se vuoi che lo sfondo della vista Mese sia riempito con un colore diverso nei giorni in cui almeno un evento che dura tutta la giornata è segnato come occupato.</para>
-<para
+    <para
 >Controlla l'area di configurazione dei colori per selezionare un colore di sfondo a tua scelta per lo stato occupato nella vista agenda/mese.</para
 ></listitem>
 </varlistentry>
 
+<!--FIXME Icons to use dropdown box missing-->
+
+
 <varlistentry>
-<term
+  <term
 ><guilabel
->Uso dei colori</guilabel
+>Colori delle vista Mese</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Configura i colori per la vista Mese come per la <link linkend="config-main-views-agenda"
 >vista Agenda</link
->.</para
-></listitem>
+>.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>
@@ -3541,6 +3624,32 @@
 > per scegliere il colore delle cose da fare in ritardo.</para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>Colore di sfondo odierna della vista mensile</guilabel
+></term>
+  <listitem
+><para
+>Questo pulsante apre la finestra di <guilabel
+>Selezione colore</guilabel
+> e permette di scegliere il colore di sfondo della data di oggi nella vista mensile.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+   <term
+><guilabel
+>Colore di evidenziazione della griglia del navigatore delle date</guilabel
+></term>
+   <listitem
+><para
+>Questo pulsante apre la finestra di dialogo <guilabel
+>Scegli il colore</guilabel
+>, permettendoti di scegliere il colore per evidenziare l'intervallo di date attualmente selezionato nel navigatore.</para
+></listitem>
+ </varlistentry>
 
 <varlistentry>
 <term
@@ -3947,14 +4056,21 @@
 
 <sect2 id="date-numbers-plugin">
 <title
->Estensione dei numeri delle date per i calendari</title>
+>Numeri della data</title>
 <para
 >Questa estensione aggiunge il numero del giorno nell'anno alla vista Agenda. Per esempio, il primo febbraio è il giorno numero 32. </para>
 </sect2>
 
+<sect2 id="lunar-phases-plugin">
+  <title
+>Fasi lunari</title>
+  <para
+>Questa estensione mostra la fase lunare del giorno (nuova, primo quarto, ultimo quarto, piena) per ogni data. Al momento, la fase è calcolata per il mezzogiorno in UTC; di conseguenza dovresti aspettarti variazioni di un giorno in entrambe le direzioni. </para>
+</sect2>
+
 <sect2 id="wikipedia-thisday-plugin">
 <title
->Estensione «Questo giorno nella storia» di Wikipedia</title>
+>«Questo giorno nella storia» di Wikipedia</title>
 <para
 >Questa estensione fornisce un collegamento alle pagine «Questo giorno nella storia» di Wikipedia. </para>
 </sect2>

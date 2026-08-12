@@ -82,7 +82,7 @@ msgstr "اعرض الإثنين"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr "اعرض كلاً من رقم يوم السنة وعدد الأيام المتبقية في السنة"
+msgstr "اعرض كلًا من رقم يوم السنة وعدد الأيام المتبقية في السنة"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -91,7 +91,7 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
-"اختر هذا الخيار لعرض كلاً من رقم يوم السنة وعدد الأيام المتبقية في السنة "
+"اختر هذا الخيار لعرض كلًا من رقم يوم السنة وعدد الأيام المتبقية في السنة "
 "الحالية. الصيغة هي يوم_السنة / أيام_حتى_نهاية_السنة"
 
 #: datenums/datenums.cpp:36
@@ -107,7 +107,7 @@ msgstr[0] "يوم واحد قبل نهاية السنة"
 msgstr[1] "يوم واحد قبل نهاية السنة"
 msgstr[2] "يومان قبل نهاية السنة"
 msgstr[3] "%1 أيام قبل نهاية السنة"
-msgstr[4] "%1 يوماً قبل نهاية السنة"
+msgstr[4] "%1 يومًا قبل نهاية السنة"
 msgstr[5] "%1 يوم قبل نهاية السنة"
 
 #: datenums/datenums.cpp:59
@@ -124,7 +124,7 @@ msgstr[0] "يوم واحد من بداية السنة، \n"
 msgstr[1] "واحد من بداية السنة، \n"
 msgstr[2] "يومان من بداية السنة، \n"
 msgstr[3] "%1 أيام من بداية السنة، \n"
-msgstr[4] "%1 يوماً من بداية السنة، \n"
+msgstr[4] "%1 يومًا من بداية السنة، \n"
 msgstr[5] "%1 يوم من بداية السنة، \n"
 
 #: datenums/datenums.cpp:61
@@ -135,7 +135,7 @@ msgstr[0] "يوم واحد حتّى نهاية السنة"
 msgstr[1] "يوم واحد حتّى نهاية السنة"
 msgstr[2] "يومان حتّى نهاية السنة"
 msgstr[3] "%1 أيام حتّى نهاية السنة"
-msgstr[4] "%1 يوماً حتّى نهاية السنة"
+msgstr[4] "%1 يومًا حتّى نهاية السنة"
 msgstr[5] "%1 يوم حتّى نهاية السنة"
 
 #: datenums/datenums.cpp:102
@@ -153,7 +153,7 @@ msgstr[0] "أسبوع منذ بداية السنة"
 msgstr[1] "أسبوع واحد منذ بداية السنة"
 msgstr[2] "أسبوعان منذ بداية السنة"
 msgstr[3] "%1 أسابيع منذ بداية السنة"
-msgstr[4] "%1 أسبوعاً منذ بداية السنة"
+msgstr[4] "%1 أسبوعًا منذ بداية السنة"
 msgstr[5] "%1 أسبوع منذ بداية السنة"
 
 #: datenums/datenums.cpp:106
@@ -975,7 +975,7 @@ msgstr "تجاهل النسبة الباعية"
 msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
-msgstr "غيّر حجم الصورة المصغرة حسب الحاجة لملء المساحة، متجاهلاً نسبة الأبعاد"
+msgstr "غيّر حجم الصورة المصغرة حسب الحاجة لملء المساحة، متجاهلًا نسبة الأبعاد"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
