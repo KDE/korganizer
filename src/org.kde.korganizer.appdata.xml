@@ -486,6 +486,7 @@
         <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Navigator: the highlight color for the navigator grid can now be changed.  To configure the color, set the "Navigator grid highlight color" in the Colors and Fonts settings</li>
+          <li xml:lang="ar">المُنتقِل: يمكن الآن تغيير لون التمييز لشبكة المُنتقِل. لضبط اللون، عيّن "لون تمييز شبكة المُنتقِل" في إعدادات الألوان والخطوط</li>
           <li xml:lang="bg">Навигатор: Цветовото оцветяване на навигационната мрежа вече може да бъде променяно. За конфигуриране на цвета, задайте "Цвят на оцветяване на навигационната мрежа" в настройките на Цветовете и шрифтовете</li>
           <li xml:lang="ca">Navegador: el color de ressaltat de la quadrícula del navegador ara es pot canviar. Per a configurar el color, establiu el «Color de ressaltat de la quadrícula del navegador» a la configuració Colors i lletres</li>
           <li xml:lang="ca-valencia">Navegador: el color de ressaltat de la quadrícula del navegador ara es pot canviar. Per a configurar el color, establiu el «Color de ressaltat de la quadrícula del navegador» a la configuració Colors i lletres</li>
@@ -503,6 +504,7 @@
           <li xml:lang="tr">Tarih gezgini: Gezgin için olan vurgu rengi artık değiştirilebiliyor. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Gezgin ızgarası vurgu rengi”ni ayarlayın.</li>
           <li xml:lang="uk">Панель навігації: можна змінювати колір тла підсвічування. Щоб налаштувати колір, встановіть значення для пункту «Колір підсвічування у таблиці навігації» у параметра кольорів і шрифтів програми.</li>
           <li>Kontact summary: ask before deleting incidences</li>
+          <li xml:lang="ar">ملخص متراسلك: اسأل قبل حذف الوقائع</li>
           <li xml:lang="bg">Обобщение на контакта: питане преди изтриване на събития</li>
           <li xml:lang="ca">Resum del Kontact: pregunta abans de suprimir les incidències</li>
           <li xml:lang="ca-valencia">Resum de Kontact: pregunta abans de suprimir les incidències</li>
@@ -520,6 +522,7 @@
           <li xml:lang="tr">Kontak özet: Olayları silmeden önce sor</li>
           <li xml:lang="uk">Резюме Kontact: реалізовано запит щодо вилучення повторень</li>
           <li>Kontact summary: Upcoming Events shows if an event has ended earlier today or currently in-progress</li>
+          <li xml:lang="ar">ملخص متراسلك: الأحداث القادمة تُظهر ما إذا كان حدثٌ قد انتهى في وقتٍ سابق اليوم أو ما زال جاريًا حاليًا</li>
           <li xml:lang="bg">Обобщение на контакта: Престоящи събития показва дали едно събитие е приключило по-рано днес или е в процес на действие</li>
           <li xml:lang="ca">Resum del Kontact: els pròxims esdeveniments mostren si un esdeveniment ha finalitzat avui (abans) o està en curs</li>
           <li xml:lang="ca-valencia">Resum de Kontact: els pròxims esdeveniments mostren si un esdeveniment ha finalitzat hui (abans) o està en curs</li>
@@ -537,6 +540,7 @@
           <li xml:lang="tr">Kontak özet: Gelecekteki etkinlikler, bir etkinlik aynı gün erkenden bittiyse veya şu anda sürüyorsa bunu gösterir.</li>
           <li xml:lang="uk">Резюме Kontact: реалізовано показ для майбутніх подій того, завершилася подія раніше сьогодні чи триває</li>
           <li>Kontact summary: Pending To-dos has improved grid alignment and date strings</li>
+          <li xml:lang="ar">ملخص متراسلك: المهام المعلّقة تحسّنت محاذاة شبكتها وسلاسل تواريخها</li>
           <li xml:lang="bg">Обобщение на контакта: Чакащи задачи с подобрено подравняване на мрежата и датите</li>
           <li xml:lang="ca">Resum del Kontact: s'ha millorat l'alineació de quadrícula i les cadenes de dates de les tasques pendents</li>
           <li xml:lang="ca-valencia">Resum de Kontact: s'ha millorat l'alineació de quadrícula i les cadenes de dates de les tasques pendents</li>
@@ -554,6 +558,7 @@
           <li xml:lang="tr">Kontak özet: Bekleyen yapılacakların tarih dizileri ve ızgara hizalaması iyileştirildi.</li>
           <li xml:lang="uk">Резюме Kontact: удосконалено вирівнювання у таблиці та рядки дат для завдань у черзі</li>
           <li>Kontact summary: Consistent date string formats</li>
+          <li xml:lang="ar">ملخص متراسلك: تنسيقات سلاسل تواريخ متسقة</li>
           <li xml:lang="bg">Обобщение на контакта: Съгласувани формати на датите</li>
           <li xml:lang="ca">Resum del Kontact: formats coherents de les cadenes de dates</li>
           <li xml:lang="ca-valencia">Resum de Kontact: formats coherents de les cadenes de dates</li>
@@ -572,6 +577,7 @@
           <li xml:lang="uk">Резюме Kontact: сумісні формати рядків дат</li>
         </ul>
         <p>Plugins</p>
+        <p xml:lang="ar">الملحقات</p>
         <p xml:lang="ca">Connectors</p>
         <p xml:lang="ca-valencia">Connectors</p>
         <p xml:lang="cs">Moduly</p>
@@ -587,6 +593,7 @@
         <p xml:lang="uk">Додатки</p>
         <ul>
           <li>The Jewish calendar plugin is restored (gone since KDE4). This plugin shows dates and Jewish holidays in the Hebrew calendar system</li>
+          <li xml:lang="ar">أُعيد ملحق التقويم اليهودي (المفقود منذ كيدي 4). يُظهر هذا الملحق التواريخ والأعياد اليهودية في نظام التقويم العبري</li>
           <li xml:lang="ca">Restaura el connector del calendari jueu (eliminat des del KDE4). Mostra les dates i els festius jueus en el sistema del calendari hebreu</li>
           <li xml:lang="ca-valencia">Restaura el connector del calendari jueu (eliminat des de KDE4). Mostra les dates i els festius jueus en el sistema del calendari hebreu</li>
           <li xml:lang="cs">Modul pro židovský kalendář byl obnoven (od verze KDE4 chyběl). Tento modul zobrazuje data a židovské svátky podle hebrejského kalendáře.</li>
@@ -601,10 +608,12 @@
           <li xml:lang="tr">Mûsevî takvimi eklentisi geri yüklendi (KDE4’ten beri yoktu). Bu eklenti İbrânî takvim sistemindeki tarihleri ve tatilleri gösterir.</li>
           <li xml:lang="uk">Відновлено додаток єврейського календаря (зник з часів KDE4). Цей додаток показує дати і єврейські свята у єврейській системі календаря</li>
           <li>The lunar phase calendar plugin now allows a configuration for northern versus southern hemispheres</li>
+          <li xml:lang="ar">يتيح ملحق تقويم الأطوار القمرية الآن إعدادًا لنصفي الكرة الشمالي مقابل الجنوبي</li>
           <li xml:lang="ca">El connector de calendari de fases lunars ara permet una configuració per a l'hemisferi nord versus el sud</li>
           <li xml:lang="ca-valencia">El connector de calendari de fases lunars ara permet una configuració per a l'hemisferi nord versus el sud</li>
           <li xml:lang="cs">Modul s lunárním kalendářem nyní umožňuje nastavení pro severní a jižní polokouli</li>
           <li xml:lang="es">El complemento de calendario de fases lunares permite ahora configurar los hemisferios norte y sur.</li>
+          <li xml:lang="fr">Le module externe de calendrier des phases lunaires permet désormais une configuration pour les hémisphères nord et sud.</li>
           <li xml:lang="ka">მთვარის ფაზების კალენდრის დამატებას ახლა აქვს საშუალება მიუთითოთ, სამხრეთ ნახევარსფეროში ბრძანდებით, თუ ჩრდილოეთში</li>
           <li xml:lang="nl">De plug-in voor de maanfasenkalender maakt het nu mogelijk om te kiezen tussen het noordelijk en het zuidelijk halfrond</li>
           <li xml:lang="pt-BR">O plugin de calendário de fases da lua agora permite uma configuração para os hemisférios norte e sul.</li>
@@ -618,6 +627,7 @@
     <release version="6.8.0" type="snapshot">
       <description>
         <p>CalDAV Fixes</p>
+        <p xml:lang="ar">إصلاحات CalDAV</p>
         <p xml:lang="bg">Поправки на CalDAV</p>
         <p xml:lang="ca">Correccions del CalDAV</p>
         <p xml:lang="ca-valencia">Correccions de CalDAV</p>
@@ -636,6 +646,7 @@
         <p xml:lang="uk">Виправлення в обробці CalDAV</p>
         <ul>
           <li>Calendars created in KOrganizer are created on the DAV server</li>
+          <li xml:lang="ar">التقاويم المُنشأة في كيورغانايزر تُنشأ على خادم DAV</li>
           <li xml:lang="bg">Календарите, създадени в KOrganizer, се създават на DAV сървъра</li>
           <li xml:lang="ca">Els calendaris creats en el KOrganizer es creen en el servidor DAV</li>
           <li xml:lang="ca-valencia">Els calendaris creats en KOrganizer es creen en el servidor DAV</li>
@@ -653,6 +664,7 @@
           <li xml:lang="tr">K Organizatör bünyesinde oluşturulan takvimler artık DAV sunucusunda da oluşturuluyor.</li>
           <li xml:lang="uk">Програма створює для створених календарів KOrganizer календарі на сервері DAV</li>
           <li>Calendar name/color changes in KOrganizer are replicated on the DAV server</li>
+          <li xml:lang="ar">تغييرات اسم/لون التقويم في كيورغانايزر تُنسخ على خادم DAV</li>
           <li xml:lang="bg">Промяната на името/цвета на календара в KOrganizer се отразява и на DAV сървъра</li>
           <li xml:lang="ca">Els canvis de nom/color als calendaris en el KOrganizer es repliquen en el servidor DAV</li>
           <li xml:lang="ca-valencia">Els canvis de nom/color als calendaris en KOrganizer es repliquen en el servidor DAV</li>
@@ -670,6 +682,7 @@
           <li xml:lang="tr">K Organizatör bünyesinde yapılan takvim ad/renk değişiklikleri DAV sunucusuna da yansıtılıyor.</li>
           <li xml:lang="uk">Реалізовано відтворення змін у назвах кольорах календарів KOrganizer на сервері DAV</li>
           <li>Properly handle creating/editing/deleting recurring event exceptions</li>
+          <li xml:lang="ar">التعامل السليم مع إنشاء/تحرير/حذف استثناءات الأحداث المتكررة</li>
           <li xml:lang="bg">Правилно управление на създаване/редактиране/изтриване на повтарящи се изключения за събития</li>
           <li xml:lang="ca">Gestiona adequadament la creació/edició/supressió d'excepcions d'esdeveniments recurrents</li>
           <li xml:lang="ca-valencia">Gestiona adequadament la creació/edició/supressió d'excepcions d'esdeveniments recurrents</li>
@@ -970,6 +983,7 @@
           <li xml:lang="tr">Yapılacaklar görünümü: Liste artık kenar çubuğunda gösterilmiyor; mini yapılacaklar listesi, “Ayarlar → Kenar Çubuğu → Yapılacaklar Listesini Göster” seçeneği etkinse tüm başka diğer görünümlerde gösterilebilir.</li>
           <li xml:lang="uk">Перегляд завдань: у новій версії більше немає мінісписку завдань на бічній панелі; мінісписок завдань можна переглянути в усіх інших режимах перегляду, якщо позначено пункт «Параметри-&gt;Бічна панель-&gt;Показувати список завдань»</li>
           <li>Templates: tags (categories) can be added to incidence templates</li>
+          <li xml:lang="ar">القوالب: يمكن إضافة وسوم (فئات) إلى قوالب الوقائع</li>
           <li xml:lang="bg">Шаблони: към шаблоните за събития могат да бъдат добавени етикети (категории)</li>
           <li xml:lang="ca">Plantilles: es poden afegir etiquetes (categories) a les plantilles d'incidències</li>
           <li xml:lang="ca-valencia">Plantilles: es poden afegir etiquetes (categories) a les plantilles d'incidències</li>
