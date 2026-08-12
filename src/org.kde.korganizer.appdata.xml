@@ -463,7 +463,7 @@
     <binary>korganizer</binary>
   </provides>
   <releases>
-    <release version="6.8.0" type="snapshot">
+    <release version="6.8.0" date="2026-08-20">
       <description>
         <ul>
           <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu \"Set as Default Todo Calendar\"</li>
