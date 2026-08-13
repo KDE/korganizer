@@ -93,7 +93,7 @@
     <p>
       KOrganizer is the calendar and scheduling component of Kontact. It provides management of events and tasks, alarm notification, web export, network transparent handling of data, group scheduling, import and export of calendar files and more. It is able to work together with a wide variety of calendaring services, including NextCloud, Kolab, Google Calendar and others. KOrganizer is fully customizable to your needs and is an integral part of the Kontact suite, which aims to be a complete solution for organizing your personal data. KOrganizer supports the two dominant standards for storing and exchanging calendar data, vCalendar and iCalendar.
     </p>
-    <p xml:lang="ar">منظمك هو عنصر التقويم والجدولة في حزمة برامج "مراسلك". يوفر إدارة الأحداث والمهام، وتنبيه بالإشعارات، وتصدير الويب، ومعالجة البيانات بشبكة شفافة، وجدولة المجموعة، واستيراد وتصدير ملفات التقويم والمزيد. إنه قادر على العمل مع مجموعة متنوعة من خدمات التقويم بما في ذلك NextCloud و Kolab وتقويم غوغل وغيرها. منظم قابل للتخصيص بالكامل وفقًا لاحتياجاتك وهو جزء لا يتجزأ من مجموعة "مراسلك"، والتي تهدف إلى أن تكون حلاً كاملاً لتنظيم بياناتك الشخصية. يدعم منظمك المعيارين المهيمنين لتخزين وتبادل بيانات التقويم: vCalendar و iCalendar.</p>
+    <p xml:lang="ar">منظمك هو عنصر التقويم والجدولة في حزمة برامج "مراسلك". يوفر إدارة الأحداث والمهام، وتنبيه بالإشعارات، وتصدير الويب، ومعالجة البيانات بشبكة شفافة، وجدولة المجموعة، واستيراد وتصدير ملفات التقويم والمزيد. إنه قادر على العمل مع مجموعة متنوعة من خدمات التقويم بما في ذلك NextCloud و Kolab وتقويم غوغل وغيرها. منظم قابل للتخصيص بالكامل وفقًا لاحتياجاتك وهو جزء لا يتجزأ من مجموعة "مراسلك"، والتي تهدف إلى أن تكون حلًا كاملًا لتنظيم بياناتك الشخصية. يدعم منظمك المعيارين المهيمنين لتخزين وتبادل بيانات التقويم: vCalendar و iCalendar.</p>
     <p xml:lang="az">KOrganizer Kontact-ın təqvim və planlaşdırma komponentidir. O, hadisələrin və tapşırıqların idarə edilməsini, həyəcan bildirişini, veb ixracını, məlumatların şəbəkə ilə şəffaf şəkildə idarə edilməsini, qrup planlaşdırmasını, təqvim fayllarının idxalını və ixracını və s. təmin edir. O, NextCloud, Kolab, Google Calendar və başqaları daxil olmaqla, müxtəlif təqvim xidmətləri ilə birlikdə işləməyi bacarır. KOrganizer sizin ehtiyaclarınıza tam uyğunlaşdırıla bilir və şəxsi məlumatlarınıza görə işləri təşkil etmək üçün tam həll yolu olmaq məqsədi daşıyan Kontact dəstinin ayrılmaz hissəsidir. KOrganizer təqvim məlumatlarının saxlanması və mübadiləsi üçün iki əsas standartı, vCalendar və iCalendar-ı dəstəkləyir.</p>
     <p xml:lang="bg">KOrganizer е компонентът за календар и планиране на Kontact. Той предоставя управление на събития и задачи, известяване, уеб експорт, мрежово прозрачно обработване на данните, групово планиране, импортиране и експортиране на календарни файлове и др. Той е в състояние да работи съвместно с голямо разнообразие от услуги за календари, включително NextCloud, Kolab, Google Calendar и други. KOrganizer може да се персонализира напълно според вашите нужди и е неразделна част от пакета Kontact, който има за цел да бъде цялостно решение за организиране на личните ви данни. KOrganizer поддържа два доминиращи стандарти за съхранение и обмен на календарни данни - vCalendar и iCalendar.</p>
     <p xml:lang="ca">El KOrganizer és el component de calendari i programació del Kontact. Proporciona gestió dels esdeveniments i tasques, notificació d'alarmes, exportació web, gestió de dades transparent a la xarxa, programació de grups, importació i exportació de fitxers de calendari i molt més. És capaç de treballar juntament amb una àmplia varietat de serveis de calendari, incloent-hi el NextCloud, Kolab, Google Calendar i altres. El KOrganizer és totalment personalitzable segons les vostres necessitats i forma part de la suite Kontact, la qual pretén ser una solució completa per a organitzar les vostres dades personals. El KOrganizer admet els dos estàndards dominants per a emmagatzemar i intercanviar dades de calendari: vCalendar i iCalendar.</p>
@@ -584,6 +584,7 @@
         <p xml:lang="es">Complementos</p>
         <p xml:lang="fr">Modules externes</p>
         <p xml:lang="he">תוספים</p>
+        <p xml:lang="it">Estensioni</p>
         <p xml:lang="ka">დამატებები</p>
         <p xml:lang="nl">Plug-ins</p>
         <p xml:lang="pt-BR">Plugins</p>
@@ -600,6 +601,7 @@
           <li xml:lang="es">Se ha restaurado el complemento de calendario hebreo (ausente desde KDE4). Este complemento muestra las fechas y las festividades judías según el calendario hebreo.</li>
           <li xml:lang="fr">Le module externe du calendrier juif est restauré (Disparu depuis KDE4). Celui-ci affiche les dates et les jours fériés judaïques dans le système de calendrier hébreu</li>
           <li xml:lang="he">תוסף לוח השנה העברי שוחזר (לא היה קיים מ־KDE4). התוסף הזה מציג תאריכים וחגים יהודיים במערכת לוח השנה העברי</li>
+          <li xml:lang="it">Il calendario ebraico è stato ripristinato (rimosso dai tempi di KDE4). Questa estensione mostra date e festività ebraiche nel sistema di calendario ebraico</li>
           <li xml:lang="ka">აღდგენილია ებრაული კალენდრის დამატება (გაქრა KDE4-ის შემდეგ). ეს დამატება აჩვენებს თარიღებს და ებრაულ დასვენების დღეებს ებრაული კალენდრის სისტემაში</li>
           <li xml:lang="nl">De Joodse kalender-plug-in is hersteld (verdween sinds KDE4). Deze plug-in toont datums en Joodse feestdagen in het Hebreeuwse kalendersysteem</li>
           <li xml:lang="pt-BR">O plugin do calendário judaico foi restaurado (estava ausente desde o KDE4). Este plugin exibe datas e feriados judaicos no sistema do calendário hebraico.</li>
@@ -614,6 +616,8 @@
           <li xml:lang="cs">Modul s lunárním kalendářem nyní umožňuje nastavení pro severní a jižní polokouli</li>
           <li xml:lang="es">El complemento de calendario de fases lunares permite ahora configurar los hemisferios norte y sur.</li>
           <li xml:lang="fr">Le module externe de calendrier des phases lunaires permet désormais une configuration pour les hémisphères nord et sud.</li>
+          <li xml:lang="he">תוסף לוח השנה של מופעי הירח מאפשר מאתה הגדרה של חצי הכדור הצפונים מול הדרומי</li>
+          <li xml:lang="it">L'estensione del calendario delle fasi lunari ora permette di configurare l'emisfero, australe o boreale</li>
           <li xml:lang="ka">მთვარის ფაზების კალენდრის დამატებას ახლა აქვს საშუალება მიუთითოთ, სამხრეთ ნახევარსფეროში ბრძანდებით, თუ ჩრდილოეთში</li>
           <li xml:lang="nl">De plug-in voor de maanfasenkalender maakt het nu mogelijk om te kiezen tussen het noordelijk en het zuidelijk halfrond</li>
           <li xml:lang="pt-BR">O plugin de calendário de fases da lua agora permite uma configuração para os hemisférios norte e sul.</li>
@@ -798,7 +802,7 @@
           <li xml:lang="tr">Yeni yapılacakların daha hızlı ve kolay oluşturulması ve yanlış klasöre kaydedilme olasılığının azaltılması için öntanımlı bir Yapılacaklar takvimi belirlenebilir. Öntanımlı bir etkinlik takvimi ayarlama özelliği uzun süredir desteklenmektedir. Takvim Yöneticisi sağ tık menüsündeki Öntanımlı Yapılacaklar Takvimi Olarak Ayarla” seçeneğine göz atın.</li>
           <li xml:lang="uk">Можна вказати типовий календар для завдань, щоб пришвидшити та спростити створення записів завдань, зменшивши ризик їх потрапляння до помилкової теки. Підтримку визначення типового календаря подій реалізовано вже доволі давно. Див. пункт контекстного меню керування календарями «Зробити типовим календарем записів Завдання».</li>
           <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the "Draw bold horizontal grid lines for the even hours" option in the View-&gt;Agenda View tab</li>
-          <li xml:lang="ar">عرض جدول الأعمال: يمكنك اختيارياً رسم خطوط شبكية أفقية أكثر سمكاً كل ساعتين. لتمكين هذه الميزة، حدد الخيار ”ارسم خطوطًا أفقية سميكة للساعات الزوجية“ في علامة التبويب ”عرض-&gt;عرض جدول الأعمال“</li>
+          <li xml:lang="ar">عرض جدول الأعمال: يمكنك اختياريًا رسم خطوط شبكية أفقية أكثر سمكًا كل ساعتين. لتمكين هذه الميزة، حدد الخيار ”ارسم خطوطًا أفقية سميكة للساعات الزوجية“ في علامة التبويب ”عرض-&gt;عرض جدول الأعمال“</li>
           <li xml:lang="bg">Изглед „Дневен ред“: опция за изчертаване на по-дебели хоризонтални линии на мрежата на всеки две часа. За да активирате това поведение, поставете отметка на опцията „Изчертаване на дебели хоризонтални линии за четните часове“ в раздела „Изглед -&gt; Дневен ред“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra línies de quadrícula horitzontals en negreta/més gruixudes cada dues hores. Per a activar aquest comportament, marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra línies de quadrícula horitzontals en negreta/més gruixudes cada dues hores. Per a activar este comportament, marqueu l'opció «Dibuixa línies de quadrícula horitzontals en negreta per a les hores parells» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -928,7 +932,7 @@
           <li xml:lang="tr">Ajanda görünümü: Bugünün sütun başlığındaki tarihinin altını çiz</li>
           <li xml:lang="uk">Панель порядку денного: реалізовано підкреслювання дати сьогоднішнього заголовка стовпчика</li>
           <li>Agenda view: optionally show the incidence locations inside the agenda items. To enable this behavior, check the "Show incidence locations in agenda view items" option in the View-&gt;Agenda View tab</li>
-          <li xml:lang="ar">عرض جدول الأعمال: اختيارياً، اعرض أماكن الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أماكن الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
+          <li xml:lang="ar">عرض جدول الأعمال: اختياريًا، اعرض أماكن الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أماكن الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
           <li xml:lang="bg">Изглед „Дневен ред“: опция за показване на местоположенията на събитията вътре в елементите на дневния план. За да активирате това поведение, поставете отметка на „Показване на местоположенията на събитията в елементите на дневния план“ в раздела „Изглед -&gt; Дневен ред“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra les ubicacions d'incidència dins dels elements d'agenda. Per a activar aquest comportament, marqueu l'opció «Mostra les ubicacions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra les ubicacions d'incidència dins dels elements d'agenda. Per a activar este comportament, marqueu l'opció «Mostra les ubicacions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -1067,7 +1071,7 @@
           <li xml:lang="tr">Ay görünümü: Dikey alandan tasarruf etmek ve gereksiz tekrarları önlemek için artık ay–yıl başlığı gösterilmiyor.</li>
           <li xml:lang="uk">Перегляд місяця: усунено показ заголовка місяць-рік для заощадження вертикального простору і вилучення зайвих відомостей</li>
           <li>Month view: use a slightly different color for drawing the day headers for days outside of the currently selected month</li>
-          <li xml:lang="ar">عرض الشهر: استخدم لونًا مختلفًا قليلاً لرسم عناوين الأيام خارج الشهر المحدد حاليًا</li>
+          <li xml:lang="ar">عرض الشهر: استخدم لونًا مختلفًا قليلًا لرسم عناوين الأيام خارج الشهر المحدد حاليًا</li>
           <li xml:lang="bg">Месечен изглед: използване на малко по-различен цвят за изобразяване на заглавките на дните извън текущо избрания месец</li>
           <li xml:lang="ca">Vista mensual: usa un color lleugerament diferent per a dibuixar les capçaleres dels dies fora del mes seleccionat</li>
           <li xml:lang="ca-valencia">Vista mensual: utilitza un color lleugerament diferent per a dibuixar les capçaleres dels dies fora del mes seleccionat</li>
@@ -1185,7 +1189,7 @@
           <li xml:lang="tr">Ajanda görünümü: Kısa süreli etkinlikler, özetlerinin yanı sıra başlangıç saatleriyle birlikte gösterilir.</li>
           <li xml:lang="uk">Панель порядку денного: записи подій короткої тривалості буде показано із їхнім часом початку на додачу до резюме</li>
           <li>Agenda view: optionally show the incidence descriptions inside the agenda items. To enable this behavior, check the "Show incidence descriptions in agenda view items" option in the View-&gt;Agenda View tab</li>
-          <li xml:lang="ar">عرض جدول الأعمال: اختيارياً، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
+          <li xml:lang="ar">عرض جدول الأعمال: اختياريًا، اعرض أوصاف الحوادث داخل بنود جدول الأعمال. لتمكين هذا السلوك، حدد خيار ”عرض أوصاف الأحداث في بنود عرض جدول الأعمال” في لسان عرض-&gt;عرض جدول الأعمال.</li>
           <li xml:lang="bg">Изглед „Дневен ред“: опция за показване на описанията на събитията вътре в елементите на дневния план. За да активирате това поведение, поставете отметка на „Показване на описанията на събитията в елементите на дневния ред“ в раздела „Изглед -&gt; Дневен ред“</li>
           <li xml:lang="ca">Vista d'agenda: opcionalment mostra les descripcions d'incidència dins dels elements d'agenda. Per a activar aquest comportament, marqueu l'opció «Mostra les descripcions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
           <li xml:lang="ca-valencia">Vista d'agenda: de manera opcional mostra les descripcions d'incidència dins dels elements d'agenda. Per a activar este comportament, marqueu l'opció «Mostra les descripcions de les incidències als elements de la vista d'agenda» a la pestanya Visualitza-&gt;Vista d'agenda</li>
@@ -1494,7 +1498,7 @@
           <li xml:lang="tr">Katılımcısı olan olaylar için düzenleyici e-posta adresi düzeltildi.</li>
           <li xml:lang="uk">Виправлено адресу електронної пошти організатора для зустрічі із учасниками</li>
           <li>Agenda view: events without a duration are displayed as 30 long (rather than 15 minutes long)</li>
-          <li xml:lang="ar">منظور جدول الأعمال: تُعرض الأحداث التي لا تحتوي على مدة زمنية على أنها مدتها 30 دقيقة (بدلاً من 15 دقيقة).</li>
+          <li xml:lang="ar">منظور جدول الأعمال: تُعرض الأحداث التي لا تحتوي على مدة زمنية على أنها مدتها 30 دقيقة (بدلًا من 15 دقيقة).</li>
           <li xml:lang="bg">Изглед Дневен ред: събитията без продължителност се показват като събития с продължителност от 30 минути (вместо от 15 минути).</li>
           <li xml:lang="ca">Vista d'agenda: els esdeveniments sense durada es mostren amb una durada de 30 minuts (en lloc de 15 minuts)</li>
           <li xml:lang="ca-valencia">Vista d'agenda: els esdeveniments sense duració es mostren amb una duració de 30 minuts (en lloc de 15 minuts)</li>
@@ -1831,7 +1835,7 @@
           <li xml:lang="tr">Takvimi içe aktarma penceresi, en son içe aktarılan klasör konumunu anımsar.</li>
           <li xml:lang="uk">У вікні імпортування календаря реалізовано запам'ятовування останнього місце теки імпортування</li>
           <li>Add calendar file: remote calendars are always read-only</li>
-          <li xml:lang="ar">إضافة ملف تقويم: التقويمات عن بُعد تكون دائماً للقراءة فقط</li>
+          <li xml:lang="ar">إضافة ملف تقويم: التقويمات عن بُعد تكون دائمًا للقراءة فقط</li>
           <li xml:lang="bg">Добавяне на файл с календар: отдалечените календари винаги са само за четене</li>
           <li xml:lang="ca">Afegir un fitxer de calendari: els calendaris remots sempre són de només lectura</li>
           <li xml:lang="ca-valencia">Afegir un fitxer de calendari: els calendaris remots sempre són de només lectura</li>
