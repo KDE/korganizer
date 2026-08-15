@@ -2,6 +2,7 @@
     "KPlugin": {
         "Description": "This plugin shows the day's lunar phase (New, First, Last, Full) at noon according to your system timezone.",
         "Description[ar]": "يعرض هذا الملحق طور القمر في ذلك اليوم (القمر الجديد، القمر الأول، القمر الأخير، القمر الكامل) عند الظهيرة وفقًا للتوقيت الزمني لنظامك.",
+        "Description[bg]": "Тази приставка показва лунната фаза за деня (новолуние, първа четвърт, последна четвърт, пълнолуние) по обяд според часовата зона на системата",
         "Description[ca@valencia]": "Este connector mostra la fase lunar del dia (nova, creixent, plena, minvant) segons el fus horari del vostre sistema.",
         "Description[ca]": "Aquest connector mostra la fase lunar del dia (nova, creixent, plena, minvant) segons el fus horari del vostre sistema.",
         "Description[cs]": "Tento modul zobrazuje aktuální fázi Měsíce (nov, první čtvrť, poslední čtvrť, úplněk) v poledne podle časového pásma vašeho systému.",
@@ -18,6 +19,7 @@
         "Description[uk]": "Цей додаток показує фазу місяця (новий, перша чверть, остання чверть, повня) опівдні відповідно до часового поясу, який встановлено у вашій системі.",
         "Name": "Lunar Phases",
         "Name[ar]": "مراحل القمر",
+        "Name[bg]": "Фази на Луната",
         "Name[ca@valencia]": "Fases lunars",
         "Name[ca]": "Fases lunars",
         "Name[cs]": "Lunární fáze",

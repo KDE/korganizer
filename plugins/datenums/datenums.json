@@ -36,6 +36,7 @@
         "Description[zh_TW]": "這個外掛程式會為每一天在行程檢視上方顯示它在一年當中是第幾天。舉例來說，二月一號是年中的第 32 天。",
         "Name": "Date Numbers",
         "Name[ar]": "أرقام التاريخ",
+        "Name[bg]": "Числа за дати",
         "Name[ca@valencia]": "Números de les dates",
         "Name[ca]": "Números de les dates",
         "Name[cs]": "Čísla dat",
