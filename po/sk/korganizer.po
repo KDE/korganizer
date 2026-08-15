@@ -1223,12 +1223,10 @@ msgid "Show Date Navigator"
 msgstr "Zobraziť navigátor dátumov"
 
 #: actionmanager.cpp:715
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "Prehľad úloh"
+msgstr "Zobraziť zoznam úloh"
 
 #: actionmanager.cpp:719
 #, kde-format
@@ -2996,9 +2994,7 @@ msgstr[1] "%1 min"
 msgstr[2] "%1 min"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
 msgstr "prebieha"
@@ -3010,9 +3006,9 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "skončilo pred 1 hod."
+msgstr[1] "skončilo pred %1 hod."
+msgstr[2] "skončilo pred %1 hod."
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3021,9 +3017,9 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "skončilo pred 1 min."
+msgstr[1] "skončilo pred %1 min."
+msgstr[2] "skončilo pred %1 min."
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3285,17 +3281,13 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
 msgstr "- %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -3312,19 +3304,19 @@ msgstr[2] "Pred %1 dňami"
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "due any time today"
-msgstr ""
+msgstr "termín kedykoľvek dnes"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:253
 #, kde-format
 msgctxt "the to-do is due at specified time"
 msgid "is due at %1"
-msgstr ""
+msgstr "má termín o %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:257
 #, kde-format
 msgctxt "the to-do was due at specified time"
 msgid "was due at %1"
-msgstr ""
+msgstr "mala termín o %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
@@ -3760,8 +3752,7 @@ msgid "Display the specified incidence (by URL)"
 msgstr "Display zadaný incidence (by URL)"
 
 #: korganizer_options.h:25
-#, fuzzy, kde-format
-#| msgid "Url"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Url"
 msgstr "Url"
@@ -6610,6 +6601,9 @@ msgid ""
 "todolist can still be shown in all the other views if the Settings->Sidebar-"
 ">Show Todo List option is enabled"
 msgstr ""
+"Pohľad úloh: mini zoznam úloh sa už nezobrazuje v bočnom paneli; naďalej sa "
+"dá zobraziť vo všetkých ostatných pohľadoch, ak je zapnutá možnosť "
+"Nastavenia->Bočný panel->Zobraziť zoznam úloh"
 
 #: whatsnew/whatsnewtranslations.cpp:37
 msgid ""
@@ -6625,7 +6619,7 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:39
 msgid "Templates: tags (categories) can be added to incidence templates"
-msgstr ""
+msgstr "Šablóny: do šablón udalostí sa dajú pridávať značky (kategórie)"
 
 #: whatsnew/whatsnewtranslations.cpp:48
 msgid ""
@@ -6880,6 +6874,7 @@ msgstr ""
 msgid ""
 "CalDAV fix: calendars created in KOrganizer are created on the DAV server"
 msgstr ""
+"Oprava CalDAV: kalendáre vytvorené v KOrganizeri sa vytvárajú na serveri DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:165
 #, kde-format
@@ -6887,11 +6882,15 @@ msgid ""
 "CalDAV fix: calendar name/color changes in KOrganizer are replicated on the "
 "DAV server"
 msgstr ""
+"Oprava CalDAV: zmeny názvu a farby kalendára v KOrganizeri sa prenášajú na "
+"server DAV"
 
 #: whatsnew/whatsnewtranslations.cpp:166
 #, kde-format
 msgid "CalDAV fix: handle creating/editing/deleting recurring event exceptions"
 msgstr ""
+"Oprava CalDAV: spracovanie vytvárania, úpravy a odstraňovania výnimiek "
+"opakujúcich sa udalostí"
 
 #: whatsnew/whatsnewtranslations.cpp:169
 #, kde-format
@@ -7116,17 +7115,13 @@ msgid "Select a year"
 msgstr "Vyberte rok"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "- %1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "- %1"
