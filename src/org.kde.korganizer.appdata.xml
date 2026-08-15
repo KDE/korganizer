@@ -578,6 +578,7 @@
         </ul>
         <p>Plugins</p>
         <p xml:lang="ar">الملحقات</p>
+        <p xml:lang="bg">Приставки</p>
         <p xml:lang="ca">Connectors</p>
         <p xml:lang="ca-valencia">Connectors</p>
         <p xml:lang="cs">Moduly</p>
@@ -595,6 +596,7 @@
         <ul>
           <li>The Jewish calendar plugin is restored (gone since KDE4). This plugin shows dates and Jewish holidays in the Hebrew calendar system</li>
           <li xml:lang="ar">أُعيد ملحق التقويم اليهودي (المفقود منذ كيدي 4). يُظهر هذا الملحق التواريخ والأعياد اليهودية في نظام التقويم العبري</li>
+          <li xml:lang="bg">Приставката за еврейски календар е възстановена (липсваше от KDE4). Тя показва дати и празници по еврейското летоброене</li>
           <li xml:lang="ca">Restaura el connector del calendari jueu (eliminat des del KDE4). Mostra les dates i els festius jueus en el sistema del calendari hebreu</li>
           <li xml:lang="ca-valencia">Restaura el connector del calendari jueu (eliminat des de KDE4). Mostra les dates i els festius jueus en el sistema del calendari hebreu</li>
           <li xml:lang="cs">Modul pro židovský kalendář byl obnoven (od verze KDE4 chyběl). Tento modul zobrazuje data a židovské svátky podle hebrejského kalendáře.</li>
@@ -611,6 +613,7 @@
           <li xml:lang="uk">Відновлено додаток єврейського календаря (зник з часів KDE4). Цей додаток показує дати і єврейські свята у єврейській системі календаря</li>
           <li>The lunar phase calendar plugin now allows a configuration for northern versus southern hemispheres</li>
           <li xml:lang="ar">يتيح ملحق تقويم الأطوار القمرية الآن إعدادًا لنصفي الكرة الشمالي مقابل الجنوبي</li>
+          <li xml:lang="bg">Приставката за лунния календар вече позволява конфигуриране на лунните фази за северното и южното полукълбо</li>
           <li xml:lang="ca">El connector de calendari de fases lunars ara permet una configuració per a l'hemisferi nord versus el sud</li>
           <li xml:lang="ca-valencia">El connector de calendari de fases lunars ara permet una configuració per a l'hemisferi nord versus el sud</li>
           <li xml:lang="cs">Modul s lunárním kalendářem nyní umožňuje nastavení pro severní a jižní polokouli</li>
