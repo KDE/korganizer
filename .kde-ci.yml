@@ -13,7 +13,6 @@ Dependencies:
     'pim/eventviews' : '@same'
     'pim/incidenceeditor' : '@same'
     'pim/kcalutils' : '@same'
-    'pim/kldap' : '@same'
     'pim/kmailtransport' : '@same'
     'frameworks/kmime': '@latest-kf6'
     'pim/kontactinterface' : '@same'

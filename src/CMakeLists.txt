@@ -480,7 +480,6 @@ target_link_libraries(
         KF6::Mime
         KPim6::IdentityManagementCore
         KF6::KCMUtils
-        KPim6::LdapWidgets
         KPim6::AkonadiWidgets
         KPim6::MailTransport
         KF6::IconThemes
