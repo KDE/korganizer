@@ -3875,20 +3875,16 @@ msgid "Agenda View Decorations"
 msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Unable to configure this plugin"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the %1 plugin"
-msgstr "无法配置此插件"
+msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:145
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to start the search."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to configure the %1 plugin."
-msgstr "按下按钮开始搜索。"
+msgstr ""
 
 #: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
@@ -6548,7 +6544,3 @@ msgstr ""
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr ""
-
-#~ msgctxt "@info:tooltip"
-#~ msgid "Configure"
-#~ msgstr "配置"

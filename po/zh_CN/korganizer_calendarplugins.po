@@ -179,18 +179,16 @@ msgid "Configure Holidays"
 msgstr "配置假日"
 
 #: hebrewcalendar/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use Israeli holidays"
-msgstr "使用伊斯兰假日"
+msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include Israeli holidays"
-msgstr "使用伊斯兰假日"
+msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:44
 #, kde-format
@@ -201,18 +199,16 @@ msgid ""
 msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show weekly parsha"
-msgstr "显示每周篇章"
+msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include weekly parsha days"
-msgstr "显示每周篇章"
+msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:50
 #, kde-format
@@ -221,18 +217,16 @@ msgid "Select this option to show weekly parsha days."
 msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show day of Omer"
-msgstr "显示节日"
+msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Omer"
-msgstr "显示节日"
+msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:56
 #, kde-format
@@ -241,11 +235,10 @@ msgid "Select this option to show days of the Omer period."
 msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "Show Chol HaMoed"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show Chol HaMoed"
-msgstr "显示节日周"
+msgstr ""
 
 #: hebrewcalendar/configdialog.cpp:61
 #, kde-format
@@ -278,18 +271,16 @@ msgid "Kislev"
 msgstr ""
 
 #: hebrewcalendar/hebrew.cpp:195
-#, fuzzy, kde-format
-#| msgid "Tzom Tevet"
+#, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
-msgstr "Tzom Tevet"
+msgstr ""
 
 #: hebrewcalendar/hebrew.cpp:197
-#, fuzzy, kde-format
-#| msgid "Tu B'Shvat"
+#, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
-msgstr "植树节"
+msgstr ""
 
 #: hebrewcalendar/hebrew.cpp:199
 #, kde-format
@@ -862,12 +853,10 @@ msgid "Haazinu"
 msgstr "Haazinu"
 
 #: lunarphases/configdialog.cpp:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Lunar Phases"
-msgstr "配置日编号"
+msgstr ""
 
 #: lunarphases/configdialog.cpp:41
 #, kde-format
@@ -916,18 +905,12 @@ msgid ""
 msgstr ""
 
 #: lunarphases/lunarphases.cpp:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
-#| "Currently, the phase is computed for noon at UTC; therefore, you should "
-#| "expect variations by 1 day in either direction."
+#, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
 "phase is computed for noon in the system timezone. Crescent and Gibbous "
 "phases are not displayed."
 msgstr ""
-"这个插件显示当天的月相 (新月，上弦月，下弦月，满月)。目前，月相是使用 UTC 中"
-"午时间计算的。因此，您可以预期误差在一天前后。"
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format
