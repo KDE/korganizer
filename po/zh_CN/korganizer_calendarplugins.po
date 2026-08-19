@@ -141,22 +141,22 @@ msgstr "配置假日"
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "使用伊斯兰假日"
+msgstr ""
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
 msgid "Show weekly parsha"
-msgstr "显示每周篇章"
+msgstr ""
 
 #: hebrew/configdialog.cpp:50
 #, kde-format
 msgid "Show day of Omer"
-msgstr "显示节日"
+msgstr ""
 
 #: hebrew/configdialog.cpp:54
 #, kde-format
 msgid "Show Chol HaMoed"
-msgstr "显示节日周"
+msgstr ""
 
 #: hebrew/hebrew.cpp:60
 #, kde-format
