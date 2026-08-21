@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-10 00:46+0000\n"
+"POT-Creation-Date: 2026-08-21 00:45+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -1693,7 +1693,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "删除日历失败：<message>%1</message>"
 
-#: calendarview.cpp:270
+#: calendarview.cpp:273
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1703,7 +1703,7 @@ msgstr ""
 "<para><emphasis>没有选中项目</emphasis></para><para>请先选择一个事件、待办事"
 "项或日记项目，其详细信息将在此显示。</para>"
 
-#: calendarview.cpp:274
+#: calendarview.cpp:277
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1711,19 +1711,19 @@ msgid ""
 "KOrganizer's main view here."
 msgstr "查看在 KOrganizer 主视图上选中的事件、待办事项或日记的详情。"
 
-#: calendarview.cpp:709
+#: calendarview.cpp:712
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "待办事项完成进度：%1 (%2)"
 
-#: calendarview.cpp:718
+#: calendarview.cpp:721
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "%1 的日记"
 
-#: calendarview.cpp:767
+#: calendarview.cpp:770
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1733,99 +1733,99 @@ msgstr ""
 "<resource>%1</resource> 项目已被您当前的过滤规则所过滤，它将被隐藏，不在视图"
 "中显示。"
 
-#: calendarview.cpp:847 kontactplugin/korganizer/apptsummarywidget.cpp:232
+#: calendarview.cpp:850 kontactplugin/korganizer/apptsummarywidget.cpp:232
 #: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "您确定要彻底删除项目“%1”吗？"
 
-#: calendarview.cpp:848 kontactplugin/korganizer/apptsummarywidget.cpp:233
+#: calendarview.cpp:851 kontactplugin/korganizer/apptsummarywidget.cpp:233
 #: kontactplugin/korganizer/todosummarywidget.cpp:362
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "删除项目吗？"
 
-#: calendarview.cpp:923
+#: calendarview.cpp:926
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "粘贴失败：无法确定有效的目标日期。"
 
-#: calendarview.cpp:1339
+#: calendarview.cpp:1342
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "将子待办事项设为独立项"
 
-#: calendarview.cpp:1393
+#: calendarview.cpp:1396
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "打开/关闭提醒"
 
-#: calendarview.cpp:1398
+#: calendarview.cpp:1401
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "<message>%1</message> 提醒已启用"
 
-#: calendarview.cpp:1400
+#: calendarview.cpp:1403
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> 提醒已禁用"
 
-#: calendarview.cpp:1403
+#: calendarview.cpp:1406
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "<message>%1</message> 打开/关闭提醒失败"
 
-#: calendarview.cpp:1434 calendarview.cpp:1492
+#: calendarview.cpp:1437 calendarview.cpp:1495
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "显示/隐藏待办事项完成进度"
 
-#: calendarview.cpp:1438
+#: calendarview.cpp:1441
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "待办事项已完成 <message>%1</message> %2%"
 
-#: calendarview.cpp:1441
+#: calendarview.cpp:1444
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "待办事项 <message>%1</message> 的完成进度更改失败"
 
-#: calendarview.cpp:1544
+#: calendarview.cpp:1547
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "“%1”已成功复制到 %2。"
 
-#: calendarview.cpp:1545
+#: calendarview.cpp:1548
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "复制成功"
 
-#: calendarview.cpp:1549
+#: calendarview.cpp:1552
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "无法将项目“%1”复制到 %2。"
 
-#: calendarview.cpp:1550 calendarview.cpp:2529
+#: calendarview.cpp:1553 calendarview.cpp:2532
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "复制失败"
 
-#: calendarview.cpp:1609
+#: calendarview.cpp:1612
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1833,50 +1833,50 @@ msgid ""
 "of this item has been put into %2"
 msgstr "无法从原始日历中移除“%1”项目。不过，此项目的副本已存入 %2"
 
-#: calendarview.cpp:1613 calendarview.cpp:1629 calendarview.cpp:2564
+#: calendarview.cpp:1616 calendarview.cpp:1632 calendarview.cpp:2567
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "移动失败"
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1621
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "已成功将“%1”从 %2 移动到 %3。"
 
-#: calendarview.cpp:1619
+#: calendarview.cpp:1622
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "移动成功"
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1628
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "无法将项目“%1”添加到 %2，将不会移动它。"
 
-#: calendarview.cpp:1664
+#: calendarview.cpp:1667
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "您想要将发生于 %1 的事件从重复项中拆分出来吗？"
 
-#: calendarview.cpp:1668 calendarview.cpp:1681 calendarview.cpp:2345
-#: calendarview.cpp:2404 calendarview.cpp:2434
+#: calendarview.cpp:1671 calendarview.cpp:1684 calendarview.cpp:2348
+#: calendarview.cpp:2407 calendarview.cpp:2437
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer 确认"
 
-#: calendarview.cpp:1669
+#: calendarview.cpp:1672
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "拆分(&D)"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1679
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1884,92 +1884,92 @@ msgid ""
 "dissociate future ones?"
 msgstr "您想要将发生于 %1 的事件从重复项中拆分出来，还是同时拆分未来的事件？"
 
-#: calendarview.cpp:1682
+#: calendarview.cpp:1685
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "只拆分本次事件(&O)"
 
-#: calendarview.cpp:1683
+#: calendarview.cpp:1686
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "同时拆分未来的事件(&A)"
 
-#: calendarview.cpp:1701
+#: calendarview.cpp:1704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "拆分未来的事件"
 
-#: calendarview.cpp:1703
+#: calendarview.cpp:1706
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "拆分事件"
 
-#: calendarview.cpp:1710
+#: calendarview.cpp:1713
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "拆分未来的事件失败。"
 
-#: calendarview.cpp:1710 calendarview.cpp:1712
+#: calendarview.cpp:1713 calendarview.cpp:1715
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "拆分失败"
 
-#: calendarview.cpp:1712
+#: calendarview.cpp:1715
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "拆分事件失败。"
 
-#: calendarview.cpp:1855
+#: calendarview.cpp:1858
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1874
+#: calendarview.cpp:1877
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "导出日历到文件"
 
-#: calendarview.cpp:1887
+#: calendarview.cpp:1890
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "您想要覆盖 <filename>%1</filename> 吗？"
 
-#: calendarview.cpp:1888
+#: calendarview.cpp:1891
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "导出日历"
 
-#: calendarview.cpp:1906
+#: calendarview.cpp:1909
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "原因未知"
 
-#: calendarview.cpp:1908
+#: calendarview.cpp:1911
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Cannot write iCalendar file <filename>%1</filename>: <message>%2</message>"
 msgstr "无法写入 iCalendar 文件 <filename>%1</filename>：<message>%2</message>"
 
-#: calendarview.cpp:2017 calendarview.cpp:2062
+#: calendarview.cpp:2020 calendarview.cpp:2065
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "没有过滤条件"
 
-#: calendarview.cpp:2340
+#: calendarview.cpp:2343
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1980,19 +1980,19 @@ msgstr ""
 "项目 <resource>%1</resource> 有子待办事项。您想要只删除此项目并将其子待办事项"
 "设为独立项，还是删除此项目及其全部子待办事项？"
 
-#: calendarview.cpp:2346
+#: calendarview.cpp:2349
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "仅删除此项"
 
-#: calendarview.cpp:2347 calendarview.cpp:2405
+#: calendarview.cpp:2350 calendarview.cpp:2408
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "全部删除"
 
-#: calendarview.cpp:2379
+#: calendarview.cpp:2382
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2002,13 +2002,13 @@ msgstr ""
 "项目 <resource>%1</resource> 被标记为只读，因此无法删除；它可能属于一个只读的"
 "日历。"
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2385
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "无法移除"
 
-#: calendarview.cpp:2401
+#: calendarview.cpp:2404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2018,13 +2018,13 @@ msgstr ""
 "日历项目 <resource>%1</resource> 在多个日期重复出现，您确定要删除它及其所有重"
 "复项吗？"
 
-#: calendarview.cpp:2412
+#: calendarview.cpp:2415
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "同时删除未来的重复项(&F)"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2419
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2035,7 +2035,7 @@ msgstr ""
 "日历项目 <resource>%1</resource> 在多个日期重复出现，您想要只删除在 %2 的当前"
 "项目，还是删除它的所有未来的重复项，亦或是删除其所有重复项？"
 
-#: calendarview.cpp:2423
+#: calendarview.cpp:2426
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2045,74 +2045,74 @@ msgstr ""
 "日历项目 <resource>%1</resource> 在多个日期重复出现，您想要只删除在 %2 的当前"
 "项目，还是删除其所有重复项？"
 
-#: calendarview.cpp:2435
+#: calendarview.cpp:2438
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "删除当前项(&U)"
 
-#: calendarview.cpp:2437
+#: calendarview.cpp:2440
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "全部删除(&A)"
 
-#: calendarview.cpp:2468 calendarview.cpp:2475
+#: calendarview.cpp:2471 calendarview.cpp:2478
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "删除“%1”"
 
-#: calendarview.cpp:2507
+#: calendarview.cpp:2510
 #, kde-format
 msgctxt "@info"
 msgid ""
 "All calendars are unchecked in the Calendar Manager. No to-do was purged."
 msgstr "所有日历都没有在日历管理器中被勾选。没有清除任何待办事项。"
 
-#: calendarview.cpp:2512 calendarview.cpp:2794
+#: calendarview.cpp:2515 calendarview.cpp:2797
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "没有可以清除的已完成的待办事项。"
 
-#: calendarview.cpp:2517
+#: calendarview.cpp:2520
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "清除已勾选日历中的所有已完成的待办事项吗？"
 
-#: calendarview.cpp:2518
+#: calendarview.cpp:2521
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "清除已完成待办事项"
 
-#: calendarview.cpp:2519
+#: calendarview.cpp:2522
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "清除"
 
-#: calendarview.cpp:2529
+#: calendarview.cpp:2532
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "无法复制项目 <resource>%1</resource>。"
 
-#: calendarview.cpp:2564
+#: calendarview.cpp:2567
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "无法移动项目 <resource>%1</resource>。"
 
-#: calendarview.cpp:2786
+#: calendarview.cpp:2789
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 个已完成的待办事项已清除。<nl/>"
 
-#: calendarview.cpp:2788 calendarview.cpp:2799
+#: calendarview.cpp:2791 calendarview.cpp:2802
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2120,20 +2120,20 @@ msgid_plural ""
 "%1 to-dos were ignored because they have uncompleted or read-only children."
 msgstr[0] "已忽略 %1 个待办事项，因为它们的子项目不完整或只读。"
 
-#: calendarview.cpp:2792 calendarview.cpp:2797
+#: calendarview.cpp:2795 calendarview.cpp:2800
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "已清除 %1 个已完成的待办事项。"
 
-#: calendarview.cpp:2804
+#: calendarview.cpp:2807
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "清除已完成的待办事项时出错：<message>%1</message>"
 
-#: calendarview.cpp:2865
+#: calendarview.cpp:2868
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2144,7 +2144,7 @@ msgstr ""
 "您在一个日历中创建了一个当前被过滤而不显示的项目。<para>要查看此新建的项目，"
 "请在日历管理器中启用它所在的日历。</para>"
 
-#: calendarview.cpp:2869
+#: calendarview.cpp:2872
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""

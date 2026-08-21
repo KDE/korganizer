@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-10 00:46+0000\n"
+"POT-Creation-Date: 2026-08-21 00:45+0000\n"
 "PO-Revision-Date: 2026-08-05 09:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -1761,7 +1761,7 @@ msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Takvim silinemedi: <message>%1</message>"
 
-#: calendarview.cpp:270
+#: calendarview.cpp:273
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1771,7 +1771,7 @@ msgstr ""
 "<para><emphasis>Seçili Öge Yok</emphasis></para><para>Ayrıntılarını burada "
 "görüntülemek için bir etkinlik, yapılacak veya günce girdisi seçin.</para>"
 
-#: calendarview.cpp:274
+#: calendarview.cpp:277
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1781,19 +1781,19 @@ msgstr ""
 "K Organizatör’ün ana görünümünde seçilmiş etkinlikler, günce girdileri veya "
 "yapılacak işler ile ilgili ayrıntıları burada görüntüleyin."
 
-#: calendarview.cpp:709
+#: calendarview.cpp:712
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Yapılacak tamamlandı: %1 (%2)"
 
-#: calendarview.cpp:718
+#: calendarview.cpp:721
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "%1 Güncesi"
 
-#: calendarview.cpp:767
+#: calendarview.cpp:770
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1803,99 +1803,99 @@ msgstr ""
 "<resource>%1</resource> ögesi var olan süzgeç kurallarınız tarafından "
 "süzüldü, bu nedenle gizlenecek ve arayüzde görüntülenmeyecek."
 
-#: calendarview.cpp:847 kontactplugin/korganizer/apptsummarywidget.cpp:232
+#: calendarview.cpp:850 kontactplugin/korganizer/apptsummarywidget.cpp:232
 #: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "“%1” ögesini kalıcı olarak silmeyi gerçekten istiyor musunuz?"
 
-#: calendarview.cpp:848 kontactplugin/korganizer/apptsummarywidget.cpp:233
+#: calendarview.cpp:851 kontactplugin/korganizer/apptsummarywidget.cpp:233
 #: kontactplugin/korganizer/todosummarywidget.cpp:362
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Öge Silinsin mi?"
 
-#: calendarview.cpp:923
+#: calendarview.cpp:926
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr "Yapıştırma başarısız oldu: Geçerli bir hedef tarih belirlenemedi."
 
-#: calendarview.cpp:1339
+#: calendarview.cpp:1342
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Alt yapılacakları bağımsız yap"
 
-#: calendarview.cpp:1393
+#: calendarview.cpp:1396
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Anımsatıcıyı Aç/Kapat"
 
-#: calendarview.cpp:1398
+#: calendarview.cpp:1401
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "<message>%1</message> anımsatıcısı etkin"
 
-#: calendarview.cpp:1400
+#: calendarview.cpp:1403
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> anımsatıcısı devre dışı"
 
-#: calendarview.cpp:1403
+#: calendarview.cpp:1406
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "<message>%1</message> anımsatıcısını açma/kapatma başarısız"
 
-#: calendarview.cpp:1434 calendarview.cpp:1492
+#: calendarview.cpp:1437 calendarview.cpp:1495
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Yapılacak Öge Durumunu Değiştir"
 
-#: calendarview.cpp:1438
+#: calendarview.cpp:1441
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "<message>%1</message> yapılacağı %2 tamamlandı"
 
-#: calendarview.cpp:1441
+#: calendarview.cpp:1444
 #, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "<message>%1</message> yapılacağının durumu değiştirilemedi"
 
-#: calendarview.cpp:1544
+#: calendarview.cpp:1547
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "“%1”, %2 konumuna başarıyla kopyalandı."
 
-#: calendarview.cpp:1545
+#: calendarview.cpp:1548
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopyalama Başarılı"
 
-#: calendarview.cpp:1549
+#: calendarview.cpp:1552
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "“%1”, %2 konumuna kopyalanamıyor."
 
-#: calendarview.cpp:1550 calendarview.cpp:2529
+#: calendarview.cpp:1553 calendarview.cpp:2532
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopyalama Başarısız"
 
-#: calendarview.cpp:1609
+#: calendarview.cpp:1612
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1905,51 +1905,51 @@ msgstr ""
 "“%1” ögesi özgün takvimden kaldırılamıyor. Yine de, bu ögenin bir kopyası %2 "
 "içine koyuldu."
 
-#: calendarview.cpp:1613 calendarview.cpp:1629 calendarview.cpp:2564
+#: calendarview.cpp:1616 calendarview.cpp:1632 calendarview.cpp:2567
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Taşıma Başarısız"
 
-#: calendarview.cpp:1618
+#: calendarview.cpp:1621
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "“%1” ögesi başarıyla %2 konumundan %3 konumuna taşındı."
 
-#: calendarview.cpp:1619
+#: calendarview.cpp:1622
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Taşıma Başarılı"
 
-#: calendarview.cpp:1625
+#: calendarview.cpp:1628
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr "“%1”, %2 konumuna eklenemiyor. Bu öge taşınmadı."
 
-#: calendarview.cpp:1664
+#: calendarview.cpp:1667
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr ""
 "%1 anındaki yinelemeyi, yineleme listesinden ayrıştırmak ister misiniz?"
 
-#: calendarview.cpp:1668 calendarview.cpp:1681 calendarview.cpp:2345
-#: calendarview.cpp:2404 calendarview.cpp:2434
+#: calendarview.cpp:1671 calendarview.cpp:1684 calendarview.cpp:2348
+#: calendarview.cpp:2407 calendarview.cpp:2437
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "K Organizatör Onayı"
 
-#: calendarview.cpp:1669
+#: calendarview.cpp:1672
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "İlişkilendirmeyi &Kaldır"
 
-#: calendarview.cpp:1676
+#: calendarview.cpp:1679
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1959,79 +1959,79 @@ msgstr ""
 "Yineleme listesinden %1 zamanındaki ögeyi mi yoksa sonrakileri de mi silmek "
 "istersiniz?"
 
-#: calendarview.cpp:1682
+#: calendarview.cpp:1685
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Yalnızca Bunun &İlişkilendirmesini Kaldır"
 
-#: calendarview.cpp:1683
+#: calendarview.cpp:1686
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "&Gelecektekilerin İlişkilendirmesini de Kaldır"
 
-#: calendarview.cpp:1701
+#: calendarview.cpp:1704
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Gelecekteki yinelemeleri ayır"
 
-#: calendarview.cpp:1703
+#: calendarview.cpp:1706
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Yinelemeyi ayır"
 
-#: calendarview.cpp:1710
+#: calendarview.cpp:1713
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Gelecekteki yinelemeleri ayırma başarısız oldu."
 
-#: calendarview.cpp:1710 calendarview.cpp:1712
+#: calendarview.cpp:1713 calendarview.cpp:1715
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Ayırma Başarısız"
 
-#: calendarview.cpp:1712
+#: calendarview.cpp:1715
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Ayırma başarısız oldu."
 
-#: calendarview.cpp:1855
+#: calendarview.cpp:1858
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "K Organizatör"
 
-#: calendarview.cpp:1874
+#: calendarview.cpp:1877
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Takvimi Dosyaya Dışa Aktar"
 
-#: calendarview.cpp:1887
+#: calendarview.cpp:1890
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "<filename>%1</filename> ögesinin üzerine yazmak istiyor musunuz?"
 
-#: calendarview.cpp:1888
+#: calendarview.cpp:1891
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Takvimi Dışa Aktar"
 
-#: calendarview.cpp:1906
+#: calendarview.cpp:1909
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Nedeni bilinmiyor"
 
-#: calendarview.cpp:1908
+#: calendarview.cpp:1911
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2039,13 +2039,13 @@ msgid ""
 msgstr ""
 "iCalendar dosyası <filename>%1</filename> yazılamıyor: <message>%2</message>"
 
-#: calendarview.cpp:2017 calendarview.cpp:2062
+#: calendarview.cpp:2020 calendarview.cpp:2065
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Süzgeç yok"
 
-#: calendarview.cpp:2340
+#: calendarview.cpp:2343
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2057,19 +2057,19 @@ msgstr ""
 "silerek bütün alt yapılacak işleri bağımsız mı yapmak istersiniz yoksa bütün "
 "alt yapılacak işler ile birlikte bu ögeyi mi silmek istersiniz?"
 
-#: calendarview.cpp:2346
+#: calendarview.cpp:2349
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Yalnızca Bunu Sil"
 
-#: calendarview.cpp:2347 calendarview.cpp:2405
+#: calendarview.cpp:2350 calendarview.cpp:2408
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Tümünü Sil"
 
-#: calendarview.cpp:2379
+#: calendarview.cpp:2382
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2079,13 +2079,13 @@ msgstr ""
 "<resource>%1</resource> ögesi saltokunur olarak işaretli ve silinemez; "
 "tahminen öge saltokunur bir takvim kaynağına ait."
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2385
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Kaldırma olanaklı değil"
 
-#: calendarview.cpp:2401
+#: calendarview.cpp:2404
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2095,13 +2095,13 @@ msgstr ""
 "<resource>%1</resource> takvim ögesi birden fazla günde yineleniyor; bu "
 "ögeyi ve tüm yinelemelerini silmek istediğinizden emin misiniz?"
 
-#: calendarview.cpp:2412
+#: calendarview.cpp:2415
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "G&elecektekileri de Sil"
 
-#: calendarview.cpp:2416
+#: calendarview.cpp:2419
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2113,7 +2113,7 @@ msgstr ""
 "Yalnızca %2 tarihindeki ögeyi mi bununla birlikte gelecekteki yinelemelerini "
 "mi yoksa tüm ögeleri mi silmek istiyorsunuz?"
 
-#: calendarview.cpp:2423
+#: calendarview.cpp:2426
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2124,25 +2124,25 @@ msgstr ""
 "Yalnızca %2 tarihindekini mi silmek istiyorsunuz yoksa tüm yinelemelerini mi "
 "silmek istiyorsunuz?"
 
-#: calendarview.cpp:2435
+#: calendarview.cpp:2438
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Geçerli Ögeyi &Sil"
 
-#: calendarview.cpp:2437
+#: calendarview.cpp:2440
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "&Tümünü Sil"
 
-#: calendarview.cpp:2468 calendarview.cpp:2475
+#: calendarview.cpp:2471 calendarview.cpp:2478
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Sil: “%1”"
 
-#: calendarview.cpp:2507
+#: calendarview.cpp:2510
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2151,49 +2151,49 @@ msgstr ""
 "Takvim Yöneticisindeki hiçbir takvim işaretli değil. Yapılacak hiçbir şey "
 "temizlenmedi."
 
-#: calendarview.cpp:2512 calendarview.cpp:2794
+#: calendarview.cpp:2515 calendarview.cpp:2797
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Temizlenecek biten yapılacak bulunamadı."
 
-#: calendarview.cpp:2517
+#: calendarview.cpp:2520
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "İşaretlenmiş takvimlerdeki tamamlanmış tüm yapılacak silinsin mi?"
 
-#: calendarview.cpp:2518
+#: calendarview.cpp:2521
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Yapılacakları Temizle"
 
-#: calendarview.cpp:2519
+#: calendarview.cpp:2522
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Temizle"
 
-#: calendarview.cpp:2529
+#: calendarview.cpp:2532
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "<resource>%1</resource> ögesi kopyalanamıyor."
 
-#: calendarview.cpp:2564
+#: calendarview.cpp:2567
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "<resource>%1</resource> ögesi taşınamıyor."
 
-#: calendarview.cpp:2786
+#: calendarview.cpp:2789
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Herhangi bir yapılacak temizlenmedi.<nl/>"
 
-#: calendarview.cpp:2788 calendarview.cpp:2799
+#: calendarview.cpp:2791 calendarview.cpp:2802
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2206,7 +2206,7 @@ msgstr[1] ""
 "Tamamlanmadığından veya saltokunur alt ögeye sahip olduğundan %1 yapılacak "
 "yok sayıldı."
 
-#: calendarview.cpp:2792 calendarview.cpp:2797
+#: calendarview.cpp:2795 calendarview.cpp:2800
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2214,14 +2214,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 tamamlanmış yapılacak silindi."
 msgstr[1] "%1 tamamlanmış yapılacak silindi."
 
-#: calendarview.cpp:2804
+#: calendarview.cpp:2807
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr ""
 "Tamamlanmış yapılacaklar temizlenirken bir hata oluştu: <message>%1</message>"
 
-#: calendarview.cpp:2865
+#: calendarview.cpp:2868
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2233,7 +2233,7 @@ msgstr ""
 "oluşturulan olayı görmek için takvim yöneticisinden takvimini etkinleştirin."
 "</para>"
 
-#: calendarview.cpp:2869
+#: calendarview.cpp:2872
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
