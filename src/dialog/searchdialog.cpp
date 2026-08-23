@@ -278,8 +278,14 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
         Akonadi::Item item;
         const auto enabledCalendars2 = m_calendarview->enabledCalendars();
         for (const auto &calendar : enabledCalendars2) {
-            if (calendar->collection().id() == collectionId) {
+            if (!collectionId) {
                 item = calendar->item(ev);
+                if (item.isValid()) {
+                    break;
+                }
+            } else if (calendar->collection().id() == collectionId) {
+                item = calendar->item(ev);
+                break;
             }
         }
         if (!item.isValid()) {
