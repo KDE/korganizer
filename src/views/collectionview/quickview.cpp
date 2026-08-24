@@ -33,9 +33,7 @@ Quickview::Quickview(const Akonadi::CollectionCalendar::Ptr &calendar, const QSt
     : mUi(new Ui_quickview)
 {
     auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Close, this);
-    auto mainWidget = new QWidget(this);
     auto mainLayout = new QVBoxLayout(this);
-    mainLayout->addWidget(mainWidget);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &Quickview::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &Quickview::reject);
     auto w = new QWidget(this);
