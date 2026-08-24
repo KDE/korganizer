@@ -586,7 +586,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
         if (job->exec()) {
             items = job->items();
         }
-        bool const exist = items.at(0).isValid();
+        bool const exist = items.isEmpty() ? false : items.at(0).isValid();
         int action = DRAG_CANCEL;
         Qt::KeyboardModifiers const keyboardModifiers = e->modifiers();
         if (keyboardModifiers & Qt::ControlModifier) {
