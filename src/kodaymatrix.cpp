@@ -192,9 +192,6 @@ void KODayMatrix::updateView(QDate actdate)
 
         if (!holidays.isEmpty()) {
             holiStr = holidays.join(i18nc("delimiter for joining holiday names", ","));
-            if (holiStr.isEmpty()) {
-                holiStr = QLatin1StringView("");
-            }
         }
         mHolidays[i] = std::move(holiStr);
     }
