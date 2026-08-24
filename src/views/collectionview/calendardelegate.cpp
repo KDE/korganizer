@@ -114,7 +114,7 @@ void StyledCalendarDelegate::paint(QPainter *painter, const QStyleOptionViewItem
     }
 
     // Color indicator
-    if (opt.checkState) {
+    if (opt.checkState == Qt::Checked) {
         QColor color = KOHelper::resourceColorKnown(col);
         if (!color.isValid()) {
             color = KOHelper::resourceColor(col);
