@@ -227,7 +227,7 @@ void SDSummaryWidget::slotBirthdayJobFinished(KJob *job)
                         entry.addressee = addressee;
                         entry.item = item;
                         entry.span = 1;
-                        mDates.append(entry);
+                        mDates.append(std::move(entry));
                     }
                 }
             }
@@ -295,7 +295,7 @@ void SDSummaryWidget::createLabels()
                          * FIXME: port to akonadi, it's kresource based
                          * */
                         if (/*!check( bdayRes, dt, ev->summary() )*/ true) {
-                            mDates.append(entry);
+                            mDates.append(std::move(entry));
                         }
                         break;
                     }
@@ -313,7 +313,7 @@ void SDSummaryWidget::createLabels()
                             entry.desc = ev->description();
                             dateDiff(ev->dtStart().date(), entry.daysTo, entry.yearsOld);
                             entry.span = 1;
-                            mDates.append(entry);
+                            mDates.append(std::move(entry));
                         }
                         break;
                     }
@@ -332,7 +332,7 @@ void SDSummaryWidget::createLabels()
                         if (entry.span > 1 && dayof(ev, dt) > 1) { // skip days 2,3,...
                             break;
                         }
-                        mDates.append(entry);
+                        mDates.append(std::move(entry));
                         break;
                     }
 
@@ -350,7 +350,7 @@ void SDSummaryWidget::createLabels()
                         if (entry.span > 1 && dayof(ev, dt) > 1) { // skip days 2,3,...
                             break;
                         }
-                        mDates.append(entry);
+                        mDates.append(std::move(entry));
                         break;
                     }
                 }
@@ -381,7 +381,7 @@ void SDSummaryWidget::createLabels()
                     entry.yearsOld = -1; // ignore age of holidays
                     entry.span = 1;
 
-                    mDates.append(entry);
+                    mDates.append(std::move(entry));
                 }
             }
         }

@@ -289,25 +289,25 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
 
         if (m_ui->summaryCheck->isChecked()) {
             if (regularExpression.match(ev->summary()).hasMatch()) {
-                m_matchedEvents.append(item);
+                m_matchedEvents.append(std::move(item));
                 continue;
             }
         }
         if (m_ui->descriptionCheck->isChecked()) {
             if (regularExpression.match(ev->description()).hasMatch()) {
-                m_matchedEvents.append(item);
+                m_matchedEvents.append(std::move(item));
                 continue;
             }
         }
         if (m_ui->categoryCheck->isChecked()) {
             if (regularExpression.match(ev->categoriesStr()).hasMatch()) {
-                m_matchedEvents.append(item);
+                m_matchedEvents.append(std::move(item));
                 continue;
             }
         }
         if (m_ui->locationCheck->isChecked()) {
             if (regularExpression.match(ev->location()).hasMatch()) {
-                m_matchedEvents.append(item);
+                m_matchedEvents.append(std::move(item));
                 continue;
             }
         }
@@ -316,7 +316,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
             if (std::ranges::any_of(lstAttendees, [regularExpression](const KCalendarCore::Attendee &attendee) {
                     return regularExpression.match(attendee.fullName()).hasMatch();
                 })) {
-                m_matchedEvents.append(item);
+                m_matchedEvents.append(std::move(item));
             }
         }
     }

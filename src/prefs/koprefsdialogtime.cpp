@@ -93,7 +93,7 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
         } else {
             label = i18nc("@item:inlistbox Holiday region, region language", "%1 (%2)", name, languageName);
         }
-        regionsMap.emplace_back(label, regionCode);
+        regionsMap.emplace_back(std::move(label), regionCode);
     }
     std::ranges::sort(regionsMap, [](const auto &lhs, const auto &rhs) {
         return lhs.first < rhs.first;
@@ -302,7 +302,7 @@ void KOPrefsDialogTime::usrWriteConfig()
             HolidayRegions.append(mHolidayCheckCombo->itemData(index).toString());
         }
     }
-    CalendarSupport::KCalPrefs::instance()->mHolidays = HolidayRegions;
+    CalendarSupport::KCalPrefs::instance()->mHolidays = std::move(HolidayRegions);
 
     QStringList HolidayTypes;
     const auto holidayTypesCheckedItems = mHolidayTypeCheckCombo->checkedItems();
@@ -312,7 +312,7 @@ void KOPrefsDialogTime::usrWriteConfig()
             HolidayTypes.append(mHolidayTypeCheckCombo->itemData(index).toString());
         }
     }
-    CalendarSupport::KCalPrefs::instance()->mHolidayCategories = HolidayTypes;
+    CalendarSupport::KCalPrefs::instance()->mHolidayCategories = std::move(HolidayTypes);
 
     CalendarSupport::KCalPrefs::instance()->mReminderTime = mReminderTimeSpin->value();
     CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits = mReminderUnitsCombo->currentIndex();

@@ -66,7 +66,7 @@ void DateNavigator::selectDates(const QDate &d, int count, const QDate &preferre
         dates.append(d.addDays(i));
     }
 
-    mSelectedDates = dates;
+    mSelectedDates = std::move(dates);
     emitSelected(preferredMonth);
 }
 

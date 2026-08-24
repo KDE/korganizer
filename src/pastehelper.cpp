@@ -123,9 +123,9 @@ Incidence::List PasteHelper::pasteIncidences(const QDateTime &newDateTime, Paste
     const Incidence::List incidences = calendar->incidences();
     Incidence::List::ConstIterator end(incidences.constEnd());
     for (it = incidences.constBegin(); it != end; ++it) {
-        Incidence::Ptr const incidence = pasteIncidence(*it, newDateTime, pasteOptions);
+        Incidence::Ptr incidence = pasteIncidence(*it, newDateTime, pasteOptions);
         if (incidence) {
-            list.append(incidence);
+            list.append(std::move(incidence));
             oldUidToNewInc[(*it)->uid()] = *it;
         }
     }

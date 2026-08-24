@@ -2842,8 +2842,8 @@ Akonadi::Collection::List CalendarView::checkedCollections() const
             id = CalendarSupport::KCalPrefs::instance()->defaultTodoCalendarId();
         }
         if (id == col.id()) {
-            const Akonadi::Collection takeCol = collections.takeAt(i);
-            collections.insert(0, takeCol);
+            Akonadi::Collection takeCol = collections.takeAt(i);
+            collections.insert(0, std::move(takeCol));
             break;
         }
     }

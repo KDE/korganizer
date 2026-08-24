@@ -1038,8 +1038,8 @@ bool ActionManager::saveAsURL(const QUrl &url)
         return false;
     }
 
-    QString const fileOrig = mFile;
-    QUrl const URLOrig = mURL;
+    QString fileOrig = mFile;
+    QUrl URLOrig = mURL;
 
     QTemporaryFile *tempFile = nullptr;
     if (url.isLocalFile()) {
@@ -1066,8 +1066,8 @@ bool ActionManager::saveAsURL(const QUrl &url)
                            xi18nc("@info", "Unable to save calendar to the file <filename>%1</filename>", mFile),
                            i18nc("@title:window", "Error"));
         qCDebug(KORGANIZER_LOG) << "failed";
-        mURL = URLOrig;
-        mFile = fileOrig;
+        mURL = std::move(URLOrig);
+        mFile = std::move(fileOrig);
         delete tempFile;
     }
 

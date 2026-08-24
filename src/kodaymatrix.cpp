@@ -196,7 +196,7 @@ void KODayMatrix::updateView(QDate actdate)
                 holiStr = QLatin1StringView("");
             }
         }
-        mHolidays[i] = holiStr;
+        mHolidays[i] = std::move(holiStr);
     }
 }
 

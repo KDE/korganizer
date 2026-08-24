@@ -259,8 +259,8 @@ void KDateNavigator::selectWeekHelper(int weekDifference)
     }
 
     setBaseDate(baseDateNextWeek);
-    mSelectedDates = newSelection;
-    mDayMatrix->setSelectedDaysFrom(*(newSelection.begin()), *(--newSelection.end()));
+    mSelectedDates = std::move(newSelection);
+    mDayMatrix->setSelectedDaysFrom(mSelectedDates.constFirst(), mSelectedDates.constLast());
     updateView();
 }
 
@@ -274,8 +274,8 @@ void KDateNavigator::selectMonthHelper(int monthDifference)
     }
 
     setBaseDate(baseDateNextMonth);
-    mSelectedDates = newSelection;
-    mDayMatrix->setSelectedDaysFrom(*(newSelection.begin()), *(--newSelection.end()));
+    mSelectedDates = std::move(newSelection);
+    mDayMatrix->setSelectedDaysFrom(mSelectedDates.constFirst(), mSelectedDates.constLast());
     updateView();
 }
 

@@ -737,9 +737,9 @@ Akonadi::Collection::List AkonadiCollectionView::defaultableCollections(const QS
     Akonadi::Collection::List collections;
     for (int i = 0; i < entityTreeModel()->rowCount(); ++i) {
         const QModelIndex index = entityTreeModel()->index(i, 0);
-        const Akonadi::Collection collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+        Akonadi::Collection collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
         if (isCollectionDefaultable(collection, mimeType)) {
-            collections << collection;
+            collections << std::move(collection);
         }
     }
     return collections;
@@ -1133,9 +1133,9 @@ Akonadi::Collection::List AkonadiCollectionView::checkedCollections() const
     const QModelIndexList indexes = selectionModel->selectedIndexes();
     for (const QModelIndex &index : indexes) {
         if (index.isValid()) {
-            const auto collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
+            auto collection = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
             if (collection.isValid()) {
-                collections << collection;
+                collections << std::move(collection);
             }
         }
     }
