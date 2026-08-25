@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
 "PO-Revision-Date: 2015-02-07 22:17+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@nuug.no>\n"
@@ -2633,37 +2633,37 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, fuzzy, kde-format
 msgid "New E&vent…"
 msgstr "Ny &hendelse …"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, fuzzy, kde-format
 msgid "New &To-do…"
 msgstr "Nytt &gjøremål …"
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, fuzzy, kde-format
 msgid "New &Journal…"
 msgstr "Ny &Dagbok …"
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, kde-format
 msgid "&Move"
 msgstr "&Flytt"
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, kde-format
 msgid "&Copy"
 msgstr "Ko&pier"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "&Legg til"
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, kde-format
 msgid "&Cancel"
 msgstr "&Avbryt"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
 "PO-Revision-Date: 2026-06-18 21:51+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -2744,37 +2744,37 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, kde-format
 msgid "New E&vent…"
 msgstr "Új &esemény…"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, kde-format
 msgid "New &To-do…"
 msgstr "Új felada&t…"
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, kde-format
 msgid "New &Journal…"
 msgstr "Új n&apló…"
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, kde-format
 msgid "&Move"
 msgstr "Át&helyezés"
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, kde-format
 msgid "&Copy"
 msgstr "Má&solás"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "&Hozzáadás"
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, kde-format
 msgid "&Cancel"
 msgstr "&Mégse"

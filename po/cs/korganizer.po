@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
 "PO-Revision-Date: 2026-08-05 21:59+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -2588,37 +2588,37 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, kde-format
 msgid "New E&vent…"
 msgstr "No&vá událost…"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, kde-format
 msgid "New &To-do…"
 msgstr "Nový úko&l…"
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, kde-format
 msgid "New &Journal…"
 msgstr "Nový &deník…"
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, kde-format
 msgid "&Move"
 msgstr "Př&esunout"
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, kde-format
 msgid "&Copy"
 msgstr "&Kopírovat"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "Při&dat"
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, kde-format
 msgid "&Cancel"
 msgstr "&Zrušit"

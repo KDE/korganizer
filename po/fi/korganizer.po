@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
-"PO-Revision-Date: 2026-01-05 17:25+0200\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
+"PO-Revision-Date: 2026-03-01 19:36+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -59,14 +59,7 @@ msgid "A Personal Organizer"
 msgstr "Ajankäytön hallinta"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -79,7 +72,7 @@ msgstr ""
 "Tekijänoikeudet © 2000–2004, 2007 Cornelius Schumacher\n"
 "Tekijänoikeudet © 2004–2005 Reinhold Kainhofer\n"
 "Tekijänoikeudet © 2006–2012 Allen Winter\n"
-"Tekijänoikeudet © 2012–2025 KOrganizerin tekijät"
+"Tekijänoikeudet © 2012–2026 KOrganizerin tekijät"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -783,12 +776,10 @@ msgid "Scroll the view to today"
 msgstr "Vieritä tähän päivään"
 
 #: actionmanager.cpp:474
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Vierittää nykyisen näkymän tämän päivän kohdalle."
+msgstr "Vierittää nykyisen näkymän tänäisen kohdalle."
 
 #: actionmanager.cpp:480
 #, kde-format
@@ -2646,37 +2637,37 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, kde-format
 msgid "New E&vent…"
 msgstr "Uusi &tapahtuma…"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, kde-format
 msgid "New &To-do…"
 msgstr "Uusi t&ehtävä…"
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, kde-format
 msgid "New &Journal…"
 msgstr "Uusi &päiväkirja…"
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, kde-format
 msgid "&Move"
 msgstr "&Siirrä  "
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, kde-format
 msgid "&Copy"
 msgstr "&Kopioi"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "&Lisää"
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, kde-format
 msgid "&Cancel"
 msgstr "&Peru"
@@ -5801,7 +5792,7 @@ msgstr "Valitse tässä työajan taustaväri kuukausinäytölle."
 #: settings/korganizer.kcfg:387
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "Valitse kuukausinäkymän tämän päivän taustaväri."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
@@ -6995,11 +6986,10 @@ msgid "Icons to use"
 msgstr "Käytettävät kuvakkeet"
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "Näytä kuukausinäkymän merkintöjen kellonajat"
+msgstr "Näytä tai piilota sivupaneeli tässä näkymässä"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -7008,128 +6998,102 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"Näytä tai piilota sivupaneeli näkymästä tällä painikkeella. Kussakin "
+"näkymässä sen voi näyttää tai piilottaa itsenäisesti."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Vierittää nykyisen näkymän tämän päivän kohdalle."
+msgstr "Vierittää nykyisen näkymän tänäisen kohdalle."
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "Siirry &taaksepäin"
+msgstr "Vieritä vuosi taaksepäin"
 
 #: widgets/navigatorbar.cpp:44
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the previous year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "previous year"
 msgstr ""
-"Siirry suunnilleen samaan edellisvuoden päivään napsauttamalla tätä "
+"Vieritä näkymä suunnilleen samaan edellisvuoden päivään napsauttamalla tätä "
 "painiketta"
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Siirry &taaksepäin"
+msgstr "Vieritä kuukausi taaksepäin"
 
 #: widgets/navigatorbar.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the previous month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "previous month"
 msgstr ""
-"Siirry suunnilleen samaan viime kuun päivään napsauttamalla tätä painiketta"
+"Vieritä näkymä suunnilleen samaan viime kuun päivään napsauttamalla tätä "
+"painiketta"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "Siirry &taaksepäin"
+msgstr "Vieritä viikko taaksepäin"
 
 #: widgets/navigatorbar.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr ""
-"Siirry suunnilleen samaan ensi kuun päivään napsauttamalla tätä painiketta"
+msgstr "Vieritä näkymä viikolla taaksepäin napsauttamalla tätä painiketta"
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "Siirry eteenpäin seuraavaan vuoteen"
+msgstr "Vieritä viikko eteenpäin"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr ""
-"Siirry suunnilleen samaan ensi vuoden päivään napsauttamalla tätä painiketta"
+msgstr "Vieritä näkymä viikolla eteenpäin napsauttamalla tätä painiketta"
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Siirry eteenpäin seuraavaan kuukauteen"
+msgstr "Vieritä kuukausi eteenpäin"
 
 #: widgets/navigatorbar.cpp:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
 "next month"
 msgstr ""
-"Siirry suunnilleen samaan ensi kuun päivään napsauttamalla tätä painiketta"
+"Vieritä näkymä suunnilleen samaan ensi kuun päivään napsauttamalla tätä "
+"painiketta"
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
-msgstr "Siirry eteenpäin seuraavaan vuoteen"
+msgstr "Vieritä vuosi eteenpäin"
 
 #: widgets/navigatorbar.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
 "next year"
 msgstr ""
-"Siirry suunnilleen samaan ensi vuoden päivään napsauttamalla tätä painiketta"
+"Vieritä näkymä suunnilleen samaan ensi vuoden päivään napsauttamalla tätä "
+"painiketta"
 
 #: widgets/navigatorbar.cpp:77
 #, kde-format

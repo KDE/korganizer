@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -2489,37 +2489,37 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr "，"
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, kde-format
 msgid "New E&vent…"
 msgstr "新建事件(&V)…"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, kde-format
 msgid "New &To-do…"
 msgstr "新建待办事项(&T)…"
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, kde-format
 msgid "New &Journal…"
 msgstr "新建日记(&J)…"
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, kde-format
 msgid "&Move"
 msgstr "移动(&M)"
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, kde-format
 msgid "&Copy"
 msgstr "复制(&C)"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "添加(&A)"
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, kde-format
 msgid "&Cancel"
 msgstr "取消(&C)"

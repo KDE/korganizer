@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
 "PO-Revision-Date: 2004-02-25 13:53+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -2551,39 +2551,39 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, fuzzy, kde-format
 #| msgid "New Event"
 msgid "New E&vent…"
 msgstr "Digwyddiad Newydd"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, fuzzy, kde-format
 #| msgid "New To-do"
 msgid "New &To-do…"
 msgstr "I'w-Wneud newydd..."
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, fuzzy, kde-format
 msgid "New &Journal…"
 msgstr "&Dyddlyfr"
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, fuzzy, kde-format
 msgid "&Move"
 msgstr "&Symud I"
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, fuzzy, kde-format
 msgid "&Copy"
 msgstr "&Copïo I"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "&Ychwanegu..."
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, fuzzy, kde-format
 msgid "&Cancel"
 msgstr "&Newid"

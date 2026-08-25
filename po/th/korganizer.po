@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
 "PO-Revision-Date: 2008-07-21 16:18+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -2774,42 +2774,42 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "New Event"
 msgid "New E&vent…"
 msgstr "เหตุการณ์ใหม่"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "New To-do"
 msgid "New &To-do…"
 msgstr "สิ่งที่จะทำใหม่"
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgid "New &Journal…"
 msgstr "บันทึกประจำวันใหม่..."
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, kde-format
 msgid "&Move"
 msgstr "ย้าย"
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, kde-format
 msgid "&Copy"
 msgstr "คัดลอก"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "เพิ่ม"
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, kde-format
 msgid "&Cancel"
 msgstr "ยกเลิก"

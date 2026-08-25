@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-21 00:45+0000\n"
+"POT-Creation-Date: 2026-08-25 00:46+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -2640,41 +2640,41 @@ msgctxt "delimiter for joining holiday names"
 msgid ","
 msgstr ","
 
-#: kodaymatrix.cpp:454
+#: kodaymatrix.cpp:451
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "New Event"
 msgid "New E&vent…"
 msgstr "ਨਵਾਂ ਈਵੈਂਟ"
 
-#: kodaymatrix.cpp:455
+#: kodaymatrix.cpp:452
 #, fuzzy, kde-format
 #| msgid "New &To-do..."
 msgid "New &To-do…"
 msgstr "ਨਵਾਂ ਕੰਮ (&T)..."
 
-#: kodaymatrix.cpp:456
+#: kodaymatrix.cpp:453
 #, fuzzy, kde-format
 #| msgid "New &Journal..."
 msgid "New &Journal…"
 msgstr "ਨਵਾਂ ਰੋਜ਼ਨਾਮਚਾ(&J)..."
 
-#: kodaymatrix.cpp:604
+#: kodaymatrix.cpp:601
 #, kde-format
 msgid "&Move"
 msgstr "ਭੇਜੋ(&M)"
 
-#: kodaymatrix.cpp:606
+#: kodaymatrix.cpp:603
 #, kde-format
 msgid "&Copy"
 msgstr "ਨਕਲ(&C)"
 
-#: kodaymatrix.cpp:609
+#: kodaymatrix.cpp:606
 #, kde-format
 msgid "&Add"
 msgstr "ਸ਼ਾਮਿਲ(&A)"
 
-#: kodaymatrix.cpp:613
+#: kodaymatrix.cpp:610
 #, kde-format
 msgid "&Cancel"
 msgstr "ਰੱਦ ਕਰੋ(&C)"
