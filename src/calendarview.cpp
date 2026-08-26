@@ -2319,17 +2319,19 @@ void CalendarView::deleteChildren(const Akonadi::Item &item)
     }
 }
 
-void CalendarView::deleteRecurringIncidence(const Akonadi::Item &todoItem)
+void CalendarView::deleteRecurringIncidence(const Akonadi::Item &item)
 {
-    if (!mChanger->deletedRecently(todoItem.id())) {
-        auto incidence = Akonadi::CalendarUtils::incidence(todoItem);
+    if (!mChanger->deletedRecently(item.id())) {
+        auto incidence = Akonadi::CalendarUtils::incidence(item);
+        auto itemsToDelete = Akonadi::Item::List();
         if (incidence->recurs()) {
             const KCalendarCore::Incidence::List instances = mCalendar->instances(incidence);
             for (const KCalendarCore::Incidence::Ptr &instance : instances) {
-                (void)mChanger->deleteIncidence(mCalendar->item(instance), this);
+                itemsToDelete.append(mCalendar->item(instance));
             }
         }
-        (void)mChanger->deleteIncidence(todoItem, this);
+        itemsToDelete.append(item);
+        (void)mChanger->deleteIncidences(itemsToDelete, this);
     }
 }
 
