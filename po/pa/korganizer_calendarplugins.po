@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-08 00:46+0000\n"
+"POT-Creation-Date: 2026-08-26 00:49+0000\n"
 "PO-Revision-Date: 2011-01-04 07:42+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -947,7 +947,7 @@ msgid ""
 "hemisphere."
 msgstr "ਇਹ ਬਕਸੇ ਦੀ ਚੋਣ ਕਰੋ, ਜੇਕਰ ਤੁਸੀਂ ਮੌਜੂਦਾ ਸਮਾਂ ਸਤਰ ਵਿੱਚ ਸਕਿੰਟ ਵੇਖਣਾ ਚਾਹੁੰਦੇ ਹੋ।"
 
-#: lunarphases/lunarphases.cpp:108
+#: lunarphases/lunarphases.cpp:106
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "

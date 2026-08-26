@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-08 00:46+0000\n"
+"POT-Creation-Date: 2026-08-26 00:49+0000\n"
 "PO-Revision-Date: 2008-01-24 16:52+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
@@ -940,7 +940,7 @@ msgid ""
 msgstr ""
 "इस तारीख को एक्सेप्शन के रूप में इस घटना या कार्य के लिए पुनरावृत्ति नियम में शामिल करें."
 
-#: lunarphases/lunarphases.cpp:108
+#: lunarphases/lunarphases.cpp:106
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "

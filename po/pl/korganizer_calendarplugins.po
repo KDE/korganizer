@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1743268 $
+# Version: $Revision: 1744785 $
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-08 00:46+0000\n"
+"POT-Creation-Date: 2026-08-26 00:49+0000\n"
 "PO-Revision-Date: 2025-09-27 08:31+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -967,7 +967,7 @@ msgstr ""
 "Użyj pola, aby ustawić liczbę dni do pokazywania oczekujących zadań, do 1 "
 "roku."
 
-#: lunarphases/lunarphases.cpp:108
+#: lunarphases/lunarphases.cpp:106
 #, fuzzy, kde-format
 #| msgid ""
 #| "This plugin displays the day's lunar phase (New, First, Last, Full). "
