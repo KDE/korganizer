@@ -22,7 +22,7 @@
         <choice name="askDestination">
           <label>Be asked which calendar to use</label>
           <tooltip>Always prompt for the calendar to use</tooltip>
-          <whatsthis>Select this option to choose the calendar to be used to record the item each time you create a new event, to-do or journal entry</whatsthis>
+          <whatsthis>Select this option to choose the calendar to be used to record the item each time you create a new event, to-do or journal entry.</whatsthis>
         </choice>
       </choices>
       <default>askDestination</default>
@@ -92,18 +92,18 @@
     <entry type="Bool" key="Highlight To-dos" name="HighlightTodos">
       <label>Show to-dos instead of events when in Todo View</label>
       <tooltip>In Todo View, use a bold typeface to more easily identify to-dos</tooltip>
-      <whatsthis>Check this box to show the days containing to-dos in bold typeface in the Date Navigator when in to-do view.</whatsthis>
+      <whatsthis>Check this box to show the days containing to-dos in bold typeface in the Date Navigator when in Todo View.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Highlight Journals" name="HighlightJournals">
       <label>Show journals instead of events when in Journal View</label>
-      <tooltip>In journal view, use a bold typeface to more easily identify journals</tooltip>
-      <whatsthis>Check this box to show the days containing journals in bold typeface in the Date Navigator when in journal view.</whatsthis>
+      <tooltip>In Journal View, use a bold typeface to more easily identify journals</tooltip>
+      <whatsthis>Check this box to show the days containing journals in bold typeface in the Date Navigator when in Journal View.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Show Week Numbers" name="WeekNumbersShow">
       <label>Show week numbers</label>
-      <tooltip>Display each week's number in the current year</tooltip>
+      <tooltip>Show week numbers in the Date Navigator</tooltip>
       <whatsthis>Check this box to show the Date Navigator's week numbers.</whatsthis>
       <default>true</default>
     </entry>
@@ -139,13 +139,13 @@
     <entry type="Bool" key="Show Incidence Descriptions in Agenda View" name="EnableAgendaItemDesc">
       <label>Show incidence descriptions in Agenda View items</label>
       <whatsthis>Check this box to display the incidence descriptions in Agenda View items.</whatsthis>
-      <tooltip>Display incidence descriptions Agenda View items</tooltip>
+      <tooltip>Display incidence descriptions in Agenda View items</tooltip>
       <default>false</default>
     </entry>
     <entry type="Bool" key="Show Incidence Locations in Agenda View" name="EnableAgendaItemLocation">
       <label>Show incidence locations in Agenda View items</label>
       <whatsthis>Check this box to display the incidence locations in Agenda View items.</whatsthis>
-      <tooltip>Display incidence locations Agenda View items</tooltip>
+      <tooltip>Display incidence locations in Agenda View items</tooltip>
       <default>false</default>
     </entry>
     <entry type="Bool" key="ColorBusyDaysEnabled" name="ColorBusyDaysEnabled">
@@ -404,7 +404,7 @@
     <entry type="Font" key="MonthView Font">
       <label>Month View</label>
       <tooltip>Set the font for Month View items</tooltip>
-      <whatsthis>Press this button to configure the month View font. This button will open the "Select Font" dialog, allowing you to choose the font for the items in the Month View.</whatsthis>
+      <whatsthis>Press this button to configure the Month View font. This button will open the "Select Font" dialog, allowing you to choose the font for the items in the Month View.</whatsthis>
     </entry>
     <entry type="Font" key="AgendaView Font">
       <label>Agenda View</label>
