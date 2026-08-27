@@ -25,12 +25,12 @@ install(TARGETS lunarphases DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/korganizer
 include(ECMInstallIcons)
 ecm_install_icons(
     ICONS
-    pics/48-apps-realmoon-full.png
-    pics/48-apps-realmoon-new.png
-    pics/48-apps-realmoon-waning-last-quarter-north.png
-    pics/48-apps-realmoon-waning-last-quarter-south.png
-    pics/48-apps-realmoon-waxing-first-quarter-north.png
-    pics/48-apps-realmoon-waxing-first-quarter-south.png
+    pics/sc-apps-realmoon-full.svg
+    pics/sc-apps-realmoon-new.svg
+    pics/sc-apps-realmoon-waning-last-quarter-north.svg
+    pics/sc-apps-realmoon-waning-last-quarter-south.svg
+    pics/sc-apps-realmoon-waxing-first-quarter-north.svg
+    pics/sc-apps-realmoon-waxing-first-quarter-south.svg
     DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )
