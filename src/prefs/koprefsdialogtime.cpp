@@ -55,6 +55,8 @@ KOPrefsDialogTime::KOPrefsDialogTime(QObject *parent, const KPluginMetaData &dat
     Korganizer::KPrefsWidTime *dayBegins = addWidTime(CalendarSupport::KCalPrefs::instance()->dayBeginsItem(), regionalPage);
     datetimeLayout->addWidget(dayBegins->label(), 1, 0);
     datetimeLayout->addWidget(dayBegins->timeEdit(), 1, 1);
+    dayBegins->label()->setToolTip(dayBegins->timeEdit()->toolTip());
+    dayBegins->label()->setWhatsThis(dayBegins->timeEdit()->whatsThis());
 
     auto holidaysGroupBox = new QGroupBox(i18nc("@title:group", "Holidays"), regionalPage);
     regionalLayout->addWidget(holidaysGroupBox, 1, 0);
