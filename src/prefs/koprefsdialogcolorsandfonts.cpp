@@ -83,7 +83,7 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     colorLayout->addWidget(mblColor->button(), 5, 1);
 
     // Holiday Color
-    Korganizer::KPrefsWidColor *holidayColor = addWidColor(KOPrefs::instance()->agendaHolidaysBackgroundColorItem(), colorFrame);
+    Korganizer::KPrefsWidColor *holidayColor = addWidColor(KOPrefs::instance()->holidayColorItem(), colorFrame);
     holidayColor->label()->setToolTip(holidayColor->button()->toolTip());
     holidayColor->label()->setWhatsThis(holidayColor->button()->whatsThis());
     colorLayout->addWidget(holidayColor->label(), 6, 0);

@@ -728,7 +728,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
 
         const bool holiday = !workDays.contains(mDays[i]);
 
-        const QColor holidayColorShaded = getShadedColor(KOPrefs::instance()->agendaHolidaysBackgroundColor());
+        const QColor holidayColorShaded = getShadedColor(KOPrefs::instance()->eventViewsPreferences()->holidayColor());
 
         // if today then draw rectangle around day
         if (mToday == i) {
@@ -739,7 +739,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
             // draw red rectangle for holidays
             if (holiday) {
                 if (actcol == textColor) {
-                    todayPen.setColor(KOPrefs::instance()->agendaHolidaysBackgroundColor());
+                    todayPen.setColor(KOPrefs::instance()->eventViewsPreferences()->holidayColor());
                 } else {
                     todayPen.setColor(holidayColorShaded);
                 }
@@ -764,7 +764,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
         // if it is a holiday then use the default holiday color
         if (holiday) {
             if (actcol == textColor) {
-                p.setPen(KOPrefs::instance()->agendaHolidaysBackgroundColor());
+                p.setPen(KOPrefs::instance()->eventViewsPreferences()->holidayColor());
             } else {
                 p.setPen(holidayColorShaded);
             }

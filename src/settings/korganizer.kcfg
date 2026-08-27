@@ -363,12 +363,6 @@
       <whatsthis>Select a color to use for the current-time (Marcus Bains) line.</whatsthis>
       <default>255,0,0</default>
     </entry>
-    <entry key="Agenda Holidays Background Color" type="Color">
-      <label>Holiday color</label>
-      <tooltip>Set the color for Holidays in Agenda View</tooltip>
-      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the Month View and the holiday number in the Date Navigator.</whatsthis>
-      <default>255, 100, 100</default>
-    </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
       <tooltip>Set the color for to-dos that are due today</tooltip>
@@ -386,6 +380,12 @@
       <tooltip>Set the background color for today's date in Month View</tooltip>
       <whatsthis>In Month View, select the background color for today's date.</whatsthis>
       <default>221, 251, 232</default>
+    </entry>
+    <entry type="Color" key="Holiday Color">
+      <label>Month View holiday color</label>
+      <tooltip>Set the color for holidays in Month View</tooltip>
+      <whatsthis>In Month View, select the color for holidays. This color will be used for the holiday backgrounds in the Month View and the holiday dates in the Date Navigator.</whatsthis>
+      <default>255, 100, 100</default>
     </entry>
     <entry key="Navigator Grid Highlight Color" type="Color">
       <label>Date Navigator grid highlight color</label>
