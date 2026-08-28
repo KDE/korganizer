@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-26 00:49+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2002-11-07 11:37+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -913,7 +913,7 @@ msgid ""
 "hemisphere."
 msgstr "Aktiveer rolbalk in maand besigtig selle"
 
-#: lunarphases/lunarphases.cpp:106
+#: lunarphases/lunarphases.cpp:108
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-26 00:49+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2025-04-22 22:56+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -944,7 +944,7 @@ msgid ""
 "hemisphere."
 msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
 
-#: lunarphases/lunarphases.cpp:106
+#: lunarphases/lunarphases.cpp:108
 #, fuzzy, kde-format
 #| msgid ""
 #| "This plugin displays the day's lunar phase (New, First, Last, Full). "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-26 00:49+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2026-08-13 08:38+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -924,7 +924,7 @@ msgid ""
 msgstr ""
 "Изберете тази опция, за да се показват фазите на луната за южното полукълбо."
 
-#: lunarphases/lunarphases.cpp:106
+#: lunarphases/lunarphases.cpp:108
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "

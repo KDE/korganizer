@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-26 00:49+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2026-08-08 02:00+0200\n"
 "Last-Translator: Luigi Toscano <luigi.toscano@tiscali.it>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -931,7 +931,7 @@ msgstr ""
 "Seleziona questa opzione per mostrare le fasi lunari se vivi nell'emisfero "
 "australe."
 
-#: lunarphases/lunarphases.cpp:106
+#: lunarphases/lunarphases.cpp:108
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "

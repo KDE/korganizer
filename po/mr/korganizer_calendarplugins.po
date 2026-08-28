@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-26 00:49+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2013-04-15 10:39+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -965,7 +965,7 @@ msgstr ""
 "सध्याची/आताची वेळ दर्शविणाऱ्या रेषेवर (Marcus Bains) line) सेकंद दाखवायचे असतील तर हे "
 "निवडा"
 
-#: lunarphases/lunarphases.cpp:106
+#: lunarphases/lunarphases.cpp:108
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "

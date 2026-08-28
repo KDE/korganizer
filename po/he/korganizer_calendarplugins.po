@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer_plugins\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-26 00:49+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2026-08-07 08:06+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -938,7 +938,7 @@ msgid ""
 msgstr ""
 "בחירה באפשרות הזאת תציג את מופעי הירח לאלו שנמצאים בחצי הדרומי של כדור הארץ."
 
-#: lunarphases/lunarphases.cpp:106
+#: lunarphases/lunarphases.cpp:108
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "

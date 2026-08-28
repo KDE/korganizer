@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-25 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2025-10-12 12:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -4027,7 +4027,7 @@ msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:240
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -4118,39 +4118,39 @@ msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "일반 날짜와 시간"
 
-#: prefs/koprefsdialogtime.cpp:59
+#: prefs/koprefsdialogtime.cpp:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "공휴일"
 
-#: prefs/koprefsdialogtime.cpp:70
+#: prefs/koprefsdialogtime.cpp:72
 #, fuzzy, kde-format
 #| msgid "Use holiday regions:"
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "공휴일 지역 사용:"
 
-#: prefs/koprefsdialogtime.cpp:94
+#: prefs/koprefsdialogtime.cpp:96
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1(%2)"
 
-#: prefs/koprefsdialogtime.cpp:103
+#: prefs/koprefsdialogtime.cpp:105
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "공휴일 지역 선택"
 
-#: prefs/koprefsdialogtime.cpp:121
+#: prefs/koprefsdialogtime.cpp:123
 #, fuzzy, kde-format
 #| msgid "Use holiday regions:"
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "공휴일 지역 사용:"
 
-#: prefs/koprefsdialogtime.cpp:135
+#: prefs/koprefsdialogtime.cpp:137
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox"
 #| msgid "Select Categories"
@@ -4158,19 +4158,19 @@ msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "분류 선택"
 
-#: prefs/koprefsdialogtime.cpp:155
+#: prefs/koprefsdialogtime.cpp:157
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "주간 일정"
 
-#: prefs/koprefsdialogtime.cpp:170
+#: prefs/koprefsdialogtime.cpp:172
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "%1을(를) 내 주간 일정에 포함"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4185,55 +4185,55 @@ msgstr ""
 "주간 일정의 일부에 포함된다면 이 옵션을 선택하십시오(업무 중이 아니어도). 일"
 "반적으로 주말 날짜는 선택하지 않습니다."
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "월요일"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "화요일"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "수요일"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "목요일"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "금요일"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "토요일"
 
-#: prefs/koprefsdialogtime.cpp:188
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "일요일"
 
-#: prefs/koprefsdialogtime.cpp:211
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "기본 일정과 다른 공휴일 강조"
 
-#: prefs/koprefsdialogtime.cpp:213
+#: prefs/koprefsdialogtime.cpp:215
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4241,43 +4241,43 @@ msgid ""
 "your regular schedule."
 msgstr "이 옵션을 사용하면 기본 일정에 포함되어 있지 않은 공휴일을 강조합니다."
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:222
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "기본값"
 
-#: prefs/koprefsdialogtime.cpp:223
+#: prefs/koprefsdialogtime.cpp:225
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "약속"
 
-#: prefs/koprefsdialogtime.cpp:243
+#: prefs/koprefsdialogtime.cpp:245
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "기본 알림 시간:"
 
-#: prefs/koprefsdialogtime.cpp:256
+#: prefs/koprefsdialogtime.cpp:258
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "분"
 
-#: prefs/koprefsdialogtime.cpp:257
+#: prefs/koprefsdialogtime.cpp:259
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "시간"
 
-#: prefs/koprefsdialogtime.cpp:258
+#: prefs/koprefsdialogtime.cpp:260
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "일"
 
-#: prefs/koprefsdialogtime.cpp:268
+#: prefs/koprefsdialogtime.cpp:270
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
@@ -4435,7 +4435,7 @@ msgstr "새 템플릿의 이름을 입력하세요:"
 #, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
-"time you create a new event, to-do or journal entry"
+"time you create a new event, to-do or journal entry."
 msgstr ""
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
@@ -4658,10 +4658,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to show the days containing to-dos in bold typeface in the "
+#| "Date Navigator when in to-do view."
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
-"Date Navigator when in to-do view."
+"Date Navigator when in Todo View."
 msgstr ""
 "이 옵션을 사용하면 할 일 보기의 날짜 탐색기에 할 일이 있는 날을 굵은 글씨로 "
 "표시합니다."
@@ -4675,15 +4678,18 @@ msgstr "저널 보기에 이벤트 대신 저널 표시"
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
 #, kde-format
-msgid "In journal view, use a bold typeface to more easily identify journals"
+msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to show the days containing journals in bold typeface in "
+#| "the Date Navigator when in journal view."
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
-"Date Navigator when in journal view."
+"Date Navigator when in Journal View."
 msgstr ""
 "이 옵션을 사용하면 할 일 보기의 날짜 탐색기에 저널이 있는 날을 굵은 글씨로 표"
 "시합니다."
@@ -4696,9 +4702,11 @@ msgstr "주 번호 표시"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, kde-format
-msgid "Display each week's number in the current year"
-msgstr ""
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Show Date Navigator"
+msgid "Show week numbers in the Date Navigator"
+msgstr "날짜 탐색기 표시"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4820,7 +4828,7 @@ msgstr ""
 #: settings/korganizer.kcfg:142
 #, fuzzy, kde-format
 #| msgid "Display icons in agenda view items"
-msgid "Display incidence descriptions Agenda View items"
+msgid "Display incidence descriptions in Agenda View items"
 msgstr "일정 보기 항목에 아이콘 표시"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
@@ -4844,7 +4852,7 @@ msgstr ""
 #: settings/korganizer.kcfg:148
 #, fuzzy, kde-format
 #| msgid "Display icons in agenda view items"
-msgid "Display incidence locations Agenda View items"
+msgid "Display incidence locations in Agenda View items"
 msgstr "일정 보기 항목에 아이콘 표시"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5586,89 +5594,91 @@ msgstr "다음 색상을 일정 보기의 현재 시간 표시선에 사용"
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr "현재 시간 표시선(Marcus Bains 선)에 사용할 색상을 선택하십시오."
 
-#. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:367
-#, kde-format
-msgid "Holiday color"
-msgstr "공휴일 색"
-
-#. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:368
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
-msgid "Set the color for Holidays in Agenda View"
-msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오."
-
-#. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:369
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the month view and the holiday number in the date "
-#| "navigator."
-msgid ""
-"Select the holiday color here. The holiday color will be used for the "
-"holiday name in the Month View and the holiday number in the Date Navigator."
-msgstr ""
-"공휴일 색을 선택하십시오. 이 색은 월간 보기에서 공휴일 이름과 날짜 탐색기에"
-"서 공휴일 번호에 사용합니다."
-
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:373
+#: settings/korganizer.kcfg:367
 #, kde-format
 msgid "To-do due today color"
 msgstr "오늘까지 해야 할 일 색"
 
 #. i18n: ectx: tooltip, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:374
+#: settings/korganizer.kcfg:368
 #, kde-format
 msgid "Set the color for to-dos that are due today"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:369
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "오늘까지 끝내야 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:379
+#: settings/korganizer.kcfg:373
 #, kde-format
 msgid "To-do overdue color"
 msgstr "기한이 지난 할 일 색"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:374
 #, fuzzy, kde-format
 #| msgid "Select the to-do overdue color here."
 msgid "Set the color for overdue to-dos"
 msgstr "기한이 지난 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:381
+#: settings/korganizer.kcfg:375
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "기한이 지난 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:385
+#: settings/korganizer.kcfg:379
 #, fuzzy, kde-format
 #| msgid "Month view background color"
 msgid "Month View today background color"
 msgstr "월간 보기 배경색"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:386
+#: settings/korganizer.kcfg:380
 #, fuzzy, kde-format
 #| msgid "Select the working hours background color for the Month view here."
 msgid "Set the background color for today's date in Month View"
 msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오."
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:387
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr ""
+
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:385
+#, fuzzy, kde-format
+#| msgid "Month view background color"
+msgid "Month View holiday color"
+msgstr "월간 보기 배경색"
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:386
+#, fuzzy, kde-format
+#| msgid "Select the working hours background color for the Month view here."
+msgid "Set the color for holidays in Month View"
+msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오."
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:387
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the holiday color here. The holiday color will be used for the "
+#| "holiday name in the month view and the holiday number in the date "
+#| "navigator."
+msgid ""
+"In Month View, select the color for holidays. This color will be used for "
+"the holiday backgrounds in the Month View and the holiday dates in the Date "
+"Navigator."
+msgstr ""
+"공휴일 색을 선택하십시오. 이 색은 월간 보기에서 공휴일 이름과 날짜 탐색기에"
+"서 공휴일 번호에 사용합니다."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
@@ -5750,7 +5760,7 @@ msgstr "월간 보기 항목에 아이콘 표시"
 #| "the \"Select Font\" dialog, allowing you to choose the font for the items "
 #| "in the month view."
 msgid ""
-"Press this button to configure the month View font. This button will open "
+"Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the Month View."
 msgstr ""
@@ -7002,6 +7012,9 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Holiday color"
+#~ msgstr "공휴일 색"
 
 #~ msgctxt "@info:tooltip"
 #~ msgid "Configure"

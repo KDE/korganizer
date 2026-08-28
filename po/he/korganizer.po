@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-25 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2026-08-06 09:24+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -3934,7 +3934,7 @@ msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr "סיווג גישת ברירת מחדל"
 
-#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:240
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -4019,55 +4019,55 @@ msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "שעה ותאריך כלליים"
 
-#: prefs/koprefsdialogtime.cpp:59
+#: prefs/koprefsdialogtime.cpp:61
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "חגים"
 
-#: prefs/koprefsdialogtime.cpp:70
+#: prefs/koprefsdialogtime.cpp:72
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "להשתמש באזורי חגים:"
 
-#: prefs/koprefsdialogtime.cpp:94
+#: prefs/koprefsdialogtime.cpp:96
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:103
+#: prefs/koprefsdialogtime.cpp:105
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "בחירת אזורי חגים"
 
-#: prefs/koprefsdialogtime.cpp:121
+#: prefs/koprefsdialogtime.cpp:123
 #, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "להשתמש בקטגוריות חגים:"
 
-#: prefs/koprefsdialogtime.cpp:135
+#: prefs/koprefsdialogtime.cpp:137
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "בחירת קטגוריות חגים"
 
-#: prefs/koprefsdialogtime.cpp:155
+#: prefs/koprefsdialogtime.cpp:157
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "תזמון שבועי"
 
-#: prefs/koprefsdialogtime.cpp:170
+#: prefs/koprefsdialogtime.cpp:172
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "לכלול את %1 כחלק מהלו״ז השבועי שלך"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4082,55 +4082,55 @@ msgstr ""
 "התיבה הזאת אם %1 נכלל כחלק מהלו״ז השבועי הקבוע שלך (אפילו ללא עבודה). בדרך "
 "כלל, ימי סוף השבוע לא אמורים להיות מסומנים."
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "יום שני"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "יום שלישי"
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "יום רביעי"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "יום חמישי"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "יום שישי"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "שבת"
 
-#: prefs/koprefsdialogtime.cpp:188
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "יום ראשון"
 
-#: prefs/koprefsdialogtime.cpp:211
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "להדגיש חגים בשונה מהלו״ז הקבוע שלך"
 
-#: prefs/koprefsdialogtime.cpp:213
+#: prefs/koprefsdialogtime.cpp:215
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4139,43 +4139,43 @@ msgid ""
 msgstr ""
 "יש לסמן את התיבה הזאת כדי להדגיש חגים בשונה מימים שנכללים בלו״ז הקבוע שלך."
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:222
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "ערכי ברירת מחדל"
 
-#: prefs/koprefsdialogtime.cpp:223
+#: prefs/koprefsdialogtime.cpp:225
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "פגישות"
 
-#: prefs/koprefsdialogtime.cpp:243
+#: prefs/koprefsdialogtime.cpp:245
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "זמן ברירת מחדל לתזכורת:"
 
-#: prefs/koprefsdialogtime.cpp:256
+#: prefs/koprefsdialogtime.cpp:258
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "דקה/דקות"
 
-#: prefs/koprefsdialogtime.cpp:257
+#: prefs/koprefsdialogtime.cpp:259
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "שעה/שעות"
 
-#: prefs/koprefsdialogtime.cpp:258
+#: prefs/koprefsdialogtime.cpp:260
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "יום/ימים"
 
-#: prefs/koprefsdialogtime.cpp:268
+#: prefs/koprefsdialogtime.cpp:270
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
@@ -4330,10 +4330,13 @@ msgstr "תמיד לשאול באילו לוחות שנה להשתמש"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select this option to choose the calendar to be used to record the item "
+#| "each time you create a new event, to-do or journal entry"
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
-"time you create a new event, to-do or journal entry"
+"time you create a new event, to-do or journal entry."
 msgstr ""
 "יש לבחור את האפשרות הזאת כדי לבחור את לוח השנה לשימוש כדי לתעד את הפריט בכל "
 "יצירה של אירוע, מטלה או רשומת יומן חדשים"
@@ -4550,10 +4553,13 @@ msgstr "בתצוגת מטלות, להשתמש בפני גופן עבים כדי 
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to show the days containing to-dos in bold typeface in the "
+#| "Date Navigator when in to-do view."
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
-"Date Navigator when in to-do view."
+"Date Navigator when in Todo View."
 msgstr ""
 "סימון התיבה הזאת יציג את הימים שמכילים מטלות בסגנון גופן מודגש בתאריכון "
 "בתצוגת המטלות."
@@ -4566,16 +4572,21 @@ msgstr "הצגת יומנים במקום אירועים בתצוגת יומן"
 
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
-#, kde-format
-msgid "In journal view, use a bold typeface to more easily identify journals"
+#, fuzzy, kde-format
+#| msgid ""
+#| "In journal view, use a bold typeface to more easily identify journals"
+msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr "בתצוגת יומן, להשתמש בפני גופן עבים כדי לזהות יומנים ביתר קלות"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to show the days containing journals in bold typeface in "
+#| "the Date Navigator when in journal view."
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
-"Date Navigator when in journal view."
+"Date Navigator when in Journal View."
 msgstr ""
 "סימון התיבה הזאת יציג את הימים שמכילים יומנים בסגנון גופן מודגש בנווט "
 "התאריכים בתצוגת היומן."
@@ -4588,9 +4599,11 @@ msgstr "הצגת מספרי השבועות"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, kde-format
-msgid "Display each week's number in the current year"
-msgstr "הצגת המספר של כל אחד מהשבועות בשנה הנוכחית"
+#, fuzzy, kde-format
+#| msgctxt "@action:inmenu"
+#| msgid "Show Date Navigator"
+msgid "Show week numbers in the Date Navigator"
+msgstr "הצגת תאריכון"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4702,8 +4715,9 @@ msgstr "יש לסמן את התיבה הזאת כדי להציג את תיאור
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, kde-format
-msgid "Display incidence descriptions Agenda View items"
+#, fuzzy, kde-format
+#| msgid "Display incidence descriptions Agenda View items"
+msgid "Display incidence descriptions in Agenda View items"
 msgstr "הצגת תיאורי חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
@@ -4720,8 +4734,9 @@ msgstr "יש לסמן את התיבה הזאת כדי להציג את מקומו
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, kde-format
-msgid "Display incidence locations Agenda View items"
+#, fuzzy, kde-format
+#| msgid "Display incidence locations Agenda View items"
+msgid "Display incidence locations in Agenda View items"
 msgstr "הצגת מקומות חזרות בפריטי תצוגת סדר יום"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5433,81 +5448,88 @@ msgstr "הגדרת הצבע לקו הזמן הנוכחי (מרקוס ביינס)
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr "נא לבחור את הצבע של קו הזמן הנוכחי (מרקוס ביינס)."
 
-#. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:367
-#, kde-format
-msgid "Holiday color"
-msgstr "צבע חגים"
-
-#. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:368
-#, kde-format
-msgid "Set the color for Holidays in Agenda View"
-msgstr "הגדרת צבע הרקע לחגים בתצוגת סדר יום"
-
-#. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:369
-#, kde-format
-msgid ""
-"Select the holiday color here. The holiday color will be used for the "
-"holiday name in the Month View and the holiday number in the Date Navigator."
-msgstr ""
-"כאן ניתן לבחור בצבע לחגים. צבע החגים ישמש עבור שם החג בתצוגת חודש ומספר החג "
-"בתאריכון."
-
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:373
+#: settings/korganizer.kcfg:367
 #, kde-format
 msgid "To-do due today color"
 msgstr "צבע למשימות שתאריך היעד שלהן הוא היום"
 
 #. i18n: ectx: tooltip, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:374
+#: settings/korganizer.kcfg:368
 #, kde-format
 msgid "Set the color for to-dos that are due today"
 msgstr "הגדרת הצבע למטלות שאמורות להסתיים היום"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:369
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "כאן אפשר לבחור צבע למטלות שתאריך היעד שלהן הוא היום."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:379
+#: settings/korganizer.kcfg:373
 #, kde-format
 msgid "To-do overdue color"
 msgstr "צבע מטלה שתאריך היעד שלה עבר"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for overdue to-dos"
 msgstr "הגדרת צבע של מטלות שמועד הסיום שלהן חלף."
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:381
+#: settings/korganizer.kcfg:375
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "כאן אפשר לבחור צבע מטלה שתאריך היעד שלה עבר."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:385
+#: settings/korganizer.kcfg:379
 #, kde-format
 msgid "Month View today background color"
 msgstr "צבע רקע לתצוגת היום בחודש"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:386
+#: settings/korganizer.kcfg:380
 #, kde-format
 msgid "Set the background color for today's date in Month View"
 msgstr "הגדרת צבע הרקע לתאריך של היום בתצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:387
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr "בתצוגת חודש, לבחור את צבע הרקע לתאריך של היום."
+
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:385
+#, fuzzy, kde-format
+#| msgid "Month View today background color"
+msgid "Month View holiday color"
+msgstr "צבע רקע לתצוגת היום בחודש"
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:386
+#, fuzzy, kde-format
+#| msgid "Set the color for Holidays in Agenda View"
+msgid "Set the color for holidays in Month View"
+msgstr "הגדרת צבע הרקע לחגים בתצוגת סדר יום"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:387
+#, fuzzy, kde-format
+#| msgid ""
+#| "Select the holiday color here. The holiday color will be used for the "
+#| "holiday name in the Month View and the holiday number in the Date "
+#| "Navigator."
+msgid ""
+"In Month View, select the color for holidays. This color will be used for "
+"the holiday backgrounds in the Month View and the holiday dates in the Date "
+"Navigator."
+msgstr ""
+"כאן ניתן לבחור בצבע לחגים. צבע החגים ישמש עבור שם החג בתצוגת חודש ומספר החג "
+"בתאריכון."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
@@ -5567,9 +5589,13 @@ msgstr "הגדרת הגופן לפריטי תצוגת חודש"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:407
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "Press this button to configure the month View font. This button will open "
+#| "the \"Select Font\" dialog, allowing you to choose the font for the items "
+#| "in the Month View."
 msgid ""
-"Press this button to configure the month View font. This button will open "
+"Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the Month View."
 msgstr ""
@@ -6773,6 +6799,12 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
+
+#~ msgid "Display each week's number in the current year"
+#~ msgstr "הצגת המספר של כל אחד מהשבועות בשנה הנוכחית"
+
+#~ msgid "Holiday color"
+#~ msgstr "צבע חגים"
 
 #~ msgctxt "@info:tooltip"
 #~ msgid "Configure"

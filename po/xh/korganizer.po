@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-25 00:46+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -3860,7 +3860,7 @@ msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:238
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:240
 #, fuzzy, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -3951,20 +3951,20 @@ msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:59
+#: prefs/koprefsdialogtime.cpp:61
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Iholide"
 
-#: prefs/koprefsdialogtime.cpp:70
+#: prefs/koprefsdialogtime.cpp:72
 #, fuzzy, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Nceda khetha iqela leholide:"
 
-#: prefs/koprefsdialogtime.cpp:94
+#: prefs/koprefsdialogtime.cpp:96
 #, fuzzy, kde-format
 #| msgctxt "short_weekday date (e.g. Mon 13)"
 #| msgid "%1 %2"
@@ -3972,38 +3972,38 @@ msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 %2"
 
-#: prefs/koprefsdialogtime.cpp:103
+#: prefs/koprefsdialogtime.cpp:105
 #, fuzzy, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Khetha iintlobo"
 
-#: prefs/koprefsdialogtime.cpp:121
+#: prefs/koprefsdialogtime.cpp:123
 #, fuzzy, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "Nceda khetha iqela leholide:"
 
-#: prefs/koprefsdialogtime.cpp:135
+#: prefs/koprefsdialogtime.cpp:137
 #, fuzzy, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "Khetha iintlobo"
 
-#: prefs/koprefsdialogtime.cpp:155
+#: prefs/koprefsdialogtime.cpp:157
 #, fuzzy, kde-format
 #| msgid "Schedule"
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "Cwangcisa"
 
-#: prefs/koprefsdialogtime.cpp:170
+#: prefs/koprefsdialogtime.cpp:172
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:174
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4014,56 +4014,56 @@ msgid ""
 "unchecked."
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:186
+#: prefs/koprefsdialogtime.cpp:188
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Iholide"
 
-#: prefs/koprefsdialogtime.cpp:187
+#: prefs/koprefsdialogtime.cpp:189
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:188
+#: prefs/koprefsdialogtime.cpp:190
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:211
+#: prefs/koprefsdialogtime.cpp:213
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:213
+#: prefs/koprefsdialogtime.cpp:215
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4071,47 +4071,47 @@ msgid ""
 "your regular schedule."
 msgstr ""
 
-#: prefs/koprefsdialogtime.cpp:220
+#: prefs/koprefsdialogtime.cpp:222
 #, fuzzy, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Ifomati ye Khalenda Engagqibekanga"
 
-#: prefs/koprefsdialogtime.cpp:223
+#: prefs/koprefsdialogtime.cpp:225
 #, fuzzy, kde-format
 #| msgid "Appointment"
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Ixesha ledinga"
 
-#: prefs/koprefsdialogtime.cpp:243
+#: prefs/koprefsdialogtime.cpp:245
 #, fuzzy, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Ixesha le alarm engagqibekanga:"
 
-#: prefs/koprefsdialogtime.cpp:256
+#: prefs/koprefsdialogtime.cpp:258
 #, fuzzy, kde-format
 #| msgid "minute(s)"
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "umzuzu(imi)"
 
-#: prefs/koprefsdialogtime.cpp:257
+#: prefs/koprefsdialogtime.cpp:259
 #, fuzzy, kde-format
 #| msgid "hour(s)"
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "iyure(ii)"
 
-#: prefs/koprefsdialogtime.cpp:258
+#: prefs/koprefsdialogtime.cpp:260
 #, fuzzy, kde-format
 #| msgid "day(s)"
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "imini(ii)"
 
-#: prefs/koprefsdialogtime.cpp:268
+#: prefs/koprefsdialogtime.cpp:270
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
@@ -4273,7 +4273,7 @@ msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
 #, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
-"time you create a new event, to-do or journal entry"
+"time you create a new event, to-do or journal entry."
 msgstr ""
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
@@ -4479,7 +4479,7 @@ msgstr ""
 #, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
-"Date Navigator when in to-do view."
+"Date Navigator when in Todo View."
 msgstr ""
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
@@ -4491,7 +4491,7 @@ msgstr ""
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
 #, kde-format
-msgid "In journal view, use a bold typeface to more easily identify journals"
+msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
@@ -4499,7 +4499,7 @@ msgstr ""
 #, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
-"Date Navigator when in journal view."
+"Date Navigator when in Journal View."
 msgstr ""
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
@@ -4510,9 +4510,9 @@ msgstr "Bonisa ixesha njenge:"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, kde-format
-msgid "Display each week's number in the current year"
-msgstr ""
+#, fuzzy, kde-format
+msgid "Show week numbers in the Date Navigator"
+msgstr "Bonisa ixesha njenge:"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4620,7 +4620,7 @@ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
 #, fuzzy, kde-format
-msgid "Display incidence descriptions Agenda View items"
+msgid "Display incidence descriptions in Agenda View items"
 msgstr "Bonisa okukhethiweyo kuphela"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
@@ -4639,7 +4639,7 @@ msgstr "Yenza iibar zorolo kwiseli zemboniselo yenyanga"
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
 #, fuzzy, kde-format
-msgid "Display incidence locations Agenda View items"
+msgid "Display incidence locations in Agenda View items"
 msgstr "Bonisa okukhethiweyo kuphela"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
@@ -5304,78 +5304,79 @@ msgstr "Bonisa ilayine ye Marcus Bains"
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr "Bonisa ilayine ye Marcus Bains"
 
-#. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:367
-#, fuzzy, kde-format
-msgid "Holiday color"
-msgstr "Umbala weholide:"
-
-#. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:368
-#, fuzzy, kde-format
-msgid "Set the color for Holidays in Agenda View"
-msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
-
-#. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:369
-#, kde-format
-msgid ""
-"Select the holiday color here. The holiday color will be used for the "
-"holiday name in the Month View and the holiday number in the Date Navigator."
-msgstr ""
-
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:373
+#: settings/korganizer.kcfg:367
 #, fuzzy, kde-format
 msgid "To-do due today color"
 msgstr "Ukwenza umbala olindeleke namhlanje:"
 
 #. i18n: ectx: tooltip, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:374
+#: settings/korganizer.kcfg:368
 #, kde-format
 msgid "Set the color for to-dos that are due today"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:369
 #, fuzzy, kde-format
 msgid "Select the to-do due today color here."
 msgstr "Ukwenza umbala olindeleke namhlanje:"
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:379
+#: settings/korganizer.kcfg:373
 #, fuzzy, kde-format
 msgid "To-do overdue color"
 msgstr "Ukwenza umbala ogqithelwe lixesha:"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:374
 #, fuzzy, kde-format
 msgid "Set the color for overdue to-dos"
 msgstr "Ukwenza umbala ogqithelwe lixesha:"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:381
+#: settings/korganizer.kcfg:375
 #, fuzzy, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "Ukwenza umbala ogqithelwe lixesha:"
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:385
+#: settings/korganizer.kcfg:379
 #, fuzzy, kde-format
 msgid "Month View today background color"
 msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:386
+#: settings/korganizer.kcfg:380
 #, fuzzy, kde-format
 msgid "Set the background color for today's date in Month View"
 msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:387
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid "In Month View, select the background color for today's date."
+msgstr ""
+
+#. i18n: ectx: label, entry, group (Colors)
+#: settings/korganizer.kcfg:385
+#, fuzzy, kde-format
+msgid "Month View holiday color"
+msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#. i18n: ectx: tooltip, entry, group (Colors)
+#: settings/korganizer.kcfg:386
+#, fuzzy, kde-format
+msgid "Set the color for holidays in Month View"
+msgstr "Umbala wendawo yangasemva wemboniselo wezakuxoxwa:"
+
+#. i18n: ectx: whatsthis, entry, group (Colors)
+#: settings/korganizer.kcfg:387
+#, kde-format
+msgid ""
+"In Month View, select the color for holidays. This color will be used for "
+"the holiday backgrounds in the Month View and the holiday dates in the Date "
+"Navigator."
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
@@ -5435,7 +5436,7 @@ msgstr "Bonisa okukhethiweyo kuphela"
 #: settings/korganizer.kcfg:407
 #, kde-format
 msgid ""
-"Press this button to configure the month View font. This button will open "
+"Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the Month View."
 msgstr ""
@@ -6566,6 +6567,10 @@ msgstr "%1 %"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1 %"
+
+#, fuzzy
+#~ msgid "Holiday color"
+#~ msgstr "Umbala weholide:"
 
 #, fuzzy
 #~ msgctxt "@info:tooltip"

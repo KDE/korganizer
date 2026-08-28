@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-26 00:49+0000\n"
+"POT-Creation-Date: 2026-08-28 00:46+0000\n"
 "PO-Revision-Date: 2025-12-03 11:03+0300\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -991,7 +991,7 @@ msgstr ""
 "за которые будут показаны крайние сроки выполнения задач.\n"
 "Максимальный период времени — 1 год с текущей даты."
 
-#: lunarphases/lunarphases.cpp:106
+#: lunarphases/lunarphases.cpp:108
 #, fuzzy, kde-format
 #| msgid ""
 #| "This plugin displays the day's lunar phase (New, First, Last, Full). "
