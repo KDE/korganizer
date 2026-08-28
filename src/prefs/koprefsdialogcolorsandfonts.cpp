@@ -82,33 +82,33 @@ KOPrefsDialogColorsAndFonts::KOPrefsDialogColorsAndFonts(QObject *parent, const 
     colorLayout->addWidget(mblColor->label(), 5, 0);
     colorLayout->addWidget(mblColor->button(), 5, 1);
 
-    // Holiday Color
+    // Month View today background color
+    Korganizer::KPrefsWidColor *monthTodayColor = addWidColor(KOPrefs::instance()->monthTodayColorItem(), colorFrame);
+    monthTodayColor->label()->setToolTip(monthTodayColor->button()->toolTip());
+    monthTodayColor->label()->setWhatsThis(monthTodayColor->button()->whatsThis());
+    colorLayout->addWidget(monthTodayColor->label(), 6, 0);
+    colorLayout->addWidget(monthTodayColor->button(), 6, 1);
+
+    // Month View and Date Navigator Holiday background color
     Korganizer::KPrefsWidColor *holidayColor = addWidColor(KOPrefs::instance()->holidayColorItem(), colorFrame);
     holidayColor->label()->setToolTip(holidayColor->button()->toolTip());
     holidayColor->label()->setWhatsThis(holidayColor->button()->whatsThis());
-    colorLayout->addWidget(holidayColor->label(), 6, 0);
-    colorLayout->addWidget(holidayColor->button(), 6, 1);
+    colorLayout->addWidget(holidayColor->label(), 7, 0);
+    colorLayout->addWidget(holidayColor->button(), 7, 1);
 
     // Todo due today color
     Korganizer::KPrefsWidColor *todoDueTodayColor = addWidColor(KOPrefs::instance()->todoDueTodayColorItem(), colorFrame);
     todoDueTodayColor->label()->setToolTip(todoDueTodayColor->button()->toolTip());
     todoDueTodayColor->label()->setWhatsThis(todoDueTodayColor->button()->whatsThis());
-    colorLayout->addWidget(todoDueTodayColor->label(), 7, 0);
-    colorLayout->addWidget(todoDueTodayColor->button(), 7, 1);
+    colorLayout->addWidget(todoDueTodayColor->label(), 8, 0);
+    colorLayout->addWidget(todoDueTodayColor->button(), 8, 1);
 
     // Todo overdue color
     Korganizer::KPrefsWidColor *todoOverdueColor = addWidColor(KOPrefs::instance()->todoOverdueColorItem(), colorFrame);
     todoOverdueColor->label()->setToolTip(todoOverdueColor->button()->toolTip());
     todoOverdueColor->label()->setWhatsThis(todoOverdueColor->button()->whatsThis());
-    colorLayout->addWidget(todoOverdueColor->label(), 8, 0);
-    colorLayout->addWidget(todoOverdueColor->button(), 8, 1);
-
-    // Monthview Today Color
-    Korganizer::KPrefsWidColor *monthTodayColor = addWidColor(KOPrefs::instance()->monthTodayColorItem(), colorFrame);
-    monthTodayColor->label()->setToolTip(monthTodayColor->button()->toolTip());
-    monthTodayColor->label()->setWhatsThis(monthTodayColor->button()->whatsThis());
-    colorLayout->addWidget(monthTodayColor->label(), 9, 0);
-    colorLayout->addWidget(monthTodayColor->button(), 9, 1);
+    colorLayout->addWidget(todoOverdueColor->label(), 9, 0);
+    colorLayout->addWidget(todoOverdueColor->button(), 9, 1);
 
     // Navigator grid highlight color
     Korganizer::KPrefsWidColor *navGridColor = addWidColor(KOPrefs::instance()->navigatorGridHighlightColorItem(), colorFrame);
