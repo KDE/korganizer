@@ -102,7 +102,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins(QObject *parent, const KPluginMetaDat
 
     connect(mTreeWidget, &QTreeWidget::itemSelectionChanged, this, &KOPrefsDialogPlugins::selectionChanged);
     connect(mTreeWidget, &QTreeWidget::itemChanged, this, &KOPrefsDialogPlugins::selectionChanged);
-    connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::slotWidChanged);
+    connect(mTreeWidget, &QTreeWidget::itemClicked, this, &KOPrefsDialogPlugins::selectionEnabled);
 
     load();
 
@@ -144,7 +144,7 @@ void KOPrefsDialogPlugins::usrReadConfig()
             but->setToolTip(i18nc("@info:tooltip", "Configure the %1 plugin", item->service().name()));
             but->setWhatsThis(i18nc("@info:whatsthis", "Press this button to configure the %1 plugin.", item->service().name()));
             but->setAutoFillBackground(true);
-            but->setEnabled(true);
+            but->setEnabled(item->checkState(0) == Qt::Checked);
             mTreeWidget->setItemWidget(item, 1, but);
             connect(but, &QToolButton::triggered, this, &KOPrefsDialogPlugins::configureClicked);
         }
@@ -243,6 +243,24 @@ void KOPrefsDialogPlugins::positioningChanged()
         }
     } else {
         mDecorationsAtAgendaViewBottom.remove(decoration);
+    }
+
+    slotWidChanged();
+}
+
+void KOPrefsDialogPlugins::selectionEnabled(QTreeWidgetItem *treeitem, int column)
+{
+    if (column != 0) {
+        return;
+    }
+
+    PluginItem *item = dynamic_cast<PluginItem *>(treeitem);
+    if (!item) {
+        return;
+    }
+    auto configButton = mTreeWidget->itemWidget(item, 1);
+    if (configButton) {
+        configButton->setEnabled(item->checkState(0) == Qt::Checked);
     }
 
     slotWidChanged();

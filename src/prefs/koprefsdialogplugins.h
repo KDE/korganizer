@@ -27,10 +27,13 @@ protected Q_SLOTS:
     void usrWriteConfig() override;
     void usrReadConfig() override;
 
-private:
+private Q_SLOTS:
     void configureClicked(QAction *action);
     void selectionChanged();
+    void selectionEnabled(QTreeWidgetItem *, int);
     void positioningChanged();
+
+private:
     QTreeWidget *const mTreeWidget;
     QLabel *const mDescription;
     QGroupBox *const mPositioningGroupBox;
