@@ -303,6 +303,12 @@
       </choices>
       <default>MonthItemCategoryInsideResourceOutside</default>
     </entry>
+    <entry type="Bool" key="Full View Month">
+      <label>Month View uses full window</label>
+      <tooltip>Display to-do list in a full KOrganizer window</tooltip>
+      <whatsthis>Check this box to use the full KOrganizer window when displaying the Month View. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the item details and the calendars list, will not be displayed.</whatsthis>
+      <default>false</default>
+    </entry>
   </group>
   <!-- Views Page: Todo View Tab -->
   <group name="Todo View">
