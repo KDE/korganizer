@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-28 00:46+0000\n"
+"POT-Creation-Date: 2026-08-29 00:46+0000\n"
 "PO-Revision-Date: 2026-08-05 11:20+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -5426,8 +5426,44 @@ msgstr ""
 "calendari en el color del calendari (a dins i a les vores). Utilitzeu la "
 "pàgina de configuració de colors i lletres per a establir estos colors."
 
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:307
+#, fuzzy, kde-format
+#| msgid "To-do list view uses full window"
+msgid "Month View uses full window"
+msgstr "La vista de la llista de tasques pendents utilitza tota la finestra"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:323
+#, kde-format
+msgid "Display to-do list in a full KOrganizer window"
+msgstr ""
+"Mostra la llista de tasques pendents utilitzant tota la finestra de "
+"KOrganizer"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:309
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to use the full KOrganizer window when displaying the to-"
+#| "do list view. If this box is checked, you will gain some space for the to-"
+#| "do list view, but other widgets, such as the Date Navigator, the to-do "
+#| "details and the calendars list, will not be displayed."
+msgid ""
+"Check this box to use the full KOrganizer window when displaying the Month "
+"View. If this box is checked, you will gain some space for the monthly view, "
+"but other widgets, such as the date navigator, the item details and the "
+"calendars list, will not be displayed."
+msgstr ""
+"Marqueu esta casella per a utilitzar tota la finestra de KOrganizer en "
+"mostrar la vista de la llista de tasques pendents. Si es marca esta casella, "
+"guanyareu una mica d'espai en la vista de la llista de tasques pendents, "
+"però no es mostraran altres ginys, com ara el navegador de dates, els "
+"detalls de la tasca pendent i la llista de calendaris."
+
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:310
+#: settings/korganizer.kcfg:316
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr ""
@@ -5435,7 +5471,7 @@ msgstr ""
 "llista"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:311
+#: settings/korganizer.kcfg:317
 #, kde-format
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
@@ -5445,7 +5481,7 @@ msgstr ""
 "llista, sense tindre en compte la prioritat"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:312
+#: settings/korganizer.kcfg:318
 #, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
@@ -5455,21 +5491,13 @@ msgstr ""
 "s'agrupen sempre a la part inferior de la llista de tasques pendents."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:316
+#: settings/korganizer.kcfg:322
 #, kde-format
 msgid "To-do list view uses full window"
 msgstr "La vista de la llista de tasques pendents utilitza tota la finestra"
 
-#. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:317
-#, kde-format
-msgid "Display to-do list in a full KOrganizer window"
-msgstr ""
-"Mostra la llista de tasques pendents utilitzant tota la finestra de "
-"KOrganizer"
-
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:318
+#: settings/korganizer.kcfg:324
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
@@ -5484,20 +5512,20 @@ msgstr ""
 "detalls de la tasca pendent i la llista de calendaris."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:322
+#: settings/korganizer.kcfg:328
 #, kde-format
 msgid "Display to-dos in a flat list"
 msgstr "Mostra les tasques pendents en una llista plana"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:323
+#: settings/korganizer.kcfg:329
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr ""
 "Mostra les tasques pendents en una llista plana en lloc d'un arbre jeràrquic"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:324
+#: settings/korganizer.kcfg:330
 #, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
@@ -5507,13 +5535,13 @@ msgstr ""
 "plana en lloc d'organitzades en un arbre jeràrquic."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:328
+#: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Record completed to-dos in journal entries"
 msgstr "Grava les tasques pendents finalitzades en entrades del diari"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:329
+#: settings/korganizer.kcfg:335
 #, kde-format
 msgid "Add a journal entry each time a to-do is marked as completed"
 msgstr ""
@@ -5521,7 +5549,7 @@ msgstr ""
 "com a completada"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:330
+#: settings/korganizer.kcfg:336
 #, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
@@ -5531,13 +5559,13 @@ msgstr ""
 "tasca pendent en una entrada nova del diari."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:337
+#: settings/korganizer.kcfg:343
 #, kde-format
 msgid "Use system colors for some background colors"
 msgstr "Utilitza els colors del sistema per a alguns colors de fons"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:338
+#: settings/korganizer.kcfg:344
 #, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
@@ -5545,7 +5573,7 @@ msgstr ""
 "colors de fons"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:339
+#: settings/korganizer.kcfg:345
 #, kde-format
 msgid ""
 "Use system colors instead of user defined colors for the \"Agenda View "
@@ -5557,13 +5585,13 @@ msgstr ""
 "el «Color de les hores laborables» (i possiblement d'altres)."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:343
+#: settings/korganizer.kcfg:349
 #, kde-format
 msgid "Agenda View background color"
 msgstr "Color de fons de la vista d'agenda"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:344
+#: settings/korganizer.kcfg:350
 #, kde-format
 msgid ""
 "When not using system colors, set the color for the Agenda View background"
@@ -5572,19 +5600,19 @@ msgstr ""
 "vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:345
+#: settings/korganizer.kcfg:351
 #, kde-format
 msgid "Select the Agenda View background color here."
 msgstr "Trieu ací el color de fons de la vista d'agenda."
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:349
+#: settings/korganizer.kcfg:355
 #, kde-format
 msgid "Busy days background color"
 msgstr "Color de fons dels dies ocupats"
 
 #. i18n: ectx: tooltip, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:350
+#: settings/korganizer.kcfg:356
 #, kde-format
 msgid ""
 "When not using system colors, set the color for all day events marked as busy"
@@ -5593,7 +5621,7 @@ msgstr ""
 "esdeveniments de tot el dia marcats com a ocupats"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:351
+#: settings/korganizer.kcfg:357
 #, kde-format
 msgid ""
 "In Agenda and Month views, when you have an all day event marked as busy, "
@@ -5604,13 +5632,13 @@ msgstr ""
 "especificat."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:355
+#: settings/korganizer.kcfg:361
 #, kde-format
 msgid "Working hours color"
 msgstr "Color de les hores laborables"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:356
+#: settings/korganizer.kcfg:362
 #, kde-format
 msgid ""
 "When not using system colors, set the color for the Agenda View working "
@@ -5620,19 +5648,19 @@ msgstr ""
 "quadrícula de les hores laborables de la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:357
+#: settings/korganizer.kcfg:363
 #, kde-format
 msgid "Select the working hours color for the Agenda View here."
 msgstr "Trieu ací el color de les hores laborables en la vista d'agenda."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:361
+#: settings/korganizer.kcfg:367
 #, kde-format
 msgid "Agenda View current-time (Marcus Bains) line color"
 msgstr "Color de la línia de temps actual (Marcus Bains) a la vista d'agenda"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:362
+#: settings/korganizer.kcfg:368
 #, kde-format
 msgid "Set the color for the Agenda View current-time (Marcus Bains) line"
 msgstr ""
@@ -5640,7 +5668,7 @@ msgstr ""
 "(Marcus Bains)"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:363
+#: settings/korganizer.kcfg:369
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr ""
@@ -5648,75 +5676,75 @@ msgstr ""
 "Bains)."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:367
+#: settings/korganizer.kcfg:373
 #, kde-format
 msgid "To-do due today color"
 msgstr "Color de les tasques pendents que vencen hui"
 
 #. i18n: ectx: tooltip, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:368
+#: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for to-dos that are due today"
 msgstr "Establix el color de les tasques pendents que vencen hui"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:369
+#: settings/korganizer.kcfg:375
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "Trieu ací el color de les tasques pendents que vencen hui."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:373
+#: settings/korganizer.kcfg:379
 #, kde-format
 msgid "To-do overdue color"
 msgstr "Color de les tasques pendents endarrerides"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:374
+#: settings/korganizer.kcfg:380
 #, kde-format
 msgid "Set the color for overdue to-dos"
 msgstr "Establix el color de les tasques pendents endarrerides"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "Trieu ací el color de les tasques pendents endarrerides."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:379
+#: settings/korganizer.kcfg:385
 #, kde-format
 msgid "Month View today background color"
 msgstr "Color de fons d'hui de la vista mensual"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:386
 #, kde-format
 msgid "Set the background color for today's date in Month View"
 msgstr "Establiu el color de fons de la data d'hui en la vista mensual"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:381
+#: settings/korganizer.kcfg:387
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr "En la vista mensual, tria el color de fons de la data d'hui."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:385
+#: settings/korganizer.kcfg:391
 #, fuzzy, kde-format
 #| msgid "Month View today background color"
 msgid "Month View holiday color"
 msgstr "Color de fons d'hui de la vista mensual"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:386
+#: settings/korganizer.kcfg:392
 #, fuzzy, kde-format
 #| msgid "Set the color for Holidays in Agenda View"
 msgid "Set the color for holidays in Month View"
 msgstr "Establiu el color dels dies festius a la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:387
+#: settings/korganizer.kcfg:393
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the holiday color here. The holiday color will be used for the "
@@ -5732,20 +5760,20 @@ msgstr ""
 "navegador de dates."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:391
+#: settings/korganizer.kcfg:397
 #, kde-format
 msgid "Date Navigator grid highlight color"
 msgstr "Color de ressaltat de la quadrícula del navegador de dates"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:392
+#: settings/korganizer.kcfg:398
 #, kde-format
 msgid "Set the Date Navigator grid highlight color here"
 msgstr ""
 "Establiu ací el color de ressaltat de la quadrícula del navegador de dates"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:393
+#: settings/korganizer.kcfg:399
 #, kde-format
 msgid ""
 "Select the color for highlighting the currently selected date range in the "
@@ -5755,20 +5783,20 @@ msgstr ""
 "navegador de dates."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:400
+#: settings/korganizer.kcfg:406
 #, kde-format
 msgid "Time bar"
 msgstr "Barra d'hores"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:401
+#: settings/korganizer.kcfg:407
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
 msgstr ""
 "Establix la lletra de les etiquetes de la barra d'hores de la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:402
+#: settings/korganizer.kcfg:408
 #, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
@@ -5781,19 +5809,19 @@ msgstr ""
 "per a la barra d'hores."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:405
+#: settings/korganizer.kcfg:411
 #, kde-format
 msgid "Month View"
 msgstr "Vista mensual"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:406
+#: settings/korganizer.kcfg:412
 #, kde-format
 msgid "Set the font for Month View items"
 msgstr "Establix la lletra dels elements de la vista mensual"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:407
+#: settings/korganizer.kcfg:413
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the month View font. This button will open "
@@ -5809,19 +5837,19 @@ msgstr ""
 "elements en la vista mensual."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:410
+#: settings/korganizer.kcfg:416
 #, kde-format
 msgid "Agenda View"
 msgstr "Vista d'agenda"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:411
+#: settings/korganizer.kcfg:417
 #, kde-format
 msgid "Set the font for Agenda View items"
 msgstr "Establix la lletra dels elements de la vista d'agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:412
+#: settings/korganizer.kcfg:418
 #, kde-format
 msgid ""
 "Press this button to configure the Agenda View font. This button will open "
@@ -5833,13 +5861,13 @@ msgstr ""
 "als esdeveniments en la vista d'agenda."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:415
+#: settings/korganizer.kcfg:421
 #, kde-format
 msgid "Current-time (Marcus Bains) line"
 msgstr "Línia de temps actual (Marcus Bains)"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:416
+#: settings/korganizer.kcfg:422
 #, kde-format
 msgid "Set the font for the current-time (Marcus Bains) line in Agenda View"
 msgstr ""
@@ -5847,7 +5875,7 @@ msgstr ""
 "d'agenda"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:417
+#: settings/korganizer.kcfg:423
 #, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
@@ -5859,31 +5887,31 @@ msgstr ""
 "triar la lletra per a la línia de temps actual en la vista d'agenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:430
+#: settings/korganizer.kcfg:436
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "Mètode predeterminat d'adjunció a les tasques pendents"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:431
+#: settings/korganizer.kcfg:437
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr "La forma predeterminada d'adjuntar els correus arrossegats a una tasca"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:434
+#: settings/korganizer.kcfg:440
 #, kde-format
 msgid "Always ask"
 msgstr "Pregunta sempre"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:437
+#: settings/korganizer.kcfg:443
 #, kde-format
 msgid "Only attach link to message"
 msgstr "Adjunta només un enllaç al missatge"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:440
+#: settings/korganizer.kcfg:446
 #, kde-format
 msgid "Attach complete message"
 msgstr "Adjunta el missatge sencer"

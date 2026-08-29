@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-28 00:46+0000\n"
+"POT-Creation-Date: 2026-08-29 00:46+0000\n"
 "PO-Revision-Date: 2025-10-12 12:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -5383,14 +5383,45 @@ msgstr ""
 "이 옵션을 사용하면 캘린더 항목의 내부와 테두리 모두를 캘린더 색상으로 표시합"
 "니다. 해당 색상은 색과 글꼴 설정 페이지에서 설정하십시오."
 
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:307
+#, fuzzy, kde-format
+#| msgid "Month view uses full window"
+msgid "Month View uses full window"
+msgstr "전체 창으로 월간 보기"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:323
+#, kde-format
+msgid "Display to-do list in a full KOrganizer window"
+msgstr "전체 창으로 할 일 목록 표시"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:309
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to use the full KOrganizer window when displaying the "
+#| "month view. If this box is checked, you will gain some space for the "
+#| "monthly view, but other widgets, such as the date navigator, the item "
+#| "details and the calendars list, will not be displayed."
+msgid ""
+"Check this box to use the full KOrganizer window when displaying the Month "
+"View. If this box is checked, you will gain some space for the monthly view, "
+"but other widgets, such as the date navigator, the item details and the "
+"calendars list, will not be displayed."
+msgstr ""
+"이 옵션을 사용하면 월간 보기에 전체 KOrganizer 창을 사용합니다. 날짜 탐색기, "
+"항목 정보, 달력 목록 등의 다른 항목을 숨깁니다."
+
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:310
+#: settings/korganizer.kcfg:316
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr "완료한 할 일을 항상 목록 아래쪽에 표시"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:311
+#: settings/korganizer.kcfg:317
 #, kde-format
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
@@ -5398,7 +5429,7 @@ msgid ""
 msgstr "우선 순위에 관계 없이 완료된 할 일을 목록 아래쪽에 표시"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:312
+#: settings/korganizer.kcfg:318
 #, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
@@ -5408,19 +5439,13 @@ msgstr ""
 "다."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:316
+#: settings/korganizer.kcfg:322
 #, kde-format
 msgid "To-do list view uses full window"
 msgstr "전체 창으로 할 일 보기"
 
-#. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:317
-#, kde-format
-msgid "Display to-do list in a full KOrganizer window"
-msgstr "전체 창으로 할 일 목록 표시"
-
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:318
+#: settings/korganizer.kcfg:324
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box to use the full KOrganizer window when displaying the to-"
@@ -5437,19 +5462,19 @@ msgstr ""
 "기, 할 일 정보, 달력 목록 등의 다른 항목을 숨깁니다."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:322
+#: settings/korganizer.kcfg:328
 #, kde-format
 msgid "Display to-dos in a flat list"
 msgstr "할 일 목록을 단일 단계 목록으로 표시"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:323
+#: settings/korganizer.kcfg:329
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr "할 일 목록에 체계를 사용하지 않고 단일 단계로 표시"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:324
+#: settings/korganizer.kcfg:330
 #, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
@@ -5459,19 +5484,19 @@ msgstr ""
 "시합니다."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:328
+#: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Record completed to-dos in journal entries"
 msgstr "끝난 할 일을 저널 항목으로 기록"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:329
+#: settings/korganizer.kcfg:335
 #, kde-format
 msgid "Add a journal entry each time a to-do is marked as completed"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:330
+#: settings/korganizer.kcfg:336
 #, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
@@ -5480,14 +5505,14 @@ msgstr ""
 "이 옵션을 사용하면 할 일이 끝났을 때 저널에 자동으로 완료 상태를 기록합니다."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:337
+#: settings/korganizer.kcfg:343
 #, fuzzy, kde-format
 #| msgid "Busy days background color"
 msgid "Use system colors for some background colors"
 msgstr "바쁜 날 배경색"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:338
+#: settings/korganizer.kcfg:344
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use system color instead of user defined color. If enabled will ignore "
@@ -5498,7 +5523,7 @@ msgstr ""
 "을 무시합니다"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:339
+#: settings/korganizer.kcfg:345
 #, kde-format
 msgid ""
 "Use system colors instead of user defined colors for the \"Agenda View "
@@ -5507,14 +5532,14 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:343
+#: settings/korganizer.kcfg:349
 #, fuzzy, kde-format
 #| msgid "Agenda view background color"
 msgid "Agenda View background color"
 msgstr "일정 보기 배경색"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:344
+#: settings/korganizer.kcfg:350
 #, fuzzy, kde-format
 #| msgid ""
 #| "Use system color instead of user defined color. If enabled will ignore "
@@ -5526,27 +5551,27 @@ msgstr ""
 "을 무시합니다"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:345
+#: settings/korganizer.kcfg:351
 #, fuzzy, kde-format
 #| msgid "Select the agenda view background color here."
 msgid "Select the Agenda View background color here."
 msgstr "일정 보기에 사용할 배경색을 선택하십시오."
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:349
+#: settings/korganizer.kcfg:355
 #, kde-format
 msgid "Busy days background color"
 msgstr "바쁜 날 배경색"
 
 #. i18n: ectx: tooltip, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:350
+#: settings/korganizer.kcfg:356
 #, kde-format
 msgid ""
 "When not using system colors, set the color for all day events marked as busy"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:351
+#: settings/korganizer.kcfg:357
 #, kde-format
 msgid ""
 "In Agenda and Month views, when you have an all day event marked as busy, "
@@ -5554,13 +5579,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:355
+#: settings/korganizer.kcfg:361
 #, kde-format
 msgid "Working hours color"
 msgstr "업무 시간 색"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:356
+#: settings/korganizer.kcfg:362
 #, kde-format
 msgid ""
 "When not using system colors, set the color for the Agenda View working "
@@ -5568,105 +5593,105 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:357
+#: settings/korganizer.kcfg:363
 #, fuzzy, kde-format
 #| msgid "Select the working hours color for the agenda view here."
 msgid "Select the working hours color for the Agenda View here."
 msgstr "일정 보기에 사용할 업무 시간 색상을 선택하십시오."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:361
+#: settings/korganizer.kcfg:367
 #, fuzzy, kde-format
 #| msgid "Agenda view current-time (Marcus Bains) line color"
 msgid "Agenda View current-time (Marcus Bains) line color"
 msgstr "일정 보기 현재 시간 표시선(Marcus Bains 선) 색"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:362
+#: settings/korganizer.kcfg:368
 #, fuzzy, kde-format
 #| msgid "Use this color for the Agenda View current-time (Marcus Bains) line"
 msgid "Set the color for the Agenda View current-time (Marcus Bains) line"
 msgstr "다음 색상을 일정 보기의 현재 시간 표시선에 사용"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:363
+#: settings/korganizer.kcfg:369
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr "현재 시간 표시선(Marcus Bains 선)에 사용할 색상을 선택하십시오."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:367
+#: settings/korganizer.kcfg:373
 #, kde-format
 msgid "To-do due today color"
 msgstr "오늘까지 해야 할 일 색"
 
 #. i18n: ectx: tooltip, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:368
+#: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for to-dos that are due today"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:369
+#: settings/korganizer.kcfg:375
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "오늘까지 끝내야 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:373
+#: settings/korganizer.kcfg:379
 #, kde-format
 msgid "To-do overdue color"
 msgstr "기한이 지난 할 일 색"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:374
+#: settings/korganizer.kcfg:380
 #, fuzzy, kde-format
 #| msgid "Select the to-do overdue color here."
 msgid "Set the color for overdue to-dos"
 msgstr "기한이 지난 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "기한이 지난 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:379
+#: settings/korganizer.kcfg:385
 #, fuzzy, kde-format
 #| msgid "Month view background color"
 msgid "Month View today background color"
 msgstr "월간 보기 배경색"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:386
 #, fuzzy, kde-format
 #| msgid "Select the working hours background color for the Month view here."
 msgid "Set the background color for today's date in Month View"
 msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오."
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:381
+#: settings/korganizer.kcfg:387
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:385
+#: settings/korganizer.kcfg:391
 #, fuzzy, kde-format
 #| msgid "Month view background color"
 msgid "Month View holiday color"
 msgstr "월간 보기 배경색"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:386
+#: settings/korganizer.kcfg:392
 #, fuzzy, kde-format
 #| msgid "Select the working hours background color for the Month view here."
 msgid "Set the color for holidays in Month View"
 msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:387
+#: settings/korganizer.kcfg:393
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the holiday color here. The holiday color will be used for the "
@@ -5681,21 +5706,21 @@ msgstr ""
 "서 공휴일 번호에 사용합니다."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:391
+#: settings/korganizer.kcfg:397
 #, fuzzy, kde-format
 #| msgid "Highlight color"
 msgid "Date Navigator grid highlight color"
 msgstr "강조 색상"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:392
+#: settings/korganizer.kcfg:398
 #, fuzzy, kde-format
 #| msgid "Select the to-do due today color here."
 msgid "Set the Date Navigator grid highlight color here"
 msgstr "오늘까지 끝내야 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:393
+#: settings/korganizer.kcfg:399
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the highlight color here. The highlight color will be used for "
@@ -5709,19 +5734,19 @@ msgstr ""
 "는 데 사용할 강조 색상입니다."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:400
+#: settings/korganizer.kcfg:406
 #, kde-format
 msgid "Time bar"
 msgstr "시간 표시선"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:401
+#: settings/korganizer.kcfg:407
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:402
+#: settings/korganizer.kcfg:408
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the time bar font. The time bar is the "
@@ -5738,7 +5763,7 @@ msgstr ""
 "간 표시선의 시간 글꼴을 결정할 수 있습니다."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:405
+#: settings/korganizer.kcfg:411
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Month View"
@@ -5746,14 +5771,14 @@ msgid "Month View"
 msgstr "월간 보기"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:406
+#: settings/korganizer.kcfg:412
 #, fuzzy, kde-format
 #| msgid "Show icons in month view items"
 msgid "Set the font for Month View items"
 msgstr "월간 보기 항목에 아이콘 표시"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:407
+#: settings/korganizer.kcfg:413
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the month view font. This button will open "
@@ -5768,7 +5793,7 @@ msgstr ""
 "를 표시해서 월간 보기 항목 글꼴을 결정할 수 있습니다."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:410
+#: settings/korganizer.kcfg:416
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Agenda View"
@@ -5776,14 +5801,14 @@ msgid "Agenda View"
 msgstr "일정 보기"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:411
+#: settings/korganizer.kcfg:417
 #, fuzzy, kde-format
 #| msgid "Show icons in agenda view items"
 msgid "Set the font for Agenda View items"
 msgstr "일정 보기 항목에 아이콘 표시"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:412
+#: settings/korganizer.kcfg:418
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the agenda view font. This button will "
@@ -5798,20 +5823,20 @@ msgstr ""
 "를 표시해서 일정 보기 항목 글꼴을 결정할 수 있습니다."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:415
+#: settings/korganizer.kcfg:421
 #, kde-format
 msgid "Current-time (Marcus Bains) line"
 msgstr "현재 시간 표시선(Marcus Bains 선)"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:416
+#: settings/korganizer.kcfg:422
 #, fuzzy, kde-format
 #| msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgid "Set the font for the current-time (Marcus Bains) line in Agenda View"
 msgstr "현재 시간 표시선(Marcus Bains 선)에 사용할 색상을 선택하십시오."
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:417
+#: settings/korganizer.kcfg:423
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the current-time (Marcus Bains) line font. "
@@ -5827,31 +5852,31 @@ msgstr ""
 "수 있습니다."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:430
+#: settings/korganizer.kcfg:436
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "기본 할 일 첨부 방식"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:431
+#: settings/korganizer.kcfg:437
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr "할 일에 끌어다 놓은 메일을 첨부할 기본 방식"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:434
+#: settings/korganizer.kcfg:440
 #, kde-format
 msgid "Always ask"
 msgstr "항상 묻기"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:437
+#: settings/korganizer.kcfg:443
 #, kde-format
 msgid "Only attach link to message"
 msgstr "메시지로 가는 링크만 첨부"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:440
+#: settings/korganizer.kcfg:446
 #, kde-format
 msgid "Attach complete message"
 msgstr "전체 메시지 첨부"
@@ -7090,18 +7115,6 @@ msgstr "%1"
 #~ "현재 위치의 시간대를 이 목록에서 선택하십시오. 현재 도시가 없다면 같은 시"
 #~ "간대에 있는 다른 도시를 선택하십시오. KOrganizer에서 자동으로 일광 절약 시"
 #~ "간을 관리합니다."
-
-#~ msgid "Month view uses full window"
-#~ msgstr "전체 창으로 월간 보기"
-
-#~ msgid ""
-#~ "Check this box to use the full KOrganizer window when displaying the "
-#~ "month view. If this box is checked, you will gain some space for the "
-#~ "monthly view, but other widgets, such as the date navigator, the item "
-#~ "details and the calendars list, will not be displayed."
-#~ msgstr ""
-#~ "이 옵션을 사용하면 월간 보기에 전체 KOrganizer 창을 사용합니다. 날짜 탐색"
-#~ "기, 항목 정보, 달력 목록 등의 다른 항목을 숨깁니다."
 
 #~ msgid "Color Usage"
 #~ msgstr "색 사용"

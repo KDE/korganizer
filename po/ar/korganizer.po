@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-28 00:46+0000\n"
+"POT-Creation-Date: 2026-08-29 00:46+0000\n"
 "PO-Revision-Date: 2026-08-10 16:41+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -5292,14 +5292,46 @@ msgstr ""
 "بلون التقويم الخاص بها. يُرجى استخدام صفحة ضبط الألوان والخطوط لتعيين هذه "
 "الألوان."
 
+#. i18n: ectx: label, entry, group (Month View)
+#: settings/korganizer.kcfg:307
+#, fuzzy, kde-format
+#| msgid "Month view uses full window"
+msgid "Month View uses full window"
+msgstr "يستخدم منظور الشهر النافذة كاملة"
+
+#. i18n: ectx: tooltip, entry, group (Month View)
+#. i18n: ectx: tooltip, entry, group (Todo View)
+#: settings/korganizer.kcfg:308 settings/korganizer.kcfg:323
+#, kde-format
+msgid "Display to-do list in a full KOrganizer window"
+msgstr "اعرض قائمة المهام في نافذة منظمك الكاملة"
+
+#. i18n: ectx: whatsthis, entry, group (Month View)
+#: settings/korganizer.kcfg:309
+#, fuzzy, kde-format
+#| msgid ""
+#| "Check this box to use the full KOrganizer window when displaying the "
+#| "month view. If this box is checked, you will gain some space for the "
+#| "monthly view, but other widgets, such as the date navigator, the item "
+#| "details and the calendars list, will not be displayed."
+msgid ""
+"Check this box to use the full KOrganizer window when displaying the Month "
+"View. If this box is checked, you will gain some space for the monthly view, "
+"but other widgets, such as the date navigator, the item details and the "
+"calendars list, will not be displayed."
+msgstr ""
+"حدد هذا المربع لاستخدام نافذة منظمك بالكامل عند عرض عرض الشهر. إذا حُدد هذا "
+"المربع، فستحصل على بعض المساحة لعرض الشهر، ولكن لن يعرض عناصر واجهة المستخدم "
+"الأخرى، مثل متصفح التاريخ وتفاصيل العناصر وقائمة التقويمات."
+
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:310
+#: settings/korganizer.kcfg:316
 #, kde-format
 msgid "Always display completed to-dos at the bottom of the list"
 msgstr "عرض المهام المكتملة دائمًا في أسفل القائمة"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:311
+#: settings/korganizer.kcfg:317
 #, kde-format
 msgid ""
 "Completed to-dos are displayed at the bottom of the list, regardless of "
@@ -5307,7 +5339,7 @@ msgid ""
 msgstr "عرض المهام المكتملة في أسفل القائمة، بغض النظر عن الأولوية"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:312
+#: settings/korganizer.kcfg:318
 #, kde-format
 msgid ""
 "Check this box if you want all completed to-dos to be always grouped at the "
@@ -5317,19 +5349,13 @@ msgstr ""
 "قائمة المهام."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:316
+#: settings/korganizer.kcfg:322
 #, kde-format
 msgid "To-do list view uses full window"
 msgstr "تستخدم قائمة المَهام كامل النافذة"
 
-#. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:317
-#, kde-format
-msgid "Display to-do list in a full KOrganizer window"
-msgstr "اعرض قائمة المهام في نافذة منظمك الكاملة"
-
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:318
+#: settings/korganizer.kcfg:324
 #, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the to-do "
@@ -5342,19 +5368,19 @@ msgstr ""
 "واجهة المستخدم الأخرى، مثل متصفح التاريخ وتفاصيل المهام وقائمة التقويمات."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:322
+#: settings/korganizer.kcfg:328
 #, kde-format
 msgid "Display to-dos in a flat list"
 msgstr "اعرض قائمة المهام كقائمة مسطحة"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:323
+#: settings/korganizer.kcfg:329
 #, kde-format
 msgid "Display to-dos as a flat list instead of a hierarchical tree"
 msgstr "عرض المهام كقائمة مسطحة بدلًا من شجرة هرمية"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:324
+#: settings/korganizer.kcfg:330
 #, kde-format
 msgid ""
 "Check this box if you want to see all your to-dos in a flat list instead of "
@@ -5364,19 +5390,19 @@ msgstr ""
 "ترتيبها في شجرة هرمية."
 
 #. i18n: ectx: label, entry, group (Todo View)
-#: settings/korganizer.kcfg:328
+#: settings/korganizer.kcfg:334
 #, kde-format
 msgid "Record completed to-dos in journal entries"
 msgstr "سجّل المهام المكتملة في إدخالات دفتر اليومية"
 
 #. i18n: ectx: tooltip, entry, group (Todo View)
-#: settings/korganizer.kcfg:329
+#: settings/korganizer.kcfg:335
 #, kde-format
 msgid "Add a journal entry each time a to-do is marked as completed"
 msgstr "أضف قيدًا في اليوميات في كل مرة تُعلَّم فيها مهمة على أنها مكتملة"
 
 #. i18n: ectx: whatsthis, entry, group (Todo View)
-#: settings/korganizer.kcfg:330
+#: settings/korganizer.kcfg:336
 #, kde-format
 msgid ""
 "Check this box to record the completion of a to-do in a new entry of your "
@@ -5385,19 +5411,19 @@ msgstr ""
 "أشّر على هذا المربع لتسجيل إكمال مهمة ما في إدخال جديد في دفتر يومياتك آليًّا."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:337
+#: settings/korganizer.kcfg:343
 #, kde-format
 msgid "Use system colors for some background colors"
 msgstr "استخدم ألوان النظام لبعض ألوان الخلفية"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:338
+#: settings/korganizer.kcfg:344
 #, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr "استخدم ألوان النظام بدلًا من الألوان المخصصة لبعض ألوان الخلفية"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:339
+#: settings/korganizer.kcfg:345
 #, kde-format
 msgid ""
 "Use system colors instead of user defined colors for the \"Agenda View "
@@ -5409,32 +5435,32 @@ msgstr ""
 "عناصر أخرى)."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:343
+#: settings/korganizer.kcfg:349
 #, kde-format
 msgid "Agenda View background color"
 msgstr "لون خلفية منظور جدول الأعمال"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:344
+#: settings/korganizer.kcfg:350
 #, kde-format
 msgid ""
 "When not using system colors, set the color for the Agenda View background"
 msgstr "عند عدم استخدام ألوان النظام، اضبط لون خلفية منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:345
+#: settings/korganizer.kcfg:351
 #, kde-format
 msgid "Select the Agenda View background color here."
 msgstr "اختر من هنا لون خلفية منظور جدول الأعمال."
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:349
+#: settings/korganizer.kcfg:355
 #, kde-format
 msgid "Busy days background color"
 msgstr "لون خلفية أيام الانشغال"
 
 #. i18n: ectx: tooltip, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:350
+#: settings/korganizer.kcfg:356
 #, kde-format
 msgid ""
 "When not using system colors, set the color for all day events marked as busy"
@@ -5442,7 +5468,7 @@ msgstr ""
 "عند عدم استخدام ألوان النظام، اضبط لون الأحداث طوال اليوم المعلَّمة كمشغولة"
 
 #. i18n: ectx: whatsthis, entry (ViewBgBusyColor), group (Colors)
-#: settings/korganizer.kcfg:351
+#: settings/korganizer.kcfg:357
 #, kde-format
 msgid ""
 "In Agenda and Month views, when you have an all day event marked as busy, "
@@ -5452,13 +5478,13 @@ msgstr ""
 "ارسم خلفية ذلك العنصر باستخدام اللون المحدد."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:355
+#: settings/korganizer.kcfg:361
 #, kde-format
 msgid "Working hours color"
 msgstr "لون ساعات العمل"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:356
+#: settings/korganizer.kcfg:362
 #, kde-format
 msgid ""
 "When not using system colors, set the color for the Agenda View working "
@@ -5467,99 +5493,99 @@ msgstr ""
 "عند عدم استخدام ألوان النظام، اضبط لون شبكة ساعات العمل في منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:357
+#: settings/korganizer.kcfg:363
 #, kde-format
 msgid "Select the working hours color for the Agenda View here."
 msgstr "اختر من هنا لون ساعات العمل في منظور جدول الأعمال."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:361
+#: settings/korganizer.kcfg:367
 #, kde-format
 msgid "Agenda View current-time (Marcus Bains) line color"
 msgstr "لون خط منظور جدول الأعمال في الوقت الحالي (ماركوس باينز)"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:362
+#: settings/korganizer.kcfg:368
 #, kde-format
 msgid "Set the color for the Agenda View current-time (Marcus Bains) line"
 msgstr "عيّن اللون لخط الوقت الحالي (ماركوس بينز) في منظور جدول الأعمال."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:363
+#: settings/korganizer.kcfg:369
 #, kde-format
 msgid "Select a color to use for the current-time (Marcus Bains) line."
 msgstr "اختر لونًا لاستخدامه لخط الوقت الحالي (ماركوس بينز)."
 
 #. i18n: ectx: label, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:367
+#: settings/korganizer.kcfg:373
 #, kde-format
 msgid "To-do due today color"
 msgstr "لون المهام المستحقّة اليوم"
 
 #. i18n: ectx: tooltip, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:368
+#: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for to-dos that are due today"
 msgstr "اضبط لون المهام المستحقة اليوم"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
-#: settings/korganizer.kcfg:369
+#: settings/korganizer.kcfg:375
 #, kde-format
 msgid "Select the to-do due today color here."
 msgstr "اختر من هنا لون المهام المستحقّة اليوم."
 
 #. i18n: ectx: label, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:373
+#: settings/korganizer.kcfg:379
 #, kde-format
 msgid "To-do overdue color"
 msgstr "لون المهام المتأخّرة"
 
 #. i18n: ectx: tooltip, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:374
+#: settings/korganizer.kcfg:380
 #, kde-format
 msgid "Set the color for overdue to-dos"
 msgstr "اضبط لون المهام المتأخرة"
 
 #. i18n: ectx: whatsthis, entry (TodoOverdueColor), group (Colors)
-#: settings/korganizer.kcfg:375
+#: settings/korganizer.kcfg:381
 #, kde-format
 msgid "Select the to-do overdue color here."
 msgstr "اختر من هنا لون المهام المتأخّرة."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:379
+#: settings/korganizer.kcfg:385
 #, kde-format
 msgid "Month View today background color"
 msgstr "لون خلفية اليوم في عرض الشهر"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:380
+#: settings/korganizer.kcfg:386
 #, kde-format
 msgid "Set the background color for today's date in Month View"
 msgstr "عيّن لون الخلفية لتاريخ اليوم في عرض الشهر"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
-#: settings/korganizer.kcfg:381
+#: settings/korganizer.kcfg:387
 #, kde-format
 msgid "In Month View, select the background color for today's date."
 msgstr "في عرض الشهر، حدد لون الخلفية لتاريخ اليوم."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:385
+#: settings/korganizer.kcfg:391
 #, fuzzy, kde-format
 #| msgid "Month View today background color"
 msgid "Month View holiday color"
 msgstr "لون خلفية اليوم في عرض الشهر"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:386
+#: settings/korganizer.kcfg:392
 #, fuzzy, kde-format
 #| msgid "Set the color for Holidays in Agenda View"
 msgid "Set the color for holidays in Month View"
 msgstr "اضبط لون العطلات في منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:387
+#: settings/korganizer.kcfg:393
 #, fuzzy, kde-format
 #| msgid ""
 #| "Select the holiday color here. The holiday color will be used for the "
@@ -5574,19 +5600,19 @@ msgstr ""
 "العطلة في متصفّح التواريخ."
 
 #. i18n: ectx: label, entry, group (Colors)
-#: settings/korganizer.kcfg:391
+#: settings/korganizer.kcfg:397
 #, kde-format
 msgid "Date Navigator grid highlight color"
 msgstr "لون تمييز شبكة متصفح التواريخ"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
-#: settings/korganizer.kcfg:392
+#: settings/korganizer.kcfg:398
 #, kde-format
 msgid "Set the Date Navigator grid highlight color here"
 msgstr "اضبط لون تمييز شبكة متصفح التواريخ هنا"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
-#: settings/korganizer.kcfg:393
+#: settings/korganizer.kcfg:399
 #, kde-format
 msgid ""
 "Select the color for highlighting the currently selected date range in the "
@@ -5594,19 +5620,19 @@ msgid ""
 msgstr "حدد لون تمييز نطاق التاريخ المحدد حاليًا في متصفح التواريخ."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:400
+#: settings/korganizer.kcfg:406
 #, kde-format
 msgid "Time bar"
 msgstr "شريط الوقت"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:401
+#: settings/korganizer.kcfg:407
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
 msgstr "اضبط خط تسميات شريط الوقت في منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:402
+#: settings/korganizer.kcfg:408
 #, kde-format
 msgid ""
 "Press this button to configure the time bar font. The time bar is the widget "
@@ -5618,19 +5644,19 @@ msgstr ""
 "لشريط الوقت."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:405
+#: settings/korganizer.kcfg:411
 #, kde-format
 msgid "Month View"
 msgstr "منظور الشهر"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:406
+#: settings/korganizer.kcfg:412
 #, kde-format
 msgid "Set the font for Month View items"
 msgstr "اضبط خط عناصر عرض الشهر"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:407
+#: settings/korganizer.kcfg:413
 #, fuzzy, kde-format
 #| msgid ""
 #| "Press this button to configure the month View font. This button will open "
@@ -5645,19 +5671,19 @@ msgstr ""
 "اختيار خط العناصر في منظور الشهر."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:410
+#: settings/korganizer.kcfg:416
 #, kde-format
 msgid "Agenda View"
 msgstr "منظور جدول الأعمال"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:411
+#: settings/korganizer.kcfg:417
 #, kde-format
 msgid "Set the font for Agenda View items"
 msgstr "اضبط خط عناصر منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:412
+#: settings/korganizer.kcfg:418
 #, kde-format
 msgid ""
 "Press this button to configure the Agenda View font. This button will open "
@@ -5668,19 +5694,19 @@ msgstr ""
 "فيتيح لك اختيار خط الأحداث في منظور جدول الأعمال."
 
 #. i18n: ectx: label, entry, group (Fonts)
-#: settings/korganizer.kcfg:415
+#: settings/korganizer.kcfg:421
 #, kde-format
 msgid "Current-time (Marcus Bains) line"
 msgstr "خط الوقت الحالي (ماركوس بينز)"
 
 #. i18n: ectx: tooltip, entry, group (Fonts)
-#: settings/korganizer.kcfg:416
+#: settings/korganizer.kcfg:422
 #, kde-format
 msgid "Set the font for the current-time (Marcus Bains) line in Agenda View"
 msgstr "اضبط خط خط الوقت الحالي (ماركوس بينز) في منظور جدول الأعمال"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
-#: settings/korganizer.kcfg:417
+#: settings/korganizer.kcfg:423
 #, kde-format
 msgid ""
 "Press this button to configure the current-time (Marcus Bains) line font. "
@@ -5692,31 +5718,31 @@ msgstr ""
 "عرض الأجندة."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:430
+#: settings/korganizer.kcfg:436
 #, kde-format
 msgid "Default todo attachment method"
 msgstr "طريقة مرفقات المهامّ المبدئية"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:431
+#: settings/korganizer.kcfg:437
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
 msgstr "الطريقة المبدئية في إرفاق البريد التي يُفلت على إحدى المهام"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:434
+#: settings/korganizer.kcfg:440
 #, kde-format
 msgid "Always ask"
 msgstr "اسأل دائمًا"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:437
+#: settings/korganizer.kcfg:443
 #, kde-format
 msgid "Only attach link to message"
 msgstr "أرفِق رابطًا بالرسالة فحسب"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
-#: settings/korganizer.kcfg:440
+#: settings/korganizer.kcfg:446
 #, kde-format
 msgid "Attach complete message"
 msgstr "أرفِق الرسالة كاملة"
@@ -6929,19 +6955,6 @@ msgstr "%1"
 #~ "اختر منطقتك الزمنية من قائمة المواقع في هذه القائمة المنسدلة. إن لم تكن "
 #~ "مدينتك موجودة، فاختر مدينة لها نفس المنطقة الزمنية لمدينتك. سيضبط «منظّمك» "
 #~ "التوقيت الصيفي. آليًّا."
-
-#~ msgid "Month view uses full window"
-#~ msgstr "يستخدم منظور الشهر النافذة كاملة"
-
-#~ msgid ""
-#~ "Check this box to use the full KOrganizer window when displaying the "
-#~ "month view. If this box is checked, you will gain some space for the "
-#~ "monthly view, but other widgets, such as the date navigator, the item "
-#~ "details and the calendars list, will not be displayed."
-#~ msgstr ""
-#~ "حدد هذا المربع لاستخدام نافذة منظمك بالكامل عند عرض عرض الشهر. إذا حُدد "
-#~ "هذا المربع، فستحصل على بعض المساحة لعرض الشهر، ولكن لن يعرض عناصر واجهة "
-#~ "المستخدم الأخرى، مثل متصفح التاريخ وتفاصيل العناصر وقائمة التقويمات."
 
 #~ msgid "Color Usage"
 #~ msgstr "استخدام الألوان"
