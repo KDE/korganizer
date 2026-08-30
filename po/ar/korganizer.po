@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-10 16:41+0400\n"
+"PO-Revision-Date: 2026-08-29 17:30+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -4376,16 +4376,13 @@ msgstr "اطلب دائمًا اختيار التقويم المستخدم"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to choose the calendar to be used to record the item "
-#| "each time you create a new event, to-do or journal entry"
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry."
 msgstr ""
 "حدد هذا الخيار لاختيار التقويم المستخدم لتسجيل العنصر في كل مرة تنشئ فيها "
-"حدثًا أو مهمة أو قيدًا في اليوميات"
+"حدثًا أو مهمة أو قيدًا في اليوميات."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4598,10 +4595,7 @@ msgstr "في عرض المهام، استخدم خطًا عريضًا لتسهي
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing to-dos in bold typeface in the "
-#| "Date Navigator when in to-do view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in Todo View."
@@ -4617,18 +4611,13 @@ msgstr "اعرض اليوميّات بدل الأحداث في منظور الي
 
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
-#, fuzzy, kde-format
-#| msgid ""
-#| "In journal view, use a bold typeface to more easily identify journals"
+#, kde-format
 msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr "في عرض اليوميات، استخدم خطًا عريضًا لتسهيل تمييز اليوميات"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing journals in bold typeface in "
-#| "the Date Navigator when in journal view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in Journal View."
@@ -4644,11 +4633,9 @@ msgstr "أظهر أرقام الأسابيع"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show Date Navigator"
+#, kde-format
 msgid "Show week numbers in the Date Navigator"
-msgstr "اعرض متصفّح التواريخ"
+msgstr "أظهر أرقام الأسبوع في مستعرض التاريخ"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4761,8 +4748,7 @@ msgstr "أشّر على هذا المربّع لعرض أوصاف الأحداث
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions Agenda View items"
+#, kde-format
 msgid "Display incidence descriptions in Agenda View items"
 msgstr "اعرض أوصاف الأحداث في عناصر منظور جدول الأعمال"
 
@@ -4780,8 +4766,7 @@ msgstr "أشّر على هذا المربّع لعرض أماكن الأحداث
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Display incidence locations Agenda View items"
+#, kde-format
 msgid "Display incidence locations in Agenda View items"
 msgstr "اعرض أماكن الأحداث في عناصر منظور جدول الأعمال"
 
@@ -5572,32 +5557,26 @@ msgstr "في عرض الشهر، حدد لون الخلفية لتاريخ ال�
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Month View today background color"
+#, kde-format
 msgid "Month View holiday color"
-msgstr "لون خلفية اليوم في عرض الشهر"
+msgstr "لون العُطل منظور الشهر"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Set the color for Holidays in Agenda View"
+#, kde-format
 msgid "Set the color for holidays in Month View"
-msgstr "اضبط لون العطلات في منظور جدول الأعمال"
+msgstr "عيّن لون العُطل في عرض الشهر"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the Month View and the holiday number in the Date "
-#| "Navigator."
+#, kde-format
 msgid ""
 "In Month View, select the color for holidays. This color will be used for "
 "the holiday backgrounds in the Month View and the holiday dates in the Date "
 "Navigator."
 msgstr ""
-"اختر من هنا لون العُطل. سيُستخدم هذا اللون لأسماء العُطل في منظور الشهر ولرقم "
-"العطلة في متصفّح التواريخ."
+"في عرض الشهر، حدد لون أيام العطلات. سيُستخدم هذا اللون لخلفيات أيام العطلات "
+"في عرض الشهر وتواريخ العطلات في شريط التنقل حسب التاريخ"
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
@@ -5657,11 +5636,7 @@ msgstr "اضبط خط عناصر عرض الشهر"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:413
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the month View font. This button will open "
-#| "the \"Select Font\" dialog, allowing you to choose the font for the items "
-#| "in the Month View."
+#, kde-format
 msgid ""
 "Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
@@ -5758,7 +5733,7 @@ msgstr "ابحث"
 #: ui/filteredit_base.ui:49
 #, kde-format
 msgid "&New"
-msgstr "&جديد"
+msgstr "جدي&د"
 
 #. i18n: ectx: property (text), widget (QPushButton, mDeleteButton)
 #: ui/filteredit_base.ui:56

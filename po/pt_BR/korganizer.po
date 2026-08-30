@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-28 07:27-0300\n"
+"PO-Revision-Date: 2026-08-29 06:48-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -5371,10 +5371,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "Month view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "A visão mensal usa toda a janela"
+msgstr "A Visão Mensal usa toda a janela"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
@@ -5385,20 +5384,15 @@ msgstr "Mostrar a lista de tarefas na janela inteira do KOrganizer"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the "
-#| "month view. If this box is checked, you will gain some space for the "
-#| "monthly view, but other widgets, such as the date navigator, the item "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Marque esta opção para usar toda a janela do KOrganizer, ao exibir a visão "
-"mensal. Se esta opção estiver marcada, você ganhará espaço adicional para a "
+"Marque esta opção para usar toda a janela do KOrganizer, ao exibir a Visão "
+"Mensal. Se esta opção estiver marcada, você ganhará espaço adicional para a "
 "visão mensal, mas os outros widgets, como o navegador de datas, os detalhes "
 "do item e a lista de calendários, não serão exibidos."
 

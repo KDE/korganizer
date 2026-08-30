@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-28 16:43+0100\n"
+"PO-Revision-Date: 2026-08-29 17:40+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -589,7 +589,7 @@ msgid ""
 "journal entries for the dates selected in the Date Navigator as a list."
 msgstr ""
 "Cambia a la vista de lista, que muestra todas las tareas pendientes, eventos "
-"y entradas del diario de las fechas seleccionadas en el navegador de fechas "
+"y entradas del diario de las fechas seleccionadas en el selector de fechas "
 "en formato de lista."
 
 #: actionmanager.cpp:384
@@ -1244,7 +1244,7 @@ msgstr "Libret&a de direcciones"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
-msgstr "Mostrar el navegador de fechas"
+msgstr "Mostrar el selector de fechas"
 
 #: actionmanager.cpp:715
 #, kde-format
@@ -4297,7 +4297,7 @@ msgstr " días"
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
-msgstr "Navegador de fechas"
+msgstr "Selector de fechas"
 
 #: prefs/koprefsdialogviews.cpp:82
 #, kde-format
@@ -4615,7 +4615,7 @@ msgid ""
 "to other (non daily recurring) incidences."
 msgstr ""
 "Marque esta casilla para mostrar los días que contengan incidencias que se "
-"repiten a diario con tipo de letra negrita en el navegador de fechas o "
+"repiten a diario con tipo de letra negrita en el selector de fechas o "
 "desmárquelo para dar más importancia al resto de incidencias (las que no se "
 "repiten a diario)."
 
@@ -4642,7 +4642,7 @@ msgid ""
 "other (non weekly recurring) events."
 msgstr ""
 "Marque esta casilla para mostrar los días que contienen eventos que se "
-"repiten semanalmente con tipo de letra negrita en el navegador de fechas o "
+"repiten semanalmente con tipo de letra negrita en el selector de fechas o "
 "desmárquela para darle más importancia al resto de eventos (los que no se "
 "repiten semanalmente)."
 
@@ -4670,7 +4670,7 @@ msgid ""
 "Date Navigator when in Todo View."
 msgstr ""
 "Marque esta casilla para mostrar los días que contengan tareas pendientes "
-"con letra en negrita en el navegador de fechas cuando esté en la vista de "
+"con letra en negrita en el selector de fechas cuando esté en la vista de "
 "tareas pendientes."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
@@ -4695,7 +4695,7 @@ msgid ""
 "Date Navigator when in Journal View."
 msgstr ""
 "Marque esta casilla para mostrar los días que contengan entradas de diario "
-"con letra en negrita en el navegador de fechas cuando esté en la vista del "
+"con letra en negrita en el selector de fechas cuando esté en la vista del "
 "diario."
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
@@ -4708,7 +4708,7 @@ msgstr "Mostrar números de las semanas"
 #: settings/korganizer.kcfg:106
 #, kde-format
 msgid "Show week numbers in the Date Navigator"
-msgstr "Mostrar números de semanas en el navegador de fechas"
+msgstr "Mostrar números de semanas en el selector de fechas"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -5427,10 +5427,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "To-do list view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "La vista de la lista de tareas pendientes usa la pantalla completa"
+msgstr "La vista de mensual usa la pantalla completa"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
@@ -5442,12 +5441,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the to-"
-#| "do list view. If this box is checked, you will gain some space for the to-"
-#| "do list view, but other widgets, such as the Date Navigator, the to-do "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
@@ -5455,10 +5449,10 @@ msgid ""
 "calendars list, will not be displayed."
 msgstr ""
 "Marque esta casilla para usar la ventana completa de KOrganizer cuando se "
-"muestre la vista de la lista de tareas pendientes. Si la casilla está "
-"marcada, tendrá algo más de espacio en la vista de tareas pendientes, pero "
-"en otros controles, como en el navegador de fechas, no se mostrarán ni los "
-"detalles de las tareas pendientes ni la lista de calendarios."
+"muestre la vista mensual. Si la casilla está marcada, tendrá algo más de "
+"espacio en la vista mensual, pero en otros controles, como en el selector de "
+"fechas, no se mostrarán ni los detalles de los elementos ni la lista de "
+"calendarios."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:316
@@ -5504,7 +5498,7 @@ msgstr ""
 "Marque esta casilla para usar la ventana completa de KOrganizer cuando se "
 "muestre la vista de la lista de tareas pendientes. Si la casilla está "
 "marcada, tendrá algo más de espacio en la vista de tareas pendientes, pero "
-"en otros controles, como en el navegador de fechas, no se mostrarán ni los "
+"en otros controles, como en el selector de fechas, no se mostrarán ni los "
 "detalles de las tareas pendientes ni la lista de calendarios."
 
 #. i18n: ectx: label, entry, group (Todo View)
@@ -5747,20 +5741,20 @@ msgid ""
 msgstr ""
 "En la vista mensual, seleccione el color de los días festivos. Este color se "
 "usará como fondo de los días festivos en la vista mensual y para las fechas "
-"de festividades en el navegador de fechas."
+"de festividades en el selector de fechas."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
 #, kde-format
 msgid "Date Navigator grid highlight color"
-msgstr "Color para resaltado de la cuadrícula del navegador de fechas"
+msgstr "Color para resaltado de la cuadrícula del selector de fechas"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:398
 #, kde-format
 msgid "Set the Date Navigator grid highlight color here"
 msgstr ""
-"Defina aquí el color para resaltar la cuadrícula del navegador de fechas"
+"Defina aquí el color para resaltar la cuadrícula del selector de fechas"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:399
@@ -5770,7 +5764,7 @@ msgid ""
 "Date Navigator."
 msgstr ""
 "Seleccione el color para resaltar el intervalo de fechas seleccionado en el "
-"navegador de fechas."
+"selector de fechas."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:406

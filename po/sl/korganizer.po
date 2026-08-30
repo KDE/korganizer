@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1745007 2026-08-29 01:30:30Z scripty $
+# $Id: korganizer.po 1745071 2026-08-30 01:31:09Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-28 07:07+0200\n"
+"PO-Revision-Date: 2026-08-29 12:42+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -5374,10 +5374,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "Month view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "Mesečni prikaz uporablja celotno okno"
+msgstr "Mesečni pogled uporablja celotno okno"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
@@ -5388,20 +5387,15 @@ msgstr "Pokaži seznam opravil v celotnem oknu programa KOrganizer"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the "
-#| "month view. If this box is checked, you will gain some space for the "
-#| "monthly view, but other widgets, such as the date navigator, the item "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Označite to polje, da bo za mesečni prikaz uporabljeno celotno "
-"KOrganizerjevo okno. Če je to polje označeno, bo za mesečni prikaz na voljo "
+"Označite to polje, da bo za mesečni pogled uporabljeno celotno "
+"KOrganizerjevo okno. Če je to polje označeno, bo za mesečni pogled na voljo "
 "nekaj več prostora, vendar drugi gradniki (npr. krmar po datumih, "
 "podrobnosti o predmetu in seznam koledarjev) ne bodo prikazani."
 

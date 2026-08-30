@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-28 12:36+0300\n"
+"PO-Revision-Date: 2026-08-29 21:57+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -5411,10 +5411,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "Month view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "Перегляд місяця - на повне вікно"
+msgstr "Перегляд місяця — на усе вікно"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
@@ -5425,22 +5424,17 @@ msgstr "Показати список завдань на все вікно KOrg
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the "
-#| "month view. If this box is checked, you will gain some space for the "
-#| "monthly view, but other widgets, such as the date navigator, the item "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Позначте для використання всього вікна KOrganizer для відображення перегляду "
-"місяця. Якщо цей параметр увімкнено, то перегляд місяця буде мати більше "
+"Увімкніть для використання всього вікна KOrganizer для показу перегляду "
+"місяця. Якщо цей пункт буде позначено, перегляд місяця буде мати більше "
 "вільного простору, але інші елементи графічного інтерфейсу (навігатор "
-"датами, список календарів, детальна інформація) не будуть відображені."
+"датами, список календарів, детальна інформація) не будуть показані."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:316
