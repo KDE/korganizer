@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-05 11:20+0200\n"
+"PO-Revision-Date: 2026-08-29 08:51+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -4422,17 +4422,14 @@ msgstr "Demana sempre el calendari a utilitzar"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to choose the calendar to be used to record the item "
-#| "each time you create a new event, to-do or journal entry"
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry."
 msgstr ""
 "Trieu esta opció per a triar el calendari que s'utilitzarà per a gravar "
 "l'element cada vegada que creeu un esdeveniment nou, una tasca pendent o una "
-"entrada de diari"
+"entrada de diari."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4665,10 +4662,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing to-dos in bold typeface in the "
-#| "Date Navigator when in to-do view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in Todo View."
@@ -4685,9 +4679,7 @@ msgstr "Mostra els diaris en lloc dels esdeveniments en la vista de diari"
 
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
-#, fuzzy, kde-format
-#| msgid ""
-#| "In journal view, use a bold typeface to more easily identify journals"
+#, kde-format
 msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr ""
 "En la vista del diari, utilitza una família tipogràfica en negreta per a "
@@ -4695,10 +4687,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing journals in bold typeface in "
-#| "the Date Navigator when in journal view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in Journal View."
@@ -4714,11 +4703,9 @@ msgstr "Mostra els números de setmana"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show Date Navigator"
+#, kde-format
 msgid "Show week numbers in the Date Navigator"
-msgstr "Mostra el navegador de dates"
+msgstr "Mostra els números de setmana al navegador de dates"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4844,8 +4831,7 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions Agenda View items"
+#, kde-format
 msgid "Display incidence descriptions in Agenda View items"
 msgstr ""
 "Mostra les descripcions de les incidències als elements de la vista d'agenda"
@@ -4867,8 +4853,7 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Display incidence locations Agenda View items"
+#, kde-format
 msgid "Display incidence locations in Agenda View items"
 msgstr ""
 "Mostra les ubicacions de les incidències als elements de la vista d'agenda"
@@ -5428,10 +5413,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "To-do list view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "La vista de la llista de tasques pendents utilitza tota la finestra"
+msgstr "La vista mensual utilitza tota la finestra"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
@@ -5444,12 +5428,7 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the to-"
-#| "do list view. If this box is checked, you will gain some space for the to-"
-#| "do list view, but other widgets, such as the Date Navigator, the to-do "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
@@ -5457,10 +5436,9 @@ msgid ""
 "calendars list, will not be displayed."
 msgstr ""
 "Marqueu esta casella per a utilitzar tota la finestra de KOrganizer en "
-"mostrar la vista de la llista de tasques pendents. Si es marca esta casella, "
-"guanyareu una mica d'espai en la vista de la llista de tasques pendents, "
-"però no es mostraran altres ginys, com ara el navegador de dates, els "
-"detalls de la tasca pendent i la llista de calendaris."
+"mostrar la vista mensual. Si es marca esta casella, guanyareu una mica "
+"d'espai en la vista mensual, però no es mostraran altres ginys, com ara el "
+"navegador de dates, els detalls de l'element i la llista de calendaris."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:316
@@ -5731,33 +5709,27 @@ msgstr "En la vista mensual, tria el color de fons de la data d'hui."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Month View today background color"
+#, kde-format
 msgid "Month View holiday color"
-msgstr "Color de fons d'hui de la vista mensual"
+msgstr "Color dels dies festius a la vista mensual"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Set the color for Holidays in Agenda View"
+#, kde-format
 msgid "Set the color for holidays in Month View"
-msgstr "Establiu el color dels dies festius a la vista d'agenda"
+msgstr "Establix el color dels dies festius a la vista mensual"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the Month View and the holiday number in the Date "
-#| "Navigator."
+#, kde-format
 msgid ""
 "In Month View, select the color for holidays. This color will be used for "
 "the holiday backgrounds in the Month View and the holiday dates in the Date "
 "Navigator."
 msgstr ""
-"Trieu ací el color dels dies festius. Este color s'utilitzarà per al nom del "
-"dia festiu en la vista mensual i per al número del dia festiu en el "
-"navegador de dates."
+"En la vista mensual, trieu ací el color dels dies festius. Este color "
+"s'utilitzarà per al fons dels dies festius a la vista mensual i als dies "
+"festius al navegador de dates."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
@@ -5822,11 +5794,7 @@ msgstr "Establix la lletra dels elements de la vista mensual"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:413
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the month View font. This button will open "
-#| "the \"Select Font\" dialog, allowing you to choose the font for the items "
-#| "in the Month View."
+#, kde-format
 msgid ""
 "Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
@@ -7105,9 +7073,3 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Display each week's number in the current year"
-#~ msgstr "Mostra el número de cada setmana a l'any actual"
-
-#~ msgid "Holiday color"
-#~ msgstr "Color dels dies festius"
