@@ -105,7 +105,7 @@ CalendarView::CalendarView(QWidget *parent)
     mChanger = new Akonadi::IncidenceChanger(new IncidenceEditorNG::IndividualMailComponentFactory(this), this);
     mChanger->setDefaultCollection(Akonadi::Collection(CalendarSupport::KCalPrefs::instance()->defaultEventCalendarId()));
 
-    mChanger->setDestinationPolicy(static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(KOPrefs ::instance()->destination()));
+    mChanger->setDestinationPolicy(static_cast<Akonadi::IncidenceChanger::DestinationPolicy>(KOPrefs::instance()->destination()));
 
     // We reuse the EntityTreeModel from the calendar singleton to save memory.
     // We don't reuse the entire ETMCalendar because we want a different selection model. Checking/unchecking
