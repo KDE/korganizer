@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-07-27 11:46+0200\n"
+"PO-Revision-Date: 2026-08-31 17:35+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -4406,16 +4406,14 @@ msgstr "Sempre demanda del calendario a usar"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to choose the calendar to be used to record the item "
-#| "each time you create a new event, to-do or journal entry"
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry."
 msgstr ""
 "Selige iste option pro eliger le calendario que essera usate pro registrar "
-"le elemento cata vice que tu crea un nove evento, carga o nota de diario."
+"le elemento cata vice que tu crea un nove evento, cosade facer o nota de  "
+"diario (jornal)."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4644,16 +4642,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing to-dos in bold typeface in the "
-#| "Date Navigator when in to-do view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in Todo View."
 msgstr ""
-"Marca iste quadrato pro monstrar dies continente activitates de facer in "
-"character grasse in le navigator de data quando in vista de activitates de "
+"Marca iste quadrato pro monstrar le dies continente activitates de facer in "
+"character grasse in le Navigator de Data quando in le vista de Cosas de "
 "facer."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
@@ -4664,9 +4659,7 @@ msgstr "Monstra jornales in loco de eventos quando in Vista de Jornal"
 
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
-#, fuzzy, kde-format
-#| msgid ""
-#| "In journal view, use a bold typeface to more easily identify journals"
+#, kde-format
 msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr ""
 "In le vista de jornales, usa un typo de littera grasse pro identificar plus  "
@@ -4674,16 +4667,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing journals in bold typeface in "
-#| "the Date Navigator when in journal view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in Journal View."
 msgstr ""
-"Marca iste quadrato pro monstrar dies continente jornales in character "
-"grasse in le navigator de data quando in vista de jornal."
+"Marca iste quadrato pro monstrar le dies continente jornales in character "
+"grasse in leNavigator de Data quando in le vista de jornal."
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:105
@@ -4819,10 +4809,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions Agenda View items"
+#, kde-format
 msgid "Display incidence descriptions in Agenda View items"
-msgstr "Monstra descriptiones de incidentia in elementos de Vista de Agenda"
+msgstr "Monstra descriptiones de incidentia in elementos de vista de agenda"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:146
@@ -4840,10 +4829,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Display incidence locations Agenda View items"
+#, kde-format
 msgid "Display incidence locations in Agenda View items"
-msgstr "Monstra locationes de incidentia in elementos de Vista de Agenda"
+msgstr "Monstra locationes de incidentia in elementos de vista de agenda"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Month View)
@@ -5398,8 +5386,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "Month view uses full window"
+#, kde-format
 msgid "Month View uses full window"
 msgstr "Vista de mense usa fenestra complete"
 
@@ -5413,23 +5400,17 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the "
-#| "month view. If this box is checked, you will gain some space for the "
-#| "monthly view, but other widgets, such as the date navigator, the item "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Marca iste quadrato pro usar le fenestra complete de KOrganizer quando on "
-"monstra le vista de mense. Si iste quadrato es marcate, tu ganiara un pauco "
-"de spatio pro le vista de mense ma altere elementos de fenestra, tal como le "
-"navigator de data, le detalios de elementos e le lista de calendario, non "
-"essera monstrate."
+"Marca iste quadrato pro usar le fenestra plen de KOrganizer quando on "
+"monstra le vista de mense. Si iste quadrato es marcate, tu ganiara alcun "
+"spatio per le vista de mense ma altere widgets, tal como le navigator de "
+"data, le detalios de elemento e le lista de calendario, non essera monstrate."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:316
@@ -5698,33 +5679,27 @@ msgstr "In Vista de Mense, selige le color de fundo per data de hodie."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Month View today background color"
+#, kde-format
 msgid "Month View holiday color"
-msgstr "Color de fundo de hodie de Vista de Mense"
+msgstr "Color de die feriate de vista de mense"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Set the color for Holidays in Agenda View"
+#, kde-format
 msgid "Set the color for holidays in Month View"
-msgstr "Assigna le color de fundo per le Festivitates in le Vista de Mense"
+msgstr "Assigna le color de dies feriate  in le vista de mense"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the Month View and the holiday number in the Date "
-#| "Navigator."
+#, kde-format
 msgid ""
 "In Month View, select the color for holidays. This color will be used for "
 "the holiday backgrounds in the Month View and the holiday dates in the Date "
 "Navigator."
 msgstr ""
-"Selige ci le color de festivitate. Le color de festivitate essera usate pro "
-"le nomine de festivitate in le Vista de Mense e pro le numero de festivitate "
-"in  le navigator de data."
+"Selige hic le color de die feriate. Le color de die feriate essera usate pro "
+"le nomine del die feriate in le vista de mense e le numero de die feriate in "
+"le navigator de date."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
@@ -5787,19 +5762,15 @@ msgstr "Monstra le font per elementos de Vista de Mense"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:413
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the month View font. This button will open "
-#| "the \"Select Font\" dialog, allowing you to choose the font for the items "
-#| "in the Month View."
+#, kde-format
 msgid ""
 "Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the Month View."
 msgstr ""
-"Pressa iste button pro configurar le font de Vista de Mense.Iste button "
-"aperira le dialogo de \"Selige font\", permittente te de seliger le font pro "
-"le elementos in le Vista de Mense."
+"Pressa iste button pro configurar le font de vista de mense. Iste button "
+"aperira le dialogo de \"Selige Font\", permittente te de seliger le font de "
+"elementosin le vista de mense."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:416

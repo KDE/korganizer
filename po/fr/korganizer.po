@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-29 09:00+0200\n"
+"PO-Revision-Date: 2026-08-30 09:42+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -4546,17 +4546,14 @@ msgstr "Toujours demander le calendrier à utiliser"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to choose the calendar to be used to record the item "
-#| "each time you create a new event, to-do or journal entry"
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry."
 msgstr ""
-"Sélectionnez cette option pour sélectionnez le calendrier à utiliser pour "
-"enregistrer l'élément à chaque fois que vous créez un nouvel événement, une "
-"tâche à faire ou une entrée de journal."
+"Sélectionnez cette option pour choisir le calendrier à utiliser pour "
+"l'enregistrement d'un élément à chaque création d'un nouvel évènement, d'une "
+"tâche à faire ou d'une entrée de journal."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4813,16 +4810,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing journals in bold typeface in "
-#| "the Date Navigator when in journal view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in Journal View."
 msgstr ""
-"Cochez cette case pour afficher les jours contenant des journaux en gras "
-"dans le navigateur par date dans la vue journal."
+"Cochez cette case pour afficher les jours contenant des journaux en "
+"caractères gras dans le navigateur de dates dans la vue en journal."
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:105
@@ -5572,10 +5566,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "Month view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "Utiliser toute la fenêtre pour la vue mensuelle"
+msgstr "La fenêtre de vue en Mois utilise la totalité de la fenêtre"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
@@ -5586,23 +5579,18 @@ msgstr "Utilise toute la fenêtre pour l'affichage de la liste des tâches"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the "
-#| "month view. If this box is checked, you will gain some space for the "
-#| "monthly view, but other widgets, such as the date navigator, the item "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Cochez cette case pour que la vue par mois utilise tout l'espace disponible. "
-"Ceci permet de gagner un peu de place pour mieux afficher la vue par mois "
-"mais en contrepartie, les autres composants graphiques comme le navigateur "
-"par date, l'afficheur de détail des évènements et la liste des agendas, ne "
-"seront plus accessibles."
+"Cochez cette case pour que la vue par mois utilise la totalité de la fenêtre "
+"de KOrganizer lors de l'affichage de la vue en Mois. Si cochée, elle permet "
+"de gagner un peu de place pour la vue en Mois. En contrepartie, les autres "
+"composants graphiques comme le navigateur de dates, les détails des "
+"évènements et la liste des agendas, ne seront plus affichés."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:316
@@ -5892,19 +5880,15 @@ msgstr "Définir la couleur pour les vacances dans la vue en Mois."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the Month View and the holiday number in the Date "
-#| "Navigator."
+#, kde-format
 msgid ""
 "In Month View, select the color for holidays. This color will be used for "
 "the holiday backgrounds in the Month View and the holiday dates in the Date "
 "Navigator."
 msgstr ""
-"Sélectionnez ici la couleur des jours fériés. Cette couleur sera utilisée "
-"pour afficher le nom des jours fériés dans la vue en mois et le numéro de "
-"jour férié dans le navigateur de dates."
+"Dans la vue en Mois, sélectionnez la couleur des jours de vacances. Cette "
+"couleur sera utilisée pour les arrière-plans des vacances dans la vue en "
+"Mois et les dates de vacances dans le navigateur de dates."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
