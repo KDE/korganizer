@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-07 02:44+0000\n"
-"PO-Revision-Date: 2026-07-17 17:16+0200\n"
+"PO-Revision-Date: 2026-09-01 16:44+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -686,7 +686,7 @@ msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
 msgstr ""
-"Iste action refrescara e dessigna de novo le currente vista de calendario. "
+"Iste action refrescara e designa de novo le currente vista de calendario. "
 "Illo non synchronisa o actualisa alcun dossieres de calendario."
 
 #: actionmanager.cpp:430
@@ -1846,7 +1846,7 @@ msgstr "<message>%1</message> memento es dishabilitate"
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> comutar de memento falleva"
+msgstr "<message>%1</message> commutar de memento falleva"
 
 #: calendarview.cpp:1431 calendarview.cpp:1489
 #, kde-format
@@ -1876,7 +1876,7 @@ msgstr "\"%1\" esseva copiate con successo in %2."
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
-msgstr "Copia succedite"
+msgstr "Copiar succedite"
 
 #: calendarview.cpp:1546
 #, kde-format
@@ -2107,7 +2107,7 @@ msgid ""
 "its occurrences?"
 msgstr ""
 "Le elemento de calendario <resource>%1</resource> recurre in multiple datas. "
-"Tu vole deler solmentele occurrentia in %2 o tote su recurrentias?"
+"Tu vole deler solmente le occurrentia in %2 o tote su recurrentias?"
 
 #: calendarview.cpp:2417
 #, kde-kuit-format
@@ -2117,7 +2117,7 @@ msgid ""
 "want to delete only the current one on %2 or all its occurrences?"
 msgstr ""
 "Le elemento de calendario <resource>%1</resource> recurre in multiple datas. "
-"Tu vole deler solmentele occurrentia in %2 o tote su recurrentias?"
+"Tu vole deler solmente le occurrentia in %2 o tote su recurrentias?"
 
 #: calendarview.cpp:2429
 #, kde-format
@@ -5724,7 +5724,7 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
-"iste option permittera te de seliger qual activitates de facer completate "
+"Iste option permittera te de seliger qual activitates de facer completate "
 "deberea esser celate. Quando tu selige <i>Immediatemente</i>, il celera le "
 "activitate si tosto que  tu marca lo. Tu pote augmentar o diminuer le numero "
 "de dies in le spinbox."
@@ -5973,7 +5973,7 @@ msgid ""
 msgstr ""
 "Inserta ci  le information de accesso relative a tu conto sur le servitor.\n"
 "\n"
-"Un specificitate de servitor Kolab2: Registrate tu UID (Identificator Unic), "
+"Un specificate de servitor Kolab2: Registrate tu UID (Identificator Unic), "
 "Per definition tu UID essera tu adresse de e-posta sur le servitor Kolab2, "
 "ma il pote anque esser differente. In le ultime caso, inserta tu UID."
 
@@ -6157,7 +6157,7 @@ msgstr ""
 "Examina varie campos pro vider si illos contine patronos de cerca: le "
 "patrono \"incontro\" deberea trovar  coincidentia con \"incontro de kick-off"
 "\". Cartas Jolly (wildcards) \"*\" (trova ulle numero de characteres) e \"?"
-"\" (trova un singule character) es suportate. Pro exemplo, le patrono de "
+"\" (trova un singule character) es supportate. Pro exemplo, le patrono de "
 "cerca \"incon*chefe* trova coincidentia con \"incontro con chefe\". Le "
 "patrono \"c?t\" troverea coincidentia con \"cat\",\"cet\", et cetera."
 
@@ -6833,8 +6833,8 @@ msgid ""
 "Agenda view: consolidated the \"Day\", \"Next X Days\", \"Work Schedule\", "
 "\"Week\" time ranges into the Agenda tool button"
 msgstr ""
-"Vista de Agenda: consolidava le ecìxtension de tempore de \"Die\", \"Proxime "
-"X Die\", \"Plano de Labor\", \"Septimana\"in lebutton de instrumento de "
+"Vista de Agenda: consolidava le extension de tempore de \"Die\", \"Proxime X "
+"Die\", \"Plano de Labor\", \"Septimana\"in le button de instrumento de "
 "Agenda."
 
 #: whatsnew/whatsnewtranslations.cpp:84
@@ -6876,7 +6876,7 @@ msgid ""
 "the week numbers"
 msgstr ""
 "Navigator de data: addite un option in le preferentais de Configura->Vistas "
-"per celar lenumeros de septimana"
+"per celar le numeros de septimana"
 
 #: whatsnew/whatsnewtranslations.cpp:90
 msgid ""
@@ -6917,7 +6917,7 @@ msgstr "Adde file de calendario: calendarios remote es sempre de sol lectura"
 
 #: whatsnew/whatsnewtranslations.cpp:97
 msgid "Add calendar file: will not permit an empty file path"
-msgstr "Adde calendario: non permittera un percurso defile vacue "
+msgstr "Adde calendario: non permittera un percurso de un file vacue "
 
 #: whatsnew/whatsnewtranslations.cpp:98
 msgid ""
@@ -7128,7 +7128,7 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
-"Clicca iste button permonstrar/celar le barra lateral in le vista currente. "
+"Clicca iste button per monstrar/celar le barra lateral in le vista currente. "
 "Cata vista pote celar/monstrar le barra lateral independentemente."
 
 #: widgets/navigatorbar.cpp:39
