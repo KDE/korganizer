@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-31 17:35+0200\n"
+"PO-Revision-Date: 2026-09-01 17:21+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -382,7 +382,7 @@ msgstr "Exporta calendario a file"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
-msgstr "Exporta tu calendario a un filede iCalendar"
+msgstr "Exporta tu calendario a un file de iCalendar"
 
 #: actionmanager.cpp:263
 #, kde-format
@@ -390,7 +390,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
-"Te permitte exportare tu complete collection de calendario a un file de "
+"Te permitte exportar tu complete collection de calendario a un file de "
 "iCalendar."
 
 #: actionmanager.cpp:269
@@ -433,7 +433,7 @@ msgstr "Pur&ga activitatas de facer completate"
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
-msgstr "Purga activitatas de facer completate"
+msgstr "Purga activitates de facer completate"
 
 #: actionmanager.cpp:283
 #, kde-format
@@ -686,7 +686,7 @@ msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
 msgstr ""
-"Iste action refrescara e dessigna de novo le currente vista de calendario. "
+"Iste action refrescara e designa de novo le currente vista de calendario. "
 "Illo non synchronisa o actualisa alcun dossieres de calendario."
 
 #: actionmanager.cpp:430
@@ -952,7 +952,8 @@ msgstr ""
 "planification per seliger dies in le preferentia de  "
 "<placeholder>Planification Septimanal</placeholder>  in le pagina de "
 "<interface>Tempore e Data->Regional</interface> .<para>Typicamente iste "
-"vista es intendite per monstrar leseptimana sin dies de fin septimana.</para>"
+"vista es intendite per monstrar le septimana sin dies de fin septimana.</"
+"para>"
 
 #: actionmanager.cpp:544
 #, kde-format
@@ -1530,7 +1531,7 @@ msgstr "Cerca de Calendario"
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr "Starta typar per cercar uncalendario intra le collection."
+msgstr "Starta typar per cercar un ncalendario intra le collection."
 
 #: akonadicollectionview.cpp:397
 #, kde-format
@@ -1703,9 +1704,9 @@ msgstr ""
 "Tu vermente vole deler le dossier <filename>%1</filename> ?"
 "<para><warning>Isto non pote esser annullate. Pro favor considera "
 "attentemente  ante pressare le button %2.</warning></para> "
-"<para><warning>Isto es tu dossier de calendario de %3 predefinite. Si tu "
-"lodele tu poterea esser demandate a seliger un nove calkendario predefinite "
-"de %4.</warning></para>"
+"<para><warning>Isto es tu dossier de calendario de %3 predefinite. Si tu lo "
+"dele tu poterea esser demandate a seliger un nove calendario predefinite de "
+"%4.</warning></para>"
 
 #: akonadicollectionview.cpp:947 akonadicollectionview.cpp:978
 #, kde-format
@@ -1845,7 +1846,7 @@ msgstr "<message>%1</message> memento es dishabilitate"
 #, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> comutar de memento falleva"
+msgstr "<message>%1</message> commutar de memento falleva"
 
 #: calendarview.cpp:1437 calendarview.cpp:1495
 #, kde-format
@@ -1875,7 +1876,7 @@ msgstr "\"%1\" esseva copiate con successo in %2."
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
-msgstr "Copia succedite"
+msgstr "Copiar succedite"
 
 #: calendarview.cpp:1552
 #, kde-format
@@ -2106,7 +2107,7 @@ msgid ""
 "its occurrences?"
 msgstr ""
 "Le elemento de calendario <resource>%1</resource> recurre in multiple datas. "
-"Tu vole deler solmentele occurrentia in %2 o tote su recurrentias?"
+"Tu vole deler solmente le occurrentia in %2 o tote su recurrentias?"
 
 #: calendarview.cpp:2426
 #, kde-kuit-format
@@ -2116,7 +2117,7 @@ msgid ""
 "want to delete only the current one on %2 or all its occurrences?"
 msgstr ""
 "Le elemento de calendario <resource>%1</resource> recurre in multiple datas. "
-"Tu vole deler solmentele occurrentia in %2 o tote su recurrentias?"
+"Tu vole deler solmente le occurrentia in %2 o tote su recurrentias?"
 
 #: calendarview.cpp:2438
 #, kde-format
@@ -4057,20 +4058,16 @@ msgid "Agenda View Decorations"
 msgstr "Decorationes de vista de agenda"
 
 #: prefs/koprefsdialogplugins.cpp:144
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Configure the view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the %1 plugin"
-msgstr "Configura le vista"
+msgstr "Configura le plugin %1"
 
 #: prefs/koprefsdialogplugins.cpp:145
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to start the search."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to configure the %1 plugin."
-msgstr "Pressa iste button pro initiar le cerca."
+msgstr "Pressa iste button pro configurar le plugin %1."
 
 #: prefs/koprefsdialogplugins.cpp:207
 #, kde-format
@@ -4683,11 +4680,9 @@ msgstr "Monstra numeros de septimana"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show Date Navigator"
+#, kde-format
 msgid "Show week numbers in the Date Navigator"
-msgstr "Monstra navigator de data"
+msgstr "Monstra numeros de septimana in le navigator de data"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -6906,7 +6901,7 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
-"Clicca iste button permonstrar/celar le barra lateral in le vista currente. "
+"Clicca iste button per monstrar/celar le barra lateral in le vista currente. "
 "Cata vista pote celar/monstrar le barra lateral independentemente."
 
 #: widgets/navigatorbar.cpp:39
