@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-09-01 17:21+0200\n"
+"PO-Revision-Date: 2026-09-02 15:34+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -2289,7 +2289,7 @@ msgid ""
 "Check this box if you do not want to receive reminders from items associated "
 "with this calendar."
 msgstr ""
-"marca iste quadrato si tu non vole reciper mementos ex elementos associate "
+"Marca iste quadrato si tu non vole reciper mementos ex elementos associate "
 "con iste calendario."
 
 #: collectiongeneralpage.cpp:58
@@ -2309,7 +2309,7 @@ msgstr "Fixa un icone personalisate:"
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
 msgstr ""
-"marca iste box si tu vole fixar un icone personalisate per iste dossier."
+"Marca iste box si tu vole fixar un icone personalisate per iste dossier."
 
 #. i18n: ectx: Menu (file)
 #: data/korganizer_part.rc:4 data/korganizerui.rc:6
@@ -3746,7 +3746,7 @@ msgstr "Die feriate"
 #, kde-format
 msgctxt "@label"
 msgid "Change of Seasons"
-msgstr "cambia le saisones"
+msgstr "Cambia le saisones"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:531
 #, kde-format
@@ -4198,7 +4198,7 @@ msgstr "Dominica"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
-msgstr "Evidentai dies feriate differentemente ab tu planification regular"
+msgstr "Evidentia dies feriate differentemente ab tu planification regular"
 
 #: prefs/koprefsdialogtime.cpp:215
 #, kde-format
@@ -4409,7 +4409,7 @@ msgid ""
 "time you create a new event, to-do or journal entry."
 msgstr ""
 "Selige iste option pro eliger le calendario que essera usate pro registrar "
-"le elemento cata vice que tu crea un nove evento, cosade facer o nota de  "
+"le elemento cata vice que tu crea un nove evento, cosa de facer o nota de  "
 "diario (jornal)."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
@@ -4854,7 +4854,7 @@ msgstr ""
 "Marca iste quadrato si tu vole que le fundo de agenda essera plenate con un "
 "color differente sur dies que ha al minus un evento de tote die marcate como "
 "occupate. De plus, tu pote modificar le color de fundo usate pro iste option "
-"in le pagina de configuration de color.Cerca le preferentia de \"Color de "
+"in le pagina de configuration de color. Cerca le preferentia de \"Color de "
 "fundo de dies occupate\"."
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
@@ -5170,7 +5170,7 @@ msgstr ""
 #: settings/korganizer.kcfg:234
 #, kde-format
 msgid "Display icons in Month View items"
-msgstr "MOnstra icones in elementos de Vista de Mense"
+msgstr "Monstra icones in elementos de Vista de Mense"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:238
@@ -5230,7 +5230,7 @@ msgstr ""
 "Marca iste quadrato si tu vole que le fundo del vista del mense essera "
 "plenate con un color differente sur dies que ha al minus un evento de tote "
 "die marcate como occupate. De plus, tu pote modificar le color de fundo "
-"usate pro iste option in le pagina de configuration de color.Cerca le "
+"usate pro iste option in le pagina de configuration de color. Cerca le "
 "preferentia de \"Color de fundo de dies occupate\"."
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
@@ -5589,13 +5589,13 @@ msgid ""
 "hours grid"
 msgstr ""
 "Quando on non usa colores de systema, defini le color pro le grillia de "
-"horasde travalio del Vista de Agenda."
+"horas de travalio del Vista de Agenda."
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:363
 #, kde-format
 msgid "Select the working hours color for the Agenda View here."
-msgstr "Selige ci le color de horas de labor pro ;le Vista de Agenda."
+msgstr "Selige ci le color de horas de labor pro le Vista de Agenda."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:367
@@ -5628,7 +5628,7 @@ msgstr "Color de activitate de facer expirante hodie"
 #: settings/korganizer.kcfg:374
 #, kde-format
 msgid "Set the color for to-dos that are due today"
-msgstr "Assigna le color per cargas /actiones de facer) que es expirate hodie"
+msgstr "Assigna le color per cargas (actiones de facer) que es expirate hodie"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #: settings/korganizer.kcfg:375
@@ -5694,7 +5694,7 @@ msgid ""
 msgstr ""
 "Selige hic le color de die feriate. Le color de die feriate essera usate pro "
 "le nomine del die feriate in le vista de mense e le numero de die feriate in "
-"le navigator de date."
+"le navigator de data."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
@@ -5765,7 +5765,7 @@ msgid ""
 msgstr ""
 "Pressa iste button pro configurar le font de vista de mense. Iste button "
 "aperira le dialogo de \"Selige Font\", permittente te de seliger le font de "
-"elementosin le vista de mense."
+"elementos in le vista de mense."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:416
@@ -5907,7 +5907,7 @@ msgid ""
 "that have been completed. Optionally, only items that have been completed a "
 "given number of days are hidden."
 msgstr ""
-"Si site quadrato es marcate, le filtro celera omne elementos de facer ab le "
+"Si site quadrato es marcate, le filtro celara omne elementos de facer ab le "
 "lista que ha essite completate. Optionalmente, sol elementos que ha essite "
 "completate un date numero de dies es celate."
 
@@ -5926,8 +5926,8 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
-"iste option permittera te de seliger qual activitates de facer completate "
-"deberea esser celate. Quando tu selige <i>Immediatemente</i>, il celera le "
+"Iste option permittera te de seliger qual activitates de facer completate "
+"deberea esser celate. Quando tu selige <i>Immediatemente</i>, il celara le "
 "activitate si tosto que  tu marca lo. Tu pote augmentar o diminuer le numero "
 "de dies in le spinbox."
 
@@ -6359,9 +6359,9 @@ msgstr ""
 "Examina varie campos pro vider si illos contine patronos de cerca: le "
 "patrono \"incontro\" deberea trovar  coincidentia con \"incontro de kick-off"
 "\". Cartas Jolly (wildcards) \"*\" (trova ulle numero de characteres) e \"?"
-"\" (trova un singule character) es suportate. Pro exemplo, le patrono de "
+"\" (trova un singule character) es supportate. Pro exemplo, le patrono de "
 "cerca \"incon*chefe* trova coincidentia con \"incontro con chefe\". Le "
-"patrono \"c?t\" troverea coincidentia con \"cat\",\"cet\", et cetera."
+"patrono \"c?t\" trovarea coincidentia con \"cat\",\"cet\", et cetera."
 
 #. i18n: ectx: property (text), widget (QLineEdit, searchEdit)
 #: ui/searchdialog_base.ui:55
@@ -6661,7 +6661,7 @@ msgid ""
 "date range specified, or have neither a start date nor an end date."
 msgstr ""
 "Include agendas que ha un data de initio, data de expiration, o data de "
-"completion in le interallo de data specificate, o ha nec un data de initio "
+"completion in le intervallo de data specificate, o ha nec un data de initio "
 "nec un data de fin."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
