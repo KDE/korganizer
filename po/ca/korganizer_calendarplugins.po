@@ -4,11 +4,11 @@
 # SPDX-FileCopyrightText: 2000 Softcatalà <info@softcatala.org>
 # SPDX-FileCopyrightText: 2003 Albert Cervera Areny <albertca@jazzfree.com>
 # SPDX-FileCopyrightText: 2004 Ivan Lloro Boada <antispam@wanadoo.es>
-# SPDX-FileCopyrightText: 2004, 2005, 2006 Sebastià Pla i Sanz <sps@sastia.com>
-# SPDX-FileCopyrightText: 2004, 2005, 2006 Albert Astals Cid <aacid@kde.org>
+# SPDX-FileCopyrightText: 2004-2006 Sebastià Pla i Sanz <sps@sastia.com>
+# SPDX-FileCopyrightText: 2004-2006 Albert Astals Cid <aacid@kde.org>
 # SPDX-FileCopyrightText: 2006-2015, 2018, 2020-2022, 2024-2026 Josep M. Ferrer <txemaq@gmail.com>
-# SPDX-FileCopyrightText: 2009, 2010, 2011 Manuel Tortosa Moreno <manutortosa@gmail.com>
-# SPDX-FileCopyrightText: 2011, 2013, 2014, 2015, 2016, 2018, 2019 Antoni Bella Pérez <antonibella5@yahoo.com>
+# SPDX-FileCopyrightText: 2009-2011 Manuel Tortosa Moreno <manutortosa@gmail.com>
+# SPDX-FileCopyrightText: 2011, 2013-2016, 2018-2019 Antoni Bella Pérez <antonibella5@yahoo.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
