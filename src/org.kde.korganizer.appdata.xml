@@ -596,6 +596,7 @@
         <p xml:lang="es">Complementos</p>
         <p xml:lang="fr">Modules externes</p>
         <p xml:lang="he">תוספים</p>
+        <p xml:lang="ia">Plugins</p>
         <p xml:lang="it">Estensioni</p>
         <p xml:lang="ka">დამატებები</p>
         <p xml:lang="nl">Plug-ins</p>
@@ -615,6 +616,7 @@
           <li xml:lang="es">Se ha restaurado el complemento de calendario hebreo (ausente desde KDE4). Este complemento muestra las fechas y las festividades judías según el calendario hebreo.</li>
           <li xml:lang="fr">Le module externe du calendrier juif est restauré (Disparu depuis KDE4). Celui-ci affiche les dates et les jours fériés judaïques dans le système de calendrier hébreu</li>
           <li xml:lang="he">תוסף לוח השנה העברי שוחזר (לא היה קיים מ־KDE4). התוסף הזה מציג תאריכים וחגים יהודיים במערכת לוח השנה העברי</li>
+          <li xml:lang="ia">Le plugin de calendario judee es restaurate (absente depost KDE4). Iste plugin monstra datas e festas judee in le systema de calendario hebreo.</li>
           <li xml:lang="it">Il calendario ebraico è stato ripristinato (rimosso dai tempi di KDE4). Questa estensione mostra date e festività ebraiche nel sistema di calendario ebraico</li>
           <li xml:lang="ka">აღდგენილია ებრაული კალენდრის დამატება (გაქრა KDE4-ის შემდეგ). ეს დამატება აჩვენებს თარიღებს და ებრაულ დასვენების დღეებს ებრაული კალენდრის სისტემაში</li>
           <li xml:lang="nl">De Joodse kalender-plug-in is hersteld (verdween sinds KDE4). Deze plug-in toont datums en Joodse feestdagen in het Hebreeuwse kalendersysteem</li>
@@ -633,6 +635,7 @@
           <li xml:lang="es">El complemento de calendario de fases lunares permite ahora configurar los hemisferios norte y sur.</li>
           <li xml:lang="fr">Le module externe de calendrier des phases lunaires permet désormais une configuration pour les hémisphères nord et sud.</li>
           <li xml:lang="he">תוסף לוח השנה של מופעי הירח מאפשר מאתה הגדרה של חצי הכדור הצפונים מול הדרומי</li>
+          <li xml:lang="ia">Le plugin del calendario de phases lunar ora permitte un configuration  pro le hemispherios septentrional versus merdional.</li>
           <li xml:lang="it">L'estensione del calendario delle fasi lunari ora permette di configurare l'emisfero, australe o boreale</li>
           <li xml:lang="ka">მთვარის ფაზების კალენდრის დამატებას ახლა აქვს საშუალება მიუთითოთ, სამხრეთ ნახევარსფეროში ბრძანდებით, თუ ჩრდილოეთში</li>
           <li xml:lang="nl">De plug-in voor de maanfasenkalender maakt het nu mogelijk om te kiezen tussen het noordelijk en het zuidelijk halfrond</li>
@@ -1342,7 +1345,7 @@
           <li xml:lang="es">Vista de agenda: se ha añadido un menú de contexto a las etiquetas de tiempo para mostrar/ocultar estas etiquetas en la zona horaria del sistema en el lado derecho (o izquierdo) también.</li>
           <li xml:lang="fr">Vue en Agenda : ajout du menu contextuel des étiquettes de temps pour afficher / masquer les étiquettes de temps pour le fuseau horaire du système sur le coté droit (Ou à gauche) également</li>
           <li xml:lang="he">תצוגת סדר יום: נוסף תפריט הקשר תוויות זמן להצגת/הסתרת תוויות זמן לאזור הזמן של המערכת מצד ימין (או שמאל) בנוסף</li>
-          <li xml:lang="ia">Vista de Agenda: addite menu de contexto de etiquettas temporal per monstrar/celar etiquettas temporal per le fuso horari de systema anque sul latere dextere (o sinistre)</li>
+          <li xml:lang="ia">Vista de Agenda: addite menu de contexto de etiquettas temporal per monstrar/celar etiquettas temporal per le fuso horari de systema anque sur latere dextere (o sinistre)</li>
           <li xml:lang="it">Vista agenda: aggiunto un menu contestuale per le etichette dell'orario per mostrare/nascondere le etichette dell'orario per il fuso orario di sistema anche sul lato destro (o sinistro)</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: დაემატა დროის ჭდეების კონტექსტური მენიუ დროის ჭდეების საჩვენებლად/დასამალად სისტემური დროის სარტყლისთვის მარჯვენა (ან მარცხენა) მხარეს</li>
           <li xml:lang="nl">Agendaweergave: toegevoegde tijdlabels aan contextmenu om tijdlabels te tonen/verbergen voor de systeemtijdzone ook rechter- (of linkerkant)</li>
@@ -1651,7 +1654,7 @@
           <li xml:lang="es">Vista de agenda: se han consolidado los intervalos de tiempo «Día», «Próximos X días», «Horario de trabajo» y «Semana» en el botón de la herramienta Agenda.</li>
           <li xml:lang="fr">Vue en Calendrier : consolidation des plages horaires « Jour », « X prochains jours », « Planning de travail », « Semaine » dans le bouton de l'outil « Calendrier »</li>
           <li xml:lang="he">תצוגת סדר יום: טווחי הזמנים „יום”, „X הימים הקרובים”, „לו״ז עבודה”, „שבוע” אוחדו לתוך כפתור כלי סדר היום</li>
-          <li xml:lang="ia">Vista de Agenda: consolidava le ecìxtension de tempore de "Die", "Proxime X Die", "Plano de Labor", "Septimana"in lebutton de instrumento de Agenda.</li>
+          <li xml:lang="ia">Vista de Agenda: consolidava le extension de tempore de "Die", "Proxime X Die", "Plano de Labor", "Septimana"in le button de instrumento de Agenda.</li>
           <li xml:lang="it">Vista agenda: consolidati gli intervalli temporali "giorno", "prossimi X giorni", "settimana lavorativa", "settimana", nel pulsante dello strumento agenda</li>
           <li xml:lang="ka">გეგის ხედი: გაერთიანებული "დღის", "შემდეგი X დღის", "სამუშაოს გეგმის", "კვირის" დროის შუალედების გადატანა გეგმის ხელსაწყოს ღილაკში</li>
           <li xml:lang="nl">Agendaweergave: geconsolideerd de tijdreeksen "Dag", "Volgende X dagen", "Werkplanning", "Week" in de werkknop Agenda</li>
@@ -1809,7 +1812,7 @@
           <li xml:lang="es">Editor de incidencias: recordar/restaurar la geometría del gestor de plantillas.</li>
           <li xml:lang="fr">Éditeur d'occurrences : enregistrement / restauration de la disposition du gestionnaire de modèles</li>
           <li xml:lang="he">עורך מופעים: שמירת/שחזור צורת מנהל התבניות</li>
-          <li xml:lang="ia">Editor de incidentia:memora/restabili le geometris de gestor de patrono</li>
+          <li xml:lang="ia">Editor de incidentia:memora/restabili le geometria de gestor de patrono</li>
           <li xml:lang="it">Editor delle occorrenze: ricorda/ripristina la geometria del gestore di modelli</li>
           <li xml:lang="ka">ინციდენტების რედაქტორი: შაბლონების მმართველის გეომეტრიის დამახსოვრება/აღდგენა</li>
           <li xml:lang="nl">Voorvalbewerker: de geometrie van de sjabloonbeheerder onthouden/herstellen</li>
