@@ -952,7 +952,7 @@
           <li xml:lang="es">Vista de agenda: se ha añadido un menú de contexto a las etiquetas de tiempo para mostrar/ocultar estas etiquetas en la zona horaria del sistema en el lado derecho (o izquierdo) también.</li>
           <li xml:lang="fr">Vue en Agenda : ajout du menu contextuel des étiquettes de temps pour afficher / masquer les étiquettes de temps pour le fuseau horaire du système sur le coté droit (Ou à gauche) également</li>
           <li xml:lang="he">תצוגת סדר יום: נוסף תפריט הקשר תוויות זמן להצגת/הסתרת תוויות זמן לאזור הזמן של המערכת מצד ימין (או שמאל) בנוסף</li>
-          <li xml:lang="ia">Vista de Agenda: addite menu de contexto de etiquettas temporal per monstrar/celar etiquettas temporal per le fuso horari de systema anque sul latere dextere (o sinistre)</li>
+          <li xml:lang="ia">Vista de Agenda: addite menu de contexto de etiquettas temporal per monstrar/celar etiquettas temporal per le fuso horari de systema anque sur latere dextere (o sinistre)</li>
           <li xml:lang="it">Vista agenda: aggiunto un menu contestuale per le etichette dell'orario per mostrare/nascondere le etichette dell'orario per il fuso orario di sistema anche sul lato destro (o sinistro)</li>
           <li xml:lang="ka">დღის წესრიგის ხედი: დაემატა დროის ჭდეების კონტექსტური მენიუ დროის ჭდეების საჩვენებლად/დასამალად სისტემური დროის სარტყლისთვის მარჯვენა (ან მარცხენა) მხარეს</li>
           <li xml:lang="nl">Agendaweergave: toegevoegde tijdlabels aan contextmenu om tijdlabels te tonen/verbergen voor de systeemtijdzone ook rechter- (of linkerkant)</li>
@@ -1361,7 +1361,7 @@
           <li xml:lang="es">Editor de incidencias: recordar/restaurar la geometría del gestor de plantillas.</li>
           <li xml:lang="fr">Éditeur d'occurrences : enregistrement / restauration de la disposition du gestionnaire de modèles</li>
           <li xml:lang="he">עורך מופעים: שמירת/שחזור צורת מנהל התבניות</li>
-          <li xml:lang="ia">Editor de incidentia:memora/restabili le geometris de gestor de patrono</li>
+          <li xml:lang="ia">Editor de incidentia:memora/restabili le geometria de gestor de patrono</li>
           <li xml:lang="it">Editor delle occorrenze: ricorda/ripristina la geometria del gestore di modelli</li>
           <li xml:lang="ka">ინციდენტების რედაქტორი: შაბლონების მმართველის გეომეტრიის დამახსოვრება/აღდგენა</li>
           <li xml:lang="nl">Voorvalbewerker: de geometrie van de sjabloonbeheerder onthouden/herstellen</li>
