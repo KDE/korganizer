@@ -5061,10 +5061,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "To-do list view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "待办列表视图使用整个窗口"
+msgstr ""
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
