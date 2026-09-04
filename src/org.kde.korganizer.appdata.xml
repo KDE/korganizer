@@ -500,7 +500,7 @@
           <li xml:lang="es">Vista mensual: Ahora se puede cambiar el color para resaltar la cuadrícula del navegador. Para configurar el color, defina el «Color para resaltar la cuadrícula del navegador» en los ajustes de «Colores y tipos de letra».</li>
           <li xml:lang="fr">Navigateur : la couleur de surbrillance pour la grille du navigateur peut désormais être modifiée. Pour configurer cette couleur, veuillez la définir dans « Couleur de surbrillance de la grille du Navigateur » dans la configuration « Couleurs et polices »</li>
           <li xml:lang="he">נווטן: אפשר להחליף את צבע ההדגשה של רשת הנווטן. כדי להגדיר את הצבע, יש להגדיר את „צבע הדגשת רשת נווטן” בהגדרות הצבעים והגופנים</li>
-          <li xml:lang="ia">Navigator: le color de evidentiar per le grillia delnavigator pote nunc esser cambiate. Per configurar le color, assigna le "Colore de evidentia de grillia de navigator" in le preferentias de Colores e Fonts</li>
+          <li xml:lang="ia">Navigator: le color de evidentiar per le grillia del navigator pote nunc esser cambiate. Per configurar le color, assigna le "Colore de evidentia de grillia de navigator" in le preferentias de Colores e Fonts</li>
           <li xml:lang="it">Navigatore: il colore di evidenziazione per la griglia del navigatore adesso può essere cambiato. Per configurare il colore, seleziona «Colore di evidenziazione della griglia del navigatore» nella impostazioni di «Colori e caratteri»</li>
           <li xml:lang="ka">ნავიგატორი: შესაძლებელია ნავიგატორის ბადის გამოკვეთის ფერის შეცვლა. ფერის მოსარგებად დააყენეთ "ნავიგატორის ბადის გამოკვეთის ფერი" ფერებისა და ფონტის მორგების დიალოგში</li>
           <li xml:lang="nl">Navigator: de accentueringskleur voor het navigatorraster kan nu worden gewijzigd. Om de kleur te configureren, stelt u de "Accentueringskleur van het navigatorraster" in bij de instellingen voor kleuren en lettertypen.</li>
@@ -576,7 +576,7 @@
           <li xml:lang="es">Resumen de Kontact: Formatos consistentes de cadenas de fecha.</li>
           <li xml:lang="fr">Résumé de Kontact : cohérence des formats de chaines de date</li>
           <li xml:lang="he">תקציר Kontact: תבניות עקביות של מחרוזות תאריך</li>
-          <li xml:lang="ia">Summario de Kontact: formatosde catena data consistente</li>
+          <li xml:lang="ia">Summario de Kontact: formatos de catena data consistente</li>
           <li xml:lang="it">Sommario di Kontact: formati di stringe della data consistenti</li>
           <li xml:lang="ka">Kontact-ის შეჯამება: მუდმივი თარიღის სტრიქონის ფორმატები</li>
           <li xml:lang="nl">Kontactoverzicht: consistente tekenreeksformaten voor datums</li>
@@ -1433,7 +1433,7 @@
           <li xml:lang="es">Se ha cambiado la semántica del concepto de «horario laboral» a la de «horario semanal» para adaptarse a los usuarios que no trabajan.</li>
           <li xml:lang="fr">La sémantique a été modifiée d'un concept de « Calendrier de travail » à un concept de « Calendrier hebdomadaire » afin d'accommoder les personnes utilisatrices non actives.</li>
           <li xml:lang="he">הסמנטיקה הוחלפה מעקרון של „לו״ז עבודה” ל„לו״ז שבועי” כדי להתאים למשתמשים שאינם עובדים</li>
-          <li xml:lang="ia">Semantica ha cambiate ex un concepto de "plano de travalio" a un concepto de "plano de septimana" peraccomodar usatores non travaliante</li>
+          <li xml:lang="ia">Semantica ha cambiate ex un concepto de "plano de travalio" a un concepto de "plano de septimana" per accomodar usatores non travaliante</li>
           <li xml:lang="it">La semantica è cambiata da un concetto di "pianificazione del lavoro" ad uno di "pianificazione settimanale" per soddisfare le esigenze degli utenti non lavoratori</li>
           <li xml:lang="ka">სემანტიკა შეიცვალა "სამუშაო გრაფიკის\" კონცეპტიდან "კვირის გრაფიკის\" კონცეპტზე, რომ უმუშევარი მომხმარებლებიც დაფაროს</li>
           <li xml:lang="nl">Semantiek is gewijzigd van een concept "werkplan" naar een concept "weekplan" om niet-werkende gebruikers te accommoderen</li>
