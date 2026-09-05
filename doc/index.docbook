@@ -172,10 +172,10 @@ agenda, use &kmail; to send and receive invitations, &etc;</para>
 <listitem><para>Much more...</para></listitem>
 </itemizedlist></para>
 
-
-<para>Now take a <link linkend="five-minute-course">Five-minute fly-over
-course</link> of &korganizer;, or delve into <link
-linkend="managing-data">the documentation</link>!</para>
+<para>
+Now take a <link linkend="five-minute-course">Five-minute fly-over course</link> of &korganizer;,
+or delve into <link linkend="managing-data">the documentation</link>!
+</para>
 
 </chapter>
 
@@ -183,47 +183,57 @@ linkend="managing-data">the documentation</link>!</para>
 <title>Five-minute Fly-over Course of &korganizer;</title>
 <subtitle> (for the experienced and for the impatient)</subtitle>
 
-<para>Pressed for time? Let's get you kick-started with a fast, hands-on overview
-of &korganizer;!</para>
+<para>
+Pressed for time? Let's get you kick-started with a fast, hands-on overview of &korganizer;!
+</para>
 
-<para>If you ever worked with a personal information program before, you'll be
-right at home with &korganizer;. You can enter new events, reschedule existing
-events, assign tags to your events, devise new tags, enter and
-modify lists of attendees and their roles, email event invitations
-automatically and exchange data with other &korganizer; calendars, create
-to-dos and write journal entries.</para>
+<para>
+If you ever worked with a personal information program before, you'll be right at home
+with &korganizer;. You can enter new events, reschedule existing events, assign tags to
+your events, devise new tags, enter andmodify lists of attendees and their roles, email
+event invitations automatically and exchange data with other &korganizer; calendars, create
+to-dos and write journal entries.
+</para>
 
-<para>This course assumes that you know how to work with the &kde;, and that
-you prefer to explore on your own. Only the basic functions of &korganizer;
-are covered here.</para>
+<para>
+This course assumes that you know how to work with the &kde;, and that you prefer to explore
+on your own. Only the basic functions of &korganizer; are covered here.
+</para>
 
 <sect1 id="course-entering-events">
 <title>Entering Events</title>
 
 <procedure>
-<step><para>Click the <inlinemediaobject><imageobject>
-<imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject>
-</inlinemediaobject><guibutton>Agenda</guibutton> toolbar button
-or choose the <menuchoice><guimenu>View</guimenu>
-<guimenuitem>Agenda</guimenuitem></menuchoice> menu item.
-This will bring up the <link linkend="agenda-view"><guilabel>Agenda View</guilabel>
-</link>.</para></step>
 
-<step><para>Click on the desired date in the
+<step><para>
+Click the
+  <inlinemediaobject><imageobject>
+    <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject>
+  </inlinemediaobject><guibutton>Agenda</guibutton> toolbar button or choose the
+  <menuchoice><guimenu>View</guimenu> <guimenuitem>Agenda</guimenuitem></menuchoice> menu item.
+This will bring up the <link linkend="agenda-view"><guilabel>Agenda View</guilabel></link>.
+</para></step>
+
+<step><para>
+Click on the desired date in the
 <link linkend="glossary" endterm="gloss-date-navigator">Date Navigator</link>.
 </para></step>
 
-<step><para>Select the text area beside the desired
-hour in the main panel that reflects the time of the event. Double click
-this area, or just start typing a summary of the event to open the
-<guilabel>New Event</guilabel> dialog.</para></step>
+<step><para>
+Select the text area beside the desired hour in the main panel that reflects the time of the event.
+Double click this area, or just start typing a summary of the event to open the
+<guilabel>New Event</guilabel> dialog.
+</para></step>
 
-<step><para><link linkend="entering-data-events">Enter event details</link>.
-Use the six tabs at the bottom of the window to move
-around the dialog and access all the event's characteristics.</para></step>
+<step><para>
+<link linkend="entering-data-events">Enter event details</link>. Use the six tabs at the bottom
+of the window to move around the dialog and access all the event's characteristics.
+</para></step>
 
-<step><para>Press <guibutton>OK</guibutton> to save the
-event.</para></step>
+<step><para>
+Press <guibutton>OK</guibutton> to save the event.
+</para></step>
+
 </procedure>
 </sect1>
 
@@ -307,31 +317,41 @@ desired time directly.</para>
 <sect1 id="course-rescheduling-todos">
 <title>Rescheduling or Editing To-dos</title>
 
-<para>You should choose an appropriate <link
-linkend="reference-menus-view">view</link> before beginning this operation.
-Only the <link linkend="todo-view"><inlinemediaobject><imageobject>
-<imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject>
-</inlinemediaobject><guilabel>To-do List</guilabel> view
-</link> and <link linkend="description-view">the To-do View sidebar component
-</link> show to-dos which do not have a due date.</para>
-
-<para>To display the To-do List view, press the
-<inlinemediaobject><imageobject>
-<imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject>
-</inlinemediaobject><guibutton>To-do List</guibutton> view toolbar button,
-or choose the <menuchoice><guimenu>View</guimenu>
-<guimenuitem>To-do List</guimenuitem></menuchoice> menu item.
+<para>
+You should choose an appropriate <link linkend="reference-menus-view">view</link> before
+beginning this operation.
+Only the
+<link linkend="todo-view">
+  <inlinemediaobject><imageobject>
+    <imagedata fileref="view-calendar-tasks.png" format="PNG"/>
+  </imageobject></inlinemediaobject>
+  <guilabel>To-do List</guilabel> view
+</link>
+and
+<link linkend="description-view">the To-do View sidebar component</link>
+show to-dos which do not have a due date.
 </para>
 
-<para>To reschedule a to-do, right click it.
-This will bring up a context menu.  Choose the <guimenuitem>Copy to</guimenuitem> or
-<guimenuitem>Move to</guimenuitem> menu items and select the new date from the calendar
-now appearing. The to-do is now copied or moved to the selected date.
-Alternatively, if the main panel holds a <guilabel>To-do List</guilabel> view,
-just right click the column <guilabel>Due Date/Time</guilabel>. A calendar will
-appear instantly, allowing you to set the new due date.</para>
+<para>
+To display the To-do List view, press the
+  <inlinemediaobject><imageobject>
+    <imagedata fileref="view-calendar-tasks.png" format="PNG"/>
+  </imageobject></inlinemediaobject>
+  <guibutton>To-do List</guibutton> view toolbar button, or choose the
+  <menuchoice><guimenu>View</guimenu><guimenuitem>To-do List</guimenuitem></menuchoice> menu item.
+</para>
 
-<para>To <link linkend="entering-data-to-do">edit a to-do</link>, right click it and choose the
+<para>
+To reschedule a to-do, right click it. This will bring up a context menu.
+Choose the <guimenuitem>Copy to</guimenuitem> or <guimenuitem>Move to</guimenuitem> menu items
+and select the new date from the calendar now appearing. The to-do is now copied or moved to the
+selected date. Alternatively, if the main panel holds a <guilabel>To-do List</guilabel> view,
+just right click the column <guilabel>Due Date/Time</guilabel>. A calendar will
+appear instantly, allowing you to set the new due date.
+</para>
+
+<para>
+To <link linkend="entering-data-to-do">edit a to-do</link>, right click it and choose the
 <guimenuitem>Edit...</guimenuitem> menu item.</para>
 
 </sect1>
@@ -528,7 +548,7 @@ before exporting them, you can create
 if you classify your events and to-dos with
 <link linkend="categories-view">tags</link>. To enable and disable
 resources, check or uncheck the resource box in the
-<link linkend="managing-resources"><guilabel>Calendar Manager</guilabel> </link>
+<link linkend="managing-resources"><guilabel>Calendar Manager</guilabel></link>
 sidebar.</para>
 
 <para>To export all your <quote>active</quote> events, to-dos and journal entries
@@ -1128,14 +1148,13 @@ where the event will take place.</para></listitem>
 
 <varlistentry>
 <term><guilabel>Start</guilabel> and <guilabel>End</guilabel></term>
-<listitem><para>The &korganizer; suggested Start and End dates of your event.
- Events are
-expected to start and end on the same date. Change these dates as desired. Enter
-the dates directly or use the <link linkend="glossary"
- endterm="gloss-calendar-widget">
-Calendar Widget</link>.  Select the time from quarter hour intervals, or enter
-the desired time directly into the time fields. These fields are only available
-when the <guilabel>All Day</guilabel> box is not checked.</para></listitem>
+<listitem><para>
+The &korganizer; suggested Start and End dates of your event. Events are expected to start and end
+on the same date. Change these dates as desired. Enter the dates directly or use the
+<link linkend="glossary" endterm="gloss-calendar-widget"> Calendar Widget</link>.  Select the
+time from quarter hour intervals, or enter the desired time directly into the time fields.
+These fields are only available when the <guilabel>All Day</guilabel> box is not checked.
+</para></listitem>
 </varlistentry>
 
 </variablelist>
