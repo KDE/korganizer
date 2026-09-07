@@ -274,13 +274,12 @@
 </itemizedlist
 ></para>
 
-
 <para
 >Ara podeu fer un <link linkend="five-minute-course"
 >curs ràpid de cinc minuts</link
 > del &korganizer;, o submergir-vos en <link linkend="managing-data"
 >la documentació</link
->!</para>
+>! </para>
 
 </chapter>
 
@@ -292,19 +291,20 @@
 >(per als que tenen experiència i per als impacients)</subtitle>
 
 <para
->Teniu pressa? Aleshores comencem amb una vista ràpida del &korganizer;!</para>
+>Teniu pressa? Aleshores comencem amb una vista ràpida del &korganizer;! </para>
 
 <para
->Si heu treballat abans amb un programa d'informació personal, estareu còmode amb el &korganizer;. Podeu introduir esdeveniments nous, tornar a planificar els existents, assignar-los etiquetes, inventar etiquetes noves, introduir i modificar llistes d'assistents i els seus papers, enviar automàticament per correu electrònic les invitacions a l'esdeveniment i intercanviar dades amb altres calendaris del &korganizer;, crear tasques pendents i escriure entrades de diari.</para>
+>Si heu treballat abans amb un programa d'informació personal, estareu còmode amb el &korganizer;. Podeu introduir esdeveniments nous, tornar a planificar els existents, assignar-los etiquetes, inventar etiquetes noves, introduir i modificar llistes d'assistents i els seus papers, enviar automàticament per correu electrònic les invitacions a l'esdeveniment i intercanviar dades amb altres calendaris del &korganizer;, crear tasques pendents i escriure entrades de diari. </para>
 
 <para
->Aquest curs assumeix que sabeu com treballar amb el &kde; i que preferiu explorar. Aquí tan sols es cobreixen les funcions bàsiques del &korganizer;.</para>
+>Aquest curs assumeix que sabeu com treballar amb el &kde; i que preferiu explorar. Aquí tan sols es cobreixen les funcions bàsiques del &korganizer;. </para>
 
 <sect1 id="course-entering-events">
 <title
 >Introduir esdeveniments</title>
 
 <procedure>
+
 <step
 ><para
 >Feu clic sobre el botó <inlinemediaobject
@@ -323,7 +323,7 @@
 ><guilabel
 >Vista d'agenda</guilabel
 ></link
->.</para
+>. </para
 ></step>
 
 <step
@@ -337,22 +337,23 @@
 ><para
 >Seleccioneu l'àrea de text junt amb l'hora desitjada en el plafó principal que reflecteix l'hora de l'esdeveniment. Feu doble clic sobre aquesta àrea o simplement comenceu a escriure un resum de l'esdeveniment per a obrir el diàleg <guilabel
 >Esdeveniment nou</guilabel
->.</para
+>. </para
 ></step>
 
 <step
 ><para
 ><link linkend="entering-data-events"
 >Introduir els detalls de l'esdeveniment</link
->. Useu les sis pestanyes a la part inferior de la finestra per a moure's a través del diàleg i accedir a totes les característiques de l'esdeveniment.</para
+>. Useu les sis pestanyes a la part inferior de la finestra per a moure's a través del diàleg i accedir a totes les característiques de l'esdeveniment. </para
 ></step>
 
 <step
 ><para
 >Premeu <guibutton
 >D'acord</guibutton
-> per a desar l'esdeveniment.</para
+> per a desar l'esdeveniment. </para
 ></step>
+
 </procedure>
 </sect1>
 
@@ -502,7 +503,7 @@
 ></link
 > i <link linkend="description-view"
 >el component de la barra lateral de la vista de les tasques pendents</link
-> mostren les tasques pendents que no tenen una data de venciment.</para>
+> mostren les tasques pendents que no tenen una data de venciment. </para>
 
 <para
 >Per a mostrar la vista de la llista de tasques pendents, premeu el botó <inlinemediaobject
@@ -528,7 +529,7 @@
 >Llista de tasques pendents</guilabel
 >, simplement feu clic dret en la columna <guilabel
 >Data i hora de venciment</guilabel
->. Apareixerà instantàniament un calendari que us permetrà establir la data nova de venciment.</para>
+>. Apareixerà instantàniament un calendari que us permetrà establir la data nova de venciment. </para>
 
 <para
 >Per a <link linkend="entering-data-to-do"
@@ -1095,7 +1096,7 @@
 >Consells per a una visualització millorada d'esdeveniments: <itemizedlist>
 <listitem
 ><para
->Utilitzeu la drecera de la roda de desplaçament per a augmentar/reduir l'alçada de les files de la quadrícula horària. Això és útil per a veure els detalls de l'esdeveniment si teniu diversos esdeveniments que es produeixen en el mateix interval de temps. </para
+>Utilitzeu la drecera de la roda de desplaçament per a augmentar/reduir l'altura de les files de la quadrícula horària. Això és útil per a veure els detalls de l'esdeveniment si teniu diversos esdeveniments que es produeixen en el mateix interval de temps. </para
 ></listitem>
 <listitem
 ><para
@@ -1632,7 +1633,7 @@
 >giny de calendari</link
 >. Seleccioneu l'hora en intervals de quart d'hora o introduïu l'hora desitjada directament en els camps d'hora. Aquests camps tan sols estan disponibles si no està marcada la casella <guilabel
 >Tot el dia</guilabel
->.</para
+>. </para
 ></listitem>
 </varlistentry>
 
@@ -3166,7 +3167,7 @@
 ></term>
 <listitem
 ><para
->Utilitzant això podreu controlar l'alçada de les files a la vista d'agenda.</para
+>Utilitzant això podreu controlar l'altura de les files a la vista d'agenda.</para
 ></listitem>
 </varlistentry>
 
