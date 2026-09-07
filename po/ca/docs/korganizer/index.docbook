@@ -1095,7 +1095,7 @@
 >Consells per a una visualització millorada d'esdeveniments: <itemizedlist>
 <listitem
 ><para
->Utilitzeu la drecera de la roda de desplaçament per a augmentar/reduir l'alçada de les files de la quadrícula horària. Això és útil per a veure els detalls de l'esdeveniment si teniu diversos esdeveniments que es produeixen en el mateix interval de temps. </para
+>Utilitzeu la drecera de la roda de desplaçament per a augmentar/reduir l'altura de les files de la quadrícula horària. Això és útil per a veure els detalls de l'esdeveniment si teniu diversos esdeveniments que es produeixen en el mateix interval de temps. </para
 ></listitem>
 <listitem
 ><para
@@ -3166,7 +3166,7 @@
 ></term>
 <listitem
 ><para
->Utilitzant això podreu controlar l'alçada de les files a la vista d'agenda.</para
+>Utilitzant això podreu controlar l'altura de les files a la vista d'agenda.</para
 ></listitem>
 </varlistentry>
 
