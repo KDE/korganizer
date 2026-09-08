@@ -302,13 +302,12 @@
 </itemizedlist
 ></para>
 
-
 <para
 >Ahora puede hacer un <link linkend="five-minute-course"
 >curso-paseo de cinco minutos</link
 > por &korganizer; o profundizar en <link linkend="managing-data"
 >la documentación</link
-></para>
+> </para>
 
 </chapter>
 
@@ -320,19 +319,20 @@
 >(para los que tienen experiencia y para los impacientes)</subtitle>
 
 <para
->¿Oprimido por el tiempo? Entonces comencemos con una visión general rápida de &korganizer;</para>
+>¿Oprimido por el tiempo? Entonces comencemos con una visión general rápida de &korganizer; </para>
 
 <para
->Si ha trabajado antes con un programa de información personal, estará como en casa con &korganizer;. Puede introducir nuevos eventos, volver a planificar los eventos existentes, asignar etiquetas a sus eventos, crear nuevas etiquetas, introducir y modificar listas de asistentes y sus papeles, enviar por correo electrónico automáticamente las invitaciones al evento e intercambiar datos con otros calendarios de &korganizer;, crear tareas pendientes y escribir entradas del diario.</para>
+>Si ha trabajado antes con un programa de información personal, estará como en casa con &korganizer;. Puede introducir nuevos eventos, volver a planificar los eventos existentes, asignar etiquetas a sus eventos, crear nuevas etiquetas, introducir y modificar listas de asistentes y sus papeles, enviar por correo electrónico automáticamente las invitaciones al evento e intercambiar datos con otros calendarios de &korganizer;, crear tareas pendientes y escribir entradas del diario. </para>
 
 <para
->Este curso supone que sabe cómo trabajar con el &kde; y que prefiere explorar por sí mismo. Solo se cubren aquí las funciones básicas de &korganizer;.</para>
+>Este curso supone que sabe cómo trabajar con el &kde; y que prefiere explorar por sí mismo. Solo se cubren aquí las funciones básicas de &korganizer;. </para>
 
 <sect1 id="course-entering-events">
 <title
 >Introducir eventos</title>
 
 <procedure>
+
 <step
 ><para
 >Pulse sobre el botón <inlinemediaobject
@@ -350,8 +350,8 @@
 >. Debe aparecer la <link linkend="agenda-view"
 ><guilabel
 >Vista de agenda</guilabel
-> </link
->.</para
+></link
+>. </para
 ></step>
 
 <step
@@ -365,22 +365,23 @@
 ><para
 >Seleccione el área de texto que hay junto con la hora que desee en el panel principal que refleje la hora del evento. Haga doble clic sobre esta área o simplemente comience a teclear el resumen del evento para abrir el diálogo <guilabel
 >Nuevo evento</guilabel
->.</para
+>. </para
 ></step>
 
 <step
 ><para
 ><link linkend="entering-data-events"
 >Introducir ldetalles del evento</link
->. Use las seis pestañas de la parte inferior de la ventana para moverse alrededor del diálogo y acceder a las características del evento.</para
+>. Use las seis pestañas de la parte inferior de la ventana para moverse alrededor del diálogo y acceder a las características del evento. </para
 ></step>
 
 <step
 ><para
 >Pulse <guibutton
 >Aceptar</guibutton
-> para guardar el evento.</para
+> para guardar el evento. </para
 ></step>
+
 </procedure>
 </sect1>
 
@@ -524,25 +525,25 @@
 ><inlinemediaobject
 ><imageobject
 > <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
-> </inlinemediaobject
+></inlinemediaobject
 >Ver <guilabel
 >Lista de tareas pendientes</guilabel
 > </link
 > y <link linkend="description-view"
 >el componente del panel lateral de tareas pendientes</link
-> muestra las tareas pendientes que no tienen una fecha de vencimiento.</para>
+> muestra las tareas pendientes que no tienen una fecha de vencimiento. </para>
 
 <para
 >Para mostrar la vista de la lista de tareas pendientes, pulse el botón de la vista de barra de herramientas <inlinemediaobject
 ><imageobject
 > <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
-> </inlinemediaobject
+></inlinemediaobject
 ><guibutton
 >Lista de tareas pendientes</guibutton
 >, o seleccione la opción de menú <menuchoice
 ><guimenu
 >Vista</guimenu
-> <guimenuitem
+><guimenuitem
 >Lista de tareas pendientes</guimenuitem
 ></menuchoice
 >. </para>
@@ -556,7 +557,7 @@
 >Lista de tareas pendientes</guilabel
 >, simplemente pulse con el botón derecho en la columna <guilabel
 >Fecha/Hora de vencimiento</guilabel
->. Debe aparecer instantáneamente un calendario que le permite definir la nueva fecha de vencimiento.</para>
+>. Debe aparecer instantáneamente un calendario que le permite definir la nueva fecha de vencimiento. </para>
 
 <para
 >Para <link linkend="entering-data-to-do"
@@ -1674,7 +1675,7 @@
 > Control de calendario</link
 >. Seleccione la hora en intervalos de cuarto de hora o introduzca la hora deseada directamente en los campos de hora. Estos campos solo están disponibles si no está marcada la casilla <guilabel
 >Todo el día</guilabel
->.</para
+>. </para
 ></listitem>
 </varlistentry>
 
