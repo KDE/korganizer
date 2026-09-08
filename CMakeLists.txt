@@ -273,6 +273,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.30.0 )
 
+option(ENABLE_PCH "Enable Precompiled Headers support" ON)
+
 option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)
 
 set(COMPILE_WITH_UNITY_CMAKE_SUPPORT OFF)

@@ -46,6 +46,24 @@ file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pixmaps/*-apps-korganizer.png"
 ecm_add_app_icon(korganizer_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(korganizer ${korganizer_SRCS})
+
+# precompiled headers support
+if(ENABLE_PCH)
+    target_precompile_headers(
+        korganizer
+        PRIVATE
+            <QObject>
+            <QString>
+            <QStringList>
+            <QList>
+            <QWidget>
+            <QAction>
+            <KLocalizedString>
+            <KConfigGroup>
+            <KSharedConfig>
+            <memory>
+    )
+endif()
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
         korganizer
@@ -443,6 +461,44 @@ qt_add_dbus_interfaces(korganizerprivate_LIB_SRCS
 )
 
 add_library(korganizerprivate ${korganizerprivate_LIB_SRCS})
+
+# precompiled headers support
+if(ENABLE_PCH)
+    target_precompile_headers(
+        korganizerprivate
+        PRIVATE
+            <QObject>
+            <QString>
+            <QStringList>
+            <QList>
+            <QUrl>
+            <QPointer>
+            <QTimer>
+            <QDate>
+            <QDateTime>
+            <QWidget>
+            <QAction>
+            <QIcon>
+            <QMenu>
+            <QLabel>
+            <QVBoxLayout>
+            <QHBoxLayout>
+            <QGridLayout>
+            <QDialog>
+            <QDialogButtonBox>
+            <QPushButton>
+            <QCheckBox>
+            <QComboBox>
+            <QPainter>
+            <QApplication>
+            <KLocalizedString>
+            <KConfigGroup>
+            <KSharedConfig>
+            <KMessageBox>
+            <KActionCollection>
+            <memory>
+    )
+endif()
 if(COMPILE_WITH_UNITY_CMAKE_SUPPORT)
     set_target_properties(
         korganizerprivate

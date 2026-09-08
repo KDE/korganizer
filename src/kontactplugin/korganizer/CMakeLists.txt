@@ -25,6 +25,29 @@ qt_add_dbus_interfaces(kontact_korganizerplugin_PART_SRCS ${korganizer_SOURCE_DI
 
 add_library(kontact_korganizerplugin MODULE ${kontact_korganizerplugin_PART_SRCS})
 
+# precompiled headers support
+if(ENABLE_PCH)
+    target_precompile_headers(
+        kontact_korganizerplugin
+        PRIVATE
+            <QObject>
+            <QString>
+            <QStringList>
+            <QDate>
+            <QWidget>
+            <QAction>
+            <QIcon>
+            <QLabel>
+            <QGridLayout>
+            <QVBoxLayout>
+            <KLocalizedString>
+            <KConfigGroup>
+            <KSharedConfig>
+            <KActionCollection>
+            <memory>
+    )
+endif()
+
 target_link_libraries(
     kontact_korganizerplugin
     Qt::DBus
@@ -53,6 +76,29 @@ set(kontact_todoplugin_PART_SRCS
 qt_add_dbus_interfaces(kontact_todoplugin_PART_SRCS ${korganizer_SOURCE_DIR}/src/data/org.kde.Korganizer.Calendar.xml  ${korganizer_SOURCE_DIR}/src/data/org.kde.korganizer.Korganizer.xml)
 
 add_library(kontact_todoplugin MODULE ${kontact_todoplugin_PART_SRCS})
+
+# precompiled headers support
+if(ENABLE_PCH)
+    target_precompile_headers(
+        kontact_todoplugin
+        PRIVATE
+            <QObject>
+            <QString>
+            <QStringList>
+            <QDate>
+            <QWidget>
+            <QAction>
+            <QIcon>
+            <QLabel>
+            <QGridLayout>
+            <QVBoxLayout>
+            <KLocalizedString>
+            <KConfigGroup>
+            <KSharedConfig>
+            <KActionCollection>
+            <memory>
+    )
+endif()
 
 target_link_libraries(
     kontact_todoplugin
