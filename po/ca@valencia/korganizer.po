@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-29 08:51+0200\n"
+"PO-Revision-Date: 2026-09-06 17:50+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -601,7 +601,7 @@ msgstr "Llista de &tasques pendents"
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
-msgstr "Vista de llista de tasques pendents"
+msgstr "Vista de la llista de tasques pendents"
 
 #: actionmanager.cpp:386
 #, kde-format
@@ -616,8 +616,8 @@ msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
 msgstr ""
-"Canvia a la vista de llista de tasques pendents, que proporciona un lloc per "
-"a seguir les tasques que cal fer."
+"Canvia a la vista de la llista de tasques pendents, que proporciona un lloc "
+"per a seguir les tasques que cal fer."
 
 #: actionmanager.cpp:394
 #, kde-format
