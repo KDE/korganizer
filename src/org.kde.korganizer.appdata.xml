@@ -1633,7 +1633,7 @@
           <li xml:lang="ca-valencia">Afig un diàleg selector de dates disponible en el menú Ves</li>
           <li xml:lang="cs">Přidáno dialogové okno pro výběr data dostupné v nabídce Přejít</li>
           <li xml:lang="es">Añadir un diálogo de selección de fecha disponible en el menú Ir.</li>
-          <li xml:lang="fr">Ajout d'une boîte de dialogue de sélection de date disponible dans le menu « Aller »</li>
+          <li xml:lang="fr">Ajout d'une boite de dialogue de sélection de date disponible dans le menu « Aller »</li>
           <li xml:lang="he">נוספה חלונית בורר תאריכים שזמינה מתפריט המעבר</li>
           <li xml:lang="ia">Adde un dialogo de Selector de Data disponibile in le menu de Vader (Go)</li>
           <li xml:lang="it">Aggiunta una finestra selettore di data disponibile nel menu Vai</li>
@@ -1851,7 +1851,7 @@
           <li xml:lang="ca-valencia">El diàleg d'exportació de calendari recorda la seua última ubicació de la carpeta d'exportació</li>
           <li xml:lang="cs">Dialogové okno exportu kalendáře si pamatuje umístění poslední složky pro export</li>
           <li xml:lang="es">El diálogo de exportación de calendario recuerda la ubicación de la última carpeta de exportación usada.</li>
-          <li xml:lang="fr">La boîte de dialogue du calendrier d'exportation enregistre son dernier emplacement pour le dossier d'exportation</li>
+          <li xml:lang="fr">La boite de dialogue du calendrier d'exportation enregistre son dernier emplacement pour le dossier d'exportation</li>
           <li xml:lang="he">חלונית ייצוא לוח השנה זוכרת את מקום התיקייה האחרונה שיוצאה</li>
           <li xml:lang="ia">Le dialogo de calendario per exportar memora su location de dossier de ultime exportation</li>
           <li xml:lang="it">La finestra di esportazione del calendario ricorda l'ultima posizione usata per la cartella di esportazione</li>
@@ -1871,7 +1871,7 @@
           <li xml:lang="ca-valencia">El diàleg d'importació de calendari recorda la seua última ubicació de la carpeta d'importació</li>
           <li xml:lang="cs">Dialogové okno importu kalendáře si pamatuje umístění poslední složky pro import</li>
           <li xml:lang="es">El diálogo de importación de calendario recuerda la ubicación de la última carpeta de importación usada.</li>
-          <li xml:lang="fr">La boîte de dialogue du calendrier d'importation enregistre son dernier emplacement pour le dossier d'importation</li>
+          <li xml:lang="fr">La boite de dialogue du calendrier d'importation enregistre son dernier emplacement pour le dossier d'importation</li>
           <li xml:lang="he">חלונית ייבוא לוח השנה זוכרת את מקום התיקייה האחרונה שיובאה</li>
           <li xml:lang="ia">Le dialogo de calendario per importar memora su location de dossier de ultime importation</li>
           <li xml:lang="it">La finestra di impostazione del calendario ricorda l'ultima posizione usata per la cartella di importazione</li>
