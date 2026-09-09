@@ -701,19 +701,19 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
-msgstr "&Rafraîchir"
+msgstr "&Rafraichir"
 
 #: actionmanager.cpp:418
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
-msgstr "Rafraîchir"
+msgstr "Rafraichir"
 
 #: actionmanager.cpp:419
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
-msgstr "Rafraîchir l'affichage"
+msgstr "Rafraichir l'affichage"
 
 #: actionmanager.cpp:421
 #, kde-format
@@ -722,7 +722,7 @@ msgid ""
 "This action will refresh and redraw the current calendar view. It does not "
 "sync or update any calendar folders."
 msgstr ""
-"Cette action rafraîchira et redessinera la vue d'agenda actuelle. Elle ne "
+"Cette action rafraichira et redessinera la vue d'agenda actuelle. Elle ne "
 "synchronise pas et ne met pas à jour les dossiers d'agendas."
 
 #: actionmanager.cpp:430
@@ -6877,7 +6877,7 @@ msgid ""
 "View->Month View tab"
 msgstr ""
 "Vue mensuelle : une option a été ajoutée pour afficher les heures de début "
-"et de fin. Auparavant, seul l’affichage de l’heure de début était pris en "
+"et de fin. Auparavant, seul l'affichage de l'heure de début était pris en "
 "charge. Pour activer cette option, veuillez cocher l'option « Afficher les "
 "heures de début et de fin pour les éléments de la vue mensuelle » dans "
 "l'onglet « Affichage /Onglet de vue mensuelle »"
