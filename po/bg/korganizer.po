@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-08-13 08:45+0200\n"
+"PO-Revision-Date: 2026-09-09 17:30+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.3\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4389,16 +4389,13 @@ msgstr "Винаги да се пита, кой календар да се из�
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to choose the calendar to be used to record the item "
-#| "each time you create a new event, to-do or journal entry"
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry."
 msgstr ""
-"Отметнете тази опция, за да изберете календара, който да се използва за "
-"запис всеки път, когато създавате ново събитие, списък или запис в дневник"
+"Изберете тази опция за определяне на календара, който да се използва за "
+"запис на елемента при създаване на ново събитие, задача или запис в дневника."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4624,16 +4621,13 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing to-dos in bold typeface in the "
-#| "Date Navigator when in to-do view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in Todo View."
 msgstr ""
-"Поставете отметка в това квадратче, за да покажете дните, съдържащи задачи, "
-"с получер шрифт в Навигатора на дати, когато са в изглед на задачи."
+"Поставете отметка в това поле за показване на дните със задачи в удебелен "
+"шрифт в Навигатор на дати и изглед на задачи."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:99
@@ -4643,27 +4637,21 @@ msgstr "Показване на дневниците вместо събития
 
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
-#, fuzzy, kde-format
-#| msgid ""
-#| "In journal view, use a bold typeface to more easily identify journals"
+#, kde-format
 msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr ""
-"Използване на удебелен шрифт в изглед „Дневник“ за по-лесно идентифициране "
-"на записите"
+"В изглед „Дневник“ използвайте удебелен шрифт за по-лесно разпознаване на "
+"записите"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing journals in bold typeface in "
-#| "the Date Navigator when in journal view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in Journal View."
 msgstr ""
-"Поставете отметка в това квадратче, за да покажете дните, съдържащи "
-"дневници, с получер шрифт в Навигатора на дати, когато сте в изглед на "
-"дневник."
+"Поставете отметка в това поле за показване на дните с дневници с удебелен "
+"шрифт в Навигатора на дати и изглед дневници."
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:105
@@ -4673,11 +4661,9 @@ msgstr "Показване на номера на седмицата"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show Date Navigator"
+#, kde-format
 msgid "Show week numbers in the Date Navigator"
-msgstr "Показване на датите"
+msgstr "Показване на номера на седмици в Навигатор на дати"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4797,10 +4783,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions Agenda View items"
+#, kde-format
 msgid "Display incidence descriptions in Agenda View items"
-msgstr "Показване на описание на събитие в изгледа на дневен ред"
+msgstr "Показване на описания на събития в изгледа на дневния ред"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:146
@@ -4818,10 +4803,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Display incidence locations Agenda View items"
+#, kde-format
 msgid "Display incidence locations in Agenda View items"
-msgstr "Показване на местоположението на събитията в дневния ред"
+msgstr "Показване на местоположението на събитията в елементите на дневния ред"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Month View)
@@ -5377,10 +5361,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "To-do list view uses full window"
+#, kde-format
 msgid "Month View uses full window"
-msgstr "Списъкът със задачи използва цял прозорец"
+msgstr "Месечният изглед използва целия прозорец"
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #. i18n: ectx: tooltip, entry, group (Todo View)
@@ -5391,23 +5374,17 @@ msgstr "Показване на списъка със задачи в пълен
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the to-"
-#| "do list view. If this box is checked, you will gain some space for the to-"
-#| "do list view, but other widgets, such as the Date Navigator, the to-do "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Поставете отметка в това квадратче, за да използвате пълния прозорец на "
-"KOrganizer, когато показвате изгледа на списъка със задачи. Ако това "
-"квадратче е отметнато, ще спечелите малко място за изгледа на списъка със "
-"задачи, но други уиджети, като например навигатора на датите, до -до "
-"подробности и списък с календари, няма да бъдат показани."
+"Поставете отметка тук, за да използвате целия прозорец на KOrganizer при "
+"показване на месечния изглед. Ако полето е отметнато, ще освободите повече "
+"място за месечния изглед, но други елементи, като навигатора за дата, "
+"подробностите за записа и списъка с календари, няма да се показват."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:316
@@ -5671,32 +5648,27 @@ msgstr "В месечен изглед избиране на цвета на ф�
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Month View today background color"
+#, kde-format
 msgid "Month View holiday color"
-msgstr "Цвят на фона на днешна дата в месечен изглед"
+msgstr "Цвят на празниците в изглед „Месец“"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Set the color for Holidays in Agenda View"
+#, kde-format
 msgid "Set the color for holidays in Month View"
-msgstr "Задаване на цвета на фона за днешната дата в месечен изглед"
+msgstr "Задаване на цвят за празнични дни в изглед „Месец“"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the Month View and the holiday number in the Date "
-#| "Navigator."
+#, kde-format
 msgid ""
 "In Month View, select the color for holidays. This color will be used for "
 "the holiday backgrounds in the Month View and the holiday dates in the Date "
 "Navigator."
 msgstr ""
-"Цвят за празниците в месечния изглед. Цветът ще се използва за открояване на "
-"имената на празниците в изгледа."
+"В месечния изглед, изберете цвят за празниците. Този цвят се използва за "
+"фона на празниците в месечния изглед и за датите на празниците в Навигатора "
+"на дати."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
@@ -5757,19 +5729,15 @@ msgstr "Показване на икони в месечни изгледи"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:413
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the month View font. This button will open "
-#| "the \"Select Font\" dialog, allowing you to choose the font for the items "
-#| "in the Month View."
+#, kde-format
 msgid ""
 "Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the Month View."
 msgstr ""
-"Натиснете този бутон, за да конфигурирате шрифта за месечен изглед. Този "
-"бутон ще отвори диалоговия прозорец  „Избор на шрифт \", като ви позволява "
-"да изберете шрифта за елементите в месечния изглед."
+"Натиснете този бутон за конфигурация на шрифт за месечния изглед. Отваря се "
+"диалоговият прозорец \"Избор на шрифт\" и се предоставя възможност за избор "
+"на шрифт за елементите в месечния изглед."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:416
@@ -7017,9 +6985,3 @@ msgstr "%1"
 msgctxt "@label 4 digit year"
 msgid "%1"
 msgstr "%1"
-
-#~ msgid "Display each week's number in the current year"
-#~ msgstr "Показване на номерата на седмиците в текущата година"
-
-#~ msgid "Holiday color"
-#~ msgstr "Цвят за празниците"
