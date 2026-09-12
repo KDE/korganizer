@@ -272,7 +272,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
             }
             writeable = calendar->hasRight(item, Akonadi::Collection::CanDeleteItem);
         }
-        summaryEvent->summaryToolTip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start, true);
+        summaryEvent->summaryToolTip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start);
         if (writeable) {
             summaryEvent->summaryStatusTip = i18nc("@info:status", "Edit Event: \"%1\"", ev->summary());
         } else {
