@@ -288,13 +288,12 @@
 </itemizedlist
 ></para>
 
-
 <para
 >Şimdi &korganizer;’ün <link linkend="five-minute-course"
 >Beş Dakikalık Hızlı Kurs</link
 >’una bakın veya <link linkend="managing-data"
 >belgelendirmesini</link
-> okuyun!</para>
+> okuyun! </para>
 
 </chapter>
 
@@ -306,19 +305,20 @@
 >(deneyimliler ve sabırsızlar için)</subtitle>
 
 <para
->Zaman sıkıntısı mı çekiyorsunuz? Gelin, &korganizer;’e hızlı ve uygulamalı bir genel bakış ile işe koyulalım!</para>
+>Zaman sıkıntısı mı çekiyorsunuz? Gelin, &korganizer;’e hızlı ve uygulamalı bir genel bakış ile işe koyulalım! </para>
 
 <para
->Daha önce bir kişisel bilgi programı ile çalıştıysanız &korganizer; ile evinizde gibi hissedeceksiniz. Yeni etkinlikler girebilir, var olan etkinlikleri yeniden planlayabilir, etkinliklerinize künyeler atayabilir, yeni künyeler tasarlayabilir, katılımcı listelerini ve rollerini girebilir ve değiştirebilir, etkinlik davetlerini kendiliğinden e-postayla gönderebilir ve diğer &korganizer; takvimleriyle veri alışverişi yapabilir, yapılacaklar oluşturabilir ve günce girdileri yazabilirsiniz.</para>
+>Daha önce bir kişisel bilgi programı ile çalıştıysanız &korganizer; ile evinizde gibi hissedeceksiniz. Yeni etkinlikler girebilir, var olan etkinlikleri yeniden planlayabilir, etkinliklerinize künyeler atayabilir, yeni künyeler tasarlayabilir, katılımcı listelerini ve rollerini girebilir ve değiştirebilir, etkinlik davetlerini kendiliğinden e-postayla gönderebilir ve diğer &korganizer; takvimleriyle veri alışverişi yapabilir, yapılacaklar oluşturabilir ve günce girdileri yazabilirsiniz. </para>
 
 <para
->Bu kurs, &kde; ile nasıl çalışacağınızı bildiğinizi ve kendi başınıza keşfetmeyi tercih ettiğinizi varsayar. Burada yalnızca &korganizer;’ün temel işlevleri ele alınmaktadır.</para>
+>Bu kurs, &kde; ile nasıl çalışacağınızı bildiğinizi ve kendi başınıza keşfetmeyi tercih ettiğinizi varsayar. Burada yalnızca &korganizer;’ün temel işlevleri ele alınmaktadır. </para>
 
 <sect1 id="course-entering-events">
 <title
 >Etkinlikler Girmek</title>
 
 <procedure>
+
 <step
 ><para
 ><inlinemediaobject
@@ -337,7 +337,7 @@
 ><guilabel
 >Ajanda Görünümü</guilabel
 ></link
->’nü getirir.</para
+>’nü getirir. </para
 ></step>
 
 <step
@@ -351,22 +351,23 @@
 ><para
 >Ana panelde istediğiniz saatin yanında bulunan ve etkinliğin zamanını yansıtan metin alanını seçin. Bu alana çift tıklayın veya <guilabel
 >Yeni Etkinlik</guilabel
-> iletişim kutusunu açmak için etkinliğin özetini yazmaya başlayın.</para
+> iletişim kutusunu açmak için etkinliğin özetini yazmaya başlayın. </para
 ></step>
 
 <step
 ><para
 ><link linkend="entering-data-events"
 >Etkinlik ayrıntılarını girin</link
->. İletişim kutusunda dolaşmak ve etkinliğin tüm özelliklerine erişmek için pencerenin altındaki altı sekmeyi kullanın.</para
+>. İletişim kutusunda dolaşmak ve etkinliğin tüm özelliklerine erişmek için pencerenin altındaki altı sekmeyi kullanın. </para
 ></step>
 
 <step
 ><para
 >Etkinliği kaydetmek için <guibutton
 >Tamam</guibutton
-> düğmesine tıklayın.</para
+> düğmesine tıklayın. </para
 ></step>
+
 </procedure>
 </sect1>
 
@@ -516,7 +517,7 @@
 > görünümü</link
 > ve <link linkend="description-view"
 >Yapılacaklar kenar çubuğu bileşeni</link
-> bir bitiş tarihi olmayan yapılacakları gösterir.</para>
+> bir bitiş tarihi olmayan yapılacakları gösterir. </para>
 
 <para
 >Yapılacaklar Listesi görünümünü görüntülemek için <inlinemediaobject
@@ -542,7 +543,7 @@
 >Yapılacaklar Listesi</guilabel
 > görünümü tutuyorsa yalnızca <guilabel
 >Bitiş Tarihi/Zamanı</guilabel
-> sütununa sağ tıklayın. Bir takvim anında açılır ve buradan yeni tarihi ayarlayabilirsiniz.</para>
+> sütununa sağ tıklayın. Bir takvim anında açılır ve buradan yeni tarihi ayarlayabilirsiniz. </para>
 
 <para
 >Bir yapılacak ögesini <link linkend="entering-data-to-do"
@@ -1664,7 +1665,7 @@
 >Takvim Araç Takımı</link
 >’nı kullanın. Zamanı, çeyrek saatlik aralıklar olarak seçin veya istediğiniz zamanı doğrudan zaman alanlarına girin. Bu alanlar yalnızca <guilabel
 >Tüm gün</guilabel
-> kutusu işaretlenmemişse kullanılabilirdir.</para
+> kutusu işaretlenmemişse kullanılabilirdir. </para
 ></listitem>
 </varlistentry>
 
