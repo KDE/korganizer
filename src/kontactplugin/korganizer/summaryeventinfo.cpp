@@ -10,14 +10,13 @@
 
 #include "summaryeventinfo.h"
 
+#include <CalendarSupport/Utils>
+
 #include <Akonadi/Item>
 
 #include <KCalendarCore/Calendar>
 #include <KCalendarCore/Event>
 using namespace KCalendarCore;
-
-#include <KCalUtils/IncidenceFormatter>
-using namespace KCalUtils;
 
 #include <KLocalizedString>
 
@@ -272,7 +271,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
             }
             writeable = calendar->hasRight(item, Akonadi::Collection::CanDeleteItem);
         }
-        summaryEvent->summaryToolTip = KCalUtils::IncidenceFormatter::toolTipStr(displayName, ev, start);
+        summaryEvent->summaryToolTip = CalendarSupport::toolTipString(displayName, ev, start);
         if (writeable) {
             summaryEvent->summaryStatusTip = i18nc("@info:status", "Edit Event: \"%1\"", ev->summary());
         } else {
@@ -303,7 +302,8 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
             QDateTime kdt(start, QTime(0, 0, 0));
             kdt = kdt.addSecs(-1);
             const QDateTime next = ev->recurrence()->getNextDateTime(kdt);
-            const QString tmp = IncidenceFormatter::dateTimeToString(ev->recurrence()->getNextDateTime(next), ev->allDay(), true);
+            const auto nextDt = ev->recurrence()->getNextDateTime(next);
+            const QString tmp = ev->allDay() ? QLocale().toString(nextDt.date(), QLocale::ShortFormat) : QLocale().toString(nextDt, QLocale::ShortFormat);
             if (!summaryEvent->timeRange.isEmpty()) {
                 summaryEvent->timeRange += QLatin1StringView("<br>");
             }

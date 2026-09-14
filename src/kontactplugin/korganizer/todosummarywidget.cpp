@@ -11,13 +11,12 @@
 #include "korganizerinterface.h"
 #include "todoplugin.h"
 #include <CalendarSupport/CalendarSingleton>
+#include <CalendarSupport/Utils>
 
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/Collection>
 #include <Akonadi/IncidenceChanger>
 #include <Akonadi/ItemFetchScope>
-
-#include <KCalUtils/IncidenceFormatter>
 
 #include <KontactInterface/Core>
 
@@ -301,7 +300,7 @@ void TodoSummaryWidget::updateView()
             urlLabel->setUrl(todo->uid());
             urlLabel->setTextFormat(Qt::RichText);
             urlLabel->setWordWrap(true);
-            urlLabel->setToolTip(KCalUtils::IncidenceFormatter::toolTipStr(displayName, todo, currDate));
+            urlLabel->setToolTip(CalendarSupport::toolTipString(displayName, todo, currDate));
             if (writeable) {
                 urlLabel->setStatusTip(i18nc("@info:status", "Edit To-do: \"%1\"", todo->summary()));
             } else {
