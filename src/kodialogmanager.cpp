@@ -154,11 +154,6 @@ void KODialogManager::createCategoryEditor()
 {
     if (!mCategoryEditDialog) {
         mCategoryEditDialog = new Akonadi::TagManagementDialog(mMainView);
-        QDialogButtonBox *buttons = mCategoryEditDialog->buttons();
-        if (buttons) {
-            buttons->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
-            connect(buttons->button(QDialogButtonBox::Help), &QPushButton::clicked, this, &KODialogManager::slotHelp);
-        }
         mCategoryEditDialog->setModal(true);
     }
 }
