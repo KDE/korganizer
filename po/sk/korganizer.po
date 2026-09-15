@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-29 00:46+0000\n"
-"PO-Revision-Date: 2026-04-13 12:00+0200\n"
-"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
+"PO-Revision-Date: 2026-09-14 20:10+0200\n"
+"Last-Translator: Roman Paholík <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
@@ -4370,16 +4370,13 @@ msgstr "Vždy sa pýtať, ktorý kalendár použiť"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:25
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to choose the calendar to be used to record the item "
-#| "each time you create a new event, to-do or journal entry"
+#, kde-format
 msgid ""
 "Select this option to choose the calendar to be used to record the item each "
 "time you create a new event, to-do or journal entry."
 msgstr ""
 "Vyberte túto možnosť, ak chcete pri každom vytvorení novej udalosti, úlohy "
-"alebo záznamu denníka voliť kalendár, do ktorého sa položka zapíše"
+"alebo záznamu denníka voliť kalendár, do ktorého sa položka zapíše."
 
 #. i18n: ectx: label, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:33
@@ -4601,16 +4598,13 @@ msgstr "V pohľade úloh použiť tučné písmo na ľahšie rozpoznanie úloh"
 
 #. i18n: ectx: whatsthis, entry (HighlightTodos), group (General View)
 #: settings/korganizer.kcfg:95
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing to-dos in bold typeface in the "
-#| "Date Navigator when in to-do view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing to-dos in bold typeface in the "
 "Date Navigator when in Todo View."
 msgstr ""
-"Zaškrtnúť toto pole pre ukázanie dní obsahujúcich úlohy tučným písmom v "
-"dátumovom navigátore pri prehľade úloh."
+"Zaškrtnite toto pole, ak chcete v prehľade úloh zobrazovať dni obsahujúce "
+"úlohy tučným písmom v dátumovom navigátore."
 
 #. i18n: ectx: label, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:99
@@ -4620,24 +4614,19 @@ msgstr "Ukázať denníky namiesto udalostí pri prehľade denníkov"
 
 #. i18n: ectx: tooltip, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:100
-#, fuzzy, kde-format
-#| msgid ""
-#| "In journal view, use a bold typeface to more easily identify journals"
+#, kde-format
 msgid "In Journal View, use a bold typeface to more easily identify journals"
 msgstr "V pohľade denníka použiť tučné písmo na ľahšie rozpoznanie záznamov"
 
 #. i18n: ectx: whatsthis, entry (HighlightJournals), group (General View)
 #: settings/korganizer.kcfg:101
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to show the days containing journals in bold typeface in "
-#| "the Date Navigator when in journal view."
+#, kde-format
 msgid ""
 "Check this box to show the days containing journals in bold typeface in the "
 "Date Navigator when in Journal View."
 msgstr ""
-"Zaškrtnúť toto pole pre ukázanie dní obsahujúcich denníky tučným písmom v "
-"dátumovom navigátore pri prehľade denníkov."
+"Zaškrtnite toto pole, ak chcete v prehľade denníkov zobrazovať dni "
+"obsahujúce denníky tučným písmom v dátumovom navigátore."
 
 #. i18n: ectx: label, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:105
@@ -4647,11 +4636,9 @@ msgstr "Zobraziť číslo dňa"
 
 #. i18n: ectx: tooltip, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:106
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show Date Navigator"
+#, kde-format
 msgid "Show week numbers in the Date Navigator"
-msgstr "Zobraziť navigátor dátumov"
+msgstr "Zobraziť čísla týždňov v dátumovom navigátore"
 
 #. i18n: ectx: whatsthis, entry (WeekNumbersShow), group (General View)
 #: settings/korganizer.kcfg:107
@@ -4768,10 +4755,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:142
-#, fuzzy, kde-format
-#| msgid "Display incidence descriptions Agenda View items"
+#, kde-format
 msgid "Display incidence descriptions in Agenda View items"
-msgstr "Zobrazovať popisy udalostí v položkách pohľadu programu"
+msgstr "Zobrazovať popisy udalostí v položkách pohľadu agendy"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:146
@@ -4789,10 +4775,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Display incidence locations Agenda View items"
+#, kde-format
 msgid "Display incidence locations in Agenda View items"
-msgstr "Zobraziť umiestnenia udalostí v položkách pohľadu programu"
+msgstr "Zobrazovať umiestnenia udalostí v položkách pohľadu agendy"
 
 #. i18n: ectx: label, entry (ColorBusyDaysEnabled), group (Agenda View)
 #. i18n: ectx: label, entry (ColorMonthBusyDaysEnabled), group (Month View)
@@ -5322,8 +5307,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
-#, fuzzy, kde-format
-#| msgid "Month view uses full window"
+#, kde-format
 msgid "Month View uses full window"
 msgstr "Mesačný pohľad používa celé okno"
 
@@ -5336,22 +5320,17 @@ msgstr "Zobraziť zoznam úloh v celom okne KOrganizer"
 
 #. i18n: ectx: whatsthis, entry, group (Month View)
 #: settings/korganizer.kcfg:309
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to use the full KOrganizer window when displaying the "
-#| "month view. If this box is checked, you will gain some space for the "
-#| "monthly view, but other widgets, such as the date navigator, the item "
-#| "details and the calendars list, will not be displayed."
+#, kde-format
 msgid ""
 "Check this box to use the full KOrganizer window when displaying the Month "
 "View. If this box is checked, you will gain some space for the monthly view, "
 "but other widgets, such as the date navigator, the item details and the "
 "calendars list, will not be displayed."
 msgstr ""
-"Zaškrtnite toto pole, ak chcete použiť celé okno KOrganizer pri zobrazení "
-"pohľadu mesiaca. Ak je toto pole zaškrtnuté, získate určitý priestor pre "
-"pohľad mesiaca, ale ďalšie grafické prvky, ako dátumový navigátor, detaily "
-"úloh a zoznam kalendárov, nebudú zobrazené."
+"Zaškrtnite toto pole, ak chcete pri zobrazení mesačného pohľadu použiť celé "
+"okno KOrganizeru. Ak je zaškrtnuté, získate viac priestoru pre mesačný "
+"pohľad, ale ďalšie prvky, ako dátumový navigátor, detaily položiek a zoznam "
+"kalendárov, sa nezobrazia."
 
 #. i18n: ectx: label, entry, group (Todo View)
 #: settings/korganizer.kcfg:316
@@ -5607,32 +5586,27 @@ msgstr "In Month View, select the background color for today's date."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:391
-#, fuzzy, kde-format
-#| msgid "Month View today background color"
+#, kde-format
 msgid "Month View holiday color"
-msgstr "Farba pozadia dnešného dňa v mesačnom pohľade"
+msgstr "Farba sviatkov v mesačnom pohľade"
 
 #. i18n: ectx: tooltip, entry, group (Colors)
 #: settings/korganizer.kcfg:392
-#, fuzzy, kde-format
-#| msgid "Set the color for Holidays in Agenda View"
+#, kde-format
 msgid "Set the color for holidays in Month View"
-msgstr "Nastaviť farbu sviatkov v pohľade agendy"
+msgstr "Nastaviť farbu sviatkov v mesačnom pohľade"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:393
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select the holiday color here. The holiday color will be used for the "
-#| "holiday name in the Month View and the holiday number in the Date "
-#| "Navigator."
+#, kde-format
 msgid ""
 "In Month View, select the color for holidays. This color will be used for "
 "the holiday backgrounds in the Month View and the holiday dates in the Date "
 "Navigator."
 msgstr ""
-"Tu vyberte farbu pre štátne sviatky. Táto farba sa použije pre mená sviatkov "
-"v mesačnom prehľade a čísla sviatkov v dátumovom navigátore."
+"V mesačnom pohľade vyberte farbu pre sviatky. Táto farba sa použije pre "
+"pozadie sviatkov v mesačnom pohľade a pre dátumy sviatkov v dátumovom "
+"navigátore."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:397
@@ -5694,19 +5668,15 @@ msgstr "Nastaviť písmo položiek mesačného pohľadu"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:413
-#, fuzzy, kde-format
-#| msgid ""
-#| "Press this button to configure the month View font. This button will open "
-#| "the \"Select Font\" dialog, allowing you to choose the font for the items "
-#| "in the Month View."
+#, kde-format
 msgid ""
 "Press this button to configure the Month View font. This button will open "
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the Month View."
 msgstr ""
-"Stlačte toto tlačidlo na nastavenie písma pohľadu mesiaca. Toto tlačidlo "
-"otvorí dialóg \"Vybrať písmo\", čo vám umožní vybrať písmo pre položky v "
-"pohľade mesiaca."
+"Stlačením tohto tlačidla nastavíte písmo mesačného pohľadu. Tlačidlo otvorí "
+"dialóg „Vybrať písmo“, v ktorom si zvolíte písmo pre položky v mesačnom "
+"pohľade."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:416
