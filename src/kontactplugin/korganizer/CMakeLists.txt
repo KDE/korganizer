@@ -58,7 +58,6 @@ target_link_libraries(
     KPim6::KontactInterface
     korganizerprivate
     KPim6::CalendarSupport
-    KPim6::AkonadiCalendar
     KF6::WindowSystem
     KF6::I18n
 )
@@ -109,7 +108,6 @@ target_link_libraries(
     KF6::CalendarCore
     KPim6::CalendarUtils
     KPim6::CalendarSupport
-    KPim6::AkonadiCalendar
     KF6::WindowSystem
 )
 
