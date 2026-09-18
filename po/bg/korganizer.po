@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-29 00:46+0000\n"
+"POT-Creation-Date: 2026-09-18 00:46+0000\n"
 "PO-Revision-Date: 2026-09-09 17:30+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -1379,13 +1379,13 @@ msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "Пок&азване на задача"
 
-#: actionmanager.cpp:1298 kontactplugin/korganizer/todosummarywidget.cpp:395
+#: actionmanager.cpp:1298 kontactplugin/korganizer/todosummarywidget.cpp:394
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Редактиране на задача…"
 
-#: actionmanager.cpp:1301 kontactplugin/korganizer/todosummarywidget.cpp:402
+#: actionmanager.cpp:1301 kontactplugin/korganizer/todosummarywidget.cpp:401
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
@@ -1793,14 +1793,14 @@ msgstr ""
 "бъде скрито и няма да се показва."
 
 #: calendarview.cpp:850 kontactplugin/korganizer/apptsummarywidget.cpp:232
-#: kontactplugin/korganizer/todosummarywidget.cpp:361
+#: kontactplugin/korganizer/todosummarywidget.cpp:360
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Наистина ли искате да премахнете за постоянно елемента  „%1 \"?"
 
 #: calendarview.cpp:851 kontactplugin/korganizer/apptsummarywidget.cpp:233
-#: kontactplugin/korganizer/todosummarywidget.cpp:362
+#: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
@@ -3011,31 +3011,31 @@ msgstr ""
 "<emphasis>От:</emphasis> %1<nl/><emphasis>До:</emphasis> %2<nl/"
 "><emphasis>Тема:</emphasis> %3"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:137
+#: kontactplugin/korganizer/summaryeventinfo.cpp:136
 #, kde-format
 msgctxt "@label the appointment is today"
 msgid "Today"
 msgstr "Днес"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:140
+#: kontactplugin/korganizer/summaryeventinfo.cpp:139
 #, kde-format
 msgctxt "@label the appointment is tomorrow"
 msgid "Tomorrow"
 msgstr "Утре"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:144
-#: kontactplugin/korganizer/todosummarywidget.cpp:197
+#: kontactplugin/korganizer/summaryeventinfo.cpp:143
+#: kontactplugin/korganizer/todosummarywidget.cpp:196
 #: kontactplugin/specialdates/sdsummarywidget.cpp:467
 #, kde-format
 msgctxt "@label 1. weekday"
 msgid "%1"
 msgstr "%1"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:147
-#: kontactplugin/korganizer/summaryeventinfo.cpp:155
-#: kontactplugin/korganizer/summaryeventinfo.cpp:173
-#: kontactplugin/korganizer/summaryeventinfo.cpp:178
-#: kontactplugin/korganizer/todosummarywidget.cpp:200
+#: kontactplugin/korganizer/summaryeventinfo.cpp:146
+#: kontactplugin/korganizer/summaryeventinfo.cpp:154
+#: kontactplugin/korganizer/summaryeventinfo.cpp:172
+#: kontactplugin/korganizer/summaryeventinfo.cpp:177
+#: kontactplugin/korganizer/todosummarywidget.cpp:199
 #: kontactplugin/specialdates/sdsummarywidget.cpp:470
 #: kontactplugin/specialdates/sdsummarywidget.cpp:479
 #, kde-format
@@ -3043,8 +3043,8 @@ msgctxt "@label 1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:188
-#: kontactplugin/korganizer/todosummarywidget.cpp:244
+#: kontactplugin/korganizer/summaryeventinfo.cpp:187
+#: kontactplugin/korganizer/todosummarywidget.cpp:243
 #: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, kde-format
 msgctxt "@label"
@@ -3053,13 +3053,13 @@ msgid_plural "in %1 days"
 msgstr[0] "за 1 ден"
 msgstr[1] "след %1 дни"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:201
+#: kontactplugin/korganizer/summaryeventinfo.cpp:200
 #, kde-format
 msgctxt "@label eg. in 1 hour 2 minutes"
 msgid "in "
 msgstr "в "
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:204
+#: kontactplugin/korganizer/summaryeventinfo.cpp:203
 #, kde-format
 msgctxt "@label use abbreviation for hour to keep the text short"
 msgid "1 hr"
@@ -3067,7 +3067,7 @@ msgid_plural "%1 hrs"
 msgstr[0] "1 ч"
 msgstr[1] "%1 ч"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:210
+#: kontactplugin/korganizer/summaryeventinfo.cpp:209
 #, kde-format
 msgctxt "@label use abbreviation for minute to keep the text short"
 msgid "1 min"
@@ -3075,13 +3075,13 @@ msgid_plural "%1 mins"
 msgstr[0] "1 м"
 msgstr[1] "%1 м"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:229
+#: kontactplugin/korganizer/summaryeventinfo.cpp:228
 #, kde-format
 msgctxt "@label the event is currently in-progress"
 msgid "in-progress"
 msgstr "започнати "
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:235
+#: kontactplugin/korganizer/summaryeventinfo.cpp:234
 #, kde-format
 msgctxt ""
 "@label use abbreviation for hour to keep the text short. the event ended at "
@@ -3091,7 +3091,7 @@ msgid_plural "ended %1 hrs ago"
 msgstr[0] "завършено преди 1 час"
 msgstr[1] "завършено преди %1 часа"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:241
+#: kontactplugin/korganizer/summaryeventinfo.cpp:240
 #, kde-format
 msgctxt ""
 "@label use abbreviation for min to keep the text short. the event ended a "
@@ -3101,25 +3101,25 @@ msgid_plural "ended %1 mins ago"
 msgstr[0] "завършено преди 1 мин"
 msgstr[1] "завършено преди %1 мин"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:249
+#: kontactplugin/korganizer/summaryeventinfo.cpp:248
 #, kde-format
 msgctxt "@label"
 msgid "all day"
 msgstr "цял ден"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:277
+#: kontactplugin/korganizer/summaryeventinfo.cpp:276
 #, kde-format
 msgctxt "@info:status"
 msgid "Edit Event: \"%1\""
 msgstr "Редактиране на събитие:  „%1 \""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:279
+#: kontactplugin/korganizer/summaryeventinfo.cpp:278
 #, kde-format
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
 msgstr "Показване на събитие: „%1“"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:295
+#: kontactplugin/korganizer/summaryeventinfo.cpp:294
 #, kde-format
 msgctxt "@label Time from - to"
 msgid "%1 - %2"
@@ -3355,31 +3355,31 @@ msgstr ""
 msgid "Over&due (not completed and beyond due-date)"
 msgstr "Пресрочен (незавършен или след датата на крайния срок)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:47
+#: kontactplugin/korganizer/todosummarywidget.cpp:46
 #, kde-format
 msgctxt "@title:group"
 msgid "Pending To-dos"
 msgstr "Изчакващи задачи"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:183
+#: kontactplugin/korganizer/todosummarywidget.cpp:182
 #, kde-format
 msgctxt "@label the to-do is due today"
 msgid "Today"
 msgstr "Днес"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:185
+#: kontactplugin/korganizer/todosummarywidget.cpp:184
 #, kde-format
 msgctxt "@label the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "Утре"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:192
+#: kontactplugin/korganizer/todosummarywidget.cpp:191
 #, kde-format
 msgctxt "@label 1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:246
+#: kontactplugin/korganizer/todosummarywidget.cpp:245
 #, kde-format
 msgctxt "@label"
 msgid "1 day ago"
@@ -3387,37 +3387,37 @@ msgid_plural "%1 days ago"
 msgstr[0] "преди един ден"
 msgstr[1] "преди %1 дни"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:249
+#: kontactplugin/korganizer/todosummarywidget.cpp:248
 #, kde-format
 msgctxt "@label the to-do is due today"
 msgid "due any time today"
 msgstr "с краен срок днес (по всяко време)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:253
+#: kontactplugin/korganizer/todosummarywidget.cpp:252
 #, kde-format
 msgctxt "@label the to-do is due at specified time"
 msgid "is due at %1"
 msgstr "с краен срок до %1"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:257
+#: kontactplugin/korganizer/todosummarywidget.cpp:256
 #, kde-format
 msgctxt "@label the to-do was due at specified time"
 msgid "was due at %1"
 msgstr "краен срок, изтекъл на %1"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:306
+#: kontactplugin/korganizer/todosummarywidget.cpp:305
 #, kde-format
 msgctxt "@info:status"
 msgid "Edit To-do: \"%1\""
 msgstr "Редактиране на задача:  „%1 \""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:308
+#: kontactplugin/korganizer/todosummarywidget.cpp:307
 #, kde-format
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
 msgstr "Показване на задача: „%1“"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:331
+#: kontactplugin/korganizer/todosummarywidget.cpp:330
 #, kde-format
 msgctxt "@label"
 msgid "No pending to-dos due within the next day"
@@ -3425,55 +3425,55 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "Няма чакащи задачи за изпълнение в рамките на следващия ден"
 msgstr[1] "Няма чакащи задачи за изпълнение в рамките на следващите %1 дни"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:398
+#: kontactplugin/korganizer/todosummarywidget.cpp:397
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
 msgstr "Пок&азване на задача…"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:408
+#: kontactplugin/korganizer/todosummarywidget.cpp:407
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mark To-do Completed"
 msgstr "&Маркиране на завършеното"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:434
+#: kontactplugin/korganizer/todosummarywidget.cpp:433
 #, kde-format
 msgctxt "@label"
 msgid "open-ended"
 msgstr "отворен"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:436
+#: kontactplugin/korganizer/todosummarywidget.cpp:435
 #, kde-format
 msgctxt "@label the to-do is overdue"
 msgid "overdue"
 msgstr "просрочен"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:438
+#: kontactplugin/korganizer/todosummarywidget.cpp:437
 #, kde-format
 msgctxt "@label the to-do starts today"
 msgid "starts today"
 msgstr "започва днес"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:442
+#: kontactplugin/korganizer/todosummarywidget.cpp:441
 #, kde-format
 msgctxt "@label the to-do has not been started yet"
 msgid "not-started"
 msgstr "не е започнало"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:444
+#: kontactplugin/korganizer/todosummarywidget.cpp:443
 #, kde-format
 msgctxt "@label the to-do is completed"
 msgid "completed"
 msgstr "завършен"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:446
+#: kontactplugin/korganizer/todosummarywidget.cpp:445
 #, kde-format
 msgctxt "@label the to-do is in-progress"
 msgid "in-progress "
 msgstr "започнати "
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:451
+#: kontactplugin/korganizer/todosummarywidget.cpp:450
 #, kde-format
 msgctxt "@label Separator for status like this: overdue, completed"
 msgid ","

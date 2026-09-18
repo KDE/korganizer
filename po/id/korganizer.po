@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-29 00:46+0000\n"
+"POT-Creation-Date: 2026-09-18 00:46+0000\n"
 "PO-Revision-Date: 2022-09-30 08:03+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -1519,14 +1519,14 @@ msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Tampilkan Rencana"
 
-#: actionmanager.cpp:1298 kontactplugin/korganizer/todosummarywidget.cpp:395
+#: actionmanager.cpp:1298 kontactplugin/korganizer/todosummarywidget.cpp:394
 #, fuzzy, kde-format
 #| msgid "&Edit To-do..."
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Edit Rencana..."
 
-#: actionmanager.cpp:1301 kontactplugin/korganizer/todosummarywidget.cpp:402
+#: actionmanager.cpp:1301 kontactplugin/korganizer/todosummarywidget.cpp:401
 #, fuzzy, kde-format
 #| msgid "&Delete To-do"
 msgctxt "@action:inmenu"
@@ -1965,14 +1965,14 @@ msgstr ""
 "disembunyikan dan tidak muncul di tampilan."
 
 #: calendarview.cpp:850 kontactplugin/korganizer/apptsummarywidget.cpp:232
-#: kontactplugin/korganizer/todosummarywidget.cpp:361
+#: kontactplugin/korganizer/todosummarywidget.cpp:360
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Apakah kamu yakin ingin menghapus item \"%1\" secara permanen?"
 
 #: calendarview.cpp:851 kontactplugin/korganizer/apptsummarywidget.cpp:233
-#: kontactplugin/korganizer/todosummarywidget.cpp:362
+#: kontactplugin/korganizer/todosummarywidget.cpp:361
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
@@ -3273,14 +3273,14 @@ msgid ""
 "><emphasis>Subject:</emphasis> %3"
 msgstr ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:137
+#: kontactplugin/korganizer/summaryeventinfo.cpp:136
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "@label the appointment is today"
 msgid "Today"
 msgstr "Hari Ini"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:140
+#: kontactplugin/korganizer/summaryeventinfo.cpp:139
 #, fuzzy, kde-format
 #| msgctxt "the appointment is tomorrow"
 #| msgid "Tomorrow"
@@ -3288,8 +3288,8 @@ msgctxt "@label the appointment is tomorrow"
 msgid "Tomorrow"
 msgstr "Besok"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:144
-#: kontactplugin/korganizer/todosummarywidget.cpp:197
+#: kontactplugin/korganizer/summaryeventinfo.cpp:143
+#: kontactplugin/korganizer/todosummarywidget.cpp:196
 #: kontactplugin/specialdates/sdsummarywidget.cpp:467
 #, fuzzy, kde-format
 #| msgid "%1"
@@ -3297,11 +3297,11 @@ msgctxt "@label 1. weekday"
 msgid "%1"
 msgstr "%1"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:147
-#: kontactplugin/korganizer/summaryeventinfo.cpp:155
-#: kontactplugin/korganizer/summaryeventinfo.cpp:173
-#: kontactplugin/korganizer/summaryeventinfo.cpp:178
-#: kontactplugin/korganizer/todosummarywidget.cpp:200
+#: kontactplugin/korganizer/summaryeventinfo.cpp:146
+#: kontactplugin/korganizer/summaryeventinfo.cpp:154
+#: kontactplugin/korganizer/summaryeventinfo.cpp:172
+#: kontactplugin/korganizer/summaryeventinfo.cpp:177
+#: kontactplugin/korganizer/todosummarywidget.cpp:199
 #: kontactplugin/specialdates/sdsummarywidget.cpp:470
 #: kontactplugin/specialdates/sdsummarywidget.cpp:479
 #, fuzzy, kde-format
@@ -3311,8 +3311,8 @@ msgctxt "@label 1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:188
-#: kontactplugin/korganizer/todosummarywidget.cpp:244
+#: kontactplugin/korganizer/summaryeventinfo.cpp:187
+#: kontactplugin/korganizer/todosummarywidget.cpp:243
 #: kontactplugin/specialdates/sdsummarywidget.cpp:508
 #, fuzzy, kde-format
 #| msgid "in 1 day"
@@ -3323,7 +3323,7 @@ msgid_plural "in %1 days"
 msgstr[0] "dalam sehari"
 msgstr[1] "dalam %1 hari"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:201
+#: kontactplugin/korganizer/summaryeventinfo.cpp:200
 #, fuzzy, kde-format
 #| msgctxt "eg. in 1 hour 2 minutes"
 #| msgid "in "
@@ -3331,7 +3331,7 @@ msgctxt "@label eg. in 1 hour 2 minutes"
 msgid "in "
 msgstr "dalam "
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:204
+#: kontactplugin/korganizer/summaryeventinfo.cpp:203
 #, fuzzy, kde-format
 #| msgctxt "use abbreviation for hour to keep the text short"
 #| msgid "1 hr"
@@ -3342,7 +3342,7 @@ msgid_plural "%1 hrs"
 msgstr[0] "1 jam"
 msgstr[1] "%1 jam"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:210
+#: kontactplugin/korganizer/summaryeventinfo.cpp:209
 #, fuzzy, kde-format
 #| msgctxt "use abbreviation for minute to keep the text short"
 #| msgid "1 min"
@@ -3353,7 +3353,7 @@ msgid_plural "%1 mins"
 msgstr[0] "1 mnt"
 msgstr[1] "%1 mnt"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:229
+#: kontactplugin/korganizer/summaryeventinfo.cpp:228
 #, fuzzy, kde-format
 #| msgctxt "the to-do is in-progress"
 #| msgid "in-progress "
@@ -3361,7 +3361,7 @@ msgctxt "@label the event is currently in-progress"
 msgid "in-progress"
 msgstr "sedang berlangsung"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:235
+#: kontactplugin/korganizer/summaryeventinfo.cpp:234
 #, kde-format
 msgctxt ""
 "@label use abbreviation for hour to keep the text short. the event ended at "
@@ -3371,7 +3371,7 @@ msgid_plural "ended %1 hrs ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:241
+#: kontactplugin/korganizer/summaryeventinfo.cpp:240
 #, kde-format
 msgctxt ""
 "@label use abbreviation for min to keep the text short. the event ended a "
@@ -3381,28 +3381,28 @@ msgid_plural "ended %1 mins ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:249
+#: kontactplugin/korganizer/summaryeventinfo.cpp:248
 #, fuzzy, kde-format
 #| msgid "all day"
 msgctxt "@label"
 msgid "all day"
 msgstr "semua hari"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:277
+#: kontactplugin/korganizer/summaryeventinfo.cpp:276
 #, fuzzy, kde-format
 #| msgid "Edit Event: \"%1\""
 msgctxt "@info:status"
 msgid "Edit Event: \"%1\""
 msgstr "Edit Acara: \"%1\""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:279
+#: kontactplugin/korganizer/summaryeventinfo.cpp:278
 #, fuzzy, kde-format
 #| msgid "Edit Event: \"%1\""
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
 msgstr "Edit Acara: \"%1\""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:295
+#: kontactplugin/korganizer/summaryeventinfo.cpp:294
 #, fuzzy, kde-format
 #| msgctxt "Time from - to"
 #| msgid "%1 - %2"
@@ -3643,21 +3643,21 @@ msgstr ""
 msgid "Over&due (not completed and beyond due-date)"
 msgstr "Telat (belum usai dan lebih dari tanggal jatuh tempo)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:47
+#: kontactplugin/korganizer/todosummarywidget.cpp:46
 #, fuzzy, kde-format
 #| msgid "Pending To-dos"
 msgctxt "@title:group"
 msgid "Pending To-dos"
 msgstr "Rencana Yang Tertunda"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:183
+#: kontactplugin/korganizer/todosummarywidget.cpp:182
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "@label the to-do is due today"
 msgid "Today"
 msgstr "Hari Ini"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:185
+#: kontactplugin/korganizer/todosummarywidget.cpp:184
 #, fuzzy, kde-format
 #| msgctxt "the appointment is tomorrow"
 #| msgid "Tomorrow"
@@ -3665,7 +3665,7 @@ msgctxt "@label the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "Besok"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:192
+#: kontactplugin/korganizer/todosummarywidget.cpp:191
 #, fuzzy, kde-format
 #| msgctxt "1. weekday, 2. time"
 #| msgid "%1 %2"
@@ -3673,7 +3673,7 @@ msgctxt "@label 1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:246
+#: kontactplugin/korganizer/todosummarywidget.cpp:245
 #, fuzzy, kde-format
 #| msgid "1 day ago"
 #| msgid_plural "%1 days ago"
@@ -3683,39 +3683,39 @@ msgid_plural "%1 days ago"
 msgstr[0] "1 hari yang lalu"
 msgstr[1] "%1 hari yang lalu"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:249
+#: kontactplugin/korganizer/todosummarywidget.cpp:248
 #, kde-format
 msgctxt "@label the to-do is due today"
 msgid "due any time today"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:253
+#: kontactplugin/korganizer/todosummarywidget.cpp:252
 #, kde-format
 msgctxt "@label the to-do is due at specified time"
 msgid "is due at %1"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:257
+#: kontactplugin/korganizer/todosummarywidget.cpp:256
 #, kde-format
 msgctxt "@label the to-do was due at specified time"
 msgid "was due at %1"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:306
+#: kontactplugin/korganizer/todosummarywidget.cpp:305
 #, fuzzy, kde-format
 #| msgid "Edit To-do: \"%1\""
 msgctxt "@info:status"
 msgid "Edit To-do: \"%1\""
 msgstr "Edit Rencana: \"%1\""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:308
+#: kontactplugin/korganizer/todosummarywidget.cpp:307
 #, fuzzy, kde-format
 #| msgid "Edit To-do: \"%1\""
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
 msgstr "Edit Rencana: \"%1\""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:331
+#: kontactplugin/korganizer/todosummarywidget.cpp:330
 #, fuzzy, kde-format
 #| msgid "No pending to-dos due within the next day"
 #| msgid_plural "No pending to-dos due within the next %1 days"
@@ -3725,28 +3725,28 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "Tidak ada rencana yang tertunda dalam beberapa hari berikutnya"
 msgstr[1] "Tidak ada rencana yang tertunda dalam %1 hari berikutnya"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:398
+#: kontactplugin/korganizer/todosummarywidget.cpp:397
 #, fuzzy, kde-format
 #| msgid "&Show To-do"
 msgctxt "@action:inmenu"
 msgid "&Show To-do…"
 msgstr "&Tampilkan Rencana"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:408
+#: kontactplugin/korganizer/todosummarywidget.cpp:407
 #, fuzzy, kde-format
 #| msgid "&Mark To-do Completed"
 msgctxt "@action:inmenu"
 msgid "&Mark To-do Completed"
 msgstr "&Tandai Rencana Yang Sudah Usai"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:434
+#: kontactplugin/korganizer/todosummarywidget.cpp:433
 #, fuzzy, kde-format
 #| msgid "open-ended"
 msgctxt "@label"
 msgid "open-ended"
 msgstr "yang terakhir dibuka"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:436
+#: kontactplugin/korganizer/todosummarywidget.cpp:435
 #, fuzzy, kde-format
 #| msgctxt "the to-do is overdue"
 #| msgid "overdue"
@@ -3754,7 +3754,7 @@ msgctxt "@label the to-do is overdue"
 msgid "overdue"
 msgstr "telat"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:438
+#: kontactplugin/korganizer/todosummarywidget.cpp:437
 #, fuzzy, kde-format
 #| msgctxt "the to-do starts today"
 #| msgid "starts today"
@@ -3762,7 +3762,7 @@ msgctxt "@label the to-do starts today"
 msgid "starts today"
 msgstr "mulai hari ini"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:442
+#: kontactplugin/korganizer/todosummarywidget.cpp:441
 #, fuzzy, kde-format
 #| msgctxt "the to-do has not been started yet"
 #| msgid "not-started"
@@ -3770,7 +3770,7 @@ msgctxt "@label the to-do has not been started yet"
 msgid "not-started"
 msgstr "belum dimulai"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:444
+#: kontactplugin/korganizer/todosummarywidget.cpp:443
 #, fuzzy, kde-format
 #| msgctxt "the to-do is completed"
 #| msgid "completed"
@@ -3778,7 +3778,7 @@ msgctxt "@label the to-do is completed"
 msgid "completed"
 msgstr "usai"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:446
+#: kontactplugin/korganizer/todosummarywidget.cpp:445
 #, fuzzy, kde-format
 #| msgctxt "the to-do is in-progress"
 #| msgid "in-progress "
@@ -3786,7 +3786,7 @@ msgctxt "@label the to-do is in-progress"
 msgid "in-progress "
 msgstr "sedang berlangsung"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:451
+#: kontactplugin/korganizer/todosummarywidget.cpp:450
 #, fuzzy, kde-format
 #| msgctxt "@item:intext delimiter for joining holiday names"
 #| msgid ","
