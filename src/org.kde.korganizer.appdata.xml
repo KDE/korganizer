@@ -489,6 +489,7 @@
         <p xml:lang="sl">Zmožnosti</p>
         <p xml:lang="sv">Funktioner</p>
         <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="ug">ئىقتىدار</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Navigator: the highlight color for the navigator grid can now be changed.  To configure the color, set the "Navigator grid highlight color" in the Colors and Fonts settings</li>
@@ -605,6 +606,7 @@
         <p xml:lang="sl">Vtičniki</p>
         <p xml:lang="sv">Insticksprogram</p>
         <p xml:lang="tr">Eklentiler</p>
+        <p xml:lang="ug">قىستۇرما</p>
         <p xml:lang="uk">Додатки</p>
         <ul>
           <li>The Jewish calendar plugin is restored (gone since KDE4). This plugin shows dates and Jewish holidays in the Hebrew calendar system</li>
@@ -809,6 +811,7 @@
         <p xml:lang="sl">Zmožnosti</p>
         <p xml:lang="sv">Funktioner</p>
         <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="ug">ئىقتىدار</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
           <li>A default To-do calendar can be specified to make creating new to-dos faster and easier with less chance of filing them into the wrong folder. Setting a default Event calendar has been supported for a long time.  See the Calendar Manager context menu "Set as Default Todo Calendar"</li>
@@ -1068,6 +1071,7 @@
         <p xml:lang="sl">Zmožnosti</p>
         <p xml:lang="sv">Funktioner</p>
         <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="ug">ئىقتىدار</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Reminders are enabled by default for all new events and to-dos. To disable this behavior, uncheck the Enable reminders options in the settings Time-&gt;Default Values tab</li>
@@ -1335,6 +1339,7 @@
         <p xml:lang="sl">Zmožnosti</p>
         <p xml:lang="sv">Funktioner</p>
         <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="ug">ئىقتىدار</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Agenda view: added timelabels context menu to show/hide time labels for the system timezone on the right (or left) side as well</li>
@@ -1423,6 +1428,7 @@
         <p xml:lang="sl">Splošno</p>
         <p xml:lang="sv">Allmänt</p>
         <p xml:lang="tr">Genel</p>
+        <p xml:lang="ug">ئادەتتىكى</p>
         <p xml:lang="uk">Загальне</p>
         <ul>
           <li>Semantics are changed from a "working schedule" concept to a "week schedule" concept to accommodate non-working users</li>
@@ -1584,6 +1590,7 @@
         <p xml:lang="sl">Zmožnosti</p>
         <p xml:lang="sv">Funktioner</p>
         <p xml:lang="tr">Özellikler</p>
+        <p xml:lang="ug">ئىقتىدار</p>
         <p xml:lang="uk">Можливості</p>
         <ul>
           <li>Add What's New menu</li>
