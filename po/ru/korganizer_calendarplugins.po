@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-28 00:46+0000\n"
-"PO-Revision-Date: 2025-12-03 11:03+0300\n"
+"PO-Revision-Date: 2026-09-23 09:50+0200\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -52,21 +52,16 @@ msgid "Show day number"
 msgstr "Показывать номер дня"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "Показывать номер дня"
+msgstr "Показывать номер дня в году"
 
 #: datenums/configdialog.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click here to scroll the display to week number %1 of the currently "
-#| "displayed year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr "Прокрутить экран к %1 неделе отображаемого года."
+msgstr "При выборе этого параметра показывается номер дня текущего года."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -75,26 +70,19 @@ msgid "Show days to end of year"
 msgstr "Показывать количество дней до конца года"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Set the number of days to show upcoming events"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
-"Укажите число дней начиная с текущей даты, за которые\n"
-"будут показаны предстоящие события."
+msgstr "Показывать количество дней, оставшихся до конца года"
 
 #: datenums/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#| "year in the future."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
 msgstr ""
-"Укажите здесь число дней начиная с текущей даты,\n"
-"за которые будут показаны крайние сроки выполнения задач.\n"
-"Максимальный период времени — 1 год с текущей даты."
+"При выборе этого параметра показывается количество дней, оставшихся до конца "
+"текущего года."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -107,7 +95,7 @@ msgstr "Показывать и то, и другое"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "Показывать и номер дня в году, и количество дней до конца года"
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -116,6 +104,9 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"При выборе этого параметра показываются и номер дня в году, и количество "
+"дней, оставшихся до конца текущего года. Формат: dayOfYear / "
+"daysTillEndOfYear"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -226,18 +217,16 @@ msgid "Configure Holidays"
 msgstr "Праздники"
 
 #: hebrewcalendar/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use Israeli holidays"
-msgstr "Вставить израильские праздники"
+msgstr "Использовать израильские праздники"
 
 #: hebrewcalendar/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include Israeli holidays"
-msgstr "Вставить израильские праздники"
+msgstr "Включать израильские праздники"
 
 #: hebrewcalendar/configdialog.cpp:44
 #, kde-format
@@ -246,56 +235,47 @@ msgid ""
 "Select this option to show Israeli holidays; including national, non-"
 "religious holidays."
 msgstr ""
+"При выборе этого параметра показываются израильские праздники, включая "
+"государственные, нерелигиозные праздники."
 
 #: hebrewcalendar/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show weekly parsha"
 msgstr "Показывать недельные главы Торы"
 
 #: hebrewcalendar/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include weekly parsha days"
-msgstr "Показывать недельные главы Торы"
+msgstr "Включать дни недельных глав Торы"
 
 #: hebrewcalendar/configdialog.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click here to scroll the display to week number %1 of the currently "
-#| "displayed year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show weekly parsha days."
-msgstr "Прокрутить экран к %1 неделе отображаемого года."
+msgstr "При выборе этого параметра показываются дни недельной главы Торы."
 
 #: hebrewcalendar/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show day of Omer"
 msgstr "Показывать день Омера"
 
 #: hebrewcalendar/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Omer"
-msgstr "Показывать день Омера"
+msgstr "Включать дни Омера"
 
 #: hebrewcalendar/configdialog.cpp:56
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click here to scroll the display to week number %1 of the currently "
-#| "displayed year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Omer period."
-msgstr "Прокрутить экран к %1 неделе отображаемого года."
+msgstr "При выборе этого параметра показываются дни периода Омера."
 
 #: hebrewcalendar/configdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "Show Chol HaMoed"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show Chol HaMoed"
 msgstr "Показывать Холь а-Моэд"
@@ -304,107 +284,100 @@ msgstr "Показывать Холь а-Моэд"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Chol HaMoed"
-msgstr ""
+msgstr "Включать дни Холь а-Моэд"
 
 #: hebrewcalendar/configdialog.cpp:62
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click here to scroll the display to week number %1 of the currently "
-#| "displayed year."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
-msgstr "Прокрутить экран к %1 неделе отображаемого года."
+msgstr "При выборе этого параметра показываются дни Холь а-Моэд."
 
 #: hebrewcalendar/hebrew.cpp:189
 #, kde-format
 msgctxt "Hebrew month 1 - KLocale::LongName"
 msgid "Tishrey"
-msgstr ""
+msgstr "Тишри"
 
 #: hebrewcalendar/hebrew.cpp:191
 #, kde-format
 msgctxt "Hebrew month 2 - KLocale::LongName"
 msgid "Heshvan"
-msgstr ""
+msgstr "Хешван"
 
 #: hebrewcalendar/hebrew.cpp:193
 #, kde-format
 msgctxt "Hebrew month 3 - KLocale::LongName"
 msgid "Kislev"
-msgstr ""
+msgstr "Кислев"
 
 #: hebrewcalendar/hebrew.cpp:195
-#, fuzzy, kde-format
-#| msgid "Tzom Tevet"
+#, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
-msgstr "Пост 10-го Тевета"
+msgstr "Тевет"
 
 #: hebrewcalendar/hebrew.cpp:197
-#, fuzzy, kde-format
-#| msgid "Tu B'Shvat"
+#, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
-msgstr "Ту-би-Шват"
+msgstr "Шват"
 
 #: hebrewcalendar/hebrew.cpp:199
 #, kde-format
 msgctxt "Hebrew month 6 - KLocale::LongName"
 msgid "Adar"
-msgstr ""
+msgstr "Адар"
 
 #: hebrewcalendar/hebrew.cpp:201
 #, kde-format
 msgctxt "Hebrew month 7 - KLocale::LongName"
 msgid "Nisan"
-msgstr ""
+msgstr "Нисан"
 
 #: hebrewcalendar/hebrew.cpp:203
 #, kde-format
 msgctxt "Hebrew month 8 - KLocale::LongName"
 msgid "Iyar"
-msgstr ""
+msgstr "Ияр"
 
 #: hebrewcalendar/hebrew.cpp:205
 #, kde-format
 msgctxt "Hebrew month 9 - KLocale::LongName"
 msgid "Sivan"
-msgstr ""
+msgstr "Сиван"
 
 #: hebrewcalendar/hebrew.cpp:207
 #, kde-format
 msgctxt "Hebrew month 10 - KLocale::LongName"
 msgid "Tamuz"
-msgstr ""
+msgstr "Тамуз"
 
 #: hebrewcalendar/hebrew.cpp:209
 #, kde-format
 msgctxt "Hebrew month 11 - KLocale::LongName"
 msgid "Av"
-msgstr ""
+msgstr "Ав"
 
 #: hebrewcalendar/hebrew.cpp:211
 #, kde-format
 msgctxt "Hebrew month 12 - KLocale::LongName"
 msgid "Elul"
-msgstr ""
+msgstr "Элул"
 
 #: hebrewcalendar/hebrew.cpp:213
 #, kde-format
 msgctxt "Hebrew month 13 - KLocale::LongName"
 msgid "Adar I"
-msgstr ""
+msgstr "Адар I"
 
 #: hebrewcalendar/hebrew.cpp:215
 #, kde-format
 msgctxt "Hebrew month 14 - KLocale::LongName"
 msgid "Adar II"
-msgstr ""
+msgstr "Адар II"
 
 #: hebrewcalendar/hebrew.cpp:227
-#, fuzzy, kde-format
-#| msgctxt "@title month and year"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. day of the month 2. hebrew month"
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -920,91 +893,71 @@ msgid "Haazinu"
 msgstr "Аазину"
 
 #: lunarphases/configdialog.cpp:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Lunar Phases"
-msgstr "Номера дней"
+msgstr "Настройка фаз Луны"
 
 #: lunarphases/configdialog.cpp:41
 #, kde-format
 msgctxt "@title:group"
 msgid "Choose your hemisphere"
-msgstr ""
+msgstr "Выбор полушария"
 
 #: lunarphases/configdialog.cpp:46
 #, kde-format
 msgctxt "@option:radio"
 msgid "Northern Hemisphere"
-msgstr ""
+msgstr "Северное полушарие"
 
 #: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
-msgstr ""
+msgstr "Показывать фазы Луны для Северного полушария"
 
 #: lunarphases/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#| "year in the future."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the northern "
 "hemisphere."
 msgstr ""
-"Укажите здесь число дней начиная с текущей даты,\n"
-"за которые будут показаны крайние сроки выполнения задач.\n"
-"Максимальный период времени — 1 год с текущей даты."
+"При выборе этого параметра показываются фазы Луны для наблюдателей в "
+"Северном полушарии."
 
 #: lunarphases/configdialog.cpp:51
 #, kde-format
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
-msgstr ""
+msgstr "Южное полушарие"
 
 #: lunarphases/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#| "year in the future."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the southern hemisphere"
-msgstr ""
-"Укажите здесь число дней начиная с текущей даты,\n"
-"за которые будут показаны крайние сроки выполнения задач.\n"
-"Максимальный период времени — 1 год с текущей даты."
+msgstr "Показывать фазы Луны для Южного полушария"
 
 #: lunarphases/configdialog.cpp:53
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use this spinbox to set the number of days to show pending To-dos up to 1 "
-#| "year in the future."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the southern "
 "hemisphere."
 msgstr ""
-"Укажите здесь число дней начиная с текущей даты,\n"
-"за которые будут показаны крайние сроки выполнения задач.\n"
-"Максимальный период времени — 1 год с текущей даты."
+"При выборе этого параметра показываются фазы Луны для наблюдателей в Южном "
+"полушарии."
 
 #: lunarphases/lunarphases.cpp:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
-#| "Currently, the phase is computed for noon at UTC; therefore, you should "
-#| "expect variations by 1 day in either direction."
+#, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
 "phase is computed for noon in the system timezone. Crescent and Gibbous "
 "phases are not displayed."
 msgstr ""
-"Этот модуль отображает фазу лунного дня (новолуние, первая четверть, "
-"последняя четверть, полнолуние). В настоящее время фаза вычисляется для "
-"полудня по UTC; вероятны отличия на один день в любом направлении."
+"Этот модуль показывает фазу Луны (новолуние, первая четверть, последняя "
+"четверть, полнолуние). Фаза вычисляется для полудня в часовом поясе системы. "
+"Серповидная и выпуклая фазы не показываются."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format
@@ -1030,6 +983,8 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
 msgstr ""
+"Миниатюра будет масштабирована по мере необходимости для заполнения "
+"пространства без сохранения пропорций"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -1049,6 +1004,8 @@ msgstr "Сохранять &пропорции"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
 msgstr ""
+"Миниатюра будет масштабирована до максимально возможного размера с "
+"сохранением пропорций"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -1071,6 +1028,8 @@ msgstr "Сохранять соотношение сторон при увели
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
 msgstr ""
+"Миниатюра будет масштабирована для заполнения пространства, возможно, с "
+"обрезкой изображения"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format
