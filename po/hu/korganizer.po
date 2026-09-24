@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-07 02:44+0000\n"
-"PO-Revision-Date: 2026-09-20 21:42+0200\n"
+"PO-Revision-Date: 2026-09-23 21:04+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -716,46 +716,42 @@ msgid ""
 "Runs user-defined view filters on the calendar collection. Filters must be "
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
+"A naptárgyűjteményre alkalmazza a felhasználó által definiált nézetszűrőket. "
+"A szűrőketelőször létre kell hozni. Lásd a „Nézetszűrők kezelése” opciót a "
+"Beállítások menüben."
 
 #: actionmanager.cpp:446
-#, fuzzy, kde-format
-#| msgid "In Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "Vízszintesen be"
 
 #: actionmanager.cpp:451
-#, fuzzy, kde-format
-#| msgid "Out Horizontally"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "Vízszintesen ki"
 
 #: actionmanager.cpp:456
-#, fuzzy, kde-format
-#| msgid "In Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "Függőlegesen be"
 
 #: actionmanager.cpp:461
-#, fuzzy, kde-format
-#| msgid "Out Vertically"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "Függőlegesen ki"
 
 #: actionmanager.cpp:470
-#, fuzzy, kde-format
-#| msgctxt "@action Jump to today"
-#| msgid "To &Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "A mai na&pra"
 
 #: actionmanager.cpp:471
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "Ma"
@@ -773,25 +769,19 @@ msgid "Scroll the view to today"
 msgstr "A nézetet a mai napra görgeti"
 
 #: actionmanager.cpp:474
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "A jelenlegi nézetet a mai dátumra görgeti."
 
 #: actionmanager.cpp:480
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "&Vissza"
 
 #: actionmanager.cpp:482
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "Vissza"
@@ -815,19 +805,17 @@ msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"A jelenlegi naptárnézettől függően egy nappal, héttel, hónappal vagy évvel "
+"visszagörget."
 
 #: actionmanager.cpp:493
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "&Előre"
 
 #: actionmanager.cpp:495
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "Előre"
@@ -851,17 +839,17 @@ msgid ""
 "Scrolls forward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"A jelenlegi naptárnézettől függően egy nappal, héttel, hónappal vagy évvel "
+"előregörget."
 
 #: actionmanager.cpp:505
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Nap"
 
 #: actionmanager.cpp:506
-#, fuzzy, kde-format
-#| msgid "Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Nap"
@@ -870,41 +858,39 @@ msgstr "Nap"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Naponkénti nézet"
 
 #: actionmanager.cpp:508
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Ennyi nap látszódjon egyszerre a Következő „x” nap nézetben"
+msgstr "A Napirend nézetben egyszerre egy napot jelenít meg"
 
 #: actionmanager.cpp:509
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
+"Válassza ezt az opciót, ha a Napirend nézetben egyszerre csak 1 napot "
+"szeretne megjeleníteni."
 
 #: actionmanager.cpp:516
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "A &következő nap"
+msgstr "&Következő napok"
 
 #: actionmanager.cpp:517
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Több napos nézet"
 
 #: actionmanager.cpp:518
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Ennyi nap látszódjon egyszerre a Következő „x” nap nézetben"
+msgstr "A Napirend nézetben a következő néhány napot egyszerre jelenítse meg"
 
 #: actionmanager.cpp:521
 #, kde-kuit-format
@@ -915,22 +901,24 @@ msgid ""
 "<interface>Views->General</interface> settings page to adjust the number of "
 "days shown."
 msgstr ""
+"Válassza ezt az opciót, ha a Napirend nézetben a következő néhány napot "
+"egyszerre szeretné megjeleníteni.A megjelenítendő napok számát a "
+"<interface>Nézetek->Általános</interface> beállítási oldalon található "
+"<placeholder>Következő X nap</placeholder> módosításával adhatja meg."
 
 #: actionmanager.cpp:528
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
-msgstr "Ütemezés"
+msgstr "H&eti program"
 
 #: actionmanager.cpp:529
-#, fuzzy, kde-format
-#| msgid "Schedule"
+#, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
 "weekends)"
 msgid "Week Schedule"
-msgstr "Ütemezés"
+msgstr "Heti program"
 
 #: actionmanager.cpp:530
 #, kde-format
@@ -938,6 +926,8 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
+"Egyszerre egy hét megjelenítése, kizárólag a heti programban szereplő "
+"napokkal"
 
 #: actionmanager.cpp:532
 #, kde-format
@@ -946,6 +936,8 @@ msgid ""
 "Show a week at a time in Agenda View, excluding days that are not included "
 "in your weekly schedule (ie. weekends are excluded)"
 msgstr ""
+"A Napirend nézetben egy hetet jelenítsen meg, kizárva azokat a napokat, "
+"amelyek nem szerepelneka heti programban (például a hétvégék)"
 
 #: actionmanager.cpp:535
 #, kde-kuit-format
@@ -957,17 +949,21 @@ msgid ""
 "<interface>Time and Date->Regional</interface> page.<para>Typically this "
 "view is intended for showing the week without weekend days.</para>"
 msgstr ""
+"Válassza ezt az opciót, ha egyszerre egy hetet szeretne megjeleníteni, "
+"kivéve azokat a napokat, amelyek nemszerepelnek a heti programjában. A "
+"programot úgy állíthatja be, hogy kiválasztja a napokata <placeholder>Heti "
+"program</placeholder> beállításban a <interface>Dátum és idő->Területi "
+"beállítások</interface> oldalon.<para>Ez a nézet általában a hét "
+"megjelenítésére szolgál, a hétvégék nélkül.</para>"
 
 #: actionmanager.cpp:544
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Hét"
 
 #: actionmanager.cpp:545
-#, fuzzy, kde-format
-#| msgid "Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Hét"
@@ -976,25 +972,24 @@ msgstr "Hét"
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
-msgstr ""
+msgstr "Heti nézet"
 
 #: actionmanager.cpp:547
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "A feladatnézetek tetejénél jelenjen meg"
+msgstr "A Napirend nézetben egyszerre egy hetet jelenít meg"
 
 #: actionmanager.cpp:548
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
+"Válassza ezt az opciót, ha a Napirend nézetben egyszerre csak egy hetet "
+"szeretne megjeleníteni."
 
 #: actionmanager.cpp:555
-#, fuzzy, kde-format
-#| msgid "New E&vent…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
 msgstr "Új &esemény…"
@@ -1018,25 +1013,26 @@ msgid ""
 "Starts a dialog that allows you to create a new Event with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"Megnyit egy párbeszédablakot, amelyben új eseményt hozhat létre "
+"emlékeztetőkkel,résztvevőkkel, ismétlődésekkel és még sok más beállítással."
 
 #: actionmanager.cpp:565
-#, fuzzy, kde-format
-#| msgid "New &To-do…"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
-msgstr "Új felada&t…"
+msgstr "Új &teendő…"
 
 #: actionmanager.cpp:566
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
-msgstr "Új feladat létrehozása"
+msgstr "Új teendő létrehozása"
 
 #: actionmanager.cpp:567
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
-msgstr "Új feladat létrehozása"
+msgstr "Új teendő létrehozása"
 
 #: actionmanager.cpp:569
 #, kde-format
@@ -1045,6 +1041,8 @@ msgid ""
 "Starts a dialog that allows you to create a new To-do with reminders, "
 "attendees, recurrences and much more."
 msgstr ""
+"Megnyit egy párbeszédablakot, amelyben új teendőt hozhat létre "
+"emlékeztetőkkel,résztvevőkkel, ismétlődésekkel és még sok más beállítással."
 
 #: actionmanager.cpp:576
 #, fuzzy, kde-format

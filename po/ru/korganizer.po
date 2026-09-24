@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-07 02:44+0000\n"
-"PO-Revision-Date: 2026-07-20 14:40+0300\n"
+"PO-Revision-Date: 2026-09-23 09:50+0200\n"
 "Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -735,8 +735,8 @@ msgid ""
 "created first. See \"Manage View Filters\" option in the Settings menu."
 msgstr ""
 "Применение к набору календарей фильтра, заданного пользователем. Могут быть "
-"применены только фильтры , созданные заранее с помощью пункта меню "
-"«Настройка → Фильтры...»."
+"применены только фильтры, созданные заранее с помощью пункта меню «Настройка "
+"→ Фильтры...»."
 
 #: actionmanager.cpp:446
 #, kde-format
@@ -823,7 +823,7 @@ msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
-"Прокручивание календаря назад на день, неделю, месяц или год. Шаг прокрутки  "
+"Прокручивание календаря назад на день, неделю, месяц или год. Шаг прокрутки "
 "зависит от текущего режима просмотра."
 
 #: actionmanager.cpp:493
@@ -1157,7 +1157,7 @@ msgid ""
 msgstr ""
 "Запуск — в режиме просмотра нескольких календарей — диалога настройки "
 "представления. В текущей версии программы поддерживается только просмотр "
-"нескольких календарей. Параметры  показа нескольких календарей настраиваются "
+"нескольких календарей. Параметры показа нескольких календарей настраиваются "
 "в разделе Вид -> Расписание."
 
 # BUGME: please add ellipsis as it opens a dialog --aspotashev
@@ -2209,7 +2209,7 @@ msgstr "Невозможно переместить в <resource>%1</resource>."
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
-msgstr "Ни одна выполненная задача не была удалена."
+msgstr "Ни одна выполненная задача не была удалена.<nl/>"
 
 #: calendarview.cpp:2782 calendarview.cpp:2793
 #, kde-format, kde-kuit-format
