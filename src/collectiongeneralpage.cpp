@@ -23,10 +23,6 @@
 #include <QFormLayout>
 #include <QHBoxLayout>
 
-#include <Akonadi/CollectionAnnotationsAttribute>
-#include <PimCommonAkonadi/CollectionTypeUtil>
-#include <PimCommonAkonadi/IncidencesForWidget>
-
 using namespace Akonadi;
 using namespace CalendarSupport;
 
@@ -37,7 +33,7 @@ CollectionGeneralPage::CollectionGeneralPage(QWidget *parent)
     setPageTitle(i18nc("@title:tab General settings for a folder.", "General"));
 }
 
-void CollectionGeneralPage::init(const Akonadi::Collection &collection)
+void CollectionGeneralPage::init()
 {
     auto topLayout = new QFormLayout(this);
 
@@ -64,27 +60,13 @@ void CollectionGeneralPage::init(const Akonadi::Collection &collection)
     hbox->addWidget(mIconButton);
     hbox->addStretch();
     topLayout->addRow(QString(), hbox);
-
-    if ((collection.parentCollection() != Akonadi::Collection::root()) && PimCommon::Util::isImapResource(collection.resource())) {
-        const auto annotationAttribute = collection.attribute<Akonadi::CollectionAnnotationsAttribute>();
-
-        const QMap<QByteArray, QByteArray> annotations = (annotationAttribute ? annotationAttribute->annotations() : QMap<QByteArray, QByteArray>());
-
-        PimCommon::CollectionTypeUtil collectionUtil;
-        const PimCommon::CollectionTypeUtil::IncidencesFor incidencesFor =
-            collectionUtil.incidencesForFromString(QLatin1StringView(annotations.value(PimCommon::CollectionTypeUtil::kolabIncidencesFor())));
-        mIncidencesForComboBox = new PimCommon::IncidencesForWidget(this);
-        topLayout->addRow(PimCommon::IncidencesForWidget::labelName(), mIncidencesForComboBox);
-
-        mIncidencesForComboBox->setCurrentIndex(incidencesFor);
-    }
 }
 
 CollectionGeneralPage::~CollectionGeneralPage() = default;
 
 void CollectionGeneralPage::load(const Akonadi::Collection &collection)
 {
-    init(collection);
+    init();
     mNameEdit->setEnabled(collection.rights() & Collection::CanChangeCollection);
 
     const QString displayName = collection.displayName();
@@ -131,21 +113,6 @@ void CollectionGeneralPage::save(Collection &collection)
         collection.attribute<EntityDisplayAttribute>(Collection::AddIfMissing)->setIconName(mIconButton->icon());
     } else if (collection.hasAttribute<EntityDisplayAttribute>()) {
         collection.attribute<EntityDisplayAttribute>()->setIconName(QString());
-    }
-    auto annotationsAttribute = collection.attribute<Akonadi::CollectionAnnotationsAttribute>(Collection::AddIfMissing);
-
-    QMap<QByteArray, QByteArray> annotations = annotationsAttribute->annotations();
-
-    PimCommon::CollectionTypeUtil collectionUtil;
-    if (mIncidencesForComboBox && mIncidencesForComboBox->isEnabled()) {
-        annotations[PimCommon::CollectionTypeUtil::kolabIncidencesFor()] =
-            collectionUtil.incidencesForToString(static_cast<PimCommon::CollectionTypeUtil::IncidencesFor>(mIncidencesForComboBox->currentIndex())).toLatin1();
-    }
-
-    if (annotations.isEmpty()) {
-        collection.removeAttribute<Akonadi::CollectionAnnotationsAttribute>();
-    } else {
-        annotationsAttribute->setAnnotations(annotations);
     }
 }
 

@@ -14,10 +14,6 @@ class QLineEdit;
 class KIconButton;
 class QCheckBox;
 
-namespace PimCommon
-{
-class IncidencesForWidget;
-}
 namespace CalendarSupport
 {
 class KORGANIZERPRIVATE_EXPORT CollectionGeneralPage : public Akonadi::CollectionPropertiesPage
@@ -32,12 +28,11 @@ public:
     void save(Akonadi::Collection &collection) override;
 
 private:
-    KORGANIZERPRIVATE_NO_EXPORT void init(const Akonadi::Collection &collection);
+    KORGANIZERPRIVATE_NO_EXPORT void init();
     QCheckBox *mBlockAlarmsCheckBox = nullptr;
     QLineEdit *mNameEdit = nullptr;
     QCheckBox *mIconCheckBox = nullptr;
     KIconButton *mIconButton = nullptr;
-    PimCommon::IncidencesForWidget *mIncidencesForComboBox = nullptr;
 };
 
 AKONADI_COLLECTION_PROPERTIES_PAGE_FACTORY(CollectionGeneralPageFactory, CollectionGeneralPage)

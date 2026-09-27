@@ -496,11 +496,6 @@ the list of available resources.</para></step>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Kolab Groupware Server</guilabel></term>
-<listitem><para>Provides access to Kolab groupware folders and e-mail on a Kolab IMAP Server.</para></listitem>
-</varlistentry>
-
-<varlistentry>
 <term><guilabel>Open-Xchange Groupware Server</guilabel></term>
 <listitem><para>Provides access to the appointments, tasks, and contacts of an Open-Xchange groupware server.</para></listitem>
 </varlistentry>
