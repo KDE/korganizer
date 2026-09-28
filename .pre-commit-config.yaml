@@ -3,64 +3,69 @@
 
 exclude: (^po/|.desktop|Messages.sh)
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v6.0.0
-  hooks:
-  - id: trailing-whitespace
-  - id: end-of-file-fixer
-  - id: check-added-large-files
-  - id: check-case-conflict
-  - id: check-xml
-  - id: check-yaml
-    args: [--allow-multiple-documents]
-    exclude: ^(.clang-tidy)
-  - id: check-json
-  - id: check-symlinks
-  - id: destroyed-symlinks
-  - id: check-executables-have-shebangs
-- repo: https://github.com/pre-commit/mirrors-clang-format
-  rev: v23.1.0
-  hooks:
-  - id: clang-format
-    # force using this project's configuration rather than the one provided by CI
-    args: ["--style=file:.clang-format-pre-commit"]
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  # Ruff version.
-  rev: v0.16.5
-  hooks:
+ - repo: https://github.com/pre-commit/pre-commit-hooks
+   rev: v6.0.0
+   hooks:
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+    - id: check-added-large-files
+    - id: check-case-conflict
+    - id: check-xml
+    - id: check-yaml
+      args: [--allow-multiple-documents]
+      exclude: ^(.clang-tidy)
+    - id: check-json
+    - id: check-symlinks
+    - id: destroyed-symlinks
+    - id: check-executables-have-shebangs
+ - repo: https://github.com/pre-commit/mirrors-clang-format
+   rev: v23.1.0
+   hooks:
+    - id: clang-format
+      # force using this project's configuration rather than the one provided by CI
+      args: ["--style=file:.clang-format-pre-commit"]
+ - repo: https://github.com/astral-sh/ruff-pre-commit
+   # Ruff version.
+   rev: v0.16.5
+   hooks:
     # Run the linter.
     - id: ruff
     # Run the formatter.
     - id: ruff-format
-- repo: https://github.com/codespell-project/codespell
-  rev: v2.4.3
-  hooks:
-  - id: codespell
-- repo: https://github.com/BlankSpruce/gersemi
-  rev: 0.25.4
-  hooks:
-  - id: gersemi
-- repo: https://github.com/DavidAnson/markdownlint-cli2
-  rev: v0.23.2
-  hooks:
-  - id: markdownlint-cli2
-    files: \.(md|mdown|markdown)$
-- repo: https://github.com/scop/pre-commit-shfmt
-  rev: v3.13.1-1
-  hooks:
-  - id: shfmt
-- repo: https://github.com/shellcheck-py/shellcheck-py
-  rev: v0.11.0.1-1
-  hooks:
-  - id: shellcheck
-- repo: https://github.com/efrecon/pre-commit-hook-lxml
-  rev: v0.1.4
-  hooks:
-  - id: format-xml
-    args: [--declaration=double-quotes,--self-closing=nospace,--indent=2,--write]
-    files: \.(xml|kcfg)$
-    types: []
-    exclude: \.(svg)$
+ - repo: https://github.com/codespell-project/codespell
+   rev: v2.4.3
+   hooks:
+    - id: codespell
+ - repo: https://github.com/BlankSpruce/gersemi
+   rev: 0.25.4
+   hooks:
+    - id: gersemi
+ - repo: https://github.com/DavidAnson/markdownlint-cli2
+   rev: v0.23.2
+   hooks:
+    - id: markdownlint-cli2
+      files: \.(md|mdown|markdown)$
+ - repo: https://github.com/scop/pre-commit-shfmt
+   rev: v3.13.1-1
+   hooks:
+    - id: shfmt
+ - repo: https://github.com/shellcheck-py/shellcheck-py
+   rev: v0.11.0.1-1
+   hooks:
+    - id: shellcheck
+ - repo: https://github.com/efrecon/pre-commit-hook-lxml
+   rev: v0.1.4
+   hooks:
+    - id: format-xml
+      args: [--declaration=double-quotes, --self-closing=nospace, --indent=2, --write]
+      files: \.(xml|kcfg)$
+      types: []
+      exclude: \.(svg)$
+ - repo: https://github.com/adrienverge/yamllint.git
+   rev: v1.29.0
+   hooks:
+    - id: yamllint
+      args: [--strict]
 #- repo: https://github.com/fsfe/reuse-tool
 #  rev: v5.0.2
 #  hooks:

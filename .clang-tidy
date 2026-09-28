@@ -58,11 +58,11 @@ Checks: -*,
 #                  readability-*,
 HeaderFilterRegex: '/korganizer/src/'
 CheckOptions:
-    - key:  bugprone-assert-side-effects.AssertMacros
+    - key: bugprone-assert-side-effects.AssertMacros
       value: 'Q_ASSERT;QVERIFY;QCOMPARE;AKVERIFY'
-    - key:  CheckFunctionCalls
+    - key: CheckFunctionCalls
       value: true
-    - key:  StringCompareLikeFunctions
+    - key: StringCompareLikeFunctions
       value: 'QString::compare;QString::localeAwareCompare'
     - key: WarnOnSizeOfIntegerExpression
       value: 1

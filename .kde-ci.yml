@@ -2,22 +2,22 @@
 # SPDX-License-Identifier: CC0-1.0
 
 Dependencies:
-- 'on': ['Linux', 'FreeBSD', 'Windows', 'macOS']
-  'require':
+ - 'on': ['Linux', 'FreeBSD', 'Windows', 'macOS']
+   'require':
     'frameworks/extra-cmake-modules': '@latest-kf6'
-    'graphics/kdiagram' : '@latest-kf6'
-    'pim/akonadi' : '@same'
-    'pim/akonadi-calendar' : '@same'
-    'pim/akonadi-contacts' : '@same'
-    'pim/calendarsupport' : '@same'
-    'pim/eventviews' : '@same'
-    'pim/incidenceeditor' : '@same'
-    'pim/kcalutils' : '@same'
-    'pim/kmailtransport' : '@same'
+    'graphics/kdiagram': '@latest-kf6'
+    'pim/akonadi': '@same'
+    'pim/akonadi-calendar': '@same'
+    'pim/akonadi-contacts': '@same'
+    'pim/calendarsupport': '@same'
+    'pim/eventviews': '@same'
+    'pim/incidenceeditor': '@same'
+    'pim/kcalutils': '@same'
+    'pim/kmailtransport': '@same'
     'frameworks/kmime': '@latest-kf6'
-    'pim/kontactinterface' : '@same'
-    'pim/libkdepim' : '@same'
-    'pim/pimcommon' : '@same'
+    'pim/kontactinterface': '@same'
+    'pim/libkdepim': '@same'
+    'pim/pimcommon': '@same'
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kconfig': '@latest-kf6'
     'frameworks/kcoreaddons': '@latest-kf6'
@@ -37,19 +37,19 @@ Dependencies:
     'frameworks/kuserfeedback': '@latest-kf6'
     'libraries/ktextaddons': '@latest-kf6'
 
-- 'on': ['Linux', 'FreeBSD']
-  'require':
+ - 'on': ['Linux', 'FreeBSD']
+   'require':
     'plasma/plasma-activities': '@latest-kf6'
 
 Options:
-  cmake-options: "-DAKONADI_RUN_MYSQL_ISOLATED_TESTS=FALSE -DAKONADI_RUN_PGSQL_ISOLATED_TESTS=FALSE -DAKONADI_RUN_SQLITE_ISOLATED_TESTS=FALSE"
-  require-passing-tests-on: [ '@all' ]
-  cppcheck-arguments: '--enable=warning,performance,portability,style,unusedFunction --suppress-xml=cppcheck-suppressions.xml'
-  require-cppcheck-clean: false
-  enable-lsan: true
-  cppcheck-ignore-files:
-    - src/autotests
-    - src/activities/autotests
-    - src/views/collectionview/autotests
-    - src/kontactplugin/korganizer/autotests
-    - src/views/collectionview/reparentingmodel.cpp
+ cmake-options: "-DAKONADI_RUN_MYSQL_ISOLATED_TESTS=FALSE -DAKONADI_RUN_PGSQL_ISOLATED_TESTS=FALSE -DAKONADI_RUN_SQLITE_ISOLATED_TESTS=FALSE"
+ require-passing-tests-on: ['@all']
+ cppcheck-arguments: '--enable=warning,performance,portability,style,unusedFunction --suppress-xml=cppcheck-suppressions.xml'
+ require-cppcheck-clean: false
+ enable-lsan: true
+ cppcheck-ignore-files:
+  - src/autotests
+  - src/activities/autotests
+  - src/views/collectionview/autotests
+  - src/kontactplugin/korganizer/autotests
+  - src/views/collectionview/reparentingmodel.cpp
