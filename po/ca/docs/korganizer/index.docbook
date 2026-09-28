@@ -1744,7 +1744,7 @@
 ><para
 >Estableix la identitat corresponent a l'organitzador d'aquesta tasca pendent o esdeveniment. Si el &korganizer; està configurat per a enviar correus d'invitació, la identitat seleccionada en aquest quadre combinat s'utilitzarà per a enviar aquests correus. La identitat predeterminada es pot establir en la secció <guilabel
 >Personal</guilabel
-> de la configuració del &korganizer;,. A més, les identitats s'obtenen de les vostres opcions del &kmail; i de la vostra llibreta d'adreces.</para
+> de la configuració del &korganizer;. A més, les identitats s'obtenen de les vostres opcions del &kmail; i de la vostra llibreta d'adreces.</para
 ></listitem>
 </varlistentry>
 
@@ -2378,7 +2378,7 @@
 <para
 >Per a organitzar un esdeveniment o una tasca pendent, <link linkend="entering-data-events"
 >creeu-la</link
-> en el &korganizer; i afegiu totes les persones que haurien d'assistir utilitzant la pestanya assistents. El &korganizer; pot enviar invitacions als assistents, bé automàticament (segons la <link linkend="config-main-groupscheduling"
+> en el &korganizer; i afegiu totes les persones que haurien d'assistir utilitzant la pestanya d'assistents. El &korganizer; pot enviar invitacions als assistents, bé automàticament (segons la <link linkend="config-main-groupscheduling"
 >configuració de la planificació de grups del &korganizer;</link
 >), o seleccionant l'esdeveniment o tasca pendent i escollint l'element de menú <menuchoice
 ><guimenu
@@ -2596,7 +2596,7 @@
 
 <step
 ><para
->Introduïu un resum. És important escollir una descripció breu correcta, perquè apareixerà a molts llocs. Us suggerim que introduïu <userinput
+>Introduïu un resum. És important escollir una descripció breu correcta, perquè apareixerà en molts llocs. Us suggerim que introduïu <userinput
 >Esdeveniment de llançament del producte</userinput
 >.</para
 ></step>
@@ -2868,7 +2868,7 @@
 <varlistentry>
 <term
 ><guilabel
->Els esdeveniments, tasques pendents i entrades de diari noves han de</guilabel
+>Els esdeveniments, tasques pendents i entrades de diari noves s'han</guilabel
 ></term>
 <listitem
 ><para
@@ -3222,7 +3222,7 @@
 ></term>
   <listitem
 ><para
->Marqueu aquesta casella si voleu que el fons a la vista d'agenda s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
+>Marqueu aquesta casella si voleu que el fons de la vista d'agenda s'ompli amb un color diferent en els dies que almenys tenen un esdeveniment marcat com a ocupat.</para>
     <para
 >Si us plau, mireu en l'àrea de configuració dels colors per a seleccionar el color de fons per a ocupat a la vista d'agenda.</para
 ></listitem>
@@ -3235,7 +3235,7 @@
 ></term>
 <listitem
 ><para
->Aquesta casella de selecció canvia la vista de les tasques pendents en les vistes dia, setmana i mes en les vistes d'agenda. Si teniu massa tasques pendents que tenen data de venciment associades, és possible que vulgueu desactivar-la per a evitar el desordre.</para
+>Aquesta casella de selecció canvia la vista de les tasques pendents en les vistes dia, setmana i mes en les vistes d'agenda. Si teniu massa tasques pendents que tenen dates de venciment associades, és possible que vulgueu desactivar-la per a evitar el desordre.</para
 ></listitem>
 </varlistentry>
 
@@ -5517,7 +5517,7 @@ format="PNG"/></imageobject
 <glossdef>
 
 <para
->Una eina per a seleccionar la data dintre de certes finestres, tam com la finestra d'edició d'esdeveniments. Es mostra com a un petit botó a la dreta del camp de data. Quan feu clic amb el botó, veureu un calendari de mes. Useu les fletxes per a anar cap a la data desitjada, o feu clic sobre el nom del mes o el número d'any per a anar directament cap al mes o any desitjat.</para>
+>Una eina per a seleccionar la data dintre de certes finestres, tal com la finestra d'edició d'esdeveniments. Es mostra com a un petit botó a la dreta del camp de data. Quan feu clic amb el botó, veureu un calendari de mes. Useu les fletxes per a anar cap a la data desitjada, o feu clic sobre el nom del mes o el número d'any per a anar directament cap al mes o any desitjat.</para>
 
 </glossdef>
 </glossentry>
