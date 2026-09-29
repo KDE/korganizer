@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1746611 2026-09-18 01:30:16Z scripty $
+# $Id: korganizer.po 1748567 2026-09-29 01:30:26Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2026-08-29 12:42+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -2260,43 +2260,43 @@ msgstr ""
 "skrit. Prikažite ga v meniju <interface>Nastavitve->Stranska vrstica-"
 ">Prikaži upravljalnika koledarjev</interface>.</para>"
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Splošno"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Nastavi ime mape"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Sem vnesite ime za to mapo."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "Ime:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Krajevno blokiraj opomnike"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Prezri opomnike s tega koledarja"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2306,19 +2306,19 @@ msgstr ""
 "Označite to polje, če ne želite prejemati opomnikov za predmete, ki so "
 "povezani s tem koledarjem."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "&Uporabi ikono po meri:"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Nastavi ikono po meri"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."

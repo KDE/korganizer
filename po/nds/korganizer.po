@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2014-09-18 17:03+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -2496,13 +2496,13 @@ msgstr ""
 "Du kannst em binnen den Kalennerpleger anmaken (Instellen -> Sietpaneel -> "
 "Kalennerpleger wiesen)"
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Allmeen"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "Set the end date"
@@ -2510,27 +2510,27 @@ msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Dat Enndatum fastleggen"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, fuzzy, kde-format
 #| msgid "Enter the full name to print for the owner of the calendar."
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Bitte den helen Naam ingeven, de as Kalenner-Eegner utgeven warrt."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "&Naam:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, fuzzy, kde-format
 #| msgid "No reminders"
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Keen Anstööt"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "The reminder is set for this date/time"
@@ -2538,7 +2538,7 @@ msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "De Anstööt is för dit Datum / disse Tiet fastleggt."
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box if you want to search To-do items that match the search "
@@ -2550,21 +2550,21 @@ msgid ""
 msgstr ""
 "Maak dit an, wenn Du na Opgaven söken wullt, op de de Söökbedingen passt."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 #| msgid "Use custom &icons:"
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "&Egen Lüttbiller bruken:"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 #| msgid "Use custom &icons:"
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "&Egen Lüttbiller bruken:"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgctxt "@info:whatsthis"

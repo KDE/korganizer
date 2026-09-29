@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2002-11-07 11:37+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -2146,45 +2146,45 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Algemeen"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Einde datum"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr ""
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, fuzzy, kde-format
 #| msgid "Name:"
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "Naam:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, fuzzy, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Herhindering:"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Uitvee ou aktiwiteite"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 #| msgid "Enable scrollbars in month view cells"
 msgctxt "@info:whatsthis"
@@ -2193,19 +2193,19 @@ msgid ""
 "with this calendar."
 msgstr "Aktiveer rolbalk in maand besigtig selle"
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "Ikalender"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Ikalender"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 #| msgid "Enable scrollbars in month view cells"
 msgctxt "@info:whatsthis"

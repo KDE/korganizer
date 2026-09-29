@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2025-10-12 12:17+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -2261,43 +2261,43 @@ msgstr ""
 "가 현재 숨겨져 있습니다. <interface>설정->사이드바->캘린더 관리자 표시</"
 "interface> 메뉴에서 표시를 활성화하십시오.</para>"
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "일반"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "폴더 이름 설정"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "폴더 이름을 설정하려면 여기에 입력하십시오."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "이름(&N):"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "로컬에서 알림 차단"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "이 캘린더의 알림 무시"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2305,19 +2305,19 @@ msgid ""
 "with this calendar."
 msgstr "이 옵션을 사용하면 이 캘린더에 있는 항목의 알림을 받지 않습니다."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "사용자 정의 아이콘 사용(&U):"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "사용자 정의 아이콘 선택"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."

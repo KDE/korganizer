@@ -1,5 +1,5 @@
 # translation of korganizer.po to
-# Version: $Revision: 1748375 $
+# Version: $Revision: 1748567 $
 # SPDX-FileCopyrightText: 2011-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 # translated by Krzysztof Jasiutowicz <kpjas@priv.onet.pl>
 # Krzysztof Lichota <lichota@mimuw.edu.pl>, 2002, 2005, 2006.
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2026-09-27 21:07+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
@@ -2251,43 +2251,43 @@ msgstr ""
 "Pokaż je, używając menu <interface>Ustawienia->Pasek boczny->Pokaż "
 "zarządzanie kalendarzami</interface>.</para>"
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Ogólne"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Ustaw nazwę katalogu"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Tutaj podaj nazwę, aby ustawić nazwę tego katalogu."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "&Nazwa:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Blokuj lokalnie przypomnienia"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Ignoruj przypomnienia z tego kalendarza"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2297,19 +2297,19 @@ msgstr ""
 "Zaznacz to pole, jeśli nie chcesz otrzymywać przypomnień od elementów "
 "skojarzonych z tym kalendarzem."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "&Użyj własnej ikony:"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Ustaw własną ikonę"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."

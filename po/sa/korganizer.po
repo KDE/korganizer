@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2024-12-24 20:39+0530\n"
 "Last-Translator: kali <shreekantkalwar@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -2416,43 +2416,43 @@ msgstr ""
 "भवान् पञ्चाङ्गप्रबन्धकस्य (सेटिंग्स्->पार्श्वपट्टिका->पञ्चाङ्गप्रबन्धकस्य दर्शयतु) माध्यमेन सक्षमं "
 "कर्तुं शक्नोति ।"
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "सामान्य"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "पुटस्य नाम सेट् कुर्वन्तु"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "अस्य पुटस्य नाम सेट् कर्तुं अत्र नाम प्रविष्टं कुर्वन्तु ।"
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "&नामः:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "स्थानीयतया स्मरणं अवरोधयन्तु"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "अस्मात् पञ्चाङ्गात् स्मारकानाम् अवहेलनां कुर्वन्तु"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2462,19 +2462,19 @@ msgstr ""
 "यदि भवान् अस्य पञ्चाङ्गस्य सम्बद्धानां वस्तूनाम् स्मरणं न प्राप्तुम् इच्छति तर्हि एतत् पेटीम् "
 "चिनोतु ।"
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "&अनुकूलितचिह्नस्य उपयोगं कुर्वन्तु:"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "कस्टम् चिह्नं सेट् कुर्वन्तु"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."

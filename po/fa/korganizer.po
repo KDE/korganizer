@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2012-01-13 10:32+0330\n"
 "Last-Translator: Mohammad Reza Mirdamadi <mohi@ubuntu.ir>\n"
 "Language-Team: Farsi (Persian) <>\n"
@@ -2356,48 +2356,48 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "عمومی"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, fuzzy, kde-format
 #| msgid "Send Update"
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "ارسال به‌روزرسانی"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr ""
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, fuzzy, kde-format
 #| msgid "Name:"
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "نام:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, fuzzy, kde-format
 #| msgid "No reminders"
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "بدون یادآوری"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 #| msgid "Activates a reminder for this event or to-do."
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "یادآوری برای این رویداد یا کار انجامی را فعال می‌کند."
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgctxt "@info:whatsthis"
@@ -2407,21 +2407,21 @@ msgid ""
 msgstr ""
 "اگر می‌خواهید ثانیه‌ها را روی خط زمان جاری نشان دهید، این جعبه را علامت بزنید."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "تقویم"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "تقویم"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgctxt "@info:whatsthis"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: __kde__kdepim__korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2014-01-31 19:03+0100\n"
 "Last-Translator: Samir Ribić <megaribi@epn.ba>\n"
 "Language-Team:  <bs@li.org>\n"
@@ -2475,7 +2475,7 @@ msgstr ""
 "Možete ga omogućiti kroz menadžer kalendara (Postavke->Traka s strane-"
 ">Prikaži menadžer kalendara)"
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, fuzzy, kde-format
 #| msgctxt "general settings for html export"
 #| msgid "General"
@@ -2483,20 +2483,20 @@ msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Opšte"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr ""
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, fuzzy, kde-format
 #| msgid "Enter the full name to print for the owner of the calendar."
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Unesite puno ime vlasnika kalendara koje treba odštampati."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, fuzzy, kde-format
 #| msgctxt "filter name"
 #| msgid "Name:"
@@ -2504,14 +2504,14 @@ msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "Naziv:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, fuzzy, kde-format
 #| msgid "No reminders"
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Nema podsjetnika"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "The reminder is set for this date/time"
@@ -2519,7 +2519,7 @@ msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Podsjetnik je postavljen na ovaj datum/vrijeme"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box if you want to search To-do items that match the search "
@@ -2532,21 +2532,21 @@ msgstr ""
 "Uključite ovu kućicu ako želite pretraživati stavke zadataka koji se "
 "podudaraju sa kriterijumom pretrage."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 #| msgid "Calendar's custom icon"
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "Kalendarsa  prilagođena ikona"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 #| msgid "Calendar's custom icon"
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Kalendarsa  prilagođena ikona"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgctxt "@info:whatsthis"

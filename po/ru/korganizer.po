@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2026-09-23 09:51+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -2276,44 +2276,44 @@ msgstr ""
 "показать его, воспользуйтесь меню <interface>Настройка -> Боковая панель -> "
 "Список календарей</interface>.</para>"
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Основное"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Введите название папки"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Укажите название для этой папки."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "&Название:"
 
 # BUGME: what is "locally"? --aspotashev
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Блокировать уведомления на этом компьютере"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Игнорировать напоминания из этого календаря"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2323,19 +2323,19 @@ msgstr ""
 "Включите этот параметр, чтобы не получать напоминания для записей из этого "
 "календаря."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "Использовать нестандартный значок:"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Выбрать нестандартный значок"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
@@ -2490,7 +2490,6 @@ msgctxt "@title:window"
 msgid "Delete Filter?"
 msgstr "Удаление фильтра"
 
-# BUGME: needs @title:window --aspotashev
 #: dialog/koeventviewerdialog.cpp:32
 #, kde-format
 msgctxt "@title:window"
@@ -3472,7 +3471,6 @@ msgstr[1] "Нет задач со сроком в ближайшие %1 дня"
 msgstr[2] "Нет задач со сроком в ближайшие %1 дней"
 msgstr[3] "Нет задач со сроком в ближайший день"
 
-# BUGME: please add ellipsis as it opens a dialog --aspotashev
 #: kontactplugin/korganizer/todosummarywidget.cpp:397
 #, kde-format
 msgctxt "@action:inmenu"

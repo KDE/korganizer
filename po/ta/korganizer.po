@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2026-05-10 16:10+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -2179,38 +2179,38 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "பொதுவானவை"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "முடிவு தேதி"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr ""
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, fuzzy, kde-format
 #| msgid "Name:"
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "பெயர்:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, fuzzy, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "&நினைவுக்குறிப்பு"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 #| msgid ""
 #| "Add this date as an exception to the recurrence rules for this event or "
@@ -2220,7 +2220,7 @@ msgid "Ignore reminders from this calendar"
 msgstr ""
 "இந்த நிகழ்வு அல்லது செய்யவேண்டியதிற்கான நிகழ்வுக்க்கு இந்த தேதியை ஒரு விலக்காக அமை."
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2228,21 +2228,21 @@ msgid ""
 "with this calendar."
 msgstr "நொடிகளை மார்க்கஸ் பெயின் கோடில் காட்டு."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "நாள்காட்டி"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "நாள்காட்டி"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."

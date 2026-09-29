@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2024-02-02 23:04+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -2435,7 +2435,7 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, fuzzy, kde-format
 #| msgctxt "general settings for html export"
 #| msgid "General"
@@ -2443,20 +2443,20 @@ msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Bendra"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr ""
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, fuzzy, kde-format
 #| msgid "Enter the full name to print for the owner of the calendar."
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Įveskite pilną kalendoriaus savininko vardą spausdinimui."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, fuzzy, kde-format
 #| msgctxt "filter name"
 #| msgid "Name:"
@@ -2464,19 +2464,19 @@ msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "Pavadinimas:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr ""
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr ""
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box if you want to search To-do items that match the search "
@@ -2489,21 +2489,21 @@ msgstr ""
 "Pažymėkite šį laukelį, jei norite ieškoti Darbų elementų atitinkančių "
 "paieškos kriterijus."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 #| msgid "Calendar's custom icon"
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "Kalendoriaus savita ženkliukas"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 #| msgid "Calendar's custom icon"
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Kalendoriaus savita ženkliukas"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgctxt "@info:whatsthis"

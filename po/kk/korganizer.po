@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2013-09-30 02:22+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -2456,40 +2456,40 @@ msgstr ""
 "Оны күнтізбе менеджері арқылы рұқсаты қыла аласыз (Баптау-> Бүйір панелі-"
 ">Күнтізбе менеджерін көрісету)."
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Жалпы"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, fuzzy, kde-format
 #| msgid "Send Update"
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Хабарлау"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, fuzzy, kde-format
 #| msgid "Enter the full name to print for the owner of the calendar."
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Басып шығару үшін күнтізбе иесінің толық аты-жөнін келтіріңіз."
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "&Атауы:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, fuzzy, kde-format
 #| msgid "No reminders"
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Еске салулар жоқ"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "The reminder is set for this date/time"
@@ -2497,7 +2497,7 @@ msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Еске салуды осы күн/уақытқа бегіленген"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 #| msgid ""
 #| "Check this box if you want to search To-do items that match the search "
@@ -2508,21 +2508,21 @@ msgid ""
 "with this calendar."
 msgstr "Келтірілген шартқа сәйкесті істерін іздеу үшін осы белгіні қойыңыз."
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 #| msgid "Use custom &icons:"
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "Өзгеше &таңбашалары:"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 #| msgid "Use custom &icons:"
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Өзгеше &таңбашалары:"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 #| msgid "Check this box if you want to show seconds on the current-time line."
 msgctxt "@info:whatsthis"

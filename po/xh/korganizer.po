@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -2165,45 +2165,45 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, fuzzy, kde-format
 #| msgid "General"
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Ngokubanzi"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Umhla wesiphelo:"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr ""
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, fuzzy, kde-format
 #| msgid "Name:"
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "Igama:"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, fuzzy, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Umkhumbuzi:"
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Cima iziganeko ezindala"
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2211,19 +2211,19 @@ msgid ""
 "with this calendar."
 msgstr "Bonisa imizuzwana kwilayini ye Marcus Bains"
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "i Khalenda"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "i Khalenda"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."

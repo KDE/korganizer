@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:46+0000\n"
+"POT-Creation-Date: 2026-09-29 00:46+0000\n"
 "PO-Revision-Date: 2013-03-24 10:49+0100\n"
 "Last-Translator: Jean Cayron <jean.cayron@base.be>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -2394,7 +2394,7 @@ msgid ""
 "interface> menu.</para>"
 msgstr ""
 
-#: collectiongeneralpage.cpp:37
+#: collectiongeneralpage.cpp:33
 #, fuzzy, kde-format
 #| msgctxt "@title:tab general settings"
 #| msgid "General"
@@ -2402,20 +2402,20 @@ msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Djenerå"
 
-#: collectiongeneralpage.cpp:45
+#: collectiongeneralpage.cpp:41
 #, fuzzy, kde-format
 #| msgid "Send Update"
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Evoyî metaedje a djoû"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr ""
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:43
 #, fuzzy, kde-format
 #| msgctxt "@label attendee's name"
 #| msgid "Na&me:"
@@ -2423,20 +2423,20 @@ msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "no"
 
-#: collectiongeneralpage.cpp:50
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr ""
 
-#: collectiongeneralpage.cpp:51
+#: collectiongeneralpage.cpp:47
 #, fuzzy, kde-format
 #| msgid "Sets the Title of this event or to-do."
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Defini l' tite di cist envenmint ou d' cist afé."
 
-#: collectiongeneralpage.cpp:53
+#: collectiongeneralpage.cpp:49
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Show in the month view"
@@ -2446,21 +2446,21 @@ msgid ""
 "with this calendar."
 msgstr "Mostrer el vuwe pås moes"
 
-#: collectiongeneralpage.cpp:58
+#: collectiongeneralpage.cpp:54
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "Calindrî"
 
-#: collectiongeneralpage.cpp:59
+#: collectiongeneralpage.cpp:55
 #, fuzzy, kde-format
 #| msgid "Calendar"
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Calindrî"
 
-#: collectiongeneralpage.cpp:60
+#: collectiongeneralpage.cpp:56
 #, fuzzy, kde-format
 #| msgctxt "@option:check"
 #| msgid "Show in the month view"
