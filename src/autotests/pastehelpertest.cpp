@@ -8,9 +8,7 @@
 #include "../pastehelper.cpp"
 
 #include <KCalendarCore/MemoryCalendar>
-#if KCALENDARCORE_VERSION >= QT_VERSION_CHECK(6, 29, 0)
 #include <KCalendarCore/MimeData>
-#endif
 
 #include <QClipboard>
 #include <QGuiApplication>
@@ -28,7 +26,6 @@ class PasteHelperTest : public QObject
 private Q_SLOTS:
     void testPasteAllDayEvent()
     {
-#if KCALENDARCORE_VERSION >= QT_VERSION_CHECK(6, 29, 0)
         const Event::Ptr allDayEvent(new Event());
         allDayEvent->setSummary(QStringLiteral("Summary 1"));
         allDayEvent->setDtStart(QDateTime(QDate(2010, 8, 8), {}));
@@ -62,12 +59,10 @@ private Q_SLOTS:
         QCOMPARE(pastedEvent->dtStart(), allDayEvent->dtStart());
         QCOMPARE(pastedEvent->dtEnd(), allDayEvent->dtEnd());
         QCOMPARE(pastedEvent->summary(), allDayEvent->summary());
-#endif
     }
 
     void testPasteAllDayEvent2()
     {
-#if KCALENDARCORE_VERSION >= QT_VERSION_CHECK(6, 29, 0)
         const Event::Ptr allDayEvent(new Event());
         allDayEvent->setSummary(QStringLiteral("Summary 2"));
         allDayEvent->setDtStart(QDateTime(QDate(2010, 8, 8), {}));
@@ -113,12 +108,10 @@ private Q_SLOTS:
         QCOMPARE(newLength, originalLength);
         QCOMPARE(newDateTime, pastedEvent->dtStart());
         QCOMPARE(allDayEvent->summary(), pastedEvent->summary());
-#endif
     }
 
     void testPasteTodo()
     {
-#if KCALENDARCORE_VERSION >= QT_VERSION_CHECK(6, 29, 0)
         const Todo::Ptr todo(new Todo());
         todo->setSummary(QStringLiteral("Summary 1"));
         todo->setDtDue(QDateTime(QDate(2010, 8, 9), {}));
@@ -146,7 +139,6 @@ private Q_SLOTS:
 
         QCOMPARE(newDateTime, pastedTodo->dtDue());
         QCOMPARE(todo->summary(), pastedTodo->summary());
-#endif
     }
 };
 }

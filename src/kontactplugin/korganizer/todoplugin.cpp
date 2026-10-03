@@ -17,11 +17,7 @@
 
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
-#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 29, 0)
-#include <KCalUtils/ICalDrag>
-#else
 #include <KCalendarCore/MimeData>
-#endif
 #include <KMime/Message>
 
 #include <KontactInterface/Core>
@@ -116,11 +112,7 @@ void TodoPlugin::slotNewTodo()
 
 bool TodoPlugin::canDecodeMimeData(const QMimeData *mimeData) const
 {
-#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 29, 0)
-    return mimeData->hasText() || KContacts::VCardDrag::canDecode(mimeData) || KCalUtils::ICalDrag::canDecode(mimeData);
-#else
     return mimeData->hasText() || KContacts::VCardDrag::canDecode(mimeData) || KCalendarCore::MimeData::canDecode(mimeData);
-#endif
 }
 
 bool TodoPlugin::isRunningStandalone() const
@@ -154,14 +146,8 @@ void TodoPlugin::processDropEvent(QDropEvent *event)
         return;
     }
 
-#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 29, 0)
-    if (KCalUtils::ICalDrag::canDecode(event->mimeData())) {
-        KCalendarCore::MemoryCalendar::Ptr const cal(new KCalendarCore::MemoryCalendar(QTimeZone::systemTimeZone()));
-        if (KCalUtils::ICalDrag::fromMimeData(event->mimeData(), cal)) {
-#else
     if (KCalendarCore::MimeData::canDecode(event->mimeData())) {
         if (KCalendarCore::Calendar::Ptr const cal = KCalendarCore::MimeData::decodeCalendar(event->mimeData()); cal) {
-#endif
             KCalendarCore::Incidence::List incidences = cal->incidences();
             Q_ASSERT(incidences.count());
             if (!incidences.isEmpty()) {

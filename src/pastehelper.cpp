@@ -11,11 +11,7 @@
 #include "pastehelper.h"
 
 #include <KCalendarCore/MemoryCalendar>
-#if KCALENDARCORE_VERSION >= QT_VERSION_CHECK(6, 29, 0)
 #include <KCalendarCore/MimeData>
-#else
-#include <KCalUtils/DndFactory>
-#endif
 
 #include <QClipboard>
 #include <QDate>
@@ -103,11 +99,7 @@ Incidence::List PasteHelper::pasteIncidences(const QDateTime &newDateTime, Paste
 {
     QClipboard const *clipboard = QGuiApplication::clipboard();
     Q_ASSERT(clipboard);
-#if KCALENDARCORE_VERSION < QT_VERSION_CHECK(6, 29, 0)
-    Calendar::Ptr const calendar(KCalUtils::DndFactory::createDropCalendar(clipboard->mimeData()));
-#else
     Calendar::Ptr const calendar(KCalendarCore::MimeData::decodeCalendar(clipboard->mimeData()));
-#endif
     Incidence::List list;
 
     if (!calendar) {
