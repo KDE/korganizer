@@ -477,6 +477,7 @@
         <p xml:lang="ca-valencia">Característiques</p>
         <p xml:lang="cs">Vlastnosti</p>
         <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="fi">Ominaisuuksia</p>
         <p xml:lang="fr">Fonctionnalités</p>
         <p xml:lang="he">יכולות</p>
         <p xml:lang="ia">Characteristicas</p>
@@ -600,6 +601,7 @@
         <p xml:lang="ca-valencia">Connectors</p>
         <p xml:lang="cs">Moduly</p>
         <p xml:lang="es">Complementos</p>
+        <p xml:lang="fi">Liitännäiset</p>
         <p xml:lang="fr">Modules externes</p>
         <p xml:lang="he">תוספים</p>
         <p xml:lang="ia">Plugins</p>
@@ -668,6 +670,7 @@
         <p xml:lang="ca-valencia">Correccions de CalDAV</p>
         <p xml:lang="cs">Opravy CalDAV</p>
         <p xml:lang="es">Correcciones para CalDAV</p>
+        <p xml:lang="fi">CalDAV-korjauksia</p>
         <p xml:lang="fr">Correctifs pour CalDAV</p>
         <p xml:lang="he">תיקוני CalDAV</p>
         <p xml:lang="ia">Correctiones de  CalDAV</p>
@@ -750,6 +753,7 @@
         <p xml:lang="ca-valencia">Esmena d'errors</p>
         <p xml:lang="cs">Opravy chyb</p>
         <p xml:lang="es">Corrección de errores</p>
+        <p xml:lang="fi">Virhekorjauksia</p>
         <p xml:lang="fr">Correction de bogues</p>
         <p xml:lang="he">תיקוני תקלות</p>
         <p xml:lang="ia">Correctiones de bug</p>
@@ -812,6 +816,7 @@
         <p xml:lang="ca-valencia">Característiques</p>
         <p xml:lang="cs">Vlastnosti</p>
         <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="fi">Ominaisuuksia</p>
         <p xml:lang="fr">Fonctionnalités</p>
         <p xml:lang="he">יכולות</p>
         <p xml:lang="ia">Characteristicas</p>
@@ -1081,6 +1086,7 @@
         <p xml:lang="ca-valencia">Característiques</p>
         <p xml:lang="cs">Vlastnosti</p>
         <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="fi">Ominaisuuksia</p>
         <p xml:lang="fr">Fonctionnalités</p>
         <p xml:lang="he">יכולות</p>
         <p xml:lang="ia">Characteristicas</p>
@@ -1311,6 +1317,7 @@
         <p xml:lang="ca-valencia">Esmena d'errors</p>
         <p xml:lang="cs">Opravy chyb</p>
         <p xml:lang="es">Corrección de errores</p>
+        <p xml:lang="fi">Virhekorjauksia</p>
         <p xml:lang="fr">Correction de bogues</p>
         <p xml:lang="he">תיקוני תקלות</p>
         <p xml:lang="ia">Correctiones de bug</p>
@@ -1353,6 +1360,7 @@
         <p xml:lang="ca-valencia">Característiques</p>
         <p xml:lang="cs">Vlastnosti</p>
         <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="fi">Ominaisuuksia</p>
         <p xml:lang="fr">Fonctionnalités</p>
         <p xml:lang="he">יכולות</p>
         <p xml:lang="ia">Characteristicas</p>
@@ -1443,6 +1451,7 @@
         <p xml:lang="ca-valencia">General</p>
         <p xml:lang="cs">Obecné</p>
         <p xml:lang="es">General</p>
+        <p xml:lang="fi">Yleistä</p>
         <p xml:lang="fr">Général</p>
         <p xml:lang="he">כללי</p>
         <p xml:lang="ia">General</p>
@@ -1505,6 +1514,7 @@
           <li xml:lang="ca-valencia">Millora de la gestió del calendari predeterminat d'esdeveniments</li>
           <li xml:lang="cs">Vylepšené zpracování výchozího kalendáře událostí</li>
           <li xml:lang="es">Se ha mejorado la gestión del calendario de eventos predeterminado.</li>
+          <li xml:lang="fi">parannettu tapahtumakalenterin oletuskäsittelyä</li>
           <li xml:lang="fr">Gestion améliorée du calendrier des évènements par défaut</li>
           <li xml:lang="he">טיפול משפול בלוח שנה כברירת מחדל לאירועים</li>
           <li xml:lang="ia">Manear de calendario de evento predefinite meliorate</li>
@@ -1526,6 +1536,7 @@
         <p xml:lang="ca-valencia">Esmena d'errors</p>
         <p xml:lang="cs">Opravy chyb</p>
         <p xml:lang="es">Corrección de errores</p>
+        <p xml:lang="fi">Virhekorjauksia</p>
         <p xml:lang="fr">Correction de bogues</p>
         <p xml:lang="he">תיקוני תקלות</p>
         <p xml:lang="ia">Correctiones de bug</p>
@@ -1608,6 +1619,7 @@
         <p xml:lang="ca-valencia">Característiques</p>
         <p xml:lang="cs">Vlastnosti</p>
         <p xml:lang="es">Funcionalidades</p>
+        <p xml:lang="fi">Ominaisuuksia</p>
         <p xml:lang="fr">Fonctionnalités</p>
         <p xml:lang="he">יכולות</p>
         <p xml:lang="ia">Characteristicas</p>
@@ -1630,6 +1642,7 @@
           <li xml:lang="ca-valencia">Afig el menú «Què hi ha de nou»</li>
           <li xml:lang="cs">Přidána nabídka "Co je nového"</li>
           <li xml:lang="es">Añadir el menú Novedades</li>
+          <li xml:lang="fi">lisätty Mitä uutta -valikko</li>
           <li xml:lang="fr">Ajouter le menu « Quoi de neuf »</li>
           <li xml:lang="he">נוסף תפריט מה חדש</li>
           <li xml:lang="ia">Adde menu de Que es de novo</li>
@@ -1650,6 +1663,7 @@
           <li xml:lang="ca-valencia">Es recordarà la vista actual</li>
           <li xml:lang="cs">Aktuální zobrazení se zapamatuje</li>
           <li xml:lang="es">Se recuerda la vista actual</li>
+          <li xml:lang="fi">muistetaan nykyinen näkymä</li>
           <li xml:lang="fr">La vue courante est enregistrée</li>
           <li xml:lang="he">התצוגה הנוכחית נשמרת</li>
           <li xml:lang="ia">Le vista currente es memorate</li>
@@ -1870,6 +1884,7 @@
           <li xml:lang="ca-valencia">Editor d'incidències: permet arrossegar i deixar anar adjunts</li>
           <li xml:lang="cs">Editor položek: podpora přetahování příloh</li>
           <li xml:lang="es">Editor de incidencias: permitir arrastrar y soltar adjuntos</li>
+          <li xml:lang="fi">ilmentymämuokkain: tuki vedä ja pudota -liitteille</li>
           <li xml:lang="fr">Éditeur d'occurrences : prise en charge du glisser-déposer des pièces jointes</li>
           <li xml:lang="he">עורך מופעים: תמיכה בגרירה של קבצים מצורפים</li>
           <li xml:lang="ia">Editor de incidentia:supporta attachamentos de traher e deponer</li>
@@ -1890,6 +1905,7 @@
           <li xml:lang="ca-valencia">El diàleg d'exportació de calendari recorda la seua última ubicació de la carpeta d'exportació</li>
           <li xml:lang="cs">Dialogové okno exportu kalendáře si pamatuje umístění poslední složky pro export</li>
           <li xml:lang="es">El diálogo de exportación de calendario recuerda la ubicación de la última carpeta de exportación usada.</li>
+          <li xml:lang="fi">kalenterin vienti-ikkuna muistaa viimeisimmän viennin kansion sijainnin</li>
           <li xml:lang="fr">La boite de dialogue du calendrier d'exportation enregistre son dernier emplacement pour le dossier d'exportation</li>
           <li xml:lang="he">חלונית ייצוא לוח השנה זוכרת את מקום התיקייה האחרונה שיוצאה</li>
           <li xml:lang="ia">Le dialogo de calendario per exportar memora su location de dossier de ultime exportation</li>
@@ -1910,6 +1926,7 @@
           <li xml:lang="ca-valencia">El diàleg d'importació de calendari recorda la seua última ubicació de la carpeta d'importació</li>
           <li xml:lang="cs">Dialogové okno importu kalendáře si pamatuje umístění poslední složky pro import</li>
           <li xml:lang="es">El diálogo de importación de calendario recuerda la ubicación de la última carpeta de importación usada.</li>
+          <li xml:lang="fi">kalenterin tuonti-ikkuna muistaa viimeisimmän tuonnin kansion sijainnin</li>
           <li xml:lang="fr">La boite de dialogue du calendrier d'importation enregistre son dernier emplacement pour le dossier d'importation</li>
           <li xml:lang="he">חלונית ייבוא לוח השנה זוכרת את מקום התיקייה האחרונה שיובאה</li>
           <li xml:lang="ia">Le dialogo de calendario per importar memora su location de dossier de ultime importation</li>
@@ -1930,6 +1947,7 @@
           <li xml:lang="ca-valencia">Afegir un fitxer de calendari: els calendaris remots sempre són de només lectura</li>
           <li xml:lang="cs">Přidat soubor kalendáře: vzdálené kalendáře jsou vždy pouze pro čtení</li>
           <li xml:lang="es">Añadir archivo de calendario: los calendarios remotos son siempre de solo lectura.</li>
+          <li xml:lang="fi">lisää kalenteritiedosto: etäkalenterit ovat aina vain luettavissa</li>
           <li xml:lang="fr">Ajout d'un fichier de calendrier : les calendriers distants sont toujours en lecture seule</li>
           <li xml:lang="he">הוספת קובץ לוח שנה: לוחות שנה מרוחקים הם תמיד לקריאה בלבד</li>
           <li xml:lang="ia">Adde file de calendario: calendarios remote es sempre de sol lectura</li>
@@ -1950,6 +1968,7 @@
           <li xml:lang="ca-valencia">Afegir un fitxer de calendari: no es permet un camí buit de fitxer</li>
           <li xml:lang="cs">Přidat soubor kalendáře: není povolena prázdná cesta k souboru</li>
           <li xml:lang="es">Añadir archivo de calendario: no se permite una ruta de archivo vacía.</li>
+          <li xml:lang="fi">lisää kalenteritiedosto: ei salli tyhjää tiedostosijaintia</li>
           <li xml:lang="fr">Ajout de fichier de calendrier : impossible de fournir un emplacement vide de fichier</li>
           <li xml:lang="he">הוספת קובץ לוח שנה: לא יורשה נתיב קובץ ריק</li>
           <li xml:lang="ia">Adde calendario: non permittera un percurso de file vacue </li>
@@ -1970,6 +1989,7 @@
           <li xml:lang="ca-valencia">Configuració DAV: el diàleg permet veure la contrasenya del compte en editar</li>
           <li xml:lang="cs">Konfigurace DAV: dialogové okno umožňuje při úpravách zobrazit heslo účtu</li>
           <li xml:lang="es">Configuración de DAV: el diálogo permite ver la contraseña de la cuenta cuando se modifica.</li>
+          <li xml:lang="fi">DAV-asetus: ikkuna sallii nähdä tilin salasanan muokattaessa</li>
           <li xml:lang="fr">Configuration DAV : la boite de dialogue permet d'afficher le mot de passe du compte lors de la modification</li>
           <li xml:lang="he">הגדרות DAV: החלונית מאפשרת לראות את סיסמת החשבון בזמן העריכה</li>
           <li xml:lang="ia">Configuration de DAV: dialogo permitte vider le contrasigno de conto durante que il modifica</li>
@@ -1990,6 +2010,7 @@
           <li xml:lang="ca-valencia">Configuració DAV: l'assistent mostra icones de diversos proveïdors</li>
           <li xml:lang="cs">Konfigurace DAV: průvodce zobrazuje ikony pro různé poskytovatele</li>
           <li xml:lang="es">Configuración de DAV: el asistente muestra iconos para los distintos proveedores.</li>
+          <li xml:lang="fi">DAV-asetus: opastettu toiminto näyttää eri tarjoajille kuvakkeet</li>
           <li xml:lang="fr">Configuration DAV : l'assistant affiche des icônes pour les différents fournisseurs</li>
           <li xml:lang="he">הגדרות DAV: האשף מציג סמלים לספקים השונים</li>
           <li xml:lang="ia">Configuration de DAV: assistente monstra icones per le varie fornitores</li>
@@ -2010,6 +2031,7 @@
           <li xml:lang="ca-valencia">Configuració DAV: llista actualitza de proveïdors de l'assistent</li>
           <li xml:lang="cs">Konfigurace DAV: aktualizován seznam poskytovatelů v průvodci</li>
           <li xml:lang="es">Configuración de DAV: se ha actualizado la lista de proveedores del asistente.</li>
+          <li xml:lang="fi">DAV-asetus: opastetun toiminnon tarjoajaluettelo on päivitetty</li>
           <li xml:lang="fr">Configuration DAV : mise à jour par l'assistant de la liste des fournisseurs</li>
           <li xml:lang="he">הגדרות DAV: רשימת הספקים באשף עודכנה</li>
           <li xml:lang="ia">Configuration de DAV:assistente actualisava lista de fornitores</li>
