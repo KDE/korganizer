@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-29 00:46+0000\n"
+"POT-Creation-Date: 2026-10-04 00:48+0000\n"
 "PO-Revision-Date: 2025-07-01 20:29+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -38,8 +38,8 @@ msgstr ""
 "franklin@goodhorse.idv.tw, mail@kisaragi-hiu.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
-#: kontactplugin/korganizer/korganizerplugin.cpp:46
-#: kontactplugin/korganizer/todoplugin.cpp:42
+#: kontactplugin/korganizer/korganizerplugin.cpp:42
+#: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
 #, kde-format
 msgctxt "@info/plain"
@@ -2938,46 +2938,46 @@ msgid " day"
 msgid_plural " days"
 msgstr[0] " 天"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:48
+#: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
 msgstr "新增事件…"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:51
+#: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new event"
 msgstr "建立新事件"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:55
+#: kontactplugin/korganizer/korganizerplugin.cpp:51
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new event item."
 msgstr "會顯示一對話框，讓您建立新事件項目。"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:150
-#: kontactplugin/korganizer/todoplugin.cpp:153
+#: kontactplugin/korganizer/korganizerplugin.cpp:146
+#: kontactplugin/korganizer/todoplugin.cpp:145
 #, kde-format
 msgctxt "@item"
 msgid "Meeting"
 msgstr "會議"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:169
-#: kontactplugin/korganizer/todoplugin.cpp:172
+#: kontactplugin/korganizer/korganizerplugin.cpp:159
+#: kontactplugin/korganizer/todoplugin.cpp:158
 #, kde-format
 msgctxt "@item"
 msgid "Note: %1"
 msgstr "便條：%1"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:200
+#: kontactplugin/korganizer/korganizerplugin.cpp:190
 #, kde-format
 msgctxt "@info/plain event summary from email subject"
 msgid "Mail: %1"
 msgstr "郵件：%1"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:202
+#: kontactplugin/korganizer/korganizerplugin.cpp:192
 #, kde-kuit-format
 msgctxt "@info event description from email content"
 msgid ""
@@ -3128,32 +3128,32 @@ msgctxt "@label next occurrence"
 msgid "Next: %1"
 msgstr "下一個：%1"
 
-#: kontactplugin/korganizer/todoplugin.cpp:44
+#: kontactplugin/korganizer/todoplugin.cpp:40
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
 msgstr "新增待辦事項…"
 
-#: kontactplugin/korganizer/todoplugin.cpp:47
+#: kontactplugin/korganizer/todoplugin.cpp:43
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
 msgstr "建立新的待辦事項"
 
-#: kontactplugin/korganizer/todoplugin.cpp:51
+#: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new to-do item."
 msgstr "會顯示一對話框，讓您建立新待辦事項項目。"
 
-#: kontactplugin/korganizer/todoplugin.cpp:203
+#: kontactplugin/korganizer/todoplugin.cpp:189
 #, kde-format
 msgctxt "@info/plain to-do summary from email subjuect"
 msgid "Mail: %1"
 msgstr "郵件：%1"
 
-#: kontactplugin/korganizer/todoplugin.cpp:205
+#: kontactplugin/korganizer/todoplugin.cpp:191
 #, kde-kuit-format
 msgctxt "@info to-do description from email content"
 msgid ""

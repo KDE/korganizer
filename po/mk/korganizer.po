@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-29 00:46+0000\n"
+"POT-Creation-Date: 2026-10-04 00:48+0000\n"
 "PO-Revision-Date: 2007-02-28 14:24+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -30,8 +30,8 @@ msgid "Your emails"
 msgstr "bobibobi@freemail.com.mk"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
-#: kontactplugin/korganizer/korganizerplugin.cpp:46
-#: kontactplugin/korganizer/todoplugin.cpp:42
+#: kontactplugin/korganizer/korganizerplugin.cpp:42
+#: kontactplugin/korganizer/todoplugin.cpp:38
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
 #, fuzzy, kde-format
 #| msgid "KOrganizer"
@@ -2976,50 +2976,50 @@ msgstr[0] "%1 ден"
 msgstr[1] "%1 дена"
 msgstr[2] "%1 дена"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:48
+#: kontactplugin/korganizer/korganizerplugin.cpp:44
 #, fuzzy, kde-format
 #| msgid "New Event"
 msgctxt "@action:inmenu"
 msgid "New Event…"
 msgstr "Нов настан"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:51
+#: kontactplugin/korganizer/korganizerplugin.cpp:47
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@info:status"
 msgid "Create a new event"
 msgstr "Кликнете да додадете нова задача"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:55
+#: kontactplugin/korganizer/korganizerplugin.cpp:51
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new event item."
 msgstr ""
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:150
-#: kontactplugin/korganizer/todoplugin.cpp:153
+#: kontactplugin/korganizer/korganizerplugin.cpp:146
+#: kontactplugin/korganizer/todoplugin.cpp:145
 #, fuzzy, kde-format
 msgctxt "@item"
 msgid "Meeting"
 msgstr "Состанок"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:169
-#: kontactplugin/korganizer/todoplugin.cpp:172
+#: kontactplugin/korganizer/korganizerplugin.cpp:159
+#: kontactplugin/korganizer/todoplugin.cpp:158
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgctxt "@item"
 msgid "Note: %1"
 msgstr "Врати (%1)"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:200
+#: kontactplugin/korganizer/korganizerplugin.cpp:190
 #, fuzzy, kde-format
 #| msgid "KMail"
 msgctxt "@info/plain event summary from email subject"
 msgid "Mail: %1"
 msgstr "КПошта"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:202
+#: kontactplugin/korganizer/korganizerplugin.cpp:192
 #, kde-kuit-format
 msgctxt "@info event description from email content"
 msgid ""
@@ -3166,35 +3166,35 @@ msgctxt "@label next occurrence"
 msgid "Next: %1"
 msgstr "Повтори (%1)"
 
-#: kontactplugin/korganizer/todoplugin.cpp:44
+#: kontactplugin/korganizer/todoplugin.cpp:40
 #, fuzzy, kde-format
 #| msgid "New &To-do..."
 msgctxt "@action:inmenu"
 msgid "New To-do…"
 msgstr "Нова &задача..."
 
-#: kontactplugin/korganizer/todoplugin.cpp:47
+#: kontactplugin/korganizer/todoplugin.cpp:43
 #, fuzzy, kde-format
 #| msgid "Click to add a new to-do"
 msgctxt "@info:status"
 msgid "Create a new to-do"
 msgstr "Кликнете да додадете нова задача"
 
-#: kontactplugin/korganizer/todoplugin.cpp:51
+#: kontactplugin/korganizer/todoplugin.cpp:47
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "You will be presented with a dialog where you can create a new to-do item."
 msgstr ""
 
-#: kontactplugin/korganizer/todoplugin.cpp:203
+#: kontactplugin/korganizer/todoplugin.cpp:189
 #, fuzzy, kde-format
 #| msgid "KMail"
 msgctxt "@info/plain to-do summary from email subjuect"
 msgid "Mail: %1"
 msgstr "КПошта"
 
-#: kontactplugin/korganizer/todoplugin.cpp:205
+#: kontactplugin/korganizer/todoplugin.cpp:191
 #, kde-kuit-format
 msgctxt "@info to-do description from email content"
 msgid ""
