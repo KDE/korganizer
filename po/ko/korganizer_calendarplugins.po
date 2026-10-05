@@ -2,14 +2,14 @@
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdepim package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
-# SPDX-FileCopyrightText: 2009, 2015, 2017, 2018, 2019, 2020, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2009, 2015, 2017, 2018, 2019, 2020, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-28 00:46+0000\n"
-"PO-Revision-Date: 2025-04-22 22:56+0200\n"
+"PO-Revision-Date: 2026-10-05 00:27+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -38,18 +38,16 @@ msgid "Show day number"
 msgstr "날짜 번호 표시"
 
 #: datenums/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgctxt "@option:radio"
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the year's day number"
-msgstr "날짜 번호 표시"
+msgstr "연도의 날짜 번호 표시"
 
 #: datenums/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show the day number of the current year."
-msgstr ""
+msgstr "이 옵션을 선택하면 현재 년도의 날짜 번호를 표시합니다."
 
 #: datenums/configdialog.cpp:53
 #, kde-format
@@ -61,18 +59,14 @@ msgstr "연도 끝까지 남은 날짜 표시"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the number of days remaining in the year"
-msgstr ""
+msgstr "연도에 남아 있는 있는 날짜를 표시"
 
 #: datenums/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "A date that should be considered an exception to the recurrence rules for "
-#| "this event or to-do."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the number of days remaining in the current year."
-msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+msgstr "이 옵션을 선택하면 현재 년도에 남아 있는 날 수를 표시합니다."
 
 #: datenums/configdialog.cpp:58
 #, kde-format
@@ -85,7 +79,7 @@ msgstr "둘 다 표시"
 msgctxt "@info:tooltip"
 msgid ""
 "Show both the year's day number and the number of days remaining in the year"
-msgstr ""
+msgstr "현재 년도의 날짜 번호와 남아 있는 날 수를 표시합니다."
 
 #: datenums/configdialog.cpp:61
 #, kde-format
@@ -94,6 +88,8 @@ msgid ""
 "Select this option to show both the year's day number and the number of days "
 "remaining in the current year. The format is dayOfYear / daysTillEndOfYear"
 msgstr ""
+"이 옵션을 선택하면 현재 년도의 날짜 번호와 남아 있는 날 수를 표시합니다. 형식"
+"은 dayOfYear / daysTillEndOfYear입니다"
 
 #: datenums/datenums.cpp:36
 #, kde-format
@@ -186,18 +182,16 @@ msgid "Configure Holidays"
 msgstr "공휴일 설정"
 
 #: hebrewcalendar/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@option:check"
 msgid "Use Israeli holidays"
 msgstr "이스라엘 공휴일 사용"
 
 #: hebrewcalendar/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Use Israeli holidays"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include Israeli holidays"
-msgstr "이스라엘 공휴일 사용"
+msgstr "이스라엘 공휴일 포함"
 
 #: hebrewcalendar/configdialog.cpp:44
 #, kde-format
@@ -206,54 +200,47 @@ msgid ""
 "Select this option to show Israeli holidays; including national, non-"
 "religious holidays."
 msgstr ""
+"이 옵션을 선택하면 국가적 및 비종교적 휴일을 포함한 이스라엘의 공휴일을 표시"
+"합니다."
 
 #: hebrewcalendar/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show weekly parsha"
 msgstr "주별 토라 위치 표시"
 
 #: hebrewcalendar/configdialog.cpp:49
-#, fuzzy, kde-format
-#| msgid "Show weekly parsha"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include weekly parsha days"
-msgstr "주별 토라 위치 표시"
+msgstr "주별 파샤 위치 표시"
 
 #: hebrewcalendar/configdialog.cpp:50
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show weekly parsha days."
-msgstr ""
+msgstr "이 옵션을 선택하면 주간 파샤일을 표시합니다."
 
 #: hebrewcalendar/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show day of Omer"
 msgstr "오메르일 표시"
 
 #: hebrewcalendar/configdialog.cpp:55
-#, fuzzy, kde-format
-#| msgid "Show day of Omer"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Omer"
-msgstr "오메르일 표시"
+msgstr "오메르일 포함"
 
 #: hebrewcalendar/configdialog.cpp:56
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "A date that should be considered an exception to the recurrence rules for "
-#| "this event or to-do."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Omer period."
-msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+msgstr "이 옵션을 선택하면 오메르 날짜를 표시합니다."
 
 #: hebrewcalendar/configdialog.cpp:60
-#, fuzzy, kde-format
-#| msgid "Show Chol HaMoed"
+#, kde-format
 msgctxt "@option:check"
 msgid "Show Chol HaMoed"
 msgstr "콜 하모에드 표시"
@@ -262,111 +249,103 @@ msgstr "콜 하모에드 표시"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include days of the Chol HaMoed"
-msgstr ""
+msgstr "콜 하모에드 날짜 포함"
 
 #: hebrewcalendar/configdialog.cpp:62
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "A date that should be considered an exception to the recurrence rules for "
-#| "this event or to-do."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show days of the Chol HaMoed."
-msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+msgstr "이 옵션을 선택하면 콜 하모에드 날짜를 표시합니다."
 
 #: hebrewcalendar/hebrew.cpp:189
 #, kde-format
 msgctxt "Hebrew month 1 - KLocale::LongName"
 msgid "Tishrey"
-msgstr ""
+msgstr "디스리월"
 
 #: hebrewcalendar/hebrew.cpp:191
 #, kde-format
 msgctxt "Hebrew month 2 - KLocale::LongName"
 msgid "Heshvan"
-msgstr ""
+msgstr "말케스월"
 
 #: hebrewcalendar/hebrew.cpp:193
 #, kde-format
 msgctxt "Hebrew month 3 - KLocale::LongName"
 msgid "Kislev"
-msgstr ""
+msgstr "기슬르월"
 
 #: hebrewcalendar/hebrew.cpp:195
-#, fuzzy, kde-format
-#| msgid "Tzom Tevet"
+#, kde-format
 msgctxt "Hebrew month 4 - KLocale::LongName"
 msgid "Tevet"
-msgstr "Tzom Tevet"
+msgstr "데벳월"
 
 #: hebrewcalendar/hebrew.cpp:197
-#, fuzzy, kde-format
-#| msgid "Tu B'Shvat"
+#, kde-format
 msgctxt "Hebrew month 5 - KLocale::LongName"
 msgid "Shvat"
-msgstr "Tu B'Shvat"
+msgstr "스밧월"
 
 #: hebrewcalendar/hebrew.cpp:199
 #, kde-format
 msgctxt "Hebrew month 6 - KLocale::LongName"
 msgid "Adar"
-msgstr ""
+msgstr "아달월"
 
 #: hebrewcalendar/hebrew.cpp:201
 #, kde-format
 msgctxt "Hebrew month 7 - KLocale::LongName"
 msgid "Nisan"
-msgstr ""
+msgstr "닛산월"
 
 #: hebrewcalendar/hebrew.cpp:203
 #, kde-format
 msgctxt "Hebrew month 8 - KLocale::LongName"
 msgid "Iyar"
-msgstr ""
+msgstr "이야르월"
 
 #: hebrewcalendar/hebrew.cpp:205
 #, kde-format
 msgctxt "Hebrew month 9 - KLocale::LongName"
 msgid "Sivan"
-msgstr ""
+msgstr "시완월"
 
 #: hebrewcalendar/hebrew.cpp:207
 #, kde-format
 msgctxt "Hebrew month 10 - KLocale::LongName"
 msgid "Tamuz"
-msgstr ""
+msgstr "담무르월"
 
 #: hebrewcalendar/hebrew.cpp:209
 #, kde-format
 msgctxt "Hebrew month 11 - KLocale::LongName"
 msgid "Av"
-msgstr ""
+msgstr "압월"
 
 #: hebrewcalendar/hebrew.cpp:211
 #, kde-format
 msgctxt "Hebrew month 12 - KLocale::LongName"
 msgid "Elul"
-msgstr ""
+msgstr "엘룰월"
 
 #: hebrewcalendar/hebrew.cpp:213
 #, kde-format
 msgctxt "Hebrew month 13 - KLocale::LongName"
 msgid "Adar I"
-msgstr ""
+msgstr "아달월 1"
 
 #: hebrewcalendar/hebrew.cpp:215
 #, kde-format
 msgctxt "Hebrew month 14 - KLocale::LongName"
 msgid "Adar II"
-msgstr ""
+msgstr "아달월 2"
 
 #: hebrewcalendar/hebrew.cpp:227
-#, fuzzy, kde-format
-#| msgctxt "monthname year"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. day of the month 2. hebrew month"
 msgid "%1 %2"
-msgstr "%1 %2"
+msgstr "%2 %1"
 
 #: hebrewcalendar/hebrew.cpp:233
 #, kde-format
@@ -879,84 +858,66 @@ msgid "Haazinu"
 msgstr "Haazinu"
 
 #: lunarphases/configdialog.cpp:26
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Lunar Phases"
-msgstr "날짜 번호 설정"
+msgstr "달 위상 설정"
 
 #: lunarphases/configdialog.cpp:41
 #, kde-format
 msgctxt "@title:group"
 msgid "Choose your hemisphere"
-msgstr ""
+msgstr "반구 선택"
 
 #: lunarphases/configdialog.cpp:46
 #, kde-format
 msgctxt "@option:radio"
 msgid "Northern Hemisphere"
-msgstr ""
+msgstr "북반구"
 
 #: lunarphases/configdialog.cpp:47
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the northern hemisphere"
-msgstr ""
+msgstr "북반구의 달 위상 표시"
 
 #: lunarphases/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "A date that should be considered an exception to the recurrence rules for "
-#| "this event or to-do."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the northern "
 "hemisphere."
-msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+msgstr "이 옵션을 선택하면 달 위상을 북반구 기준으로 표시합니다."
 
 #: lunarphases/configdialog.cpp:51
 #, kde-format
 msgctxt "@option:radio"
 msgid "Southern Hemisphere"
-msgstr ""
+msgstr "남반구"
 
 #: lunarphases/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "A date that should be considered an exception to the recurrence rules for "
-#| "this event or to-do."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the lunar phases for the southern hemisphere"
-msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+msgstr "남반구의 달 위상 표시"
 
 #: lunarphases/configdialog.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid ""
-#| "A date that should be considered an exception to the recurrence rules for "
-#| "this event or to-do."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this option to show the moon phases if you live in the southern "
 "hemisphere."
-msgstr "행사나 업무의 반복 규칙에서 제외할 날짜를 설정합니다."
+msgstr "이 옵션을 선택하면 달 위상을 남반구 기준으로 표시합니다."
 
 #: lunarphases/lunarphases.cpp:108
-#, fuzzy, kde-format
-#| msgid ""
-#| "This plugin displays the day's lunar phase (New, First, Last, Full). "
-#| "Currently, the phase is computed for noon at UTC; therefore, you should "
-#| "expect variations by 1 day in either direction."
+#, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
 "phase is computed for noon in the system timezone. Crescent and Gibbous "
 "phases are not displayed."
 msgstr ""
-"이 플러그인은 달의 위상을 표시합니다(상현달, 하현달, 보름달, 그믐달). 현재 달"
-"의 위상은 UTC 정오 기준으로 계산되므로 1일 정도 오차가 생길 수도 있습니다."
+"이 플러그인은 달의 위상을 표시합니다(상현달, 하현달, 보름달). 달 위상은 시스"
+"템 시간대의 정오를 기준으로 계산됩니다. 초승달과 그믐달은 표시되지 않습니다."
 
 #: picoftheday/configdialog.cpp:28
 #, kde-format
@@ -981,7 +942,7 @@ msgstr "비율 무시"
 msgctxt "@info:tooltip"
 msgid ""
 "Scale the thumbnail as needed to fill the space, ignoring the aspect ratio"
-msgstr ""
+msgstr "섬네일 크기를 종횡비를 무시하고 공간을 채우는 형태로 조정합니다"
 
 #: picoftheday/configdialog.cpp:49
 #, kde-format
@@ -994,13 +955,13 @@ msgstr "섬네일 크기를 자유롭게 조정합니다. 비율을 보존하지
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "비율 유지하기"
+msgstr "종횡비 유지"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail as large as possible with the same aspect ratio"
-msgstr ""
+msgstr "섬네일을 종횡비를 유지한 채로 최대한으로 확대해서 표시합니다"
 
 #: picoftheday/configdialog.cpp:56
 #, kde-format
@@ -1022,6 +983,8 @@ msgstr "확장하여 비율 유지"
 msgctxt "@info:tooltip"
 msgid "Scale the thumbnail to fill the space, possibly cropping the image"
 msgstr ""
+"섬네일 크기를 공간을 채울 수 있도록 크기를 조정하며 필요한 경우 그림을 잘라냅"
+"니다"
 
 #: picoftheday/configdialog.cpp:64
 #, kde-format

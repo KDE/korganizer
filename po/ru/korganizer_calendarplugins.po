@@ -449,7 +449,7 @@ msgstr "Йом Хазикарон"
 #: hebrewcalendar/holiday.cpp:192
 #, kde-format
 msgid "Yom Yerushalayim"
-msgstr "День независимости государства Израиль"
+msgstr "Йом Йерушалаим"
 
 #: hebrewcalendar/holiday.cpp:196
 #, kde-format
@@ -997,7 +997,7 @@ msgstr "Миниатюра будет масштабирована без сох
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "Сохранять &пропорции"
+msgstr "Сохранять соотношение сторон"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
@@ -1049,7 +1049,7 @@ msgstr "«Изображение дня» из Википедии: %1"
 #: picoftheday/element.cpp:326
 #, kde-format
 msgid "Picture Page"
-msgstr "Страница картинки"
+msgstr "Страница изображения"
 
 #: picoftheday/element.cpp:326
 #, kde-format

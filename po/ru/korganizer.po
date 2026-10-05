@@ -406,8 +406,8 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Allows you to export your entire calendar collection to one iCalendar file."
 msgstr ""
-"Это действие позволяет выполнить экспорт всех событий календаря в один файл "
-"в формате iCalendar."
+"Это действие позволяет экспортировать все календари в один файл в формате "
+"iCalendar."
 
 #: actionmanager.cpp:269
 #, kde-format
@@ -563,7 +563,7 @@ msgid ""
 msgstr ""
 "Переключение в режим просмотра «Расписание». Этот режим позволяет "
 "просмотреть события и задачи на один или несколько дней, упорядоченные по "
-"времени. В таблице времени, приведённой для каждого из дней, так же наглядно "
+"времени. В таблице времени, приведённой для каждого из дней, также наглядно "
 "показана продолжительность каждого из событий."
 
 #: actionmanager.cpp:374
@@ -706,8 +706,8 @@ msgid ""
 "sync or update any calendar folders."
 msgstr ""
 "Это действие выполняет обновление и повторный вывод на экран содержимого в "
-"текущем режиме просмотра, но не выполняет синхронизации или обновления "
-"каталогов с данными календарей."
+"текущем режиме просмотра, но не выполняет синхронизации или обновления папок "
+"с данными календарей."
 
 #: actionmanager.cpp:430
 #, kde-format
@@ -736,7 +736,7 @@ msgid ""
 msgstr ""
 "Применение к набору календарей фильтра, заданного пользователем. Могут быть "
 "применены только фильтры, созданные заранее с помощью пункта меню «Настройка "
-"→ Фильтры...»."
+"→ Фильтры…»."
 
 #: actionmanager.cpp:446
 #, kde-format
@@ -876,7 +876,7 @@ msgstr "День"
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr "Просмотр одного дня за раза"
+msgstr "Просмотр одного дня за раз"
 
 #: actionmanager.cpp:508
 #, kde-format
@@ -922,7 +922,7 @@ msgstr ""
 "Выберите этот параметр для показа нескольких следующих дней за раз при "
 "просмотре расписания. Параметр <placeholder>Следующие x дней</placeholder> в "
 "разделе настройки <interface>Вид -> Общие</interface> позволяет настроить "
-"количество отображаемых дней."
+"количество показываемых дней."
 
 #: actionmanager.cpp:528
 #, kde-format
@@ -944,8 +944,8 @@ msgctxt "@info:status"
 msgid ""
 "Show a week at a time showing days included in your weekly schedule only"
 msgstr ""
-"Показ недели за раз (с отображением только входящих в еженедельное "
-"расписание дней)"
+"Показ недели за раз (с показом только входящих в еженедельное расписание "
+"дней)"
 
 #: actionmanager.cpp:532
 #, kde-format
@@ -1166,7 +1166,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
-msgstr "Пр&осмотреть…"
+msgstr "Пр&осмотреть"
 
 #: actionmanager.cpp:617 actionmanager.cpp:1322 actionmanager.cpp:1362
 #: koeventpopupmenu.cpp:44
@@ -1195,7 +1195,7 @@ msgstr "&Опубликовать сведения…"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
-msgstr "Направить &уведомления"
+msgstr "Отправить &приглашение участникам"
 
 #: actionmanager.cpp:653
 #, kde-format
@@ -1207,19 +1207,19 @@ msgstr "&Запросить обновление"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
-msgstr "Направить уведомления об &отмене"
+msgstr "Отправить участникам уведомление об &отмене"
 
 #: actionmanager.cpp:669
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
-msgstr "Направить обновление &статуса"
+msgstr "Отправить обновление &статуса"
 
 #: actionmanager.cpp:677
 #, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
-msgstr "Требуются &изменения"
+msgstr "Запросить &изменение"
 
 #: actionmanager.cpp:685
 #, kde-format
@@ -1273,7 +1273,7 @@ msgstr "Список календарей"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
-msgstr "Параметры времени и &дат…"
+msgstr "Настроить &дату и время…"
 
 #: actionmanager.cpp:753
 #, kde-format
@@ -1350,7 +1350,7 @@ msgstr "Произошла ошибка: <message>%1 (URL-адрес: %2)</messa
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
-msgstr "Не удаётся разместить календарь <filename>%1</filename>"
+msgstr "Не удаётся отправить календарь в <filename>%1</filename>"
 
 #: actionmanager.cpp:1023
 #, kde-kuit-format
@@ -1392,7 +1392,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
-msgstr "&Просмотреть событие…"
+msgstr "&Просмотреть событие"
 
 #: actionmanager.cpp:1284
 #, kde-format
@@ -1411,7 +1411,7 @@ msgstr "&Удалить событие"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
-msgstr "&Просмотреть задачу…"
+msgstr "&Просмотреть задачу"
 
 #: actionmanager.cpp:1298 kontactplugin/korganizer/todosummarywidget.cpp:394
 #, kde-format
@@ -1447,7 +1447,7 @@ msgstr "Присоединить &письмо без вложений"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
-msgstr "О&тменить"
+msgstr "О&тмена"
 
 #: actionmanager.cpp:1486
 #, kde-format
@@ -1541,13 +1541,13 @@ msgstr "%1 (не в сети)"
 #, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1 (событие по умолчанию)"
+msgstr "%1 (календарь событий по умолчанию)"
 
 #: akonadicollectionview.cpp:306
 #, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1 (задачи по умолчанию)"
+msgstr "%1 (календарь задач по умолчанию)"
 
 #: akonadicollectionview.cpp:394
 #, kde-format
@@ -1606,9 +1606,9 @@ msgid ""
 "calendar folder?<para>This will replace <filename>%3</filename> as the "
 "default %4 calendar folder.</para>"
 msgstr ""
-"Использовать папку <filename>%1</filename> в качестве каталога календаря по "
-"умолчанию для %2?<para>Это заменит папку <filename>%3</filename>, "
-"используемую по умолчанию для %4.</para>"
+"Использовать папку <filename>%1</filename> как календарь по умолчанию для %2?"
+"<para>Это заменит папку <filename>%3</filename>, используемую по умолчанию "
+"для %4.</para>"
 
 #: akonadicollectionview.cpp:613
 #, kde-kuit-format
@@ -1617,8 +1617,7 @@ msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
 msgstr ""
-"Использовать папку <filename>%1</filename> в качестве каталога календаря по "
-"умолчанию для %2?"
+"Использовать папку <filename>%1</filename> как календарь по умолчанию для %2?"
 
 #: akonadicollectionview.cpp:616
 #, kde-format
@@ -1669,7 +1668,7 @@ msgstr ""
 "Удалить календарь <filename>%1</filename>? <para><note>Данные календаря не "
 "будут удалены, а сам календарь останется на соответствующем сетевом ресурсе. "
 "Календарь <filename>%1</filename> всегда можно будет добавить снова.</note></"
-"para> "
+"para>"
 
 #: akonadicollectionview.cpp:903
 #, kde-kuit-format
@@ -1803,7 +1802,7 @@ msgstr "Сведения о выбранном событии, задаче ил
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
-msgstr "Выполнение задачи: %1 (%2)"
+msgstr "Задача выполнена: %1 (%2)"
 
 #: calendarview.cpp:721
 #, kde-format
@@ -1920,7 +1919,7 @@ msgid ""
 "Unable to remove the item \"%1\" from the original calendar. However, a copy "
 "of this item has been put into %2"
 msgstr ""
-"Невозможно удалить элемент «%1» из исходного календаря. Несмотря на это "
+"Невозможно удалить элемент «%1» из исходного календаря. Несмотря на это, "
 "копия этого элемента была помещена в %2."
 
 #: calendarview.cpp:1616 calendarview.cpp:1632 calendarview.cpp:2567
@@ -1933,7 +1932,7 @@ msgstr "Ошибка перемещения"
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
-msgstr "«%1» успешно перемещен из %2 в %3."
+msgstr "«%1» успешно перемещён из %2 в %3."
 
 #: calendarview.cpp:1622
 #, kde-format
@@ -2138,7 +2137,7 @@ msgid ""
 "want to delete only the current one on %2 or all its occurrences?"
 msgstr ""
 "<resource>%1</resource> повторяется несколько раз. Удалить только текущее "
-"повторение на %2, все будущие повторения или вообще все повторения?"
+"повторение на %2 или все повторения?"
 
 #: calendarview.cpp:2438
 #, kde-format
@@ -2203,7 +2202,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
-msgstr "Невозможно переместить в <resource>%1</resource>."
+msgstr "Невозможно переместить <resource>%1</resource>."
 
 #: calendarview.cpp:2789
 #, kde-kuit-format
@@ -2224,7 +2223,7 @@ msgstr[1] ""
 "%1 задачи проигнорированы из-за наличия незавершённых или защищённых от "
 "редактирования подзадач."
 msgstr[2] ""
-"%1 задач проигнорированы из-за наличия незавершённых или защищённых от "
+"%1 задач проигнорировано из-за наличия незавершённых или защищённых от "
 "редактирования подзадач."
 msgstr[3] ""
 "%1 задача проигнорирована из-за наличия незавершённых или защищённых от "
@@ -2237,7 +2236,7 @@ msgid "%1 completed to-do was purged."
 msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Удалена %1 выполненная задача."
 msgstr[1] "Удалены %1 выполненные задачи."
-msgstr[2] "Удалены %1 выполненных задач."
+msgstr[2] "Удалено %1 выполненных задач."
 msgstr[3] "Удалена %1 выполненная задача."
 
 #: calendarview.cpp:2807
@@ -2280,7 +2279,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
-msgstr "Основное"
+msgstr "Общие"
 
 #: collectiongeneralpage.cpp:41
 #, kde-format
@@ -2305,7 +2304,7 @@ msgstr "&Название:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
-msgstr "Блокировать уведомления на этом компьютере"
+msgstr "Блокировать напоминания на этом компьютере"
 
 #: collectiongeneralpage.cpp:47
 #, kde-format
@@ -2327,7 +2326,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
-msgstr "Использовать нестандартный значок:"
+msgstr "&Использовать нестандартный значок:"
 
 #: collectiongeneralpage.cpp:55
 #, kde-format
@@ -2526,7 +2525,7 @@ msgctxt "@info:tooltip"
 msgid ""
 "Scroll to the appropriate calendar view so the incidence can be seen in "
 "context"
-msgstr "Прокрутить вид календаря для отображения события в контексте"
+msgstr "Прокрутить вид календаря для показа события в контексте"
 
 #: dialog/koeventviewerdialog.cpp:48
 #, kde-format
@@ -2536,8 +2535,8 @@ msgid ""
 "do, agenda or journal view (as appropriate) and scrolling it to show the "
 "incidence."
 msgstr ""
-"При нажатии на эту кнопку выбранный элемент отображается в соответствующем "
-"представлении (задач, повестки дня или журнала) с прокруткой к нему."
+"При нажатии на эту кнопку выбранный элемент показывается в соответствующем "
+"представлении (задач, расписания или дневника) с прокруткой к нему."
 
 #: dialog/searchdialog.cpp:40
 #, kde-format
@@ -2706,14 +2705,14 @@ msgstr "Новая задача"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
-msgstr "Создать задачу из события..."
+msgstr "Создать задачу из события"
 
 # BUGME: please add ellipsis --aspotashev
 #: koeventpopupmenu.cpp:109
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
-msgstr "Создать событие из задачи..."
+msgstr "Создать событие из задачи"
 
 #: koeventpopupmenu.cpp:115
 #, kde-format
@@ -2761,7 +2760,7 @@ msgstr "Настройка дайджеста предстоящих событ�
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:22
 #, kde-format
 msgid "Show Upcoming Events Starting"
-msgstr "Показывать предстоящие события, начинающиеся..."
+msgstr "Показывать предстоящие события, начинающиеся…"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:28
@@ -3214,13 +3213,13 @@ msgstr ""
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:16
 #, kde-format
 msgid "To-do Summary Configuration"
-msgstr "Настройка дайджеста выполняемых задач"
+msgstr "Настройка дайджеста незавершённых задач"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:22
 #, kde-format
 msgid "Show To-dos Due"
-msgstr "Показывать задачи со сроком..."
+msgstr "Показывать задачи со сроком…"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
@@ -3233,7 +3232,7 @@ msgstr "Показывать только задачи с крайним сро�
 #, kde-format
 msgid "Check this box if you want to see To-dos due on this date only."
 msgstr ""
-"Включите этот параметр, если следует показывать только события, срок "
+"Включите этот параметр, если следует показывать только задачи, срок "
 "завершения которых приходится на сегодня."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
@@ -3249,7 +3248,7 @@ msgid ""
 "Check this box if you want to see To-dos that are due sometime during the "
 "next 31 days."
 msgstr ""
-"Включите этот параметр, если следует показывать только события со сроком "
+"Включите этот параметр, если следует показывать только задачи со сроком "
 "завершения в ближайший 31 день."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
@@ -3401,7 +3400,7 @@ msgstr "&Просроченные (невыполненные задачи, ср
 #, kde-format
 msgctxt "@title:group"
 msgid "Pending To-dos"
-msgstr "Предстоящие задачи"
+msgstr "Незавершённые задачи"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:182
 #, kde-format
@@ -3535,7 +3534,7 @@ msgstr "Настройка дайджеста предстоящих особы�
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:22
 #, kde-format
 msgid "Show Special Dates Starting"
-msgstr "Показывать предстоящие особые даты, начинающиеся..."
+msgstr "Показывать предстоящие особые даты, начинающиеся…"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:28
@@ -3661,13 +3660,14 @@ msgid ""
 "region, or events with the \"Holiday\" tag."
 msgstr ""
 "При включении этого параметра в дайджест предстоящих особых дат будут "
-"включены праздники из календаря. Обычно это события с меткой «Праздник»."
+"включены праздники из календаря. Это события из выбранного региона "
+"праздников или события с меткой «Праздник»."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
 #, kde-format
 msgid "Show &holidays"
-msgstr "&Праздники"
+msgstr "Показывать &праздники"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
@@ -3717,7 +3717,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
 #, kde-format
 msgid "Show birth&days"
-msgstr "Д&ни рождения"
+msgstr "Показывать д&ни рождения"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
@@ -3739,7 +3739,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:231
 #, kde-format
 msgid "Show anni&versaries"
-msgstr "Годо&вщины свадеб"
+msgstr "Показывать годо&вщины свадеб"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:108
 #, kde-format
@@ -3943,7 +3943,7 @@ msgstr "Объединённый календарь"
 #: koviewmanager.cpp:531
 #, kde-format
 msgid "Calendars Side by Side"
-msgstr "Календари на одной линии"
+msgstr "Календари рядом"
 
 #: koviewmanager.cpp:569
 #, kde-format
@@ -3952,7 +3952,7 @@ msgid ""
 "Please properly configure at least 1 work day in the Time and Date "
 "preferences."
 msgstr ""
-"Невозможно отобразить рабочую неделю, так как не настроены рабочие дни. "
+"Невозможно показать рабочую неделю, так как не настроены рабочие дни. "
 "Настройте хотя бы один рабочий день в разделе настройки параметров даты и "
 "времени."
 
@@ -4024,7 +4024,7 @@ msgstr "Текст события"
 #, kde-format
 msgctxt "@label"
 msgid "Mail transport:"
-msgstr "Почтовый транспорт:"
+msgstr "Метод отправки:"
 
 #: prefs/koprefsdialogmain.cpp:47
 #, kde-format
@@ -4175,7 +4175,7 @@ msgstr "Еженедельное расписание"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
-msgstr "Сделать %1 частью еженедельного расписания"
+msgstr "Включить %1 в еженедельное расписание"
 
 #: prefs/koprefsdialogtime.cpp:174
 #, kde-format
@@ -4281,7 +4281,7 @@ msgstr "минут"
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
-msgstr "ч"
+msgstr "часов"
 
 #: prefs/koprefsdialogtime.cpp:260
 #, kde-format
@@ -4368,7 +4368,9 @@ msgctxt "@info"
 msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
-msgstr "Установлены все параметры по умолчанию. Все изменения будут утеряны."
+msgstr ""
+"Все параметры будут сброшены к значениям по умолчанию. Все изменения будут "
+"потеряны."
 
 #: prefs/kprefsdialog.cpp:708
 #, kde-format
@@ -4493,9 +4495,8 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
-"Выбор дня, с которого начинается неделя. Обычно изменение значения этого "
-"параметра не требуется потому как используются значения, заданные в "
-"региональных настройках. "
+"Выбор дня, с которого начинается неделя. Обычно изменять этот параметр не "
+"требуется: используется значение, заданное в региональных параметрах."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:48
@@ -4597,7 +4598,7 @@ msgid ""
 "access the next \"x\" days view, choose the \"Next X Days\" menu item from "
 "the \"View\" menu."
 msgstr ""
-"Установите количество следующих «x» дней, которые будут отображаться при "
+"Установите количество следующих «x» дней, которые будут показываться при "
 "просмотре «Следующих x дней» (меню «Просмотр» / «Следующие x дней»)."
 
 #. i18n: ectx: tooltip, entry, group (General View)
@@ -4630,7 +4631,7 @@ msgid ""
 "to other (non daily recurring) incidences."
 msgstr ""
 "Установите флажок, чтобы дни с ежедневными повторяющимися событиями "
-"отображались в Навигаторе дат полужирным шрифтом, или снимите его, чтобы "
+"показывались в Навигаторе дат полужирным шрифтом, или снимите его, чтобы "
 "выделить другие (не ежедневные повторяющиеся) события."
 
 #. i18n: ectx: label, entry (WeeklyRecur), group (General View)
@@ -4744,8 +4745,8 @@ msgid ""
 "if week numbers are not shown."
 msgstr ""
 "Показывать рабочую неделю при нажатии на номер недели в календаре, иначе "
-"будет отображаться целая неделя. Значение этого параметра игнорируется, "
-"когда не отображаются номера недель."
+"будет показываться вся неделя. Параметр не действует, если номера недель не "
+"показываются."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #: settings/korganizer.kcfg:120
@@ -4860,7 +4861,7 @@ msgstr "Раскрашивать фон занятых дней"
 #: settings/korganizer.kcfg:153 settings/korganizer.kcfg:251
 #, kde-format
 msgid "Use the busy days background color setting for busy days"
-msgstr "Использовать настройку цвета фона для занятых дней"
+msgstr "Использовать отдельный цвет фона для занятых дней"
 
 #. i18n: ectx: whatsthis, entry (ColorBusyDaysEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:154
@@ -4872,8 +4873,8 @@ msgid ""
 "configuration page. Look for the \"Busy days background color\" setting."
 msgstr ""
 "Раскрашивать фон расписания различными цветами в днях, где есть хотя бы одно "
-"событие, занимающее весь день и помеченное как важное. Также можно изменить "
-"цвет фона, воспользовавшись настройкой «Цвет фона занятых дней» на странице "
+"событие, занимающее весь день и помеченное как занятое. Также можно изменить "
+"цвет фона, с помощью параметра «Цвет фона занятых дней» на странице "
 "настройки цветов."
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
@@ -4893,7 +4894,7 @@ msgstr "Показывать задачи при просмотре распис
 #: settings/korganizer.kcfg:160
 #, kde-format
 msgid "Display to-dos in the Agenda View"
-msgstr "Показывать задачи при просмотре расписания."
+msgstr "Показывать задачи при просмотре расписания"
 
 #. i18n: ectx: label, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:164
@@ -4908,14 +4909,14 @@ msgid ""
 "Check this box to display a line in the day or week view indicating the "
 "current-time line (Marcus Bains line)."
 msgstr ""
-"При просмотре дня или недели показывать линию, отображающую текущее время "
+"При просмотре дня или недели показывать линию, показывающую текущее время "
 "(Marcus Bains)."
 
 #. i18n: ectx: tooltip, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:166
 #, kde-format
 msgid "Display the current-time indicator"
-msgstr "Отображать индикатор текущего времени"
+msgstr "Показывать индикатор текущего времени"
 
 #. i18n: ectx: label, entry (MarcusBainsShowSeconds), group (Agenda View)
 #: settings/korganizer.kcfg:170
@@ -5000,7 +5001,7 @@ msgid ""
 msgstr ""
 "Выберите опцию «Метка внутри, календарь снаружи», чтобы элементы календаря "
 "раскрашивались в цвет установленной метки, а рамка вокруг элементов — в цвет "
-"календаря. Установить эти цвета возможно на странице «Цвета и шрифты»."
+"календаря. Установить эти цвета можно на странице «Цвета и шрифты»."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -5030,7 +5031,7 @@ msgid ""
 msgstr ""
 "Выберите опцию «Календарь внутри, метка снаружи», чтобы элементы календаря "
 "раскрашивались в цвет календаря, а рамка вокруг элементов — в цвет меток. "
-"Установить эти цвета возможно на странице «Цвета и шрифты»."
+"Установить эти цвета можно на странице «Цвета и шрифты»."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -5054,7 +5055,7 @@ msgid ""
 "use the Colors and Fonts configuration page for setting these colors."
 msgstr ""
 "Выберите опцию «Только метка», чтобы и фон, и рамка элементов календаря были "
-"раскрашены в цвет установленной метки. Установить эти цвета возможно на "
+"раскрашены в цвет установленной метки. Установить эти цвета можно на "
 "странице «Цвета и шрифты»."
 
 #. i18n: ectx: label, entry, group (Agenda View)
@@ -5079,7 +5080,7 @@ msgid ""
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
 "Выберите опцию «Только календарь», чтобы и фон, и рамка элементов календаря "
-"были раскрашены в цвет календаря. Установить эти цвета возможно на странице "
+"были раскрашены в цвет календаря. Установить эти цвета можно на странице "
 "«Цвета и шрифты»."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
@@ -5102,7 +5103,7 @@ msgid ""
 "all your calendars to be shown together in one Agenda View."
 msgstr ""
 "Выберите параметр «Объединять все календари в один», чтобы все календари "
-"отображались в одном представлении «Повестка дня»."
+"показывались в одном представлении «Расписание»."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:213
@@ -5114,7 +5115,7 @@ msgstr "Показать все объединённые календари"
 #: settings/korganizer.kcfg:216
 #, kde-format
 msgid "Show calendars side by side"
-msgstr "Показывать календари на одной линии"
+msgstr "Показывать календари рядом"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:217
@@ -5123,7 +5124,7 @@ msgid ""
 "Select the \"Show calendars side by side\" option if you would like to see "
 "two calendars at once, in a side-by-side view."
 msgstr ""
-"Выберите «Показывать два календаря рядом», чтобы видеть рядом сразу два "
+"Выберите «Показывать календари рядом», чтобы видеть рядом сразу два "
 "календаря."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
@@ -5230,8 +5231,8 @@ msgid ""
 msgstr ""
 "При просмотре расписания на месяц раскрашивать различными цветами фон дней, "
 "имеющих хотя бы одно событие на весь день, помеченное как занятое. Изменить "
-"цвет фона можно воспользовавшись настройкой «Фон занятых дней» в странице "
-"настройки цветов."
+"цвет фона можно с помощью параметра «Фон занятых дней» на странице настройки "
+"цветов."
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
@@ -5243,7 +5244,7 @@ msgstr "Показывать задачи при просмотре месяца
 #: settings/korganizer.kcfg:258
 #, kde-format
 msgid "Display to-dos in the Month View"
-msgstr "Отображать задачи при просмотре месяца"
+msgstr "Показывать задачи при просмотре месяца"
 
 #. i18n: ectx: label, entry (ShowJournalsMonthView), group (Month View)
 #: settings/korganizer.kcfg:262
@@ -5348,7 +5349,7 @@ msgid ""
 "the Colors and Fonts configuration page for setting these colors."
 msgstr ""
 "Выберите опцию «Только метка», чтобы и фон, и рамка элементов календаря были "
-"раскрашены в цвет установленной метки. Установить эти цвета возможно на "
+"раскрашены в цвет установленной метки. Установить эти цвета можно на "
 "странице «Цвета и шрифты»."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
@@ -5365,9 +5366,9 @@ msgid ""
 "(both inside and border) in the color of their calendar.  Please use the "
 "Colors and Fonts configuration page for setting these colors."
 msgstr ""
-"Выберите опцию «Только календарь», чтобы и фон и рамка элементов календаря "
-"была раскрашена в цвет календаря. Установить эти цвета можно на странице "
-"цвета и шрифты."
+"Выберите опцию «Только календарь», чтобы и фон, и рамка элементов календаря "
+"были раскрашены в цвет календаря. Установить эти цвета можно на странице "
+"«Цвета и шрифты»."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
@@ -5488,8 +5489,8 @@ msgstr "Использовать системные цвета для фона"
 #, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
 msgstr ""
-"Использовать системный цвет вместо цвета, заданного пользователем. Если этот "
-"параметр включён, все прочие параметры цвета будут игнорироваться."
+"Использовать для некоторых цветов фона системные цвета вместо заданных "
+"пользователем"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:345
@@ -5499,9 +5500,8 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
-"Использовать системные цвета вместо пользовательских для «Цвет фона повестки "
-"дня», «Цвет фона занятых дней» и «Цвет рабочего времени» (и, возможно, "
-"других)."
+"Использовать системные цвета вместо пользовательских для «Фон расписания», "
+"«Фон занятых дней» и «Рабочее время» (и, возможно, других)."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:349
@@ -5527,7 +5527,7 @@ msgstr "Определяет цвет фона при просмотре рас�
 #: settings/korganizer.kcfg:355
 #, kde-format
 msgid "Busy days background color"
-msgstr "Фон занятых дней:"
+msgstr "Фон занятых дней"
 
 #. i18n: ectx: tooltip, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:356
@@ -5545,8 +5545,8 @@ msgid ""
 "In Agenda and Month views, when you have an all day event marked as busy, "
 "draw that item's background using the specified color."
 msgstr ""
-"В представлениях «Повестка дня» и «Месяц» для событий на весь день, "
-"отмеченных как занятые, используется заливка фона указанным цветом."
+"В представлениях «Расписание» и «Месяц» для событий на весь день, отмеченных "
+"как занятые, используется заливка фона указанным цветом."
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:361
@@ -5561,7 +5561,7 @@ msgid ""
 "When not using system colors, set the color for the Agenda View working "
 "hours grid"
 msgstr ""
-"Цвет сетки рабочих часов в представлении «Повестка дня» при использовании "
+"Цвет сетки рабочих часов в представлении «Расписание» при использовании "
 "пользовательских цветов"
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
@@ -5790,7 +5790,7 @@ msgstr ""
 #: settings/korganizer.kcfg:436
 #, kde-format
 msgid "Default todo attachment method"
-msgstr "Метод добавления задач по умолчанию"
+msgstr "Способ присоединения писем по умолчанию"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:437
@@ -5814,7 +5814,7 @@ msgstr "Добавлять только ссылку на письмо"
 #: settings/korganizer.kcfg:446
 #, kde-format
 msgid "Attach complete message"
-msgstr "&Присоединять письмо полностью"
+msgstr "Присоединять письмо полностью"
 
 #. i18n: ectx: property (placeholderText), widget (KListWidgetSearchLine, searchline)
 #: ui/filteredit_base.ui:35
@@ -5858,7 +5858,7 @@ msgid ""
 "might be handy to hide them."
 msgstr ""
 "Не показывать повторяющиеся события и задачи при просмотре. Ежедневные и "
-"еженедельные события и задач перегружают вид и усложняют его восприятие."
+"еженедельные события и задачи перегружают вид и усложняют его восприятие."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mRecurringCheck)
 #: ui/filteredit_base.ui:124
@@ -5874,8 +5874,8 @@ msgid ""
 "that have been completed. Optionally, only items that have been completed a "
 "given number of days are hidden."
 msgstr ""
-"Не показывать выполненные задачи в списке. Кроме того, будут скрыты задачи, "
-"которые завершатся через указанное количество дней."
+"Не показывать выполненные задачи в списке. Можно скрывать только задачи, "
+"выполненные заданное количество дней назад."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mCompletedCheck)
 #: ui/filteredit_base.ui:134
@@ -5892,7 +5892,7 @@ msgid ""
 "as you check it. You can increase or decrease the number of days in the "
 "spinbox."
 msgstr ""
-"Этот параметр позволяет задать какие выполненные задачи будут скрыты. Если "
+"Этот параметр позволяет задать, какие выполненные задачи будут скрыты. Если "
 "выбрано <i>скрыть сразу</i>, задача будет скрыта сразу же после её "
 "выполнения. Количество дней, в течение которых выполненная задача будет "
 "показываться в списке, можно изменить."
@@ -5926,8 +5926,8 @@ msgid ""
 "been reached. (Note that the start date is not the due date of the to-do "
 "item.)"
 msgstr ""
-"Не показывать в списке задачи, срок начала которых не наступил. Дата "
-"завершения не может предшествовать дате начала."
+"Не показывать в списке задачи, срок начала которых не наступил. (Дата начала "
+"— это не срок выполнения задачи.)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, mHideInactiveTodosCheck)
 #: ui/filteredit_base.ui:221
@@ -5955,7 +5955,7 @@ msgstr ""
 #: ui/filteredit_base.ui:275
 #, kde-format
 msgid "Show all except selected"
-msgstr "Показать не соответствующие"
+msgstr "Показать все, кроме выбранных"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mCatShowCheck)
 #: ui/filteredit_base.ui:288
@@ -6028,9 +6028,9 @@ msgid ""
 "as the Kolab2 server taking care of publishing your Free/Busy information "
 "and manages the access to it from other users."
 msgstr ""
-"Опубликовывать информацию о занятом времени автоматически.\n"
-"Однако можно выключить этот флажок и опубликовывать информацию по расписанию "
-"(раздел «Расписание» диалога настройки KOrganizer.\n"
+"Публиковать информацию о занятом времени автоматически.\n"
+"Можно не включать этот параметр, а отправлять информацию о занятом времени "
+"по почте или публиковать её через меню «Расписание» KOrganizer.\n"
 "Примечание: если KOrganizer используется как клиент Kolab, этот параметр "
 "необязателен, поскольку сервер Kolab2 сам устанавливает параметры публикации "
 "информации о занятом времени и управляет доступом к ней других пользователей."
@@ -6039,7 +6039,7 @@ msgstr ""
 #: ui/kogroupwareprefspage.ui:75
 #, kde-format
 msgid "Publish your free/&busy information automatically"
-msgstr "Опубликовывать информацию о занятом времени &автоматически"
+msgstr "Публиковать информацию о занятом времени &автоматически"
 
 #. i18n: ectx: property (whatsThis), widget (QLabel, publishDelayLabel)
 #. i18n: ectx: property (whatsThis), widget (QSpinBox, publishDelay)
@@ -6051,7 +6051,7 @@ msgid ""
 "information automatically."
 msgstr ""
 "Устанавливает минимальное время между обновлениями информации на сервере. "
-"Этот параметр используется только в случае автоматического опубликования."
+"Этот параметр используется только в случае автоматической публикации."
 
 #. i18n: ectx: property (text), widget (QLabel, publishDelayLabel)
 #: ui/kogroupwareprefspage.ui:102
@@ -6081,7 +6081,7 @@ msgstr "Опубликовать"
 #: ui/kogroupwareprefspage.ui:173
 #, kde-format
 msgid "days of free/busy information"
-msgstr "период в днях хранения информации о занятом времени"
+msgstr "дней информации о занятом времени"
 
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2)
 #. i18n: ectx: property (title), widget (QGroupBox, ButtonGroup2_2)
@@ -6159,7 +6159,7 @@ msgstr ""
 "Сохраните пароль для публикации информации о занятом времени в файле "
 "настройки KOrganizer, и его не придётся вводить каждый раз.\n"
 "По соображениям безопасности не рекомендуется хранить пароль в файле "
-"настройки программы."
+"настройки."
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
 #: ui/kogroupwareprefspage.ui:290
@@ -6265,7 +6265,7 @@ msgstr ""
 "\n"
 "https://kolab2.example.com/freebusy/\n"
 "\n"
-"Также можно указать полный путь данным о занятом времени, например: \n"
+"Также можно указать полный путь к данным о занятом времени, например:\n"
 "\n"
 "https://kolab2.example.com/freebusy/user.xfb"
 
@@ -6411,32 +6411,32 @@ msgstr "Включить в поиск метки."
 #: ui/searchdialog_base.ui:130
 #, kde-format
 msgid "Check this box if you want to match tags against your search pattern."
-msgstr "Сопоставлять метки заданному поисковому шаблону."
+msgstr "Сопоставлять метки с заданным поисковым шаблоном."
 
 #. i18n: ectx: property (text), widget (QCheckBox, categoryCheck)
 #: ui/searchdialog_base.ui:133
 #, kde-format
 msgid "Ta&gs"
-msgstr "&Метки"
+msgstr "&Метках"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:140
 #, kde-format
 msgid "Include locations in your search."
-msgstr "Включить в поиск пути."
+msgstr "Включить в поиск места."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:143
 #, kde-format
 msgid ""
 "Check this box if you want to match locations against your search pattern."
-msgstr "Сопоставлять пути заданному поисковому шаблону."
+msgstr "Сопоставлять места с заданным поисковым шаблоном."
 
 #. i18n: ectx: property (text), widget (QCheckBox, locationCheck)
 #: ui/searchdialog_base.ui:146
 #, kde-format
 msgid "Locations"
-msgstr "Путях"
+msgstr "Местах"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:153
@@ -6449,7 +6449,7 @@ msgstr "Включить в поиск описания."
 #, kde-format
 msgid ""
 "Check this box if you want to match descriptions against your search pattern."
-msgstr "Сопоставлять описания заданному поисковому шаблону."
+msgstr "Сопоставлять описания с заданным поисковым шаблоном."
 
 #. i18n: ectx: property (text), widget (QCheckBox, descriptionCheck)
 #: ui/searchdialog_base.ui:159
@@ -6468,13 +6468,13 @@ msgstr "Включить в поиск краткие сводки."
 #, kde-format
 msgid ""
 "Check this box if you want to match summaries against your search pattern."
-msgstr "Сопоставлять краткие сводки заданному поисковому шаблону."
+msgstr "Сопоставлять краткие сводки с заданным поисковым шаблоном."
 
 #. i18n: ectx: property (text), widget (QCheckBox, summaryCheck)
 #: ui/searchdialog_base.ui:172
 #, kde-format
 msgid "Su&mmaries"
-msgstr "&Краткие сводки"
+msgstr "&Кратких сводках"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:182
@@ -6487,13 +6487,13 @@ msgstr "Включить в поиск участников."
 #, kde-format
 msgid ""
 "Check this box if you want to match attendees against your search pattern."
-msgstr "Сопоставлять участников заданному поисковому шаблону."
+msgstr "Сопоставлять участников с заданным поисковым шаблоном."
 
 #. i18n: ectx: property (text), widget (QCheckBox, attendeeCheck)
 #: ui/searchdialog_base.ui:188
 #, kde-format
 msgid "Attendees"
-msgstr "Участники"
+msgstr "Участниках"
 
 #. i18n: ectx: property (title), widget (QGroupBox, dateRangeGroup)
 #: ui/searchdialog_base.ui:198
@@ -6516,7 +6516,7 @@ msgid ""
 "Check this box to search for events within a specified date range. If the "
 "box is unchecked, all events will be searched."
 msgstr ""
-"Используйте этот параметр для поиска по событиям, находящимися внутри "
+"Используйте этот параметр для поиска по событиям, находящимся внутри "
 "указанного диапазона дат. Если флажок не отмечен, поиск будет выполняться по "
 "всем событиям."
 
@@ -6557,7 +6557,7 @@ msgstr "2008-08-18"
 #: ui/searchdialog_base.ui:260
 #, kde-format
 msgid "&To:"
-msgstr "&по:"
+msgstr "&По:"
 
 #. i18n: ectx: property (toolTip), widget (KDateComboBox, endDate)
 #: ui/searchdialog_base.ui:279
@@ -6570,8 +6570,8 @@ msgstr "Дата окончания периода для поиска."
 #, kde-format
 msgid "Search for items in the time period ending at the date given here."
 msgstr ""
-"Искать элементы во временном периоде, который кончается в указанную здесь "
-"дату."
+"Искать элементы во временном периоде, который заканчивается в указанную "
+"здесь дату."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, inclusiveCheck)
 #: ui/searchdialog_base.ui:296
@@ -6651,7 +6651,7 @@ msgid ""
 "even those that aren't displayed according the currently selected view filter"
 msgstr ""
 "Если этот флажок установлен, в поиске будут учитываться все события, даже "
-"те, которые не отображаются из-за текущего фильтра"
+"те, которые не показываются из-за текущего фильтра"
 
 #. i18n: ectx: property (text), widget (QCheckBox, unfiltered)
 #: ui/searchdialog_base.ui:331
@@ -6763,7 +6763,7 @@ msgctxt "@info:whatsthis"
 msgid ""
 "Click here to scroll the display to week number %1 of the currently "
 "displayed year."
-msgstr "Прокрутить экран к %1 неделе отображаемого года."
+msgstr "Прокрутить экран к %1 неделе показываемого года."
 
 #: widgets/kdatenavigator.cpp:243
 #, kde-format
@@ -6800,7 +6800,7 @@ msgstr "Повторение"
 #: widgets/kitemiconcheckcombo.cpp:20
 #, kde-format
 msgid "Alarm"
-msgstr "Напоминания"
+msgstr "Напоминание"
 
 #: widgets/kitemiconcheckcombo.cpp:21
 #, kde-format
@@ -6875,7 +6875,7 @@ msgstr "Перейти к ближайшему такому же дню пред
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "Перейти назад на месяц"
+msgstr "Перейти на месяц назад"
 
 #: widgets/navigatorbar.cpp:50
 #, kde-format
@@ -6913,7 +6913,7 @@ msgstr "Перейти к ближайшему такому же дню неде
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
-msgstr "Перейти к следующему месяцу"
+msgstr "Перейти на месяц вперёд"
 
 #: widgets/navigatorbar.cpp:64
 #, kde-format
