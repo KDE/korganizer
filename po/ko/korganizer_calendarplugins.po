@@ -2,14 +2,14 @@
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdepim package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
-# SPDX-FileCopyrightText: 2009, 2015, 2017, 2018, 2019, 2020, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2009, 2015, 2017, 2018, 2019, 2020, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-06 02:45+0000\n"
-"PO-Revision-Date: 2025-04-22 22:56+0200\n"
+"PO-Revision-Date: 2026-10-05 00:27+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -705,7 +705,7 @@ msgstr "섬네일 크기를 자유롭게 조정합니다. 비율을 보존하지
 #, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "비율 유지하기"
+msgstr "종횡비 유지"
 
 #: picoftheday/configdialog.cpp:54
 #, kde-format
