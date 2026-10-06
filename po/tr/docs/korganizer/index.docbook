@@ -780,17 +780,6 @@
 <varlistentry>
 <term
 ><guilabel
->Kolab Grup Yazılımı Sunucusu</guilabel
-></term>
-<listitem
-><para
->Bir Kolab IMAP Sunucusu üzerinde Kolab grup yazılımı klasörlerine ve e-postaya erişim sağlar.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
 >Open-Xchange Grup Yazılımı Sunucusu</guilabel
 ></term>
 <listitem
