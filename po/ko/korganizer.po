@@ -2,14 +2,14 @@
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdepim package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
-# SPDX-FileCopyrightText: 2009, 2015, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Shinjo Park <kde@peremen.name>
+# SPDX-FileCopyrightText: 2009, 2015, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-08-07 02:44+0000\n"
-"PO-Revision-Date: 2025-10-12 12:17+0200\n"
+"PO-Revision-Date: 2026-10-05 21:51+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -45,14 +45,7 @@ msgid "A Personal Organizer"
 msgstr "개인 오거나이저"
 
 #: aboutdata.cpp:23
-#, fuzzy, kde-format
-#| msgctxt "@info/plain"
-#| msgid ""
-#| "Copyright © 1997–1999 Preston Brown\n"
-#| "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-#| "Copyright © 2004–2005 Reinhold Kainhofer\n"
-#| "Copyright © 2006–2012 Allen Winter\n"
-#| "Copyright © 2012–2025 KOrganizer authors"
+#, kde-format
 msgctxt "@info/plain"
 msgid ""
 "Copyright © 1997–1999 Preston Brown\n"
@@ -65,7 +58,7 @@ msgstr ""
 "Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
 "Copyright © 2004–2005 Reinhold Kainhofer\n"
 "Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2025 KOrganizer authors"
+"Copyright © 2012–2026 KOrganizer authors"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -546,8 +539,8 @@ msgid ""
 "one or more days, sorted chronologically.  You can also see the length of "
 "each event in the day timetable."
 msgstr ""
-"이벤트나 단시일 내에 만료되는 할 일을 시간순으로 정렬해서 표시하는 일정 보기"
-"로 전환합니다. 날짜별 시간표에서 각각 이벤트의 시간을 표시합니다."
+"이벤트나 단시일 내에 끝내야 하는 할 일을 시간순으로 정렬해서 표시하는 일정 보"
+"기로 전환합니다. 날짜별 시간표에서 각각 이벤트의 시간을 표시합니다."
 
 #: actionmanager.cpp:374
 #, kde-format
@@ -762,9 +755,7 @@ msgid "Scroll the view to today"
 msgstr "보기를 오늘로 스크롤"
 
 #: actionmanager.cpp:474
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "보기를 오늘 날짜로 스크롤합니다."
@@ -1212,12 +1203,10 @@ msgid "Show Date Navigator"
 msgstr "날짜 탐색기 표시"
 
 #: actionmanager.cpp:715
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "할 일 보기 표시"
+msgstr "할 일 목록 표시"
 
 #: actionmanager.cpp:719
 #, kde-format
@@ -1489,20 +1478,16 @@ msgid "%1 (Offline)"
 msgstr "%1(오프라인)"
 
 #: akonadicollectionview.cpp:304
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1(기본값)"
+msgstr "%1(기본 이벤트)"
 
 #: akonadicollectionview.cpp:306
-#, fuzzy, kde-format
-#| msgctxt "@item this is the default calendar"
-#| msgid "%1 (Default)"
+#, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1(기본값)"
+msgstr "%1(기본 할 일)"
 
 #: akonadicollectionview.cpp:394
 #, kde-format
@@ -1536,88 +1521,65 @@ msgid "&Set Folder Color…"
 msgstr "폴더 색상 설정(&S)…"
 
 #: akonadicollectionview.cpp:506
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "기본 폴더로 설정(&D)"
+msgstr "기본 캘린더로 설정(&D)"
 
 #: akonadicollectionview.cpp:544
-#, fuzzy, kde-format
-#| msgctxt "@action:intoolbar create a new event"
-#| msgid "Event"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
-msgstr "행사"
+msgstr "이벤트"
 
 #: akonadicollectionview.cpp:547
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "할 일 보기"
+msgstr "할 일"
 
 #: akonadicollectionview.cpp:610
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?<para>This will replace <filename>%2</filename> as the "
-#| "default calendar folder.</para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?<para>This will replace <filename>%3</filename> as the "
 "default %4 calendar folder.</para>"
 msgstr ""
-"<filename>%1</filename> 폴더를 기본 캘린더 폴더로 설정하시겠습니까?<para>현"
-"재 기본 캘린더 폴더 <filename>%2</filename>을(를) 대체합니다.</para>"
+"<filename>%1</filename> 폴더를 기본 %2 캘린더 폴더로 설정하시겠습니까?<para>"
+"현재 기본 %4 캘린더 폴더 <filename>%3</filename>을(를) 대체합니다.</para>"
 
 #: akonadicollectionview.cpp:617
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to set <filename>%1</filename> as your default "
-#| "calendar folder?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
-msgstr "<filename>%1</filename> 폴더를 기본 캘린더 폴더로 설정하시겠습니까?"
+msgstr "<filename>%1</filename> 폴더를 기본 %2 캘린더 폴더로 설정하시겠습니까?"
 
 #: akonadicollectionview.cpp:620
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Replace Default Calendar?"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "기본 캘린더 교체?"
+msgstr "기본 %1 캘린더 폴더 변경?"
 
 #: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<filename>%1</filename> is now your default event calendar"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
-msgstr "기본 이벤트 캘린더를 <filename>%1</filename>(으)로 설정함"
+msgstr "기본 %2 캘린더를 <filename>%1</filename>(으)로 설정함"
 
 #: akonadicollectionview.cpp:777
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "기본 폴더로 설정(&D)"
+msgstr "기본 이벤트 캘린더로 설정(&D)"
 
 #: akonadicollectionview.cpp:780
-#, fuzzy, kde-format
-#| msgctxt "@action:inmenu"
-#| msgid "Set as &Default Folder"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "기본 폴더로 설정(&D)"
+msgstr "기본 할 일 캘린더로 설정(&D)"
 
 #: akonadicollectionview.cpp:798
 #, kde-format
@@ -1645,15 +1607,7 @@ msgstr ""
 "시 <filename>%1</filename> 캘린더를 추가할 수 있습니다.</note></para>"
 
 #: akonadicollectionview.cpp:907
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This calendar "
-#| "contains your default calendar folder. If you delete it you may be "
-#| "prompted to select a new default calendar folder.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1671,15 +1625,7 @@ msgstr ""
 "para>"
 
 #: akonadicollectionview.cpp:917
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> calendar?"
-#| "<para><note>The calendar data will not be deleted, nor will the calendar "
-#| "be removed from its remote resource. The <filename>%1</filename> calendar "
-#| "can be added again at any time.</note></para><para><warning>This is your "
-#| "default calendar. If you delete it you may be prompted to select a new "
-#| "default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> calendar?"
@@ -1692,8 +1638,8 @@ msgstr ""
 "<filename>%1</filename> 캘린더를 삭제하시겠습니까?<para><note>캘린더 데이터"
 "는 삭제되지 않으며, 원격 리소스에서도 캘린더를 삭제하지 않습니다. 나중에 다"
 "시 <filename>%1</filename> 캘린더를 추가할 수 있습니다.</note></"
-"para><para><warning>이 캘린더는 현재 기본 캘린더입니다. 캘린더를 삭제하면 새"
-"로운 기본 캘린더를 선택해야 할 수도 있습니다.</warning></para>"
+"para><para><warning>이 캘린더는 현재 기본 %2 캘린더입니다. 캘린더를 삭제하면 "
+"새로운 기본 %2 캘린더를 선택해야 할 수도 있습니다.</warning></para>"
 
 #: akonadicollectionview.cpp:930
 #, kde-kuit-format
@@ -1708,14 +1654,7 @@ msgstr ""
 "warning></para>"
 
 #: akonadicollectionview.cpp:938
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "Do you really want to delete the <filename>%1</filename> folder?"
-#| "<para><warning>This cannot be undone. Please consider carefully before "
-#| "pressing the %2 button.</warning></para><para><warning>This is your "
-#| "default calendar folder. If you delete it you may be prompted to select a "
-#| "new default calendar.</warning></para>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "Do you really want to delete the <filename>%1</filename> folder?"
@@ -1726,9 +1665,9 @@ msgid ""
 msgstr ""
 "<filename>%1</filename> 폴더를 삭제하시겠습니까?<para><warning>이 작업은 실"
 "행 취소할 수 없습니다. %2 단추를 클릭하기 전에 다시 생각해 보십시오.</"
-"warning></para><para><warning>이 캘린더 폴더는 현재 기본 캘린더 폴더입니다. "
-"캘린더를 삭제하면 새로운 기본 캘린더를 선택해야 할 수도 있습니다.</warning></"
-"para>"
+"warning></para><para><warning>이 캘린더 폴더는 현재 기본 %3 캘린더 폴더입니"
+"다. 캘린더를 삭제하면 새로운 기본 %4 캘린더를 선택해야 할 수도 있습니다.</"
+"warning></para>"
 
 #: akonadicollectionview.cpp:951 akonadicollectionview.cpp:982
 #, kde-format
@@ -1757,20 +1696,16 @@ msgid ""
 msgstr "캘린더 삭제 실패: <message>잘못된 Akonadi 에이전트 인스턴스</message>"
 
 #: akonadicollectionview.cpp:1062
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider setting a default calendar for new events"
+#, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr "새 이벤트의 기본 캘린더를 선택하십시오"
+msgstr "기본 %1 캘린더 설정을 추천합니다"
 
 #: akonadicollectionview.cpp:1064
-#, fuzzy, kde-format
-#| msgctxt "@info"
-#| msgid "Consider adding a write-enabled events calendar"
+#, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
-msgstr "쓰기 가능한 이벤트 캘린더를 추가하십시오"
+msgstr "쓰기 가능한 %1 캘린더 설정을 추천합니다"
 
 #: akonadicollectionview.cpp:1098
 #, kde-kuit-format
@@ -1865,12 +1800,10 @@ msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> 알림이 비활성화됨"
 
 #: calendarview.cpp:1400
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info alarm enabled"
-#| msgid "<message>%1</message> reminder is enabled"
+#, kde-kuit-format
 msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
-msgstr "<message>%1</message> 알림이 활성화됨"
+msgstr "<message>%1</message> 알림 전환 실패"
 
 #: calendarview.cpp:1431 calendarview.cpp:1489
 #, kde-format
@@ -1885,12 +1818,10 @@ msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "<message>%1</message> 할 일이 %2퍼센트 완료됨"
 
 #: calendarview.cpp:1438
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info percentage completed"
-#| msgid "To-do <message>%1</message> %2 percent completed"
+#, kde-kuit-format
 msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
-msgstr "<message>%1</message> 할 일이 %2퍼센트 완료됨"
+msgstr "<message>%1</message> 할 일의 완료 여부 전환 실패"
 
 #: calendarview.cpp:1541
 #, kde-format
@@ -2984,7 +2915,7 @@ msgstr "내일"
 #, kde-format
 msgid "in 1 day"
 msgid_plural "in %1 days"
-msgstr[0] "시작: %1일"
+msgstr[0] "%1일 안에"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:184
 #, kde-format
@@ -3007,9 +2938,7 @@ msgid_plural "%1 mins"
 msgstr[0] "%1분"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:212
-#, fuzzy, kde-format
-#| msgctxt "the to-do is in-progress"
-#| msgid "in-progress "
+#, kde-format
 msgctxt "the event is currently in-progress"
 msgid "in-progress"
 msgstr "진행 중"
@@ -3021,7 +2950,7 @@ msgctxt ""
 "hour ago"
 msgid "ended 1 hr ago"
 msgid_plural "ended %1 hrs ago"
-msgstr[0] ""
+msgstr[0] "%1시간 전에 끝남"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:224
 #, kde-format
@@ -3030,7 +2959,7 @@ msgctxt ""
 "minutes ago"
 msgid "ended 1 min ago"
 msgid_plural "ended %1 mins ago"
-msgstr[0] ""
+msgstr[0] "%1분 전에 끝남"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:232
 #, kde-format
@@ -3100,19 +3029,19 @@ msgstr "할 일 만료 기한 표시"
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
 #, kde-format
 msgid "Show To-dos due today only"
-msgstr "오늘까지 해야 할 일만 표시"
+msgstr "오늘까지 끝내야 할 일만 표시"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:31
 #, kde-format
 msgid "Check this box if you want to see To-dos due on this date only."
-msgstr "이 옵션을 사용하면 오늘까지 해야 할 일만 표시합니다."
+msgstr "이 옵션을 사용하면 오늘까지 끝내야 할 일만 표시합니다."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:44
 #, kde-format
 msgid "Show To-dos due within the next month"
-msgstr "다음 1개월 내에 해야 하는 할 일 표시"
+msgstr "다음 1개월 내에 끝내야 하는 할 일 표시"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:47
@@ -3120,8 +3049,7 @@ msgstr "다음 1개월 내에 해야 하는 할 일 표시"
 msgid ""
 "Check this box if you want to see To-dos that are due sometime during the "
 "next 31 days."
-msgstr ""
-"이 옵션을 사용하면 다음 31일 이내에 만료 기한이 다가오는 할 일을 표시합니다."
+msgstr "이 옵션을 사용하면 다음 31일 이내 끝내야 하는 할 일을 표시합니다."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateRangeButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:65
@@ -3283,20 +3211,16 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:197
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "1. weekday"
 msgid "%1"
 msgstr "%1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:200
-#, fuzzy, kde-format
-#| msgctxt "1. weekday, 2. time"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "1. weekday, 2. date"
 msgid "%1 %2"
-msgstr "%1 %2"
+msgstr "%2 %1"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:246
 #, kde-format
@@ -3308,26 +3232,25 @@ msgstr[0] "%1일 전"
 #, kde-format
 msgctxt "the to-do is due today"
 msgid "due any time today"
-msgstr ""
+msgstr "오늘까지 끝내야 함"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:253
-#, fuzzy, kde-format
-#| msgid "No due date"
+#, kde-format
 msgctxt "the to-do is due at specified time"
 msgid "is due at %1"
-msgstr "기한일 없음"
+msgstr "%1까지 끝내야 함"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:257
 #, kde-format
 msgctxt "the to-do was due at specified time"
 msgid "was due at %1"
-msgstr ""
+msgstr "%1까지 끝냈어야 함"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:324
 #, kde-format
 msgid "No pending to-dos due within the next day"
 msgid_plural "No pending to-dos due within the next %1 days"
-msgstr[0] "%1일 내에 만료 기한이 다가오는 할 일 없음"
+msgstr[0] "%1일 내로 끝내야 하는 할 일 없음"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:381
 #, kde-format
@@ -3745,7 +3668,7 @@ msgstr "지정한 항목 표시(URL로)"
 #, kde-format
 msgctxt "@info:shell"
 msgid "Url"
-msgstr ""
+msgstr "URL"
 
 #: korganizer_options.h:29
 #, kde-format
@@ -3869,7 +3792,7 @@ msgstr "이메일 설정"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr ""
+msgstr "기본 접근 분류"
 
 #: prefs/koprefsdialogmain.cpp:74 prefs/koprefsdialogtime.cpp:242
 #, kde-format
@@ -3963,8 +3886,7 @@ msgid "Holidays"
 msgstr "공휴일"
 
 #: prefs/koprefsdialogtime.cpp:72
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "공휴일 지역 사용:"
@@ -3982,19 +3904,16 @@ msgid "Select Holiday Regions"
 msgstr "공휴일 지역 선택"
 
 #: prefs/koprefsdialogtime.cpp:123
-#, fuzzy, kde-format
-#| msgid "Use holiday regions:"
+#, kde-format
 msgctxt "@label"
 msgid "Use holiday categories:"
-msgstr "공휴일 지역 사용:"
+msgstr "공휴일 분류 사용:"
 
 #: prefs/koprefsdialogtime.cpp:137
-#, fuzzy, kde-format
-#| msgctxt "@item:inlistbox"
-#| msgid "Select Categories"
+#, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
-msgstr "분류 선택"
+msgstr "공휴일 분류 선택"
 
 #: prefs/koprefsdialogtime.cpp:159
 #, kde-format
@@ -4397,7 +4316,8 @@ msgid ""
 "Check this box so that to-dos will use tag colors and not colors specific to "
 "their due, due today or overdue state"
 msgstr ""
-"이 옵션을 사용하면 할 일 목록에 일자별 색상 대신 태그 색상을 사용합니다"
+"이 옵션을 사용하면 할 할 일 목록에 만료 날짜, 오늘까지 해야 함, 기한 지남 상"
+"태에 따른 색상 대신 태그 색상을 사용합니다"
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:71
@@ -4533,14 +4453,14 @@ msgid ""
 "Select the height of the hour rows in the agenda grid, in pixels. Increasing "
 "this value will make each row in the agenda grid taller."
 msgstr ""
-"일정 모눈에 표시할 시간 열의 높이를 픽셀 단위로 지정하십시오. 이 값을 증가시"
-"키면 일정 모눈의 각각 열 높이를 높입니다."
+"일정 격자에 표시할 시간 열의 높이를 픽셀 단위로 지정하십시오. 이 값을 증가시"
+"키면 일정 격자의 각각 열 높이를 높입니다."
 
 #. i18n: ectx: tooltip, entry, group (Agenda View)
 #: settings/korganizer.kcfg:112
 #, kde-format
 msgid "Set the height (in pixels) for an hour in the agenda grid"
-msgstr "일정 모눈의 한 시간의 높이를 픽셀 단위로 설정"
+msgstr "일정 격자의 한 시간의 높이를 픽셀 단위로 설정"
 
 #. i18n: ectx: label, entry (EnableAgendaItemIcons), group (Agenda View)
 #: settings/korganizer.kcfg:118
@@ -4567,69 +4487,57 @@ msgstr "일정 보기 항목에 아이콘 표시"
 #: settings/korganizer.kcfg:124
 #, kde-format
 msgid "Draw bold horizontal grid lines for the even hours"
-msgstr ""
+msgstr "짝수 시간의 수평 격자선을 굵게 표시"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:125
 #, kde-format
 msgid ""
 "Draw a bolder horizontal grid line for the even hours (12am, 2am, 4am, etc)."
-msgstr ""
+msgstr "짝수 시간(오전 12시, 오전 2시, 오전 4시 등)의 수평 격자선을 굵게 표시"
 
 #. i18n: ectx: tooltip, entry (EnableAgendaBoldEvenHours), group (Agenda View)
 #: settings/korganizer.kcfg:126
 #, kde-format
 msgid "Draw bolder even hour grid lines"
-msgstr ""
+msgstr "짝수 시간 격자선을 굵게 표시"
 
 #. i18n: ectx: label, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:130
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence descriptions in agenda view items"
-msgstr "일정 보기 항목에 아이콘 표시"
+msgstr "일정 보기 항목에 항목 설명 표시"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid ""
 "Check this box to display the incidence descriptions in agenda view items."
-msgstr ""
-"이 옵션을 사용하면 일정 보기 항목에 아이콘(알람, 반복 등)을 표시합니다."
+msgstr "이 옵션을 사용하면 일정 보기 항목에 항목 설명을 표시합니다."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemDesc), group (Agenda View)
 #: settings/korganizer.kcfg:132
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence descriptions agenda view items"
-msgstr "일정 보기 항목에 아이콘 표시"
+msgstr "일정 보기 항목에 항목 설명 표시"
 
 #. i18n: ectx: label, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:136
-#, fuzzy, kde-format
-#| msgid "Show icons in agenda view items"
+#, kde-format
 msgid "Show incidence locations in agenda view items"
-msgstr "일정 보기 항목에 아이콘 표시"
+msgstr "일정 보기 항목에 반복 항목 위치 표시"
 
 #. i18n: ectx: whatsthis, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:137
-#, fuzzy, kde-format
-#| msgid ""
-#| "Check this box to display icons (alarm, recursion, etc.) in agenda view "
-#| "items."
+#, kde-format
 msgid "Check this box to display the incidence locations in agenda view items."
-msgstr ""
-"이 옵션을 사용하면 일정 보기 항목에 아이콘(알람, 반복 등)을 표시합니다."
+msgstr "이 옵션을 사용하면 일정 보기 항목에 반복 항목 위치를 표시합니다."
 
 #. i18n: ectx: tooltip, entry (EnableAgendaItemLocation), group (Agenda View)
 #: settings/korganizer.kcfg:138
-#, fuzzy, kde-format
-#| msgid "Display icons in agenda view items"
+#, kde-format
 msgid "Display incidence locations agenda view items"
-msgstr "일정 보기 항목에 아이콘 표시"
+msgstr "일정 보기 항목에 반복 항목 위치 표시"
 
 #. i18n: ectx: label, entry (ShowTodosAgendaView), group (Agenda View)
 #. i18n: ectx: label, entry (ShowTodosMonthView), group (Month View)
@@ -4654,7 +4562,7 @@ msgstr "일정 보기에 할 일 표시"
 #: settings/korganizer.kcfg:148
 #, kde-format
 msgid "Show current-time (Marcus Bains) line"
-msgstr "현재 시간 표시선 표시"
+msgstr "현재 시간 표시선(Marcus Bains 선) 표시"
 
 #. i18n: ectx: whatsthis, entry (MarcusBainsEnabled), group (Agenda View)
 #: settings/korganizer.kcfg:149
@@ -4863,7 +4771,9 @@ msgstr "모든 캘린더를 한 보기로 합치기"
 msgid ""
 "Select the \"Merge all calendars into one view\" option if you would like "
 "all your calendars to be shown together in one agenda view."
-msgstr "이 옵션을 사용하면 모든 캘린더를 하나의 일정 보기에 합쳐서 표시합니다."
+msgstr ""
+"\"모든 캘린더를 한 보기로 합치기\" 옵션을 사용하면 모든 캘린더를 하나의 일정 "
+"보기에 합쳐서 표시합니다."
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:202
@@ -4933,47 +4843,42 @@ msgstr "월간 보기 항목에 아이콘 표시"
 
 #. i18n: ectx: label, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:227
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show start-times without end-times in month view items"
-msgstr "월간 보기 항목에 시간 표시"
+msgstr "월간 보기 항목에 끝 시간 없이 시작 시간만 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:228
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid ""
 "Check this box to display the start-time without the end-time in month view "
 "items."
-msgstr "이 옵션을 사용하면 월간 보기 항목에 시간을 표시합니다."
+msgstr ""
+"이 옵션을 사용하면 월간 보기 항목에 끝 시간 없이 시작 시간만 표시합니다."
 
 #. i18n: ectx: tooltip, entry (ShowTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:229
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display start-time without the end-time in month view items"
-msgstr "월간 보기 항목에 시간 표시"
+msgstr "월간 보기 항목에 끝 시간 없이 시작 시간만 표시"
 
 #. i18n: ectx: label, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:233
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgid "Show the start-time and the end-time in month view items"
-msgstr "월간 보기 항목에 시간 표시"
+msgstr "월간 보기 항목에 시작 시간과 끝 시간 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:234
-#, fuzzy, kde-format
-#| msgid "Check this box to display the time in month view items."
+#, kde-format
 msgid "Check this box to display the start and end times in month view items."
-msgstr "이 옵션을 사용하면 월간 보기 항목에 시간을 표시합니다."
+msgstr "이 옵션을 사용하면 월간 보기 항목에 시작과 끝 시간을 표시합니다."
 
 #. i18n: ectx: tooltip, entry (ShowEndTimeInMonthView), group (Month View)
 #: settings/korganizer.kcfg:235
-#, fuzzy, kde-format
-#| msgid "Display time in month view items"
+#, kde-format
 msgid "Display the start and end times in month view items"
-msgstr "월간 보기 항목에 시간 표시"
+msgstr "월간 보기 항목에 시작과 끝 시간 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowTodosMonthView), group (Month View)
 #: settings/korganizer.kcfg:240
@@ -5007,32 +4912,28 @@ msgstr "월간 보기에 저널 표시"
 
 #. i18n: ectx: label, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:251
-#, fuzzy, kde-format
-#| msgid "Show &holidays"
+#, kde-format
 msgid "Show holidays"
-msgstr "공휴일 표시(&H)"
+msgstr "공휴일 표시"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysMonthView), group (Month View)
 #: settings/korganizer.kcfg:252
-#, fuzzy, kde-format
-#| msgid "Check this box to display to-dos in the month view."
+#, kde-format
 msgid "Check this box to display holidays in the month view."
-msgstr "이 옵션을 사용하면 월간 보기에 할 일을 표시합니다"
+msgstr "이 옵션을 사용하면 월간 보기에 공휴일을 표시합니다."
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysMonthView), group (Month View)
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:253 settings/korganizer.kcfg:260
-#, fuzzy, kde-format
-#| msgid "Display to-dos in the month view"
+#, kde-format
 msgid "Display holidays in the month view"
-msgstr "월간 보기에 할 일 표시"
+msgstr "월간 보기에 공휴일 표시"
 
 #. i18n: ectx: label, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:257
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Use the Holiday background color when a holiday lands on the date"
-msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오."
+msgstr "해당 날짜가 공휴일일 때 공휴일 배경색 사용"
 
 #. i18n: ectx: tooltip, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:258
@@ -5040,7 +4941,7 @@ msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오
 msgid ""
 "Use the custom holiday color as the date's background color if a holiday "
 "lands on the date"
-msgstr ""
+msgstr "해당 날짜가 공휴일일 때 사용자 정의 공휴일 배경색 사용"
 
 #. i18n: ectx: whatsthis, entry (ShowHolidaysBackgroundMonthView), group (Month View)
 #: settings/korganizer.kcfg:259
@@ -5050,6 +4951,8 @@ msgid ""
 "at least one holiday lands on a date. Configure the holiday color in the "
 "Settings->Colors and Fonts."
 msgstr ""
+"이 옵션을 사용하면 해당 날짜가 공휴일일 때 날짜에 사용자 정의 공휴일 배경색"
+"을 사용합니다. 설정->색상과 글꼴에서 공휴일 색상을 설정하십시오."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:264
@@ -5292,7 +5195,7 @@ msgstr "일정 보기에 사용할 업무 시간 색상을 선택하십시오."
 #: settings/korganizer.kcfg:350 settings/korganizer.kcfg:610
 #, kde-format
 msgid "To-do due today color"
-msgstr "오늘까지 해야 할 일 색"
+msgstr "오늘까지 끝내야 할 일 색"
 
 #. i18n: ectx: whatsthis, entry (TodoDueTodayColor), group (Colors)
 #. i18n: ectx: whatsthis, entry, group (Theme/Month view)
@@ -5317,23 +5220,21 @@ msgstr "기한이 지난 할 일의 색상을 선택하십시오."
 
 #. i18n: ectx: label, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:360
-#, fuzzy, kde-format
-#| msgid "Month view background color"
+#, kde-format
 msgid "Month view today background color"
-msgstr "월간 보기 배경색"
+msgstr "월간 보기 오늘 배경색"
 
 #. i18n: ectx: tooltip, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:361
-#, fuzzy, kde-format
-#| msgid "Select the working hours background color for the Month view here."
+#, kde-format
 msgid "Set the background color for today's date in month view"
-msgstr "월간 보기에 사용할 업무 시간 배경색을 선택하십시오."
+msgstr "월간 보기의 오늘 날짜에 사용할 배경색 선택"
 
 #. i18n: ectx: whatsthis, entry (MonthTodayColor), group (Colors)
 #: settings/korganizer.kcfg:362
 #, kde-format
 msgid "In Month View, select the background color for today's date."
-msgstr ""
+msgstr "월간 보기에서 오늘 날짜에 사용할 배경색을 선택하십시오."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:369
@@ -5454,21 +5355,15 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Theming)
 #: settings/korganizer.kcfg:534
-#, fuzzy, kde-format
-#| msgid "Busy days background color"
+#, kde-format
 msgid "Use system colors for some background colors"
-msgstr "바쁜 날 배경색"
+msgstr "일부 배경색에 시스템 색상 사용"
 
 #. i18n: ectx: tooltip, entry, group (Theming)
 #: settings/korganizer.kcfg:535
-#, fuzzy, kde-format
-#| msgid ""
-#| "Use system color instead of user defined color. If enabled will ignore "
-#| "all other color settings"
+#, kde-format
 msgid "Use system colors instead of custom colors for some background colors"
-msgstr ""
-"사용자 정의 색상 대신 시스템 색상을 사용합니다. 활성화되면 다른 모든 색 설정"
-"을 무시합니다"
+msgstr "일부 배경색에 사용자 정의 색상 대신 시스템 색상 사용"
 
 #. i18n: ectx: whatsthis, entry, group (Theming)
 #: settings/korganizer.kcfg:536
@@ -5478,6 +5373,8 @@ msgid ""
 "background color\", \"Busy days background color\" and the \"Working hours "
 "color\" (and possibly others)."
 msgstr ""
+"\"일정 보기 배경색\", \"바쁜 날 배경색\", \"업무 시간 배경색\"(외 여러 색상)"
+"에 사용자 정의 색상 대신 시스템 색상을 사용합니다."
 
 #. i18n: ectx: label, entry, group (Theme/Month view)
 #: settings/korganizer.kcfg:546
@@ -6300,8 +6197,8 @@ msgid ""
 "Include to-dos that have a start date, due date,  or completion date in the "
 "date range specified, or have neither a start date nor an end date."
 msgstr ""
-"시작 날짜, 만료한 날짜, 완료한 날짜가 지정한 범위 내에 있거나, 시작 날짜 또"
-"는 만료 날짜가 지정되지 않은 할 일을 포함합니다."
+"시작 날짜, 만료 날짜, 완료한 날짜가 지정한 범위 내에 있거나, 시작 날짜 또는 "
+"만료 날짜가 지정되지 않은 할 일을 포함합니다."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, includeUndatedTodos)
 #: ui/searchdialog_base.ui:312
@@ -6440,6 +6337,10 @@ msgid ""
 "default Event calendar has been supported for a long time.  See the Calendar "
 "Manager context menu \"Set as Default Todo Calendar\""
 msgstr ""
+"기본 할 일 캘린더를 지정하여 새 할 일을 빠르게 만들고 다른 폴더에 잘못 저장"
+"할 가능성을 줄입니다. 기본 이벤트 캘린더를 지정하는 것은 오래 전부터 지원되었"
+"습니다. 캘린더 관리자의 상황에 맞는 메뉴에서 \"기본 할 일 캘린더로 설정\"을 "
+"선택하십시오4"
 
 #: whatsnew/whatsnewtranslations.cpp:20
 msgid ""
@@ -6447,6 +6348,9 @@ msgid ""
 "hours. To enable this behaviour, check the \"Draw bold horizontal grid lines "
 "for the even hours\" option in the View->Agenda View tab"
 msgstr ""
+"일정 보기: 선택 사항으로 매 2시간마다 더 굵은 수평 격자선을 표시할 수 있습니"
+"다. 이를 활성화하려면 보기->일정 보기 탭에서 \"짝수 시간의 수평 격자선을 굵"
+"게 표시\"를 선택하십시오"
 
 #: whatsnew/whatsnewtranslations.cpp:22
 msgid ""
@@ -6454,12 +6358,15 @@ msgid ""
 "example to hide religious holidays. See the Categories combobox in the "
 "Holidays section of the Time&Date->Regional tab"
 msgstr ""
+"종교적 휴일 등 특정 분류의 공휴일을 숨길 수 있습니다. 날짜와 시간->지역 탭의 "
+"공휴일 부분에서 분류 콤보 상자를 선택하십시오"
 
 #: whatsnew/whatsnewtranslations.cpp:24
 msgid ""
 "Month view: for the sake of consistency, holidays that land on a workday are "
 "no longer hidden"
 msgstr ""
+"월간 보기: 일관성을 위해서 업무일에 있는 공휴일을 더 이상 숨기지 않습니다"
 
 #: whatsnew/whatsnewtranslations.cpp:25
 msgid ""
@@ -6467,6 +6374,8 @@ msgid ""
 "behavior, uncheck the \"Display holidays in the month view\" option in the "
 "Views->Month View tab"
 msgstr ""
+"월간 보기: 공휴일 숨기기 옵션을 추가했습니다. 이를 활성화하려면 보기->월간 보"
+"기 탭에서 \"월간 보기에 공휴일 표시\"의 선택을 해제하십시오"
 
 #: whatsnew/whatsnewtranslations.cpp:27
 msgid ""
@@ -6475,6 +6384,10 @@ msgid ""
 "enable this behavior, check the \"Use the Holiday background color when a "
 "holiday lands on the date\" option in the Views->Month View tab"
 msgstr ""
+"월간 보기: 하나 이상의 공휴일이 해당 날짜에 해당한다면 사용자 정의 공휴일 색"
+"상을 날짜 상자의 배경색으로 사용하는 옵션이 추가되었습니다. 이를 활성화하려"
+"면 보기->월간 보기 탭에서 \"해당 날짜가 공휴일일 때 공휴일 배경색 사용\" 옵션"
+"을 활성화하십시오"
 
 #: whatsnew/whatsnewtranslations.cpp:30
 msgid ""
@@ -6622,11 +6535,11 @@ msgstr ""
 
 #: whatsnew/whatsnewtranslations.cpp:87
 msgid "To-do view: save/restore fullview setting"
-msgstr "하 ㄹ일 보기: 전체 보기 설정 저장/복원"
+msgstr "할 일 보기: 전체 보기 설정 저장/복원"
 
 #: whatsnew/whatsnewtranslations.cpp:88
 msgid "To-do view: save/restore flatview setting"
-msgstr ""
+msgstr "할 일 보기: 평면 보기 설정 저장/복원"
 
 #: whatsnew/whatsnewtranslations.cpp:89
 msgid ""
@@ -6842,11 +6755,10 @@ msgid "Icons to use"
 msgstr "사용할 아이콘"
 
 #: widgets/navigatorbar.cpp:32
-#, fuzzy, kde-format
-#| msgid "Show time in month view items"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show/hide the sidebar in this view"
-msgstr "월간 보기 항목에 시간 표시"
+msgstr "이 보기에서 사이드바 표시/숨기기"
 
 #: widgets/navigatorbar.cpp:34
 #, kde-format
@@ -6855,28 +6767,23 @@ msgid ""
 "Click this button to show/hide the sidebar in the current view. Each view "
 "can show/hide the sidebar independently."
 msgstr ""
+"이 단추를 클릭하면 현재 보기에서 사이드바를 표시하거나 숨깁니다. 각각 보기에"
+"서는 사이드바를 독립적으로 표시하거나 숨길 수 있습니다."
 
 #: widgets/navigatorbar.cpp:39
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Scrolls the current view to the today's date."
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "보기를 오늘 날짜로 스크롤합니다."
 
 #: widgets/navigatorbar.cpp:42
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a year"
-msgstr "뒤로 스크롤"
+msgstr "작년으로 스크롭"
 
 #: widgets/navigatorbar.cpp:44
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the previous year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
@@ -6884,18 +6791,13 @@ msgid ""
 msgstr "이 단추를 클릭하면 작년의 동등한 날짜로 스크롤합니다"
 
 #: widgets/navigatorbar.cpp:48
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a month"
-msgstr "뒤로 스크롤"
+msgstr "지난 달로 스크롤"
 
 #: widgets/navigatorbar.cpp:50
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the previous month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
@@ -6903,51 +6805,37 @@ msgid ""
 msgstr "이 단추를 클릭하면 지난 달의 동등한 날짜로 스크롤합니다"
 
 #: widgets/navigatorbar.cpp:54
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll backward a week"
-msgstr "뒤로 스크롤"
+msgstr "지난 주로 스크롤"
 
 #: widgets/navigatorbar.cpp:55
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to back 1 week in time"
-msgstr "이 단추를 클릭하면 다음 달의 동등한 날짜로 스크롤합니다"
+msgstr "이 단추를 클릭하면 시간을 1주 전으로 스크롤합니다"
 
 #: widgets/navigatorbar.cpp:58
-#, fuzzy, kde-format
-#| msgctxt "@info:status"
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a week"
-msgstr "앞으로 스크롤"
+msgstr "다음 주로 스크롤"
 
 #: widgets/navigatorbar.cpp:59
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid "Click this button to scroll the display to forward 1 week in time"
-msgstr "이 단추를 클릭하면 내년의 동등한 날짜로 스크롤합니다"
+msgstr "이 단추를 클릭하면 시간을 1주 후로 스크롤합니다"
 
 #: widgets/navigatorbar.cpp:62
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next month"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a month"
 msgstr "다음 달로 스크롤"
 
 #: widgets/navigatorbar.cpp:64
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate date of "
-#| "the next month"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate date of the "
@@ -6955,17 +6843,13 @@ msgid ""
 msgstr "이 단추를 클릭하면 다음 달의 동등한 날짜로 스크롤합니다"
 
 #: widgets/navigatorbar.cpp:68
-#, fuzzy, kde-format
-#| msgid "Scroll forward to the next year"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll forward a year"
 msgstr "내년으로 스크롤"
 
 #: widgets/navigatorbar.cpp:70
-#, fuzzy, kde-format
-#| msgid ""
-#| "Click this button to scroll the display to the same approximate day of "
-#| "the next year"
+#, kde-format
 msgctxt "@info::whatsthis"
 msgid ""
 "Click this button to scroll the display to the same approximate day of the "
@@ -6985,20 +6869,16 @@ msgid "Select a year"
 msgstr "연도 선택"
 
 #: widgets/navigatorbar.cpp:141
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label monthname"
 msgid "%1"
 msgstr "%1"
 
 #: widgets/navigatorbar.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "@info:tooltip"
-#| msgid "%1"
+#, kde-format
 msgctxt "@label 4 digit year"
 msgid "%1"
-msgstr "%1"
+msgstr "%1년"
 
 #~ msgctxt "the to-do is due"
 #~ msgid "due"
