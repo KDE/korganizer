@@ -1,5 +1,5 @@
 /*
-  SPDX-FileCopyrightText: Allen Winter <winter@kde.org>
+  SPDX-FileCopyrightText: 2018 Allen Winter <winter@kde.org>
   SPDX-FileCopyrightText: 2021 Friedrich W. H. Kossebau <kossebau@kde.org>
 
   SPDX-License-Identifier: GPL-2.0-or-later
@@ -20,41 +20,40 @@ static QIcon phaseIcon(KHolidays::LunarPhase::Phase phase, Lunarphases::Hemisphe
     QString iconName;
     switch (phase) {
     case KHolidays::LunarPhase::NewMoon:
-        iconName = QStringLiteral("realmoon-new");
+        iconName = QStringLiteral("goldmoon-new");
         break;
     case KHolidays::LunarPhase::FullMoon:
-        iconName = QStringLiteral("realmoon-full");
+        iconName = QStringLiteral("goldmoon-full");
         break;
     case KHolidays::LunarPhase::FirstQuarter:
-        iconName = QStringLiteral("realmoon-waxing-first-quarter");
+        iconName = QStringLiteral("goldmoon-waxing-first-quarter");
         break;
     case KHolidays::LunarPhase::LastQuarter:
-        iconName = QStringLiteral("realmoon-waning-last-quarter");
+        iconName = QStringLiteral("goldmoon-waning-last-quarter");
         break;
-        // TODO find/create matching icons for these.
-        // any new icon set must also look good in dark-mode.
-    // case KHolidays::LunarPhase::WaxingCrescent:
-    //     iconName = QStringLiteral("realmoon-waxing-crescent");
-    //     break;
-    // case KHolidays::LunarPhase::WaningCrescent:
-    //    iconName = QStringLiteral("realmoon-waning-crescent");
-    //    break;
-    // case KHolidays::LunarPhase::WaxingGibbous:
-    //    iconName = QStringLiteral("realmoon-waxing-gibbous");
-    //    break;
-    // case KHolidays::LunarPhase::WaningGibbous:
-    //    iconName = QStringLiteral("realmoon-waning-gibbous");
-    //    break;
-    default:
+    case KHolidays::LunarPhase::WaxingCrescent:
+        iconName = QStringLiteral("goldmoon-waxing-crescent");
+        break;
+    case KHolidays::LunarPhase::WaningCrescent:
+        iconName = QStringLiteral("goldmoon-waning-crescent");
+        break;
+    case KHolidays::LunarPhase::WaxingGibbous:
+        iconName = QStringLiteral("goldmoon-waxing-gibbous");
+        break;
+    case KHolidays::LunarPhase::WaningGibbous:
+        iconName = QStringLiteral("goldmoon-waning-gibbous");
+        break;
+    case KHolidays::LunarPhase::None:
         break;
     }
-    if (!iconName.isEmpty() && iconName != QStringLiteral("realmoon-new") && iconName != QStringLiteral("realmoon-full")) {
+    if (iconName != QStringLiteral("goldmoon-new") && iconName != QStringLiteral("goldmoon-full")) {
         if (hemisphere == Lunarphases::NorthernHemisphere) {
             iconName += QStringLiteral("-north");
         } else {
             iconName += QStringLiteral("-south");
         }
     }
+
     return iconName.isEmpty() ? QIcon() : QIcon::fromTheme(iconName);
 }
 
@@ -67,25 +66,17 @@ LunarphasesElement::LunarphasesElement(KHolidays::LunarPhase::Phase phase, Lunar
 
 QString LunarphasesElement::shortText() const
 {
-    // don't clutter with phase name texts if we don't have an icon
-    if (!mIcon.isNull()) {
-        return mName;
-    }
-    return {};
+    return mName;
 }
 
 QString LunarphasesElement::longText() const
 {
-    // don't clutter with phase name tooltips if we don't have an icon
-    if (!mIcon.isNull()) {
-        return mName;
-    }
-    return {};
+    return mName;
 }
 
 QPixmap LunarphasesElement::newPixmap(const QSize &size)
 {
-    return mIcon.pixmap(size * 3 / 4); // I think a bit smaller than 48 pixels looks better
+    return mIcon.pixmap(size * 3 / 4);
 }
 
 Lunarphases::Lunarphases(QObject *parent, const QVariantList &args)

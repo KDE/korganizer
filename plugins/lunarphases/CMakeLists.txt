@@ -25,12 +25,34 @@ install(TARGETS lunarphases DESTINATION ${KDE_INSTALL_PLUGINDIR}/pim6/korganizer
 include(ECMInstallIcons)
 ecm_install_icons(
     ICONS
-    pics/sc-apps-realmoon-full.svg
-    pics/sc-apps-realmoon-new.svg
-    pics/sc-apps-realmoon-waning-last-quarter-north.svg
-    pics/sc-apps-realmoon-waning-last-quarter-south.svg
-    pics/sc-apps-realmoon-waxing-first-quarter-north.svg
-    pics/sc-apps-realmoon-waxing-first-quarter-south.svg
+    pics/48-apps-goldmoon-full.png
+    pics/48-apps-goldmoon-new.png
+    pics/48-apps-goldmoon-waning-crescent-north.png
+    pics/48-apps-goldmoon-waning-crescent-south.png
+    pics/48-apps-goldmoon-waning-gibbous-north.png
+    pics/48-apps-goldmoon-waning-gibbous-south.png
+    pics/48-apps-goldmoon-waning-last-quarter-north.png
+    pics/48-apps-goldmoon-waning-last-quarter-south.png
+    pics/48-apps-goldmoon-waxing-crescent-north.png
+    pics/48-apps-goldmoon-waxing-crescent-south.png
+    pics/48-apps-goldmoon-waxing-first-quarter-north.png
+    pics/48-apps-goldmoon-waxing-first-quarter-south.png
+    pics/48-apps-goldmoon-waxing-gibbous-north.png
+    pics/48-apps-goldmoon-waxing-gibbous-south.png
+    pics/48-apps-moon-full.png
+    pics/48-apps-moon-new.png
+    pics/48-apps-moon-waning-crescent-north.png
+    pics/48-apps-moon-waning-crescent-south.png
+    pics/48-apps-moon-waning-gibbous-north.png
+    pics/48-apps-moon-waning-gibbous-south.png
+    pics/48-apps-moon-waning-last-quarter-north.png
+    pics/48-apps-moon-waning-last-quarter-south.png
+    pics/48-apps-moon-waxing-crescent-north.png
+    pics/48-apps-moon-waxing-crescent-south.png
+    pics/48-apps-moon-waxing-first-quarter-north.png
+    pics/48-apps-moon-waxing-first-quarter-south.png
+    pics/48-apps-moon-waxing-gibbous-north.png
+    pics/48-apps-moon-waxing-gibbous-south.png
     DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )
