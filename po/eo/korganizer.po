@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-04 00:48+0000\n"
+"POT-Creation-Date: 2026-10-08 00:47+0000\n"
 "PO-Revision-Date: 2025-03-22 22:36+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
@@ -2000,7 +2000,7 @@ msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ne eblas kopii la eron \"%1\" al %2."
 
-#: calendarview.cpp:1553 calendarview.cpp:2532
+#: calendarview.cpp:1553 calendarview.cpp:2534
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
@@ -2016,7 +2016,7 @@ msgstr ""
 "Ne eblas forigi la eron \"%1\" de la originala kalendaro. Tamen kopio de ĉi "
 "tiu ero estis metita en %2"
 
-#: calendarview.cpp:1616 calendarview.cpp:1632 calendarview.cpp:2567
+#: calendarview.cpp:1616 calendarview.cpp:1632 calendarview.cpp:2569
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
@@ -2047,8 +2047,8 @@ msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "Ĉu vi volas apartigi la aperon sur %1 de la ripeto?"
 
-#: calendarview.cpp:1671 calendarview.cpp:1684 calendarview.cpp:2348
-#: calendarview.cpp:2407 calendarview.cpp:2437
+#: calendarview.cpp:1671 calendarview.cpp:1684 calendarview.cpp:2350
+#: calendarview.cpp:2409 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
@@ -2171,7 +2171,7 @@ msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Neniu filtrilo"
 
-#: calendarview.cpp:2343
+#: calendarview.cpp:2345
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" has sub-to-dos. Do you want to delete just this item and "
@@ -2187,19 +2187,19 @@ msgstr ""
 "fari ĉiujn ĝiajn subfarendojn sendependaj, aŭ forigi la faron kun ĉiuj ĝiaj "
 "subfaroj?"
 
-#: calendarview.cpp:2349
+#: calendarview.cpp:2351
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Forigi Nur Ĉi tiun"
 
-#: calendarview.cpp:2350 calendarview.cpp:2408
+#: calendarview.cpp:2352 calendarview.cpp:2410
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Forigi Ĉiujn"
 
-#: calendarview.cpp:2382
+#: calendarview.cpp:2384
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The item \"%1\" is marked read-only and cannot be deleted; it probably "
@@ -2212,14 +2212,14 @@ msgstr ""
 "La ero \"%1\" estas markita nurlegebla kaj ne povas esti forigita; ĝi "
 "verŝajne apartenas al nurlegebla kalendaro."
 
-#: calendarview.cpp:2385
+#: calendarview.cpp:2387
 #, fuzzy, kde-format
 #| msgid "Removing not possible"
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Forigo ne eblas"
 
-#: calendarview.cpp:2404
+#: calendarview.cpp:2406
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates; are you sure you "
@@ -2232,14 +2232,14 @@ msgstr ""
 "La kalendara ero \"%1\" ripetiĝas dum pluraj datoj; ĉu vi certas, ke vi "
 "volas forigi ĝin kaj ĉiujn ĝiajn ripetiĝojn?"
 
-#: calendarview.cpp:2415
+#: calendarview.cpp:2417
 #, fuzzy, kde-format
 #| msgid "Also Delete &Future"
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Ankaŭ Forigi &Estonton"
 
-#: calendarview.cpp:2419
+#: calendarview.cpp:2421
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2254,7 +2254,7 @@ msgstr ""
 "La kalendara ero \"%1\" ripetiĝas dum pluraj datoj. Ĉu vi volas forigi nur "
 "la nunan ĉe %2, ankaŭ estontajn apojn, aŭ ĉiujn ĝiajn apojn?"
 
-#: calendarview.cpp:2426
+#: calendarview.cpp:2428
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "The calendar item \"%1\" recurs over multiple dates. Do you want to "
@@ -2267,28 +2267,28 @@ msgstr ""
 "La kalendara ero \"%1\" ripetiĝas dum pluraj datoj. Ĉu vi volas forigi nur "
 "la nunan ĉe %2 aŭ ĉiujn ĝiajn apojn?"
 
-#: calendarview.cpp:2438
+#: calendarview.cpp:2440
 #, fuzzy, kde-format
 #| msgid "Delete C&urrent"
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Forigi C&aktualen"
 
-#: calendarview.cpp:2440
+#: calendarview.cpp:2442
 #, fuzzy, kde-format
 #| msgid "Delete &All"
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Forigi &Ĉion"
 
-#: calendarview.cpp:2471 calendarview.cpp:2478
+#: calendarview.cpp:2473 calendarview.cpp:2480
 #, fuzzy, kde-format
 #| msgid "Delete \"%1\""
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Forigi \"%1\""
 
-#: calendarview.cpp:2510
+#: calendarview.cpp:2512
 #, fuzzy, kde-format
 #| msgid ""
 #| "All calendars are unchecked in the Calendar Manager. No to-do was purged."
@@ -2299,54 +2299,54 @@ msgstr ""
 "Ĉiuj kalendaroj estas nemarkitaj en la Kalendara Administranto. Neniu faro "
 "estis elpurigita."
 
-#: calendarview.cpp:2515 calendarview.cpp:2797
+#: calendarview.cpp:2517 calendarview.cpp:2799
 #, fuzzy, kde-format
 #| msgid "There are no completed to-dos to purge."
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Ne estas finitaj faroj por purigi."
 
-#: calendarview.cpp:2520
+#: calendarview.cpp:2522
 #, fuzzy, kde-format
 #| msgid "Delete all completed to-dos from checked calendars?"
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Ĉu forigi ĉiujn finitajn farojn el markitaj kalendaroj?"
 
-#: calendarview.cpp:2521
+#: calendarview.cpp:2523
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Elpurigi Farendojn"
 
-#: calendarview.cpp:2522
+#: calendarview.cpp:2524
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Elpurigi"
 
-#: calendarview.cpp:2532
+#: calendarview.cpp:2534
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to copy the item to %1."
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Ne eblas kopii la eron al %1."
 
-#: calendarview.cpp:2567
+#: calendarview.cpp:2569
 #, fuzzy, kde-kuit-format
 #| msgid "Unable to move the item to  %1."
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ne eblas movi la eron al %1."
 
-#: calendarview.cpp:2789
+#: calendarview.cpp:2791
 #, fuzzy, kde-kuit-format
 #| msgid "0 completed to-dos were purged."
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "0 kompletigitaj faroj estis elpurigitaj."
 
-#: calendarview.cpp:2791 calendarview.cpp:2802
+#: calendarview.cpp:2793 calendarview.cpp:2804
 #, fuzzy, kde-format, kde-kuit-format
 #| msgid ""
 #| "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2363,7 +2363,7 @@ msgstr[1] ""
 "%1 farendoj estis ignoritaj ĉar ili havas nekompletajn aŭ nurlegeblajn "
 "infanojn"
 
-#: calendarview.cpp:2795 calendarview.cpp:2800
+#: calendarview.cpp:2797 calendarview.cpp:2802
 #, fuzzy, kde-format
 #| msgid "%1 completed to-do was purged."
 #| msgid_plural "%1 completed to-dos were purged."
@@ -2373,14 +2373,14 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "%1 plenumita farendo estis forigita."
 msgstr[1] "%1 plenumitaj farendoj estis forigitaj."
 
-#: calendarview.cpp:2807
+#: calendarview.cpp:2809
 #, fuzzy, kde-kuit-format
 #| msgid "An error occurred while purging completed to-dos: %1"
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
 msgstr "Okazis eraro dum purigado de finitaj faroj: %1"
 
-#: calendarview.cpp:2868
+#: calendarview.cpp:2870
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
@@ -2396,7 +2396,7 @@ msgstr ""
 "Sur la maldekstra flanka kolumno, ebligu ĝin en la kalendara administranto "
 "por vidi la okazaĵon."
 
-#: calendarview.cpp:2872
+#: calendarview.cpp:2874
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "You created an incidence in a calendar that is currently filtered out.\n"
