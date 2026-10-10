@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-28 00:46+0000\n"
+"POT-Creation-Date: 2026-10-10 00:47+0000\n"
 "PO-Revision-Date: 2026-09-07 19:56+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -931,7 +931,7 @@ msgstr ""
 "pallonpuoliskolla."
 
 # "Lähes täysi vaihe” = waxing/waning gibbous, jolle ei kai ole mitään suoraa vastinetta.
-#: lunarphases/lunarphases.cpp:108
+#: lunarphases/lunarphases.cpp:99
 #, kde-format
 msgid ""
 "This plugin displays the day's lunar phase (New, First, Last, Full). The "
