@@ -430,7 +430,7 @@ void ReparentingModel::onSourceRowsInserted(const QModelIndex &parent, int start
         // Remove any duplicates that we are going to replace
         removeDuplicates(sourceIndex);
 
-        QModelIndexList reparented;
+        QModelIndexList reparented; // clazy:exclude=container-inside-loop
         // Check for children to reparent
         {
             const auto descendantsItem = descendants(sourceIndex);
