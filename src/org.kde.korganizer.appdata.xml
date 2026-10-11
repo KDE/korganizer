@@ -658,6 +658,16 @@
           <li xml:lang="tr">Ay’ın evreleri eklentisi artık kuzey ve güney yarım küre arasında seçmeye izin veriyor.</li>
           <li xml:lang="uk">Нова версія додатка місячних фаз календаря уможливлює налаштовування за півкулею на Землі</li>
           <li>The lunar phase calendar plugin shows images for all possible moon phases</li>
+          <li xml:lang="ca">El connector de calendari de fases lunars mostra imatges de totes les fases lunars possibles</li>
+          <li xml:lang="cs">Modul s lunárním kalendářem zobrazuje obrázky všech možných fází Měsíce</li>
+          <li xml:lang="es">El complemento de calendario de fases lunares muestra imágenes para todas las fases lunares posibles.</li>
+          <li xml:lang="he">תוסף לוח השנה של מופעי הירח מציג תמונות לכל מופעי הירח האפשריים</li>
+          <li xml:lang="ka">მთვარის კალენდრის დამატება ახლა გამოსახულებებს მთვარის ყველა შესაძლო ფაზისთვის აჩვენებს</li>
+          <li xml:lang="nl">De plug-in voor de maanfasenkalender toont alle afbeeldingen voor alle mogelijke maanfasen</li>
+          <li xml:lang="pt-BR">O plugin de calendário de fases da Lua exibe imagens de todas as fases lunares possíveis.</li>
+          <li xml:lang="sl">Vtičnik za koledar luninih men prikazuje slike za vse možne lunine mene</li>
+          <li xml:lang="tr">Ay’ın Evreleri eklentisi artık tüm olası evreler için görseller gösteriyor.</li>
+          <li xml:lang="uk">Нова версія додатка місячних фаз календаря показує зображення для усіх можливих фаз місяця</li>
         </ul>
       </description>
     </release>
