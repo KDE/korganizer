@@ -2326,6 +2326,7 @@ void CalendarView::deleteRecurringIncidence(const Akonadi::Item &item)
         auto itemsToDelete = Akonadi::Item::List();
         if (incidence->recurs()) {
             const KCalendarCore::Incidence::List instances = mCalendar->instances(incidence);
+            itemsToDelete.reserve(instances.size());
             for (const KCalendarCore::Incidence::Ptr &instance : instances) {
                 itemsToDelete.append(mCalendar->item(instance));
             }

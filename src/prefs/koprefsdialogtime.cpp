@@ -296,8 +296,9 @@ void KOPrefsDialogTime::usrReadConfig()
 
 void KOPrefsDialogTime::usrWriteConfig()
 {
-    QStringList HolidayRegions;
     const auto checkedItems = mHolidayCheckCombo->checkedItems();
+    QStringList HolidayRegions;
+    HolidayRegions.reserve(checkedItems.size());
     for (const QString &str : checkedItems) {
         const int index = mHolidayCheckCombo->findText(str);
         if (index >= 0) {
@@ -306,8 +307,9 @@ void KOPrefsDialogTime::usrWriteConfig()
     }
     CalendarSupport::KCalPrefs::instance()->mHolidays = std::move(HolidayRegions);
 
-    QStringList HolidayTypes;
     const auto holidayTypesCheckedItems = mHolidayTypeCheckCombo->checkedItems();
+    QStringList HolidayTypes;
+    HolidayTypes.reserve(holidayTypesCheckedItems.size());
     for (const QString &str : holidayTypesCheckedItems) {
         const int index = mHolidayTypeCheckCombo->findText(str);
         if (index >= 0) {
