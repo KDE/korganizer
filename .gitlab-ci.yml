@@ -5,5 +5,4 @@ include:
   - project: sysadmin/ci-utilities
     file:
       - /gitlab-templates/linux-qt6-lts.yml
-      - /gitlab-templates/cppcheck.yml
       - /gitlab-templates/pre-commit.yml
