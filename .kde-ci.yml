@@ -15,7 +15,7 @@ Dependencies:
     'pim/kcalutils' : '@same'
     'pim/kldap' : '@same'
     'pim/kmailtransport' : '@same'
-    'pim/kmime' : '@same'
+    'frameworks/kmime' : '@same'
     'pim/kontactinterface' : '@same'
     'pim/libkdepim' : '@same'
     'pim/pimcommon' : '@same'
@@ -36,7 +36,7 @@ Dependencies:
     'frameworks/kcontacts': 'Frameworks/6.24'
     'frameworks/kcalendarcore': 'Frameworks/6.24'
     'frameworks/kuserfeedback': 'Frameworks/6.24'
-    'libraries/ktextaddons': '@latest-kf6'
+    'libraries/ktextaddons': '1.9'
 
 - 'on': ['Linux', 'FreeBSD']
   'require':
