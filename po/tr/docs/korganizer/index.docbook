@@ -180,7 +180,7 @@
 <keyword
 >KDE</keyword>
 <keyword
->K Organizatör</keyword>
+>KOrganizer</keyword>
 <keyword
 >kdepim</keyword>
 <keyword
@@ -217,12 +217,12 @@
 >Ancak &korganizer; sadece kişisel takviminizle ilgili değildir, iş arkadaşlarınız ve dostlarınızla da etkileşim kurmanıza yardımcı olabilir. &korganizer; ile e-posta adresi olan herkesi bir etkinliğe davet edebilir ve yanıtları işleyebilir, bir takvim (bir grup yazılımı sunucusu veya ağ üzerinden bir dosya kullanarak) paylaşabilirsiniz. &korganizer; açık standartlara dayanır ve birçok farklı grup planlama sunucusuyla çalışarak size bilgileriniz üzerinde denetim ve en iyi çözümleri seçme özgürlüğü verir. </para>
 
 <para
->&korganizer; ayrıca &kontact;’ın takvim, günce ve yapılacaklar bileşenidir; böylelikle size tüm iletişim ve bilgi yönetimi gereksinimleriniz için tümleşik bir çözüm sunar: E-posta, notlar, kişi yönetimi, haber ve haber beslemesi okuyucusu. Onu &kontact;’ın içinde kullanmasanız bile &korganizer;, diğer &kde; <acronym
+>&korganizer; ayrıca &kontact;’in takvim, günce ve yapılacaklar bileşenidir; böylelikle size tüm iletişim ve bilgi yönetimi gereksinimleriniz için tümleşik bir çözüm sunar: E-posta, notlar, kişi yönetimi, haber ve haber beslemesi okuyucusu. Onu &kontact;’in içinde kullanmasanız bile &korganizer;, diğer &kde; <acronym
 >PIM</acronym
 > uygulamalarıyla tümleşiktir. Örneğin onu, ajandanızda &kaddressbook; uygulamasından alacağı doğum günlerini göstermesi için yapılandırabilir, &kmail; kullanarak davetleri alabilir ve gönderebilirsiniz.</para>
 
 <para
->&korganizer;’ün ana özellikleri:</para>
+>&korganizer;’ın ana özellikleri:</para>
 <para
 ><itemizedlist>
 <listitem
@@ -289,7 +289,7 @@
 ></para>
 
 <para
->Şimdi &korganizer;’ün <link linkend="five-minute-course"
+>Şimdi &korganizer;’ın <link linkend="five-minute-course"
 >Beş Dakikalık Hızlı Kurs</link
 >’una bakın veya <link linkend="managing-data"
 >belgelendirmesini</link
@@ -311,7 +311,7 @@
 >Daha önce bir kişisel bilgi programı ile çalıştıysanız &korganizer; ile evinizde gibi hissedeceksiniz. Yeni etkinlikler girebilir, var olan etkinlikleri yeniden planlayabilir, etkinliklerinize künyeler atayabilir, yeni künyeler tasarlayabilir, katılımcı listelerini ve rollerini girebilir ve değiştirebilir, etkinlik davetlerini kendiliğinden e-postayla gönderebilir ve diğer &korganizer; takvimleriyle veri alışverişi yapabilir, yapılacaklar oluşturabilir ve günce girdileri yazabilirsiniz. </para>
 
 <para
->Bu kurs, &kde; ile nasıl çalışacağınızı bildiğinizi ve kendi başınıza keşfetmeyi tercih ettiğinizi varsayar. Burada yalnızca &korganizer;’ün temel işlevleri ele alınmaktadır. </para>
+>Bu kurs, &kde; ile nasıl çalışacağınızı bildiğinizi ve kendi başınıza keşfetmeyi tercih ettiğinizi varsayar. Burada yalnızca &korganizer;’ın temel işlevleri ele alınmaktadır. </para>
 
 <sect1 id="course-entering-events">
 <title
@@ -559,7 +559,7 @@
 >Sonuç</title>
 
 <para
->Bu beş dakikalık kurs, &korganizer;’ün yalnızca temel işlemlerini kapsar. &korganizer;’ün tüm yeteneklerini ortaya çıkarmak için şimdi bu kılavuzun tümünü okuyun. Pek okuyasınız yoksa en azından <link linkend="faq"
+>Bu beş dakikalık kurs, &korganizer;’ın yalnızca temel işlemlerini kapsar. &korganizer;’ın tüm yeteneklerini ortaya çıkarmak için şimdi bu kılavuzun tümünü okuyun. Pek okuyasınız yoksa en azından <link linkend="faq"
 >&FAQ;</link
 > bölümüne bir göz atın.</para>
 
@@ -606,28 +606,28 @@
 ><para
 >Takvim depolamasının yanı sıra, grup yazılımı sunucuları genellikle kişiler, posta ve <link linkend="glossary" endterm="gloss-freebusy"
 >uygun/meşgûl</link
-> bilgisi depolaması sunarlar. Bundan dolayı, burada belirtilen özkaynakların bazıları &kmail; ve &kaddressbook; (&kontact;’ın posta ve kişi yönetimi bileşeni) veya <link linkend="config-main-free-busy"
+> bilgisi depolaması sunarlar. Bundan dolayı, burada belirtilen özkaynakların bazıları &kmail; ve &kaddressbook; (&kontact;’in posta ve kişi yönetimi bileşeni) veya <link linkend="config-main-free-busy"
 >ana yapılandırmadaki uygun/meşgûl bilgisine</link
 > ait olabilir.</para>
 <para
->&korganizer;’ün <link linkend="group-scheduling"
+>&korganizer;’ın <link linkend="group-scheduling"
 >grup planlaması</link
 > iletişimi, eş tabanlı bir e-posta standardına dayanır. Bu, onu kullanmak için bir grup yazılımı sunucusuna gereksiniminizin olmadığı anlamına gelir!</para
 ></note>
 
 <screenshot id="screenshot-resources">
 <screeninfo
->&korganizer;’ün Takvimler Ekle iletişim kutusu</screeninfo>
+>&korganizer;’ın Takvimler Ekle iletişim kutusu</screeninfo>
 <mediaobject>
 <imageobject
 ><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->&korganizer;’ün Takvimler Ekle iletişim kutusu</phrase
+>&korganizer;’ın Takvimler Ekle iletişim kutusu</phrase
 ></textobject>
 <caption
 ><para
->&korganizer;’ün Takvimler Ekle iletişim kutusu</para
+>&korganizer;’ın Takvimler Ekle iletişim kutusu</para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -642,9 +642,9 @@
 ><guimenu
 >Ayarlar</guimenu
 > <guimenuitem
->&korganizer;’ü Yapılandır…</guimenuitem
+>&korganizer;’ı Yapılandır…</guimenuitem
 ></menuchoice
-> menü ögesiyle &korganizer;’ün ayarlar iletişim kutusunu açın ve <guilabel
+> menü ögesiyle &korganizer;’ın ayarlar iletişim kutusunu açın ve <guilabel
 >Genel</guilabel
 > panelinden <guilabel
 >Takvimler</guilabel
@@ -696,7 +696,7 @@
 
 </procedure>
 <para
->&korganizer;’de kullanılabilir olan özkaynaklar içinde şunları bulabilirsiniz:</para>
+>&korganizer;’da kullanılabilir olan özkaynaklar içinde şunları bulabilirsiniz:</para>
 
 <variablelist>
 
@@ -864,7 +864,7 @@
 
 
 <para
->Çağdaş bilgisayarlar geniş depolama alanına sahiptir. Bununla birlikte, &korganizer; takviminizi Palm aygıtı gibi sınırlı bellekli bir makineyle eşzamanlarsanız arşivleme özelliğini yararlı bulacaksınız. Çok sayıda etkinlik olduğunda &korganizer;’ün başarımı kötüleşebilir. Eski ögeleri arşivlemek için aşağıdaki prosedürü izleyin:</para>
+>Çağdaş bilgisayarlar geniş depolama alanına sahiptir. Bununla birlikte, &korganizer; takviminizi Palm aygıtı gibi sınırlı bellekli bir makineyle eşzamanlarsanız arşivleme özelliğini yararlı bulacaksınız. Çok sayıda etkinlik olduğunda &korganizer;’ın başarımı kötüleşebilir. Eski ögeleri arşivlemek için aşağıdaki prosedürü izleyin:</para>
 
 <procedure>
 <step
@@ -1068,7 +1068,7 @@
 >zil</guiicon
 > simgesi ve birden çok kez yinelenirse bir <guiicon
 >takip eden oklar</guiicon
-> simgesi görüntülenir. Fareyi bir takvim ögesinin üzerine getirdiğinizde, öge hakkında ayrıntılı bilgi içeren bir araç ipucu görüntülenir. &korganizer;’ün geçerli gün üzerinde (Marcus Bains çizgisi) geçerli zamanı imleyen kırmızı bir çizgi göstermesini sağlamak için <link linkend="config-main-views"
+> simgesi görüntülenir. Fareyi bir takvim ögesinin üzerine getirdiğinizde, öge hakkında ayrıntılı bilgi içeren bir araç ipucu görüntülenir. &korganizer;’ın geçerli gün üzerinde (Marcus Bains çizgisi) geçerli zamanı imleyen kırmızı bir çizgi göstermesini sağlamak için <link linkend="config-main-views"
 >&korganizer; görünüm yapılandırmasında</link
 > <guilabel
 >Geçerli zaman akışını (Marcus Bains) göster</guilabel
@@ -1592,17 +1592,17 @@
 
 <screenshot id="screenshot-event-general">
 <screeninfo
->&korganizer;’ün Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</screeninfo>
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</screeninfo>
 <mediaobject>
 <imageobject
 ><imagedata fileref="event-general.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->&korganizer;’ün Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</phrase
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</phrase
 ></textobject>
 <caption
 ><para
->&korganizer;’ün Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</para
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusunun ekran görüntüsü</para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -1748,17 +1748,17 @@
 
 <screenshot id="screenshot-event-attendees">
 <screeninfo
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</screeninfo>
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</screeninfo>
 <mediaobject>
 <imageobject
 ><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</phrase
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</phrase
 ></textobject>
 <caption
 ><para
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</para
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Katılımcılar sekmesi</para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -1862,17 +1862,17 @@
 
 <screenshot id="screenshot-event-recurrence">
 <screeninfo
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</screeninfo>
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</screeninfo>
 <mediaobject>
 <imageobject
 ><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</phrase
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</phrase
 ></textobject>
 <caption
 ><para
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</para
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Yineleme sekmesi</para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -1978,17 +1978,17 @@
 
 <screenshot id="screenshot-event-attachments">
 <screeninfo
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</screeninfo>
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</screeninfo>
 <mediaobject>
 <imageobject
 ><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</phrase
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</phrase
 ></textobject>
 <caption
 ><para
->&korganizer;’ün Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</para
+>&korganizer;’ın Etkinliği Düzenle iletişim kutusu — Ekler sekmesi</para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -2078,7 +2078,7 @@
 >Bu, sağda uygun/meşgûl programı çizelgesini gösterir, burada her satır solda listelenen katılımcılardan birini temsil eder. Çizelgedeki işaretli alanlar diğer etkinlikler tarafından hâlihazırda alınan zamanı temsil eder, işaretsiz alanlar diğer etkinliklerden boş zamanı temsil eder. Etkinliği fareyle sürükleyerek farklı bir zaman noktasına taşıyabilir veya vurgulanan alanın kenarlarını fareyle hareket ettirerek yeniden boyutlandırabilirsiniz.</para>
 
 <para
->Uygun/meşgûl bilgisi yalnızca katılımcı uygun/meşgûl programını yayınlarsa ve &korganizer; bunu almak üzere doğru bir biçimde yapılandırılmışsa kullanılabilir. &korganizer;’ü uygun/meşgûl bilgisini almak/yayınlamak ile ilgili daha fazla bilgi için <xref linkend="config"/> bölümüne bakın. Listedeki katılımcı girişine çift tıklandığında, katılımcının uygun/meşgûl bilgilerinin bulunduğu yer girilebilir. </para>
+>Uygun/meşgûl bilgisi yalnızca katılımcı uygun/meşgûl programını yayınlarsa ve &korganizer; bunu almak üzere doğru bir biçimde yapılandırılmışsa kullanılabilir. &korganizer;’ı uygun/meşgûl bilgisini almak/yayınlamak ile ilgili daha fazla bilgi için <xref linkend="config"/> bölümüne bakın. Listedeki katılımcı girişine çift tıklandığında, katılımcının uygun/meşgûl bilgilerinin bulunduğu yer girilebilir. </para>
 
 <variablelist>
 
@@ -2188,17 +2188,17 @@
 
 <screenshot id="screenshot-todo-general">
 <screeninfo
->&korganizer;’ün yapılacakları düzenle iletişim kutusunun ekran görüntüsü</screeninfo>
+>&korganizer;’ın yapılacakları düzenle iletişim kutusunun ekran görüntüsü</screeninfo>
 <mediaobject>
 <imageobject
 ><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->&korganizer;’ün yapılacakları düzenle iletişim kutusunun ekran görüntüsü</phrase
+>&korganizer;’ın yapılacakları düzenle iletişim kutusunun ekran görüntüsü</phrase
 ></textobject>
 <caption
 ><para
->&korganizer;’ün yapılacakları düzenle iletişim kutusunun ekran görüntüsü</para
+>&korganizer;’ın yapılacakları düzenle iletişim kutusunun ekran görüntüsü</para
 ></caption>
 </mediaobject>
 </screenshot>
@@ -2291,7 +2291,7 @@
 >Grup Programı</title>
 
 <para
->&korganizer;’ün grup programı işlevi, randevuları, toplantıları ve paylaşılan yapılacakları düzenlemenize, katılımcılardan yanıt istemenize ve ögeleri yayımlamanıza olanak tanır. Bir etkinliğe veya yapılacaklar listesine davet ediliyorsanız katılıp katılamayacağınızı belirterek yanıtlayabilir veya farklı bir zaman veya konum gibi farklı düzenlemelerle karşı teklif gönderebilirsiniz. Ayrıca, uygun olduğunuzda insanlara bildirmek için uygun/meşgûl programınızı yayınlayabilir ve aynı bilgileri başkalarından isteyebilirsiniz.</para>
+>&korganizer;’ın grup programı işlevi, randevuları, toplantıları ve paylaşılan yapılacakları düzenlemenize, katılımcılardan yanıt istemenize ve ögeleri yayımlamanıza olanak tanır. Bir etkinliğe veya yapılacaklar listesine davet ediliyorsanız katılıp katılamayacağınızı belirterek yanıtlayabilir veya farklı bir zaman veya konum gibi farklı düzenlemelerle karşı teklif gönderebilirsiniz. Ayrıca, uygun olduğunuzda insanlara bildirmek için uygun/meşgûl programınızı yayınlayabilir ve aynı bilgileri başkalarından isteyebilirsiniz.</para>
 
 <para
 >Şu anda &korganizer;, etkinlikleri ve yapılacakları ulaştırmak için standart bir veri şemasıyla e-posta kullanır (Grup Programı için IMIP protokolü). IMIP standardı başka istemciler tarafından da kullanılır. Örnek olarak; &Microsoft;<application
@@ -2300,7 +2300,7 @@
 >Notes</application
 > ve Novell <application
 >Evolution</application
-> verilebilir. Bu, bu istemcileri kullanan kişilerle de etkinlikler paylaşabileceğiniz anlamına gelir. &korganizer;; etkinlikler, etkinlik yanıtları, güncellemeler, iptaller vb. işlemek üzere &kmail; ile tümleşiktir. Örneğin, &kmail;’da bir davet alırsanız onu <guilabel
+> verilebilir. Bu, bu istemcileri kullanan kişilerle de etkinlikler paylaşabileceğiniz anlamına gelir. &korganizer;; etkinlikler, etkinlik yanıtları, güncellemeler, iptaller vb. işlemek üzere &kmail; ile tümleşiktir. Örneğin, &kmail;’de bir davet alırsanız onu <guilabel
 >kabul etmek</guilabel
 > için ileti gövdesindeki düğmeye tıklayın. Böylece etkinlik takviminize eklenir ve etkinliğin organizatörüne bir yanıt kendiliğinden gider.</para>
 
@@ -2407,7 +2407,7 @@
 >Davet Gönderme ve Yanıtları İşleme</title>
 
 <para
->Bir etkinlik veya yapılacak organize etmek için öncelikle onu &korganizer;’de <link linkend="entering-data-events"
+>Bir etkinlik veya yapılacak organize etmek için öncelikle onu &korganizer;’da <link linkend="entering-data-events"
 >oluşturun</link
 > ve katılımcıları, katılımcılar sekmesini kullanarak ekleyin. &korganizer; katılımcılara davetler gönderebilir. Gönderim işlemi kendiliğinden (<link linkend="config-main-groupscheduling"
 >&korganizer; grup programı yapılandırmasını</link
@@ -2556,7 +2556,7 @@
 > düğmesine basın.</para>
 
 <para
->Grup Yazılımı sunucuları genellikle uygun/meşgûl bilgilerinizi yüklemek için standart bir konuma sahiptir, böylece diğer kullanıcılar verilerinize erişebilir ve siz de diğer kullanıcıların uygun/meşgûl programlarına erişebilirsiniz. &korganizer;’ün uygun/meşgûl bilgisini kendiliğinden indirmesini/yüklemesini istiyorsanız bunu &korganizer; <guilabel
+>Grup Yazılımı sunucuları genellikle uygun/meşgûl bilgilerinizi yüklemek için standart bir konuma sahiptir, böylece diğer kullanıcılar verilerinize erişebilir ve siz de diğer kullanıcıların uygun/meşgûl programlarına erişebilirsiniz. &korganizer;’ın uygun/meşgûl bilgisini kendiliğinden indirmesini/yüklemesini istiyorsanız bunu &korganizer; <guilabel
 >Yapılandırma</guilabel
 > iletişim kutusunun <link linkend="config-main-free-busy"
 >Uygun/meşgûl Tercihleri</link
@@ -2734,7 +2734,7 @@
 
 <step
 ><para
->&korganizer;’ü grup yazılımı iletişimini kullanmak için yapılandırdıysanız katılımcılara e-posta göndermeyi isteyip istemediğinizi soran bir iletişim kutusu açılacaktır. Bu iletişim kutusunda etkinliğin ayrıntıları ve <guilabel
+>&korganizer;’ı grup yazılımı iletişimini kullanmak için yapılandırdıysanız katılımcılara e-posta göndermeyi isteyip istemediğinizi soran bir iletişim kutusu açılacaktır. Bu iletişim kutusunda etkinliğin ayrıntıları ve <guilabel
 >Katılımcılar</guilabel
 > sekmesinde <guilabel
 >Yanıt iste</guilabel
@@ -2769,7 +2769,7 @@
 >&korganizer; Yapılandırması</title>
 
 <para
->&korganizer;’ün görünüşünü ve davranışını değiştirmek için <menuchoice
+>&korganizer;’ın görünüşünü ve davranışını değiştirmek için <menuchoice
 ><guimenu
 >Ayarlar</guimenu
 ><guimenuitem
@@ -2799,17 +2799,17 @@
 ><guimenuitem
 >Tarih ve Zamanı Yapılandır…</guimenuitem
 ></menuchoice
-> menü ögesini kullanın. &systemsettings; içinde yapılan değişikliklerin geçerli olması için &korganizer;’ün yeniden başlatılması gerekir.</para>
+> menü ögesini kullanın. &systemsettings; içinde yapılan değişikliklerin geçerli olması için &korganizer;’ın yeniden başlatılması gerekir.</para>
 
 <para
->&korganizer;’ün takvim, günce ve yapılacak ögelerini nerede depoladığını (yerel dosyalarda, grup yazılımı sunucularında &etc;) yapılandırmak için <xref linkend="managing-resources"/> bölümüne bakın.</para>
+>&korganizer;’ın takvim, günce ve yapılacak ögelerini nerede depoladığını (yerel dosyalarda, grup yazılımı sunucularında &etc;) yapılandırmak için <xref linkend="managing-resources"/> bölümüne bakın.</para>
 
 <sect1 id="config-main">
 <title
 >&korganizer; Temel Yapılandırması</title>
 
 <para
->Seçenekler iletişim kutusu, &korganizer;’ün farklı bölümlerini yapılandırmanıza olanak tanır.</para>
+>Seçenekler iletişim kutusu, &korganizer;’ın farklı bölümlerini yapılandırmanıza olanak tanır.</para>
 
 <sect2 id="config-main-general">
 <title
@@ -2909,7 +2909,7 @@
 ></term>
 <listitem
 ><para
->Bu seçenek, yeni ögeleri doğrudan öntanımlı takvime eklenip eklenmeyeceğini veya &korganizer;’ün her bir yeni ögenin hangi takvime kaydedileceğini sormasını sağlar.</para>
+>Bu seçenek, yeni ögeleri doğrudan öntanımlı takvime eklenip eklenmeyeceğini veya &korganizer;’ın her bir yeni ögenin hangi takvime kaydedileceğini sormasını sağlar.</para>
 <para
 >Kolab2 sunucusu belirliliği: <guilabel
 >Kolab</guilabel
@@ -2987,7 +2987,7 @@
 <para
 >Ayrıca, haftanın her gününün yanında onay kutuları bulunur. Normal programınızın bir parçası olan hafta günlerini, genellikle hafta sonlarını dışlayarak işaretleyin. &korganizer;, günlük programınızın (belki de haftalık çalışma programınızın) bir parçası olan saatleri, normal programınızın dışındaki saatlerden farklı olarak işaretler. <guilabel
 >Tatilleri dışla</guilabel
-> seçeneğini işaretlemek, &korganizer;’ün yukarıdaki <guilabel
+> seçeneğini işaretlemek, &korganizer;’ın yukarıdaki <guilabel
 >Tatil bölgesini kullan</guilabel
 > açılır menüsünde tanımlanan bölgedeki tatil günleri için normal program (veya çalışma) saatlerini işaretlemesini engeller.</para>
 </listitem>
@@ -3023,7 +3023,7 @@
 >Eylemler</link
 > menüsünden <link linkend="menu-actions-new-event"
 >Yeni Etkinlik</link
->’i seçtiğinizde veya &korganizer;’ün etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar.</para
+>’i seçtiğinizde veya &korganizer;’ın etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar.</para
 ></listitem>
 </varlistentry>
 
@@ -3038,7 +3038,7 @@
 >Eylemler</link
 > menüsünden <link linkend="menu-actions-new-event"
 >Yeni Etkinlik</link
->’i seçtiğinizde veya &korganizer;’ün etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar. </para
+>’i seçtiğinizde veya &korganizer;’ın etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar. </para
 ></listitem>
 </varlistentry>
 
@@ -3690,7 +3690,7 @@
 ></term>
 <listitem
 ><para
->Başkalarını ilgilendiren etkinlikler veya yapılacaklar listesi oluştururken, güncellerken veya silerken kendiliğinden bir e-posta göndermek için bu kutuyu işaretleyin. Bu e-posta, oluşturduğunuz bir etkinliğin katılımcılarına bir davet, oluşturduğunuz bir etkinliğin iptali, davet durumunuzla ilgili bir yanıt veya güncelleme, bir etkinlik değişiklik talebi vb. olabilir. Grup yazılımı işlevini kullanmak istiyorsanız bu seçeneği işaretleyin (örneğin, &kontact;’ı &kde; <guilabel
+>Başkalarını ilgilendiren etkinlikler veya yapılacaklar listesi oluştururken, güncellerken veya silerken kendiliğinden bir e-posta göndermek için bu kutuyu işaretleyin. Bu e-posta, oluşturduğunuz bir etkinliğin katılımcılarına bir davet, oluşturduğunuz bir etkinliğin iptali, davet durumunuzla ilgili bir yanıt veya güncelleme, bir etkinlik değişiklik talebi vb. olabilir. Grup yazılımı işlevini kullanmak istiyorsanız bu seçeneği işaretleyin (örneğin, &kontact;’i &kde; <guilabel
 >Kolab</guilabel
 > istemcisi olarak yapılandırmak için).</para
 ></listitem>
@@ -3705,7 +3705,7 @@
 ><para
 ><guilabel
 >Etkinlikleri postalarken sahibine bir kopya gönder</guilabel
-> kutusunu işaretlediğinizde, &korganizer;’ün isteğiniz üzerine etkinliğe katılanlara gönderdiği tüm e-posta iletilerinin bir kopyasını alacaksınız.</para
+> kutusunu işaretlediğinizde, &korganizer;’ın isteğiniz üzerine etkinliğe katılanlara gönderdiği tüm e-posta iletilerinin bir kopyasını alacaksınız.</para
 ></listitem>
 </varlistentry>
 
@@ -3749,7 +3749,7 @@
 ></term>
 <listitem
 ><para
->Uygun/Meşgûl bilgilerinizin kendiliğinden yüklenmesini istiyorsanız bu seçeneği etkinleştirin. Bu seçeneği atlayıp Uygun/Meşgûl bilgilerinizi &korganizer;’ün <guilabel
+>Uygun/Meşgûl bilgilerinizin kendiliğinden yüklenmesini istiyorsanız bu seçeneği etkinleştirin. Bu seçeneği atlayıp Uygun/Meşgûl bilgilerinizi &korganizer;’ın <guilabel
 >Program</guilabel
 > menüsü aracılığıyla postayla göndermeyi veya yüklemeyi seçebilirsiniz.</para>
 
@@ -3830,7 +3830,7 @@
 ></term>
 <listitem
 ><para
->&korganizer;’ün parolanızı anımsamasını ve her Uygun/Meşgûl bilginizi yüklerken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
+>&korganizer;’ın parolanızı anımsamasını ve her Uygun/Meşgûl bilginizi yüklerken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
 <warning
 ><para
 >Güvenlik nedeniyle parolanızı yapılandırma dosyasında saklamanız önerilmez.</para
@@ -3877,7 +3877,7 @@
 <para
 ><guilabel
 >Kolab2 sunucusu belirliliği:</guilabel
-> &korganizer;’ü <guilabel
+> &korganizer;’ı <guilabel
 >&kde; Kolab istemcisi (&kontact;/Kolab)</guilabel
 > için bir bileşen olarak yapılandırıyorsanız bu seçeneği işaretlemeniz gerekir.</para
 ></listitem>
@@ -3929,7 +3929,7 @@
 ></term>
 <listitem
 ><para
->&korganizer;’ün parolanızı anımsamasını ve her uygun/meşgûl dosyasını alırken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
+>&korganizer;’ın parolanızı anımsamasını ve her uygun/meşgûl dosyasını alırken size sormayı atlamasını istiyorsanız bu seçeneği işaretleyin.</para>
 <warning
 ><para
 >Güvenlik nedeniyle parolanızı yapılandırma dosyasında saklamanız önerilmez.</para
@@ -3955,7 +3955,7 @@
 >Özel Sayfalar</title>
 
 <para
->Bu sayfa, kendi değerlerinizi &korganizer;’de depolamak için kendi grafik arayüz ögelerinizi eklemenize olanak tanır.</para>
+>Bu sayfa, kendi değerlerinizi &korganizer;’da depolamak için kendi grafik arayüz ögelerinizi eklemenize olanak tanır.</para>
 <para
 ><guilabel
 >Bu Nasıl Çalışır?</guilabel
@@ -5436,7 +5436,7 @@ format="PNG"/></imageobject
 >Diğer Özellikler</title>
 
 <para
->Bu fasılda &korganizer;’ün diğer kullanışlı özelliklerini öğreneceksiniz: Farenizin bir tıklamasıyla hangi numaraları yapabileceğiniz gibi.</para>
+>Bu fasılda &korganizer;’ın diğer kullanışlı özelliklerini öğreneceksiniz: Farenizin bir tıklamasıyla hangi numaraları yapabileceğiniz gibi.</para>
 
 <sect1 id="other-features-commandline-options">
 <title
