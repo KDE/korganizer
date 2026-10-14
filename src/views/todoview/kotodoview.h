@@ -12,9 +12,10 @@
 
 #include "baseview.h"
 
-#include <CalendarSupport/Utils>
-
-#include <EventViews/TodoView>
+namespace EventViews
+{
+class TodoView;
+}
 
 using namespace KOrg;
 

@@ -9,7 +9,6 @@
 #include <Akonadi/BlockAlarmsAttribute>
 #include <Akonadi/Collection>
 #include <Akonadi/EntityDisplayAttribute>
-#include <PimCommon/PimUtil>
 
 #include <KCalendarCore/Event>
 #include <KCalendarCore/Journal>

@@ -12,9 +12,13 @@
 #include <EventViews/CalendarDecoration>
 using namespace EventViews::CalendarDecoration;
 
-#include <KIO/SimpleJob>
-
 #include <QUrl>
+
+class KJob;
+namespace KIO
+{
+class SimpleJob;
+}
 
 enum DataState {
     LoadingFailed = -1,

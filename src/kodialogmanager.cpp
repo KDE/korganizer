@@ -11,6 +11,7 @@
 #include "calendarview.h"
 #include "dialog/filtereditdialog.h"
 #include "dialog/searchdialog.h"
+#include "koeventview.h"
 
 #include <CalendarSupport/ArchiveDialog>
 #include <PimCommon/PimUtil>
@@ -26,7 +27,6 @@
 
 #include <KCMultiDialog>
 #include <KPluginMetaData>
-#include <QPushButton>
 
 using namespace KOrg;
 

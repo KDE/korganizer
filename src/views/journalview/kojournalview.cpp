@@ -15,9 +15,6 @@
 #include <EventViews/JournalView>
 
 #include <CalendarSupport/CalPrinter>
-#include <CalendarSupport/Utils>
-
-#include <Akonadi/ETMCalendar>
 
 #include <QVBoxLayout>
 

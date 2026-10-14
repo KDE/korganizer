@@ -19,9 +19,7 @@
 #include <KTimeComboBox>
 #include <KUrlRequester>
 #include <Libkdepim/KCheckComboBox>
-#include <QButtonGroup>
 #include <QCheckBox>
-#include <QComboBox>
 #include <QFrame>
 #include <QGroupBox>
 #include <QLabel>
@@ -29,7 +27,6 @@
 #include <QTabWidget>
 #include <QTimeEdit>
 #include <QVBoxLayout>
-#include <calendarsupport/kcalprefs.h>
 
 K_PLUGIN_CLASS_WITH_JSON(KOPrefsDialogTime, "korganizer_configtime.json")
 

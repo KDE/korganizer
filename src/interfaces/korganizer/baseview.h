@@ -15,7 +15,6 @@
 #include <CalendarSupport/PrintPlugin>
 #include <EventViews/EventView>
 
-#include <Akonadi/ETMCalendar>
 #include <Akonadi/IncidenceChanger>
 
 #include <Akonadi/Collection>

@@ -7,13 +7,8 @@
 #include "quickview.h"
 #include "ui_quickview.h"
 
-#include <Akonadi/CalendarUtils>
-
-#include <KCalendarCore/Event>
-
 #include <EventViews/AgendaView>
 
-#include <KCheckableProxyModel>
 #include <KConfigGroup>
 #include <KSharedConfig>
 

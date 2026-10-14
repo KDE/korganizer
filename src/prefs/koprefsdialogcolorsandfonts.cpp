@@ -19,7 +19,6 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 #include <QCheckBox>
-#include <QFontDialog>
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>

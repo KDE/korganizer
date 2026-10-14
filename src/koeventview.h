@@ -12,11 +12,6 @@
 
 #include "baseview.h"
 
-namespace Akonadi
-{
-class Item;
-}
-
 class KOEventPopupMenu;
 
 class QMenu;

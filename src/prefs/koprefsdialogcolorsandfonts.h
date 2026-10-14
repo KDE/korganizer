@@ -9,7 +9,6 @@
 
 #pragma once
 #include "kprefsdialog.h"
-#include <QWidget>
 
 class QComboBox;
 class KColorButton;

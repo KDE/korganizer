@@ -11,7 +11,6 @@
 
 #include "baseview.h"
 
-#include <Akonadi/CollectionCalendar>
 #include <Akonadi/ETMCalendar>
 
 namespace KOrg

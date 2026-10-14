@@ -31,7 +31,6 @@
 #include <Akonadi/AgentTypeDialog>
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/CollectionDeleteJob>
-#include <Akonadi/CollectionFilterProxyModel>
 #include <Akonadi/CollectionIdentificationAttribute>
 #include <Akonadi/CollectionUtils>
 #include <Akonadi/ETMViewStateSaver>
@@ -40,12 +39,12 @@
 #include <Akonadi/EntityTreeView>
 #include <Akonadi/SelectCollection>
 #include <Akonadi/StandardCalendarActionManager>
-#include <PimCommonAkonadi/MailUtil>
 
 #include <KActionCollection>
 #include <KCheckableProxyModel>
 #include <KConfigGroup>
 #include <KMessageBox>
+#include <KXMLGUIClient>
 
 #include "korganizer_debug.h"
 #include <QSortFilterProxyModel>
@@ -54,7 +53,6 @@
 #include <QColorDialog>
 #include <QHeaderView>
 #include <QLineEdit>
-#include <QStackedWidget>
 #include <QVBoxLayout>
 #if HAVE_ACTIVITY_SUPPORT
 #include "activities/accountactivities.h"

@@ -20,8 +20,8 @@
 #include "kodialogmanager.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
+#include "mainwindow.h"
 #include "prefs/koprefs.h"
-#include <KAuthorized>
 #include <config-korganizer.h>
 
 #include <CalendarSupport/CollectionSelection>
@@ -32,18 +32,14 @@
 
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/ETMViewStateSaver>
-#include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/EntityTreeModel>
 #include <Akonadi/EntityTreeView>
 #include <Akonadi/History>
 #include <Akonadi/ICalImporter>
 
-#include <KCalendarCore/FileStorage>
-#include <KCalendarCore/ICalFormat>
 #include <KCalendarCore/Person>
 
 #include <KIO/FileCopyJob>
-#include <KIO/StatJob>
 #include <KJobWidgets>
 #include <KMime/Message>
 
@@ -64,6 +60,7 @@
 #include "korganizer_options.h"
 #include <KToggleAction>
 #include <KWindowSystem>
+#include <KXMLGUIClient>
 #include <QIcon>
 #include <QTemporaryFile>
 

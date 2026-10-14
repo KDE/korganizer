@@ -10,7 +10,6 @@
 #include "koprefsdialogplugins.h"
 #include "kocore.h"
 #include "koprefs.h"
-#include <CalendarSupport/KCalPrefs>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KPluginFactory>

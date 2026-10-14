@@ -14,7 +14,7 @@
 
 #include <QDialog>
 
-#include <QAbstractItemModel>
+class QAbstractItemModel;
 
 #include <memory>
 

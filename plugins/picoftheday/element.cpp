@@ -12,6 +12,7 @@
 
 #include "korganizer_picoftheday_plugin_debug.h"
 
+#include <KIO/SimpleJob>
 #include <KIO/StoredTransferJob>
 #include <KLocalizedString>
 

@@ -9,7 +9,6 @@
 
 #pragma once
 
-#include <KCalendarCore/Calendar>
 #include <KCalendarCore/Incidence>
 
 #include <QDateTime>

@@ -6,13 +6,7 @@
 
 #pragma once
 
-#include <Akonadi/Collection>
 #include <QObject>
-
-namespace Akonadi
-{
-class Collection;
-}
 
 class KoEventPopupMenuTest : public QObject
 {

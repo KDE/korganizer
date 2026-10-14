@@ -19,11 +19,6 @@ namespace EventViews
 class ListView;
 }
 
-namespace Akonadi
-{
-class IncidenceChanger;
-}
-
 class QModelIndex;
 
 class KOListView : public KOEventView

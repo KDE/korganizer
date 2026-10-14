@@ -15,8 +15,6 @@
 #include <KLineEdit>
 #include <KPageDialog>
 
-#include <QVariantList>
-
 class KColorButton;
 class KComboBox;
 class KDateComboBox;

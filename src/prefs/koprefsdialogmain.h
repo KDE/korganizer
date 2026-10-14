@@ -10,7 +10,6 @@
 #pragma once
 
 #include "kprefsdialog.h"
-class QCheckBox;
 
 class KOPrefsDialogMain : public Korganizer::KPrefsModule
 {

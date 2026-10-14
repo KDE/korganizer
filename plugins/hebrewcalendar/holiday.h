@@ -15,9 +15,12 @@
 
 #pragma once
 
-#include <KHolidays/HebrewConverter>
-
 #include <QStringList>
+
+namespace KHolidays
+{
+class HebrewDate;
+}
 
 /**
   @author Jonathan Singer

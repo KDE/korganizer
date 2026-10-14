@@ -8,8 +8,6 @@
 */
 
 #include "koprefsuserfeedback.h"
-#include <KAboutData>
-#include <KLocalizedString>
 #include <KPluginFactory>
 #include <QVBoxLayout>
 #if KORGANIZER_WITH_KUSERFEEDBACK

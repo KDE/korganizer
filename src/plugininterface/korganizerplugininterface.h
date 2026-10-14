@@ -7,7 +7,6 @@
 #pragma once
 
 #include <PimCommonAkonadi/PluginInterface>
-#include <QObject>
 class KOrganizerPluginInterface : public PimCommon::PluginInterface
 {
     Q_OBJECT

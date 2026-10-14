@@ -11,11 +11,8 @@
 #include "kocore.h"
 #include "koeventpopupmenu.h"
 
-#include <Akonadi/CalendarUtils>
-#include <Akonadi/EntityTreeModel>
-#include <CalendarSupport/KCalPrefs>
-
 #include "korganizer_debug.h"
+#include <KXMLGUIClient>
 #include <KXMLGUIFactory>
 
 #include <QApplication>

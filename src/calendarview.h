@@ -52,7 +52,6 @@ class IncidenceDialog;
 namespace Akonadi
 {
 class History;
-class IncidenceChanger;
 class CalendarClipboard;
 class TodoPurger;
 class CalFilterPartStatusProxyModel;

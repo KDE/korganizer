@@ -8,7 +8,7 @@
 
 #include "komultiagendaview.h"
 #include "akonadicollectionview.h"
-#include "calendarview.h"
+#include "interfaces/korganizer/calendarviewbase.h"
 #include "koeventpopupmenu.h"
 #include "prefs/koprefs.h"
 
@@ -17,7 +17,6 @@
 #include <EventViews/AgendaView>
 #include <EventViews/MultiAgendaView>
 
-#include <Akonadi/EntityTreeModel>
 #include <Akonadi/EntityTreeView>
 
 #include <KCheckableProxyModel>

@@ -13,13 +13,11 @@
 #include "summaryeventinfo.h"
 
 #include <CalendarSupport/CalendarSingleton>
-#include <CalendarSupport/Utils>
 
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/Collection>
 #include <Akonadi/IncidenceChanger>
 
-#include <KCalendarCore/Calendar>
 #include <KCalendarCore/Event>
 
 #include <KontactInterface/Core>

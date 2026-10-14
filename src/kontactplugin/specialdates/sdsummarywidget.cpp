@@ -14,7 +14,6 @@
 
 #include <Akonadi/ContactSearchJob>
 #include <Akonadi/ContactViewerDialog>
-#include <Akonadi/EntityDisplayAttribute>
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
 #include <Akonadi/SearchQuery>
@@ -22,8 +21,6 @@
 #include <CalendarSupport/CalendarSingleton>
 #include <CalendarSupport/KCalPrefs>
 #include <CalendarSupport/Utils>
-
-#include <KCalendarCore/Calendar>
 
 #include <KColorScheme>
 #include <KConfig>
@@ -35,7 +32,6 @@
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDate>
-#include <QEvent>
 #include <QGridLayout>
 #include <QLabel>
 #include <QMenu>

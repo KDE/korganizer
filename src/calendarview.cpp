@@ -57,7 +57,6 @@
 #include <IncidenceEditor/IncidenceDefaults>
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
-#include <IncidenceEditor/IncidenceEditorSettings>
 #include <IncidenceEditor/IndividualMailComponentFactory>
 
 #include <KCalendarCore/CalFilter>

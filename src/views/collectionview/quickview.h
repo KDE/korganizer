@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <EventViews/ViewCalendar>
+#include <Akonadi/CollectionCalendar>
 
 #include <QDialog>
 

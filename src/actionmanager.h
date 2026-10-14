@@ -19,13 +19,10 @@
 #include <Akonadi/Item>
 
 #include <KViewStateMaintainer>
-#include <KXMLGUIClient>
 
 #include <QUrl>
 
 #include <QObject>
-
-#include "mainwindow.h"
 
 class AkonadiCollectionView;
 class CalendarView;
@@ -43,7 +40,13 @@ class QToolBar;
 class KSelectAction;
 class QTemporaryFile;
 class KToggleAction;
+class KActionCollection;
 class KHamburgerMenu;
+class KXMLGUIClient;
+namespace KOrg
+{
+class MainWindow;
+}
 
 /**
   The ActionManager creates all the actions in KOrganizer. This class

@@ -12,9 +12,10 @@
 #include "korganizer_core_export.h"
 
 #include <KPluginMetaData>
-#include <KXMLGUIClient>
 
 #include <EventViews/CalendarDecoration>
+
+class KXMLGUIClient;
 
 class KORGANIZER_CORE_EXPORT KOCore
 {

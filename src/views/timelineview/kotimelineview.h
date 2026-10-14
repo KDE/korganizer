@@ -14,11 +14,6 @@
 
 #include "koeventview.h"
 
-namespace Akonadi
-{
-class IncidenceChanger;
-}
-
 namespace EventViews
 {
 class TimelineView;

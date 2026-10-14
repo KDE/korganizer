@@ -9,7 +9,6 @@
 
 #include "koviewmanager.h"
 #include "actionmanager.h"
-#include "akonadicollectionview.h"
 #include "calendarview.h"
 #include "datenavigator.h"
 #include "koglobals.h"

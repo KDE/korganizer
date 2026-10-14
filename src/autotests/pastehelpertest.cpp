@@ -7,14 +7,12 @@
 
 #include "../pastehelper.cpp"
 
-#include <KCalendarCore/MemoryCalendar>
 #include <KCalendarCore/MimeData>
 
 #include <QClipboard>
 #include <QGuiApplication>
 #include <QMimeData>
 #include <QTest>
-#include <QTimeZone>
 
 using namespace KCalendarCore;
 

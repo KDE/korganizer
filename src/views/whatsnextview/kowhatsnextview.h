@@ -8,7 +8,11 @@
 #pragma once
 
 #include "baseview.h"
-#include <EventViews/WhatsNextView>
+
+namespace EventViews
+{
+class WhatsNextView;
+}
 
 /**
   This class provides a view of the next events and todos

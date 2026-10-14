@@ -28,11 +28,6 @@ namespace EventViews
 class ListView;
 }
 
-namespace KCalendarCore
-{
-class Incidence;
-}
-
 class SearchDialog : public QDialog
 {
     Q_OBJECT

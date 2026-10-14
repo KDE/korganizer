@@ -9,8 +9,6 @@
 
 #include "koprefsdialogviews.h"
 
-#include "kocore.h"
-#include "koglobals.h"
 #include "koprefs.h"
 #include "widgets/kitemiconcheckcombo.h"
 #include <KLocalizedString>

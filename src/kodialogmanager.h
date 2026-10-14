@@ -9,9 +9,11 @@
 
 #pragma once
 
-#include "koeventview.h"
+#include <QObject>
+#include <QPointer>
 
 class CalendarView;
+class KOEventView;
 class FilterEditDialog;
 class SearchDialog;
 
@@ -31,6 +33,7 @@ class CalFilter;
 }
 namespace Akonadi
 {
+class Item;
 class TagManagementDialog;
 }
 

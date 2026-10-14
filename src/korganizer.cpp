@@ -35,7 +35,6 @@
 #include <QVBoxLayout>
 #include <TextAddonsWidgets/NeedUpdateVersionUtils>
 #include <TextAddonsWidgets/NeedUpdateVersionWidget>
-#include <TextAddonsWidgets/VerifyNewVersionWidget>
 #include <TextAddonsWidgets/WhatsNewMessageNgWidget>
 #if HAVE_ACTIVITY_SUPPORT
 #include "activities/activitiesmanager.h"

@@ -9,6 +9,8 @@
 #include "kowhatsnextview.h"
 #include "prefs/koprefs.h"
 
+#include <EventViews/WhatsNextView>
+
 #include <QVBoxLayout>
 
 KOWhatsNextView::KOWhatsNextView(QWidget *parent)

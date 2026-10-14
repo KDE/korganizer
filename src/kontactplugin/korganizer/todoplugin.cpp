@@ -13,8 +13,6 @@
 
 #include <KContacts/VCardDrag>
 
-#include <KCalendarCore/MemoryCalendar>
-
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
 #include <KCalendarCore/MimeData>

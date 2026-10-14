@@ -10,8 +10,10 @@
 
 #include "pastehelper.h"
 
-#include <KCalendarCore/MemoryCalendar>
+#include <KCalendarCore/Calendar>
+#include <KCalendarCore/Event>
 #include <KCalendarCore/MimeData>
+#include <KCalendarCore/Todo>
 
 #include <QClipboard>
 #include <QDate>

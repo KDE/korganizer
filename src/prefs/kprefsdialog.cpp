@@ -18,7 +18,6 @@
 #include <KMessageBox>
 #include <KTimeComboBox>
 #include <KUrlRequester>
-#include <QDebug>
 #include <QFontDialog>
 #include <QUrl>
 

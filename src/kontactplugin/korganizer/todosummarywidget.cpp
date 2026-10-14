@@ -16,7 +16,6 @@
 #include <Akonadi/CalendarUtils>
 #include <Akonadi/Collection>
 #include <Akonadi/IncidenceChanger>
-#include <Akonadi/ItemFetchScope>
 
 #include <KontactInterface/Core>
 

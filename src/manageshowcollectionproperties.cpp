@@ -10,7 +10,6 @@
 #include <Akonadi/CollectionAttributesSynchronizationJob>
 #include <Akonadi/CollectionFetchJob>
 #include <Akonadi/CollectionFetchScope>
-#include <Akonadi/CollectionMaintenancePage>
 #include <Akonadi/CollectionPropertiesDialog>
 
 ManageShowCollectionProperties::ManageShowCollectionProperties(AkonadiCollectionView *collectionView, QObject *parent)

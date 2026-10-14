@@ -11,7 +11,6 @@
 #include "korganizer_debug.h"
 
 #include <Akonadi/CalendarUtils>
-#include <Akonadi/ItemCreateJob>
 
 #include <CalendarSupport/CalPrinter>
 #include <CalendarSupport/KCalPrefs>
@@ -21,8 +20,6 @@
 
 #include <IncidenceEditor/IncidenceDialog>
 #include <IncidenceEditor/IncidenceDialogFactory>
-
-#include <QCoreApplication>
 
 KOEventPopupMenu::KOEventPopupMenu(QWidget *parent)
     : QMenu(parent)

@@ -10,10 +10,6 @@
 
 #include "korganizerprivate_export.h"
 
-#include <Akonadi/Collection>
-
-#include <KCalendarCore/Incidence>
-
 namespace Akonadi
 {
 class Collection;

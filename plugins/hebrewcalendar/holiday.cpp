@@ -16,6 +16,7 @@
 #include "holiday.h"
 #include "parsha.h"
 
+#include <KHolidays/HebrewConverter>
 #include <KLocalizedString>
 
 // NOLINTBEGIN(bugprone-switch-missing-default-case)

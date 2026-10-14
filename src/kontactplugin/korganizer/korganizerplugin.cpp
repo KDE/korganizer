@@ -14,7 +14,6 @@
 #include <KContacts/VCardDrag>
 
 #include <KCalendarCore/Incidence>
-#include <KCalendarCore/MemoryCalendar>
 
 #include <Akonadi/ItemFetchJob>
 #include <Akonadi/ItemFetchScope>
@@ -32,7 +31,6 @@
 #include <QIcon>
 
 #include <QDropEvent>
-#include <QStandardPaths>
 
 EXPORT_KONTACT_PLUGIN_WITH_JSON(KOrganizerPlugin, "korganizerplugin.json")
 

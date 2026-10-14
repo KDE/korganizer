@@ -14,7 +14,6 @@
 
 #include <Akonadi/Item>
 
-#include <KCalendarCore/Calendar>
 #include <KCalendarCore/Event>
 using namespace KCalendarCore;
 

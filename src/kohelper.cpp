@@ -11,10 +11,6 @@
 
 #include <EventViews/Helper>
 
-#include <CalendarSupport/KCalPrefs>
-#include <KLocalizedString>
-#include <KMessageBox>
-
 QColor KOHelper::resourceColor(const Akonadi::Collection &coll)
 {
     return EventViews::resourceColor(coll, KOPrefs::instance()->eventViewsPreferences());
