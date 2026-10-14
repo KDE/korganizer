@@ -308,10 +308,8 @@ private:
 
     QUrl mURL; // URL of calendar file
     QString mFile; // Local name of calendar file
-    QString mLastUrl; // URL of last loaded calendar.
 
     QTemporaryFile *mTempFile = nullptr;
-    QTimer *mAutoExportTimer = nullptr; // used if calendar is to be autoexported
     QTimer *mAutoArchiveTimer = nullptr; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances
