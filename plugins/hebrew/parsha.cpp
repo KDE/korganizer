@@ -20,20 +20,64 @@
 QString Parsha::findParshaName(int dayNumber, int kvia, bool isLeapYear, bool useIsraelSettings)
 {
     // The names of the Parshiot.
-    static QStringList parshiotNames = QStringList();
-    parshiotNames << i18nc(
-        "These are weekly readings and do not have translations. "
-        "They may have different spellings in your language; "
-        "otherwise, just translate the sound to your characters",
-        "Bereshit")
-                  << i18n("Noach") << i18n("Lech L'cha") << i18n("Vayera") << i18n("Chaye Sarah") << i18n("Toldot") << i18n("Vayetze") << i18n("Vayishlach")
-                  << i18n("Vayeshev") << i18n("Miketz") << i18n("Vayigash") << i18n("Vayechi") << i18n("Shemot") << i18n("Vaera") << i18n("Bo")
-                  << i18n("Beshalach") << i18n("Yitro") << i18n("Mishpatim") << i18n("Terumah") << i18n("Tetzaveh") << i18n("Ki Tisa") << i18n("Vayakhel")
-                  << i18n("Pekudei") << i18n("Vayikra") << i18n("Tzav") << i18n("Shemini") << i18n("Tazria") << i18n("Metzora") << i18n("Acharei Mot")
-                  << i18n("Kedoshim") << i18n("Emor") << i18n("Behar") << i18n("Bechukotai") << i18n("Bemidbar") << i18n("Naso") << i18n("Behaalotcha")
-                  << i18n("Shelach") << i18n("Korach") << i18n("Chukat") << i18n("Balak") << i18n("Pinchas") << i18n("Matot") << i18n("Masei")
-                  << i18n("Devarim") << i18n("Vaetchanan") << i18n("Ekev") << i18n("Reeh") << i18n("Shoftim") << i18n("Ki Tetze") << i18n("Ki Tavo")
-                  << i18n("Nitzavim") << i18n("Vayelech") << i18n("Haazinu");
+    static QStringList parshiotNames = {
+        i18nc("These are weekly readings and do not have translations. "
+              "They may have different spellings in your language; "
+              "otherwise, just translate the sound to your characters",
+              "Bereshit"),
+        i18n("Noach"),
+        i18n("Lech L'cha"),
+        i18n("Vayera"),
+        i18n("Chaye Sarah"),
+        i18n("Toldot"),
+        i18n("Vayetze"),
+        i18n("Vayishlach"),
+        i18n("Vayeshev"),
+        i18n("Miketz"),
+        i18n("Vayigash"),
+        i18n("Vayechi"),
+        i18n("Shemot"),
+        i18n("Vaera"),
+        i18n("Bo"),
+        i18n("Beshalach"),
+        i18n("Yitro"),
+        i18n("Mishpatim"),
+        i18n("Terumah"),
+        i18n("Tetzaveh"),
+        i18n("Ki Tisa"),
+        i18n("Vayakhel"),
+        i18n("Pekudei"),
+        i18n("Vayikra"),
+        i18n("Tzav"),
+        i18n("Shemini"),
+        i18n("Tazria"),
+        i18n("Metzora"),
+        i18n("Acharei Mot"),
+        i18n("Kedoshim"),
+        i18n("Emor"),
+        i18n("Behar"),
+        i18n("Bechukotai"),
+        i18n("Bemidbar"),
+        i18n("Naso"),
+        i18n("Behaalotcha"),
+        i18n("Shelach"),
+        i18n("Korach"),
+        i18n("Chukat"),
+        i18n("Balak"),
+        i18n("Pinchas"),
+        i18n("Matot"),
+        i18n("Masei"),
+        i18n("Devarim"),
+        i18n("Vaetchanan"),
+        i18n("Ekev"),
+        i18n("Reeh"),
+        i18n("Shoftim"),
+        i18n("Ki Tetze"),
+        i18n("Ki Tavo"),
+        i18n("Nitzavim"),
+        i18n("Vayelech"),
+        i18n("Haazinu"),
+    };
 
     /*
       Tables for each of the year types. XX indicates that it is a Holiday, and a
