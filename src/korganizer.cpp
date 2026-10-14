@@ -151,7 +151,6 @@ void KOrganizer::readSettings()
 
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     mActionManager->readSettings();
-    config->sync();
 }
 
 void KOrganizer::writeSettings()
