@@ -1099,12 +1099,11 @@ void ActionManager::updateConfig()
 
 void ActionManager::configureDateTime()
 {
-    QProcess const proc;
     const QString program = QStringLiteral("kcmshell6");
     QStringList arguments;
     arguments << QStringLiteral("kcm_regionandlang") << QStringLiteral("clock");
 
-    if (!proc.startDetached(program, arguments)) {
+    if (!QProcess::startDetached(program, arguments)) {
         KMessageBox::error(dialogParent(), i18nc("@info", "Could not start control module for date and time format."));
     }
 }
