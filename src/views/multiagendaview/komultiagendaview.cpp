@@ -363,8 +363,8 @@ KOMultiAgendaViewConfigDialog::KOMultiAgendaViewConfigDialog(QAbstractItemModel 
     okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &KOMultiAgendaViewConfigDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KOMultiAgendaViewConfigDialog::reject);
-    mainLayout->addWidget(buttonBox);
     mainLayout->addWidget(widget);
+    mainLayout->addWidget(buttonBox);
 
     d->ui.columnList->setModel(&d->listModel);
     connect(d->ui.columnList->selectionModel(), &QItemSelectionModel::currentChanged, this, &KOMultiAgendaViewConfigDialog::currentChanged);
