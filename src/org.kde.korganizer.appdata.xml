@@ -47,7 +47,7 @@
   <name xml:lang="sk">KOrganizer</name>
   <name xml:lang="sl">KOrganizer</name>
   <name xml:lang="sv">Korganizer</name>
-  <name xml:lang="tr">K Organizatör</name>
+  <name xml:lang="tr">KOrganizer</name>
   <name xml:lang="uk">KOrganizer</name>
   <name xml:lang="zh-CN">KOrganizer</name>
   <name xml:lang="zh-TW">行事曆_KOrganizer</name>
@@ -126,7 +126,7 @@
     <p xml:lang="sk">KOrganizer je súčasťou Kontact pre kalendár a plánovanie. Poskytuje správu udalostí a úloh, upozornenia alarmu, export na web, prehľadné sieťové spracovanie údajov, skupinové plánovanie, import a export súborov kalendára a ďalšie. Dokáže spolupracovať s celou škálou služieb kalendára vrátane služieb NextCloud, Kolab, Google Kalendár a ďalšie. KOrganizer je plne prispôsobiteľný vašim potrebám a je neoddeliteľnou súčasťou balíka Kontact, ktorého cieľom je byť kompletným riešením pre organizáciu vašich osobných údajov. KOrganizer podporuje dva dominantné štandardy pre ukladanie a výmenu dát kalendára, vCalendar a iCalendar.</p>
     <p xml:lang="sl">KOrganizer je komponenta koledarja in planiranje programa Kontact. Zagotavlja upravljanje dogodkov in opravil, obveščanje o alarmih, izvoz spletnih strani, omrežje pregledno ravnanje s podatki, načrtovanje skupin, uvoz in izvoz koledarske datoteke in še več. Lahko sodeluje z najrazličnejšimi koledarskimi storitvami, vključno z NextCloud, Kolab, Google Calendar in drugimi. KOrganizer je popolnoma prilagodljiv vašim potrebam in je sestavni del del programa Kontact, katerega cilj je biti celovita rešitev organiziranja vaših osebnih podatkov. KOrganizer podpira dva prevladujoča standarda za shranjevanje in izmenjavo podatkov koledarja, vCalendar in iCalendar.</p>
     <p xml:lang="sv">Korganizer är kalender- och schemaläggningskomponenten i Kontact. Den tillhandahåller hantering av händelser och uppgifter, alarm underrättelser, webbexport, nätverkstransparent hantering av data, gruppschemaläggning, import och export av kalenderfiler, med mera. Den kan arbeta ihop med ett stort antal kalendertjänster, inklusive NextCloud, Kolab, Google kalender och andra. Korganizer är helt anpassningsbar enligt dina behov och är en integrerad del av Kontact-sviten, som har målet att vara en fullständig lösning för att organisera personlig information. Korganizer stöder de två dominerande standarderna för att lagra och utbyta kalenderdata, vCalendar och iCalendar.</p>
-    <p xml:lang="tr">K Organizatör, Kontak’ın takvim ve planlama bileşenidir. Etkinlikler ve görevler yönetimi, alarm bildirimleri, web biçiminde dışa aktarım, ağda iletilebilir veri yönetimi, grup programı ve takvim dosyalarının içe/dışa aktarımını tek bir program altında sunar. Nextcloud, Kolab, Google Takvim ve birçok daha takvim hizmetleriyle birlikte çalışabilir. K Organizatör, gereksinimlerinize göre tümüyle özelleştirilebilir ve kişisel verinizi düzenlemenin tam takım bir yolu olan Kontak takımının ayrılmaz bir parçasıdır. K Organizatör, günümüzde kullanılan iki yaygın takvim verisi taşıma biçimi olan vCalendar ve iCalendar’ı destekler.</p>
+    <p xml:lang="tr">KOrganizer, Kontact’in takvim ve planlama bileşenidir. Etkinlikler ve görevler yönetimi, alarm bildirimleri, web biçiminde dışa aktarım, ağda iletilebilir veri yönetimi, grup programı ve takvim dosyalarının içe/dışa aktarımını tek bir program altında sunar. Nextcloud, Kolab, Google Takvim ve birçok daha takvim hizmetleriyle birlikte çalışabilir. KOrganizer, gereksinimlerinize göre tümüyle özelleştirilebilir ve kişisel verinizi düzenlemenin tam takım bir yolu olan Kontact takımının ayrılmaz bir parçasıdır. KOrganizer, günümüzde kullanılan iki yaygın takvim verisi taşıma biçimi olan vCalendar ve iCalendar’ı destekler.</p>
     <p xml:lang="uk">KOrganizer — компонент Kontact для ведення календарів та планування. У програмі передбачено керування записами подій та завдань, сповіщення про події, експортування даних до мережі, прозоре керування даними у мережі, групове планування, імпортування та експортування файлів календарів тощо. Програма може працювати із багатьма службами керування календарями, зокрема NextCloud, Kolab, Календарем Google тощо. KOrganizer — дужа гнучка у налаштовуванні програма, яку можна легко пристосувати до ваших потреб. Вона є частиною комплексу програм Kontact, який є повноцінним рішенням для упорядковування ваших особистих даних. У KOrganizer передбачено підтримку двох основних стандартів для зберігання і обміну даними календарів — vCalendar та iCalendar.</p>
     <p xml:lang="zh-CN">KOrganizer 是 Kontact 的日历及日程安排组件，它提供了日程及任务管理、闹钟通知、网络导出、网络数据传输处理、分组日程安排、导入及导出日历文件等功能。它能与各种各样的日历服务一同使用，如 NextCloud、Kolab 和 Google 日历等。KOrganizer 可根据您的需要进行完全定制，并作为 Kontact 的内置组件，意图打造整理个人数据的完整方案。KOrganizer 还支持使用两种头号标准——vCalendar 和 iCalendar——来存储和交换日历数据。</p>
     <p xml:lang="zh-TW">KOrganizer 是 Kontact 套裝軟體的行事曆與行程規劃部件。它提供事件與工作項目的管理、鬧鐘通知、網路匯出、群組排程、行事曆檔案的匯入與匯出等等。它可以與非常多行事曆服務共同運作，包含 NextCloud、Kolab、Google 日曆等等。KOrganizer 可以依您的需求隨意個人化，並且是 Kontact 套裝軟體不可或缺的一部分。KOrganizer 支援兩種通用的行事曆儲存與交換格式，它們是 vCalendar 和 iCalendar。</p>
@@ -531,7 +531,7 @@
           <li xml:lang="sk">Súhrn Kontactu: pýtať sa pred odstránením udalostí</li>
           <li xml:lang="sl">Povzetek Kontakta: vprašaj pred brisanjem pogostosti</li>
           <li xml:lang="sv">Kontact-översikt: fråga innan förekomster tas bort</li>
-          <li xml:lang="tr">Kontak özet: Olayları silmeden önce sor</li>
+          <li xml:lang="tr">Kontact özet: Olayları silmeden önce sor</li>
           <li xml:lang="uk">Резюме Kontact: реалізовано запит щодо вилучення повторень</li>
           <li>Kontact summary: Upcoming Events shows if an event has ended earlier today or currently in-progress</li>
           <li xml:lang="ar">ملخص متراسلك: الأحداث القادمة تُظهر ما إذا كان حدثٌ قد انتهى في وقتٍ سابق اليوم أو ما زال جاريًا حاليًا</li>
@@ -551,7 +551,7 @@
           <li xml:lang="sk">Súhrn Kontactu: Nadchádzajúce udalosti ukazujú, či udalosť dnes už skončila alebo práve prebieha</li>
           <li xml:lang="sl">Povzetek kontakta: Prihajajoči dogodki prikazujejo, ali se je dogodek končal že prej danes ali je trenutno v teku</li>
           <li xml:lang="sv">Kontact-översikt: Kommande händelser visas om en händelse har slutat tidigare idag eller för närvarande pågår</li>
-          <li xml:lang="tr">Kontak özet: Gelecekteki etkinlikler, bir etkinlik aynı gün erkenden bittiyse veya şu anda sürüyorsa bunu gösterir.</li>
+          <li xml:lang="tr">Kontact özet: Gelecekteki etkinlikler, bir etkinlik aynı gün erkenden bittiyse veya şu anda sürüyorsa bunu gösterir.</li>
           <li xml:lang="uk">Резюме Kontact: реалізовано показ для майбутніх подій того, завершилася подія раніше сьогодні чи триває</li>
           <li>Kontact summary: Pending To-dos has improved grid alignment and date strings</li>
           <li xml:lang="ar">ملخص متراسلك: المهام المعلّقة تحسّنت محاذاة شبكتها وسلاسل تواريخها</li>
@@ -571,7 +571,7 @@
           <li xml:lang="sk">Súhrn Kontactu: Čakajúce úlohy majú lepšie zarovnanie mriežky a formát dátumov</li>
           <li xml:lang="sl">Povzetek Kontakta: Čakajoče opravila imajo izboljšano poravnavo mreže in datumske nize</li>
           <li xml:lang="sv">Kontact-översikt: Väntande uppgifter har förbättrad rutnätsjustering och datumsträngar</li>
-          <li xml:lang="tr">Kontak özet: Bekleyen yapılacakların tarih dizileri ve ızgara hizalaması iyileştirildi.</li>
+          <li xml:lang="tr">Kontact özet: Bekleyen yapılacakların tarih dizileri ve ızgara hizalaması iyileştirildi.</li>
           <li xml:lang="uk">Резюме Kontact: удосконалено вирівнювання у таблиці та рядки дат для завдань у черзі</li>
           <li>Kontact summary: Consistent date string formats</li>
           <li xml:lang="ar">ملخص متراسلك: تنسيقات سلاسل تواريخ متسقة</li>
@@ -591,7 +591,7 @@
           <li xml:lang="sk">Súhrn Kontactu: jednotné formáty dátumov</li>
           <li xml:lang="sl">Povzetek Kontacta: Dosledne oblike zapisa datumskih nizov</li>
           <li xml:lang="sv">Kontact-sammanfattning: Konsekventa strängformat för datum</li>
-          <li xml:lang="tr">Kontak özet: Tutarlı tarih dizisi biçimleri</li>
+          <li xml:lang="tr">Kontact özet: Tutarlı tarih dizisi biçimleri</li>
           <li xml:lang="uk">Резюме Kontact: сумісні формати рядків дат</li>
         </ul>
         <p>Plugins</p>
@@ -717,7 +717,7 @@
           <li xml:lang="sk">Kalendáre vytvorené v KOrganizeri sa vytvárajú na serveri DAV</li>
           <li xml:lang="sl">Koledarji, ustvarjeni v KOrganizerju, so ustvarjeni na strežniku DAV</li>
           <li xml:lang="sv">Kalendrar skapade i Korganizer skapas på DAV-servern</li>
-          <li xml:lang="tr">K Organizatör bünyesinde oluşturulan takvimler artık DAV sunucusunda da oluşturuluyor.</li>
+          <li xml:lang="tr">KOrganizer bünyesinde oluşturulan takvimler artık DAV sunucusunda da oluşturuluyor.</li>
           <li xml:lang="uk">Програма створює для створених календарів KOrganizer календарі на сервері DAV</li>
           <li>Calendar name/color changes in KOrganizer are replicated on the DAV server</li>
           <li xml:lang="ar">تغييرات اسم/لون التقويم في كيورغانايزر تُنسخ على خادم DAV</li>
@@ -737,7 +737,7 @@
           <li xml:lang="sk">Zmeny názvu a farby kalendára v KOrganizeri sa prenášajú na server DAV</li>
           <li xml:lang="sl">Spremembe imena/barve koledarja v KOrganizerju so replicirani na strežniku DAV</li>
           <li xml:lang="sv">Ändring av kalenderns namn/färg i Korganizer replikeras på DAV-servern</li>
-          <li xml:lang="tr">K Organizatör bünyesinde yapılan takvim ad/renk değişiklikleri DAV sunucusuna da yansıtılıyor.</li>
+          <li xml:lang="tr">KOrganizer bünyesinde yapılan takvim ad/renk değişiklikleri DAV sunucusuna da yansıtılıyor.</li>
           <li xml:lang="uk">Реалізовано відтворення змін у назвах кольорах календарів KOrganizer на сервері DAV</li>
           <li>Properly handle creating/editing/deleting recurring event exceptions</li>
           <li xml:lang="ar">التعامل السليم مع إنشاء/تحرير/حذف استثناءات الأحداث المتكررة</li>
