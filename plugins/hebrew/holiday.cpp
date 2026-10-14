@@ -477,8 +477,7 @@ QStringList Holiday::findHoliday(int month,
 
 QString Holiday::sfirah(int day)
 {
-    QString buffer = QString::number(day);
-    buffer + i18n(" Omer"); // TODO: Find a way to write 1st instead of 1,
+    const QString buffer = i18n("%1 Omer", day); // TODO: Find a way to write 1st instead of 1,
     //                           2nd instead of 2, etc.
     return buffer;
 }
