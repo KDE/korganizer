@@ -793,8 +793,10 @@ void ActionManager::updateHamburgerMenu()
     delete mHamburgerMenu->menu();
     auto menu = new QMenu;
 
-    menu->addAction(mACollection->action(QStringLiteral("conf_datetime")));
-    menu->addSeparator();
+    if (auto act = mACollection->action(QStringLiteral("conf_datetime")); act) {
+        menu->addAction(act);
+        menu->addSeparator();
+    }
     menu->addAction(mACollection->action(KStandardActions::name(KStandardActions::Print)));
     menu->addSeparator();
     menu->addAction(mACollection->action(KStandardActions::name(KStandardActions::Quit)));
