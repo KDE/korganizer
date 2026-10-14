@@ -19,8 +19,6 @@ K_PLUGIN_CLASS_WITH_JSON(ThisDayInHistory, "thisdayinhistory.json")
 ThisDayInHistory::ThisDayInHistory(QObject *parent, const QVariantList &args)
     : Decoration(parent, args)
 {
-    KConfig _config(QStringLiteral("korganizerrc"));
-    KConfigGroup const config(&_config, QStringLiteral("This Day in History Plugin"));
 }
 
 QString ThisDayInHistory::info() const
