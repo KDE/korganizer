@@ -60,6 +60,7 @@ void KOEventPopupMenu::init(MenuStyle menuStyle)
         appendReminderOnlyItems();
         appendRecurrenceOnlyItems();
         appendShareOnlyItems();
+        break;
     default:
         break;
     }
