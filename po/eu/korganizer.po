@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-12 00:53+0000\n"
+"POT-Creation-Date: 2026-10-15 00:47+0000\n"
 "PO-Revision-Date: 2026-08-20 10:40+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -35,8 +35,8 @@ msgid "Your emails"
 msgstr "xalba@ni.eus,igaztanaga@gmail.com"
 
 #: aboutdata.cpp:18 kontactplugin/korganizer/journalplugin.cpp:25
-#: kontactplugin/korganizer/korganizerplugin.cpp:42
-#: kontactplugin/korganizer/todoplugin.cpp:38
+#: kontactplugin/korganizer/korganizerplugin.cpp:40
+#: kontactplugin/korganizer/todoplugin.cpp:36
 #: kontactplugin/specialdates/specialdates_plugin.cpp:23
 #, kde-format
 msgctxt "@info/plain"
@@ -329,7 +329,7 @@ msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
-#: actionmanager.cpp:135
+#: actionmanager.cpp:132
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -337,31 +337,31 @@ msgid ""
 msgstr ""
 "Horrek menu-barra erabat ezkutatuko du. %1 tekleatuz berriz erakuts dezakezu."
 
-#: actionmanager.cpp:138
+#: actionmanager.cpp:135
 #, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "Ezkutatu menu-barra"
 
-#: actionmanager.cpp:248
+#: actionmanager.cpp:245
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "Inportatu e&gutegia…"
 
-#: actionmanager.cpp:249
+#: actionmanager.cpp:246
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "Inportatu egutegi bat"
 
-#: actionmanager.cpp:250
+#: actionmanager.cpp:247
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "Inportatu «iCalendar» edo «vCalendar» fitxategi bat"
 
-#: actionmanager.cpp:252
+#: actionmanager.cpp:249
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -371,25 +371,25 @@ msgstr ""
 "Hautatu menu-sarrera hori «iCalendar» edo «vCalendar» fitxategi baten edukia "
 "egungo zure egutegi bildumara inportatu nahi bazenu."
 
-#: actionmanager.cpp:260
+#: actionmanager.cpp:257
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "Esportatu &iCalendar gisa…"
 
-#: actionmanager.cpp:261
+#: actionmanager.cpp:258
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "Esportatu egutegia fitxategira"
 
-#: actionmanager.cpp:262
+#: actionmanager.cpp:259
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "Esportatu zure egutegia «iCalendar» fitxategi batera"
 
-#: actionmanager.cpp:263
+#: actionmanager.cpp:260
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -398,25 +398,25 @@ msgstr ""
 "Zure egutegi-bilduma osoa «iCalendar» fitxategi batera esportatzeko aukera "
 "ematen dizu."
 
-#: actionmanager.cpp:269
+#: actionmanager.cpp:266
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "Artxibatu gertakizun &zaharrak…"
 
-#: actionmanager.cpp:270
+#: actionmanager.cpp:267
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "Artxibatu ekitaldiak eta zereginak fitxategi batean"
 
-#: actionmanager.cpp:271
+#: actionmanager.cpp:268
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "Artxibatu ekitaldi eta zeregin zaharrak «iCalendar» fitxategi batean"
 
-#: actionmanager.cpp:273
+#: actionmanager.cpp:270
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -428,25 +428,25 @@ msgstr ""
 "fitxategi batean artxiba ditzakezun ekitaldi eta zeregin zaharrak hautatzeko "
 "aukera ematen dizuna."
 
-#: actionmanager.cpp:281
+#: actionmanager.cpp:278
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "Betiko e&zabatu osatutako zereginak"
 
-#: actionmanager.cpp:282
+#: actionmanager.cpp:279
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "Betiko ezabatu osatutako zereginak"
 
-#: actionmanager.cpp:283
+#: actionmanager.cpp:280
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "Kendu osatutako zereginak zure egutegitik"
 
-#: actionmanager.cpp:285
+#: actionmanager.cpp:282
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -456,32 +456,32 @@ msgstr ""
 "Osatutako zeregin guztiak zure egutegiko bildumatik ezabatzeko aukera ematen "
 "dizu. Ekintza hau ezin da desegin!"
 
-#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1325
-#: actionmanager.cpp:1363
+#: actionmanager.cpp:319 actionmanager.cpp:618 actionmanager.cpp:1323
+#: actionmanager.cpp:1361
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "Eza&batu"
 
-#: actionmanager.cpp:339
+#: actionmanager.cpp:336
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
 msgstr "Zer da &hurrengoa"
 
-#: actionmanager.cpp:340
+#: actionmanager.cpp:337
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "«Zer da hurrengoa» ikuspegia"
 
-#: actionmanager.cpp:341
+#: actionmanager.cpp:338
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "Aldatu «Zer da hurrengoa» ikuspegira"
 
-#: actionmanager.cpp:343
+#: actionmanager.cpp:340
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -496,25 +496,25 @@ msgstr ""
 "nabigatzailea alboko-barran hautatutako egunetako ekitaldiak baino ez dira "
 "erakutsiko."
 
-#: actionmanager.cpp:351
+#: actionmanager.cpp:348
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "&Hilabetea"
 
-#: actionmanager.cpp:352
+#: actionmanager.cpp:349
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "Hilabeteko ikuspegia"
 
-#: actionmanager.cpp:353
+#: actionmanager.cpp:350
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "Aldatu Hilabeteko ikuspegira"
 
-#: actionmanager.cpp:355
+#: actionmanager.cpp:352
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -524,25 +524,25 @@ msgstr ""
 "Hilabeteko ikuspegira aldatzen du, non ekitaldi eta egiteko dauden zeregin "
 "guztiak hilabetekako egutegi antolaera ezagun batean erakusten dituen."
 
-#: actionmanager.cpp:361
+#: actionmanager.cpp:358
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "&Agenda"
 
-#: actionmanager.cpp:364
+#: actionmanager.cpp:361
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Agenda ikuspegia"
 
-#: actionmanager.cpp:365
+#: actionmanager.cpp:362
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "Aldatu Agenda ikuspegira"
 
-#: actionmanager.cpp:367
+#: actionmanager.cpp:364
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -555,25 +555,25 @@ msgstr ""
 "antolatuta. Eguneko ordutegian, ekitaldi bakoitzaren luzera ikusteko aukera "
 "duzu."
 
-#: actionmanager.cpp:374
+#: actionmanager.cpp:371
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "&Ekitaldi-zerrenda"
 
-#: actionmanager.cpp:375
+#: actionmanager.cpp:372
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "Zerrenda ikuspegia"
 
-#: actionmanager.cpp:376
+#: actionmanager.cpp:373
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "Aldatu Zerrenda ikuspegira"
 
-#: actionmanager.cpp:378
+#: actionmanager.cpp:375
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -584,25 +584,25 @@ msgstr ""
 "datetarako zure zeregin, ekitaldi eta egunkariko sarrera guztiak zerrenda "
 "gisa azaltzen ditu."
 
-#: actionmanager.cpp:384
+#: actionmanager.cpp:381
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "&Zereginen zerrenda"
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:382
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "Zereginen zerrenda ikuspegia"
 
-#: actionmanager.cpp:386
+#: actionmanager.cpp:383
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "Aldatu Zereginen zerrenda ikuspegira"
 
-#: actionmanager.cpp:388
+#: actionmanager.cpp:385
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -612,25 +612,25 @@ msgstr ""
 "Zereginen zerrenda ikuspegira aldatzen du, non egin beharreko atazen "
 "jarraipena egiteko leku bat eskaintzen duen."
 
-#: actionmanager.cpp:394
+#: actionmanager.cpp:391
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "E&gunkaria"
 
-#: actionmanager.cpp:395
+#: actionmanager.cpp:392
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "Egunkaria ikuspegia"
 
-#: actionmanager.cpp:396
+#: actionmanager.cpp:393
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "Aldatu egunkaria ikuspegira"
 
-#: actionmanager.cpp:398
+#: actionmanager.cpp:395
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -640,25 +640,25 @@ msgstr ""
 "Egunkari ikuspegira aldatzen du, non zure gogoetak, gertaerak eta bizipenak "
 "erregistratzeko lekua ematen dizun."
 
-#: actionmanager.cpp:404
+#: actionmanager.cpp:401
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "Denbora-&lerroa"
 
-#: actionmanager.cpp:405
+#: actionmanager.cpp:402
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "Denbora-lerroa ikuspegia"
 
-#: actionmanager.cpp:406
+#: actionmanager.cpp:403
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "Aldatu denbora-lerroa ikuspegira"
 
-#: actionmanager.cpp:408
+#: actionmanager.cpp:405
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -668,25 +668,25 @@ msgstr ""
 "Denbora-lerroa ikuspegira aldatzen du, bertan hautatutako denborarako "
 "ekitaldi guztiak erakusten ditu Gantt ikuspegi batean."
 
-#: actionmanager.cpp:417
+#: actionmanager.cpp:414
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "Be&rritu"
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:415
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "Berritu"
 
-#: actionmanager.cpp:419
+#: actionmanager.cpp:416
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "Berritu erakusleihoa"
 
-#: actionmanager.cpp:421
+#: actionmanager.cpp:418
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -696,25 +696,25 @@ msgstr ""
 "Ekintza horrek uneko egutegi ikuspegia berritu eta berriz marraztuko du. Ez "
 "du egutegi karpetarik sinkronizatzen edo eguneratzen."
 
-#: actionmanager.cpp:430
+#: actionmanager.cpp:427
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "&Iragazi"
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:428
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "Iragazi gertakizun"
 
-#: actionmanager.cpp:432
+#: actionmanager.cpp:429
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "Iragazi egutegiko gertakizunak"
 
-#: actionmanager.cpp:434
+#: actionmanager.cpp:431
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -725,55 +725,55 @@ msgstr ""
 "ditu. Aurretik iragazkiak sortu behar dira. Begiratu Ezarpenak menuko "
 "\"Kudeatu ikuspegi iragazkiak\" aukera."
 
-#: actionmanager.cpp:446
+#: actionmanager.cpp:443
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "Gerturatu horizontalki"
 
-#: actionmanager.cpp:451
+#: actionmanager.cpp:448
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "Urrundu horizontalki"
 
-#: actionmanager.cpp:456
+#: actionmanager.cpp:453
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "Gerturatu bertikalki"
 
-#: actionmanager.cpp:461
+#: actionmanager.cpp:458
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "Urrundu bertikalki"
 
-#: actionmanager.cpp:470
+#: actionmanager.cpp:467
 #, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "&Gaurko egunera"
 
-#: actionmanager.cpp:471
+#: actionmanager.cpp:468
 #, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "Gaur"
 
-#: actionmanager.cpp:472
+#: actionmanager.cpp:469
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Kiribildu gaurko egunera"
 
-#: actionmanager.cpp:473 widgets/navigatorbar.cpp:38
+#: actionmanager.cpp:470 widgets/navigatorbar.cpp:38
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "Kiribildu ikuspegia gaurko egunera"
 
-#: actionmanager.cpp:474
+#: actionmanager.cpp:471
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid "Scrolls the current view to the today's date."
@@ -781,31 +781,31 @@ msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "Kiribildu uneko ikuspegia gaurko datara."
 
-#: actionmanager.cpp:480
+#: actionmanager.cpp:477
 #, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "A&tzerantz"
 
-#: actionmanager.cpp:482
+#: actionmanager.cpp:479
 #, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "Atzera"
 
-#: actionmanager.cpp:483
+#: actionmanager.cpp:480
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Kiribildu atzerantz"
 
-#: actionmanager.cpp:484
+#: actionmanager.cpp:481
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "Kiribildu ikuspegia atzerantz"
 
-#: actionmanager.cpp:486
+#: actionmanager.cpp:483
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -815,31 +815,31 @@ msgstr ""
 "Kiribildu atzerantz, egun, aste, hilabete edo urte bat, uneko egutegi "
 "ikuspegiaren arabera."
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:490
 #, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "A&urrerantz"
 
-#: actionmanager.cpp:495
+#: actionmanager.cpp:492
 #, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "Aurrerantz"
 
-#: actionmanager.cpp:496
+#: actionmanager.cpp:493
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "Kiribildu aurrerantz"
 
-#: actionmanager.cpp:497
+#: actionmanager.cpp:494
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "Kiribildu ikuspegia aurrerantz"
 
-#: actionmanager.cpp:499
+#: actionmanager.cpp:496
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -849,56 +849,56 @@ msgstr ""
 "Kiribildu aurrerantz, egun, aste, hilabete edo urte bat, uneko egutegi "
 "ikuspegiaren arabera."
 
-#: actionmanager.cpp:505
+#: actionmanager.cpp:502
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "E&guna"
 
-#: actionmanager.cpp:506
+#: actionmanager.cpp:503
 #, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Eguna"
 
-#: actionmanager.cpp:507
+#: actionmanager.cpp:504
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
 msgstr "Ikusi egun 1 aldiko"
 
-#: actionmanager.cpp:508
+#: actionmanager.cpp:505
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
 msgstr "Erakutsi egun 1 aldiko Agenda ikuspegian"
 
-#: actionmanager.cpp:509
+#: actionmanager.cpp:506
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
 msgstr ""
 "Hautatu aukera hau  Agenda ikuspegian aldiko egun 1 bakarrik erakusteko."
 
-#: actionmanager.cpp:516
+#: actionmanager.cpp:513
 #, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
 msgstr "&Hurrengo eguna"
 
-#: actionmanager.cpp:517
+#: actionmanager.cpp:514
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
 msgstr "Ikusi egun batzuk aldiko"
 
-#: actionmanager.cpp:518
+#: actionmanager.cpp:515
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
 msgstr "Erakutsi hurrengo egun batzuk aldi berean Agenda ikuspegian"
 
-#: actionmanager.cpp:521
+#: actionmanager.cpp:518
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -912,13 +912,13 @@ msgstr ""
 "<interface>Ikuspegiak->Orokorra</interface> ezarpen-orrian erakutsitako egun "
 "kopurua doitzeko."
 
-#: actionmanager.cpp:528
+#: actionmanager.cpp:525
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
 msgstr "Ast&eko ordutegia"
 
-#: actionmanager.cpp:529
+#: actionmanager.cpp:526
 #, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
@@ -926,7 +926,7 @@ msgctxt ""
 msgid "Week Schedule"
 msgstr "Asteko ordutegia"
 
-#: actionmanager.cpp:530
+#: actionmanager.cpp:527
 #, kde-format
 msgctxt "@info:status"
 msgid ""
@@ -935,7 +935,7 @@ msgstr ""
 "Erakutsi aste bat aldiko zure asteko ordutegian sartutako egunak bakarrik "
 "erakutsiz"
 
-#: actionmanager.cpp:532
+#: actionmanager.cpp:529
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -945,7 +945,7 @@ msgstr ""
 "Erakutsi aste bat aldiko Agenda ikuspegian, zure asteko ordutegian sartuta "
 "ez dauden egunak kanpoan utzita (adib. asteburuak kenduta)"
 
-#: actionmanager.cpp:535
+#: actionmanager.cpp:532
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -962,55 +962,55 @@ msgstr ""
 "<para>Ikuspegia hau astea asteburuko egunik gabe erakusteko erabili ohi da.</"
 "para>"
 
-#: actionmanager.cpp:544
+#: actionmanager.cpp:541
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Astea"
 
-#: actionmanager.cpp:545
+#: actionmanager.cpp:542
 #, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Astea"
 
-#: actionmanager.cpp:546
+#: actionmanager.cpp:543
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
 msgstr "Ikusi aste bat aldiko"
 
-#: actionmanager.cpp:547
+#: actionmanager.cpp:544
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
 msgstr "Erakutsi aste 1 aldiko Agenda ikuspegian"
 
-#: actionmanager.cpp:548
+#: actionmanager.cpp:545
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
 msgstr "Hautatu aukera hau Agenda ikuspegian aldiko aste bat erakusteko."
 
-#: actionmanager.cpp:555
+#: actionmanager.cpp:552
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
 msgstr "E&kitaldi berria…"
 
-#: actionmanager.cpp:556
+#: actionmanager.cpp:553
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Sortu ekitaldi berri bat"
 
-#: actionmanager.cpp:557
+#: actionmanager.cpp:554
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Sortu ekitaldi berri bat"
 
-#: actionmanager.cpp:559
+#: actionmanager.cpp:556
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1020,25 +1020,25 @@ msgstr ""
 "Ekitaldi berri bat, oroigarri, partaide, errepikatze eta askoz gehiagorekin "
 "sortzeko aukera eskaintzen dizun elkarrizketa bat hasten du."
 
-#: actionmanager.cpp:565
+#: actionmanager.cpp:562
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
 msgstr "&Zeregin berria…"
 
-#: actionmanager.cpp:566
+#: actionmanager.cpp:563
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Sortu zeregin berri bat"
 
-#: actionmanager.cpp:567
+#: actionmanager.cpp:564
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Sortu zeregin berri bat"
 
-#: actionmanager.cpp:569
+#: actionmanager.cpp:566
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1048,31 +1048,31 @@ msgstr ""
 "Zereginak, oroigarri, partaide, errepikatze eta askoz gehiagorekin sortzeko "
 "aukera eskaintzen dizun elkarrizketa-koadroa abiatzen du."
 
-#: actionmanager.cpp:576
+#: actionmanager.cpp:573
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
 msgstr "&Azpi-zeregin berria…"
 
-#: actionmanager.cpp:584
+#: actionmanager.cpp:581
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
 msgstr "E&gunkari berria…"
 
-#: actionmanager.cpp:585
+#: actionmanager.cpp:582
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "Sortu egunkari berri bat"
 
-#: actionmanager.cpp:586
+#: actionmanager.cpp:583
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "Sortu egunkari berri bat"
 
-#: actionmanager.cpp:587
+#: actionmanager.cpp:584
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
@@ -1080,31 +1080,31 @@ msgstr ""
 "Egunkari-sarrera berri bat sortzeko aukera ematen dizun elkarrizketa bat "
 "abiatzen du."
 
-#: actionmanager.cpp:592
+#: actionmanager.cpp:589
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
 msgstr "&Hautatu data bat"
 
-#: actionmanager.cpp:593
+#: actionmanager.cpp:590
 #, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "Data"
 
-#: actionmanager.cpp:594
+#: actionmanager.cpp:591
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "Kiribildu ikuspegia erabiltzaileak hautatutako datetara"
 
-#: actionmanager.cpp:595
+#: actionmanager.cpp:592
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "Kiribildu ikuspegia erabiltzaileak hautatutako datetara"
 
-#: actionmanager.cpp:596
+#: actionmanager.cpp:593
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
@@ -1112,31 +1112,31 @@ msgstr ""
 "Data hautatzeko elkarrizketa-koadro bat irekitzen du, ikuspegitik bizkor "
 "nabigatzeko."
 
-#: actionmanager.cpp:601
+#: actionmanager.cpp:598
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
 msgstr "Konfiguratu ikuspegia…"
 
-#: actionmanager.cpp:602
+#: actionmanager.cpp:599
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "Konfiguratu"
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:600
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "Konfiguratu egutegi-anizkoitzeko ikuspegia"
 
-#: actionmanager.cpp:604
+#: actionmanager.cpp:601
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "Konfiguratu egutegi-anizkoitzeko ikuspegia"
 
-#: actionmanager.cpp:606
+#: actionmanager.cpp:603
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1148,21 +1148,21 @@ msgstr ""
 "elkarrizketa-koadro bat abiatzen da. Ikusi Egutegi anizkoitzeko aukerak "
 "Ikuspegia->Agenda-ikuspegi ezarpenetan."
 
-#: actionmanager.cpp:613 actionmanager.cpp:1319 actionmanager.cpp:1361
-#: koeventpopupmenu.cpp:42
+#: actionmanager.cpp:610 actionmanager.cpp:1317 actionmanager.cpp:1359
+#: koeventpopupmenu.cpp:39
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Erakutsi"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1322 actionmanager.cpp:1362
-#: koeventpopupmenu.cpp:44
+#: actionmanager.cpp:614 actionmanager.cpp:1320 actionmanager.cpp:1360
+#: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "&Editatu…"
 
-#: actionmanager.cpp:626
+#: actionmanager.cpp:623
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
@@ -1172,73 +1172,73 @@ msgstr "Egi&n azpi-zeregina independente"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:638
+#: actionmanager.cpp:635
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
 msgstr "&Argitaratu elementuaren informazioa…"
 
-#: actionmanager.cpp:645
+#: actionmanager.cpp:642
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
 msgstr "Bidali gonb&idapena partaideei"
 
-#: actionmanager.cpp:653
+#: actionmanager.cpp:650
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
 msgstr "Es&katu eguneratzea"
 
-#: actionmanager.cpp:661
+#: actionmanager.cpp:658
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
 msgstr "Bidali e&zeztapena partaideei"
 
-#: actionmanager.cpp:669
+#: actionmanager.cpp:666
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
 msgstr "Bidali egoeraren &eguneratzea"
 
-#: actionmanager.cpp:677
+#: actionmanager.cpp:674
 #, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
 msgstr "Eskatu alda&keta"
 
-#: actionmanager.cpp:685
+#: actionmanager.cpp:682
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
 msgstr "&Postaz bidali libre/lanpetua informazioa…"
 
-#: actionmanager.cpp:690
+#: actionmanager.cpp:687
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
 msgstr "&Bidali iCalendar gisa…"
 
-#: actionmanager.cpp:697
+#: actionmanager.cpp:694
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
 msgstr "&Zama-igo libre/lanpetua informazioa"
 
-#: actionmanager.cpp:703
+#: actionmanager.cpp:700
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
 msgstr "&Helbide-liburua"
 
-#: actionmanager.cpp:711
+#: actionmanager.cpp:708
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
 msgstr "Erakutsi Data Nabigatzailea"
 
-#: actionmanager.cpp:715
+#: actionmanager.cpp:712
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Show To-do View"
@@ -1246,49 +1246,49 @@ msgctxt "@action:inmenu"
 msgid "Show To-do List"
 msgstr "Erakutsi Zeregin ikuspegia"
 
-#: actionmanager.cpp:719
+#: actionmanager.cpp:716
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
 msgstr "Erakutsi elementuen erakuslea"
 
-#: actionmanager.cpp:735
+#: actionmanager.cpp:732
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
 msgstr "Erakutsi Egutegi-kudeatzailea"
 
-#: actionmanager.cpp:749
+#: actionmanager.cpp:746
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
 msgstr "Konfiguratu &Data eta Ordua…"
 
-#: actionmanager.cpp:753
+#: actionmanager.cpp:750
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
 msgstr "Kudeatu Ikuspegi-ira&gazkiak…"
 
-#: actionmanager.cpp:757
+#: actionmanager.cpp:754
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "Kudeatu Etiket&ak…"
 
-#: actionmanager.cpp:764
+#: actionmanager.cpp:761
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
 msgstr "Zer berri"
 
-#: actionmanager.cpp:769
+#: actionmanager.cpp:766
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "&Konfiguratu KOrganizer…"
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:846
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1296,67 +1296,67 @@ msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "Gertakizun 1 ondo inportatu da."
 msgstr[1] "%1 gertakizun ondo inportatu dira."
 
-#: actionmanager.cpp:850
+#: actionmanager.cpp:849
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "Egutegia bateratu bitartean errore bat egon da: <message>%1</message>"
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:861
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "Egutegi berria ondo gehitu da"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:863
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "Ezin izan du egutegi bat gehitu. Errorea: <message>%1</message>"
 
-#: actionmanager.cpp:930
+#: actionmanager.cpp:929
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Hautatu ireki beharreko egutegi-fitxategia"
 
-#: actionmanager.cpp:966
+#: actionmanager.cpp:965
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Hautatu inportatu beharreko egutegia"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:997
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "Errore bat gertatu da: <message>%1 (URLa: %2)</message>"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1016
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "Ezin du egutegia <filename>%1</filename>(e)ra zama-igo"
 
-#: actionmanager.cpp:1023
+#: actionmanager.cpp:1022
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "<filename>%1</filename> egutegia gorde da"
 
-#: actionmanager.cpp:1066
+#: actionmanager.cpp:1065
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Ez da egutegia <filename>%1</filename> fitxategian gordetzeko gai"
 
-#: actionmanager.cpp:1067
+#: actionmanager.cpp:1066
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Errorea"
 
-#: actionmanager.cpp:1093
+#: actionmanager.cpp:1092
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1364,121 +1364,121 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "&Hurrengo eguna"
 msgstr[1] "&Hurrengo %1 egun"
 
-#: actionmanager.cpp:1106
+#: actionmanager.cpp:1104
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Ezin izan du data eta ordu formatuen kontrol modulua abiatu."
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1279
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "Erakut&si ekitaldia"
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1282
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Editatu ekitaldia…"
 
-#: actionmanager.cpp:1287
+#: actionmanager.cpp:1285
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Ezabatu ekitaldia"
 
-#: actionmanager.cpp:1295
+#: actionmanager.cpp:1293
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Erakutsi zeregina"
 
-#: actionmanager.cpp:1298 kontactplugin/korganizer/todosummarywidget.cpp:394
+#: actionmanager.cpp:1296 kontactplugin/korganizer/todosummarywidget.cpp:393
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Editatu zeregina…"
 
-#: actionmanager.cpp:1301 kontactplugin/korganizer/todosummarywidget.cpp:401
+#: actionmanager.cpp:1299 kontactplugin/korganizer/todosummarywidget.cpp:400
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Ezabatu zeregina"
 
-#: actionmanager.cpp:1444 actionmanager.cpp:1548
+#: actionmanager.cpp:1442 actionmanager.cpp:1546
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Erantsi este&ka gisa"
 
-#: actionmanager.cpp:1445 actionmanager.cpp:1549
+#: actionmanager.cpp:1443 actionmanager.cpp:1547
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Erantsi &lerro barruan"
 
-#: actionmanager.cpp:1446
+#: actionmanager.cpp:1444
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Erantsi lerro barruan estekarik ga&be"
 
-#: actionmanager.cpp:1448 actionmanager.cpp:1551
+#: actionmanager.cpp:1446 actionmanager.cpp:1549
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Utzi"
 
-#: actionmanager.cpp:1486
+#: actionmanager.cpp:1484
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "E-posta batetik eranskinak kentzea bere sinadura baliogabetu dezake."
 
-#: actionmanager.cpp:1487
+#: actionmanager.cpp:1485
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Kendu eranskinak"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1634
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Desegin: %1"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1637
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Desegin"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1647
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Berregin: %1"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Berregin"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1653
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Desegin"
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1664
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "<filename>%1</filename> URLa baliogabea da."
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1669
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1494,31 +1494,31 @@ msgstr ""
 "para><para>Gehitzea hautatzen baduzu, automatikoki, zuretzako egutegi berri "
 "bat sortuko da.</para>"
 
-#: actionmanager.cpp:1679
+#: actionmanager.cpp:1677
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Inportatu egutegia"
 
-#: actionmanager.cpp:1680
+#: actionmanager.cpp:1678
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Bateratu dagoen egutegian"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1679
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
 msgstr "Gehitu egutegi berri gisa"
 
-#: akonadicollectionview.cpp:301
+#: akonadicollectionview.cpp:299
 #, kde-format
 msgctxt "@item this calendar is offline"
 msgid "%1 (Offline)"
 msgstr "%1 (lerroz kanpo)"
 
-#: akonadicollectionview.cpp:304
+#: akonadicollectionview.cpp:302
 #, fuzzy, kde-format
 #| msgctxt "@item this is the default calendar"
 #| msgid "%1 (Default)"
@@ -1526,7 +1526,7 @@ msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
 msgstr "%1 (Lehenetsia)"
 
-#: akonadicollectionview.cpp:306
+#: akonadicollectionview.cpp:304
 #, fuzzy, kde-format
 #| msgctxt "@item this is the default calendar"
 #| msgid "%1 (Default)"
@@ -1534,38 +1534,38 @@ msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
 msgstr "%1 (Lehenetsia)"
 
-#: akonadicollectionview.cpp:394
+#: akonadicollectionview.cpp:392
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Egutegi-bilaketa"
 
-#: akonadicollectionview.cpp:395
+#: akonadicollectionview.cpp:393
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
 msgstr "Hasi tekleatzen bildumaren barruan egutegi bat bilatzeko."
 
-#: akonadicollectionview.cpp:397
+#: akonadicollectionview.cpp:395
 #, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
 msgstr "Bilatu egutegia…"
 
-#: akonadicollectionview.cpp:484 manageshowcollectionproperties.cpp:76
+#: akonadicollectionview.cpp:482 manageshowcollectionproperties.cpp:75
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "%1 egutegi-karpetaren propietateak"
 
-#: akonadicollectionview.cpp:496
+#: akonadicollectionview.cpp:494
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "E&zarri karpetaren kolorea…"
 
-#: akonadicollectionview.cpp:502
+#: akonadicollectionview.cpp:500
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Set as &Default Folder"
@@ -1573,14 +1573,14 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "Ezarri karpeta &lehenetsi gisa"
 
-#: akonadicollectionview.cpp:540
+#: akonadicollectionview.cpp:538
 #, fuzzy, kde-format
 #| msgid "Events"
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Gertaerak"
 
-#: akonadicollectionview.cpp:543
+#: akonadicollectionview.cpp:541
 #, fuzzy, kde-format
 #| msgctxt "@title:tab"
 #| msgid "Todo View"
@@ -1588,7 +1588,7 @@ msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "Egitekoen ikuspegia"
 
-#: akonadicollectionview.cpp:606
+#: akonadicollectionview.cpp:604
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1605,7 +1605,7 @@ msgstr ""
 "lehenetsi gisa?<para>Honek <filename>%2</filename> egutegi-karpeta lehenetsi "
 "gisa ordezkatuko du.</para>"
 
-#: akonadicollectionview.cpp:613
+#: akonadicollectionview.cpp:611
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1619,7 +1619,7 @@ msgstr ""
 "Benetan ezarri nahi duzu <filename>%1</filename> zure egutegi-karpeta "
 "lehenetsia gisa?"
 
-#: akonadicollectionview.cpp:616
+#: akonadicollectionview.cpp:614
 #, fuzzy, kde-format
 #| msgctxt "@title:window"
 #| msgid "Replace Default Calendar?"
@@ -1627,7 +1627,7 @@ msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "Egutegi lehenetsia ordezkatu?"
 
-#: akonadicollectionview.cpp:620 akonadicollectionview.cpp:1052
+#: akonadicollectionview.cpp:618 akonadicollectionview.cpp:1050
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "<filename>%1</filename> is now your default event calendar"
@@ -1635,7 +1635,7 @@ msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "<filename>%1</filename> da orain zure ekitaldi-egutegi lehenetsia"
 
-#: akonadicollectionview.cpp:773
+#: akonadicollectionview.cpp:771
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Set as &Default Folder"
@@ -1643,7 +1643,7 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "Ezarri karpeta &lehenetsi gisa"
 
-#: akonadicollectionview.cpp:776
+#: akonadicollectionview.cpp:774
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "Set as &Default Folder"
@@ -1651,19 +1651,19 @@ msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "Ezarri karpeta &lehenetsi gisa"
 
-#: akonadicollectionview.cpp:794
+#: akonadicollectionview.cpp:792
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Gehitu egutegia"
 
-#: akonadicollectionview.cpp:813
+#: akonadicollectionview.cpp:811
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Egutegi berria gehitzea huts egin du: <message>%1</message>"
 
-#: akonadicollectionview.cpp:895
+#: akonadicollectionview.cpp:893
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1677,7 +1677,7 @@ msgstr ""
 "urruneko baliabidetik kenduko ere. <filename>%1</filename> egutegia nahi "
 "duzuenean berriz gehitu daiteke.</note></para>"
 
-#: akonadicollectionview.cpp:903
+#: akonadicollectionview.cpp:901
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1703,7 +1703,7 @@ msgstr ""
 "zure egutegi karpeta lehenetsia du. Hura ezabatzen baduzu baliteke egutegi-"
 "karpeta lehenetsi berri bat hautatzea eskatzea.</warning></para>"
 
-#: akonadicollectionview.cpp:913
+#: akonadicollectionview.cpp:911
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1729,7 +1729,7 @@ msgstr ""
 "egutegi lehenetsia. Hura ezabatzen baduzu baliteke beste egutegi lehenetsi "
 "berri bat hautatzea eskatzea.</warning></para>"
 
-#: akonadicollectionview.cpp:926
+#: akonadicollectionview.cpp:924
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1741,7 +1741,7 @@ msgstr ""
 "<para><warning>Hau ezin da desegin. Mesedez, %2 botoia sakatu aurretik "
 "arretaz hausnartu.</warning></para>"
 
-#: akonadicollectionview.cpp:934
+#: akonadicollectionview.cpp:932
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid ""
@@ -1764,13 +1764,13 @@ msgstr ""
 "karpeta lehenetsia. Hura ezabatzen baduzu, baliteke karpeta-lehenetsi berri "
 "bat hautatzea eskatzea.</warning></para>"
 
-#: akonadicollectionview.cpp:947 akonadicollectionview.cpp:978
+#: akonadicollectionview.cpp:945 akonadicollectionview.cpp:976
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Ezabatu egutegia"
 
-#: akonadicollectionview.cpp:973
+#: akonadicollectionview.cpp:971
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1784,7 +1784,7 @@ msgstr ""
 "desegin. Mesedez, %1 botoia sakatu aurretik arretaz hausnartu.</warning></"
 "para>"
 
-#: akonadicollectionview.cpp:988
+#: akonadicollectionview.cpp:986
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1793,7 +1793,7 @@ msgstr ""
 "Egutegia ezabatzea huts egin du: <message>Akonadi agente instantzia "
 "baliogabea</message>"
 
-#: akonadicollectionview.cpp:1058
+#: akonadicollectionview.cpp:1056
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Consider setting a default calendar for new events"
@@ -1802,7 +1802,7 @@ msgid "Consider setting a default %1 calendar"
 msgstr ""
 "Kontuan hartu ekitaldi berrietarako egutegi lehenetsia bat ezartzeko aukera"
 
-#: akonadicollectionview.cpp:1060
+#: akonadicollectionview.cpp:1058
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Consider adding a write-enabled events calendar"
@@ -1811,13 +1811,13 @@ msgid "Consider adding a write-enabled %1 calendar"
 msgstr ""
 "Kontuan hartu idazteko gaitutako ekitaldien egutegi bat gehitzeko aukera"
 
-#: akonadicollectionview.cpp:1094
+#: akonadicollectionview.cpp:1092
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
 msgstr "Egutegia ezabatzea huts egin du: <message>%1</message>"
 
-#: calendarview.cpp:273
+#: calendarview.cpp:272
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1828,7 +1828,7 @@ msgstr ""
 "ekitaldi, zeregin edo egunkariko sarrera bat bere xehetasunak hemen ikusteko."
 "</para>"
 
-#: calendarview.cpp:277
+#: calendarview.cpp:276
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1838,19 +1838,19 @@ msgstr ""
 "Ikusi hemen, «KOrganizer»ren ikuspegi nagusian, hautatutako ekitaldien, "
 "egunkari-sarreren edo zereginen xehetasunak."
 
-#: calendarview.cpp:712
+#: calendarview.cpp:711
 #, kde-format
 msgctxt "@info/plain"
 msgid "Todo completed: %1 (%2)"
 msgstr "Egitekoa osatu da: %1 (%2)"
 
-#: calendarview.cpp:721
+#: calendarview.cpp:720
 #, kde-format
 msgctxt "@info/plain"
 msgid "Journal of %1"
 msgstr "%1(r)en egunkaria"
 
-#: calendarview.cpp:770
+#: calendarview.cpp:769
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1860,52 +1860,52 @@ msgstr ""
 "<resource>%1</resource> elementua uneko zure iragazki arauek iragazi dute, "
 "beraz ezkutatu egingo da eta ez da ikuspegian agertuko."
 
-#: calendarview.cpp:850 kontactplugin/korganizer/apptsummarywidget.cpp:232
-#: kontactplugin/korganizer/todosummarywidget.cpp:360
+#: calendarview.cpp:849 kontactplugin/korganizer/apptsummarywidget.cpp:230
+#: kontactplugin/korganizer/todosummarywidget.cpp:359
 #, kde-format
 msgctxt "@info"
 msgid "Do you really want to permanently remove the item \"%1\"?"
 msgstr "Benetan betiko ezabatu nahi duzu \"%1\" elementua?"
 
-#: calendarview.cpp:851 kontactplugin/korganizer/apptsummarywidget.cpp:233
-#: kontactplugin/korganizer/todosummarywidget.cpp:361
+#: calendarview.cpp:850 kontactplugin/korganizer/apptsummarywidget.cpp:231
+#: kontactplugin/korganizer/todosummarywidget.cpp:360
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Item?"
 msgstr "Elementua ezabatu?"
 
-#: calendarview.cpp:926
+#: calendarview.cpp:925
 #, kde-format
 msgctxt "@info"
 msgid "Paste failed: unable to determine a valid target date."
 msgstr ""
 "Itsastea huts egin du: ez da helburuko data baliodun bat zehazteko gai."
 
-#: calendarview.cpp:1342
+#: calendarview.cpp:1341
 #, kde-format
 msgctxt "@info/plain"
 msgid "Make sub-to-dos independent"
 msgstr "Egin azpi-zereginak independente"
 
-#: calendarview.cpp:1396
+#: calendarview.cpp:1395
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle Reminder"
 msgstr "Txandakatu oroigarria"
 
-#: calendarview.cpp:1401
+#: calendarview.cpp:1400
 #, kde-kuit-format
 msgctxt "@info alarm enabled"
 msgid "<message>%1</message> reminder is enabled"
 msgstr "<message>%1</message> oroigarria gaituta dago"
 
-#: calendarview.cpp:1403
+#: calendarview.cpp:1402
 #, kde-kuit-format
 msgctxt "@info alarm disabled"
 msgid "<message>%1</message> reminder is disabled"
 msgstr "<message>%1</message> oroigarria ezgaituta dago"
 
-#: calendarview.cpp:1406
+#: calendarview.cpp:1405
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info alarm enabled"
 #| msgid "<message>%1</message> reminder is enabled"
@@ -1913,19 +1913,19 @@ msgctxt "@info alarm toggle failed"
 msgid "<message>%1</message> reminder toggle failed"
 msgstr "<message>%1</message> oroigarria gaituta dago"
 
-#: calendarview.cpp:1437 calendarview.cpp:1495
+#: calendarview.cpp:1436 calendarview.cpp:1494
 #, kde-format
 msgctxt "@info/plain"
 msgid "Toggle To-do Completed"
 msgstr "Txandakatu zeregina osatuta"
 
-#: calendarview.cpp:1441
+#: calendarview.cpp:1440
 #, kde-kuit-format
 msgctxt "@info percentage completed"
 msgid "To-do <message>%1</message> %2 percent completed"
 msgstr "<message>%1</message> zeregina ehuneko %2 osatuta"
 
-#: calendarview.cpp:1444
+#: calendarview.cpp:1443
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info percentage completed"
 #| msgid "To-do <message>%1</message> %2 percent completed"
@@ -1933,31 +1933,31 @@ msgctxt "@info completed"
 msgid "To-do <message>%1</message> failed to change completion"
 msgstr "<message>%1</message> zeregina ehuneko %2 osatuta"
 
-#: calendarview.cpp:1547
+#: calendarview.cpp:1546
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully copied to %2."
 msgstr "\"%1\" %2(e)ra ondo kopiatu da."
 
-#: calendarview.cpp:1548
+#: calendarview.cpp:1547
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Succeeded"
 msgstr "Kopiatzea ondo egin da"
 
-#: calendarview.cpp:1552
+#: calendarview.cpp:1551
 #, kde-format
 msgctxt "@info"
 msgid "Unable to copy the item \"%1\" to %2."
 msgstr "Ez da \"%1\" elementua %2(e)ra kopiatzeko gai."
 
-#: calendarview.cpp:1553 calendarview.cpp:2535
+#: calendarview.cpp:1552 calendarview.cpp:2534
 #, kde-format
 msgctxt "@title:window"
 msgid "Copying Failed"
 msgstr "Kopiatzea huts egin du"
 
-#: calendarview.cpp:1612
+#: calendarview.cpp:1611
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1967,51 +1967,51 @@ msgstr ""
 "Ez da \"%1\" elementua jatorrizko egutegitik kentzeko gai. Dena den, "
 "elementu horren kopia bat %2(e)an ipini da"
 
-#: calendarview.cpp:1616 calendarview.cpp:1632 calendarview.cpp:2570
+#: calendarview.cpp:1615 calendarview.cpp:1631 calendarview.cpp:2569
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Failed"
 msgstr "Mugitzea huts egin du"
 
-#: calendarview.cpp:1621
+#: calendarview.cpp:1620
 #, kde-format
 msgctxt "@info"
 msgid "\"%1\" was successfully moved from %2 to %3."
 msgstr "\"%1\" ondo mugitu da %2(e)tik %3(e)ra."
 
-#: calendarview.cpp:1622
+#: calendarview.cpp:1621
 #, kde-format
 msgctxt "@title:window"
 msgid "Moving Succeeded"
 msgstr "Mugitzea ondo egin da"
 
-#: calendarview.cpp:1628
+#: calendarview.cpp:1627
 #, kde-format
 msgctxt "@info"
 msgid "Unable to add the item \"%1\" into %2. This item has not been moved."
 msgstr ""
 "Ez da \"%1\" elementua %2(e)ra gehitzeko gai. Elementu hori ez da mugitu."
 
-#: calendarview.cpp:1667
+#: calendarview.cpp:1666
 #, kde-format
 msgctxt "@info"
 msgid "Do you want to dissociate the occurrence on %1 from the recurrence?"
 msgstr "%1(e)ko errepika errepikatzetik banandu nahi duzu?"
 
-#: calendarview.cpp:1671 calendarview.cpp:1684 calendarview.cpp:2351
-#: calendarview.cpp:2410 calendarview.cpp:2440
+#: calendarview.cpp:1670 calendarview.cpp:1683 calendarview.cpp:2350
+#: calendarview.cpp:2409 calendarview.cpp:2439
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer Confirmation"
 msgstr "KOrganizer baieztatzea"
 
-#: calendarview.cpp:1672
+#: calendarview.cpp:1671
 #, kde-format
 msgctxt "@action:button"
 msgid "&Dissociate"
 msgstr "&Banandu"
 
-#: calendarview.cpp:1679
+#: calendarview.cpp:1678
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2021,79 +2021,79 @@ msgstr ""
 "%1(e)ko errepika errepikatzetik banandu nahi duzu edo etorkizunekoak ere "
 "banandu nahi dituzu?"
 
-#: calendarview.cpp:1685
+#: calendarview.cpp:1684
 #, kde-format
 msgctxt "@action:button"
 msgid "&Only Dissociate This One"
 msgstr "Banandu gertaera hau ba&karrik"
 
-#: calendarview.cpp:1686
+#: calendarview.cpp:1685
 #, kde-format
 msgctxt "@action:button"
 msgid "&Also Dissociate Future Ones"
 msgstr "Banandu etorkizunekoak &ere"
 
-#: calendarview.cpp:1704
+#: calendarview.cpp:1703
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate future occurrences"
 msgstr "Banandu etorkizuneko errepikak"
 
-#: calendarview.cpp:1706
+#: calendarview.cpp:1705
 #, kde-format
 msgctxt "@info/plain"
 msgid "Dissociate occurrence"
 msgstr "Banandu errepika"
 
-#: calendarview.cpp:1713
+#: calendarview.cpp:1712
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the future occurrences failed."
 msgstr "Etorkizuneko errepikak banatzea huts egin du."
 
-#: calendarview.cpp:1713 calendarview.cpp:1715
+#: calendarview.cpp:1712 calendarview.cpp:1714
 #, kde-format
 msgctxt "@title:window"
 msgid "Dissociating Failed"
 msgstr "Banantzea huts egin du"
 
-#: calendarview.cpp:1715
+#: calendarview.cpp:1714
 #, kde-format
 msgctxt "@info"
 msgid "Dissociating the occurrence failed."
 msgstr "Gertaera honen bereizketak huts egin du."
 
-#: calendarview.cpp:1858
+#: calendarview.cpp:1857
 #, kde-format
 msgctxt "@title:window"
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: calendarview.cpp:1877
+#: calendarview.cpp:1876
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar to File"
 msgstr "Esportatu egutegia fitxategira"
 
-#: calendarview.cpp:1890
+#: calendarview.cpp:1889
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Do you want to overwrite <filename>%1</filename>?"
 msgstr "<filename>%1</filename> gainidatzi nahi duzu?"
 
-#: calendarview.cpp:1891
+#: calendarview.cpp:1890
 #, kde-format
 msgctxt "@title:window"
 msgid "Export Calendar"
 msgstr "Esportatu egutegia"
 
-#: calendarview.cpp:1909
+#: calendarview.cpp:1908
 #, kde-format
 msgctxt "@info save failure cause unknown"
 msgid "Reason unknown"
 msgstr "Arrazoi ezezaguna"
 
-#: calendarview.cpp:1911
+#: calendarview.cpp:1910
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2102,13 +2102,13 @@ msgstr ""
 "Ezin du <filename>%1</filename> iCalendar fitxategian idatzi: <message>%2</"
 "message>"
 
-#: calendarview.cpp:2020 calendarview.cpp:2065
+#: calendarview.cpp:2019 calendarview.cpp:2064
 #, kde-format
 msgctxt "@info/plain"
 msgid "No filter"
 msgstr "Iragazkirik ez"
 
-#: calendarview.cpp:2346
+#: calendarview.cpp:2345
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2120,19 +2120,19 @@ msgstr ""
 "bakarrik ezabatu eta haren azpi-zeregin guztiak independente egin nahi "
 "dituzu, edo zeregina bere azpi-zeregin guztiekin ezabatu nahi duzu?"
 
-#: calendarview.cpp:2352
+#: calendarview.cpp:2351
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete Only This"
 msgstr "Ezabatu hau bakarrik"
 
-#: calendarview.cpp:2353 calendarview.cpp:2411
+#: calendarview.cpp:2352 calendarview.cpp:2410
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete All"
 msgstr "Ezabatuta guztiak"
 
-#: calendarview.cpp:2385
+#: calendarview.cpp:2384
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2142,13 +2142,13 @@ msgstr ""
 "<resource>%1</resource> elementua soilik irakurtzeko gisa markatuta dago eta "
 "ezin da ezabatu; baliteke soilik irakurtzekoa den egutegi batena izatea."
 
-#: calendarview.cpp:2388
+#: calendarview.cpp:2387
 #, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Ezin du kendu"
 
-#: calendarview.cpp:2407
+#: calendarview.cpp:2406
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2158,13 +2158,13 @@ msgstr ""
 "Egunkariko <resource>%1</resource> elementua data ezberdinetan errepikatzen "
 "da; ziur zaude hura eta haren errepika guztiak ezabatu nahi dituzula?"
 
-#: calendarview.cpp:2418
+#: calendarview.cpp:2417
 #, kde-format
 msgctxt "@action:button"
 msgid "Also Delete &Future"
 msgstr "Ezabatu e&torkizunekoa ere"
 
-#: calendarview.cpp:2422
+#: calendarview.cpp:2421
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2176,7 +2176,7 @@ msgstr ""
 "da; %2(e)ko uneko errepika bakarrik, baita etorkizuneko errepikak ere, edo "
 "errepikatze guztiak ezabatu nahi dituzu?"
 
-#: calendarview.cpp:2429
+#: calendarview.cpp:2428
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2187,25 +2187,25 @@ msgstr ""
 "da; %2(e)ko uneko errepika bakarrik, edo errepikatze guztiak ezabatu nahi "
 "dituzu?"
 
-#: calendarview.cpp:2441
+#: calendarview.cpp:2440
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete C&urrent"
 msgstr "Ezabatu &unekoa"
 
-#: calendarview.cpp:2443
+#: calendarview.cpp:2442
 #, kde-format
 msgctxt "@action:button"
 msgid "Delete &All"
 msgstr "Ezabatu den&a"
 
-#: calendarview.cpp:2474 calendarview.cpp:2481
+#: calendarview.cpp:2473 calendarview.cpp:2480
 #, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
 msgstr "Ezabatu \"%1\""
 
-#: calendarview.cpp:2513
+#: calendarview.cpp:2512
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -2214,49 +2214,49 @@ msgstr ""
 "Egutegi kudeatzaileko egutegi guztiak markatu gabe daude. Ez dago betiko "
 "ezabatu den zereginik."
 
-#: calendarview.cpp:2518 calendarview.cpp:2800
+#: calendarview.cpp:2517 calendarview.cpp:2799
 #, kde-format
 msgctxt "@info"
 msgid "There are no completed to-dos to purge."
 msgstr "Ez dago betiko ezabatzeko osatutako zereginik."
 
-#: calendarview.cpp:2523
+#: calendarview.cpp:2522
 #, kde-format
 msgctxt "@info"
 msgid "Delete all completed to-dos from checked calendars?"
 msgstr "Markatutako egutegietan osatutako zeregin guztiak ezabatu?"
 
-#: calendarview.cpp:2524
+#: calendarview.cpp:2523
 #, kde-format
 msgctxt "@title:window"
 msgid "Purge To-dos"
 msgstr "Betiko ezabatu zereginak"
 
-#: calendarview.cpp:2525
+#: calendarview.cpp:2524
 #, kde-format
 msgctxt "@action:button"
 msgid "Purge"
 msgstr "Betiko ezabatu"
 
-#: calendarview.cpp:2535
+#: calendarview.cpp:2534
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to copy item <resource>%1</resource>."
 msgstr "Ez da <resource>%1</resource> elementua kopiatzeko gai."
 
-#: calendarview.cpp:2570
+#: calendarview.cpp:2569
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to move item <resource>%1</resource>."
 msgstr "Ez da <resource>%1</resource> elementua mugitzeko gai."
 
-#: calendarview.cpp:2792
+#: calendarview.cpp:2791
 #, kde-kuit-format
 msgctxt "@info"
 msgid "0 completed to-dos were purged.<nl/>"
 msgstr "Osatutako 0 zeregin betiko ezabatu dira.<nl/>"
 
-#: calendarview.cpp:2794 calendarview.cpp:2805
+#: calendarview.cpp:2793 calendarview.cpp:2804
 #, kde-format, kde-kuit-format
 msgctxt "@info"
 msgid "%1 to-do was ignored because it has uncompleted or read-only children."
@@ -2269,7 +2269,7 @@ msgstr[1] ""
 "%1 zeregini ezikusi egin zaio osatu gabeko edo soilik irakurtzeko umeak "
 "dituelako."
 
-#: calendarview.cpp:2798 calendarview.cpp:2803
+#: calendarview.cpp:2797 calendarview.cpp:2802
 #, kde-format
 msgctxt "@info"
 msgid "%1 completed to-do was purged."
@@ -2277,7 +2277,7 @@ msgid_plural "%1 completed to-dos were purged."
 msgstr[0] "Osatutako zeregin %1 betiko ezabatu da."
 msgstr[1] "Osatutako %1 zeregin betiko ezabatu dira."
 
-#: calendarview.cpp:2810
+#: calendarview.cpp:2809
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred while purging completed to-dos: <message>%1</message>"
@@ -2285,7 +2285,7 @@ msgstr ""
 "Errore bat gertatu da osatutako zereginak betiko ezabatzean: <message>%1</"
 "message>"
 
-#: calendarview.cpp:2871
+#: calendarview.cpp:2870
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2297,7 +2297,7 @@ msgstr ""
 "batean.<para>Gertakizun sortu berria ikusteko, mesedez, gaitu bere egutegia "
 "egutegi-kudeatzailean.</para>"
 
-#: calendarview.cpp:2875
+#: calendarview.cpp:2874
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -2313,43 +2313,43 @@ msgstr ""
 "dago. Erakutsi kudeatzailea <interface>Ezarpenak->Alboko barra->Erakutsi "
 "egutegi-kudeatzailea</interface> erabiliz.</para>"
 
-#: collectiongeneralpage.cpp:33
+#: collectiongeneralpage.cpp:32
 #, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
 msgstr "Orokorra"
 
-#: collectiongeneralpage.cpp:41
+#: collectiongeneralpage.cpp:40
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
 msgstr "Ezarri karpetaren izena"
 
-#: collectiongeneralpage.cpp:42
+#: collectiongeneralpage.cpp:41
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
 msgstr "Sartu izen bat hemen, karpeta honen izena ezartzeko."
 
-#: collectiongeneralpage.cpp:43
+#: collectiongeneralpage.cpp:42
 #, kde-format
 msgctxt "@label:textbox Name of the folder."
 msgid "&Name:"
 msgstr "Ize&na:"
 
-#: collectiongeneralpage.cpp:46
+#: collectiongeneralpage.cpp:45
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
 msgstr "Oztopatu oroigarriak lokalki"
 
-#: collectiongeneralpage.cpp:47
+#: collectiongeneralpage.cpp:46
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Ignore reminders from this calendar"
 msgstr "Ezikusi egutegi honetako oroigarriak"
 
-#: collectiongeneralpage.cpp:49
+#: collectiongeneralpage.cpp:48
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -2359,19 +2359,19 @@ msgstr ""
 "Markatu lauki hau, egutegi honekin lotutako elementuen oroigarriak jaso nahi "
 "ez badituzu."
 
-#: collectiongeneralpage.cpp:54
+#: collectiongeneralpage.cpp:53
 #, kde-format
 msgctxt "@option:check"
 msgid "&Use custom icon:"
 msgstr "Era&bili neurrira ipinitako ikonoa:"
 
-#: collectiongeneralpage.cpp:55
+#: collectiongeneralpage.cpp:54
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set a custom icon"
 msgstr "Ezarri neurrira ipinitako ikono bat"
 
-#: collectiongeneralpage.cpp:56
+#: collectiongeneralpage.cpp:55
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Check this box if you want to set a custom icon for this folder."
@@ -2691,97 +2691,97 @@ msgstr "&Gehitu"
 msgid "&Cancel"
 msgstr "&Utzi"
 
-#: koeventpopupmenu.cpp:46
+#: koeventpopupmenu.cpp:43
 #, kde-format
 msgctxt "@action:inmenu delete this incidence"
 msgid "&Delete"
 msgstr "Eza&batu"
 
-#: koeventpopupmenu.cpp:50
+#: koeventpopupmenu.cpp:47
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Print…"
 msgstr "In&primatu…"
 
-#: koeventpopupmenu.cpp:52
+#: koeventpopupmenu.cpp:49
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Print Previe&w…"
 msgstr "Inprimatze a&urreikuspegia…"
 
-#: koeventpopupmenu.cpp:73
+#: koeventpopupmenu.cpp:71
 #, kde-format
 msgctxt "@action:inmenu cut this incidence"
 msgid "C&ut"
 msgstr "Eb&aki"
 
-#: koeventpopupmenu.cpp:75
+#: koeventpopupmenu.cpp:73
 #, kde-format
 msgctxt "@action:inmenu copy this incidence"
 msgid "&Copy"
 msgstr "&Kopiatu"
 
-#: koeventpopupmenu.cpp:76
+#: koeventpopupmenu.cpp:74
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Paste"
 msgstr "&Itsatsi"
 
-#: koeventpopupmenu.cpp:84 koeventpopupmenu.cpp:104
+#: koeventpopupmenu.cpp:82 koeventpopupmenu.cpp:102
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event"
 msgstr "Ekitaldi berria"
 
-#: koeventpopupmenu.cpp:89 koeventpopupmenu.cpp:101
+#: koeventpopupmenu.cpp:87 koeventpopupmenu.cpp:99
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do"
 msgstr "Zeregin berria"
 
-#: koeventpopupmenu.cpp:92
+#: koeventpopupmenu.cpp:90
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create To-do from Event"
 msgstr "Sortu zeregina ekitalditik"
 
-#: koeventpopupmenu.cpp:109
+#: koeventpopupmenu.cpp:107
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Create Event from To-do"
 msgstr "Sortu ekitaldia zereginetik"
 
-#: koeventpopupmenu.cpp:115
+#: koeventpopupmenu.cpp:113
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Togg&le To-do Completed"
 msgstr "T&xandakatu osatutako zereginak"
 
-#: koeventpopupmenu.cpp:125
+#: koeventpopupmenu.cpp:123
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder"
 msgstr "&Txandakatu oroigarria"
 
-#: koeventpopupmenu.cpp:132
+#: koeventpopupmenu.cpp:130
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Dissociate From Recurrence…"
 msgstr "&Banandu errepikatzetik…"
 
-#: koeventpopupmenu.cpp:140
+#: koeventpopupmenu.cpp:138
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send as iCalendar…"
 msgstr "Bidali iCalendar gisa…"
 
-#: koeventpopupmenu.cpp:190
+#: koeventpopupmenu.cpp:188
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder Off"
 msgstr "&Oroigarria itzali"
 
-#: koeventpopupmenu.cpp:191
+#: koeventpopupmenu.cpp:189
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Toggle Reminder On"
@@ -2961,14 +2961,14 @@ msgstr ""
 msgid "Show &anniversaries"
 msgstr "Erakutsi &urtemugak"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:49
+#: kontactplugin/korganizer/apptsummarywidget.cpp:47
 #, fuzzy, kde-format
 #| msgid "Upcoming Events"
 msgctxt "@title:group"
 msgid "Upcoming Events"
 msgstr "Hurrengo ekitaldiak"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:201
+#: kontactplugin/korganizer/apptsummarywidget.cpp:199
 #, fuzzy, kde-format
 #| msgid "No upcoming events starting within the next day"
 #| msgid_plural "No upcoming events starting within the next %1 days"
@@ -2978,21 +2978,21 @@ msgid_plural "No upcoming events starting within the next %1 days"
 msgstr[0] "Ez dago hurrengo egunean hasten den ekitaldirik"
 msgstr[1] "Ez dago hurrengo %1 egunean hasten den ekitaldirik"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:252
+#: kontactplugin/korganizer/apptsummarywidget.cpp:250
 #, fuzzy, kde-format
 #| msgid "&Edit Appointment…"
 msgctxt "@action:inmenu"
 msgid "&Edit Appointment…"
 msgstr "&Editatu hitzordua…"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:255
+#: kontactplugin/korganizer/apptsummarywidget.cpp:253
 #, fuzzy, kde-format
 #| msgid "&Edit Appointment…"
 msgctxt "@action:inmenu"
 msgid "&Show Appointment…"
 msgstr "&Editatu hitzordua…"
 
-#: kontactplugin/korganizer/apptsummarywidget.cpp:259
+#: kontactplugin/korganizer/apptsummarywidget.cpp:257
 #, fuzzy, kde-format
 #| msgid "&Delete Appointment"
 msgctxt "@action:inmenu"
@@ -3028,19 +3028,19 @@ msgid_plural " days"
 msgstr[0] " egun"
 msgstr[1] " egun"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:44
+#: kontactplugin/korganizer/korganizerplugin.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Event…"
 msgstr "Ekitaldi berria…"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:47
+#: kontactplugin/korganizer/korganizerplugin.cpp:45
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new event"
 msgstr "Sortu ekitaldi berri bat"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:51
+#: kontactplugin/korganizer/korganizerplugin.cpp:49
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3049,27 +3049,27 @@ msgstr ""
 "Ekitaldi-elementu berri bat sortzeko elkarrizketa-koadro bat aurkeztuko "
 "zaizu."
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:146
-#: kontactplugin/korganizer/todoplugin.cpp:145
+#: kontactplugin/korganizer/korganizerplugin.cpp:144
+#: kontactplugin/korganizer/todoplugin.cpp:143
 #, kde-format
 msgctxt "@item"
 msgid "Meeting"
 msgstr "Bilera"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:159
-#: kontactplugin/korganizer/todoplugin.cpp:158
+#: kontactplugin/korganizer/korganizerplugin.cpp:157
+#: kontactplugin/korganizer/todoplugin.cpp:156
 #, kde-format
 msgctxt "@item"
 msgid "Note: %1"
 msgstr "Oharra: %1"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:190
+#: kontactplugin/korganizer/korganizerplugin.cpp:188
 #, kde-format
 msgctxt "@info/plain event summary from email subject"
 msgid "Mail: %1"
 msgstr "Posta: %1"
 
-#: kontactplugin/korganizer/korganizerplugin.cpp:192
+#: kontactplugin/korganizer/korganizerplugin.cpp:190
 #, kde-kuit-format
 msgctxt "@info event description from email content"
 msgid ""
@@ -3079,14 +3079,14 @@ msgstr ""
 "<emphasis>Nork:</emphasis> %1<nl/><emphasis>Nori:</emphasis>%2<nl/"
 "><emphasis>Gaia:</emphasis> %3"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:136
+#: kontactplugin/korganizer/summaryeventinfo.cpp:135
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "@label the appointment is today"
 msgid "Today"
 msgstr "Gaur"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:139
+#: kontactplugin/korganizer/summaryeventinfo.cpp:138
 #, fuzzy, kde-format
 #| msgctxt "the appointment is tomorrow"
 #| msgid "Tomorrow"
@@ -3094,9 +3094,9 @@ msgctxt "@label the appointment is tomorrow"
 msgid "Tomorrow"
 msgstr "Bihar"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:143
-#: kontactplugin/korganizer/todosummarywidget.cpp:196
-#: kontactplugin/specialdates/sdsummarywidget.cpp:467
+#: kontactplugin/korganizer/summaryeventinfo.cpp:142
+#: kontactplugin/korganizer/todosummarywidget.cpp:195
+#: kontactplugin/specialdates/sdsummarywidget.cpp:463
 #, fuzzy, kde-format
 #| msgctxt "@info:tooltip"
 #| msgid "%1"
@@ -3104,13 +3104,13 @@ msgctxt "@label 1. weekday"
 msgid "%1"
 msgstr "%1"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:146
-#: kontactplugin/korganizer/summaryeventinfo.cpp:154
-#: kontactplugin/korganizer/summaryeventinfo.cpp:172
-#: kontactplugin/korganizer/summaryeventinfo.cpp:177
-#: kontactplugin/korganizer/todosummarywidget.cpp:199
-#: kontactplugin/specialdates/sdsummarywidget.cpp:470
-#: kontactplugin/specialdates/sdsummarywidget.cpp:479
+#: kontactplugin/korganizer/summaryeventinfo.cpp:145
+#: kontactplugin/korganizer/summaryeventinfo.cpp:153
+#: kontactplugin/korganizer/summaryeventinfo.cpp:171
+#: kontactplugin/korganizer/summaryeventinfo.cpp:176
+#: kontactplugin/korganizer/todosummarywidget.cpp:198
+#: kontactplugin/specialdates/sdsummarywidget.cpp:466
+#: kontactplugin/specialdates/sdsummarywidget.cpp:475
 #, fuzzy, kde-format
 #| msgctxt "1. weekday, 2. time"
 #| msgid "%1 %2"
@@ -3118,9 +3118,9 @@ msgctxt "@label 1. weekday, 2. date"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:187
-#: kontactplugin/korganizer/todosummarywidget.cpp:243
-#: kontactplugin/specialdates/sdsummarywidget.cpp:508
+#: kontactplugin/korganizer/summaryeventinfo.cpp:186
+#: kontactplugin/korganizer/todosummarywidget.cpp:242
+#: kontactplugin/specialdates/sdsummarywidget.cpp:504
 #, fuzzy, kde-format
 #| msgid "in 1 day"
 #| msgid_plural "in %1 days"
@@ -3130,7 +3130,7 @@ msgid_plural "in %1 days"
 msgstr[0] "egun bat barru"
 msgstr[1] "%1 egun barru"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:200
+#: kontactplugin/korganizer/summaryeventinfo.cpp:199
 #, fuzzy, kde-format
 #| msgctxt "eg. in 1 hour 2 minutes"
 #| msgid "in "
@@ -3138,7 +3138,7 @@ msgctxt "@label eg. in 1 hour 2 minutes"
 msgid "in "
 msgstr "… barru, "
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:203
+#: kontactplugin/korganizer/summaryeventinfo.cpp:202
 #, fuzzy, kde-format
 #| msgctxt "use abbreviation for hour to keep the text short"
 #| msgid "1 hr"
@@ -3149,7 +3149,7 @@ msgid_plural "%1 hrs"
 msgstr[0] "1 h"
 msgstr[1] "%1 h"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:209
+#: kontactplugin/korganizer/summaryeventinfo.cpp:208
 #, fuzzy, kde-format
 #| msgctxt "use abbreviation for minute to keep the text short"
 #| msgid "1 min"
@@ -3160,7 +3160,7 @@ msgid_plural "%1 mins"
 msgstr[0] "min 1"
 msgstr[1] "%1 minutu"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:228
+#: kontactplugin/korganizer/summaryeventinfo.cpp:227
 #, fuzzy, kde-format
 #| msgctxt "the to-do is in-progress"
 #| msgid "in-progress "
@@ -3168,7 +3168,7 @@ msgctxt "@label the event is currently in-progress"
 msgid "in-progress"
 msgstr "garatzen ari da"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:234
+#: kontactplugin/korganizer/summaryeventinfo.cpp:233
 #, kde-format
 msgctxt ""
 "@label use abbreviation for hour to keep the text short. the event ended at "
@@ -3178,7 +3178,7 @@ msgid_plural "ended %1 hrs ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:240
+#: kontactplugin/korganizer/summaryeventinfo.cpp:239
 #, kde-format
 msgctxt ""
 "@label use abbreviation for min to keep the text short. the event ended a "
@@ -3188,28 +3188,28 @@ msgid_plural "ended %1 mins ago"
 msgstr[0] ""
 msgstr[1] ""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:248
+#: kontactplugin/korganizer/summaryeventinfo.cpp:247
 #, fuzzy, kde-format
 #| msgid "all day"
 msgctxt "@label"
 msgid "all day"
 msgstr "egun osoan"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:276
+#: kontactplugin/korganizer/summaryeventinfo.cpp:275
 #, fuzzy, kde-format
 #| msgid "Edit Event: \"%1\""
 msgctxt "@info:status"
 msgid "Edit Event: \"%1\""
 msgstr "Editatu ekitaldia: \"%1\""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:278
+#: kontactplugin/korganizer/summaryeventinfo.cpp:277
 #, fuzzy, kde-format
 #| msgid "Edit Event: \"%1\""
 msgctxt "@info:status"
 msgid "Show Event: \"%1\""
 msgstr "Editatu ekitaldia: \"%1\""
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:294
+#: kontactplugin/korganizer/summaryeventinfo.cpp:293
 #, fuzzy, kde-format
 #| msgctxt "Time from - to"
 #| msgid "%1 - %2"
@@ -3217,7 +3217,7 @@ msgctxt "@label Time from - to"
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: kontactplugin/korganizer/summaryeventinfo.cpp:311
+#: kontactplugin/korganizer/summaryeventinfo.cpp:310
 #, fuzzy, kde-format
 #| msgctxt "next occurrence"
 #| msgid "Next: %1"
@@ -3225,19 +3225,19 @@ msgctxt "@label next occurrence"
 msgid "Next: %1"
 msgstr "Hurrengoa: %1"
 
-#: kontactplugin/korganizer/todoplugin.cpp:40
+#: kontactplugin/korganizer/todoplugin.cpp:38
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New To-do…"
 msgstr "Egiteko berria…"
 
-#: kontactplugin/korganizer/todoplugin.cpp:43
+#: kontactplugin/korganizer/todoplugin.cpp:41
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new to-do"
 msgstr "Sortu egiteko berri bat"
 
-#: kontactplugin/korganizer/todoplugin.cpp:47
+#: kontactplugin/korganizer/todoplugin.cpp:45
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -3245,13 +3245,13 @@ msgid ""
 msgstr ""
 "Egiteko-elementu berri bat sortzeko elkarrizketa-koadro bat aurkeztuko zaizu."
 
-#: kontactplugin/korganizer/todoplugin.cpp:189
+#: kontactplugin/korganizer/todoplugin.cpp:187
 #, kde-format
 msgctxt "@info/plain to-do summary from email subjuect"
 msgid "Mail: %1"
 msgstr "Posta: %1"
 
-#: kontactplugin/korganizer/todoplugin.cpp:191
+#: kontactplugin/korganizer/todoplugin.cpp:189
 #, kde-kuit-format
 msgctxt "@info to-do description from email content"
 msgid ""
@@ -3446,21 +3446,21 @@ msgstr ""
 msgid "Over&due (not completed and beyond due-date)"
 msgstr "At&zeratuta (osatu gabe eta epemuga gaindituta)"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:46
+#: kontactplugin/korganizer/todosummarywidget.cpp:45
 #, fuzzy, kde-format
 #| msgid "Pending To-dos"
 msgctxt "@title:group"
 msgid "Pending To-dos"
 msgstr "Atzeratutako egitekoak"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:182
+#: kontactplugin/korganizer/todosummarywidget.cpp:181
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "@label the to-do is due today"
 msgid "Today"
 msgstr "Gaur"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:184
+#: kontactplugin/korganizer/todosummarywidget.cpp:183
 #, fuzzy, kde-format
 #| msgctxt "the appointment is tomorrow"
 #| msgid "Tomorrow"
@@ -3468,7 +3468,7 @@ msgctxt "@label the to-do is due tomorrow"
 msgid "Tomorrow"
 msgstr "Bihar"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:191
+#: kontactplugin/korganizer/todosummarywidget.cpp:190
 #, fuzzy, kde-format
 #| msgctxt "1. weekday, 2. time"
 #| msgid "%1 %2"
@@ -3476,7 +3476,7 @@ msgctxt "@label 1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:245
+#: kontactplugin/korganizer/todosummarywidget.cpp:244
 #, fuzzy, kde-format
 #| msgid "1 day ago"
 #| msgid_plural "%1 days ago"
@@ -3486,39 +3486,39 @@ msgid_plural "%1 days ago"
 msgstr[0] "Duela egun 1"
 msgstr[1] "Duela %1 egun"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:248
+#: kontactplugin/korganizer/todosummarywidget.cpp:247
 #, kde-format
 msgctxt "@label the to-do is due today"
 msgid "due any time today"
 msgstr ""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:252
+#: kontactplugin/korganizer/todosummarywidget.cpp:251
 #, fuzzy, kde-format
 msgctxt "@label the to-do is due at specified time"
 msgid "is due at %1"
 msgstr "Iraungipen-data"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:256
+#: kontactplugin/korganizer/todosummarywidget.cpp:255
 #, fuzzy, kde-format
 msgctxt "@label the to-do was due at specified time"
 msgid "was due at %1"
 msgstr "Iraungipen-data"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:305
+#: kontactplugin/korganizer/todosummarywidget.cpp:304
 #, fuzzy, kde-format
 #| msgid "Edit To-do: \"%1\""
 msgctxt "@info:status"
 msgid "Edit To-do: \"%1\""
 msgstr "Editatu egitekoa: \"%1\""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:307
+#: kontactplugin/korganizer/todosummarywidget.cpp:306
 #, fuzzy, kde-format
 #| msgid "Edit To-do: \"%1\""
 msgctxt "@info:status"
 msgid "Show To-do: \"%1\""
 msgstr "Editatu egitekoa: \"%1\""
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:330
+#: kontactplugin/korganizer/todosummarywidget.cpp:329
 #, fuzzy, kde-format
 #| msgid "No pending to-dos due within the next day"
 #| msgid_plural "No pending to-dos due within the next %1 days"
@@ -3528,7 +3528,7 @@ msgid_plural "No pending to-dos due within the next %1 days"
 msgstr[0] "Ez dago hurrengo egunean epemuga duen osatu gabeko egitekorik"
 msgstr[1] "Ez dago hurrengo %1 egunean epemuga duen osatu gabeko egitekorik"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:397
+#: kontactplugin/korganizer/todosummarywidget.cpp:396
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu"
 #| msgid "&Show To-do"
@@ -3536,21 +3536,21 @@ msgctxt "@action:inmenu"
 msgid "&Show To-do…"
 msgstr "&Erakutsi zeregina"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:407
+#: kontactplugin/korganizer/todosummarywidget.cpp:406
 #, fuzzy, kde-format
 #| msgid "&Mark To-do Completed"
 msgctxt "@action:inmenu"
 msgid "&Mark To-do Completed"
 msgstr "&Markatu egitekoa osatuta"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:433
+#: kontactplugin/korganizer/todosummarywidget.cpp:432
 #, fuzzy, kde-format
 #| msgid "open-ended"
 msgctxt "@label"
 msgid "open-ended"
 msgstr "amaiera irekia"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:435
+#: kontactplugin/korganizer/todosummarywidget.cpp:434
 #, fuzzy, kde-format
 #| msgctxt "the to-do is overdue"
 #| msgid "overdue"
@@ -3558,7 +3558,7 @@ msgctxt "@label the to-do is overdue"
 msgid "overdue"
 msgstr "atzeratua"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:437
+#: kontactplugin/korganizer/todosummarywidget.cpp:436
 #, fuzzy, kde-format
 #| msgctxt "the to-do starts today"
 #| msgid "starts today"
@@ -3566,7 +3566,7 @@ msgctxt "@label the to-do starts today"
 msgid "starts today"
 msgstr "gaur hastekoa da"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:441
+#: kontactplugin/korganizer/todosummarywidget.cpp:440
 #, fuzzy, kde-format
 #| msgctxt "the to-do has not been started yet"
 #| msgid "not-started"
@@ -3574,7 +3574,7 @@ msgctxt "@label the to-do has not been started yet"
 msgid "not-started"
 msgstr "hasi gabe"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:443
+#: kontactplugin/korganizer/todosummarywidget.cpp:442
 #, fuzzy, kde-format
 #| msgctxt "the to-do is completed"
 #| msgid "completed"
@@ -3582,7 +3582,7 @@ msgctxt "@label the to-do is completed"
 msgid "completed"
 msgstr "osatuta"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:445
+#: kontactplugin/korganizer/todosummarywidget.cpp:444
 #, fuzzy, kde-format
 #| msgctxt "the to-do is in-progress"
 #| msgid "in-progress "
@@ -3590,7 +3590,7 @@ msgctxt "@label the to-do is in-progress"
 msgid "in-progress "
 msgstr "garatzen ari da"
 
-#: kontactplugin/korganizer/todosummarywidget.cpp:450
+#: kontactplugin/korganizer/todosummarywidget.cpp:449
 #, fuzzy, kde-format
 #| msgctxt "@item:intext delimiter for joining holiday names"
 #| msgid ","
@@ -3809,21 +3809,21 @@ msgstr ""
 msgid "Show anni&versaries"
 msgstr "Erakutsi urte&mugak"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:108
+#: kontactplugin/specialdates/sdsummarywidget.cpp:104
 #, fuzzy, kde-format
 #| msgid "Upcoming Special Dates"
 msgctxt "@title:group"
 msgid "Upcoming Special Dates"
 msgstr "Hurrengo data bereziak"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:459
+#: kontactplugin/specialdates/sdsummarywidget.cpp:455
 #, fuzzy, kde-format
 #| msgid "Today"
 msgctxt "@label the special day is today"
 msgid "Today"
 msgstr "Gaur"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:461
+#: kontactplugin/specialdates/sdsummarywidget.cpp:457
 #, fuzzy, kde-format
 #| msgctxt "the appointment is tomorrow"
 #| msgid "Tomorrow"
@@ -3831,56 +3831,56 @@ msgctxt "@label the special day is tomorrow"
 msgid "Tomorrow"
 msgstr "Bihar"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:506
+#: kontactplugin/specialdates/sdsummarywidget.cpp:502
 #, fuzzy, kde-format
 #| msgid "now"
 msgctxt "@label"
 msgid "now"
 msgstr "orain"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:519
+#: kontactplugin/specialdates/sdsummarywidget.cpp:515
 #, fuzzy, kde-format
 #| msgid "Birthday"
 msgctxt "@label"
 msgid "Birthday"
 msgstr "Urtebetetzea"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:522
+#: kontactplugin/specialdates/sdsummarywidget.cpp:518
 #, fuzzy, kde-format
 #| msgid "Anniversary"
 msgctxt "@label"
 msgid "Anniversary"
 msgstr "Urtemuga"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:525
+#: kontactplugin/specialdates/sdsummarywidget.cpp:521
 #, fuzzy, kde-format
 #| msgid "Holiday"
 msgctxt "@label"
 msgid "Holiday"
 msgstr "Jaieguna"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:528
+#: kontactplugin/specialdates/sdsummarywidget.cpp:524
 #, fuzzy, kde-format
 #| msgid "Change of Seasons"
 msgctxt "@label"
 msgid "Change of Seasons"
 msgstr "Urtaro aldaketak"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:531
+#: kontactplugin/specialdates/sdsummarywidget.cpp:527
 #, fuzzy, kde-format
 #| msgid "Special Occasion"
 msgctxt "@label"
 msgid "Special Occasion"
 msgstr "Gertaera berezia"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:547
+#: kontactplugin/specialdates/sdsummarywidget.cpp:543
 #, fuzzy, kde-format
 #| msgid "Mail to:\"%1\""
 msgctxt "@info:status"
 msgid "Mail to:\"%1\""
 msgstr "Posta nori: \"%1\""
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:573
+#: kontactplugin/specialdates/sdsummarywidget.cpp:569
 #, fuzzy, kde-format
 #| msgid "one year"
 #| msgid_plural "%1 years"
@@ -3890,7 +3890,7 @@ msgid_plural "%1 years"
 msgstr[0] "urtebete"
 msgstr[1] "%1 urte"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:584
+#: kontactplugin/specialdates/sdsummarywidget.cpp:580
 #, fuzzy, kde-format
 #| msgid "No special dates within the next 1 day"
 #| msgid_plural "No special dates pending within the next %1 days"
@@ -3900,20 +3900,20 @@ msgid_plural "No special dates pending within the next %1 days"
 msgstr[0] "Data berezirik ez hurrengo egunean"
 msgstr[1] "Data berezirik ez hurrengo %1 egunetan"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:660
+#: kontactplugin/specialdates/sdsummarywidget.cpp:656
 #, fuzzy, kde-format
 msgctxt "@info/plain default subject line for a new mail message"
 msgid "New Message to %1"
 msgstr "Ezabatu %1"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:691
+#: kontactplugin/specialdates/sdsummarywidget.cpp:687
 #, fuzzy, kde-format
 #| msgid "Send &Mail"
 msgctxt "@action:inmenu"
 msgid "Send &Mail"
 msgstr "Bidali e-&posta"
 
-#: kontactplugin/specialdates/sdsummarywidget.cpp:692
+#: kontactplugin/specialdates/sdsummarywidget.cpp:688
 #, fuzzy, kde-format
 #| msgid "View &Contact"
 msgctxt "@action:inmenu"
@@ -3954,23 +3954,23 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:81 korganizer_part.cpp:59 korganizer_part.cpp:76
+#: korganizer.cpp:80 korganizer_part.cpp:59 korganizer_part.cpp:76
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:275
+#: korganizer.cpp:273
 #, kde-format
 msgid "New Calendar"
 msgstr "Egutegi berria"
 
-#: korganizer.cpp:279
+#: korganizer.cpp:277
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "soilik irakurtzea"
 
-#: korganizer.cpp:282
+#: korganizer.cpp:280
 #, kde-format
 msgid "Calendar"
 msgstr "Egutegia"
@@ -4017,17 +4017,17 @@ msgid "Lists the available options for user feedback"
 msgstr ""
 "Erabiltzailearen atzera-elikaduraren aukera erabilgarriak zerrendatzen ditu"
 
-#: koviewmanager.cpp:516
+#: koviewmanager.cpp:515
 #, kde-format
 msgid "Merged calendar"
 msgstr "Bateratutako egutegia"
 
-#: koviewmanager.cpp:531
+#: koviewmanager.cpp:530
 #, kde-format
 msgid "Calendars Side by Side"
 msgstr "Egutegiak aurrez-aurre"
 
-#: koviewmanager.cpp:569
+#: koviewmanager.cpp:568
 #, kde-format
 msgid ""
 "Unable to display the work week since there are no work days configured. "
@@ -4038,19 +4038,19 @@ msgstr ""
 "Mesedez, Ordua eta Data hobespenetan, behar bezala konfiguratu lanegun 1 "
 "gutxienez ."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:43
+#: prefs/koprefsdialogcolorsandfonts.cpp:42
 #, kde-format
 msgctxt "@title:tab"
 msgid "Colors"
 msgstr "Koloreak"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:121
+#: prefs/koprefsdialogcolorsandfonts.cpp:120
 #, kde-format
 msgctxt "@title:group"
 msgid "Tags"
 msgstr "Etiketak"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:135
+#: prefs/koprefsdialogcolorsandfonts.cpp:134
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4060,20 +4060,20 @@ msgstr ""
 "Hautatu aldatu nahi duzun etiketa. Hautatutako etiketaren kolorea alda "
 "dezakezu, alboko kolore-botoia erabiliz."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:143
+#: prefs/koprefsdialogcolorsandfonts.cpp:142
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Choose the color of the tag selected in the adjacent combo box."
 msgstr ""
 "Hautatu hautatutako etiketaren kolorea, alboko lauki-konbinatua erabiliz."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:151
+#: prefs/koprefsdialogcolorsandfonts.cpp:150
 #, kde-format
 msgctxt "@title:group"
 msgid "Resources"
 msgstr "Baliabideak"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:162
+#: prefs/koprefsdialogcolorsandfonts.cpp:161
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4083,7 +4083,7 @@ msgstr ""
 "Hautatu aldatu nahi duzun egutegia. Hautatutako egutegiaren kolorea alda "
 "dezakezu, beheko botoia erabiliz."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:170
+#: prefs/koprefsdialogcolorsandfonts.cpp:169
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4092,14 +4092,14 @@ msgstr ""
 "Hautatu hemen, aukeratutako egutegiaren kolorea, goiko lauki-konbinatua "
 "erabiliz."
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:178
+#: prefs/koprefsdialogcolorsandfonts.cpp:177
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
 msgstr "Letra-tipoak"
 
-#: prefs/koprefsdialogcolorsandfonts.cpp:192
-#: prefs/koprefsdialogcolorsandfonts.cpp:199
+#: prefs/koprefsdialogcolorsandfonts.cpp:191
+#: prefs/koprefsdialogcolorsandfonts.cpp:198
 #, kde-format
 msgctxt "@label"
 msgid "Event text"
@@ -4129,7 +4129,7 @@ msgctxt "@title:group"
 msgid "Default Access Classification"
 msgstr ""
 
-#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:240
+#: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:237
 #, kde-format
 msgctxt "@title:group"
 msgid "Reminders"
@@ -4159,26 +4159,26 @@ msgctxt "@title:tab activities settings"
 msgid "Activities"
 msgstr "Jarduerak"
 
-#: prefs/koprefsdialogplugins.cpp:64
+#: prefs/koprefsdialogplugins.cpp:63
 #, kde-format
 msgctxt "@title:group"
 msgid "Position"
 msgstr "Kokapena"
 
 #. i18nc( "@option:check", "Show in the month view" ), mPositioningGroupBox );
-#: prefs/koprefsdialogplugins.cpp:91
+#: prefs/koprefsdialogplugins.cpp:90
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the top of the agenda views"
 msgstr "Erakutsi agenda-ikuspegien goiko aldean"
 
-#: prefs/koprefsdialogplugins.cpp:92
+#: prefs/koprefsdialogplugins.cpp:91
 #, kde-format
 msgctxt "@option:check"
 msgid "Show at the bottom of the agenda views"
 msgstr "Erakutsi agenda-ikuspegien beheko aldean"
 
-#: prefs/koprefsdialogplugins.cpp:125
+#: prefs/koprefsdialogplugins.cpp:124
 #, fuzzy, kde-format
 #| msgctxt "@title:group"
 #| msgid "Calendar Decorations"
@@ -4186,7 +4186,7 @@ msgctxt "@title:group"
 msgid "Agenda View Decorations"
 msgstr "Egutegien apaindurak"
 
-#: prefs/koprefsdialogplugins.cpp:144
+#: prefs/koprefsdialogplugins.cpp:143
 #, fuzzy, kde-format
 #| msgctxt "@info:status"
 #| msgid "Configure the view"
@@ -4194,7 +4194,7 @@ msgctxt "@info:tooltip"
 msgid "Configure the %1 plugin"
 msgstr "Konfiguratu ikuspegia"
 
-#: prefs/koprefsdialogplugins.cpp:145
+#: prefs/koprefsdialogplugins.cpp:144
 #, fuzzy, kde-format
 #| msgctxt "@info:whatsthis"
 #| msgid "Press this button to start the search."
@@ -4202,76 +4202,76 @@ msgctxt "@info:whatsthis"
 msgid "Press this button to configure the %1 plugin."
 msgstr "Sakatu botoi hori bilaketa hasteko."
 
-#: prefs/koprefsdialogplugins.cpp:207
+#: prefs/koprefsdialogplugins.cpp:206
 #, kde-format
 msgctxt "@info"
 msgid "Unable to configure this plugin"
 msgstr "Ez da plugin hau konfiguratzeko gai"
 
-#: prefs/koprefsdialogtime.cpp:46
+#: prefs/koprefsdialogtime.cpp:43
 #, kde-format
 msgctxt "@title:tab"
 msgid "Regional"
 msgstr "Eskualdekoa"
 
-#: prefs/koprefsdialogtime.cpp:50
+#: prefs/koprefsdialogtime.cpp:47
 #, kde-format
 msgctxt "@title:group"
 msgid "General Time and Date"
 msgstr "Ordu eta data orokorra"
 
-#: prefs/koprefsdialogtime.cpp:61
+#: prefs/koprefsdialogtime.cpp:58
 #, kde-format
 msgctxt "@title:group"
 msgid "Holidays"
 msgstr "Jaiegunak"
 
-#: prefs/koprefsdialogtime.cpp:72
+#: prefs/koprefsdialogtime.cpp:69
 #, fuzzy, kde-format
 #| msgid "Use holiday regions:"
 msgctxt "@label"
 msgid "Use holiday regions:"
 msgstr "Erabili jaiegun-eskualdeak:"
 
-#: prefs/koprefsdialogtime.cpp:96
+#: prefs/koprefsdialogtime.cpp:93
 #, kde-format
 msgctxt "@item:inlistbox Holiday region, region language"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: prefs/koprefsdialogtime.cpp:105
+#: prefs/koprefsdialogtime.cpp:102
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Regions"
 msgstr "Aukeratu Jaiegun-eskualdeak"
 
-#: prefs/koprefsdialogtime.cpp:123
+#: prefs/koprefsdialogtime.cpp:120
 #, fuzzy, kde-format
 #| msgid "Use holiday regions:"
 msgctxt "@label"
 msgid "Use holiday categories:"
 msgstr "Erabili jaiegun-eskualdeak:"
 
-#: prefs/koprefsdialogtime.cpp:137
+#: prefs/koprefsdialogtime.cpp:134
 #, fuzzy, kde-format
 #| msgid "Select Cate&gories..."
 msgctxt "@item:inlistbox"
 msgid "Select Holiday Categories"
 msgstr "Hautatu &kategoriak..."
 
-#: prefs/koprefsdialogtime.cpp:157
+#: prefs/koprefsdialogtime.cpp:154
 #, kde-format
 msgctxt "@title:group"
 msgid "Weekly Schedule"
 msgstr "Asteko ordutegia"
 
-#: prefs/koprefsdialogtime.cpp:172
+#: prefs/koprefsdialogtime.cpp:169
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Include %1 as part of your weekly schedule"
 msgstr "Sartu %1 zure asteko ordutegiaren barruan"
 
-#: prefs/koprefsdialogtime.cpp:174
+#: prefs/koprefsdialogtime.cpp:171
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4287,55 +4287,55 @@ msgstr ""
 "ordutegiaren (lan egiten ez baduzu ere) zati gisa hartzeko. Normalean, "
 "asteburuko egunak markatu gabe egon behar dira."
 
-#: prefs/koprefsdialogtime.cpp:188
+#: prefs/koprefsdialogtime.cpp:185
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Monday"
 msgstr "Astelehena"
 
-#: prefs/koprefsdialogtime.cpp:188
+#: prefs/koprefsdialogtime.cpp:185
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Tuesday"
 msgstr "Asteartea"
 
-#: prefs/koprefsdialogtime.cpp:188
+#: prefs/koprefsdialogtime.cpp:185
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Wednesday"
 msgstr "Asteazkena"
 
-#: prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Thursday"
 msgstr "Osteguna"
 
-#: prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Friday"
 msgstr "Ostirala"
 
-#: prefs/koprefsdialogtime.cpp:189
+#: prefs/koprefsdialogtime.cpp:186
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Saturday"
 msgstr "Larunbata"
 
-#: prefs/koprefsdialogtime.cpp:190
+#: prefs/koprefsdialogtime.cpp:187
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Sunday"
 msgstr "Igandea"
 
-#: prefs/koprefsdialogtime.cpp:213
+#: prefs/koprefsdialogtime.cpp:210
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Highlight holidays differently from your regular schedule"
 msgstr "Nabarmendu jaiegunak zure ohiko ordutegiarekiko ezberdin"
 
-#: prefs/koprefsdialogtime.cpp:215
+#: prefs/koprefsdialogtime.cpp:212
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -4345,117 +4345,117 @@ msgstr ""
 "Markatu koadro hau, jaiegunak zure ohiko ordutegiko egunekiko ezberdin "
 "nabarmentzeko."
 
-#: prefs/koprefsdialogtime.cpp:222
+#: prefs/koprefsdialogtime.cpp:219
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
 msgstr "Balio lehenetsiak"
 
-#: prefs/koprefsdialogtime.cpp:225
+#: prefs/koprefsdialogtime.cpp:222
 #, kde-format
 msgctxt "@title:group"
 msgid "Appointments"
 msgstr "Hitzorduak"
 
-#: prefs/koprefsdialogtime.cpp:245
+#: prefs/koprefsdialogtime.cpp:242
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
 msgstr "Oroigarriaren denbora lehenetsia:"
 
-#: prefs/koprefsdialogtime.cpp:258
+#: prefs/koprefsdialogtime.cpp:255
 #, kde-format
 msgctxt "@item:inlistbox reminder units in minutes"
 msgid "minute(s)"
 msgstr "minutu"
 
-#: prefs/koprefsdialogtime.cpp:259
+#: prefs/koprefsdialogtime.cpp:256
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in hours"
 msgid "hour(s)"
 msgstr "ordu"
 
-#: prefs/koprefsdialogtime.cpp:260
+#: prefs/koprefsdialogtime.cpp:257
 #, kde-format
 msgctxt "@item:inlistbox reminder time units in days"
 msgid "day(s)"
 msgstr "egun"
 
-#: prefs/koprefsdialogtime.cpp:270
+#: prefs/koprefsdialogtime.cpp:267
 #, kde-format
 msgctxt "@info/plain"
 msgid "Audio Files (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 msgstr ""
 "Audio fitxategiak (*.ogg *.wav *.mp3 *.wma *.flac *.aiff *.raw *.au *.ra)"
 
-#: prefs/koprefsdialogviews.cpp:44
+#: prefs/koprefsdialogviews.cpp:42
 #, kde-format
 msgctxt "@title:tab general settings"
 msgid "General"
 msgstr "Orokorra"
 
-#: prefs/koprefsdialogviews.cpp:50 prefs/koprefsdialogviews.cpp:88
-#: prefs/koprefsdialogviews.cpp:134 prefs/koprefsdialogviews.cpp:164
+#: prefs/koprefsdialogviews.cpp:48 prefs/koprefsdialogviews.cpp:86
+#: prefs/koprefsdialogviews.cpp:132 prefs/koprefsdialogviews.cpp:162
 #, kde-format
 msgctxt "@title:group"
 msgid "Display Options"
 msgstr "Azaltzeko aukerak"
 
-#: prefs/koprefsdialogviews.cpp:56
+#: prefs/koprefsdialogviews.cpp:54
 #, kde-format
 msgctxt "@label suffix in the N days spin box"
 msgid " days"
 msgstr " egun"
 
-#: prefs/koprefsdialogviews.cpp:69
+#: prefs/koprefsdialogviews.cpp:67
 #, kde-format
 msgctxt "@title:group"
 msgid "Date Navigator"
 msgstr "Data nabigatzailea"
 
-#: prefs/koprefsdialogviews.cpp:82
+#: prefs/koprefsdialogviews.cpp:80
 #, kde-format
 msgctxt "@title:tab"
 msgid "Agenda View"
 msgstr "Agenda ikuspegia"
 
-#: prefs/koprefsdialogviews.cpp:94
+#: prefs/koprefsdialogviews.cpp:92
 #, kde-format
 msgctxt "@label suffix in the hour size spin box"
 msgid " pixels"
 msgstr " pixel"
 
-#: prefs/koprefsdialogviews.cpp:128
+#: prefs/koprefsdialogviews.cpp:126
 #, kde-format
 msgctxt "@title:tab"
 msgid "Month View"
 msgstr "Hilabeteko ikuspegia"
 
-#: prefs/koprefsdialogviews.cpp:158
+#: prefs/koprefsdialogviews.cpp:156
 #, kde-format
 msgctxt "@title:tab"
 msgid "Todo View"
 msgstr "Egitekoen ikuspegia"
 
-#: prefs/koprefsdialogviews.cpp:171
+#: prefs/koprefsdialogviews.cpp:169
 #, kde-format
 msgctxt "@title:group"
 msgid "Other Options"
 msgstr "Beste aukera batzuk"
 
-#: prefs/kprefsdialog.cpp:177
+#: prefs/kprefsdialog.cpp:176
 #, kde-format
 msgctxt "@action:button"
 msgid "Choose…"
 msgstr "Hautatu…"
 
-#: prefs/kprefsdialog.cpp:659
+#: prefs/kprefsdialog.cpp:658
 #, kde-format
 msgctxt "@title:window"
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#: prefs/kprefsdialog.cpp:706
+#: prefs/kprefsdialog.cpp:705
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -4465,13 +4465,13 @@ msgstr ""
 "Zure hobespen denak balio lehenetsitara ezartzeko zorian zaude. Neurrira "
 "eginiko aldaketa guztiak galdu egingo dira."
 
-#: prefs/kprefsdialog.cpp:708
+#: prefs/kprefsdialog.cpp:707
 #, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
 msgstr "Hobespen lehenetsiak ezartzen"
 
-#: prefs/kprefsdialog.cpp:709
+#: prefs/kprefsdialog.cpp:708
 #, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
@@ -6950,13 +6950,13 @@ msgstr "Gaur"
 msgid ">"
 msgstr ">"
 
-#: views/multiagendaview/komultiagendaview.cpp:38
+#: views/multiagendaview/komultiagendaview.cpp:37
 #, kde-format
 msgctxt "@title:column"
 msgid "Agenda %1"
 msgstr "%1 agenda"
 
-#: views/multiagendaview/komultiagendaview.cpp:356
+#: views/multiagendaview/komultiagendaview.cpp:355
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Side-By-Side View"
