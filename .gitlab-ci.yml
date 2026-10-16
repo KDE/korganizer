@@ -16,7 +16,7 @@ build_clazy:
     - .ci_linux_base
     - .suse_tumbleweed_qt6stable
   rules:
-  # only run on merge requests
+    # only run on merge requests
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   variables:
     # remove/comment the CXXFLAGS if you don't want the build to fail on clazy issues
