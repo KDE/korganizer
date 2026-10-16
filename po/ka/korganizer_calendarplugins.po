@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kdepim-addons\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-15 00:47+0000\n"
-"PO-Revision-Date: 2026-08-07 06:15+0200\n"
+"PO-Revision-Date: 2026-10-15 04:28+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #: datenums/configdialog.cpp:28
 #, kde-format
@@ -590,10 +590,9 @@ msgid "Sh. HaHodesh"
 msgstr "შ. ჰაჰოდეში"
 
 #: hebrewcalendar/holiday.cpp:483
-#, fuzzy, kde-format
-#| msgid " Omer"
+#, kde-format
 msgid "%1 Omer"
-msgstr " ომერი"
+msgstr "%1 ომერი"
 
 #: hebrewcalendar/parsha.cpp:27
 #, kde-format

@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-15 00:47+0000\n"
-"PO-Revision-Date: 2026-09-23 09:50+0200\n"
-"Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
+"PO-Revision-Date: 2026-10-15 12:00+0300\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -619,10 +619,9 @@ msgid "Sh. HaHodesh"
 msgstr "Шаббат ха-Ходеш"
 
 #: hebrewcalendar/holiday.cpp:483
-#, fuzzy, kde-format
-#| msgid " Omer"
+#, kde-format
 msgid "%1 Omer"
-msgstr " Омер"
+msgstr "%1 Омер"
 
 #: hebrewcalendar/parsha.cpp:27
 #, kde-format
