@@ -52,7 +52,6 @@ target_link_libraries(
     kontact_korganizerplugin
     Qt::DBus
     KPim6::AkonadiCalendar
-    KPim6::CalendarUtils
     KF6::Contacts
     KF6::CalendarCore
     KPim6::KontactInterface
@@ -106,7 +105,6 @@ target_link_libraries(
     KF6::Contacts
     KPim6::KontactInterface
     KF6::CalendarCore
-    KPim6::CalendarUtils
     KPim6::CalendarSupport
     KF6::WindowSystem
 )

@@ -7,6 +7,4 @@ add_subdirectory(lunarphases)
 add_subdirectory(picoftheday)
 add_subdirectory(thisdayinhistory)
 
-if(${KF6Holidays_VERSION} VERSION_GREATER_EQUAL "6.29.0")
-    add_subdirectory(hebrewcalendar)
-endif()
+add_subdirectory(hebrewcalendar)

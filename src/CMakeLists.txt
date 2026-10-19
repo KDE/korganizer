@@ -236,7 +236,6 @@ target_link_libraries(
     korganizerprivate
     KPim6::AkonadiCore
     KF6::CalendarCore
-    KPim6::CalendarUtils
     KF6::KIOWidgets
     KF6::TextAddonsWidgets
 )
@@ -531,7 +530,6 @@ target_link_libraries(
         KPim6::AkonadiCalendar
         KF6::Contacts
         KF6::CalendarCore
-        KPim6::CalendarUtils
         KF6::Holidays
         KF6::Mime
         KPim6::IdentityManagementCore
