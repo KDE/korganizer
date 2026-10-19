@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-07 02:44+0000\n"
+"POT-Creation-Date: 2026-10-19 03:01+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -441,8 +441,8 @@ msgid ""
 "This action cannot be undone!"
 msgstr "此项能让您删除日历收藏中所有已完成的待办事项，此操作不可撤销！"
 
-#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1325
-#: actionmanager.cpp:1363
+#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1326
+#: actionmanager.cpp:1364
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1097,14 +1097,14 @@ msgstr ""
 "在多日历视图中，启动允许配置视图的对话框。 目前只支持多日历视图。请参阅多日历"
 "视图中的“视图->日程视图”选项。"
 
-#: actionmanager.cpp:613 actionmanager.cpp:1319 actionmanager.cpp:1361
+#: actionmanager.cpp:613 actionmanager.cpp:1320 actionmanager.cpp:1362
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "显示(&S)"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1322 actionmanager.cpp:1362
+#: actionmanager.cpp:617 actionmanager.cpp:1323 actionmanager.cpp:1363
 #: koeventpopupmenu.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1235,195 +1235,195 @@ msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "配置 KOrganizer(&C)..."
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:849
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
 msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "成功导入 %1 个事件。"
 
-#: actionmanager.cpp:850
+#: actionmanager.cpp:852
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "合并日历时发生错误: <message>%1</message>"
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:864
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "新日历添加成功"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:866
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "无法添加日历。错误：<message>%1</message>"
 
-#: actionmanager.cpp:930
+#: actionmanager.cpp:932
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "选择要打开的日历文件"
 
-#: actionmanager.cpp:966
+#: actionmanager.cpp:968
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "选择要导入的日历文件"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:1000
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "发生错误: <message>%1 (url: %2)</message>"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1019
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "无法上传日历到 <filename>%1</filename>"
 
-#: actionmanager.cpp:1023
+#: actionmanager.cpp:1025
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "已保存日历 <filename>%1</filename>"
 
-#: actionmanager.cpp:1066
+#: actionmanager.cpp:1068
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "无法将日历保存到 <filename>%1</filename>"
 
-#: actionmanager.cpp:1067
+#: actionmanager.cpp:1069
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "错误"
 
-#: actionmanager.cpp:1093
+#: actionmanager.cpp:1095
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
 msgid_plural "&Next %1 Days"
 msgstr[0] "后 %1 天(&N)"
 
-#: actionmanager.cpp:1106
+#: actionmanager.cpp:1107
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "无法启动日期和时间格式控制模块。"
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1282
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "显示事件(&S)"
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1285
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "编辑事件(&E)..."
 
-#: actionmanager.cpp:1287
+#: actionmanager.cpp:1288
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "删除事件(&D)"
 
-#: actionmanager.cpp:1295
+#: actionmanager.cpp:1296
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "显示待办事项(&S)"
 
-#: actionmanager.cpp:1298
+#: actionmanager.cpp:1299
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "编辑待办事项(&E)..."
 
-#: actionmanager.cpp:1301
+#: actionmanager.cpp:1302
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "删除待办事项(&D)"
 
-#: actionmanager.cpp:1444 actionmanager.cpp:1548
+#: actionmanager.cpp:1445 actionmanager.cpp:1549
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "链接附件(&L)"
 
-#: actionmanager.cpp:1445 actionmanager.cpp:1549
+#: actionmanager.cpp:1446 actionmanager.cpp:1550
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "内嵌附件(&I)"
 
-#: actionmanager.cpp:1446
+#: actionmanager.cpp:1447
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "内嵌数据而不是作为附件(&W)"
 
-#: actionmanager.cpp:1448 actionmanager.cpp:1551
+#: actionmanager.cpp:1449 actionmanager.cpp:1552
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "取消(&A)"
 
-#: actionmanager.cpp:1486
+#: actionmanager.cpp:1487
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "删除邮件中的附件可能会使签名失效。"
 
-#: actionmanager.cpp:1487
+#: actionmanager.cpp:1488
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "删除附件"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1637
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "撤销：%1"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1640
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "撤销"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "重做：%1"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1653
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "重做"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1656
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "撤销"
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1667
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "URL <filename>%1</filename> 无效。"
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1672
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1437,19 +1437,19 @@ msgstr ""
 "果您选择了合并，您将有机会选择用于合并的日历。</para><para>如果您选择了新建，"
 "则将自动为您新建一个日历。</para>"
 
-#: actionmanager.cpp:1679
+#: actionmanager.cpp:1680
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "导入日历"
 
-#: actionmanager.cpp:1680
+#: actionmanager.cpp:1681
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "合并入已有日历"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1682
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

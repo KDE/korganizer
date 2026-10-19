@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-07 02:44+0000\n"
+"POT-Creation-Date: 2026-10-19 03:01+0000\n"
 "PO-Revision-Date: 2002-11-09 12:52+0200\n"
 "Last-Translator: Thelma Lungcuzo <thelma@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -453,8 +453,8 @@ msgid ""
 "This action cannot be undone!"
 msgstr ""
 
-#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1325
-#: actionmanager.cpp:1363
+#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1326
+#: actionmanager.cpp:1364
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1117,7 +1117,7 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1319 actionmanager.cpp:1361
+#: actionmanager.cpp:613 actionmanager.cpp:1320 actionmanager.cpp:1362
 #: koeventpopupmenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Show"
@@ -1125,7 +1125,7 @@ msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Bonisa"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1322 actionmanager.cpp:1362
+#: actionmanager.cpp:617 actionmanager.cpp:1323 actionmanager.cpp:1363
 #: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
@@ -1259,7 +1259,7 @@ msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "Qwalasela &I Plagin..."
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:849
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1267,70 +1267,70 @@ msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "Papasha Iinkcukacha ye Free Busy"
 msgstr[1] "Papasha Iinkcukacha ye Free Busy"
 
-#: actionmanager.cpp:850
+#: actionmanager.cpp:852
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr ""
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:864
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "Papasha Iinkcukacha ye Free Busy"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:866
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "Ayikwazanga ukulayisha ikhalenda '%1'.\n"
 
-#: actionmanager.cpp:930
+#: actionmanager.cpp:932
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
 
-#: actionmanager.cpp:966
+#: actionmanager.cpp:968
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Hlela Amacebo okucoca ulwelo e Khalenda"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:1000
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "Fihla ukwe-nza okugqityiweyo"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1019
 #, fuzzy, kde-kuit-format
 #| msgid "Cannot upload calendar to '%1'"
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "Ayinakulayisha ngaphezulu ikhalenda kwi '%1'"
 
-#: actionmanager.cpp:1023
+#: actionmanager.cpp:1025
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
-#: actionmanager.cpp:1066
+#: actionmanager.cpp:1068
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Ayikwazi ukuphatha ikhalenda ebekwe kude.\n"
 
-#: actionmanager.cpp:1067
+#: actionmanager.cpp:1069
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Akukho Mposiso"
 
-#: actionmanager.cpp:1093
+#: actionmanager.cpp:1095
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1338,124 +1338,124 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "&Umhla Olandelayo"
 msgstr[1] "&Imihla %1 Elandelayo"
 
-#: actionmanager.cpp:1106
+#: actionmanager.cpp:1107
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Ayikwazanga kuqala umnqongo wolawulo lwefomati yomhla nexesha."
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1282
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Bonisa Isiganeko"
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1285
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Hlela Isiganeko..."
 
-#: actionmanager.cpp:1287
+#: actionmanager.cpp:1288
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Cima Isiganeko"
 
-#: actionmanager.cpp:1295
+#: actionmanager.cpp:1296
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Bonisa Eza-Kwenziwa"
 
-#: actionmanager.cpp:1298
+#: actionmanager.cpp:1299
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Hlela Eza-Kwenziwa..."
 
-#: actionmanager.cpp:1301
+#: actionmanager.cpp:1302
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Cima Eza-Kweziwa"
 
-#: actionmanager.cpp:1444 actionmanager.cpp:1548
+#: actionmanager.cpp:1445 actionmanager.cpp:1549
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Hlela isiganeko"
 
-#: actionmanager.cpp:1445 actionmanager.cpp:1549
+#: actionmanager.cpp:1446 actionmanager.cpp:1550
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Hlela isiganeko"
 
-#: actionmanager.cpp:1446
+#: actionmanager.cpp:1447
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Hlela isiganeko"
 
-#: actionmanager.cpp:1448 actionmanager.cpp:1551
+#: actionmanager.cpp:1449 actionmanager.cpp:1552
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr ""
 
-#: actionmanager.cpp:1486
+#: actionmanager.cpp:1487
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1487
+#: actionmanager.cpp:1488
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Abathathi nxaxheba"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1637
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Ukwe-nza: %1"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1640
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Ukwe-nza: %1"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1650
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Ukwe-nza: %1"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1653
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Ukwe-nza: %1"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1656
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Ukwe-nza: %1"
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1667
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr ""
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1672
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1466,19 +1466,19 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 
-#: actionmanager.cpp:1679
+#: actionmanager.cpp:1680
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "i Khalenda"
 
-#: actionmanager.cpp:1680
+#: actionmanager.cpp:1681
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Hlela isiganeko"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1682
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-07 02:44+0000\n"
+"POT-Creation-Date: 2026-10-19 03:01+0000\n"
 "PO-Revision-Date: 2026-07-24 20:26+0200\n"
 "Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -458,8 +458,8 @@ msgstr ""
 "Umožňuje odstranit všechny dokončené úkoly z vaší sbírky kalendářů. Tuto "
 "akci nelze vrátit zpět!"
 
-#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1325
-#: actionmanager.cpp:1363
+#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1326
+#: actionmanager.cpp:1364
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1146,14 +1146,14 @@ msgstr ""
 "Viz možnosti Zobrazení více kalendářů v nastavení Zobrazení->Zobrazení "
 "agendy."
 
-#: actionmanager.cpp:613 actionmanager.cpp:1319 actionmanager.cpp:1361
+#: actionmanager.cpp:613 actionmanager.cpp:1320 actionmanager.cpp:1362
 #: koeventpopupmenu.cpp:42
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Zobrazit"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1322 actionmanager.cpp:1362
+#: actionmanager.cpp:617 actionmanager.cpp:1323 actionmanager.cpp:1363
 #: koeventpopupmenu.cpp:44
 #, kde-format
 msgctxt "@action:inmenu"
@@ -1284,7 +1284,7 @@ msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "&Nastavit KOrganizer…"
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:849
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1293,67 +1293,67 @@ msgstr[0] "1 položka byla úspěšně importována."
 msgstr[1] "%1 položky byly úspěšně importovány."
 msgstr[2] "%1 položek bylo úspěšně importováno."
 
-#: actionmanager.cpp:850
+#: actionmanager.cpp:852
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "Při slučování kalendáře došlo k chybě: <message>%1</message>"
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:864
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "Nový kalendář byl úspěšně přidán"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:866
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "Nelze přidat kalendář. Chyba: <message>%1</message>"
 
-#: actionmanager.cpp:930
+#: actionmanager.cpp:932
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Vyberte soubor kalendáře k otevření"
 
-#: actionmanager.cpp:966
+#: actionmanager.cpp:968
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Vyberte soubor kalendáře pro import"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:1000
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "Došlo k chybě: <message>%1 (url: %2)</message>"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1019
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "Nelze odeslat kalendář do <filename>%1</filename>"
 
-#: actionmanager.cpp:1023
+#: actionmanager.cpp:1025
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "Kalendář do <filename>%1</filename> uložen"
 
-#: actionmanager.cpp:1066
+#: actionmanager.cpp:1068
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Kalendář do souboru <filename>%1</filename> nelze uložit"
 
-#: actionmanager.cpp:1067
+#: actionmanager.cpp:1069
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Chyba"
 
-#: actionmanager.cpp:1093
+#: actionmanager.cpp:1095
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1362,121 +1362,121 @@ msgstr[0] "Další de&n"
 msgstr[1] "Další %1 d&ny"
 msgstr[2] "Dalších %1 d&nů"
 
-#: actionmanager.cpp:1106
+#: actionmanager.cpp:1107
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "Nelze spustit ovládací modul pro formát data a času."
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1282
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Zobrazit událost"
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1285
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Upravit událost…"
 
-#: actionmanager.cpp:1287
+#: actionmanager.cpp:1288
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Smazat událost"
 
-#: actionmanager.cpp:1295
+#: actionmanager.cpp:1296
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Zobrazit úkol"
 
-#: actionmanager.cpp:1298
+#: actionmanager.cpp:1299
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Upravit úkol…"
 
-#: actionmanager.cpp:1301
+#: actionmanager.cpp:1302
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Smazat úkol"
 
-#: actionmanager.cpp:1444 actionmanager.cpp:1548
+#: actionmanager.cpp:1445 actionmanager.cpp:1549
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Připojit jako &odkaz"
 
-#: actionmanager.cpp:1445 actionmanager.cpp:1549
+#: actionmanager.cpp:1446 actionmanager.cpp:1550
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Připojit v&ložený"
 
-#: actionmanager.cpp:1446
+#: actionmanager.cpp:1447
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Připojit vložený &bez příloh"
 
-#: actionmanager.cpp:1448 actionmanager.cpp:1551
+#: actionmanager.cpp:1449 actionmanager.cpp:1552
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Zrušit"
 
-#: actionmanager.cpp:1486
+#: actionmanager.cpp:1487
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr "Odstranění příloh z e-mailu může zneplatnit jeho podpis."
 
-#: actionmanager.cpp:1487
+#: actionmanager.cpp:1488
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Odstranit přílohy"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1637
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Zpět: %1"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1640
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Zpět"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1650
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Znovu: %1"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1653
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Znovu"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1656
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Zpět"
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1667
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "URL <filename>%1</filename> je neplatná."
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1672
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1492,19 +1492,19 @@ msgstr ""
 "para><para>Pokud vyberete možnost přidat, bude pro vás automaticky vytvořen "
 "nový kalendář.</para>"
 
-#: actionmanager.cpp:1679
+#: actionmanager.cpp:1680
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Importovat kalendář"
 
-#: actionmanager.cpp:1680
+#: actionmanager.cpp:1681
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Sloučit do stávajícího kalendáře"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1682
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"

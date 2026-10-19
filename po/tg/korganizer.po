@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-07 02:44+0000\n"
+"POT-Creation-Date: 2026-10-19 03:01+0000\n"
 "PO-Revision-Date: 2019-09-27 23:59+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -456,8 +456,8 @@ msgid ""
 "This action cannot be undone!"
 msgstr ""
 
-#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1325
-#: actionmanager.cpp:1363
+#: actionmanager.cpp:322 actionmanager.cpp:621 actionmanager.cpp:1326
+#: actionmanager.cpp:1364
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
@@ -1129,7 +1129,7 @@ msgid ""
 "Calendars options in the Views->Agenda Views settings."
 msgstr ""
 
-#: actionmanager.cpp:613 actionmanager.cpp:1319 actionmanager.cpp:1361
+#: actionmanager.cpp:613 actionmanager.cpp:1320 actionmanager.cpp:1362
 #: koeventpopupmenu.cpp:42
 #, fuzzy, kde-format
 #| msgid "&Show"
@@ -1137,7 +1137,7 @@ msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Нишон додан"
 
-#: actionmanager.cpp:617 actionmanager.cpp:1322 actionmanager.cpp:1362
+#: actionmanager.cpp:617 actionmanager.cpp:1323 actionmanager.cpp:1363
 #: koeventpopupmenu.cpp:44
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
@@ -1272,7 +1272,7 @@ msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "Танзимоти &плагинҳо..."
 
-#: actionmanager.cpp:847
+#: actionmanager.cpp:849
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1280,72 +1280,72 @@ msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "Худкорона чоп кардани иттилоот &оиди вақти шурӯъӣ"
 msgstr[1] "Худкорона чоп кардани иттилоот &оиди вақти шурӯъӣ"
 
-#: actionmanager.cpp:850
+#: actionmanager.cpp:852
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr ""
 
-#: actionmanager.cpp:862
+#: actionmanager.cpp:864
 #, fuzzy, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "Худкорона чоп кардани иттилоот &оиди вақти шурӯъӣ"
 
-#: actionmanager.cpp:864
+#: actionmanager.cpp:866
 #, fuzzy, kde-kuit-format
 #| msgid "Could not load calendar '%1'."
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "Тақвимро пурбор карда нашуда истодааст %1'."
 
-#: actionmanager.cpp:930
+#: actionmanager.cpp:932
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Муҳаррири филтрҳои тақвим"
 
-#: actionmanager.cpp:966
+#: actionmanager.cpp:968
 #, fuzzy, kde-format
 #| msgid "Edit Calendar Filters"
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Муҳаррири филтрҳои тақвим"
 
-#: actionmanager.cpp:998
+#: actionmanager.cpp:1000
 #, fuzzy, kde-kuit-format
 #| msgid "Error Occurred"
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "Хато"
 
-#: actionmanager.cpp:1017
+#: actionmanager.cpp:1019
 #, fuzzy, kde-kuit-format
 #| msgid "Cannot upload calendar to '%1'"
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "Имконият нест, ки тақвим ҷоӣгир карда шавад '%1'"
 
-#: actionmanager.cpp:1023
+#: actionmanager.cpp:1025
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr ""
 
-#: actionmanager.cpp:1066
+#: actionmanager.cpp:1068
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Нигоҳ доштани элементи рӯйхати масъала натавонист."
 
-#: actionmanager.cpp:1067
+#: actionmanager.cpp:1069
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Ғайри хато"
 
-#: actionmanager.cpp:1093
+#: actionmanager.cpp:1095
 #, fuzzy, kde-format
 #| msgid "&Next Day"
 #| msgid_plural "&Next %1 Days"
@@ -1355,7 +1355,7 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "&Рӯзи %1 оянда"
 msgstr[1] "&Рӯзҳои %1 оянда"
 
-#: actionmanager.cpp:1106
+#: actionmanager.cpp:1107
 #, fuzzy, kde-format
 #| msgid "Could not start control module for date and time format."
 msgctxt "@info"
@@ -1363,121 +1363,121 @@ msgid "Could not start control module for date and time format."
 msgstr ""
 "Оғозидиҳии назорат аз болои модул барои сана ва формати вақт ,намешавад. "
 
-#: actionmanager.cpp:1281
+#: actionmanager.cpp:1282
 #, fuzzy, kde-format
 #| msgid "&Show Event"
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "&Намоиши ҳодиса"
 
-#: actionmanager.cpp:1284
+#: actionmanager.cpp:1285
 #, fuzzy, kde-format
 #| msgid "&Edit Event..."
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "&Муҳаррири ҳодиса..."
 
-#: actionmanager.cpp:1287
+#: actionmanager.cpp:1288
 #, fuzzy, kde-format
 #| msgid "&Delete Event"
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "&Нобуд кардани ҳодиса"
 
-#: actionmanager.cpp:1295
+#: actionmanager.cpp:1296
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "&Намоиши масъала"
 
-#: actionmanager.cpp:1298
+#: actionmanager.cpp:1299
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "&Муҳаррири масъала..."
 
-#: actionmanager.cpp:1301
+#: actionmanager.cpp:1302
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "&Нобуд кардани масъала"
 
-#: actionmanager.cpp:1444 actionmanager.cpp:1548
+#: actionmanager.cpp:1445 actionmanager.cpp:1549
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Дароварданро ҳамроҳ кунед"
 
-#: actionmanager.cpp:1445 actionmanager.cpp:1549
+#: actionmanager.cpp:1446 actionmanager.cpp:1550
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Дароварданро ҳамроҳ кунед"
 
-#: actionmanager.cpp:1446
+#: actionmanager.cpp:1447
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Дароварданро ҳамроҳ кунед"
 
-#: actionmanager.cpp:1448 actionmanager.cpp:1551
+#: actionmanager.cpp:1449 actionmanager.cpp:1552
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Дигаргун кунед"
 
-#: actionmanager.cpp:1486
+#: actionmanager.cpp:1487
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
 msgstr ""
 
-#: actionmanager.cpp:1487
+#: actionmanager.cpp:1488
 #, fuzzy, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Замимаҳо"
 
-#: actionmanager.cpp:1636
+#: actionmanager.cpp:1637
 #, fuzzy, kde-format
 #| msgid "Undo (%1)"
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Бекор кардан (%1)"
 
-#: actionmanager.cpp:1639
+#: actionmanager.cpp:1640
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Бекор кардан (%1)"
 
-#: actionmanager.cpp:1649
+#: actionmanager.cpp:1650
 #, fuzzy, kde-format
 #| msgid "Redo (%1)"
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Такрор кардан (%1)"
 
-#: actionmanager.cpp:1652
+#: actionmanager.cpp:1653
 #, fuzzy, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Такрор кардан (%1)"
 
-#: actionmanager.cpp:1655
+#: actionmanager.cpp:1656
 #, fuzzy, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Бекор кардан (%1)"
 
-#: actionmanager.cpp:1666
+#: actionmanager.cpp:1667
 #, fuzzy, kde-kuit-format
 #| msgid "URL '%1' is invalid."
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "'%1' - URL нодуруст аст."
 
-#: actionmanager.cpp:1671
+#: actionmanager.cpp:1672
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1488,21 +1488,21 @@ msgid ""
 "automatically.</para>"
 msgstr ""
 
-#: actionmanager.cpp:1679
+#: actionmanager.cpp:1680
 #, fuzzy, kde-format
 #| msgid "Import Calendar"
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Воридоти тақвим"
 
-#: actionmanager.cpp:1680
+#: actionmanager.cpp:1681
 #, fuzzy, kde-format
 #| msgid "Merge into existing calendar"
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Якшавии тақвимҳо"
 
-#: actionmanager.cpp:1681
+#: actionmanager.cpp:1682
 #, fuzzy, kde-format
 #| msgid "Add as new calendar"
 msgctxt "@action:button"

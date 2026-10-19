@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-08-06 02:45+0000\n"
+"POT-Creation-Date: 2026-10-19 03:01+0000\n"
 "PO-Revision-Date: 2011-02-27 12:20+0100\n"
 "Last-Translator: Marko Dimjasevic <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -403,12 +403,12 @@ msgstr "Sh. Para"
 msgid "Sh. HaHodesh"
 msgstr "Sh. Ha-hodeš"
 
-#: hebrew/holiday.cpp:481
+#: hebrew/holiday.cpp:480
 #, fuzzy, kde-format
-msgid " Omer"
+msgid "%1 Omer"
 msgstr " Omer"
 
-#: hebrew/parsha.cpp:28
+#: hebrew/parsha.cpp:27
 #, fuzzy, kde-format
 msgctxt ""
 "These are weekly readings and do not have translations. They may have "
@@ -417,7 +417,7 @@ msgctxt ""
 msgid "Bereshit"
 msgstr "Osvježi"
 
-#: hebrew/parsha.cpp:29
+#: hebrew/parsha.cpp:28
 #, fuzzy, kde-format
 msgid "Noach"
 msgstr "Noa"
@@ -427,252 +427,252 @@ msgstr "Noa"
 msgid "Lech L'cha"
 msgstr "Leh L'ča"
 
-#: hebrew/parsha.cpp:29
+#: hebrew/parsha.cpp:30
 #, fuzzy, kde-format
 msgid "Vayera"
 msgstr "Vajera"
 
-#: hebrew/parsha.cpp:29
+#: hebrew/parsha.cpp:31
 #, fuzzy, kde-format
 msgid "Chaye Sarah"
 msgstr "Čae Sara"
 
-#: hebrew/parsha.cpp:29
+#: hebrew/parsha.cpp:32
 #, fuzzy, kde-format
 msgid "Toldot"
 msgstr "Toldot"
 
-#: hebrew/parsha.cpp:29
+#: hebrew/parsha.cpp:33
 #, fuzzy, kde-format
 msgid "Vayetze"
 msgstr "Vajce"
 
-#: hebrew/parsha.cpp:29
+#: hebrew/parsha.cpp:34
 #, fuzzy, kde-format
 msgid "Vayishlach"
 msgstr "Vajišlah"
 
-#: hebrew/parsha.cpp:30
+#: hebrew/parsha.cpp:35
 #, fuzzy, kde-format
 msgid "Vayeshev"
 msgstr "Vajašev"
 
-#: hebrew/parsha.cpp:30
+#: hebrew/parsha.cpp:36
 #, fuzzy, kde-format
 msgid "Miketz"
 msgstr "Mikec"
 
-#: hebrew/parsha.cpp:30
+#: hebrew/parsha.cpp:37
 #, fuzzy, kde-format
 msgid "Vayigash"
 msgstr "Vajigaš"
 
-#: hebrew/parsha.cpp:30
+#: hebrew/parsha.cpp:38
 #, fuzzy, kde-format
 msgid "Vayechi"
 msgstr "Vaječi"
 
-#: hebrew/parsha.cpp:30
+#: hebrew/parsha.cpp:39
 #, fuzzy, kde-format
 msgid "Shemot"
 msgstr "Šemot"
 
-#: hebrew/parsha.cpp:30
+#: hebrew/parsha.cpp:40
 #, fuzzy, kde-format
 msgid "Vaera"
 msgstr "Vaera"
 
-#: hebrew/parsha.cpp:30
+#: hebrew/parsha.cpp:41
 #, fuzzy, kde-format
 msgid "Bo"
 msgstr "Bo"
 
-#: hebrew/parsha.cpp:31
+#: hebrew/parsha.cpp:42
 #, fuzzy, kde-format
 msgid "Beshalach"
 msgstr "Bešalač"
 
-#: hebrew/parsha.cpp:31
+#: hebrew/parsha.cpp:43
 #, fuzzy, kde-format
 msgid "Yitro"
 msgstr "Jitro"
 
-#: hebrew/parsha.cpp:31
+#: hebrew/parsha.cpp:44
 #, fuzzy, kde-format
 msgid "Mishpatim"
 msgstr "Mišpatim"
 
-#: hebrew/parsha.cpp:31
+#: hebrew/parsha.cpp:45
 #, fuzzy, kde-format
 msgid "Terumah"
 msgstr "Terumah"
 
-#: hebrew/parsha.cpp:31
+#: hebrew/parsha.cpp:46
 #, fuzzy, kde-format
 msgid "Tetzaveh"
 msgstr "Tecaveh"
 
-#: hebrew/parsha.cpp:31
+#: hebrew/parsha.cpp:47
 #, fuzzy, kde-format
 msgid "Ki Tisa"
 msgstr "Ki Tisa"
 
-#: hebrew/parsha.cpp:31
+#: hebrew/parsha.cpp:48
 #, fuzzy, kde-format
 msgid "Vayakhel"
 msgstr "Vajakhel"
 
-#: hebrew/parsha.cpp:32
+#: hebrew/parsha.cpp:49
 #, fuzzy, kde-format
 msgid "Pekudei"
 msgstr "Pekudei"
 
-#: hebrew/parsha.cpp:32
+#: hebrew/parsha.cpp:50
 #, fuzzy, kde-format
 msgid "Vayikra"
 msgstr "Vajikra"
 
-#: hebrew/parsha.cpp:32
+#: hebrew/parsha.cpp:51
 #, fuzzy, kde-format
 msgid "Tzav"
 msgstr "Cav"
 
-#: hebrew/parsha.cpp:32
+#: hebrew/parsha.cpp:52
 #, fuzzy, kde-format
 msgid "Shemini"
 msgstr "Šemini"
 
-#: hebrew/parsha.cpp:32
+#: hebrew/parsha.cpp:53
 #, fuzzy, kde-format
 msgid "Tazria"
 msgstr "Tazrija"
 
-#: hebrew/parsha.cpp:32
+#: hebrew/parsha.cpp:54
 #, fuzzy, kde-format
 msgid "Metzora"
 msgstr "Mecora"
 
-#: hebrew/parsha.cpp:32
+#: hebrew/parsha.cpp:55
 #, kde-format
 msgid "Acharei Mot"
 msgstr "Acharei Mot"
 
-#: hebrew/parsha.cpp:33
+#: hebrew/parsha.cpp:56
 #, fuzzy, kde-format
 msgid "Kedoshim"
 msgstr "Kedošim"
 
-#: hebrew/parsha.cpp:33
+#: hebrew/parsha.cpp:57
 #, fuzzy, kde-format
 msgid "Emor"
 msgstr "Emor"
 
-#: hebrew/parsha.cpp:33
+#: hebrew/parsha.cpp:58
 #, fuzzy, kde-format
 msgid "Behar"
 msgstr "Behar"
 
-#: hebrew/parsha.cpp:33
+#: hebrew/parsha.cpp:59
 #, fuzzy, kde-format
 msgid "Bechukotai"
 msgstr "Bečukotaj"
 
-#: hebrew/parsha.cpp:33
+#: hebrew/parsha.cpp:60
 #, fuzzy, kde-format
 msgid "Bemidbar"
 msgstr "Bemidbar"
 
-#: hebrew/parsha.cpp:33
+#: hebrew/parsha.cpp:61
 #, fuzzy, kde-format
 msgid "Naso"
 msgstr "Naso"
 
-#: hebrew/parsha.cpp:33
+#: hebrew/parsha.cpp:62
 #, fuzzy, kde-format
 msgid "Behaalotcha"
 msgstr "Behaloča"
 
-#: hebrew/parsha.cpp:34
+#: hebrew/parsha.cpp:63
 #, fuzzy, kde-format
 msgid "Shelach"
 msgstr "Šelač"
 
-#: hebrew/parsha.cpp:34
+#: hebrew/parsha.cpp:64
 #, fuzzy, kde-format
 msgid "Korach"
 msgstr "Korač"
 
-#: hebrew/parsha.cpp:34
+#: hebrew/parsha.cpp:65
 #, fuzzy, kde-format
 msgid "Chukat"
 msgstr "Čukati"
 
-#: hebrew/parsha.cpp:34
+#: hebrew/parsha.cpp:66
 #, fuzzy, kde-format
 msgid "Balak"
 msgstr "Balak"
 
-#: hebrew/parsha.cpp:34
+#: hebrew/parsha.cpp:67
 #, fuzzy, kde-format
 msgid "Pinchas"
 msgstr "Pinčas"
 
-#: hebrew/parsha.cpp:34
+#: hebrew/parsha.cpp:68
 #, fuzzy, kde-format
 msgid "Matot"
 msgstr "Matot"
 
-#: hebrew/parsha.cpp:34
+#: hebrew/parsha.cpp:69
 #, fuzzy, kde-format
 msgid "Masei"
 msgstr "Masej"
 
-#: hebrew/parsha.cpp:35
+#: hebrew/parsha.cpp:70
 #, fuzzy, kde-format
 msgid "Devarim"
 msgstr "Devarim"
 
-#: hebrew/parsha.cpp:35
+#: hebrew/parsha.cpp:71
 #, fuzzy, kde-format
 msgid "Vaetchanan"
 msgstr "Vetčanan"
 
-#: hebrew/parsha.cpp:35
+#: hebrew/parsha.cpp:72
 #, fuzzy, kde-format
 msgid "Ekev"
 msgstr "Ekev"
 
-#: hebrew/parsha.cpp:35
+#: hebrew/parsha.cpp:73
 #, fuzzy, kde-format
 msgid "Reeh"
 msgstr "Rih"
 
-#: hebrew/parsha.cpp:35
+#: hebrew/parsha.cpp:74
 #, fuzzy, kde-format
 msgid "Shoftim"
 msgstr "Šoftim"
 
-#: hebrew/parsha.cpp:35
+#: hebrew/parsha.cpp:75
 #, fuzzy, kde-format
 msgid "Ki Tetze"
 msgstr "Ki Tece"
 
-#: hebrew/parsha.cpp:35
+#: hebrew/parsha.cpp:76
 #, fuzzy, kde-format
 msgid "Ki Tavo"
 msgstr "Ki Tavo"
 
-#: hebrew/parsha.cpp:36
+#: hebrew/parsha.cpp:77
 #, fuzzy, kde-format
 msgid "Nitzavim"
 msgstr "Nicavim"
 
-#: hebrew/parsha.cpp:36
+#: hebrew/parsha.cpp:78
 #, fuzzy, kde-format
 msgid "Vayelech"
 msgstr "Vajeleč"
 
-#: hebrew/parsha.cpp:36
+#: hebrew/parsha.cpp:79
 #, fuzzy, kde-format
 msgid "Haazinu"
 msgstr "Hazinu"
