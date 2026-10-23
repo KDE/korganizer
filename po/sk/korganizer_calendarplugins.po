@@ -402,10 +402,9 @@ msgid "Sh. HaHodesh"
 msgstr "Sh. HaHodesh"
 
 #: hebrew/holiday.cpp:480
-#, fuzzy, kde-format
-#| msgid " Omer"
+#, kde-format
 msgid "%1 Omer"
-msgstr " Omer"
+msgstr "%1 Omer"
 
 #: hebrew/parsha.cpp:27
 #, kde-format
