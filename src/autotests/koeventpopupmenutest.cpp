@@ -10,7 +10,7 @@
 #include <Akonadi/CollectionCalendar>
 
 #include <IncidenceEditor/IncidenceDialog>
-#include <IncidenceEditor/IncidenceEditor-Ng>
+#include <IncidenceEditor/IncidenceEditor>
 
 #include <QStandardPaths>
 
