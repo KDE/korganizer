@@ -261,7 +261,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # see e.g. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=56556 or https://gcc.gnu.org/bugzilla/show_bug.cgi?id=79328
     string(APPEND CMAKE_CXX_FLAGS " -Wshadow")
 endif()
-ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.30.0 )
+ecm_set_disabled_deprecation_versions(QT 6.12.0 KF 6.31.0 )
 
 option(ENABLE_PCH "Enable Precompiled Headers support" ON)
 
