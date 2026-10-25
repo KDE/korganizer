@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-19 03:01+0000\n"
-"PO-Revision-Date: 2024-02-02 21:30+0200\n"
+"PO-Revision-Date: 2026-10-24 23:32+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -20,39 +20,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.10\n"
 
 #: datenums/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Day Numbers"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Day Numbers"
-msgstr "Konfigūruoti dienų numeraciją"
+msgstr "Konfigūruoti dienų numerį"
 
 #: datenums/configdialog.cpp:43
-#, fuzzy, kde-format
-#| msgid "Show Date Number"
+#, kde-format
 msgctxt "@title:group"
 msgid "Show Date Number"
 msgstr "Rodyti datos numerį"
 
 #: datenums/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid "Show day number"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show day number"
 msgstr "Rodyti dienos numerį"
 
 #: datenums/configdialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show days to end of year"
-msgstr "Rodyti dienų iki metų galo skaičių"
+msgstr "Rodyti, kiek dienų liko iki metų pabaigos"
 
 #: datenums/configdialog.cpp:54
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Show both"
 msgstr "Rodyti abu"
@@ -99,7 +94,7 @@ msgstr[3] "Iki metų pabaigos liko %1 diena"
 #, kde-format
 msgctxt "Week weekOfYear"
 msgid "Week %1"
-msgstr "%1 savaitė "
+msgstr "%1 savaitė"
 
 #: datenums/datenums.cpp:103 datenums/datenums.cpp:113
 #: datenums/datenums.cpp:118
@@ -136,10 +131,10 @@ msgstr[3] "Liko %1 savaitė"
 #, kde-format
 msgid "1 week until the end of the year"
 msgid_plural "%1 weeks until the end of the year"
-msgstr[0] "Liko %1 savaitė iki metų pabaigos"
-msgstr[1] "Liko %1 savaitės iki metų pabaigos"
-msgstr[2] "Liko %1 savaičių iki metų pabaigos"
-msgstr[3] "Liko %1 savaitė iki metų pabaigos"
+msgstr[0] "Iki metų pabaigos liko %1 savaitė"
+msgstr[1] "Iki metų pabaigos liko %1 savaitės"
+msgstr[2] "Iki metų pabaigos liko %1 savaičių"
+msgstr[3] "Iki metų pabaigos liko %1 savaitė"
 
 #: datenums/datenums.cpp:124
 #, kde-format
@@ -160,21 +155,20 @@ msgstr ""
 "%2"
 
 #: hebrew/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Holidays"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Holidays"
-msgstr "Konfigūruoti šventes"
+msgstr "Konfigūruoti šventines dienas"
 
 #: hebrew/configdialog.cpp:42
 #, kde-format
 msgid "Use Israeli holidays"
-msgstr "Naudoti Izraelio šventes"
+msgstr "Naudoti Izraelio šventines dienas"
 
 #: hebrew/configdialog.cpp:46
 #, kde-format
 msgid "Show weekly parsha"
-msgstr "Rodyti kassavaitinį „parsha“"
+msgstr "Rodyti savaitinę parsha"
 
 #: hebrew/configdialog.cpp:50
 #, kde-format
@@ -420,10 +414,9 @@ msgid "Sh. HaHodesh"
 msgstr "Sh. HaHodesh"
 
 #: hebrew/holiday.cpp:480
-#, fuzzy, kde-format
-#| msgid " Omer"
+#, kde-format
 msgid "%1 Omer"
-msgstr " Omer"
+msgstr "%1 Omer"
 
 #: hebrew/parsha.cpp:27
 #, kde-format
@@ -701,82 +694,73 @@ msgid ""
 "Currently, the phase is computed for noon at UTC; therefore, you should "
 "expect variations by 1 day in either direction."
 msgstr ""
+"Šis įskiepis rodo dienos mėnulio fazę (Jaunatis, Priešpilnis, Delčia, "
+"Pilnatis). Šiuo metu fazė yra apskaičiuojama vidurnakčiui suderintuoju "
+"pasauliniu laiku (UTC); štai kodėl turėtumėte tikėtis 1 dienos nukrypimų į "
+"bet kurią pusę."
 
 #: picoftheday/configdialog.cpp:28
-#, fuzzy, kde-format
-#| msgid "Configure Picture of the Day"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Picture of the Day"
-msgstr "Konfigūruoti dienos paveikslėlį"
+msgstr "Konfigūruoti dienos nuotrauką"
 
 #: picoftheday/configdialog.cpp:42
-#, fuzzy, kde-format
-#| msgid "Thumbnail Aspect Ratio Mode"
+#, kde-format
 msgctxt "@title:group"
 msgid "Thumbnail Aspect Ratio Mode"
-msgstr "Miniatiūros forma"
+msgstr "Miniatiūros proporcijų veiksena"
 
 #: picoftheday/configdialog.cpp:46
-#, fuzzy, kde-format
-#| msgid "Ignore aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Ignore aspect ratio"
-msgstr "Ignoruoti formą"
+msgstr "Nepaisyti proporcijų"
 
 #: picoftheday/configdialog.cpp:48
-#, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled freely. The aspect ratio will not be "
-#| "preserved."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled freely. The aspect ratio will not be preserved."
-msgstr "Miniatiūra bus laisvai didinama ar mažinama. Forma nebus išsaugota."
+msgstr ""
+"Miniatiūros mastelis bus laisvai keičiamas. Proporcijos nebus išlaikytos."
 
 #: picoftheday/configdialog.cpp:52
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio"
-msgstr "Išlaikyti formą"
+msgstr "Išlaikyti proporcijas"
 
 #: picoftheday/configdialog.cpp:54
 #, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as large as possible inside a "
-#| "given rectangle, preserving the aspect ratio."
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as large as possible inside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"Miniatiūros dydis bus pakeistas į didžiausią galimą duoto stačiakampį, "
-"išlaikant proporcijas."
+"Miniatiūros mastelis bus pakeistas iki didžiausio įmanomo stačiakampio, "
+"esančio nurodyto stačiakampio viduje, išlaikant proporcijas."
 
 #: picoftheday/configdialog.cpp:59
-#, fuzzy, kde-format
-#| msgid "Keep aspect ratio by expanding"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Keep aspect ratio by expanding"
-msgstr "Išlaikyti formą išplečiant"
+msgstr "Išlaikyti proporcijas išplečiant"
 
 #: picoftheday/configdialog.cpp:61
 #, fuzzy, kde-format
-#| msgid ""
-#| "The thumbnail will be scaled to a rectangle as small as possible outside "
-#| "a given rectangle, preserving the aspect ratio."
 msgctxt "@info:whatsthis"
 msgid ""
 "The thumbnail will be scaled to a rectangle as small as possible outside a "
 "given rectangle, preserving the aspect ratio."
 msgstr ""
-"Miniatiūra bus padidinta iki stačiakampio, kuris bus kiek galima mažesnis, "
-"tačiau apimantis nurodytą stačiakampį, išsaugant formą."
+"Miniatiūros mastelis bus pakeistas iki mažiausio įmanomo stačiakampio, "
+"esančio nurodyto stačiakampio išorėje, išlaikant proporcijas."
 
 #: picoftheday/element.cpp:209
 #, kde-format
 msgid "Wikipedia POTD: %1"
-msgstr "Wikipedia POTD: %1"
+msgstr "Vikipedijos dienos nuotrauka: %1"
 
 #: picoftheday/element.cpp:326
 #, kde-format
@@ -784,16 +768,14 @@ msgid "Picture Page"
 msgstr "Nuotraukos puslapis"
 
 #: picoftheday/element.cpp:326
-#, fuzzy, kde-format
-#| msgid "Loading..."
+#, kde-format
 msgid "Loading..."
 msgstr "Įkeliama..."
 
 #: picoftheday/element.cpp:332
-#, fuzzy, kde-format
-#| msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
+#, kde-format
 msgid "<qt>Loading <i>Picture of the Day</i>...</qt>"
-msgstr "<qt>Įkeliama <i>Dienos nuotrauka</i>...</qt>"
+msgstr "<qt>Įkeliama <i>dienos nuotrauka</i>...</qt>"
 
 #: picoftheday/picoftheday.cpp:48
 #, kde-format
@@ -814,12 +796,10 @@ msgstr "Ši diena istorijoje"
 
 #: thisdayinhistory/thisdayinhistory.cpp:39
 #: thisdayinhistory/thisdayinhistory.cpp:53
-#, fuzzy, kde-format
-#| msgctxt "Localized Wikipedia website"
-#| msgid "http://en.wikipedia.org/wiki/"
+#, kde-format
 msgctxt "Localized Wikipedia website"
 msgid "https://en.wikipedia.org/wiki/"
-msgstr "http://en.wikipedia.org/wiki/"
+msgstr "http://lt.wikipedia.org/wiki/"
 
 #: thisdayinhistory/thisdayinhistory.cpp:40
 #, kde-format
