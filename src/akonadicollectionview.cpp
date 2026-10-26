@@ -415,7 +415,6 @@ AkonadiCollectionView::AkonadiCollectionView(CalendarView *view, bool hasContext
 #if HAVE_ACTIVITY_SUPPORT
     filterTreeViewModel->setAccountActivities(ActivitiesManager::self()->accountActivities());
 #endif
-    // TODO add activities support
     filterTreeViewModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
     filterTreeViewModel->setRecursiveFilteringEnabled(true);
     filterTreeViewModel->setSourceModel(searchProxy);
