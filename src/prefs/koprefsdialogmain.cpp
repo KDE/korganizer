@@ -124,9 +124,6 @@ void KOPrefsDialogMain::usrWriteConfig()
 {
     Korganizer::KPrefsModule::usrWriteConfig();
     IncidenceEditorNG::IncidenceEditorSettings::self()->save();
-#if HAVE_ACTIVITY_SUPPORT
-    KOPrefs::instance()->setEnabledActivities(KOPrefs::instance()->enabledActivities());
-#endif
     CalendarSupport::KCalPrefs::instance()->save();
     setNeedsSave(false);
 }

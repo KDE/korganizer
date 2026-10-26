@@ -23,6 +23,9 @@
 #include "mainwindow.h"
 #include "prefs/koprefs.h"
 #include <config-korganizer.h>
+#if HAVE_ACTIVITY_SUPPORT
+#include "activities/activitiesmanager.h"
+#endif
 
 #include <CalendarSupport/CollectionSelection>
 #include <CalendarSupport/EventArchiver>
@@ -144,6 +147,10 @@ void ActionManager::toggleMenubar(bool dontShowWarning)
 // see the Note: below for why this method is necessary
 void ActionManager::init()
 {
+#if HAVE_ACTIVITY_SUPPORT
+    ActivitiesManager::self()->setEnabled(KOPrefs::instance()->enabledActivities());
+#endif
+
     // add this instance of the window to the static list.
     if (!mWindowList) {
         mWindowList = new KOWindowList;
@@ -1090,6 +1097,9 @@ void ActionManager::readProperties(const KConfigGroup &)
 void ActionManager::updateConfig()
 {
     mNextXDays->setText(i18ncp("@action:inmenu", "&Next Day", "&Next %1 Days", KOPrefs::instance()->mNextXDays));
+#if HAVE_ACTIVITY_SUPPORT
+    ActivitiesManager::self()->setEnabled(KOPrefs::instance()->enabledActivities());
+#endif
 
     KOCore::self()->reloadPlugins();
 }
