@@ -31,8 +31,8 @@
   <group name="Activities">
     <entry name="EnabledActivities" type="Bool">
       <label>Enable KDE Plasma Activities</label>
-      <tooltip>Enable KDE Plasma Activities for Mail accounts</tooltip>
-      <whatsthis>Select this option to the enable KDE Plasma Activities that allows setting different Mail accounts and transports for each activity.</whatsthis>
+      <tooltip>Enable KDE Plasma Activities for Calendar accounts</tooltip>
+      <whatsthis>Select this option to enable KDE Plasma Activities that allows setting different Calendar accounts and transports for each activity.</whatsthis>
       <default>false</default>
     </entry>
   </group>
