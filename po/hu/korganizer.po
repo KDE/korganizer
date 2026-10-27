@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-20 00:53+0000\n"
+"POT-Creation-Date: 2026-10-27 01:00+0000\n"
 "PO-Revision-Date: 2026-09-25 21:56+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -327,38 +327,38 @@ msgctxt "@info:credit"
 msgid "Fester Zigterman"
 msgstr "Fester Zigterman"
 
-#: actionmanager.cpp:132
+#: actionmanager.cpp:135
 #, kde-format
 msgctxt "@info"
 msgid ""
 "This will hide the menu bar completely. You can show it again by typing %1."
 msgstr "Teljesen elrejti a menüsávot. Ezzel a paranccsal állítható vissza: %1."
 
-#: actionmanager.cpp:135
+#: actionmanager.cpp:138
 #, kde-format
 msgctxt "@title:window"
 msgid "Hide menu bar"
 msgstr "Menüsáv elrejtése"
 
-#: actionmanager.cpp:245
+#: actionmanager.cpp:252
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Import &Calendar…"
 msgstr "&Naptár importálása…"
 
-#: actionmanager.cpp:246
+#: actionmanager.cpp:253
 #, kde-format
 msgctxt "@info:status"
 msgid "Import a calendar"
 msgstr "Naptár importálása"
 
-#: actionmanager.cpp:247
+#: actionmanager.cpp:254
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Import an iCalendar or vCalendar file"
 msgstr "iCalendar- vagy vCalendar-fájl importálása"
 
-#: actionmanager.cpp:249
+#: actionmanager.cpp:256
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -368,25 +368,25 @@ msgstr ""
 "Ezzel a menüponttal lehet egy iCalendar- vagy vCalendar-fájl tartalmát "
 "importálni a jelenlegi naptárgyűjteménybe."
 
-#: actionmanager.cpp:257
+#: actionmanager.cpp:264
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Export as &iCalendar…"
 msgstr "Exportálás i&Calendarként…"
 
-#: actionmanager.cpp:258
+#: actionmanager.cpp:265
 #, kde-format
 msgctxt "@info:status"
 msgid "Export calendar to file"
 msgstr "Naptár exportálása fájlba"
 
-#: actionmanager.cpp:259
+#: actionmanager.cpp:266
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Export your calendar to an iCalendar file"
 msgstr "Naptár exportálása iCalendar-fájlba"
 
-#: actionmanager.cpp:260
+#: actionmanager.cpp:267
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -395,25 +395,25 @@ msgstr ""
 "Lehetővé teszi a teljes naptárgyűjtemény exportálását egyetlen iCalendar-"
 "fájlba."
 
-#: actionmanager.cpp:266
+#: actionmanager.cpp:273
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Archive O&ld Incidences…"
 msgstr "Régi események archivá&lása…"
 
-#: actionmanager.cpp:267
+#: actionmanager.cpp:274
 #, kde-format
 msgctxt "@info:status"
 msgid "Archive events and to-dos to a file"
 msgstr "Események és teendők archiválása fájlba"
 
-#: actionmanager.cpp:268
+#: actionmanager.cpp:275
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Archive old events and to-dos to an iCalendar file"
 msgstr "Régi események és teendők archiválása iCalendar-fájlba"
 
-#: actionmanager.cpp:270
+#: actionmanager.cpp:277
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -425,25 +425,25 @@ msgstr ""
 "események és teendők kiválasztását, hogy iCalendar-fájlba archiválhassa "
 "azokat. Ezek eltávolításra kerülnek a meglévő naptárgyűjteményéből."
 
-#: actionmanager.cpp:278
+#: actionmanager.cpp:285
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Pur&ge Completed To-dos"
 msgstr "Befejezett teendők tö&rlése"
 
-#: actionmanager.cpp:279
+#: actionmanager.cpp:286
 #, kde-format
 msgctxt "@info:status"
 msgid "Purge completed to-dos"
 msgstr "A befejezett teendők törlése"
 
-#: actionmanager.cpp:280
+#: actionmanager.cpp:287
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Remove completed to-dos from your calendar"
 msgstr "Eltávolítja a befejezett teendőket a naptárból"
 
-#: actionmanager.cpp:282
+#: actionmanager.cpp:289
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -453,32 +453,32 @@ msgstr ""
 "Lehetővé teszi az összes befejezett teendő eltávolítását a "
 "naptárgyűjteményből. Ez a művelet nem vonható vissza!"
 
-#: actionmanager.cpp:319 actionmanager.cpp:618 actionmanager.cpp:1323
-#: actionmanager.cpp:1361
+#: actionmanager.cpp:326 actionmanager.cpp:625 actionmanager.cpp:1333
+#: actionmanager.cpp:1371
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete"
 msgstr "&Törlés"
 
-#: actionmanager.cpp:336
+#: actionmanager.cpp:343
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's &Next"
 msgstr "Mi kö&vetkezik"
 
-#: actionmanager.cpp:337
+#: actionmanager.cpp:344
 #, kde-format
 msgctxt "@info:status"
 msgid "What's Next View"
 msgstr "Mi következik nézet"
 
-#: actionmanager.cpp:338
+#: actionmanager.cpp:345
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the What's Next View"
 msgstr "Váltás a Mi következik nézetre"
 
-#: actionmanager.cpp:340
+#: actionmanager.cpp:347
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -492,25 +492,25 @@ msgstr ""
 "nyitott teendő megjelenik, de az események közül csak a Dátumnavigátor "
 "oldalsávon kiválasztott napokéi."
 
-#: actionmanager.cpp:348
+#: actionmanager.cpp:355
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Month"
 msgstr "Hóna&p"
 
-#: actionmanager.cpp:349
+#: actionmanager.cpp:356
 #, kde-format
 msgctxt "@info:status"
 msgid "Month View"
 msgstr "Hónap nézet"
 
-#: actionmanager.cpp:350
+#: actionmanager.cpp:357
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Month View"
 msgstr "Váltás a Hónap nézetre"
 
-#: actionmanager.cpp:352
+#: actionmanager.cpp:359
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -520,25 +520,25 @@ msgstr ""
 "Átvált a Hónap nézetre, amely megjeleníti az összes eseményt és esedékes "
 "teendőt egy ismerős, havi naptárelrendezésben."
 
-#: actionmanager.cpp:358
+#: actionmanager.cpp:365
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Agenda"
 msgstr "N&apirend"
 
-#: actionmanager.cpp:361
+#: actionmanager.cpp:368
 #, kde-format
 msgctxt "@info:status"
 msgid "Agenda View"
 msgstr "Naptár nézet"
 
-#: actionmanager.cpp:362
+#: actionmanager.cpp:369
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Agenda View"
 msgstr "Váltás a Naptár nézetre"
 
-#: actionmanager.cpp:364
+#: actionmanager.cpp:371
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -550,25 +550,25 @@ msgstr ""
 "teendőket egy vagy több napra vonatkozóan. A napi ütemtervben az egyes "
 "események időtartamát is láthatja."
 
-#: actionmanager.cpp:371
+#: actionmanager.cpp:378
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Event List"
 msgstr "&Eseménylista"
 
-#: actionmanager.cpp:372
+#: actionmanager.cpp:379
 #, kde-format
 msgctxt "@info:status"
 msgid "List View"
 msgstr "Lista nézet"
 
-#: actionmanager.cpp:373
+#: actionmanager.cpp:380
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the List View"
 msgstr "Váltás a Lista nézetre"
 
-#: actionmanager.cpp:375
+#: actionmanager.cpp:382
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -578,25 +578,25 @@ msgstr ""
 "Átvált a Lista nézetre, amely a Dátumnavigátorban kiválasztott dátumokra "
 "vonatkozó összes teendőt, eseményt és naplóbejegyzést listaként jeleníti meg."
 
-#: actionmanager.cpp:381
+#: actionmanager.cpp:388
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&To-do List"
 msgstr "&Teendőlista"
 
-#: actionmanager.cpp:382
+#: actionmanager.cpp:389
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
 msgstr "Teendőlista nézet"
 
-#: actionmanager.cpp:383
+#: actionmanager.cpp:390
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the To-do List View"
 msgstr "Váltás a Teendőlista nézetre"
 
-#: actionmanager.cpp:385
+#: actionmanager.cpp:392
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -606,25 +606,25 @@ msgstr ""
 "Átvált a Teendőlista nézetre, ahol nyomon követheti az elvégzendő "
 "feladatokat."
 
-#: actionmanager.cpp:391
+#: actionmanager.cpp:398
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Journal"
 msgstr "&Napló"
 
-#: actionmanager.cpp:392
+#: actionmanager.cpp:399
 #, kde-format
 msgctxt "@info:status"
 msgid "Journal View"
 msgstr "Napló nézet"
 
-#: actionmanager.cpp:393
+#: actionmanager.cpp:400
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Journal View"
 msgstr "Váltás a Napló nézetre"
 
-#: actionmanager.cpp:395
+#: actionmanager.cpp:402
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -634,25 +634,25 @@ msgstr ""
 "Átvált a Napló nézetre, ahol rögzítheti gondolatait, eseményeket vagy "
 "élményeit."
 
-#: actionmanager.cpp:401
+#: actionmanager.cpp:408
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Time&line"
 msgstr "Idő&vonal"
 
-#: actionmanager.cpp:402
+#: actionmanager.cpp:409
 #, kde-format
 msgctxt "@info:status"
 msgid "Timeline View"
 msgstr "Idővonal nézet"
 
-#: actionmanager.cpp:403
+#: actionmanager.cpp:410
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Switch to the Timeline View"
 msgstr "Váltás az Idővonal nézetre"
 
-#: actionmanager.cpp:405
+#: actionmanager.cpp:412
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -663,25 +663,25 @@ msgstr ""
 "Gantt-diagram formájában jeleníti meg. Minden naptár egy külön sorban "
 "jelenik meg."
 
-#: actionmanager.cpp:414
+#: actionmanager.cpp:421
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Refresh"
 msgstr "&Frissítés"
 
-#: actionmanager.cpp:415
+#: actionmanager.cpp:422
 #, kde-format
 msgctxt "@info:status"
 msgid "Refresh"
 msgstr "Frissítés"
 
-#: actionmanager.cpp:416
+#: actionmanager.cpp:423
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh the display"
 msgstr "Frissíti a képernyőt"
 
-#: actionmanager.cpp:418
+#: actionmanager.cpp:425
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -691,25 +691,25 @@ msgstr ""
 "Ez a művelet frissíti és újrarajzolja az aktuális naptárnézetet. Nem "
 "szinkronizálja és nem frissíti a naptármappákat."
 
-#: actionmanager.cpp:427
+#: actionmanager.cpp:434
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "F&ilter"
 msgstr "&Szűrő"
 
-#: actionmanager.cpp:428
+#: actionmanager.cpp:435
 #, kde-format
 msgctxt "@info:status"
 msgid "Filter incidences"
 msgstr "Események szűrése"
 
-#: actionmanager.cpp:429
+#: actionmanager.cpp:436
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Filter incidences from the calendar"
 msgstr "Események szűrése a naptárban"
 
-#: actionmanager.cpp:431
+#: actionmanager.cpp:438
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -720,85 +720,85 @@ msgstr ""
 "A szűrőketelőször létre kell hozni. Lásd a „Nézetszűrők kezelése” opciót a "
 "Beállítások menüben."
 
-#: actionmanager.cpp:443
+#: actionmanager.cpp:450
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Horizontally"
 msgstr "Vízszintesen be"
 
-#: actionmanager.cpp:448
+#: actionmanager.cpp:455
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Horizontally"
 msgstr "Vízszintesen ki"
 
-#: actionmanager.cpp:453
+#: actionmanager.cpp:460
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "In Vertically"
 msgstr "Függőlegesen be"
 
-#: actionmanager.cpp:458
+#: actionmanager.cpp:465
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Out Vertically"
 msgstr "Függőlegesen ki"
 
-#: actionmanager.cpp:467
+#: actionmanager.cpp:474
 #, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
 msgstr "A mai na&pra"
 
-#: actionmanager.cpp:468
+#: actionmanager.cpp:475
 #, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "Ma"
 
-#: actionmanager.cpp:469
+#: actionmanager.cpp:476
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
 msgstr "Görgetés a mai napra"
 
-#: actionmanager.cpp:470 widgets/navigatorbar.cpp:38
+#: actionmanager.cpp:477 widgets/navigatorbar.cpp:38
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
 msgstr "A nézetet a mai napra görgeti"
 
-#: actionmanager.cpp:471
+#: actionmanager.cpp:478
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
 msgstr "A jelenlegi nézetet a mai dátumra görgeti."
 
-#: actionmanager.cpp:477
+#: actionmanager.cpp:484
 #, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "&Vissza"
 
-#: actionmanager.cpp:479
+#: actionmanager.cpp:486
 #, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "Vissza"
 
-#: actionmanager.cpp:480
+#: actionmanager.cpp:487
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
 msgstr "Görgetés vissza"
 
-#: actionmanager.cpp:481
+#: actionmanager.cpp:488
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
 msgstr "Visszagörgeti a nézetet"
 
-#: actionmanager.cpp:483
+#: actionmanager.cpp:490
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -808,31 +808,31 @@ msgstr ""
 "A jelenlegi naptárnézettől függően egy nappal, héttel, hónappal vagy évvel "
 "visszagörget."
 
-#: actionmanager.cpp:490
+#: actionmanager.cpp:497
 #, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "&Előre"
 
-#: actionmanager.cpp:492
+#: actionmanager.cpp:499
 #, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "Előre"
 
-#: actionmanager.cpp:493
+#: actionmanager.cpp:500
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
 msgstr "Görgetés előre"
 
-#: actionmanager.cpp:494
+#: actionmanager.cpp:501
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
 msgstr "Előregörgeti a nézetet"
 
-#: actionmanager.cpp:496
+#: actionmanager.cpp:503
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -842,31 +842,31 @@ msgstr ""
 "A jelenlegi naptárnézettől függően egy nappal, héttel, hónappal vagy évvel "
 "előregörget."
 
-#: actionmanager.cpp:502
+#: actionmanager.cpp:509
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Nap"
 
-#: actionmanager.cpp:503
+#: actionmanager.cpp:510
 #, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
 msgstr "Nap"
 
-#: actionmanager.cpp:504
+#: actionmanager.cpp:511
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
 msgstr "Naponkénti nézet"
 
-#: actionmanager.cpp:505
+#: actionmanager.cpp:512
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
 msgstr "A Naptár nézetben egyszerre egy napot jelenít meg"
 
-#: actionmanager.cpp:506
+#: actionmanager.cpp:513
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
@@ -874,25 +874,25 @@ msgstr ""
 "Válassza ezt az opciót, ha a Naptár nézetben egyszerre csak 1 napot szeretne "
 "megjeleníteni."
 
-#: actionmanager.cpp:513
+#: actionmanager.cpp:520
 #, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
 msgstr "&Következő napok"
 
-#: actionmanager.cpp:514
+#: actionmanager.cpp:521
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
 msgstr "Több napos nézet"
 
-#: actionmanager.cpp:515
+#: actionmanager.cpp:522
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
 msgstr "A Naptár nézetben a következő néhány napot egyszerre jelenítse meg"
 
-#: actionmanager.cpp:518
+#: actionmanager.cpp:525
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -906,13 +906,13 @@ msgstr ""
 "<interface>Nézetek->Általános</interface> beállítási oldalon található "
 "<placeholder>Következő X nap</placeholder> módosításával adhatja meg."
 
-#: actionmanager.cpp:525
+#: actionmanager.cpp:532
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "W&eek Schedule"
 msgstr "H&eti program"
 
-#: actionmanager.cpp:526
+#: actionmanager.cpp:533
 #, kde-format
 msgctxt ""
 "@action:inmenu agenda view show the weekly schedule days only (eg. no "
@@ -920,7 +920,7 @@ msgctxt ""
 msgid "Week Schedule"
 msgstr "Heti program"
 
-#: actionmanager.cpp:527
+#: actionmanager.cpp:534
 #, kde-format
 msgctxt "@info:status"
 msgid ""
@@ -929,7 +929,7 @@ msgstr ""
 "Egyszerre egy hét megjelenítése, kizárólag a heti programban szereplő "
 "napokkal"
 
-#: actionmanager.cpp:529
+#: actionmanager.cpp:536
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -939,7 +939,7 @@ msgstr ""
 "A Naptár nézetben egy hetet jelenítsen meg, kizárva azokat a napokat, "
 "amelyek nem szerepelneka heti programban (például a hétvégék)"
 
-#: actionmanager.cpp:532
+#: actionmanager.cpp:539
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -956,31 +956,31 @@ msgstr ""
 "beállítások</interface> oldalon.<para>Ez a nézet általában a hét "
 "megjelenítésére szolgál, a hétvégék nélkül.</para>"
 
-#: actionmanager.cpp:541
+#: actionmanager.cpp:548
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "&Hét"
 
-#: actionmanager.cpp:542
+#: actionmanager.cpp:549
 #, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
 msgstr "Hét"
 
-#: actionmanager.cpp:543
+#: actionmanager.cpp:550
 #, kde-format
 msgctxt "@info:status"
 msgid "View a week at a time"
 msgstr "Heti nézet"
 
-#: actionmanager.cpp:544
+#: actionmanager.cpp:551
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
 msgstr "A Naptár nézetben egyszerre egy hetet jelenít meg"
 
-#: actionmanager.cpp:545
+#: actionmanager.cpp:552
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show a week at a time in Agenda View."
@@ -988,25 +988,25 @@ msgstr ""
 "Válassza ezt az opciót, ha a Naptár nézetben egyszerre csak egy hetet "
 "szeretne megjeleníteni."
 
-#: actionmanager.cpp:552
+#: actionmanager.cpp:559
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
 msgstr "Új &esemény…"
 
-#: actionmanager.cpp:553
+#: actionmanager.cpp:560
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Új esemény létrehozása"
 
-#: actionmanager.cpp:554
+#: actionmanager.cpp:561
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Új esemény létrehozása"
 
-#: actionmanager.cpp:556
+#: actionmanager.cpp:563
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1016,25 +1016,25 @@ msgstr ""
 "Megnyit egy párbeszédablakot, amelyben új eseményt hozhat létre "
 "emlékeztetőkkel,résztvevőkkel, ismétlődésekkel és még sok más beállítással."
 
-#: actionmanager.cpp:562
+#: actionmanager.cpp:569
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
 msgstr "Új &teendő…"
 
-#: actionmanager.cpp:563
+#: actionmanager.cpp:570
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
 msgstr "Új teendő létrehozása"
 
-#: actionmanager.cpp:564
+#: actionmanager.cpp:571
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
 msgstr "Új teendő létrehozása"
 
-#: actionmanager.cpp:566
+#: actionmanager.cpp:573
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1044,62 +1044,62 @@ msgstr ""
 "Megnyit egy párbeszédablakot, amelyben új teendőt hozhat létre "
 "emlékeztetőkkel,résztvevőkkel, ismétlődésekkel és még sok más beállítással."
 
-#: actionmanager.cpp:573
+#: actionmanager.cpp:580
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
 msgstr "Új &részfeladat…"
 
-#: actionmanager.cpp:581
+#: actionmanager.cpp:588
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "New &Journal…"
 msgstr "Új n&apló…"
 
-#: actionmanager.cpp:582
+#: actionmanager.cpp:589
 #, kde-format
 msgctxt "@info:status"
 msgid "Create a new Journal"
 msgstr "Új naplóbejegyzés létrehozása"
 
-#: actionmanager.cpp:583
+#: actionmanager.cpp:590
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Journal"
 msgstr "Új naplóbejegyzés létrehozása"
 
-#: actionmanager.cpp:584
+#: actionmanager.cpp:591
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Starts a dialog that allows you to create a new Journal entry."
 msgstr ""
 "Megnyit egy párbeszédablakot, amelyben új naplóbejegyzést hozhat létre."
 
-#: actionmanager.cpp:589
+#: actionmanager.cpp:596
 #, kde-format
 msgctxt "@action:inmenu Jump to date"
 msgid "&Pick a Date"
 msgstr "&Dátumválasztás"
 
-#: actionmanager.cpp:590
+#: actionmanager.cpp:597
 #, kde-format
 msgctxt "@action:button"
 msgid "Date"
 msgstr "Dátum"
 
-#: actionmanager.cpp:591
+#: actionmanager.cpp:598
 #, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
 msgstr "A nézetet a felhasználó által kiválasztott dátumokra görgeti"
 
-#: actionmanager.cpp:592
+#: actionmanager.cpp:599
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
 msgstr "A nézetet a felhasználó által kiválasztott dátumokra görgeti"
 
-#: actionmanager.cpp:593
+#: actionmanager.cpp:600
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
@@ -1107,31 +1107,31 @@ msgstr ""
 "Megnyit egy dátumválasztó párbeszédablakot a nézetben való gyors "
 "navigáláshoz."
 
-#: actionmanager.cpp:598
+#: actionmanager.cpp:605
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure View…"
 msgstr "Nézet beállítása…"
 
-#: actionmanager.cpp:599
+#: actionmanager.cpp:606
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure"
 msgstr "Beállítás"
 
-#: actionmanager.cpp:600
+#: actionmanager.cpp:607
 #, kde-format
 msgctxt "@info:status"
 msgid "Configure the multi-calendar view"
 msgstr "A több naptáras nézet beállítása"
 
-#: actionmanager.cpp:601
+#: actionmanager.cpp:608
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Configure the multi-calendar view"
 msgstr "A több naptáras nézet beállítása"
 
-#: actionmanager.cpp:603
+#: actionmanager.cpp:610
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1143,21 +1143,21 @@ msgstr ""
 "anézet. Jelenleg csak a több naptáras nézet támogatott. Lásd a „Többnaptár” "
 "beállításokat a Nézetek → Naptárnézetek menüpont alatt."
 
-#: actionmanager.cpp:610 actionmanager.cpp:1317 actionmanager.cpp:1359
+#: actionmanager.cpp:617 actionmanager.cpp:1327 actionmanager.cpp:1369
 #: koeventpopupmenu.cpp:39
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Megjelenítés"
 
-#: actionmanager.cpp:614 actionmanager.cpp:1320 actionmanager.cpp:1360
+#: actionmanager.cpp:621 actionmanager.cpp:1330 actionmanager.cpp:1370
 #: koeventpopupmenu.cpp:41
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
 msgstr "Sz&erkesztés…"
 
-#: actionmanager.cpp:623
+#: actionmanager.cpp:630
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
@@ -1167,121 +1167,121 @@ msgstr "A részf&eladat önállóvá tétele"
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
-#: actionmanager.cpp:635
+#: actionmanager.cpp:642
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
 msgstr "Elem jellemzőinek &közzététele…"
 
-#: actionmanager.cpp:642
+#: actionmanager.cpp:649
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
 msgstr "Meg&hívó küldése a résztvevőknek"
 
-#: actionmanager.cpp:650
+#: actionmanager.cpp:657
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
 msgstr "&Frissítés kérése"
 
-#: actionmanager.cpp:658
+#: actionmanager.cpp:665
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
 msgstr "&Lemondási értesítés a résztvevőknek"
 
-#: actionmanager.cpp:666
+#: actionmanager.cpp:673
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
 msgstr "Állapotf&rissítés küldése"
 
-#: actionmanager.cpp:674
+#: actionmanager.cpp:681
 #, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
 msgstr "Mó&dosítás kérése"
 
-#: actionmanager.cpp:682
+#: actionmanager.cpp:689
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
 msgstr "Fo&glaltsági információk elküldése levélben…"
 
-#: actionmanager.cpp:687
+#: actionmanager.cpp:694
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
 msgstr "&iCalendar-bejegyzésként…"
 
-#: actionmanager.cpp:694
+#: actionmanager.cpp:701
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
 msgstr "Foglaltsági a&datok feltöltése"
 
-#: actionmanager.cpp:700
+#: actionmanager.cpp:707
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
 msgstr "&Címjegyzék"
 
-#: actionmanager.cpp:708
+#: actionmanager.cpp:715
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
 msgstr "Dátumnavigátor megjelenítése"
 
-#: actionmanager.cpp:712
+#: actionmanager.cpp:719
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
 msgstr "Teendőlista megjelenítése"
 
-#: actionmanager.cpp:716
+#: actionmanager.cpp:723
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
 msgstr "Elemnézegető megjelenítése"
 
-#: actionmanager.cpp:732
+#: actionmanager.cpp:739
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
 msgstr "Naptárkezelő megjelenítése"
 
-#: actionmanager.cpp:746
+#: actionmanager.cpp:753
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
 msgstr "Dát&um és idő beállítása…"
 
-#: actionmanager.cpp:750
+#: actionmanager.cpp:757
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
 msgstr "Nézets&zűrők szerkesztése…"
 
-#: actionmanager.cpp:754
+#: actionmanager.cpp:761
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage T&ags…"
 msgstr "Cí&mkék kezelése…"
 
-#: actionmanager.cpp:761
+#: actionmanager.cpp:768
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "What's new"
 msgstr "Újdonságok"
 
-#: actionmanager.cpp:766
+#: actionmanager.cpp:773
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Configure KOrganizer…"
 msgstr "A KOrganizer &beállítása…"
 
-#: actionmanager.cpp:846
+#: actionmanager.cpp:853
 #, kde-format
 msgctxt "@info"
 msgid "1 incidence was imported successfully."
@@ -1289,67 +1289,67 @@ msgid_plural "%1 incidences were imported successfully."
 msgstr[0] "1 előfordulás sikeresen importálva."
 msgstr[1] "%1 előfordulás sikeresen importálva."
 
-#: actionmanager.cpp:849
+#: actionmanager.cpp:856
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
 msgstr "Hiba történt a naptár egyesítése közben: <message>%1</message>"
 
-#: actionmanager.cpp:861
+#: actionmanager.cpp:868
 #, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
 msgstr "Az új naptár sikeresen hozzáadva"
 
-#: actionmanager.cpp:863
+#: actionmanager.cpp:870
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
 msgstr "Nem sikerült hozzáadni a naptárat. Hiba: <message>%1</message>"
 
-#: actionmanager.cpp:929
+#: actionmanager.cpp:936
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
 msgstr "Válassza ki a megnyitandó naptárfájlt"
 
-#: actionmanager.cpp:965
+#: actionmanager.cpp:972
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
 msgstr "Válassza ki az importálandó naptárfájlt"
 
-#: actionmanager.cpp:997
+#: actionmanager.cpp:1004
 #, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
 msgstr "Hiba történt: <message>%1 (URL: %2)</message>"
 
-#: actionmanager.cpp:1016
+#: actionmanager.cpp:1023
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
 msgstr "Nem sikerült feltölteni a naptárat ide: <filename>%1</filename>"
 
-#: actionmanager.cpp:1022
+#: actionmanager.cpp:1029
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
 msgstr "A(z) <filename>%1</filename> naptár mentve"
 
-#: actionmanager.cpp:1065
+#: actionmanager.cpp:1072
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
 msgstr "Nem sikerült elmenteni a naptárt a(z) <filename>%1</filename> fájlba"
 
-#: actionmanager.cpp:1066
+#: actionmanager.cpp:1073
 #, kde-format
 msgctxt "@title:window"
 msgid "Error"
 msgstr "Hiba"
 
-#: actionmanager.cpp:1092
+#: actionmanager.cpp:1099
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Next Day"
@@ -1357,73 +1357,73 @@ msgid_plural "&Next %1 Days"
 msgstr[0] "A &következő nap"
 msgstr[1] "A &következő %1 nap"
 
-#: actionmanager.cpp:1104
+#: actionmanager.cpp:1114
 #, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
 msgstr "A dátum- és időbeállító modult nem sikerült eslindítani.sss"
 
-#: actionmanager.cpp:1279
+#: actionmanager.cpp:1289
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show Event"
 msgstr "E&semény megjelenítése"
 
-#: actionmanager.cpp:1282
+#: actionmanager.cpp:1292
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit Event…"
 msgstr "Esemény szer&kesztése…"
 
-#: actionmanager.cpp:1285
+#: actionmanager.cpp:1295
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete Event"
 msgstr "Esemény tör&lése"
 
-#: actionmanager.cpp:1293
+#: actionmanager.cpp:1303
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show To-do"
 msgstr "Teendő meg&jelenítése"
 
-#: actionmanager.cpp:1296 kontactplugin/korganizer/todosummarywidget.cpp:393
+#: actionmanager.cpp:1306 kontactplugin/korganizer/todosummarywidget.cpp:393
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit To-do…"
 msgstr "Teendő sz&erkesztése…"
 
-#: actionmanager.cpp:1299 kontactplugin/korganizer/todosummarywidget.cpp:400
+#: actionmanager.cpp:1309 kontactplugin/korganizer/todosummarywidget.cpp:400
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Delete To-do"
 msgstr "Teendő &törlése"
 
-#: actionmanager.cpp:1442 actionmanager.cpp:1546
+#: actionmanager.cpp:1452 actionmanager.cpp:1556
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach as &link"
 msgstr "Csatolás &hivatkozásként"
 
-#: actionmanager.cpp:1443 actionmanager.cpp:1547
+#: actionmanager.cpp:1453 actionmanager.cpp:1557
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach &inline"
 msgstr "Csatolás be&szúrva"
 
-#: actionmanager.cpp:1444
+#: actionmanager.cpp:1454
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Attach inline &without attachments"
 msgstr "Csat&olás beszúrva mellékletek nélkül"
 
-#: actionmanager.cpp:1446 actionmanager.cpp:1549
+#: actionmanager.cpp:1456 actionmanager.cpp:1559
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "C&ancel"
 msgstr "&Mégse"
 
-#: actionmanager.cpp:1484
+#: actionmanager.cpp:1494
 #, kde-format
 msgctxt "@info"
 msgid "Removing attachments from an email might invalidate its signature."
@@ -1431,49 +1431,49 @@ msgstr ""
 "Ha eltávolít egy mellékletet valamelyik e-mailből, annak digitális aláírása "
 "érvénytelenné válhat."
 
-#: actionmanager.cpp:1485
+#: actionmanager.cpp:1495
 #, kde-format
 msgctxt "@title:window"
 msgid "Remove Attachments"
 msgstr "Mellékletek eltávolítása"
 
-#: actionmanager.cpp:1634
+#: actionmanager.cpp:1644
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo: %1"
 msgstr "Visszavonás: %1"
 
-#: actionmanager.cpp:1637
+#: actionmanager.cpp:1647
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: actionmanager.cpp:1647
+#: actionmanager.cpp:1657
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo: %1"
 msgstr "Újra: %1"
 
-#: actionmanager.cpp:1650
+#: actionmanager.cpp:1660
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Redo"
 msgstr "Újra"
 
-#: actionmanager.cpp:1653
+#: actionmanager.cpp:1663
 #, kde-format
 msgctxt "@action:button"
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: actionmanager.cpp:1664
+#: actionmanager.cpp:1674
 #, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
 msgstr "A(z) <filename>%1</filename> URL érvénytelen."
 
-#: actionmanager.cpp:1669
+#: actionmanager.cpp:1679
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1489,19 +1489,19 @@ msgstr ""
 "para><para>Ha a hozzáadást választja, akkor automatikusan egy új naptár lesz "
 "létrehozva önnek.</para>"
 
-#: actionmanager.cpp:1677
+#: actionmanager.cpp:1687
 #, kde-format
 msgctxt "@title:window"
 msgid "Import Calendar"
 msgstr "Naptár importálása"
 
-#: actionmanager.cpp:1678
+#: actionmanager.cpp:1688
 #, kde-format
 msgctxt "@action:button"
 msgid "Merge into existing calendar"
 msgstr "Beolvasztás a meglévő naptárba"
 
-#: actionmanager.cpp:1679
+#: actionmanager.cpp:1689
 #, kde-format
 msgctxt "@action:button"
 msgid "Add as new calendar"
@@ -1544,37 +1544,37 @@ msgctxt ""
 msgid "Search for calendar…"
 msgstr "Naptár keresése…"
 
-#: akonadicollectionview.cpp:482 manageshowcollectionproperties.cpp:75
+#: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:75
 #, kde-format
 msgctxt "@title:window"
 msgid "Properties of Calendar Folder %1"
 msgstr "A(z) %1 naptármappa tulajdonságai"
 
-#: akonadicollectionview.cpp:494
+#: akonadicollectionview.cpp:493
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
 msgstr "Mappa&szín beállítása…"
 
-#: akonadicollectionview.cpp:500
+#: akonadicollectionview.cpp:499
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
 msgstr "Beállítás ala&pértelmezett naptárként"
 
-#: akonadicollectionview.cpp:538
+#: akonadicollectionview.cpp:537
 #, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
 msgstr "Esemény"
 
-#: akonadicollectionview.cpp:541
+#: akonadicollectionview.cpp:540
 #, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
 msgstr "Teendő"
 
-#: akonadicollectionview.cpp:604
+#: akonadicollectionview.cpp:603
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1586,7 +1586,7 @@ msgstr ""
 "naptármappája?<para>Ez lecseréli a következőt, mint alapértelmezett %4 "
 "naptármappa: <filename>%3</filename>.</para>"
 
-#: akonadicollectionview.cpp:611
+#: akonadicollectionview.cpp:610
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1596,43 +1596,43 @@ msgstr ""
 "Biztosan a(z) <filename>%1</filename> legyen a(z) %2 alapértelmezett "
 "naptármappája?"
 
-#: akonadicollectionview.cpp:614
+#: akonadicollectionview.cpp:613
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
 msgstr "Lecseréli az alapértelmezett %1 naptárat?"
 
-#: akonadicollectionview.cpp:618 akonadicollectionview.cpp:1050
+#: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
 msgstr "Mostantól a(z) <filename>%1</filename> az alapértelmezett %2 naptára"
 
-#: akonadicollectionview.cpp:771
+#: akonadicollectionview.cpp:770
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
 msgstr "Beállítás ala&pértelmezett eseménynaptárként"
 
-#: akonadicollectionview.cpp:774
+#: akonadicollectionview.cpp:773
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
 msgstr "Beállítás ala&pértelmezett teendőnaptárként"
 
-#: akonadicollectionview.cpp:792
+#: akonadicollectionview.cpp:791
 #, kde-format
 msgctxt "@title:window"
 msgid "Add Calendar"
 msgstr "Naptár hozzáadása"
 
-#: akonadicollectionview.cpp:811
+#: akonadicollectionview.cpp:810
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Add new calendar failed: <message>%1</message>"
 msgstr "Nem sikerült hozzáadni új naptárat: <message>%1</message>"
 
-#: akonadicollectionview.cpp:893
+#: akonadicollectionview.cpp:892
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1646,7 +1646,7 @@ msgstr ""
 "eltávolítva a távoli erőforrásról. A(z) <filename>%1</filename> naptár "
 "bármikor újra hozzáadható.</note></para>"
 
-#: akonadicollectionview.cpp:901
+#: akonadicollectionview.cpp:900
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1664,7 +1664,7 @@ msgstr ""
 "egy alapértelmezett naptármappát. Ha ezt törli, esetleg ki kell választania "
 "egy új alapértelmezett naptármappát.</warning></para>"
 
-#: akonadicollectionview.cpp:911
+#: akonadicollectionview.cpp:910
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1682,7 +1682,7 @@ msgstr ""
 "%2 naptára. Ha törli ezt, esetleg ki kell választania egy új %2 "
 "alapértelmezett naptárat.</warning></para>"
 
-#: akonadicollectionview.cpp:924
+#: akonadicollectionview.cpp:923
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1694,7 +1694,7 @@ msgstr ""
 "<para><warning>Ez nem vonható vissza. Gondolja át alaposan, mielőtt "
 "megnyomja a(z) %2 gombot.</warning></para>"
 
-#: akonadicollectionview.cpp:932
+#: akonadicollectionview.cpp:931
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1710,13 +1710,13 @@ msgstr ""
 "alapértelmezett %3 naptármappája. Ha törli, esetleg ki kell választania egy "
 "új alapértelmezett %4 mappát.</warning></para>"
 
-#: akonadicollectionview.cpp:945 akonadicollectionview.cpp:976
+#: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Calendar"
 msgstr "Naptár törlése"
 
-#: akonadicollectionview.cpp:971
+#: akonadicollectionview.cpp:970
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1730,7 +1730,7 @@ msgstr ""
 "lehetvisszavonni. Gondolja át alaposan, mielőtt megnyomná a(z) %1 gombot.</"
 "warning></para>"
 
-#: akonadicollectionview.cpp:986
+#: akonadicollectionview.cpp:985
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -1739,19 +1739,19 @@ msgstr ""
 "Naptár törlése sikertelen: <message>Érvénytelen Akonadi ügynökpéldány</"
 "message>"
 
-#: akonadicollectionview.cpp:1056
+#: akonadicollectionview.cpp:1055
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
 msgstr "Fontolja meg egy alapértelmezett %1 naptár beállítását"
 
-#: akonadicollectionview.cpp:1058
+#: akonadicollectionview.cpp:1057
 #, kde-format
 msgctxt "@info"
 msgid "Consider adding a write-enabled %1 calendar"
 msgstr ""
 
-#: akonadicollectionview.cpp:1092
+#: akonadicollectionview.cpp:1091
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Delete calendar failed: <message>%1</message>"
@@ -4041,23 +4041,23 @@ msgctxt "@info:credit"
 msgid "Tobias Koenig"
 msgstr "Tobias Koenig"
 
-#: korganizer.cpp:80 korganizer_part.cpp:59 korganizer_part.cpp:76
+#: korganizer.cpp:77 korganizer_part.cpp:59 korganizer_part.cpp:76
 #, kde-format
 msgid "KOrganizer"
 msgstr "KOrganizer"
 
-#: korganizer.cpp:273
+#: korganizer.cpp:266
 #, kde-format
 msgid "New Calendar"
 msgstr "Új naptár"
 
-#: korganizer.cpp:277
+#: korganizer.cpp:270
 #, kde-format
 msgctxt "the calendar is read-only"
 msgid "read-only"
 msgstr "csak olvasható"
 
-#: korganizer.cpp:280
+#: korganizer.cpp:273
 #, kde-format
 msgid "Calendar"
 msgstr "Naptár"
@@ -4661,15 +4661,15 @@ msgstr ""
 #. i18n: ectx: tooltip, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:34
 #, kde-format
-msgid "Enable KDE Plasma Activities for Mail accounts"
+msgid "Enable KDE Plasma Activities for Calendar accounts"
 msgstr ""
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
 #, kde-format
 msgid ""
-"Select this option to the enable KDE Plasma Activities that allows setting "
-"different Mail accounts and transports for each activity."
+"Select this option to enable KDE Plasma Activities that allows setting "
+"different Calendar accounts and transports for each activity."
 msgstr ""
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
