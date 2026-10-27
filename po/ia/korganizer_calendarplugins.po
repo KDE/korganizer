@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-19 03:01+0000\n"
-"PO-Revision-Date: 2026-07-15 16:07+0200\n"
+"PO-Revision-Date: 2026-10-26 16:28+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -398,10 +398,9 @@ msgid "Sh. HaHodesh"
 msgstr "Sh. HaHodesh"
 
 #: hebrew/holiday.cpp:480
-#, fuzzy, kde-format
-#| msgid " Omer"
+#, kde-format
 msgid "%1 Omer"
-msgstr " Omer"
+msgstr "%1 Omer"
 
 #: hebrew/parsha.cpp:27
 #, kde-format
@@ -5622,7 +5621,7 @@ msgstr "MMMM_aaaa"
 #~ msgstr " excepte"
 
 #~ msgid "Repeats: "
-#~ msgstr "Repite: "
+#~ msgstr "Repete: "
 
 #~ msgid "Reminder: "
 #~ msgid_plural "%1 reminders: "

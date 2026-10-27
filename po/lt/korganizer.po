@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-19 03:01+0000\n"
-"PO-Revision-Date: 2026-10-25 03:18+0300\n"
+"PO-Revision-Date: 2026-10-27 02:36+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -361,17 +361,14 @@ msgid "Import an iCalendar or vCalendar file"
 msgstr "Importuoti iCalendar ar vCalendar failą"
 
 #: actionmanager.cpp:252
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this menu entry if you would like to import the contents of a non-"
-#| "iCalendar formatted file into your current calendar."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
 "Select this menu entry if you would like to import the contents of an "
 "iCalendar or vCalendar file into your current calendar collection."
 msgstr ""
-"Parinkite šį meniu elementą, jei norite importuoti turinį iš ne iCalendar "
-"formato failo į jūsų dabartinį kalendorių."
+"Pasirinkite šį meniu punktą, jei norėtumėte importuoti iCalendar ar "
+"vCalendar failo turinį į dabartinį kalendorių rinkinį."
 
 #: actionmanager.cpp:260
 #, kde-format
@@ -427,6 +424,9 @@ msgid ""
 "dos that you can archive into an iCalendar file.  They will be removed from "
 "your existing calendar collection."
 msgstr ""
+"Šis meniu punktas atveria dialogą, leidžiantį pasirinkti senus įvykius ir "
+"užduotis, kuriuos galite archyvuoti į iCalendar failą. Jie bus pašalinti iš "
+"jūsų dabartinio kalendorių rinkinio."
 
 #: actionmanager.cpp:281
 #, fuzzy, kde-format
@@ -732,70 +732,58 @@ msgid "Out Vertically"
 msgstr "Sumažinti vertikaliai"
 
 #: actionmanager.cpp:470
-#, fuzzy, kde-format
-#| msgctxt "@action Jump to today"
-#| msgid "To &Today"
+#, kde-format
 msgctxt "@action:inmenu Jump to today"
 msgid "To &Today"
-msgstr "Į &šiandieną"
+msgstr "Į šia&ndieną"
 
 #: actionmanager.cpp:471
-#, fuzzy, kde-format
-#| msgid "Today"
+#, kde-format
 msgctxt "@action:button"
 msgid "Today"
 msgstr "Šiandien"
 
 #: actionmanager.cpp:472
-#, fuzzy, kde-format
-#| msgid "Scroll to Today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll to Today"
-msgstr "Keliauti į šiandien"
+msgstr "Slinkti į šiandien"
 
 #: actionmanager.cpp:473 widgets/navigatorbar.cpp:38
-#, fuzzy, kde-format
-#| msgid "Scroll to Today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to today"
-msgstr "Keliauti į šiandien"
+msgstr "Slinkti rodinį į šiandieną"
 
 #: actionmanager.cpp:474
-#, fuzzy, kde-format
-#| msgid "Scroll to Today"
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Scrolls the current view to today's date."
-msgstr "Keliauti į šiandien"
+msgstr "Slenka dabartinį rodinį į šiandienos datą."
 
 #: actionmanager.cpp:480
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "&Backward"
+#, kde-format
 msgctxt "@action:inmenu scroll backward"
 msgid "&Backward"
 msgstr "&Atgal"
 
 #: actionmanager.cpp:482
-#, fuzzy, kde-format
-#| msgctxt "scroll backward"
-#| msgid "Back"
+#, kde-format
 msgctxt "@action:button scroll backward"
 msgid "Back"
 msgstr "Atgal"
 
 #: actionmanager.cpp:483
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Backward"
-msgstr "Eiti atgal"
+msgstr "Slinkti atgal"
 
 #: actionmanager.cpp:484
-#, fuzzy, kde-format
-#| msgid "Scroll Backward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view backward"
-msgstr "Eiti atgal"
+msgstr "Slinkti rodinį atgal"
 
 #: actionmanager.cpp:486
 #, kde-format
@@ -804,36 +792,32 @@ msgid ""
 "Scrolls backward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"Slenka atgal viena diena, mėnesiu, savaite ar metais, priklausomai nuo "
+"dabartinio kalendoriaus rodinio."
 
 #: actionmanager.cpp:493
-#, fuzzy, kde-format
-#| msgctxt "scroll forward"
-#| msgid "&Forward"
+#, kde-format
 msgctxt "@action:inmenu scroll forward"
 msgid "&Forward"
 msgstr "&Pirmyn"
 
 #: actionmanager.cpp:495
-#, fuzzy, kde-format
-#| msgctxt "scoll forward"
-#| msgid "Forward"
+#, kde-format
 msgctxt "@action:button scroll forward"
 msgid "Forward"
 msgstr "Pirmyn"
 
 #: actionmanager.cpp:496
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll Forward"
-msgstr "Eiti pirmyn"
+msgstr "Slinkti pirmyn"
 
 #: actionmanager.cpp:497
-#, fuzzy, kde-format
-#| msgid "Scroll Forward"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view forward"
-msgstr "Eiti pirmyn"
+msgstr "Slinkti rodinį pirmyn"
 
 #: actionmanager.cpp:499
 #, kde-format
@@ -842,60 +826,56 @@ msgid ""
 "Scrolls forward by a day, week, month or year, depending on the current "
 "calendar view."
 msgstr ""
+"Slenka pirmyn viena diena, mėnesiu, savaite ar metais, priklausomai nuo "
+"dabartinio kalendoriaus rodinio."
 
 #: actionmanager.cpp:505
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Day"
 msgstr "&Diena"
 
 #: actionmanager.cpp:506
-#, fuzzy, kde-format
-#| msgid "&Day"
+#, kde-format
 msgctxt "@action:inmenu agenda view show 1 day at a time"
 msgid "Day"
-msgstr "&Diena"
+msgstr "Diena"
 
 #: actionmanager.cpp:507
 #, kde-format
 msgctxt "@info:status"
 msgid "View 1 day at a time"
-msgstr ""
+msgstr "Vienu metu rodyti 1 dieną"
 
 #: actionmanager.cpp:508
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 day at a time in Agenda View"
-msgstr "Tiek dienų vienu metu rodyti ateinančių „x“ dienų peržiūroje"
+msgstr "Darbotvarkės rodinyje vienu metu rodyti 1 dieną"
 
 #: actionmanager.cpp:509
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Select this option to show only 1 day at a time in Agenda View."
-msgstr ""
+msgstr "Pasirinkite šią parinktį norėdami darbotvarkės rodinyje rodyti 1 dieną"
 
 #: actionmanager.cpp:516
-#, fuzzy, kde-format
-#| msgid "&Next Day"
-#| msgid_plural "&Next %1 Days"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a few days at a time"
 msgid "&Next Days"
-msgstr "Atei&nanti diena"
+msgstr "&Artimiausios dienos"
 
 #: actionmanager.cpp:517
 #, kde-format
 msgctxt "@info:status"
 msgid "View a few days at a time"
-msgstr ""
+msgstr "Vienu metu rodyti keletą dienų"
 
 #: actionmanager.cpp:518
-#, fuzzy, kde-format
-#| msgid "Show this many days at a time in the Next \"x\" days view"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show the next few days at a time in Agenda View"
-msgstr "Tiek dienų vienu metu rodyti ateinančių „x“ dienų peržiūroje"
+msgstr "Darbotvarkės rodinyje vienu metu rodyti artimiausias keletą dienų"
 
 #: actionmanager.cpp:521
 #, kde-kuit-format
@@ -984,22 +964,19 @@ msgid "Select this option to show a week at a time in Agenda View."
 msgstr ""
 
 #: actionmanager.cpp:555
-#, fuzzy, kde-format
-#| msgid "New E&vent..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New E&vent…"
-msgstr "Na&ujas įvykis..."
+msgstr "Naujas į&vykis…"
 
 #: actionmanager.cpp:556
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new Event"
 msgstr "Sukurti naują įvykį"
 
 #: actionmanager.cpp:557
-#, fuzzy, kde-format
-#| msgid "Create a new Event"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new Event"
 msgstr "Sukurti naują įvykį"
@@ -1013,25 +990,22 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:565
-#, fuzzy, kde-format
-#| msgid "New &To-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New &To-do…"
-msgstr "Naujas &darbas..."
+msgstr "Nauja &užduotis…"
 
 #: actionmanager.cpp:566
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:status"
 msgid "Create a new To-do"
-msgstr "Sukurti naują darbą"
+msgstr "Sukurti naują užduotį"
 
 #: actionmanager.cpp:567
-#, fuzzy, kde-format
-#| msgid "Create a new To-do"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Create a new To-do"
-msgstr "Sukurti naują darbą"
+msgstr "Sukurti naują užduotį"
 
 #: actionmanager.cpp:569
 #, kde-format
@@ -1042,11 +1016,10 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:576
-#, fuzzy, kde-format
-#| msgid "New Su&b-to-do..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "New Su&b-to-do…"
-msgstr "Naujas p&riklausomas darbas..."
+msgstr "Nauja &dalinė užduotis…"
 
 #: actionmanager.cpp:584
 #, kde-format
@@ -1085,24 +1058,22 @@ msgid "Date"
 msgstr "Data"
 
 #: actionmanager.cpp:594
-#, fuzzy, kde-format
-#| msgid "Scroll to Today"
+#, kde-format
 msgctxt "@info:status"
 msgid "Scroll the view to user selected dates"
-msgstr "Keliauti į šiandien"
+msgstr "Slinkti rodinį į naudotojo pasirinktas datas"
 
 #: actionmanager.cpp:595
-#, fuzzy, kde-format
-#| msgid "Scroll to Today"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Scroll the view to user selected dates"
-msgstr "Keliauti į šiandien"
+msgstr "Slinkti rodinį į naudotojo pasirinktas datas"
 
 #: actionmanager.cpp:596
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid "Opens a date selection dialog for quickly navigating the view."
-msgstr ""
+msgstr "Atveria datos pasirinkimo dialogą, skirtą greitai naršyti rodinyje."
 
 #: actionmanager.cpp:601
 #, kde-format
@@ -1141,143 +1112,123 @@ msgstr ""
 
 #: actionmanager.cpp:613 actionmanager.cpp:1320 actionmanager.cpp:1362
 #: koeventpopupmenu.cpp:42
-#, fuzzy, kde-format
-#| msgid "&Show"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Show"
 msgstr "&Rodyti"
 
 #: actionmanager.cpp:617 actionmanager.cpp:1323 actionmanager.cpp:1363
 #: koeventpopupmenu.cpp:44
-#, fuzzy, kde-format
-#| msgid "&Edit"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Edit…"
-msgstr "&Keisti"
+msgstr "&Taisyti…"
 
 #: actionmanager.cpp:626
-#, fuzzy, kde-format
-#| msgid "&Make Sub-to-do Independent"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Make Sub-to-do Independent"
-msgstr "Padaryti priklausomą darbą &nepriklausomu"
+msgstr "&Paversti dalinę užduotį nepriklausoma užduotimi"
 
 #. i18n( "&Activate Reminder" ), 0,
 #. mCalendarView, SLOT(toggleAlarm()),
 #. mACollection, "activate_alarm" );
 #. ************************* SCHEDULE MENU *******************************
 #: actionmanager.cpp:638
-#, fuzzy, kde-format
-#| msgid "&Publish Item Information..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Publish Item Information…"
-msgstr "&Skelbti įrašo informaciją..."
+msgstr "&Skelbti informaciją apie elementą…"
 
 #: actionmanager.cpp:645
-#, fuzzy, kde-format
-#| msgid "Send &Invitation to Attendees"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Invitation to Attendees"
-msgstr "Siųsti kvietimą dalyviams"
+msgstr "Siųsti dalyviams kv&ietimą"
 
 #: actionmanager.cpp:653
-#, fuzzy, kde-format
-#| msgid "Re&quest Update"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Re&quest Update"
 msgstr "&Prašyti atnaujinimo"
 
 #: actionmanager.cpp:661
-#, fuzzy, kde-format
-#| msgid "Send &Cancellation to Attendees"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send &Cancellation to Attendees"
-msgstr "Siųsti dalyviams pranešimą apie &atšaukimą"
+msgstr "Siųsti dalyviams pranešimą apie pa&naikinimą"
 
 #: actionmanager.cpp:669
-#, fuzzy, kde-format
-#| msgid "Send Status &Update"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Send Status &Update"
-msgstr "Siųsti būsenos a&tnaujinimą"
+msgstr "Siųsti atna&ujinimą apie būseną"
 
 #: actionmanager.cpp:677
-#, fuzzy, kde-format
-#| msgctxt "counter proposal"
-#| msgid "Request Chan&ge"
+#, kde-format
 msgctxt "@action:inmenu counter proposal"
 msgid "Request Chan&ge"
-msgstr "Prašyti pa&keitimo"
+msgstr "Prašyti pa&keitimų"
 
 #: actionmanager.cpp:685
-#, fuzzy, kde-format
-#| msgid "&Mail Free Busy Information..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Mail Free Busy Information…"
-msgstr "Išsiųsti &el. laišku užimtumo informaciją..."
+msgstr "Siųsti &el. laišku informaciją apie užimtumą..."
 
 #: actionmanager.cpp:690
-#, fuzzy, kde-format
-#| msgid "&Send as iCalendar..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Send as iCalendar…"
-msgstr "Siųsti kaip &iCalendar failą..."
+msgstr "&Siųsti kaip iCalendar…"
 
 #: actionmanager.cpp:697
-#, fuzzy, kde-format
-#| msgid "&Upload Free Busy Information"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Upload Free Busy Information"
-msgstr "Išsiųsti &užimtumo informaciją"
+msgstr "Išsiųsti į serverį informaciją apie &užimtumą"
 
 #: actionmanager.cpp:703
-#, fuzzy, kde-format
-#| msgid "&Address Book"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Address Book"
-msgstr "&Adresų knygelė"
+msgstr "&Adresų knyga"
 
 #: actionmanager.cpp:711
-#, fuzzy, kde-format
-#| msgid "Show Date Navigator"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Date Navigator"
-msgstr "Rodyti datos navigatorių"
+msgstr "Rodyti datų žvalgiklį"
 
 #: actionmanager.cpp:715
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show To-do List"
-msgstr "Rodyti darbų sąrašą"
+msgstr "Rodyti užduočių sąrašą"
 
 #: actionmanager.cpp:719
-#, fuzzy, kde-format
-#| msgid "Show Item Viewer"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Item Viewer"
-msgstr "Rodyti pažymėto elemento peržiūrą"
+msgstr "Rodyti elemento žiūryklę"
 
 #: actionmanager.cpp:735
-#, fuzzy, kde-format
-#| msgid "Show Calendar Manager"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Calendar Manager"
-msgstr "Rodyti kalendoriaus tvarkyklę"
+msgstr "Rodyti kalendoriaus tvarkytuvę"
 
 #: actionmanager.cpp:749
-#, fuzzy, kde-format
-#| msgid "Configure &Date && Time..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Configure &Date && Time…"
-msgstr "Konfigūruoti &datą ir laiką..."
+msgstr "Konfigūruoti &datą ir laiką…"
 
 #: actionmanager.cpp:753
-#, fuzzy, kde-format
-#| msgid "Manage View &Filters..."
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Manage View &Filters…"
-msgstr "Tvarkyti rodinio &filtrus..."
+msgstr "Tvarkyti rodinio &filtrus…"
 
 #: actionmanager.cpp:757
 #, kde-format
@@ -1312,64 +1263,55 @@ msgstr[3] "Naujas kalendoriaus pridėtas sėkmingai"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "There was an error while merging the calendar: <message>%1</message>"
-msgstr ""
+msgstr "Sujungiant kalendorių įvyko klaida: <message>%1</message>"
 
 #: actionmanager.cpp:864
-#, fuzzy, kde-format
-#| msgid "New calendar added successfully"
+#, kde-format
 msgctxt "@info"
 msgid "New calendar added successfully"
-msgstr "Naujas kalendoriaus pridėtas sėkmingai"
+msgstr "Naujas kalendorius sėkmingai pridėtas"
 
 #: actionmanager.cpp:866
-#, fuzzy, kde-kuit-format
-#| msgid "Could not add a calendar. Error: %1"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Could not add a calendar. Error: <message>%1</message>"
-msgstr "Nepavyko pridėti kalendoriaus. Klaida: %1"
+msgstr "Nepavyko pridėti kalendoriaus. Klaida: <message>%1</message>"
 
 #: actionmanager.cpp:932
-#, fuzzy, kde-format
-#| msgctxt "@title::window"
-#| msgid "Edit Calendar Filters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Open"
-msgstr "Redaguoti kalendoriaus filtrus"
+msgstr "Pasirinkite, kurį kalendoriaus failą atverti"
 
 #: actionmanager.cpp:968
-#, fuzzy, kde-format
-#| msgctxt "@title::window"
-#| msgid "Edit Calendar Filters"
+#, kde-format
 msgctxt "@title:window"
 msgid "Select Calendar File to Import"
-msgstr "Redaguoti kalendoriaus filtrus"
+msgstr "Pasirinkite, kurį kalendoriaus failą importuoti"
 
 #: actionmanager.cpp:1000
-#, fuzzy, kde-kuit-format
-#| msgid "An error occurred: %1"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "An error occurred: <message>%1 (url: %2)</message>"
-msgstr "Įvyko klaida: %1"
+msgstr "Įvyko klaida: <message>%1 (url: %2)</message>"
 
 #: actionmanager.cpp:1019
-#, fuzzy, kde-kuit-format
-#| msgid "Cannot upload calendar to '%1'"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Cannot upload calendar to <filename>%1</filename>"
-msgstr "Negalima nusiųsti kalendoriaus į „%1“"
+msgstr "Nepavyksta išsiųsti kalendoriaus į <filename>%1</filename>"
 
 #: actionmanager.cpp:1025
 #, kde-kuit-format
 msgctxt "@info"
 msgid "Saved calendar <filename>%1</filename>"
-msgstr ""
+msgstr "Įrašytas kalendorius <filename>%1</filename>"
 
 #: actionmanager.cpp:1068
-#, fuzzy, kde-kuit-format
-#| msgid "Unable to save calendar to the file %1."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "Unable to save calendar to the file <filename>%1</filename>"
-msgstr "Negalima išsaugoti kalendoriaus kaip failo %1."
+msgstr "Nepavyko įrašyti kalendoriaus į failą <filename>%1</filename>"
 
 #: actionmanager.cpp:1069
 #, kde-format
@@ -1390,11 +1332,10 @@ msgstr[2] "Atei&nančios %1 dienų"
 msgstr[3] "Atei&nanti %1 diena"
 
 #: actionmanager.cpp:1107
-#, fuzzy, kde-format
-#| msgid "Could not start control module for date and time format."
+#, kde-format
 msgctxt "@info"
 msgid "Could not start control module for date and time format."
-msgstr "Negalima paleisti valdymo modulio datos ir laiko formavimui."
+msgstr "Nepavyko paleisti datai ir laikui skirto valdymo modulio."
 
 #: actionmanager.cpp:1282
 #, kde-format
@@ -1502,11 +1443,10 @@ msgid "Undo"
 msgstr "Atšaukti"
 
 #: actionmanager.cpp:1667
-#, fuzzy, kde-kuit-format
-#| msgid "URL '%1' is invalid."
+#, kde-kuit-format
 msgctxt "@info"
 msgid "URL <filename>%1</filename> is invalid."
-msgstr "Adresas „%1“ yra neteisingas."
+msgstr "URL <filename>%1</filename> yra netinkamas."
 
 #: actionmanager.cpp:1672
 #, kde-kuit-format
@@ -1566,10 +1506,10 @@ msgid "Calendar search"
 msgstr "Kalendoriai"
 
 #: akonadicollectionview.cpp:395
-#, kde-format
+#, fuzzy, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr ""
+msgstr "Pradėkite rašyti norėdami ieškoti rinkinyje kalendoriaus"
 
 #: akonadicollectionview.cpp:397
 #, fuzzy, kde-format
@@ -1589,30 +1529,25 @@ msgstr "Kalendoriaus aplanko „%1“ savybės"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "&Set Folder Color…"
-msgstr ""
+msgstr "Nu&statyti aplanko spalvą…"
 
 #: akonadicollectionview.cpp:506
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Nau&doti kaip numatytąjį kalendorių"
+msgstr "Nustatyti kaip numatytąjį kalen&dorių"
 
 #: akonadicollectionview.cpp:544
-#, fuzzy, kde-format
-#| msgctxt "@title:column event description"
-#| msgid "Event"
+#, kde-format
 msgctxt "@info/plain the calendar contains events"
 msgid "Event"
-msgstr "Įvykis"
+msgstr "Įvykių"
 
 #: akonadicollectionview.cpp:547
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Todo View"
+#, kde-format
 msgctxt "@info/plain the calendar contains todos"
 msgid "Todo"
-msgstr "Darbų rodinys"
+msgstr "Užduočių"
 
 #: akonadicollectionview.cpp:610
 #, fuzzy, kde-kuit-format
@@ -1634,32 +1569,28 @@ msgid ""
 msgstr "Ar tikrai norite pašalinti kalendorių „%1“?"
 
 #: akonadicollectionview.cpp:620
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "Nau&doti kaip numatytąjį kalendorių"
+msgstr "Pakeisti numatytąjį %1 kalendorių?"
 
 #: akonadicollectionview.cpp:624 akonadicollectionview.cpp:1056
-#, fuzzy, kde-kuit-format
-#| msgid "Do you really want to delete calendar %1?"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
-msgstr "Ar tikrai norite pašalinti kalendorių „%1“?"
+msgstr "Dabar <filename>%1</filename> yra jūsų numatytasis %2 kalendorius"
 
 #: akonadicollectionview.cpp:777
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Nau&doti kaip numatytąjį kalendorių"
+msgstr "Nustatyti kaip numatytąjį įvykių kalen&dorių"
 
 #: akonadicollectionview.cpp:780
-#, fuzzy, kde-format
-#| msgid "Use as &Default Calendar"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Nau&doti kaip numatytąjį kalendorių"
+msgstr "Nustatyti kaip numatytąjį užduočių kalen&dorių"
 
 #: akonadicollectionview.cpp:798
 #, kde-format
@@ -2127,8 +2058,7 @@ msgstr ""
 "tikriausiai priklauso tik skaitomam kalendoriui."
 
 #: calendarview.cpp:2376
-#, fuzzy, kde-format
-#| msgid "Removing not possible"
+#, kde-format
 msgctxt "@title:window"
 msgid "Removing not possible"
 msgstr "Pašalinimas neįmanomas"
@@ -2196,11 +2126,10 @@ msgid "Delete &All"
 msgstr "Pašalinti &visus"
 
 #: calendarview.cpp:2462 calendarview.cpp:2469
-#, fuzzy, kde-format
-#| msgid "Delete All"
+#, kde-format
 msgctxt "@info/plain"
 msgid "Delete \"%1\""
-msgstr "Pašalinti visus"
+msgstr "Ištrinti „%1“"
 
 #: calendarview.cpp:2501
 #, kde-format
@@ -2307,25 +2236,22 @@ msgid ""
 msgstr ""
 
 #: collectiongeneralpage.cpp:37
-#, fuzzy, kde-format
-#| msgctxt "general settings for html export"
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab General settings for a folder."
 msgid "General"
-msgstr "Bendra"
+msgstr "Bendros"
 
 #: collectiongeneralpage.cpp:45
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Set the folder name"
-msgstr ""
+msgstr "Nustatyti aplanko pavadinimą"
 
 #: collectiongeneralpage.cpp:46
-#, fuzzy, kde-format
-#| msgid "Enter the full name to print for the owner of the calendar."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Enter a name here to set the name of this folder."
-msgstr "Įveskite pilną kalendoriaus savininko vardą spausdinimui."
+msgstr "Įveskite čia pavadinimą, kurį norite nustatyti šiam aplankui."
 
 #: collectiongeneralpage.cpp:47
 #, kde-format
@@ -2337,7 +2263,7 @@ msgstr "Pavadi&nimas:"
 #, kde-format
 msgctxt "@option:check"
 msgid "Block reminders locally"
-msgstr ""
+msgstr "Blokuoti priminimus vietiniu mastu"
 
 #: collectiongeneralpage.cpp:51
 #, kde-format
@@ -2537,42 +2463,34 @@ msgid "Edit…"
 msgstr "Taisyti…"
 
 #: dialog/koeventviewerdialog.cpp:41
-#, fuzzy, kde-format
-#| msgid "Show in Context"
+#, kde-format
 msgctxt "@action:button"
 msgid "Show in Context"
 msgstr "Rodyti kontekste"
 
 #: dialog/searchdialog.cpp:40
-#, fuzzy, kde-format
-#| msgctxt "@title:tab calendar account settings"
-#| msgid "Calendars"
+#, kde-format
 msgctxt "@title:window"
 msgid "Find in Calendars"
-msgstr "Kalendoriai"
+msgstr "Rasti kalendoriuose"
 
 #: dialog/searchdialog.cpp:73
-#, fuzzy, kde-format
-#| msgctxt "search in calendar"
-#| msgid "&Search"
+#, kde-format
 msgctxt "@action:button search in calendar"
 msgid "&Search"
 msgstr "&Ieškoti"
 
 #: dialog/searchdialog.cpp:75
-#, fuzzy, kde-format
-#| msgid "Start searching"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Start the search"
 msgstr "Pradėti paiešką"
 
 #: dialog/searchdialog.cpp:76
-#, fuzzy, kde-format
-#| msgctxt "@info:whatsthis"
-#| msgid "Press this button to define a new filter."
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Press this button to start the search."
-msgstr "Norėdami sukurti naują filtrą, spustelėkite šį mygtuką."
+msgstr "Paspauskite šį mygtuką norėdami pradėti paiešką."
 
 #: dialog/searchdialog.cpp:146
 #, fuzzy, kde-format
@@ -2595,8 +2513,7 @@ msgid "No items were found that match your search pattern."
 msgstr "Nerasta elementų, atitinkančių Jūsų paieškos išraišką."
 
 #: dialog/searchdialog.cpp:159
-#, fuzzy, kde-format
-#| msgid "Search Results"
+#, kde-format
 msgctxt "@title:window"
 msgid "Search Results"
 msgstr "Paieškos rezultatai"
@@ -2606,10 +2523,10 @@ msgstr "Paieškos rezultatai"
 msgctxt "@label"
 msgid "%1 match"
 msgid_plural "%1 matches"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%1 atitiktis"
+msgstr[1] "%1 atitiktys"
+msgstr[2] "%1 atitikčių"
+msgstr[3] "%1 atitiktis"
 
 #: koapp.cpp:63
 #, fuzzy, kde-format
@@ -3050,6 +2967,8 @@ msgid ""
 "<emphasis>From:</emphasis> %1<nl/><emphasis>To:</emphasis> %2<nl/"
 "><emphasis>Subject:</emphasis> %3"
 msgstr ""
+"<emphasis>Nuo:</emphasis> %1<nl/><emphasis>Kam:</emphasis> %2<nl/"
+"><emphasis>Tema:</emphasis> %3"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:136
 #, kde-format
@@ -3141,7 +3060,7 @@ msgstr " diena(os/ų)"
 #, kde-format
 msgctxt "Time from - to"
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1–%2"
 
 #: kontactplugin/korganizer/summaryeventinfo.cpp:288
 #, fuzzy, kde-format
@@ -3184,6 +3103,8 @@ msgid ""
 "<emphasis>From:</emphasis> %1<nl/><emphasis>To:</emphasis> %2<nl/"
 "><emphasis>Subject:</emphasis> %3"
 msgstr ""
+"<emphasis>Nuo:</emphasis> %1<nl/><emphasis>Kam:</emphasis> %2<nl/"
+"><emphasis>Tema:</emphasis> %3"
 
 #. i18n: ectx: property (windowTitle), widget (QWidget, TodoSummaryConfig_Base)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:16
@@ -3317,10 +3238,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:171
-#, fuzzy, kde-format
-#| msgid "Hide &inactive to-dos"
+#, kde-format
 msgid "Hide unstarted To-dos"
-msgstr "Slėpti neaktyv&ius darbus"
+msgstr "Slėpti nepradėtas užduotis"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideUnstartedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:174
@@ -3505,13 +3425,13 @@ msgstr ""
 #, kde-format
 msgctxt "the to-do starts today"
 msgid "starts today"
-msgstr ""
+msgstr "prasideda šiandien"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:437
 #, kde-format
 msgctxt "the to-do has not been started yet"
 msgid "not-started"
-msgstr ""
+msgstr "nepradėta"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:439
 #, fuzzy, kde-format
@@ -3525,12 +3445,10 @@ msgstr "Atlikta"
 #, kde-format
 msgctxt "the to-do is in-progress"
 msgid "in-progress "
-msgstr ""
+msgstr "vykdoma "
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:446
-#, fuzzy, kde-format
-#| msgctxt "@item:intext delimiter for joining holiday names"
-#| msgid ","
+#, kde-format
 msgctxt "Separator for status like this: overdue, completed"
 msgid ","
 msgstr ","
@@ -3648,10 +3566,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:168
-#, fuzzy, kde-format
-#| msgid "Show days to end of year"
+#, kde-format
 msgid "Show holidays from your calendar"
-msgstr "Rodyti dienų iki metų galo skaičių"
+msgstr "Rodyti šventines dienas iš jūsų kalendoriaus"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:171
@@ -3664,16 +3581,15 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowHolidaysFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:174
-#, fuzzy, kde-format
-#| msgid "Show to-dos"
+#, kde-format
 msgid "Show &holidays"
-msgstr "Rodyti darbus"
+msgstr "Rodyti š&ventines dienas"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:184
 #, kde-format
 msgid "Show special occasions from your calendar"
-msgstr ""
+msgstr "Rodyti ypatingas progas iš jūsų kalendoriaus"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:187
@@ -3682,18 +3598,20 @@ msgid ""
 "Enable this option to include events from your calendar with the \"special "
 "occasion\" tag."
 msgstr ""
+"Įjunkite šią parinktį norėdami įtraukti iš savo kalendoriaus įvykius, "
+"turinčius „ypatingos progos“ žymę."
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowSpecialsFromCalBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:190
 #, kde-format
 msgid "Show s&pecial occasions"
-msgstr ""
+msgstr "Rodyti y&patingas progas"
 
 #. i18n: ectx: property (title), widget (QGroupBox, mShowFromKABButtonGroup)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:203
 #, kde-format
 msgid "Show These Special Dates From Your Contact List"
-msgstr ""
+msgstr "Rodyti šias ypatingas progas iš jūsų adresatų sąrašo"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:209
@@ -3811,7 +3729,7 @@ msgstr ""
 #: kontactplugin/specialdates/sdsummarywidget.cpp:669
 #, kde-format
 msgid "View &Contact"
-msgstr ""
+msgstr "Rodyti a&dresatą"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:684
 #, kde-format
@@ -3874,18 +3792,16 @@ msgid "Calendar"
 msgstr "Kalendorius"
 
 #: korganizer_options.h:21
-#, fuzzy, kde-format
-#| msgid "Import the specified files as separate calendars"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Import the specified files as separate calendars"
 msgstr "Importuoti nurodytus failus kaip atskirus kalendorius"
 
 #: korganizer_options.h:23
-#, fuzzy, kde-format
-#| msgid "Merge the specified files into an existing calendar"
+#, kde-format
 msgctxt "@info:shell"
 msgid "Merge the specified files into an existing calendar"
-msgstr "Sulieti nurodytus failus į egzistuojantį kalendorių"
+msgstr "Sujungti nurodytus failus į esamą kalendorių"
 
 #: korganizer_options.h:25
 #, kde-format
@@ -3917,7 +3833,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Lists the available options for user feedback"
-msgstr ""
+msgstr "Išvardija prieinamas naudotojo grįžtamojo ryšio parinktis"
 
 #: koviewmanager.cpp:516
 #, kde-format
@@ -4458,14 +4374,13 @@ msgstr ""
 #: settings/korganizer.kcfg:35
 #, kde-format
 msgid "Weekly start day:"
-msgstr ""
+msgstr "Savaitės pradžios diena:"
 
 #. i18n: ectx: tooltip, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:36
-#, fuzzy, kde-format
-#| msgid "Select the to-do due today color here."
+#, kde-format
 msgid "Select the first day of each week"
-msgstr "Pasirinkite darbo, kurio atlikimo terminas baigiasi šiandien, spalvą"
+msgstr "Pasirinkite pirmąją kiekvienos savaitės dieną"
 
 #. i18n: ectx: whatsthis, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:37
@@ -4474,6 +4389,8 @@ msgid ""
 "Select the first day of each week. Normally, you can ignore this since it is "
 "set in your locale."
 msgstr ""
+"Pasirinkite pirmąją kiekvienos savaitės dieną. Įprastai, galite šito "
+"nepaisyti, nes ji yra nustatyta jūsų lokalėje."
 
 #. i18n: ectx: label, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:41

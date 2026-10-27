@@ -9729,7 +9729,7 @@ msgstr "%1"
 #~ msgstr " excepte"
 
 #~ msgid "Repeats: "
-#~ msgstr "Repite: "
+#~ msgstr "Repete: "
 
 #~ msgid "Reminder: "
 #~ msgid_plural "%1 reminders: "
