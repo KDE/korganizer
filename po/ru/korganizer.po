@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-27 01:00+0000\n"
-"PO-Revision-Date: 2026-09-23 09:51+0200\n"
-"Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
+"PO-Revision-Date: 2026-10-27 07:46+0200\n"
+"Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -4462,23 +4462,19 @@ msgstr "Поддержка комнат KDE Plasma"
 
 #. i18n: ectx: tooltip, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:34
-#, fuzzy, kde-format
-#| msgid "Enable KDE Plasma Activities for Mail accounts"
+#, kde-format
 msgid "Enable KDE Plasma Activities for Calendar accounts"
-msgstr "Включить поддержку комнат KDE Plasma для учётных записей почты"
+msgstr "Включить поддержку комнат KDE Plasma для учётных записей календаря"
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to the enable KDE Plasma Activities that allows "
-#| "setting different Mail accounts and transports for each activity."
+#, kde-format
 msgid ""
 "Select this option to enable KDE Plasma Activities that allows setting "
 "different Calendar accounts and transports for each activity."
 msgstr ""
 "Включить поддержку комнат KDE Plasma, позволяющих настроить разные учётные "
-"записи почты и транспорты для каждой комнаты."
+"записи календаря и транспорты для каждой комнаты."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42

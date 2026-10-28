@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-27 01:00+0000\n"
-"PO-Revision-Date: 2026-08-29 06:48-0300\n"
+"PO-Revision-Date: 2026-10-27 10:22-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4426,23 +4426,19 @@ msgstr "Habilitar Atividades do KDE Plasma"
 
 #. i18n: ectx: tooltip, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:34
-#, fuzzy, kde-format
-#| msgid "Enable KDE Plasma Activities for Mail accounts"
+#, kde-format
 msgid "Enable KDE Plasma Activities for Calendar accounts"
-msgstr "Habilita Atividades do KDE Plasma para contas de e-mail"
+msgstr "Habilita Atividades do KDE Plasma para contas de calendário"
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to the enable KDE Plasma Activities that allows "
-#| "setting different Mail accounts and transports for each activity."
+#, kde-format
 msgid ""
 "Select this option to enable KDE Plasma Activities that allows setting "
 "different Calendar accounts and transports for each activity."
 msgstr ""
 "Selecione esta opção para habilitar as Atividades do KDE Plasma, o que "
-"permite configurar diferentes contas de e-mail e métodos de envio para cada "
+"permite configurar diferentes contas de calendário e de transporte para cada "
 "atividade."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)

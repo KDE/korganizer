@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1751266 2026-10-27 01:55:11Z scripty $
+# $Id: korganizer.po 1751347 2026-10-28 01:56:52Z scripty $
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-27 01:00+0000\n"
-"PO-Revision-Date: 2026-08-29 12:42+0200\n"
+"PO-Revision-Date: 2026-10-27 16:24+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -4442,23 +4442,19 @@ msgstr "Omogoči dejavnosti KDE Plasma"
 
 #. i18n: ectx: tooltip, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:34
-#, fuzzy, kde-format
-#| msgid "Enable KDE Plasma Activities for Mail accounts"
+#, kde-format
 msgid "Enable KDE Plasma Activities for Calendar accounts"
-msgstr "Omogoči dejavnosti KDE Plasma za poštne račune"
+msgstr "Omogoči dejavnosti KDE Plasma za koledarjeve račune"
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to the enable KDE Plasma Activities that allows "
-#| "setting different Mail accounts and transports for each activity."
+#, kde-format
 msgid ""
 "Select this option to enable KDE Plasma Activities that allows setting "
 "different Calendar accounts and transports for each activity."
 msgstr ""
 "Izberite to možnost, da omogočite dejavnosti KDE Plasma, ki omogočajo "
-"nastavitev različnih poštnih računov in transportov za vsako dejavnost."
+"nastavitev različnih koledarskih računov in transportov za vsako dejavnost."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
