@@ -115,7 +115,6 @@ public:
         CalendarView *mView = nullptr;
     };
 
-    void setCalendar(const Akonadi::ETMCalendar::Ptr &);
     Akonadi::ETMCalendar::Ptr calendar() const override;
 
     QList<Akonadi::CollectionCalendar::Ptr> &enabledCalendars();
