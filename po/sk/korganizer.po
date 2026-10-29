@@ -4386,23 +4386,19 @@ msgstr "Povoliť aktivity KDE Plasma"
 
 #. i18n: ectx: tooltip, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:34
-#, fuzzy, kde-format
-#| msgid "Enable KDE Plasma Activities for Mail accounts"
+#, kde-format
 msgid "Enable KDE Plasma Activities for Calendar accounts"
-msgstr "Povoliť aktivity KDE Plasma pre poštové účty"
+msgstr "Povoliť aktivity KDE Plasma pre kalendárové účty"
 
 #. i18n: ectx: whatsthis, entry (EnabledActivities), group (Activities)
 #: settings/korganizer.kcfg:35
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to the enable KDE Plasma Activities that allows "
-#| "setting different Mail accounts and transports for each activity."
+#, kde-format
 msgid ""
 "Select this option to enable KDE Plasma Activities that allows setting "
 "different Calendar accounts and transports for each activity."
 msgstr ""
 "Vyberte túto možnosť na povolenie aktivít KDE Plasma, ktoré umožňujú "
-"nastaviť pre každú aktivitu iné poštové účty a prenosy."
+"nastaviť pre každú aktivitu iné kalendárové účty a prenosy."
 
 #. i18n: ectx: label, entry (WeekStartDay), group (Time &amp; Date)
 #: settings/korganizer.kcfg:42
