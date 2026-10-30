@@ -1876,7 +1876,7 @@ void CalendarView::exportICalendar()
                                                     QFileDialog::DontConfirmOverwrite);
     if (!filename.isEmpty()) {
         // Force correct extension
-        if (filename.right(4) != QLatin1StringView(".ics")) {
+        if (!filename.endsWith(QLatin1StringView(".ics"))) {
             filename += QLatin1StringView(".ics");
         }
 
