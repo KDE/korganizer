@@ -274,13 +274,12 @@
 </itemizedlist
 ></para>
 
-
 <para
 >Volg nu de <link linkend="five-minute-course"
 >Snelcursus</link
 > van &korganizer;, of baan u een weg inde <link linkend="managing-data"
 >de documentatie</link
->!</para>
+>! </para>
 
 </chapter>
 
@@ -292,19 +291,20 @@
 >(voor de gevorderden, en de ongeduldigen onder ons)</subtitle>
 
 <para
->Weinig tijd? Hier is een snelcursus; &korganizer; in vogelvlucht!</para>
+>Weinig tijd? Hier is een snelcursus; &korganizer; in vogelvlucht! </para>
 
 <para
->Als u al eerder met een dergelijk programma werkte, voelt u zich direct thuis in &korganizer;. U kunt nieuwe afspraken inplannen, bestaande afspraken verzetten, de afspraken naar hun tags in te indelen, nieuwe categorieën aanmaken, lijsten aanmaken en lijsten wijzigen van personen die aanwezig zullen zijn en wat hun rol is, automatisch per e-mail uitnodigingen versturen en gegevens uitwisselen met andere &korganizer;-agenda's, taken aanmaken en journaals bijhouden.</para>
+>Als u al eerder met een dergelijk programma werkte, voelt u zich direct thuis in &korganizer;. U kunt nieuwe afspraken inplannen, bestaande afspraken verzetten, de afspraken naar hun tags in te indelen, nieuwe categorieën aanmaken, lijsten aanmaken en lijsten wijzigen van personen die aanwezig zullen zijn en wat hun rol is, automatisch per e-mail uitnodigingen versturen en gegevens uitwisselen met andere &korganizer;-agenda's, taken aanmaken en journaals bijhouden. </para>
 
 <para
->Uitgangspunt voor deze cursus is dat u met &kde; kunt werken, en dat u er de voorkeur aan geeft om zo snel mogelijk zelf &korganizer; te gaan verkennen. We zullen hier alleen de basiseigenschappen van &korganizer;  toelichten.</para>
+>Uitgangspunt voor deze cursus is dat u met &kde; kunt werken, en dat u er de voorkeur aan geeft om zo snel mogelijk zelf &korganizer; te gaan verkennen. We zullen hier alleen de basiseigenschappen van &korganizer;  toelichten. </para>
 
 <sect1 id="course-entering-events">
 <title
 >Afspraken invoeren</title>
 
 <procedure>
+
 <step
 ><para
 >Klik op de knop in de werkbalk <guiicon
@@ -324,8 +324,8 @@
 >. Hierdoor krijgt u de <link linkend="agenda-view"
 ><guilabel
 >Agendaweergave</guilabel
-> </link
->.</para
+></link
+>. </para
 ></step>
 
 <step
@@ -339,22 +339,23 @@
 ><para
 >Selecteer in het hoofdpaneel het tekstgebied naast het gewenste uur, dat het tijdstip van de afspraak weergeeft. Dubbelklik op dit gebied, of begin met het intypen van de naam van de afspraak. Hiermee opent u het dialoogvenster voor een <guilabel
 >Nieuwe afspraak</guilabel
->.</para
+>. </para
 ></step>
 
 <step
 ><para
 ><link linkend="entering-data-events"
 >Details van de afspraak invoeren</link
->. Gebruik de zes tabbladen  onder in het venster voor de toegang tot alle bijzonderheden van de afspraak.</para
+>. Gebruik de zes tabbladen  onder in het venster voor de toegang tot alle bijzonderheden van de afspraak. </para
 ></step>
 
 <step
 ><para
 >Door op <guibutton
 >OK</guibutton
-> te klikken wordt de afspraak opgeslagen.</para
+> te klikken wordt de afspraak opgeslagen. </para
 ></step>
+
 </procedure>
 </sect1>
 
@@ -509,8 +510,8 @@
 >Takenlijst</guilabel
 >weergave</link
 > en <link linkend="description-view"
->in de taken in de zijbalk </link
-> staan taken zonder een einddatum.</para>
+>in de taken in de zijbalk</link
+> staan taken zonder een einddatum. </para>
 
 <para
 >Om de takenlijst te tonen, klikt u op de knop in de werkbalk<guiicon
@@ -523,8 +524,8 @@
 >Takenlijst</guibutton
 >, of kiest u <menuchoice
 ><guimenu
->Weergave</guimenu
-> <guimenuitem
+>Beeld</guimenu
+><guimenuitem
 >Takenlijst</guimenuitem
 ></menuchoice
 > in het menu. </para>
@@ -538,7 +539,7 @@
 >takenlijst</guilabel
 >weergave aanwezig is, klikken op de kolom <guilabel
 >Einddatum</guilabel
->. Er verschijnt dan een kalender, waarin u de nieuwe einddatum kunt invullen.</para>
+>. Er verschijnt dan een kalender, waarin u de nieuwe einddatum kunt invullen. </para>
 
 <para
 >Om een <link linkend="entering-data-to-do"
@@ -769,17 +770,6 @@
 <listitem
 ><para
 >Leest gegevens uit een KAlarm-map.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Kolab groupware-server</guilabel
-></term>
-<listitem
-><para
->Levert toegang tot Kolab groupwaremappen en e-mail op een Kolab IMAP-server.</para
 ></listitem>
 </varlistentry>
 
@@ -1664,7 +1654,7 @@
 >kalender-widget</link
 >. Kies de tijd met intervallen van een kwartier, of vul de tijden direct in, in de hiervoor bestemde velden. Deze velden zijn alleen beschikbaar als het vakje voor <guilabel
 >Duurt de gehele dag</guilabel
-> niet is aangevinkt.</para
+> niet is aangevinkt. </para
 ></listitem>
 </varlistentry>
 
@@ -3996,14 +3986,21 @@
 
 <sect2 id="date-numbers-plugin">
 <title
->Datumgetallenplug-in voor agenda's</title>
+>Datumgetallen</title>
 <para
 >Deze plug-in voegt het dagnummer toe in de agendaweergave. 1 Februari, bijvoorbeeld, is dag nummer 32. </para>
 </sect2>
 
+<sect2 id="lunar-phases-plugin">
+  <title
+>Maanfasen</title>
+  <para
+>Deze plug-in toont de maanfase van de dag (Nieuwe maan, Eerste kwartier, Laatste kwartier, Volle maan) voor elke datum. Momenteel wordt de fase berekend voor het middaguur (UTC); houd daarom rekening met een mogelijke afwijking van één dag in beide richtingen. </para>
+</sect2>
+
 <sect2 id="wikipedia-thisday-plugin">
 <title
->Plug-in Wikipedia 'This Day in History' (deze dag in het verleden)</title>
+>Wikipedia 'This Day in History' (deze dag in het verleden)</title>
 <para
 >Deze plug-in koppelt naar de pagina's <quote
 >This Day in History</quote
