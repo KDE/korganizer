@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-27 01:00+0000\n"
-"PO-Revision-Date: 2026-10-27 02:36+0200\n"
+"PO-Revision-Date: 2026-10-31 01:05+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -930,18 +930,16 @@ msgid ""
 msgstr ""
 
 #: actionmanager.cpp:548
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu"
 msgid "&Week"
 msgstr "Sa&vaitė"
 
 #: actionmanager.cpp:549
-#, fuzzy, kde-format
-#| msgid "&Week"
+#, kde-format
 msgctxt "@action:inmenu agenda view show a week at a time"
 msgid "Week"
-msgstr "Sa&vaitė"
+msgstr "Savaitė"
 
 #: actionmanager.cpp:550
 #, kde-format
@@ -950,12 +948,10 @@ msgid "View a week at a time"
 msgstr ""
 
 #: actionmanager.cpp:551
-#, fuzzy, kde-format
-#| msgctxt "@option:check"
-#| msgid "Show at the top of the agenda views"
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show 1 week at a time in Agenda View"
-msgstr "Rodyti darbotvarkės peržiūros viršuje"
+msgstr "Darbotvarkės rodinyje vienu metu rodyti 1 savaitę"
 
 #: actionmanager.cpp:552
 #, kde-format
@@ -1498,24 +1494,23 @@ msgid "%1 (Default Todo)"
 msgstr "Nau&doti kaip numatytąjį kalendorių"
 
 #: akonadicollectionview.cpp:392
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Calendar search"
 msgstr "Kalendoriaus paieška"
 
 #: akonadicollectionview.cpp:393
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@info:whatsthis"
 msgid "Start typing to search for a calendar within the collection."
-msgstr "Pradėkite rašyti norėdami ieškoti rinkinyje kalendoriaus"
+msgstr "Pradėkite rašyti norėdami ieškoti rinkinyje kalendoriaus."
 
 #: akonadicollectionview.cpp:395
-#, fuzzy, kde-format
-#| msgid "Search Calendar"
+#, kde-format
 msgctxt ""
 "@info/plain Displayed grayed-out inside the textbox, calendar to search"
 msgid "Search for calendar…"
-msgstr "Search for calendar…"
+msgstr "Ieškoti kalendoriaus…"
 
 #: akonadicollectionview.cpp:481 manageshowcollectionproperties.cpp:75
 #, kde-format
@@ -2856,10 +2851,9 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromCalBox)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:142
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:142
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgid "Show &birthdays"
-msgstr "Rodyti abu"
+msgstr "Rodyti &gimimo dienas"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromCal)
 #: kontactplugin/korganizer/apptsummaryconfig_base.ui:149
@@ -3182,24 +3176,23 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, mDaysGroup)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:22
-#, fuzzy, kde-format
-#| msgid "Show To-do View"
+#, kde-format
 msgid "Show To-dos Due"
-msgstr "Rodyti darbų sąrašą"
+msgstr "Rodyti užduočių galutinį terminą"
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:28
-#, fuzzy, kde-format
-#| msgid "To-do due today color"
+#, kde-format
 msgid "Show To-dos due today only"
-msgstr "Darbo, kurį reikia šiandien užbaigti, spalva"
+msgstr "Rodyti tik užduotis, kurių galutinis terminas yra šiandien"
 
 #. i18n: ectx: property (whatsThis), widget (QRadioButton, mDateTodayButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:31
-#, fuzzy, kde-format
-#| msgid "Check this box if you want to show seconds on the current-time line."
+#, kde-format
 msgid "Check this box if you want to see To-dos due on this date only."
-msgstr "Įjungus šią parinktį dabartinio momento linijoje bus rodomos sekundės."
+msgstr ""
+"Pažymėkite šį langelį norėdami matyti užduotis, kurių galutinis terminas yra "
+"šią datą."
 
 #. i18n: ectx: property (toolTip), widget (QRadioButton, mDateMonthButton)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:44
@@ -3286,10 +3279,9 @@ msgstr "Atlikta"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:155
-#, fuzzy, kde-format
-#| msgid "Include To-dos &without a due date"
+#, kde-format
 msgid "Hide To-dos without a due date"
-msgstr "Įtraukti darbus &be atlikimo termino"
+msgstr "Slėpti užduotis be galutinio termino datos"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, mHideOpenEndedBox)
 #: kontactplugin/korganizer/todosummaryconfig_base.ui:158
@@ -3401,9 +3393,7 @@ msgid "Tomorrow"
 msgstr "Rytoj"
 
 #: kontactplugin/korganizer/todosummarywidget.cpp:190
-#, fuzzy, kde-format
-#| msgctxt "@title month and year"
-#| msgid "%1 %2"
+#, kde-format
 msgctxt "@label 1. weekday, 2. time"
 msgid "%1 %2"
 msgstr "%1 %2"
@@ -3694,10 +3684,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, mShowBirthdaysFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:215
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgid "Show birth&days"
-msgstr "Rodyti abu"
+msgstr "Rodyti gimimo &dienas"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, mShowAnniversariesFromKABBox)
 #: kontactplugin/specialdates/sdsummaryconfig_base.ui:225
@@ -3744,11 +3733,10 @@ msgid "now"
 msgstr "dabar"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:515
-#, fuzzy, kde-format
-#| msgid "Show both"
+#, kde-format
 msgctxt "@label"
 msgid "Birthday"
-msgstr "Rodyti abu"
+msgstr "Gimimo diena"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:518
 #, kde-format
@@ -3757,12 +3745,10 @@ msgid "Anniversary"
 msgstr ""
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:521
-#, fuzzy, kde-format
-#| msgctxt "@title:group"
-#| msgid "Holidays"
+#, kde-format
 msgctxt "@label"
 msgid "Holiday"
-msgstr "Šventės"
+msgstr "Šventinė diena"
 
 #: kontactplugin/specialdates/sdsummarywidget.cpp:524
 #, kde-format
@@ -3898,7 +3884,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:shell"
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #: korganizer_options.h:29
 #, fuzzy, kde-format
@@ -4415,23 +4401,19 @@ msgstr "Turėtų būti pridedami į numatytąjį kalendorių"
 
 #. i18n: ectx: tooltip, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:19
-#, fuzzy, kde-format
-#| msgid "Be added to the standard calendar"
+#, kde-format
 msgid "Always save to the default calendar"
-msgstr "Įrašomi į standartinį kalendorių"
+msgstr "Visada įrašyti į numatytąjį kalendorių"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:20
-#, fuzzy, kde-format
-#| msgid ""
-#| "Select this option to always record new events, to-dos and journal "
-#| "entries using the standard calendar."
+#, kde-format
 msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
-"Pažymėjus šią parinktį nauji įvykiai, darbai ir žurnalo įrašai visuomet bus "
-"įrašomi standartiniame kalendoriuje."
+"Pažymėkite šią parinktį norėdami visada įrašinėti naujus įvykius, užduotis "
+"ir dienyno įrašus naudojant dabartinį numatytąjį kalendorių."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:23
@@ -4507,7 +4489,7 @@ msgstr "Dienos pradžia (val.)"
 #: settings/korganizer.kcfg:49
 #, kde-format
 msgid "Set the time you typically start your day"
-msgstr ""
+msgstr "Nustatykite laiką, kada įprastai pradedate savo dieną"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursStart), group (Time &amp; Date)
 #: settings/korganizer.kcfg:50
@@ -4532,7 +4514,7 @@ msgstr "Dienos pabaiga (val.)"
 #: settings/korganizer.kcfg:55
 #, kde-format
 msgid "Set the time you typically end your day"
-msgstr ""
+msgstr "Nustatykite laiką, kada įprastai užbaigiate savo dieną"
 
 #. i18n: ectx: whatsthis, entry (WorkingHoursEnd), group (Time &amp; Date)
 #: settings/korganizer.kcfg:56
@@ -4571,10 +4553,9 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (General View)
 #: settings/korganizer.kcfg:69
-#, fuzzy, kde-format
-#| msgid "To-dos use category colors"
+#, kde-format
 msgid "To-dos use tag colors"
-msgstr "Darbams žymėti naudojama kategorijos spalva"
+msgstr "Užduotys naudoja žymių spalvas"
 
 #. i18n: ectx: tooltip, entry, group (General View)
 #: settings/korganizer.kcfg:70
@@ -5147,9 +5128,9 @@ msgstr "Kelių kalendorių rodymas"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:211
-#, fuzzy, kde-format
+#, kde-format
 msgid "Merge all calendars into one view"
-msgstr "Sulieti visus kalendorius į vieną vaizdą"
+msgstr "Sujungti visus kalendorius į vieną rodinį"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:212
@@ -5161,15 +5142,15 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:213
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show all calendars merged together"
-msgstr "Rodyti visus kalendorius sulietus į vieną"
+msgstr "Rodyti visus kalendorius sujungtus kartu"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:216
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show calendars side by side"
-msgstr "Rodyti kalendorius greta"
+msgstr "Rodyti kalendorius vieną šalia kito"
 
 #. i18n: ectx: whatsthis, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:217
@@ -5181,9 +5162,9 @@ msgstr ""
 
 #. i18n: ectx: tooltip, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:218
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show two calendars side-by-side"
-msgstr "Rodyti du kalendorius vieną greta kito"
+msgstr "Rodyti du kalendorius vieną šalia kito"
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:221
@@ -5588,8 +5569,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Colors)
 #: settings/korganizer.kcfg:349
-#, fuzzy, kde-format
-#| msgid "Agenda view background color"
+#, kde-format
 msgid "Agenda View background color"
 msgstr "Darbotvarkės rodinio fono spalva"
 
@@ -5602,10 +5582,9 @@ msgstr ""
 
 #. i18n: ectx: whatsthis, entry, group (Colors)
 #: settings/korganizer.kcfg:351
-#, fuzzy, kde-format
-#| msgid "Select the agenda view background color here."
+#, kde-format
 msgid "Select the Agenda View background color here."
-msgstr "Pasirinkite darbotvarkės peržiūros fono spalvą."
+msgstr "Pasirinkite čia darbotvarkės rodinio fono spalvą."
 
 #. i18n: ectx: label, entry (ViewBgBusyColor), group (Colors)
 #: settings/korganizer.kcfg:355
@@ -5817,9 +5796,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:411
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Month View"
+#, kde-format
 msgid "Month View"
 msgstr "Mėnesio rodinys"
 
@@ -5848,9 +5825,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:416
-#, fuzzy, kde-format
-#| msgctxt "@title:tab"
-#| msgid "Agenda View"
+#, kde-format
 msgid "Agenda View"
 msgstr "Darbotvarkės rodinys"
 
@@ -5921,7 +5896,7 @@ msgstr "Numatytasis numestų el. laiškų prijungimo prie darbo būdas"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:440
-#, fuzzy, kde-format
+#, kde-format
 msgid "Always ask"
 msgstr "Visada klausti"
 
@@ -6297,9 +6272,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, publishSavePassword)
 #: ui/kogroupwareprefspage.ui:290
-#, fuzzy, kde-format
+#, kde-format
 msgid "Remember p&assword"
-msgstr "Įsiminti &slaptažodį"
+msgstr "Prisiminti sl&aptažodį"
 
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7)
 #. i18n: ectx: property (text), widget (QLabel, TextLabel7_2)
