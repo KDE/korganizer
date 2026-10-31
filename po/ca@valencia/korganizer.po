@@ -64,11 +64,11 @@ msgid ""
 "Copyright © 2006–2012 Allen Winter\n"
 "Copyright © 2012–2026 KOrganizer authors"
 msgstr ""
-"Copyright © 1997–1999 Preston Brown\n"
-"Copyright © 2000–2004, 2007 Cornelius Schumacher\n"
-"Copyright © 2004–2005 Reinhold Kainhofer\n"
-"Copyright © 2006–2012 Allen Winter\n"
-"Copyright © 2012–2026, els autors de KOrganizer"
+"Drets d'autoria © 1997–1999 Preston Brown\n"
+"Drets d'autoria © 2000–2004, 2007 Cornelius Schumacher\n"
+"Drets d'autoria © 2004–2005 Reinhold Kainhofer\n"
+"Drets d'autoria © 2006–2012 Allen Winter\n"
+"Drets d'autoria © 2012–2026, els autors de KOrganizer"
 
 #: aboutdata.cpp:31 kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
@@ -601,7 +601,7 @@ msgstr "Llista de &tasques pendents"
 #, kde-format
 msgctxt "@info:status"
 msgid "To-do List View"
-msgstr "Vista de llista de tasques pendents"
+msgstr "Vista de la llista de tasques pendents"
 
 #: actionmanager.cpp:386
 #, kde-format
@@ -616,8 +616,8 @@ msgid ""
 "Switches to the To-do List view, which provides a place for you to track "
 "tasks that need to be done."
 msgstr ""
-"Canvia a la vista de llista de tasques pendents, que proporciona un lloc per "
-"a seguir les tasques que cal fer."
+"Canvia a la vista de la llista de tasques pendents, que proporciona un lloc "
+"per a seguir les tasques que cal fer."
 
 #: actionmanager.cpp:394
 #, kde-format
@@ -3743,8 +3743,8 @@ msgid ""
 "Copyright © 2003 Tobias Koenig\n"
 "Copyright © 2004–2010 Allen Winter"
 msgstr ""
-"Copyright © 2003, Tobias Koenig\n"
-"Copyright © 2004–2010, Allen Winter"
+"Drets d'autoria © 2003, Tobias Koenig\n"
+"Drets d'autoria © 2004–2010, Allen Winter"
 
 #: kontactplugin/specialdates/specialdates_plugin.cpp:43
 #, kde-format
