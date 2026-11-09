@@ -77,6 +77,7 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QFileDialog>
+#include <QPushButton>
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QVBoxLayout>
