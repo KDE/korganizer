@@ -315,14 +315,14 @@ void DateNavigatorContainer::setHighlightMode(bool highlightEvents, bool highlig
 
 void DateNavigatorContainer::goNextMonth()
 {
-    const QPair<QDate, QDate> p = dateLimits(1);
+    const std::pair<QDate, QDate> p = dateLimits(1);
 
     Q_EMIT nextMonthClicked(mNavigatorView->month(), p.first, p.second);
 }
 
 void DateNavigatorContainer::goPrevMonth()
 {
-    const QPair<QDate, QDate> p = dateLimits(-1);
+    const std::pair<QDate, QDate> p = dateLimits(-1);
 
     Q_EMIT prevMonthClicked(mNavigatorView->month(), p.first, p.second);
 }
@@ -337,7 +337,7 @@ void DateNavigatorContainer::goPrevWeek()
     Q_EMIT prevWeekClicked();
 }
 
-QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
+std::pair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
 {
     QDate firstMonth;
     QDate lastMonth;
@@ -353,7 +353,7 @@ QPair<QDate, QDate> DateNavigatorContainer::dateLimits(int offset) const
     KODayMatrix::MatrixRange const firstMonthBoundary = KODayMatrix::matrixLimits(firstMonth);
     KODayMatrix::MatrixRange const lastMonthBoundary = KODayMatrix::matrixLimits(lastMonth);
 
-    return qMakePair(firstMonthBoundary.start, lastMonthBoundary.end);
+    return std::make_pair(firstMonthBoundary.start, lastMonthBoundary.end);
 }
 
 QDate DateNavigatorContainer::monthOfNavigator(int navigatorIndex) const

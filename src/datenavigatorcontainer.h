@@ -136,7 +136,7 @@ private:
        January and February and want to know the boundaries of,
        for e.g. displaying February and March, use monthOffset = 1.
     */
-    QPair<QDate, QDate> dateLimits(int monthOffset = 0) const;
+    std::pair<QDate, QDate> dateLimits(int monthOffset = 0) const;
 
     /**
      * Returns the first KDateNavigator that displays date, or 0 if
