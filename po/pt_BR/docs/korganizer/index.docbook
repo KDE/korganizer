@@ -302,13 +302,12 @@
 </itemizedlist
 ></para>
 
-
 <para
 >Agora, faça uma <link linkend="five-minute-course"
 >Viagem de cinco minutos</link
 > sobre o &korganizer;, ou acesse diretamente <link linkend="managing-data"
 >a documentação</link
->!</para>
+>! </para>
 
 </chapter>
 
@@ -320,19 +319,20 @@
 >(para os experientes e para os impacientes)</subtitle>
 
 <para
->Você tem pressa? Vamos levá-lo rapidamente para uma introdução geral e prática ao &korganizer;!</para>
+>Você tem pressa? Vamos levá-lo rapidamente para uma introdução geral e prática ao &korganizer;! </para>
 
 <para
->Se alguma vez já trabalhou com um programa de gerenciamento de informações pessoais, você se sentirá em casa com o &korganizer;. Você poderá inserir novos eventos, reagendar os existentes, atribuir etiquetas aos eventos, definir novas etiquetas, inserir e modificar listas de convidados e os seus papéis, enviar os convites para os eventos automaticamente, trocar dados com outros calendários do &korganizer;, criar tarefas e inserir entradas de um diário.</para>
+>Se alguma vez já trabalhou com um programa de gerenciamento de informações pessoais, você se sentirá em casa com o &korganizer;. Você poderá inserir novos eventos, reagendar os existentes, atribuir etiquetas aos eventos, definir novas etiquetas, inserir e modificar listas de convidados e os seus papéis, enviar os convites para os eventos automaticamente, trocar dados com outros calendários do &korganizer;, criar tarefas e inserir entradas de um diário. </para>
 
 <para
->Este curso assume que você sabe como trabalhar com o &kde; e que prefere explorar por si próprio. Só são cobertas aqui as funções básicas do &korganizer;.</para>
+>Este curso assume que você sabe como trabalhar com o &kde; e que prefere explorar por si próprio. Só são cobertas aqui as funções básicas do &korganizer;. </para>
 
 <sect1 id="course-entering-events">
 <title
 >Inserindo Eventos</title>
 
 <procedure>
+
 <step
 ><para
 >Clique no botão <inlinemediaobject
@@ -351,7 +351,7 @@
 ><guilabel
 >Vista da Agenda</guilabel
 > </link
->.</para
+>. </para
 ></step>
 
 <step
@@ -365,22 +365,23 @@
 ><para
 >Selecione a área de texto abaixo da hora desejada, no painel principal, que reflete a hora do evento. Faça um duplo-clique nesta área ou simplesmente comece a escrever um resumo do evento a abrir na janela <guilabel
 >Novo Evento</guilabel
->.</para
+>. </para
 ></step>
 
 <step
 ><para
 ><link linkend="entering-data-events"
 >Insira os detalhes do evento</link
->. Use as seis páginas no fundo da janela para circular entre as opções e acesse todas as características do evento.</para
+>. Use as seis páginas no fundo da janela para circular entre as opções e acesse todas as características do evento. </para
 ></step>
 
 <step
 ><para
 >Pressione <guibutton
 >OK</guibutton
-> para salvar o evento.</para
+> para salvar o evento. </para
 ></step>
+
 </procedure>
 </sect1>
 
@@ -530,7 +531,7 @@
 > </link
 > e o <link linkend="description-view"
 >componente da barra lateral da área de tarefas</link
-> é que mostram a Lista de tarefas que não tenham uma data final.</para>
+> é que mostram a Lista de tarefas que não tenham uma data final. </para>
 
 <para
 >Para exibir a vista da Lista de tarefas, clique no botão da barra de ferramentas <inlinemediaobject
@@ -556,7 +557,7 @@
 >Lista de tarefas</guilabel
 >, basta clicar com o botão direito na coluna <guilabel
 >Data/Hora Limite</guilabel
->. Irá aparecer um calendário instantaneamente, que lhe permitirá definir a nova data-limite.</para>
+>. Irá aparecer um calendário instantaneamente, que lhe permitirá definir a nova data-limite. </para>
 
 <para
 >Para <link linkend="entering-data-to-do"
@@ -793,17 +794,6 @@
 <varlistentry>
 <term
 ><guilabel
->Servidor de groupware Kolab</guilabel
-></term>
-<listitem
-><para
->Fornece acesso às pastas e grupos de e-mail do Kolab em um servidor IMAP do Kolab.</para
-></listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
 >Servidor de groupware Open-Xchange</guilabel
 ></term>
 <listitem
@@ -976,7 +966,7 @@
 > irá mostrar os eventos ou tarefas do primeiro mês que aparece no Navegador de datas (os dias do mês selecionados não irão mudar na vista do Mês, só o mês é que muda).</para>
 
 <para
->O componente da barra lateral para Visão das tarefas apresenta as suas tarefas, como a <link linkend="todo-view"
+>O componente da barra lateral para Lista de tarefas apresenta as suas tarefas, como a <link linkend="todo-view"
 >área de tarefas</link
 >. É útil se você quiser ver as suas tarefas enquanto usa as outras vistas.</para>
 
@@ -1678,7 +1668,7 @@
 >Item do Calendário</link
 >. Selecione a hora em intervalos de quarto-de-hora ou insira a hora exata nos respectivos campos. Estes campos só estão disponíveis quando a opção <guilabel
 >O dia todo</guilabel
-> estiver desmarcada.</para
+> estiver desmarcada. </para
 ></listitem>
 </varlistentry>
 
@@ -3277,6 +3267,19 @@
 </varlistentry>
 
 <varlistentry>
+  <term
+><guilabel
+>Colorir os dias de trabalho com uma cor de fundo diferente</guilabel
+></term>
+  <listitem
+><para
+>Ative isto se você deseja que o fundo da vista da Agenda seja preenchido com uma cor diferente nos dias em que você tiver pelo menos um evento para todo o dia marcado como ocupado.</para>
+    <para
+>Por favor, veja a área de configuração de cores para selecionar a cor de fundo para ocupado de sua preferência a ser exibida na visão da Agenda.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
 <term
 ><guilabel
 >Mostrar tarefas</guilabel
@@ -3321,49 +3324,36 @@
 </varlistentry>
 <!--FIXME Icons to use dropdown box missing-->
 <varlistentry>
-<term
+  <term
 ><guilabel
->Uso das cores</guilabel
+>Cores de item de agenda</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Selecione a opção <guilabel
 >Etiqueta dentro, calendário na borda</guilabel
 > se você gostaria de desenhar itens de calendário na sua cor de etiqueta associada, com as bordas do item desenhadas na cor do calendário.</para>
 
-<para
+    <para
 >Selecione a opção <guilabel
 >Calendário dentro, etiqueta na borda</guilabel
 > se você gostaria de desenhar itens de calendário na sua cor do calendário associado, com as bordas do item desenhadas na cor da etiqueta.</para>
 
-<para
+    <para
 >Selecione a opção <guilabel
 >Somente etiqueta</guilabel
 > se você gostaria de desenhar os itens de calendário (interior e bordas) na cor da sua etiqueta associada.</para>
 
-<para
+    <para
 >Selecione a opção <guilabel
 >Somente calendário</guilabel
 > se você gostaria de desenhar os itens de calendário (interior e bordas) na cor do seu calendário.</para>
 
-<para
+    <para
 >Por favor, use a página de configuração de <link linkend="config-main-colors"
 >Cores e fontes</link
 > para configurar estas cores.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term
-><guilabel
->Colorir os dias de trabalho com uma cor de fundo diferente</guilabel
-></term>
-<listitem
-><para
->Ative isto se você deseja que o fundo da vista da Agenda seja preenchido com uma cor diferente nos dias em que você tiver pelo menos um evento para todo o dia marcado como ocupado.</para>
-<para
->Por favor, veja a área de configuração de cores para selecionar a cor de fundo para ocupado de sua preferência a ser exibida na visão da Agenda.</para
-></listitem>
+  </listitem>
 </varlistentry>
 
 <varlistentry>
@@ -3402,35 +3392,41 @@
   <para
 >As duas primeiras caixas de seleção permitem exibir apenas a hora de início ou a hora de início e a hora de término.</para>
   <para
+>Marque a opção <guilabel
+>Colorir dias ocupados com uma cor de fundo diferente</guilabel
+> se quiser que o fundo da visualização mensal seja preenchido com uma cor diferente nos dias que tenham pelo menos um evento de dia inteiro marcado como ocupado.</para>
+  <para
 >Use as próximas quatro caixas de seleção para exibir opcionalmente ícones, tarefas, diários ou feriados na visão mensal.</para>
 </listitem>
 </varlistentry>
-<!--FIXME Icons to use dropdown box missing-->
 
 <varlistentry>
-<term
+  <term
 ><guilabel
 >Colorir os dias de trabalho com uma cor de fundo diferente</guilabel
 ></term>
-<listitem
+  <listitem
 ><para
 >Ative isto se você deseja que a cor de fundo da vista de Mês seja preenchida com uma cor diferente nos dias em que você tiver pelo menos um evento para todo o dia marcado como ocupado.</para>
-<para
+    <para
 >Por favor, veja a área de configuração de cores para selecionar a cor de fundo para ocupado de sua preferência a ser exibida na visão da Agenda/Mês.</para
 ></listitem>
 </varlistentry>
 
+<!--FIXME Icons to use dropdown box missing-->
+
+
 <varlistentry>
-<term
+  <term
 ><guilabel
->Uso das cores</guilabel
+>Cores da visualização mensal</guilabel
 ></term>
-<listitem>
-<para
+  <listitem>
+    <para
 >Configure as cores para a vista de Mês, tal como na <link linkend="config-main-views-agenda"
 >vista da Agenda</link
->.</para
-></listitem>
+>.</para>
+    </listitem>
 </varlistentry>
 
 </variablelist>
@@ -3591,6 +3587,19 @@
 >, o que lhe permite selecionar a cor de fundo para a data de hoje da visão mensal.</para
 ></listitem>
 </varlistentry>
+
+<varlistentry>
+   <term
+><guilabel
+>Cor de realce da grade de navegação</guilabel
+></term>
+   <listitem
+><para
+>Este botão abre a janela para <guilabel
+>Selecionar uma Cor</guilabel
+>, o que lhe permite selecionar a cor de realce da faixa de datas no navegador.</para
+></listitem>
+ </varlistentry>
 
 <varlistentry>
 <term
@@ -3997,14 +4006,21 @@
 
 <sect2 id="date-numbers-plugin">
 <title
->Plugin de números de datas para calendários</title>
+>Números de data</title>
 <para
 >Este plugin adiciona o número do dia ao texto do dia do ano na vista da Agenda. Por exemplo, 1 de fevereiro é o dia número 32. </para>
 </sect2>
 
+<sect2 id="lunar-phases-plugin">
+  <title
+>Fases lunares</title>
+  <para
+>Este plugin exibe a fase lunar do dia (Nova, Quarto Crescente, Quarto Minguante, Cheia) para cada data. Atualmente, a fase é calculada para o meio-dia em UTC; portanto, podem ocorrer variações de um dia para mais ou para menos. </para>
+</sect2>
+
 <sect2 id="wikipedia-thisday-plugin">
 <title
->Plugin de 'Este Dia na História' da Wikipédia</title>
+>'Este dia na história' da Wikipédia</title>
 <para
 >Este plugin oferece referências às páginas <quote
 >Este Dia na História</quote
