@@ -1,0 +1,5710 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN"
+ "dtd/kdedbx45.dtd" [
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Arabic "INCLUDE">
+]>
+
+<book id="korganizer" lang="&language;">
+
+<bookinfo>
+
+<title
+>دليل منظّمك</title>
+
+<authorgroup>
+
+<author
+><firstname
+>Carlos</firstname
+> <othername
+>Leonhard</othername
+> <surname
+>Woelz</surname
+> <affiliation
+><address
+><email
+>carloswoelz@imap-mail.com</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Milos.Prudek; &Milos.Prudek.mail; </author>
+
+<author
+>&Paul.E.Ahlquist.Jr; &Paul.E.Ahlquist.Jr.mail; </author>
+
+<author
+><firstname
+>J&uuml;rgen</firstname
+> <surname
+>Nagel</surname
+> <affiliation
+><address
+><email
+>juergen.nagel@student.fh-reutlingen.de</email
+></address
+></affiliation>
+</author>
+
+<author
+>&Michel.Boyer; &Michel.Boyer.mail; </author>
+
+<othercredit role="developer"
+><firstname
+>Reinhold</firstname
+> <surname
+>Kainhofer</surname
+> <affiliation
+><address
+><email
+>reinhold@kainhofer.com</email
+></address
+></affiliation>
+<contrib
+>مطوّر</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Cornelius</firstname
+> <surname
+>Schumacher</surname
+> <affiliation
+><address
+>&Cornelius.Schumacher.mail;</address
+></affiliation>
+<contrib
+>مطوّر</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Preston</firstname
+> <surname
+>Brown</surname
+> <affiliation
+><address
+>&Preston.Brown.mail;</address
+></affiliation>
+<contrib
+>مطوّر</contrib>
+</othercredit>
+
+<othercredit role="developer"
+><firstname
+>Allen</firstname
+> <surname
+>Winter</surname
+> <contrib
+>مطوّر</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address
+></affiliation>
+<contrib
+>مُراجِع</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+
+
+<copyright>
+<year
+>2000</year
+><holder
+>&Milos.Prudek;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Paul.E.Ahlquist.Jr;</holder>
+</copyright>
+
+<copyright>
+<year
+>2004</year>
+<holder
+>J&uuml;rgen Nagel</holder>
+</copyright>
+
+<copyright>
+<year
+>2005</year>
+<holder
+>Carlos Leonhard Woelz</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-12-08</date>
+<releaseinfo
+>5.4.40 (التطبيقات 16.12)</releaseinfo>
+
+<abstract
+><para
+>منظّمك هو مدير معلومات شخصي (<acronym
+>PIM</acronym
+>) سهل الاستخدام. يمكنك كتابة مدخلات اليوميات، وجدولة المواعيد، والأحداث، والمهام. سيقوم منظّمك بتذكيرك بالمهام المعلّقة، ويساعدك في الالتزام بجدولك. </para
+></abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>منظّمك</keyword>
+<keyword
+>كيدي لمدير المعلومات الشخصي</keyword>
+<keyword
+>مدير</keyword>
+<keyword
+>وقت</keyword>
+<keyword
+>جدول</keyword>
+<keyword
+>مذكّر</keyword>
+<keyword
+>موعد</keyword>
+<keyword
+>حدث</keyword>
+<keyword
+>يوميات</keyword>
+<keyword
+>مهمة</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"
+><!--updated to 5.4.40-->
+<title
+>مقدمة</title>
+
+<para
+>منظّمك هو مدير معلومات شخصي (<abbrev
+>PIM</abbrev
+>) بديهي وسهل الاستخدام. يمكنك جدولة المواعيد، والأحداث، وإنشاء المهام وكتابة مدخلات اليوميات. سيقوم منظّمك بتذكيرك بالمهام المعلّقة، وتسجيل وقائعك، وتجاربك، وتأملاتك ويساعدك في الالتزام بجدولك.</para>
+
+<para
+>لكن منظّمك ليس مجرد تقويم شخصي، بل يمكنه مساعدتك في التفاعل مع زملائك وأصدقائك أيضًا. باستخدام منظّمك، يمكنك دعوة أي شخص لديه عنوان بريد إلكتروني إلى حدث ومعالجة الاستجابات، ومشاركة التقويم (باستخدام خادم برمجيات تعاونية أو ببساطة ملف عبر الشبكة). يعتمد منظّمك على معايير مفتوحة، ويعمل مع العديد من خوادم الجدولة الجماعية المختلفة، مما يمنحك التحكم في معلوماتك وحرية اختيار أفضل الحلول. </para>
+
+<para
+>منظّمك هو أيضًا مكون التقويم واليوميات والمهام في كونتاكت، حيث يوفر لك حلًا متكاملًا لاحتياجات الاتصال وإدارة المعلومات: البريد الإلكتروني، والملاحظات، وإدارة الجهات، وقارئ الأخبار وقارئ خلاصات الأخبار. حتى لو لم تستخدمه داخل كونتاكت، فإن منظّمك متكامل مع تطبيقات كيدي الأخرى لإدارة المعلومات الشخصية (<acronym
+>PIM</acronym
+>). على سبيل المثال، يمكنك ضبطه لإظهار أعياد الميلاد من دفتر عناوينك في جدول أعمالك، واستخدام بريدك لإرسال واستلام الدعوات، وما إلى ذلك.</para>
+
+<para
+>الميزات الرئيسة لمنظّمك:</para>
+<para
+><itemizedlist>
+<listitem
+><para
+>أنشئ المهام، وجدول الأحداث، واكتب مدخلات اليوميات.</para
+></listitem>
+<listitem
+><para
+>نظّم أحداثك ومهامك عن طريق تجميع العناصر ذات الصلة باستخدام الوسوم.</para
+></listitem>
+<listitem
+><para
+>ميّز الوسوم بالألوان.</para
+></listitem>
+<listitem
+><para
+>افتح تقاويم متعددة، واعرضها وحررها بسلاسة.</para
+></listitem>
+<listitem
+><para
+>أعد جدولة أحداثك عن طريق السحب والإفلات.</para
+></listitem>
+<listitem
+><para
+>ولّد الأحداث المتكررة بسهولة.</para
+></listitem>
+<listitem
+><para
+>نظّم الأحداث أو احضرها باستخدام ميزات الجدولة الجماعية.</para
+></listitem>
+<listitem
+><para
+>اختر من بين خوادم البرمجيات التعاونية المتعددة المدعومة.</para
+></listitem>
+<listitem
+><para
+>دعم أصيل لمعياري vCalendar و iCalendar (معايير مفتوحة).</para
+></listitem>
+<listitem
+><para
+>دمج واستيراد التقويم.</para
+></listitem>
+<listitem
+><para
+>السحب والإفلات بين التقاويم المفتوحة.</para
+></listitem>
+<listitem
+><para
+>تضمين التعاون مع كونكرر.</para
+></listitem>
+<listitem
+><para
+>مجموعات أيقونات قابلة للتخصيص.</para
+></listitem>
+<listitem
+><para
+>لوحات أدوات قابلة للسحب والإفلات.</para
+></listitem>
+<listitem
+><para
+>وأكثر من ذلك بكثير...</para
+></listitem>
+</itemizedlist
+></para>
+
+<para
+>الآن خذ <link linkend="five-minute-course"
+>دورة سريعة لمدة خمس دقائق</link
+> عن منظّمك، أو تعمق في <link linkend="managing-data"
+>التوثيق</link
+>! </para>
+
+</chapter>
+
+<chapter id="five-minute-course"
+><!--updated to 5.4.40-->
+<title
+>دورة سريعة لمدة خمس دقائق عن منظّمك</title>
+<subtitle
+>(للمتمرسين والمستعجلين)</subtitle>
+
+<para
+>هل أنت مضغوط في الوقت؟ دعنا نبدأ بنظرة عامة سريعة وعملية على منظّمك! </para>
+
+<para
+>إذا سبق لك العمل مع برنامج معلومات شخصية من قبل، فستشعر كأنك في بيتك مع منظّمك. يمكنك إدخال أحداث جديدة، وإعادة جدولة الأحداث الحالية، وتعيين وسوم لأحداثك، وابتكار وسوم جديدة، وإدخال وتعديل قوائم الحاضرين وأدوارهم، وإرسال دعوات الأحداث بالبريد الإلكتروني آليًا وتبادل البيانات مع تقاويم منظّمك الأخرى، وإنشاء المهام وكتابة مدخلات اليوميات. </para>
+
+<para
+>تفترض هذه الدورة أنك تعرف كيفية العمل مع كيدي، وأنك تفضل الاستكشاف بنفسك. يتم تغطية الوظائف الأساسية لمنظّمك فقط هنا. </para>
+
+<sect1 id="course-entering-events">
+<title
+>إدخال الأحداث</title>
+
+<procedure>
+
+<step
+><para
+>انقر فوق زر شريط الأدوات <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>جدول الأعمال</guibutton
+> أو اختر عنصر القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>جدول الأعمال</guimenuitem
+></menuchoice
+>. سيؤدي ذلك إلى عرض <link linkend="agenda-view"
+><guilabel
+>عرض جدول الأعمال</guilabel
+> </link
+>. </para
+></step>
+
+<step
+><para
+>انقر فوق التاريخ المطلوب في <link linkend="glossary" endterm="gloss-date-navigator"
+>منقل التاريخ</link
+>. </para
+></step>
+
+<step
+><para
+>حدد منطقة النص بجوار الساعة المطلوبة في اللوحة الرئيسة التي تعكس وقت الحدث. انقر نقرًا مزدوجًا فوق هذه المنطقة، أو ابدأ فقط في كتابة ملخص للحدث لفتح حوار <guilabel
+>حدث جديد</guilabel
+>. </para
+></step>
+
+<step
+><para
+><link linkend="entering-data-events"
+>أدخل تفاصيل الحدث</link
+>. استخدم التبويبات الستة في أسفل النافذة للتنقل في الحوار والوصول إلى كافة خصائص الحدث. </para
+></step>
+
+<step
+><para
+>اضغط على <guibutton
+>موافق</guibutton
+> لحفظ الحدث. </para
+></step>
+
+</procedure>
+</sect1>
+
+<sect1 id="course-entering-todos">
+<title
+>إدخال المهام</title>
+
+<procedure>
+<step
+><para
+>اختر عنصر القائمة <xref linkend="menu-actions-new-todo"/> لفتح حوار <guilabel
+>مهمة جديدة</guilabel
+>.</para
+></step>
+
+<step
+><para
+><link linkend="entering-data-to-do"
+>أدخل تفاصيل المهمة</link
+>. استخدم التبويبات الخمسة في أسفل النافذة للتنقل في الحوار والوصول إلى كافة خصائص الحدث.</para
+></step>
+
+<step
+><para
+>اضغط على <guibutton
+>موافق</guibutton
+> لحفظ المهمة.</para
+></step>
+</procedure>
+
+</sect1>
+
+<sect1 id="course-entering-journals">
+<title
+>إضافة مدخلات اليوميات</title>
+
+<procedure>
+
+<step
+><para
+>اختر عنصر القائمة <inlinemediaobject
+><imageobject
+> <imagedata fileref="journal-new.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>اليوميات</guimenuitem
+></menuchoice
+> لفتح <link linkend="journal-view"
+>العرض الرئيس لـ <guilabel
+>اليوميات</guilabel
+></link
+>.</para
+></step>
+
+<step
+><para
+>اختر عنصر القائمة <menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>يوميات جديدة</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>أدخل ملخص ونص مدخلة اليوميات.</para
+></step>
+
+</procedure>
+
+</sect1>
+
+<sect1 id="course-rescheduling-events">
+<title
+>إعادة جدولة الأحداث</title>
+
+<para
+>إعادة جدولة الأحداث هي عملية سحب وإفلات بسيطة:</para>
+
+<procedure>
+<step
+><para
+>باستخدام <link linkend="glossary" endterm="gloss-date-navigator"
+>منقل التاريخ</link
+> اذهب إلى تاريخ الحدث الذي تريد إعادة جدولته.</para
+></step>
+
+<step
+><para
+>يجب عليك اختيار <link linkend="reference-menus-view"
+>عرض</link
+> مناسب قبل بدء هذه العملية. يعرض <link linkend="agenda-view"
+>عرض <guilabel
+>جدول الأعمال</guilabel
+> </link
+> (عروض اليوم، وأسبوع العمل، والأسبوع) الساعات الفردية فقط وهي مناسبة لإعادة جدولة الأحداث ذات التوقيت الدقيق (المواعيد)، بينما يعرض عرض الشهر الأيام فقط. لذلك يعد عرض الشهر هو الأنسب للأحداث طويلة المدى مثل العطلات.</para
+></step>
+
+<step
+><para
+>لعرض عرض الأسبوع، حدد عرض جدول الأعمال، واضغط على زر شريط أدوات العرض <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>أسبوع</guibutton
+>، أو اختر عنصر القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+> <guimenuitem
+>أسبوع</guimenuitem
+></menuchoice
+>. </para
+></step>
+
+<step
+><para
+>اسحب الحدث وأفلته في موقع التاريخ والوقت الجديد.</para
+></step>
+
+</procedure>
+
+<para
+>إذا كنت ترغب في إعادة الجدولة بشكل أكثر دقة، فانقر نقرًا مزدوجًا فوق الحدث وقم بتغيير وقت البدء والانتهاء باستخدام القوائم المنسدلة التي تقسم اليوم إلى أرباع ساعات. إذا لم تكن هذه الدقة كافية، يمكنك إدخال الوقت المطلوب مباشرة.</para>
+
+</sect1>
+
+<sect1 id="course-rescheduling-todos">
+<title
+>إعادة جدولة المهام أو تحريرها</title>
+
+<para
+>يجب عليك اختيار <link linkend="reference-menus-view"
+>عرض</link
+> مناسب قبل بدء هذه العملية. فقط <link linkend="todo-view"
+><inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+>عرض<guilabel
+>قائمة المهام</guilabel
+> </link
+> و <link linkend="description-view"
+>مكون الشريط الجانبي لعرض المهام</link
+> يعرضان المهام التي ليس لها تاريخ استحقاق. </para>
+
+<para
+>لعرض عرض قائمة المهام، اضغط على زر شريط أدوات العرض <inlinemediaobject
+><imageobject
+> <imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+> </inlinemediaobject
+><guibutton
+>قائمة المهام</guibutton
+>، أو اختر عنصر القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>قائمة المهام</guimenuitem
+></menuchoice
+>. </para>
+
+<para
+>لإعادة جدولة مهمة، انقر فوقها بزر الفأرة الأيمن. سيؤدي هذا إلى ظهور قائمة سياقية. اختر عناصر القائمة <guimenuitem
+>نسخ إلى</guimenuitem
+> أو <guimenuitem
+>نقل إلى</guimenuitem
+> وحدد التاريخ الجديد من التقويم الذي يظهر الآن. نُسخت المهمة أو نُقلت الآن إلى التاريخ المحدد. بدلًا من ذلك، إذا كانت اللوحة الرئيسة تحتوي على عرض <guilabel
+>قائمة المهام</guilabel
+>، فما عليك سوى النقر بزر الفأرة الأيمن على العمود <guilabel
+>تاريخ/وقت الاستحقاق</guilabel
+>. سيظهر تقويم على الفور، مما يسمح لك بضبط تاريخ الاستحقاق الجديد. </para>
+
+<para
+>لـ <link linkend="entering-data-to-do"
+>تحرير مهمة</link
+>، انقر فوقها بزر الفأرة الأيمن واختر عنصر القائمة <guimenuitem
+>حرر...</guimenuitem
+>.</para>
+
+</sect1>
+
+<sect1 id="course-conclusion">
+<title
+>خاتمة</title>
+
+<para
+>غطت هذه الدورة التي مدتها خمس دقائق فقط العملية الأساسية لمنظّمك. الآن يجب عليك المضي قدمًا وقراءة بقية هذا الدليل لإطلاق العنان للقوة الكاملة لإمكانيات منظّمك. ولكن إذا لم تكن ترغب في ذلك، فيجب عليك على الأقل تصفح <link linkend="faq"
+>الأسئلة الشائعة</link
+>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="managing-data"
+><!--updated to 5.4.40-->
+<title
+>استيراد وتصدير وإدارة التقاويم</title>
+
+<para
+>يمكن لمنظّمك تخزين (واسترجاع) الأحداث ومدخلات اليوميات والمهام باستخدام طرق مختلفة، وفي مواقع مختلفة. يسمى كل موقع من هذه المواقع <firstterm
+>مورد تقويم</firstterm
+>. </para>
+
+<para
+>يدعم منظّمك ملفات التقويم المستندة إلى معايير مثل iCalendar و vCalendar بشكل أصيل (بإضافتها كموارد جديدة)، ولكن يمكنك استيراد البيانات (دمجها) في مورد موجود وفتح الملف في نافذة جديدة أيضًا. استيراد الملفات بالتنسيق الذي استخدمه تطبيق <application
+>ical</application
+> القديم مدعوم أيضًا.</para>
+
+<para
+>يمكنك تصدير بياناتك كملف iCalendar أو vCalendar. هذه الملفات مدعومة من قبل معظم تطبيقات الجدولة. </para>
+
+<para
+>سنشرح في هذا الفصل كيفية إدارة موارد التقويم الخاصة بك بالإضافة إلى استخدام إجراءات الاستيراد والتصدير.</para>
+
+<sect1 id="managing-resources">
+<title
+>موارد التقويم</title>
+
+<para
+>يستخدم منظّمك ملفًا محليًا كمورد مبدئي له. ولكن هذا ليس خيارك الوحيد: فهناك العديد من الموارد الأخرى التي يمكنك إضافتها: خوادم البرمجيات التعاونية، ومدخلات اليوميات كمدونات، وملفات الشبكة، وما إلى ذلك. إذا كنت تستخدم أكثر من مورد، <link linkend="config-main-general-personal"
+>يمكن ضبط منظّمك لاستخدام المورد المبدئي أو السؤال عن المورد الذي سيُستخدم</link
+> عند حفظ أحداث أو مهام أو مدخلات يوميات جديدة. سيقوم منظّمك بدمج العناصر من موردين أو أكثر بسلاسة في <link linkend="description-view"
+>العروض</link
+>. </para>
+
+<para
+>يعد المورد المبدئي خيارًا جيدًا للعديد من حالات الاستخدام، ولكن قد ترغب في استخدام مورد آخر، خاصة إذا كنت تستخدم خادم برمجيات تعاونية مدعومًا. يرجى سؤال مدير الخادم عن المعلومات المطلوبة لضبط مورد البرمجيات التعاونية، بما في ذلك نشر واسترجاع معلومات متفرغ/مشغول. يتيح الوصول إلى معلومات متفرغ/مشغول لمنظم الحدث أخذ تقويم الحاضر في الاعتبار عند إضافته إلى قائمة الحاضرين في الحدث.</para>
+
+<note
+><para
+>إلى جانب تخزين التقويم، توفر خوادم البرمجيات التعاونية عادةً تخزين جهات الاتصال والبريد و <link linkend="glossary" endterm="gloss-freebusy"
+>معلومات متفرغ/مشغول</link
+>. لذلك، قد تكون بعض الموارد التي نوقشت هنا مرتبطة بموارد أخرى من بريدك ودفتر عناوينك (مكونات البريد وجهات الاتصال في كونتاكت)، أو بـ <link linkend="config-main-free-busy"
+>إعدادات متفرغ/مشغول في الضبط الرئيس</link
+>.</para>
+<para
+>يرجى ملاحظة أن اتصال <link linkend="group-scheduling"
+>الجدولة الجماعية</link
+> في منظّمك يعتمد على معيار البريد الإلكتروني من نظير إلى نظير. هذا يعني أنك لست بحاجة إلى خادم برمجيات تعاونية لاستخدامه!</para
+></note>
+
+<screenshot id="screenshot-resources">
+<screeninfo
+>لقطة شاشة لحوار إضافة تقاويم في منظّمك</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="korganizer-resource.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>لقطة شاشة لحوار إضافة تقاويم في منظّمك</phrase
+></textobject>
+<caption
+><para
+>لقطة شاشة لحوار إضافة تقاويم في منظّمك</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<procedure id="procedure-add-resource">
+<title
+>إضافة مورد جديد في منظّمك</title>
+
+<step
+><para
+>افتح حوار إعدادات منظّمك بـ <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط منظّمك...</guimenuitem
+></menuchoice
+> وحدد تبويب <guilabel
+>تقاويم</guilabel
+> من صفحة <guilabel
+>عام</guilabel
+>. </para>
+<para
+>بدلًا من ذلك، افتح القائمة السياقية في الشريط الجانبي <guilabel
+>مدير التقويم</guilabel
+> بنقرة بزر الفأرة الأيمن وحدد <guilabel
+>أضف تقويمًا...</guilabel
+></para
+></step>
+<step
+><para
+>إذا لم يُعرض <guilabel
+>مدير التقويم</guilabel
+> على الشريط الجانبي، فاختر عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guisubmenu
+>الشريط الجانبي</guisubmenu
+> <guimenuitem
+>أظهر مدير التقويم</guimenuitem
+></menuchoice
+> لعرضه.</para
+></step>
+
+<step
+><para
+>اضغط على زر <guibutton
+>أضف...</guibutton
+> لإضافة موارد جديدة إلى قائمة الموارد المتاحة.</para
+></step>
+
+<step
+><para
+>حدد المورد لتمكينه.</para
+></step>
+
+<step
+><para
+>لاحقًا، إذا كنت تريد تحرير مورد أو حذفه، فحدده في الشريط الجانبي <guilabel
+>مدير التقويم</guilabel
+> واضغط على <guibutton
+>احذف التقويم</guibutton
+> لحذفه أو <guibutton
+>خصائص التقويم...</guibutton
+> لتعديله.</para
+></step>
+
+</procedure>
+<para
+>من بين الموارد الموجودة، يمكنك أن تجد في منظّمك:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>أعياد الميلاد والذكرى السنوية</guilabel
+></term>
+<listitem
+><para
+>يوفر الوصول إلى تواريخ أعياد الميلاد والذكرى السنوية لجهات الاتصال في دفتر عناوينك كأحداث تقويم.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>مورد برمجيات تعاونية DAV</guilabel
+></term>
+<listitem
+><para
+>مورد لإدارة تقاويم DAV ودفاتر العناوين (CalDAV، GroupDAV).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>تقاويم ومهام جوجل</guilabel
+></term>
+<listitem
+><para
+>الوصول إلى تقاويم ومهام جوجل الخاصة بك.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>ملف تقويم iCal</guilabel
+></term>
+<listitem
+><para
+>يحمّل البيانات من ملف iCal.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>مجلد تقويم iCal</guilabel
+></term>
+<listitem
+><para
+>يوفر الوصول إلى عناصر التقويم، كل منها مخزن في ملف واحد، في دليل معين.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>ملف تقويم منبّهك</guilabel
+></term>
+<listitem
+><para
+>يحمّل البيانات من ملف تقويم منبّهك.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>دليل تقويم منبّهك</guilabel
+></term>
+<listitem
+><para
+>يحمّل البيانات من مجلد منبّهك محلي.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>خادم برمجيات تعاونية Open-Xchange</guilabel
+></term>
+<listitem
+><para
+>يوفر الوصول إلى المواعيد والمهام وجهات الاتصال الخاصة بخادم برمجيات Open-Xchange التعاونية.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="managing-import-export">
+<title
+>استيراد وتصدير وصيانة التقاويم</title>
+
+<para
+>بينما تعد الملفات المحلية مجرد واحد من بين العديد من الموارد الأخرى التي يمكن استخدامها من قبل منظّمك، إلا أنها الطريقة الأكثر ملاءمة لمشاركة التقاويم، أو حفظ النسخ، أو استيراد العناصر من برنامج التقويم القديم الخاص بك.</para>
+
+<sect2 id="managing-import">
+<title
+>استيراد التقاويم</title>
+
+<para
+>إذا كان لديك ملف iCalendar أو vCalendar، وترغب في استيراده، فاختر عنصر القائمة <menuchoice
+><guimenu
+>ملف</guimenu
+> <guisubmenu
+>استيراد</guisubmenu
+><guimenuitem
+>استورد تقويمًا...</guimenuitem
+> </menuchoice
+>. سيسألك منظّمك عما إذا كنت تريد <guilabel
+>أضف كتقويم جديد</guilabel
+>، مما يضيف ملف التقويم كمورد ملف محلي جديد أو <guilabel
+>ادمج في تقويم موجود</guilabel
+>، مما يدمج عناصر التقويم في مورد موجود.</para>
+
+<para
+>الوقت المناسب للقيام بذلك هو إذا تلقيت vCalendar ببعض المدخلات عبر البريد الإلكتروني، على سبيل المثال، أو إذا كنت تخطط لاستيراد تقويمك من تطبيق آخر. في الحالة الأخيرة، أول شيء يجب فعله هو استخدام ذلك التطبيق لتصدير بيانات التقويم بأحد التنسيقات المذكورة أعلاه، أو استخدام أداة للتحويل من التنسيق الأصيل للتطبيق.</para>
+</sect2>
+
+<sect2 id="managing-export">
+<title
+>تصدير التقاويم</title>
+
+<para
+>يمكنك تصدير بياناتك كملف iCalendar، وهو مدعوم من قبل معظم تطبيقات الجدولة. سيقوم منظّمك بتصدير كافة عناصر التقويم من الموارد الممكنة (المؤشر عليها) والتي <link linkend="filters-view"
+>لم تُرشح</link
+> (لنسمي هذه العناصر عناصر <quote
+>نشطة</quote
+>). بعبارة أخرى، إذا لم تتمكن من رؤية عنصر تقويم، فلن يكون في الملف المصدر. لترشيح العناصر غير المرغوب فيها قبل تصديرها، يمكنك إنشاء <link linkend="filters-view"
+>مرشحات</link
+>. تكون المرشحات أكثر فعالية إذا قمت بتصنيف أحداثك ومهامك بـ <link linkend="categories-view"
+>وسوم</link
+>. لتمكين وتعطيل الموارد، قم بالتأشير أو إلغاء التأشير على مربع المورد في الشريط الجانبي <link linkend="managing-resources"
+><guilabel
+>مدير التقويم</guilabel
+> </link
+>.</para>
+
+<para
+>لتصدير جميع أحداثك <quote
+>النشطة</quote
+>، والمهام ومدخلات اليوميات (بغض النظر عن المورد الذي تنتمي إليه) كملف iCalendar جديد، اختر عنصر القائمة <menuchoice
+><guimenu
+>ملف</guimenu
+><guisubmenu
+>صدّر</guisubmenu
+><guimenuitem
+>صدّر كـ iCalendar...</guimenuitem
+></menuchoice
+>. سيظهر مربع حوار <guilabel
+>احفظ باسم</guilabel
+>؛ أدخل اسم الملف وموقعه للملف الجديد لإكمال عملية التصدير.</para>
+
+</sect2>
+
+<sect2 id="managing-purge-archive">
+<title
+>صيانة تقاويمك</title>
+
+
+<para
+>تتمتع الحواسيب المعاصرة بمساحة تخزين واسعة. ومع ذلك، إذا قمت بمزامنة تقويم منظّمك مع جهاز ذو ذاكرة محدودة مثل أجهزة Palm، فستجد الأرشفة مفيدة. يمكن أن ينخفض أداء منظّمك أيضًا عندما يكون هناك العديد من الأحداث. لأرشفة العناصر القديمة، اتبع الإجراء أدناه:</para>
+
+<procedure>
+<step
+><para
+>اختر عنصر القائمة <menuchoice
+><guimenu
+>ملف</guimenu
+><guimenuitem
+>أرشف الوقائع القديمة...</guimenuitem
+></menuchoice
+>.</para
+></step>
+<step
+><para
+>املأ التاريخ في حقل <guilabel
+>أرشف الآن العناصر الأقدم من</guilabel
+> أو استخدم ودجة التقويم لاختيار التاريخ. بدلًا من ذلك، يمكنك أرشفة كافة العناصر الأقدم من فترة زمنية معينة آليًا.</para
+></step>
+<step
+><para
+>إذا اخترت الأرشفة، فيجب عليك أيضًا تقديم اسم ملف للأرشيف في حقل <guilabel
+>ملف الأرشيف</guilabel
+>. إذا كنت تريد إعادة استخدام ملف أرشيف قديم، فاضغط على زر <guilabel
+>حوار فتح ملف</guilabel
+> وابحث عن أرشيف موجود. ستُضاف المدخلات إلى الملف، لذا لن يُعدل أي عنصر موجود بالفعل في الملف.</para
+></step>
+</procedure>
+
+<para
+>ستحتفظ الأرشفة بكافة العناصر القديمة في ملف، بما في ذلك المهام المكتملة. ولكن إذا كنت لا ترغب في الاحتفاظ بالمهام المكتملة على الإطلاق، فاختر عنصر القائمة <menuchoice
+><guimenu
+>ملف</guimenu
+><guimenuitem
+>طهر المهام المكتملة</guimenuitem
+> </menuchoice
+> لإزالة كافة المهام المكتملة من مواردك النشطة. إذا كنت تريد الاحتفاظ بمهامك المكتملة، ولكن لا ترغب في عرضها في قوائم المهام، ففكر في <link linkend="filters-view"
+>ترشيحها</link
+> بدلًا من تطهيرها. </para>
+
+</sect2>
+</sect1>
+</chapter>
+
+<chapter id="chapter-views-and-filters"
+><!-- updated to 5.4.40-->
+
+<title
+>العروض والمرشحات</title>
+
+<para
+>بينما يمكن للتقاويم (الموارد) أن تحتوي على أحداث ومهام و/أو مدخلات يوميات، فإن هذه العناصر تختلف تمامًا في طبيعتها. قد لا يكون للمهام تاريخ مرتبط بها، لذا فإن عرض الجدول لا يناسبها. مدخلات اليوميات هي مجموعة من تأملاتك أو وقائعك أو تجاربك. وهي تتطلب وضع العرض الخاص بها، لأنها ليست مرتبطة بقائمة الأحداث القادمة أو قائمة المهام، وما إلى ذلك.</para>
+
+<para
+>لحل تحدي عرض معلوماتك بطريقة مفيدة وبديهية، يوفر منظّمك عروضًا ومرشحات وقدرات بحث مختلفة. يمكنك أيضًا تعيين وسوم للأحداث والمهام ذات الصلة، مما سيساعدك على عرضها لاحقًا باستخدام المرشحات أو الألوان.</para>
+
+<sect1 id="description-view">
+<title
+>عروض منظّمك</title>
+
+<para
+>نصف في هذا القسم أوضاع العرض المختلفة، ونقدم نظرة عامة حول كيفية تصفح بياناتك الشخصية باستخدام منظّمك.</para>
+
+<para
+>يمكن تقسيم نافذة منظّمك إلى منطقتين رئيستين: النافذة الرئيسة والشريط الجانبي. تعرض النافذة الرئيسة طرق العرض الرئيسة، ويعرض الشريط الجانبي متصفح التاريخ، وعرض المهام، وعارض العناصر، وعرض مدير التقويم. لإظهار مكونات الشريط الجانبي أو إخفائها، حدد أو أزل تحديد بنود القائمة تحت القائمة الفرعية <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guisubmenu
+>الشريط الجانبي</guisubmenu
+></menuchoice
+>.</para>
+
+<para
+>يتوفر متصفح التاريخ لتصفح التواريخ واختيارها. سيوضع تاريخ اليوم داخل مربع صغير، وستظهر التواريخ التي تحتوي على أحداث مجدولة بخط عريض (قد لا تُوسم الأحداث المتكررة يوميا أو أسبوعيا كخط عريض، <link linkend="config-main-views"
+>اعتمادا على ضبط العرض</link
+>)، وستلون العطلات باللون الأحمر. إذا أردت الانتقال إلى تاريخ ما، انقر فوقه ببساطة. استمر في الضغط على الفأرة لتحديد عدة تواريخ متجاورة في آن واحد. ستعرض مناظر <guilabel
+>ما التالي</guilabel
+>، و<guilabel
+>القائمة</guilabel
+>، و<guilabel
+>جدول المواعيد</guilabel
+>، و<guilabel
+>اليوميات</guilabel
+> الأحداث أو المهام أو عناصر اليوميات من التواريخ المحددة في متصفح التاريخ فقط. سيعرض عرض <guilabel
+>الشهر</guilabel
+> الأحداث أو المهام من الشهر الأول المعروض في متصفح التاريخ (الأيام المحددة في الشهر لن تغير عرض الشهر، بل تغيرات الشهر فقط).</para>
+
+<para
+>يسرد مكون قائمة المهام في الشريط الجانبي مهامك، تماما مثل <link linkend="todo-view"
+>عرض المهام</link
+>. إنه مفيد إذا كنت تريد رؤية مهامك أثناء استخدام طرق العرض الأخرى.</para>
+
+<para
+>يعرض مكون عارض العناصر في الشريط الجانبي تفاصيل الأحداث أو المهام أو مدخلات اليوميات المحددة حاليا.</para>
+
+<para
+>أخيرا، يتيح لك مكون عارض مدير التقويم في الشريط الجانبي تمكين أو تعطيل الموارد في القائمة، عن طريق تحديد أو إزالة تحديد مربع المورد، وإدارة مواردك. لمزيد من المعلومات، يرجى مراجعة <xref linkend="managing-resources"/>.</para>
+
+<para
+>يمكنك أيضا تصفح عرض التقويم الخاص بك عن طريق اختيار بند القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+> <guimenuitem
+>للخلف</guimenuitem
+></menuchoice
+> (أو الضغط على زر شريط الأدوات <inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png" format="PNG"/></imageobject
+></inlinemediaobject
+>)، والذي ينتقل إلى اليوم أو الأسبوع أو الشهر أو السنة السابقة، واختيار بند القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+><guimenuitem
+>للأمام</guimenuitem
+></menuchoice
+> (أو الضغط على زر شريط الأدوات <inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png" format="PNG"/></imageobject
+></inlinemediaobject
+>)، والذي ينتقل إلى اليوم أو الأسبوع أو الشهر أو السنة التالية (حسب العرض)، أو اختيار بند القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+><guimenuitem
+>إلى اليوم</guimenuitem
+></menuchoice
+> (أو الضغط على زر شريط الأدوات <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+>)، والذي سيضمن اليوم الحالي في العرض الحالي.</para>
+
+<sect2 id="whatsnext-view">
+<title
+>عرض ما التالي</title>
+
+<para
+>يعرض هذا المنظر الأحداث والمهام بتنسيق بسيط يمكنك قراءته بسرعة. ستُعرض جميع المهام المفتوحة، ولكن ستُعرض الأحداث من الأيام المحددة في الشريط الجانبي <guilabel
+>متصفح التاريخ</guilabel
+> فقط. تُعرض الأحداث والمهام بمعدل واحد لكل سطر.</para>
+
+<para
+>انتقل إلى عرض ما التالي باختيار بند القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>ما التالي</guimenuitem
+></menuchoice
+>.</para>
+
+</sect2>
+
+<sect2 id="list-view">
+<title
+>عرض قائمة الأحداث</title>
+<para
+>يعرض هذا المنظر جميع مهامك وأحداثك ومدخلات اليوميات للتواريخ المحددة في متصفح التاريخ كقائمة. لا تظهر المهام المفتوحة التي لم يحن موعد استحقاقها في التواريخ المحددة. هذا العرض جيد لعرض العديد من العناصر المختلفة بطريقة مدمجة. كما أنه مفيد إذا كانت أحداثك موزعة على فترة زمنية طويلة لا يمكن عرضها بالكامل على الشاشة عند استخدام أحد طرق العرض الأخرى.</para>
+
+<para
+>تُعرض العناصر بمعدل واحد لكل سطر. توضح الأعمدة ما إذا كان التذكير مضبوطا (أيقونة جرس تعني أن التذكير مضبوط)، وما إذا كان يتكرر عدة مرات (أيقونة أسهم متلاحقة تعني حدثا متكررا)، ومعلومات وقت البدء والانتهاء. سيؤدي تمرير الفأرة فوق عنصر ما إلى إظهار تلميح يحتوي على معلومات مفصلة حول العنصر.</para>
+
+<para
+>حول العرض إلى عرض القائمة باختيار بند القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>قائمة الأحداث</guimenuitem
+></menuchoice
+>.</para>
+
+
+</sect2>
+
+<sect2 id="agenda-view">
+<title
+>عرض جدول المواعيد</title>
+
+<!--TODO: add agenda view options, color of resources and tags-->
+
+<para
+>يقدم عرض جدول المواعيد أحداثك أو المهام المستحقة ليوم واحد أو أكثر، مرتبة زمنيا. يمكنك أيضا رؤية طول كل حدث في الجدول الزمني لليوم. لتمكين عرض جدول المواعيد اختر بند القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>جدول المواعيد</guimenuitem
+></menuchoice
+> أو اضغط على زر شريط الأدوات <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png" format="PNG"/></imageobject
+></inlinemediaobject
+>.</para>
+<para
+>تعد عروض <guilabel
+>اليوم</guilabel
+>، و<guilabel
+>أسبوع العمل</guilabel
+>، و<guilabel
+>الأسبوع</guilabel
+> تنويعات لعرض جدول المواعيد. في الواقع، يمكنك ضبط الأيام المعروضة في عرض جدول المواعيد في أي وقت عن طريق تحديدها في متصفح التاريخ.</para>
+<!--check bell + chasing-arrows icon here-->
+<para
+>يُشار إلى الوقت من خلال شريط الوقت على الجانب الأيسر من العرض. يتوفر شريط تمرير على اليمين عندما لا يمكن عرض اليوم بالكامل على شاشة واحدة (وهي الحالة المعتادة). يمثل كل مستطيل في العرض حدثا فرديا أو مهمة مستحقة في ذلك الوقت، ويعرض وقت البدء والانتهاء والملخص. تُعرض أيقونة <guiicon
+>جرس</guiicon
+> إذا كان التذكير مضبوطا، وتُعرض أيقونة <guiicon
+>أسهم متلاحقة</guiicon
+> إذا تكرر الحدث عدة مرات. سيؤدي تمرير الفأرة فوق عنصر تقويم إلى إظهار تلميح يحتوي على معلومات مفصلة حول العنصر. لجعل منظّمك يعرض خطا أحمر يحدد الوقت الحالي في اليوم الحالي (خط ماركوس بينز)، حدد مربع <guilabel
+>إظهار خط الوقت الحالي (ماركوس بينز)</guilabel
+> في <link linkend="config-main-views"
+>ضبط عرض منظّمك</link
+>.</para>
+
+<para
+>يمكن تغيير حجم أي حدث باستخدام الفأرة. حرك مؤشر الفأرة ببساطة بالقرب من الحافة العلوية أو السفلية للحدث، واسحب الحافة لأعلى أو لأسفل. بهذه الطريقة يمكنك تعديل وقت بدء وانتهاء حدثك بصريا. يعمل هذا أيضا في عروض الأسبوع وأسبوع العمل. بمعنى آخر، من الممكن تغيير أوقات البدء والانتهاء باستخدام الفأرة عن طريق تحريك الحد العلوي أو السفلي للحدث إلى الوقت الجديد.</para>
+
+<para
+>يمكن إعادة جدولة أي حدث باستخدام الفأرة. حرك مؤشر الفأرة فوق الحدث، واسحبه إلى موقع زمني جديد. يعمل هذا أيضا في عروض الأسبوع وأسبوع العمل. يمكن نقل الأحداث إلى تواريخ أخرى غير مرئية حاليا. حرك مؤشر الفأرة فوق الحدث، واسحبه إلى متصفح التاريخ.</para>
+
+<para
+>نظرا لأن عرض جدول المواعيد لا يمكنه احتواء اليوم بالكامل على معظم الشاشات، سيتعين عليك التمرير لأعلى ولأسفل لرؤية اليوم بالكامل. هناك تلميح مفيد يخبرك بما إذا كانت هناك أي أحداث غير مرئية حاليا فوق أو تحت عرضك الحالي؛ وهو عبارة عن سهم صغير يشير لأسفل في أسفل كل عرض يوم أو سهم يشير لأعلى في الأعلى.</para>
+
+<tip
+><para
+>يوجد اختصاران مفيدان لإضافة الأحداث: <itemizedlist>
+<listitem
+><para
+>انقر نقرا مزدوجا فوق أي منطقة زمنية مفتوحة، وسيقوم منظّمك آليا بإنشاء حدث بمدة مبدئية (والتي يمكن تخصيصها في مربع حوار التفضيلات). يمكنك إضافة الملخص فورا. تنجذب الأحداث إلى زيادات مدتها نصف ساعة، مقربة إلى أقرب نصف ساعة من حيث نقرت.</para
+></listitem>
+<listitem
+><para
+>حدد أي منطقة زمنية مفتوحة، وانقر فوقها نقرا مزدوجا أو ابدأ في كتابة ملخص الحدث. سيقوم منظّمك آليا بضبط المدة ووقت البدء كما هو محدد بواسطة منطقة التحديد في عرض جدول المواعيد.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<tip
+><para
+>تلميحات لتحسين عرض الأحداث: <itemizedlist>
+<listitem
+><para
+>استخدم اختصار العجلة مع مفتاح Shift لتكبير/تصغير ارتفاع صف الشبكة الساعية. هذا مفيد لرؤية تفاصيل الأحداث إذا كان لديك عدة أحداث تقع في نفس الفترة الزمنية. </para
+></listitem>
+<listitem
+><para
+>أظهر تسميات الوقت على جانبي الشبكة الساعية عن طريق اختيار إظهار/إخفاء تسميات الوقت على الجانب الأيمن من القائمة السياقية لتسميات الوقت.</para
+></listitem>
+</itemizedlist>
+</para
+></tip>
+
+<para
+>لمساعدتك في تنظيم جدول مواعيدك، يعكس لون الأحداث وسمها، وبناء على <link linkend="config-main-views"
+>ضبط عرض منظّمك</link
+>، قد يعكس أيضا <link linkend="managing-resources"
+>موردها</link
+>. لذلك، إذا عينت <link linkend="categories-view"
+>أوسمة للأحداث</link
+> و<link linkend="config-main-colors"
+>ألوانا مختلفة للأوسمة</link
+>، فستتمكن من تحديد نوع الحدث بسرعة من خلال لونه. </para>
+
+<para
+>يمكن لعرض جدول المواعيد عرض الأحداث من جميع تقاويمك مدمجة في عرض واحد أو إظهار عرض لكل تقويم. كما يتوفر كلا العرضين عبر ألسنة، ويمكن <link linkend="config-main-views"
+>تخصيصهما في مربع حوار التفضيلات</link
+>. </para>
+
+<sect3 id="day-view">
+<title
+>عرض اليوم</title>
+
+<para
+>يقدم هذا العرض <link linkend="agenda-view"
+>عرض جدول المواعيد</link
+> ليوم واحد.</para>
+
+<para
+>حول العرض إلى عرض اليوم باختيار بند القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+> <guimenuitem
+>اليوم</guimenuitem
+></menuchoice
+> أو الضغط على زر <guilabel
+>اليوم</guilabel
+> في شريط الأدوات <inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png" format="PNG"/></imageobject
+></inlinemediaobject
+>.</para>
+
+</sect3>
+
+<sect3 id="next-x-days-view">
+<title
+>عرض الـ X أيام التالية</title>
+
+<para
+>يقدم هذا العرض <link linkend="agenda-view"
+>عرض جدول المواعيد</link
+> للأيام التالية، بدءا من اليوم. يمكنك تغيير عدد الأيام المراد عرضها في <link linkend="config-main-views"
+>ضبط عرض منظّمك</link
+>. القيمة المبدئية هي 3.</para>
+
+<para
+>حول العرض إلى عرض الأيام التالية باختيار بند القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+> <guimenuitem
+>الـ X أيام التالية</guimenuitem
+></menuchoice
+>، (حيث يمثل X عدد الأيام، وعادة ما يكون 3).</para>
+
+</sect3>
+
+
+<sect3 id="week-view">
+<title
+>عرض الأسبوع</title>
+
+<para
+>يوفر عرض الأسبوع عرضا مشابها لعرض اليوم. تُعرض أحداث سبعة أيام بجانب بعضها البعض.</para>
+
+<para
+>حول العرض إلى عرض الأسبوع باختيار بند القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+> <guimenuitem
+>الأسبوع</guimenuitem
+></menuchoice
+> أو الضغط على زر <guilabel
+>الأسبوع</guilabel
+> في شريط الأدوات <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png" format="PNG"/></imageobject
+></inlinemediaobject
+>.</para>
+
+</sect3>
+
+<sect3 id="workweek-view">
+<title
+>عرض أسبوع العمل</title>
+
+<para
+>هذا هو نفسه عرض الأسبوع، باستثناء أنه يعرض أيام العمل في الأسبوع فقط.</para>
+
+<para
+>حول العرض إلى عرض أسبوع العمل باختيار بند القائمة <menuchoice
+><guimenu
+>اذهب</guimenu
+> <guimenuitem
+>أسبوع العمل</guimenuitem
+></menuchoice
+>.</para>
+
+</sect3>
+
+</sect2>
+
+
+<sect2 id="month-view">
+<title
+>عرض الشهر</title>
+
+<!--TODO: add month view options-->
+
+<para
+>يعرض عرض الشهر جميع الأحداث والمهام المستحقة للشهر الحالي في تخطيط تقويم شهري مألوف. تمثل كل خلية في العرض يوما، ويحتوي كل يوم على جميع الأحداث التي يمكن أن تتسع في المساحة المتوفرة (سيمكنك تكبير النافذة من رؤية المزيد من المواعيد). يُشار إلى معلومات حالة التكرار والتذكير من خلال أيقونات <guiicon
+>جرس</guiicon
+> و<guiicon
+>أسهم متلاحقة</guiicon
+>، تماما كما هو الحال في طرق العرض الأخرى.</para>
+
+<para
+>تنقل في عرض الشهر باستخدام أسهم متصفح التاريخ، أو العناصر وأزرار شريط الأدوات من قائمة <guilabel
+>اذهب</guilabel
+>. نظرا لأن المنطقة المرئية من خلية اليوم قد لا تحتوي على جميع الأحداث والمهام، يمكنك استخدام لوحة المفاتيح لتصفح العناصر، أو يمكنك استخدام أشرطة التمرير لرؤية جميع الأحداث والمهام من ذلك اليوم.</para>
+
+<para
+>حرك الفأرة فوق أي عنصر تقويم لعرض تلميح يحتوي على تفاصيل العنصر. انقر نقرا مزدوجا فوق منطقة فارغة لإنشاء حدث، وانقر نقرا مزدوجا فوق أي عنصر تقويم لتحريره.</para>
+
+<para
+>لمساعدتك في تنظيم بياناتك، قد يعكس لون الأحداث وسمها، و<link linkend="managing-resources"
+>موردها</link
+>، بناء على <link linkend="config-main-views"
+>ضبط عرض منظّمك</link
+>. لذلك، إذا عينت <link linkend="categories-view"
+>أوسمة للأحداث</link
+> و<link linkend="config-main-colors"
+>ألوانا مختلفة للأوسمة</link
+>، يمكنك تحديد نوع الحدث (أو المورد) من خلال لونه. </para>
+
+<para
+>حول العرض إلى عرض الشهر باختيار بند القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>عرض الشهر</guimenuitem
+></menuchoice
+> أو الضغط على زر <guilabel
+>الشهر</guilabel
+> في شريط الأدوات <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png" format="PNG"/></imageobject
+></inlinemediaobject
+>.</para>
+
+</sect2>
+
+<!-- Timeline View-->
+
+<sect2 id="timeline-view">
+<title
+>عرض الخط الزمني</title>
+
+<para
+>يعرض عرض الخط الزمني جميع الأحداث للنطاق الزمني المحدد في عرض غانت. يُعرض كل تقويم في سطر منفصل. </para>
+
+<para
+>حرك الفأرة فوق أي عنصر تقويم لعرض تلميح يحتوي على تفاصيل العنصر. انقر نقرا مزدوجا فوق منطقة فارغة لإنشاء حدث، وانقر نقرا مزدوجا فوق أي عنصر تقويم لتحريره.</para>
+
+</sect2>
+
+<sect2 id="todo-view">
+<title
+>قائمة المهام</title>
+
+<para
+>توفر قائمة المهام مكانا لك لتدوين ملاحظات سريعة (أو طويلة الأمد) حول الأشياء التي يجب القيام بها. يظهر مكون عرض المهام في الشريط الجانبي أسفل متصفح التاريخ مباشرة. يمكنك أيضا عرضه في اللوحة الرئيسة إذا نقرت فوق زر شريط أدوات عرض <guilabel
+>قائمة المهام</guilabel
+> <inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-tasks.png" format="PNG"/></imageobject
+></inlinemediaobject
+> أو إذا اخترت بند القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+><guimenuitem
+>قائمة المهام</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>يمكنك منح مهمتك "تاريخ استحقاق"، بعبارة أخرى تاريخا يجب إنهاء المهمة فيه.</para>
+
+<para
+>يمكنك أيضا تعيين أولويات للمهام، وستظهر مرتبة حسب الأولوية. كلما قل العدد، زادت الأولوية، باستثناء أن الصفر (0) يُعرّف بأنه "بلا أولوية".</para>
+
+<para
+>لإنشاء مدخلة مهمة جديدة، انقر بيمين الفأرة فوق مكون عرض المهام في الشريط الجانبي، أو عرض قائمة المهام، واختر بند القائمة <guimenuitem
+>مهمة جديدة</guimenuitem
+>. إذا نقرت بيمين الفأرة فوق مهمة موجودة بالفعل، فستحصل على المزيد من الخيارات: يمكنك <guimenuitem
+>إظهار</guimenuitem
+> الملخص، أو <guimenuitem
+>تحرير...</guimenuitem
+> تفاصيل المهمة، أو <guimenuitem
+>حذف</guimenuitem
+> المهمة تماما، أو يمكنك إنشاء <guimenuitem
+>مهمة فرعية جديدة...</guimenuitem
+> يمكنك على سبيل المثال إنشاء مهمة كبيرة مثل بناء منزل، وإنشاء مهام فرعية مثل اختيار موقع البناء المناسب، وتوظيف مهندس معماري، وتوظيف عمال، وأخيرا ترتيب حفلة لأصدقائك.</para>
+
+<para
+>عندما تختار <guimenuitem
+>مهمة جديدة...</guimenuitem
+>، سيظهر مربع حوار يتيح لك إدخال جميع <link linkend="entering-data-to-do"
+>المعلومات</link
+> اللازمة.</para>
+
+<para
+>انقر فوق أي مهمة في القائمة لتمييزها. إذا نقرت فوق المربع ذو الخط السميك على يسار وصف المهمة، فستغير حالة المهمة إلى "مكتملة". إذا نقرت نقرا مزدوجا فوق وصف المهمة، فستتمكن من تحرير جميع تفاصيلها.</para>
+
+<para
+>يمكنك أيضا اختيار <link linkend="managing-purge-archive"
+>تطهير المكتملة</link
+> من قائمة زر الفأرة <mousebutton
+>الأيمن</mousebutton
+> لحذف جميع مدخلات المهام التي وسُمت كمكتملة.</para>
+
+<para
+>يمكن أيضا سحب المهام باستخدام الفأرة لإعادة ترتيب التسلسل الهرمي أو لتبادل المهام مع نوافذ تقويم أخرى. يمكنك أيضا قراءة <link linkend="other-features-drag-and-drop"
+>نظرة عامة</link
+> على جميع عمليات السحب والإفلات المتاحة.</para>
+</sect2>
+
+<sect2 id="journal-view">
+<title
+>عرض اليوميات</title>
+<para
+>يوفر عرض اليوميات مكانا لك لتسجيل تأملاتك أو أحداثك أو تجاربك. يمكنك عرض عرض اليوميات في اللوحة الرئيسة إذا ضغطت على زر شريط أدوات <guilabel
+>عرض اليوميات</guilabel
+> <inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png" format="PNG"/></imageobject
+></inlinemediaobject
+> أو إذا اخترت بند القائمة <menuchoice
+><guimenu
+>عرض</guimenu
+><guimenuitem
+>اليوميات</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>عندما تنقر فوق رابط <guilabel
+>يوميات جديدة ...</guilabel
+> (أو زر <guibutton
+>يوميات جديدة ...</guibutton
+>)، ستُنشأ مدخلة يوميات جديدة. إذا أردت تحرير مدخلة يوميات، ما عليك سوى النقر فوق مربع النص وتحريره! لإزالة مدخلة يوميات، اضغط على زر الحذف <inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png" format="PNG"/></imageobject
+></inlinemediaobject
+> في عرض اليوميات.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="categories-view">
+<title
+>الأوسمة</title>
+
+<!--TODO: Add screenshot?-->
+
+<para
+>لمساعدتك في تنظيم مدخلاتك في مجموعات ذات صلة، يمكنك تعيين أوسمة للأحداث والمهام ومدخلات اليوميات. إذا عينت أوسمة، يمكنك استخدامها لاحقا عند البحث عن الأحداث والمهام وتصفيتها وعرضها.</para>
+
+<para
+>لتعيين أوسمة عند تحرير أو إنشاء <link linkend="entering-data-events-general"
+>أحداث</link
+> أو <link linkend="entering-data-to-do-general"
+>مهام</link
+> جديدة، انقر فوق زر <guibutton
+>...</guibutton
+> في لسان التبويب <guilabel
+>عام</guilabel
+>. يمكنك تعيين أكثر من وسم لكل عنصر.</para>
+
+<para
+>لإنشاء الأوسمة وحذفها، اختر بند القائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guimenuitem
+>إدارة الأوسمة...</guimenuitem
+></menuchoice
+> لفتح مربع حوار <guilabel
+>إدارة الأوسمة</guilabel
+>. إذا عينت <link linkend="config-main-colors"
+>ألوانا مختلفة للأوسمة</link
+>، فستتمكن من تحديد نوع الحدث بسرعة من خلال لونه، إما في عرض جدول المواعيد أو في عرض الشهر (اعتمادا على <link linkend="config-main-views"
+>ضبط عرض منظّمك</link
+>). </para>
+
+</sect1>
+
+<sect1 id="filters-view">
+<title
+>مرشحات</title>
+
+<para
+>لمساعدتك في عرض بياناتك والعثور عليها وتصديرها، يمكنك إنشاء واستخدام مرشحات لتقاويمك. على سبيل المثال، إذا كنت لا تريد عرض المهام المكتملة، يمكنك تصفيتها، بدلا من <link linkend="managing-purge-archive"
+>تطهيرها</link
+>. إذا عينت أوسمة، يمكنك استخدامها لإنشاء مرشحات.</para>
+
+<para
+>لإنشاء المرشحات وحذفها وتحريرها، اختر بند القائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guimenuitem
+>إدارة مرشحات العرض...</guimenuitem
+></menuchoice
+> لفتح مربع حوار <guilabel
+>تحرير مرشحات التقويم</guilabel
+>. باستخدام هذا الحوار، يمكنك إنشاء وحذف وتحرير المرشحات التي ستؤثر على العناصر التي سيعرضها منظّمك.</para>
+
+<!--TODO: Add detailed description of the dialog. Is it stable yet?-->
+
+<para
+>توفر القائمة الفرعية <menuchoice
+><guimenu
+>عرض</guimenu
+> <guisubmenu
+>مرشح</guisubmenu
+></menuchoice
+> والقائمة المنسدلة لشريط أدوات المرشح الوصول إلى جميع المرشحات المتاحة التي أُنشئت باستخدام حوار <link linkend="menu-settings-edit-filters"
+><guilabel
+>تحرير مرشحات التقويم</guilabel
+></link
+>. لتبديل عرض شريط أدوات المرشحات بين الظهور والاختفاء، اختر <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guisubmenu
+>أشرطة الأدوات المعروضة</guisubmenu
+><guimenuitem
+>شريط أدوات المرشحات</guimenuitem
+></menuchoice
+>. إذا كنت لا تريد استخدام أي مرشح، فاختر <guilabel
+>بلا مرشح</guilabel
+>.</para>
+
+<para
+>تكون المرشحات مفيدة عند <link linkend="managing-export"
+>تصدير تقويمك</link
+>. إذا استخدمت مرشحا، فسيتم تصدير العناصر المصفاة (المرئية) فقط. كما أن المرشحات تكون أكثر فعالية عندما تكون العناصر مصنفة بالفعل ومنظمة في <link linkend="categories-view"
+>أوسمة</link
+>، حيث يمكنك بسهولة إنشاء مرشحات بناء على الأوسمة.</para>
+
+</sect1>
+
+<sect1 id="search-view">
+<title
+>البحث</title>
+
+<para
+>اختر بند القائمة <menuchoice
+><guimenu
+>حرر</guimenu
+> <guimenuitem
+>بحث</guimenuitem
+></menuchoice
+> أو اضغط على الاختصار <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+> </keycombo
+> للعثور على الأحداث أو المهام أو مدخلات اليوميات من خلال ملخصاتها و/أو أوصافها و/أو أوسمتها. سيبحث إجراء البحث في الحقول المحددة فقط.</para>
+
+<tip
+><para
+>يمكنك استخدام المحارف البديلة إذا كنت لا تتذكر الملخص الدقيق. إذا كنت لا تعرف محرفا واحدا من الملخص، فضع <userinput
+>?</userinput
+> بدلا من المحرف المفقود. إذا كنت لا تعرف أكثر من محرف، فاستخدم <userinput
+>*</userinput
+>. على سبيل المثال، إذا كنت تعرف أن الحدث أو المهمة تحتوي على <emphasis
+>meeting</emphasis
+> في البداية و<emphasis
+>product</emphasis
+> بعدها، فستكتب <userinput
+>meeting*product</userinput
+> في حوار البحث. سيحدد منظّمك المدخلات مثل "مهمة: ترتيب اجتماع حول المنتج الجديد"، "اجتماع لمناقشة خط المنتج القديم" وما شابه. يتم تجاهل حالة الأحرف.</para
+></tip>
+
+<para
+>نتيجة عملية البحث هي قائمة بالأحداث ومدخلات اليوميات و/أو المهام التي تحتوي على الكلمة المفتاحية المحددة. خصائص قائمة البحث هي نفسها الموجودة في <link linkend="list-view"
+>عرض القائمة</link
+>.</para>
+
+<para
+>هذه القائمة الناتجة نشطة. يمكنك النقر نقرا مزدوجا فوق سطر لعرض تفاصيل الحدث أو المهمة أو تحريرها. احصل على مزيد من المعلومات حول هذه التفاصيل في <xref linkend="entering-data-events"/> و<xref linkend="entering-data-to-do"/>.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="entering-data"
+>  <!--updated to 5.4.40-->
+
+<title
+>إدخال البيانات</title>
+
+<sect1 id="entering-data-events">
+<title
+>الأحداث</title>
+
+<para
+>الأحداث هي مواعيد مستقبلية أو ماضية، مثل اجتماعات العمل، والذكرى السنوية الشخصية، وزيارات السينما. يمكن أن يستغرق الحدث أيضا عدة أيام، مثل العطلات.</para>
+
+<para
+>إدخال حدث جديد سهل للغاية. ما عليك سوى اختيار بند القائمة <menuchoice
+><guimenu
+>إجراءات</guimenu
+><guimenuitem
+>حدث جديد...</guimenuitem
+></menuchoice
+>. ستظهر نافذة بها ستة ألسنة تبويب في الأسفل.</para>
+
+<para
+>إذا أردت، يمكنك استخدام طريقة مختلفة لإنشاء حدث جديد:</para>
+
+<procedure>
+<step
+><para
+>استخدم متصفح التاريخ للانتقال إلى تاريخ الحدث.</para
+></step>
+
+<step
+><para
+>حول إلى عرض <guilabel
+>جدول المواعيد</guilabel
+> وانقر فوق أيقونة العرض المطلوب في <guimenu
+>شريط أدوات العرض</guimenu
+> أو اختر العرض المطلوب من قائمة <guimenu
+>اذهب</guimenu
+>. بما أن حدثك يبدأ في وقت معين، يجب عليك اختيار <link linkend="reference-menus-view"
+>عرض</link
+> يعرض ساعات اليوم. يمكنك اختيار عرض <guimenuitem
+>اليوم</guimenuitem
+>، أو <guimenuitem
+>أسبوع العمل</guimenuitem
+>، أو <guimenuitem
+>الأسبوع</guimenuitem
+>. يعد عرض <guimenuitem
+>الشهر</guimenuitem
+> أكثر ملاءمة للمهام الموضحة أدناه.</para
+></step>
+
+<step
+><para
+>في اللوحة الرئيسة، انقر نقرا مزدوجا فوق الوقت والتاريخ الذي يبدأ فيه حدثك. </para
+></step>
+
+<step
+><para
+>يظهر مربع حوار يحتوي على ستة ألسنة تبويب في أسفل النافذة. أدخل بياناتك كما هو موضح أدناه.</para
+></step>
+</procedure>
+
+<screenshot id="screenshot-event-general">
+<screeninfo
+>لقطة شاشة لحوار تحرير الحدث في منظّمك</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>لقطة شاشة لحوار تحرير الحدث في منظّمك</phrase
+></textobject>
+<caption
+><para
+>لقطة شاشة لحوار تحرير الحدث في منظّمك</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>هذا وصف شامل لحقول وأدوات نافذة الحدث الفردي. ليس من الضروري ملء جميع الحقول؛ يمكن ترك بعضها فارغا. اقرأ قسم <link linkend="entering-data-required-fields"
+>الحقول المطلوبة</link
+> للحصول على معلومات مفصلة. وإذا كنت تفضل التعلم بالمثال، فهناك واحد في قسم <link linkend="examples-entering-event"
+>إدخال الحدث</link
+>. </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>الملخص:</guilabel
+></term>
+<listitem
+><para
+>أدخل وصفا قصيرا للحدث في حقل <guilabel
+>الملخص</guilabel
+>. هذا الوصف هو النص المعروض في اللوحة الرئيسة لمنظّمك.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>الموقع:</guilabel
+></term>
+<listitem
+><para
+>أدخل وصفا قصيرا لـ <guilabel
+>الموقع</guilabel
+> الذي سيقام فيه الحدث.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>البدء</guilabel
+> و<guilabel
+>الانتهاء</guilabel
+></term>
+<listitem
+><para
+>تاريخا البدء والانتهاء المقترحان لحدثك في منظّمك. يُتوقع أن تبدأ الأحداث وتنتهي في نفس التاريخ. غير هذه التواريخ كما تريد. أدخل التواريخ مباشرة أو استخدم <link linkend="glossary" endterm="gloss-calendar-widget"
+>أداة التقويم</link
+>. اختر الوقت من فترات ربع ساعة، أو أدخل الوقت المطلوب مباشرة في حقول الوقت. هذه الحقول متاحة فقط عندما لا يكون مربع <guilabel
+>طوال اليوم</guilabel
+> محددا. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<sect2 id="entering-data-events-general">
+<title
+>لسان تبويب عام</title>
+
+<variablelist>
+<varlistentry>
+<term
+>التفاصيل:</term>
+<listitem
+><para
+>أدخل وصفا طويلا للحدث في المستطيل الكبير غير المعنون. يمكنك كتابة أكبر عدد تريده من التفاصيل هنا. على سبيل المثال، إذا كان الحدث، مثلا، إصلاحا عاما مخططا لسيارتك، فيمكنك سرد جميع العناصر التي تحتاج إلى إصلاح. لاحقا يمكنك طباعة هذه القائمة وتسليمها للفني. إذا كان الحدث هو التسوق، فيجب عليك سرد السلع التي تحتاج إلى شرائها. اطبع الحدث وخذه معك إلى المتجر.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>الأوسمة</guilabel
+></term>
+<listitem
+><para
+>يمكنك تعيين عدة <link linkend="categories-view"
+>أوسمة</link
+> لعنصر تقويم. انقر فوق زر <guibutton
+>...</guibutton
+> لعرض جميع الأوسمة المتاحة. حدد مربعات الأوسمة لتعيين أوسمة مناسبة للحدث.</para>
+<para
+>يمكنك أيضا إضافة وسم جديد، أو تعديله، أو حذفه في حوار <guilabel
+>إدارة الأوسمة</guilabel
+>. افتح هذا الحوار من <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>إدارة الأوسمة</guimenuitem
+></menuchoice
+>.</para>
+
+<tip
+><para
+>قد ينتمي درس اللغة في العمل إلى وسُمي "عمل" و"تعليم"، بينما تنتمي ذكرى زواجك إلى "شخصي" أو "مناسبة خاصة" - الخيار لك.</para
+></tip>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>الوصول:</guilabel
+></term>
+<listitem
+><para
+>اختر <guilabel
+>عام</guilabel
+> أو <guilabel
+>خاص</guilabel
+> أو <guilabel
+>سري</guilabel
+> للحفاظ على خصوصية الحدث أو سريته. حاليا، يضبط هذا الخيار بدقة خاصية "CLASS" للأحداث إلى "PUBLIC" أو "PRIVATE" أو "CONFIDENTIAL". ومع ذلك، فإن ما إذا كانت هذه الإعدادات تُستخدم حقا لتقييد الوصول إلى المعلومات يعتمد على تنفيذ العميل و/أو خادم البرامج التعاونية.</para>
+<warning
+><para
+>حاليا، <emphasis
+>سيعرض</emphasis
+> منظّمك العناصر المملوكة لأشخاص آخرين والموسومة كسرية. قد تتعامل معها تطبيقات عميلة أخرى بشكل مختلف، ولكن كن حذرا عند نشر أحداث خاصة أو سرية: iCalendar هو تنسيق ملف نصي، ويمكن قراءته بأي محرر نصوص (إذا كان لدى شخص ما صلاحية قراءتها). لذا إذا كنت تريد الحفاظ على سرية العناصر حقا، فتأكد من استخدام مورد يمكنك أنت فقط الوصول إليه.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-attendees">
+<title
+>لسان تبويب الحضور</title>
+
+<para
+>اختر في هذا اللسان الأشخاص الذين تريد دعوتهم لحدثك.</para>
+
+<screenshot id="screenshot-event-attendees">
+<screeninfo
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان الحضور</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attendees.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان الحضور</phrase
+></textobject>
+<caption
+><para
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان الحضور</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>منظم الاجتماع:</guilabel
+></term>
+<listitem
+><para
+>يضبط الهوية المقابلة لمنظم هذه المهمة أو الحدث. إذا ضُبط منظّمك لإرسال رسائل دعوة بالبريد الإلكتروني، فستُستخدم الهوية المختارة في هذا المربع المنسدلة عند إرسال هذه الرسائل. يمكن ضبط الهوية المبدئية في قسم <guilabel
+>شخصي</guilabel
+> في ضبط منظّمك. بالإضافة إلى ذلك، تُجمع الهويات من إعدادات بريدك وتفاصيل كتاب عناوينك.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>قائمة الحضور</term>
+<listitem
+><para
+>تعرض القائمة الموجودة في منتصف اللسان الحضور المختارين لهذا الحدث، وتتيح لك إضافة الحضور عن طريق إدخال الاسم وعنوان البريد، أو تحريرهم أو إزالتهم.</para>
+<para
+>إذا كان الحضور في كتاب عناوينك، فلست مضطرا لتذكر أو كتابة عناوين بريدهم الإلكتروني لإضافتهم إلى قائمة الحضور. ما عليك سوى النقر فوق زر <guibutton
+>اختر العنوان...</guibutton
+> واختيار الحضور من القائمة. يرجى ملاحظة أن هذا هو كتاب عناوين كيدي القياسي، والذي يُستخدم أيضا بواسطة بريدك ويمكن استدعاؤه أيضا كتطبيق منفصل (كتاب العناوين).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>المشاركون</term>
+<listitem
+><para
+>اختر دور الحاضر (مشارك، مشارك اختياري، مراقب، رئيس) من القائمة المنسدلة على الجانب الأيسر من المدخلة. الدور هو تذكير بسيط بالدور الذي يلعبه الحاضر في هذا الحدث. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>الحالة</term>
+<listitem
+><para
+>اختر حالة الحاضر (يحتاج إلى إجراء، مقبول، مرفوض، مؤقت، مفوض) من القائمة المنسدلة على الجانب الأيمن من المدخلة. إذا كنت تستخدم جدولة البرامج التعاونية وتطلب ردودا من الحاضرين، فسيتم تحديث حالة الحاضر عند تلقي الردود. إذا لم تطلب ردودا، فسيتعين عليك تحديث الحالة يدويا.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>طلب رد</term>
+<listitem
+><para
+>اختر <guilabel
+>طلب رد</guilabel
+> من المربع المنسدل إذا كان يجب على هذا الحاضر الرد على خطة جدولك. وبناء على ذلك، سيتم إرسال بريد إلكتروني للحاضر يحتوي على معلومات جدول الحدث. سيظهر مظروف صغير في قائمة التفاصيل للإشارة إلى ذلك. هذه الميزة مفيدة بشكل خاص عند تمكين جدولة البرامج التعاونية، حيث تُحدث حالة الحاضر آليا.</para
+></listitem>
+</varlistentry>
+
+ <!-- Participiants: no conflicts Reschedule button
+ What is that? How does it work?-->
+
+</variablelist>
+
+</sect2>
+
+<!--Fixme Resources tab missing -->
+
+<sect2 id="entering-data-events-reminder">
+<title
+>لسان تبويب التذكير</title>
+<variablelist>
+<varlistentry>
+<term
+>التذكير</term>
+<listitem
+><para
+>اختر تذكيرا مبدئيا في المربع المنسدل واضغط على <guibutton
+>أضف</guibutton
+> إذا كان يجب على منظّمك تذكيرك بحدث ما.</para>
+<para
+>استخدم زر <guibutton
+>اضبط</guibutton
+> لفتح حوار <guilabel
+>تحرير تذكير موجود</guilabel
+>. باستخدام هذا الحوار، يمكنك اختيار عدد الدقائق أو الساعات أو الأيام قبل أو بعد بدء أو انتهاء الأحداث التي تريد أن يتم تذكيرك فيها، ويمكنك ضبط فترات تكرار لتذكيراتك، وإنشاء تذكيرات خاصة تعرض نصا أو تشغل أصواتا.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="entering-data-events-recurrence">
+<title
+>لسان تبويب التكرار</title>
+
+<para
+>تحدث بعض الأحداث بانتظام. يمكنك تحديد جدولتها الدقيقة هنا.</para>
+
+<screenshot id="screenshot-event-recurrence">
+<screeninfo
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان التكرار</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-recurrence.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان التكرار</phrase
+></textobject>
+<caption
+><para
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان التكرار</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<note
+><para
+>لتنشيط الإعدادات، ابدأ باختيار قاعدة تكرار على يمين <guilabel
+>يتكرر</guilabel
+> من المربع المنسدل. إذا اختير <guilabel
+>أبدا</guilabel
+>، فلن تتمكن من إجراء أي تغييرات في هذا اللسان.</para
+></note>
+
+<sect3 id="recurrence-recurrence-rule">
+<title
+>قاعدة التكرار</title>
+
+<para
+>اختر ما إذا كنت تريد تكرار هذا الحدث يوميا أو أسبوعيا أو شهريا أو سنويا. الخيارات الأكثر تفصيلا هي كما يلي:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>يوميا</guilabel
+></term>
+<listitem
+><para
+>حدد ما إذا كان الحدث يقع كل يوم (1)، أو كل يومين (2) وهكذا.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أسبوعيا</guilabel
+></term>
+<listitem
+><para
+>حدد ما إذا كان الحدث يقع كل أسبوع (1)، أو كل أسبوعين (2) وهكذا. حدد أيضا الأيام (الأحد ... الاثنين) التي يقع فيها الحدث. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>شهريا</guilabel
+></term>
+<listitem
+><para
+>يمكنك إما جعل الحدث يقع في نفس اليوم من الشهر، أو في أسبوع معين في يوم معين من الأسبوع. عليك الاختيار بين هذين الاحتمالين. افتراضيا، يفترض منظّمك أنك تريد التكرار في نفس اليوم التقويمي من الشهر (على سبيل المثال الخامس عشر). يمكنك أيضا ضبط الفترة، بحيث يمكنك التكرار شهريا، أو كل ثلاثة أشهر، وهكذا.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>سنويا</guilabel
+></term>
+<listitem>
+<para
+>هذا مشابه للشهري. عليك أن تختار ما إذا كنت تشير إلى يوم تقويمي من السنة (مثل اليوم 250 من السنة)، أو في أسبوع معين في يوم معين من أسبوع شهر ما (مثل الثلاثاء الثاني من شهر مارس)، أو يوم الشهر في شهر معين من السنة. افتراضيا، يفترض منظّمك أنك تقصد يوم الشهر. يمكنك ضبط الفترة لتعكس الأحداث التي تقع كل سنتين، أو كل أربع سنوات، وهكذا.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect3>
+
+<sect3 id="recurrence-recurrence-range">
+<title
+>نطاق التكرار</title>
+
+<para
+>افتراضيا، ستستمر الأحداث التي تتكرر للأبد؛ لا يوجد "نهاية" للتكرار. قد يكون هذا مرغوبا أو غير مرغوب، لذا يمكنك إنهاء التكرار عن طريق اختيار تاريخ انتهاء أو عدد مرات الحدوث.</para>
+
+</sect3>
+
+<sect3 id="recurrence-exceptions">
+<title
+>الاستثناءات</title>
+
+<para
+>قد يكون لديك قاعدة تكرار جيدة جدا، ولكن تدرك أن هناك بعض الاستثناءات. إذا ضبطت جدول حصصك الجامعية على سبيل المثال، فقد ترغب في وضع استثناءات للعطلات وما شابه. في هذه المنطقة، يمكنك إضافة وتغيير وحذف التواريخ من قائمة الاستثناءات (أي الأوقات التي حتى لو تطابقت قاعدة التكرار، <emphasis
+>لن يتم جدولة</emphasis
+> الحدث فيها). اختر تاريخا باستخدام محدد التاريخ، واضغط على <guibutton
+>أضف</guibutton
+> لتضمينه. لإزالة التواريخ، ميزها في المربع الموجود على الجانب الأيمن، ثم انقر فوق <guibutton
+>احذف</guibutton
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="entering-data-events-attachments">
+<title
+>المرفقات</title>
+
+<para
+>يمكن أن تحتوي الأحداث والمهام على مرفقات. يمكن تخزين المرفقات إما كروابط أو مضمنة. لإضافة مرفق اضغط على زر <guibutton
+>أضف</guibutton
+>.</para>
+
+<screenshot id="screenshot-event-attachments">
+<screeninfo
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان المرفقات</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="event-attachments.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان المرفقات</phrase
+></textobject>
+<caption
+><para
+>لقطة شاشة لحوار تحرير الحدث في منظّمك - لسان المرفقات</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>سيؤدي تحديد <guilabel
+>خزن نسخة من ملف المرفق داخل التقويم</guilabel
+> إلى تخزين المرفق داخل تقويمك، وهو ما قد يشغل مساحة كبيرة اعتمادا على حجم المرفق. إذا لم يُحدد هذا الخيار، فسيتم تخزين رابط يشير إلى المرفق فقط. لا تستخدم رابطا للمرفقات التي تتغير غالبا أو قد تُنقل (أو تُزال) من موقعها الحالي.</para>
+
+<para
+>تُوفّر الإجراءات التالية في السياق للعمل مع المرفقات:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>افتح</guimenuitem
+></term>
+<listitem
+><para
+>اعرض المرفق المحدد بالتطبيق المرتبط به.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>احفظ باسم...</guimenuitem
+></term>
+<listitem
+><para
+>يتيح حفظ مرفق موجود باسم مختلف.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>انسخ</guimenuitem
+>، و<guimenuitem
+>قص</guimenuitem
+> و<guimenuitem
+>الصق</guimenuitem
+></term>
+<listitem
+><para
+>يتيح النسخ والقص واللصق من وإلى الحافظة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>أزل</guimenuitem
+></term>
+<listitem
+><para
+>يحذف المرفق المحدد.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>خصائص...</guimenuitem
+></term>
+<listitem
+><para
+>يتيح تغيير مرفق موجود.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<!--FIXME works with certain type of calendars e.g. google calendar ?-->
+<sect2 id="entering-data-events-freebusy">
+<title
+>حر/مشغول</title>
+
+<para
+>عند إضافة حضار إلى حدثك، ستحتاج لمعرفة ما إن كانوا مشغولين أو متاحين في ذلك الوقت المحدد. إذا وفر الحضور معلومات حر/مشغول الخاصة بهم، يمكنك عرض جدولهم هنا قبل إرسال الدعوات.</para>
+
+<para
+>يعرض هذا مخطط جدول حر/مشغول على اليمين، حيث يمثل كل سطر أحد الحضور المدرجين على اليسار. تمثل المناطق المحددة في المخطط الوقت المحجوز بالفعل لأحداث أخرى، بينما تمثل المناطق غير المحددة الوقت الخالي من الأحداث. يمكنك نقل الحدث إلى نقطة زمنية مختلفة بسحبه بالفأرة، أو تغيير حجمه بتحريك حواف المنطقة المبرزة بالفأرة.</para>
+
+<para
+>معلومات حر/مشغول متاحة فقط إذا نشر الحاضر جدوله الخاص، وإذا ضُبط منظّمك بشكل صحيح لاسترجاعها. لمزيد من المعلومات حول ضبط منظّمك لنشر واسترجاع معلومات حر/مشغول، يرجى مراجعة <xref linkend="config"/>. سيسمح لك النقر المزدوج على مدخلة حاضر في القائمة بإدخال موقع معلومات حر/مشغول الخاصة به. </para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>المقياس</guilabel
+></term>
+<listitem
+><para
+>يضبط مستوى التقريب في مخطط الجدول. يظهر خيار <guilabel
+>ساعة</guilabel
+> نطاقًا لعدة ساعات، و<guilabel
+>يوم</guilabel
+> يظهر نطاقًا لبضعة أيام، و<guilabel
+>أسبوع</guilabel
+> يظهر نطاقًا لبضعة أشهر، بينما يختار <guilabel
+>آلي</guilabel
+> النطاق الأكثر ملاءمة للحدث الحالي أو المهمة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>وسّط عند البدء</guibutton
+></term>
+<listitem
+><para
+>اضغط على هذا الزر لتوسيط مخطط جدول حر/مشغول على وقت بدء ويوم هذا الحدث.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>اختر التاريخ</guibutton
+></term>
+<listitem
+><para
+>اضغط على هذا الزر لنقل الحدث آليًا إلى تاريخ ووقت يكون فيه جميع الحضور متاحين.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>أعد التحميل</guibutton
+></term>
+<listitem
+><para
+>اضغط على هذا الزر لإعادة تحميل بيانات حر/مشغول لجميع الحضور من الخوادم المقابلة.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>عندما تريد التأكيد، أو الإلغاء، أو التراجع عن البيانات المدخلة، اختر من بين أزرار الإجراء <guibutton
+>موافق</guibutton
+>، و<guibutton
+>طبق</guibutton
+> و<guibutton
+>ألغِ</guibutton
+>.</para>
+
+</sect2>
+
+<sect2 id="entering-data-events-template-buttons">
+<title
+>إدارة القوالب</title>
+
+<para
+>يفتح زر <guibutton
+>إدارة القوالب</guibutton
+> حوارًا يمكّنك من حفظ الحدث الحالي كقالب، بحيث يمكنك إعادة استخدام البيانات المدخلة للأحداث المستقبلية. كمثال، يمكنك حفظ قالب لاجتماع يعقد في نفس الموقع ومع نفس الأشخاص.</para>
+<para
+>باستخدام زر <guibutton
+>طبق</guibutton
+> يمكنك استخدام قالب موجود لحدثك. بمتابعة المثال في الفقرة السابقة، يمكنك تحديد جدول أعمال الاجتماع.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-to-do">
+<title
+>المهمات</title>
+
+<para
+>قائمة المهمات هي مكان لتكتب فيه ملاحظات لنفسك حول الأشياء التي تحتاج للقيام بها. المهمات هي وظائف قد تكون مجدولة أو غير مجدولة. هناك مهمات قصيرة المدى وطويلة المدى. على سبيل المثال، يجب عليك الذهاب إلى الحلاق خلال أسبوع، ويجب عليك بيع سيارتك القديمة خلال عام. من المحتمل أنك لا تريد انطلاق تذكير في وقت معين، بل تريد فقط الحصول على قائمة بالأشياء التي يجب عليك القيام بها، والتواريخ التي يجب الانتهاء منها كأقصى حد (تاريخ الاستحقاق).</para>
+
+<para
+>لإدخال مهمة جديدة، اختر <menuchoice
+><guimenu
+>إجراءات</guimenu
+><guimenuitem
+>مهمة جديدة...</guimenuitem
+></menuchoice
+>. ستظهر نافذة بخمسة ألسنة في الأسفل.</para>
+
+<sect2 id="entering-data-to-do-general">
+<title
+>لسان تبويب عام</title>
+
+<screenshot id="screenshot-todo-general">
+<screeninfo
+>لقطة شاشة لحوار تحرير المهمات في منظّمك</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="todo-general.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>لقطة شاشة لحوار تحرير المهمات في منظّمك</phrase
+></textobject>
+<caption
+><para
+>لقطة شاشة لحوار تحرير المهمات في منظّمك</para
+></caption>
+</mediaobject>
+</screenshot>
+
+<para
+>يشترك هذا اللسان في الكثير من الخيارات مع حوار <guilabel
+>تحرير الأحداث</guilabel
+>، ولكنه يحتوي على بعض العناصر الإضافية للمهمات:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>الإكمال</guilabel
+></term>
+<listitem
+><para
+>هذه قائمة منسدلة لنسبة الإكمال مضبوطة مبدئيًا على 0% مكتمل. لاحقًا، يمكنك الإشارة إلى تقدمك عن طريق ضبط النسبة المئوية المكتملة بخطوات قدرها 10%.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>الأولوية</guilabel
+></term>
+<listitem
+><para
+>عيّن أولوية لمهمتك. توفر هذه القائمة المنسدلة أولويات من واحد إلى تسعة، حيث يكون الرقم واحد هو الأعلى. تُضبط المهمات مبدئيًا على الأولوية الخامسة (متوسطة).</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="entering-data-required-fields">
+
+<title
+>الحقول المطلوبة</title>
+
+<para
+>هذه نظرة عامة على الحقول المطلوبة والحقول التي يمكن تركها فارغة عند إدخال الأحداث والمهمات:</para>
+
+<itemizedlist>
+<listitem
+><para
+>يجب عليك ملء حقل <guilabel
+>الملخص</guilabel
+>.</para
+></listitem>
+<listitem
+><para
+>يمكن ترك لسان <guilabel
+>عام</guilabel
+> فارغًا تمامًا.</para
+></listitem>
+<listitem
+><para
+>إذا وضعت <guilabel
+>تذكير</guilabel
+>، يجب عليك أيضًا تحديد الوقت، وإما الصوت الذي سيُشغل أو البرنامج الذي سيُنفذ.</para
+></listitem>
+<listitem
+><para
+>يمكن ترك لسان <guilabel
+>الحاضرون</guilabel
+> فارغًا تمامًا.</para
+></listitem>
+<listitem
+><para
+>يجب ملء لسان <guilabel
+>التكرار</guilabel
+> فقط إذا اخترت تكرارًا يوميًا أو أسبوعيًا أو شهريًا أو سنويًا. </para
+></listitem>
+<listitem
+><para
+>يمكن ترك حوار <guilabel
+>المرفقات</guilabel
+> فارغًا تمامًا.</para
+></listitem>
+</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="group-scheduling"
+>   <!--updated to 5.4.40-->
+<title
+>الجدولة الجماعية</title>
+
+<para
+>تتيح لك وظيفة الجدولة الجماعية في منظّمك تنظيم المواعيد والاجتماعات وعناصر المهمات المشتركة، وطلب الردود من الحاضرين ونشر العناصر. إذا دُعيت إلى حدث أو مهمة، يمكنك الرد عليها، موضحًا ما إذا كنت ستتمكن من الحضور، أو إرسال مقترح مضاد بترتيبات مختلفة، مثل وقت أو موقع مختلف. يمكنك أيضًا نشر جدول حر/مشغول الخاص بك لإعلام الناس بموعد توفرك، وطلب نفس المعلومات من الآخرين.</para>
+
+<para
+>حاليًا، يقوم منظّمك بجدولة الأحداث والمهمات باستخدام البريد الإلكتروني لنقل البيانات، في نظام قائم على المعايير، بروتوكول IMIP للجدولة الجماعية. لكونه معيارًا، يُستخدم IMIP من قبل العديد من العملاء الآخرين أيضًا. على سبيل المثال &Microsoft;<application
+>Outlook</application
+> و Lotus <application
+>Notes</application
+> و Novell <application
+>Evolution</application
+>. هذا يعني أنه يمكنك مشاركة الأحداث مع مستخدمين آخرين يستخدمون أحد هؤلاء العملاء. منظّمك متكامل مع بريدك لاستلام ومعالجة وإرسال الأحداث وردود الأحداث والتحديثات والإلغاءات وغيرها. على سبيل المثال، عندما تتلقى دعوة في بريدك، وتقرر قبولها بالنقر على رابط <guilabel
+>قبول</guilabel
+> في نص البريد، يُضاف الحدث إلى تقويمك، ويُرسل رد إلى منظم الحدث آليًا.</para>
+
+
+<!--TODO: check if to-dos work or not.-->
+<!--TODO: check what happens if you counter without this option on.-->
+
+<para
+>إذا حددت مربع <guilabel
+>استخدم اتصالات العمل الجماعي</guilabel
+> في <link linkend="config-main-groupscheduling"
+>ضبط الجدولة الجماعية لمنظّمك</link
+>، سيتولى منظّمك اتصالات الجدولة الجماعية نيابة عنك. بعبارة أخرى، ستحتاج نادرًا لاستخدام قائمة <guimenu
+>جدول</guimenu
+> مباشرة لتنفيذ إجراءات الجدولة. على سبيل المثال، إذا <link linkend="entering-data-events"
+>أنشأت حدثًا أو مهمة</link
+> مع حضور، سيسألك منظّمك عما إذا كنت تريد إرسال الدعوات إلى الحاضرين، لذا لن تحتاج لاستخدام عنصر قائمة <menuchoice
+> <guimenu
+>جدول</guimenu
+><guimenuitem
+>أرسل دعوة إلى الحاضرين</guimenuitem
+> </menuchoice
+> لاحقًا. أيضًا، إذا غيرت حالتك كحاضر لحدث دُعيت إليه، سيسألك عما إذا كنت تريد إرسال حالتك المحدثة إلى منظم الحدث، لذا لن تحتاج لاستخدام عنصر قائمة <menuchoice
+> <guimenu
+>جدول</guimenu
+><guimenuitem
+>أرسل تحديث الحالة</guimenuitem
+> </menuchoice
+> لاحقًا.</para>
+
+
+
+<sect1 id="publish">
+<title
+>نشر حدث أو مهمة أو مدخلة يومية</title>
+
+<para
+>إذا كنت ترغب ببساطة في إرسال حدث أو مهمة أو مدخلة يومية، اختر عنصر قائمة <menuchoice
+><guimenu
+>جدول</guimenu
+><guimenuitem
+>انشر معلومات العنصر...</guimenuitem
+></menuchoice
+> عندما يكون العنصر محددًا. سيظهر حوار يطلب منك عناوين البريد الإلكتروني التي ستتلقى الحدث أو المهمة. سيُرسل العنصر عبر البريد الإلكتروني بتنسيق iCalendar.</para>
+
+<para
+>يرجى ملاحظة أنه يمكنك استخدام هذا الإجراء لإرسال أي عنصر بالبريد الإلكتروني إلى أي شخص، وليس فقط لحاضري العنصر. في الواقع، يمكنك نشر عنصر ليس له حضور على الإطلاق، لأن النشر لا يطلب ردًا من الحاضرين.</para>
+
+<para
+>مثال: أنت تعزف في فرقة موسيقية، ومن وقت لآخر تقدم حفلات حية. لإخطار معجبيك بالحفلات، فأنت تدير قائمة بريدية. إذا كنت تستخدم منظّمك لتنظيم مواعيد حفلاتك، يمكنك ببساطة اختيار عنصر قائمة <menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>انشر معلومات العنصر...</guimenuitem
+></menuchoice
+>، وضع عنوان القائمة البريدية وسيُرسل الحدث. سيحصل مشتركو القائمة البريدية الذين يستخدمون منظّمك على تاريخ الحفلة مدرجًا آليًا في تقاويمهم. </para>
+
+<para
+>سيؤدي نشر حدث كما هو موضح أعلاه إلى إبلاغ المستلم بالحدث فقط، ولكنه لن يمنحه خيار طلب الحضور. استخدم <menuchoice
+><guimenu
+>جدول</guimenu
+><guimenuitem
+>أرسل بصيغة iCalendar...</guimenuitem
+></menuchoice
+> إذا كنت تريد توفير هذا الخيار بدلًا من ذلك. </para>
+
+</sect1>
+
+
+<sect1 id="as-organizer">
+<title
+>العمل كمنظم في الجدولة الجماعية</title>
+
+<para
+>عندما <link linkend="entering-data-events"
+>تنشئ حدثًا</link
+> أو <link linkend="entering-data-to-do"
+>مهمة</link
+>، و<link linkend="entering-data-events-attendees"
+>تضيف حضورًا إليها</link
+>، فأنت تعمل كمنظم للحدث. لإضافة حضور، استخدم <link linkend="entering-data-events-attendees"
+>لسان الحاضرين</link
+>، في حوار <guilabel
+>تحرير الحدث</guilabel
+>، أو <guilabel
+>تحرير المهمة</guilabel
+>. في <link linkend="agenda-view"
+>عرض الأجندة</link
+>، توضع أيقونة صغيرة <inlinemediaobject
+> <imageobject
+> <imagedata fileref="organizer.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>أيقونة المنظم</phrase
+> </textobject
+> </inlinemediaobject
+> في الحدث، إذا كنت أنت منظم حدث الجدولة الجماعية.</para>
+
+<para
+>المنظم مسؤول عن إرسال الدعوات، وجمع ردود الحاضرين، وإبقاء بيانات الحدث أو المهمة محدثة لجميع الأشخاص المعنيين.</para>
+
+<sect2 id="request">
+<title
+>إرسال الدعوات ومعالجة الردود</title>
+
+<para
+>لتنظيم حدث أو مهمة، <link linkend="entering-data-events"
+>أنشئها</link
+> في منظّمك وأضف جميع الأشخاص الذين يجب أن يحضروا باستخدام لسان الحاضرين. يمكن لمنظّمك إرسال دعوات إلى الحاضرين، إما آليًا (حسب <link linkend="config-main-groupscheduling"
+>ضبط الجدولة الجماعية لمنظّمك</link
+>)، أو باختيار الحدث أو المهمة واختيار عنصر قائمة <menuchoice
+><guimenu
+>جدول</guimenu
+><guimenuitem
+>أرسل دعوة إلى الحاضرين</guimenuitem
+></menuchoice
+>. يتلقى الحاضرون بريدًا إلكترونيًا يحتوي على جميع المعلومات ذات الصلة بالحدث أو المهمة. يمكنهم الرد على مقترح الاجتماع بقبوله أو رفضه أو بتقديم مقترح مضاد. يمكنهم أيضًا تفويض أو إعادة توجيه الدعوة. تُرسل كل هذه المعلومات إليك عبر البريد الإلكتروني مرة أخرى، وإذا كنت قد ضبطت بريدك بشكل مناسب، تُدرج ردود الحاضرين آليًا في تقويمك. إذا كان هناك حضور إضافيون يرغبون في المشاركة (على سبيل المثال بقبول دعوة تم توجيهها) سيُطلب منك قبول الحاضرين الجدد. </para>
+
+</sect2>
+
+<sect2 id="cancel">
+<title
+>إلغاء حدث أو مهمة</title>
+
+<para
+>لإلغاء حدث أو مهمة، يجب أن تكون أنت المنظم. إذا حددت مربع <guilabel
+>استخدم اتصالات العمل الجماعي</guilabel
+> في <link linkend="config-main-groupscheduling"
+>ضبط الجدولة الجماعية لمنظّمك</link
+>، فما عليك سوى حذف العنصر، وسيسألك منظّمك عن إرسال الإلغاء. إذا لم يكن الأمر كذلك، فما عليك سوى اختيار العنصر واختيار عنصر قائمة <menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>أرسل إلغاء إلى الحاضرين</guimenuitem
+></menuchoice
+>.</para>
+
+<para
+>سيرسل هذا الإجراء رسالة إلغاء إلى جميع الحاضرين، حتى يتمكنوا من إزالة العنصر من تقاويمهم أيضًا.</para>
+</sect2>
+</sect1>
+
+
+<sect1 id="as-attendee">
+<title
+>العمل كحاضر</title>
+
+<para
+>عندما تتلقى بريدًا إلكترونيًا يحتوي على دعوة وتقبلها، يُضاف الحدث أو المهمة إلى تقويمك. إذا كان حدثًا، توضع أيقونة صغيرة <inlinemediaobject
+> <imageobject
+> <imagedata fileref="meeting-attending.png" format="PNG"/> </imageobject
+> <textobject
+> <phrase
+>أيقونة الحاضر</phrase
+> </textobject
+> </inlinemediaobject
+> في الحدث في <link linkend="agenda-view"
+>عرض الأجندة</link
+>.</para>
+
+<sect2 id="reply">
+<title
+>الرد على دعوة</title>
+
+<para
+>إذا كان لديك دعوة في صندوق بريدك، يمكنك إما الضغط على <guibutton
+>ارفض</guibutton
+> لتجاهل الطلب، أو الضغط على <guibutton
+>اقبل</guibutton
+> أو <guibutton
+>اقبل بشرط</guibutton
+>. سيقوم الإجراءان الأخيران بإدراج العنصر في تقويمك. في أي حالة، سيرسل بريدك ردك إلى المنظم آليًا.</para>
+
+<para
+>يمكنك أيضًا <guibutton
+>فوض</guibutton
+> أو <guibutton
+>مرر</guibutton
+> الدعوة. عند التفويض، يمكنك اقتراح شخص آخر كوكيل لك. باستخدام <guibutton
+>مرر</guibutton
+> يمكنك توجيه الدعوة إلى شخص واحد أو أكثر لم يُدعوا بعد. عندما يقبل مستلم التفويض أو التمرير الدعوة، سيُطلب من المنظم الموافقة على الحاضر الجديد.</para>
+
+<para
+>إذا غيرت رأيك لأي سبب من الأسباب، فحرر حالتك في <link linkend="entering-data-events-attendees"
+>لسان الحاضرين</link
+> الخاص بالعنصر. إذا حددت مربع <guilabel
+>استخدم اتصالات العمل الجماعي</guilabel
+> في <link linkend="config-main-groupscheduling"
+>ضبط الجدولة الجماعية لمنظّمك</link
+>، سيسألك منظّمك عن إرسال بريد إلكتروني يحدّث حالة حضورك. إذا لم يكن الأمر كذلك، اختر عنصر القائمة <menuchoice
+> <guimenu
+>جدول</guimenu
+><guimenuitem
+>أرسل تحديث الحالة</guimenuitem
+> </menuchoice
+> لإرسال تحديث حالتك. </para>
+</sect2>
+
+<sect2 id="counter">
+<title
+>إرسال مقترح بديل</title>
+
+
+<para
+>إذا لم تكن راضيًا عن بعض خصائص الحدث أو المهمة التي دُعيت إليها، وترغب في إرسال مقترح مضاد إلى المنظم (على سبيل المثال موقع أو وقت بديل)، فما عليك سوى تحرير العنصر وإرساله مرة أخرى كمقترحك، باختيار العنصر واختيار عنصر قائمة <menuchoice
+> <guimenu
+>جدول</guimenu
+><guimenuitem
+>اطلب تغييرًا</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>سيتلقى منظم الحدث مقترحك عبر البريد الإلكتروني، وسيكون قادرًا على قبوله أو رفضه.</para>
+</sect2>
+
+<sect2 id="refresh">
+
+<title
+>طلب أحدث نسخة من حدث أو مهمة</title>
+
+<para
+>لطلب أحدث نسخة من حدث أو مهمة، اختر العنصر، واختيار عنصر قائمة <menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>اطلب تحديثًا</guimenuitem
+></menuchoice
+>. يجب على المنظم بعد ذلك إرسال أحدث نسخة من العنصر إليك.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="free-busy">
+<title
+>معلومات حر مشغول</title>
+
+<para
+>تمثل معلومات حر/مشغول جدول التوفر. من خلال تقديم الفترات التي يكون فيها للشخص التزامات سابقة بالفعل، يمكن للآخرين تجنب ترتيب المواعيد لهذه الفترات. لاحظ أنه يتم نشر الأوقات فقط، وليس الأحداث أو الأسباب أو الحاضرين.</para>
+
+<para
+>يدعم منظّمك نشر واسترجاع معلومات حر/مشغول، إما يدويًا أو آليًا.</para>
+
+<para
+>لإرسال معلومات حر/مشغول الخاصة بك بالبريد، اختر عنصر القائمة <menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>راسل معلومات حر مشغول...</guimenuitem
+></menuchoice
+>. أدخل عناوين البريد الإلكتروني التي تريد إرسال المعلومات إليها في الحوار واضغط على <guilabel
+>موافق</guilabel
+>.</para>
+
+<para
+>تحتوي خوادم العمل الجماعي عادةً على موقع قياسي لرفع معلومات حر/مشغول الخاصة بك، بحيث يمكن للمستخدمين الآخرين الوصول إلى بياناتك، ويمكنك الوصول إلى جدول حر/مشغول للمستخدمين الآخرين. يمكنك ضبط منظّمك لرفع وتنزيل معلومات حر/مشغول آليًا، باستخدام <link linkend="config-main-free-busy"
+>تفضيلات حر مشغول</link
+>، في حوار <guilabel
+>اضبط</guilabel
+> الخاص بمنظّمك.</para>
+
+<para
+>لرفع معلومات حر/مشغول الخاصة بك إلى الخادم المحدد في تفضيلات منظّمك، اختر عنصر القائمة <menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>ارفع معلومات حر مشغول</guimenuitem
+></menuchoice
+>.</para>
+
+</sect1>
+
+<sect1 id="examples">
+<title
+>أمثلة</title>
+
+<sect2 id="examples-entering-event">
+<title
+>إدخال حدث جماعي جديد</title>
+
+<para
+>في هذا المثال، ستدخل حدثًا. تحتاج إلى ترتيب اجتماع في <emphasis
+>يوم الاثنين القادم</emphasis
+> بخصوص إطلاق منتجك الجديد. ستكون رئيستك <emphasis
+>جوان هولدن</emphasis
+> هي رئيسة الحدث <emphasis
+>المالك</emphasis
+>، وأنت، جاك سميث، ستكون <emphasis
+>المنظم</emphasis
+> للحدث. سيكون هناك <emphasis
+>حاضران</emphasis
+> إضافيان (مشاركان): <emphasis
+>بيتر كرزينسكي</emphasis
+> و<emphasis
+>كيرستن فريز</emphasis
+>. أعطتك جوان برنامج الاجتماع. سيبدأ الموعد في <emphasis
+>الساعة 12 ظهرًا</emphasis
+> وينتهي في <emphasis
+>الساعة 1 ظهرًا</emphasis
+>. يجب جدولة نفس الموعد <emphasis
+>(تكراره)</emphasis
+> كل يوم اثنين. </para>
+
+<procedure>
+<step
+><para
+>باستخدام متصفح التاريخ، انتقل إلى يوم الاثنين القادم.</para
+></step>
+
+<step
+><para
+>اختر <menuchoice
+><guimenu
+>إجراءات</guimenu
+><guimenuitem
+>حدث جديد...</guimenuitem
+></menuchoice
+>، أو اختر المنطقة الواقعة بين <emphasis
+>12 ظهرًا</emphasis
+> وينتهي في <emphasis
+>1 ظهرًا</emphasis
+>، وابدأ بكتابة ملخص الحدث.</para
+></step>
+
+<step
+><para
+>أدخل ملخصًا مناسبًا. من المهم اختيار الوصف الموجز الصحيح، لأنه يظهر في أماكن عديدة. نقترح أن تدخل <userinput
+>حدث إطلاق المنتج</userinput
+>.</para
+></step>
+
+<step
+><para
+>أدخل برنامج الحدث المفصل في أكبر منطقة مستطيلة. من أجل هذا المثال البسيط، أدخل <userinput
+>مقدمة، الخطة، الخاتمة</userinput
+> في ثلاثة أسطر منفصلة.</para
+></step>
+
+<step
+><para
+>انتقل إلى لسان <guilabel
+>تذكير</guilabel
+>. اضبط وقت التذكير على 15 دقيقة، وهي فترة كافية لتحضير كوب من الشاي قبل بدء الاجتماع.</para
+></step>
+
+<step
+><para
+>انتقل إلى لسان <guilabel
+>عام</guilabel
+>. اختر <guilabel
+>موعد</guilabel
+> من حوار <guilabel
+>إدارة الأوسمة</guilabel
+>.</para
+></step>
+
+<step
+><para
+>انتقل إلى لسان <guilabel
+>التكرار</guilabel
+> واختر التكرار <guilabel
+>أسبوعيًا</guilabel
+>.</para>
+<note
+><para
+>أُنجز معظم العمل نيابة عنك آليًا. يضبط منظّمك التكرار الأسبوعي مبدئيًا. لاحظ أيضًا أنه تم اختيار <guilabel
+>ينتهي:</guilabel
+> <guilabel
+>أبدًا</guilabel
+>. هذا يعني أن هذا الحدث سيتكرر كل يوم اثنين (بدءًا من الاثنين 30 أغسطس 2010 بالطبع) حتى نهاية الوقت (أي حتى تقوم بحذفه).</para
+></note
+></step>
+
+<step
+><para
+>بما أن كل شيء على ما يرام هنا، انقر فوق لسان <guilabel
+>الحاضرون</guilabel
+>.</para
+></step>
+
+<step
+><para
+>في لسان <guilabel
+>الحاضرون</guilabel
+> يجب عليك القيام بما يلي:</para>
+<substeps>
+
+<step
+><para
+>سترى أنك أنت منظم الحدث.</para
+></step>
+
+<step
+><para
+>في حقل الإدخال الأول أدخل البريد الإلكتروني بتنسيق <userinput
+>الاسم &#060;البريد الإلكتروني&#062;</userinput
+>. في مثالنا، أدخل <userinput
+>Joan Holden &#060;jholden@thiscompany.com&#062;</userinput
+>. <tip
+><para
+>إذا كان الحاضرون موجودين بالفعل في دفتر عناوين كيدي الخاص بك، فبدلًا من كتابة الأسماء ورسائل البريد الإلكتروني، يمكنك الضغط على زر <guibutton
+>اختر الحاضرين...</guibutton
+> لإضافتهم.</para
+></tip
+></para
+></step>
+
+<step
+><para
+>اختر <emphasis
+>رئيس</emphasis
+> كدور.</para
+></step>
+
+<step
+><para
+>في حقل الإدخال التالي أدخل <userinput
+>Peter Krzinski &#060;pkrzinski@thiscompany.com&#062;</userinput
+>.</para
+></step>
+
+<step
+><para
+>في حقل الإدخال التالي أدخل <userinput
+>Kirsten Friese &#060;kfriese@thiscompany.com&#062;</userinput
+>. </para
+></step>
+
+</substeps>
+</step>
+
+<step
+><para
+>إذا كنت قد ضبطت منظّمك لاستخدام اتصالات العمل الجماعي، فسيُسأل عما إذا كنت تريد إرسال بريد إلكتروني إلى الحاضرين، يتضمن تفاصيل الحدث ويطلب ردًا إذا كان مربع <guilabel
+>اطلب ردًا</guilabel
+> في لسان <guilabel
+>الحاضرون</guilabel
+> محددًا. وإلا، يمكنك إرسال الدعوات باختيار عنصر القائمة <menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>أرسل دعوة إلى الحاضرين</guimenuitem
+></menuchoice
+>.</para
+></step>
+
+<step
+><para
+>راجع إعداد الحدث بالنقر فوق الألسنة. إذا كنت راضيًا، فانقر فوق <guibutton
+>موافق</guibutton
+>.</para
+></step>
+</procedure>
+
+<para
+>تهانينا، لقد جدولت حدثك الأول!</para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config"
+>  <!--updated to 5.4.40, missing General System Tray + Calendars-->
+<title
+>ضبط منظّمك</title>
+
+<para
+>لتغيير مظهر وسلوك منظّمك، اختر عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط منظّمك...</guimenuitem
+></menuchoice
+>. يمكنك الحصول على مزيد من المعلومات حول جميع خيارات وإمكانيات الضبط في <xref linkend="config-main"/>.</para>
+
+<para
+>لتخصيص مجموعة الأدوات المتاحة على الشريط، اختر عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط أشرطة الأدوات... </guimenuitem
+></menuchoice
+> واقرأ القسم <ulink url="help:/fundamentals/config.html#toolbars"
+>تخصيص أشرطة الأدوات</ulink
+> في أساسيات كيدي.</para>
+
+<para
+>يمكن ضبط معلومات التوطين مثل تنسيقات التاريخ والوقت من إعدادات النظام داخل وحدات <guilabel
+>اللغة</guilabel
+>، و<guilabel
+>التنسيقات</guilabel
+>. يمكن الوصول إلى وحدات التحكم هذه من داخل منظّمك: فقط اختر عنصر القائمة <menuchoice
+><guimenu
+> إعدادات</guimenu
+><guimenuitem
+>اضبط التاريخ والوقت...</guimenuitem
+></menuchoice
+>. يجب إعادة تشغيل منظّمك لتدخل التغييرات التي أُجريت في إعدادات النظام حيز التنفيذ.</para>
+
+<para
+>لضبط أين يخزن منظّمك ويسترجع أحداث التقويم، ومدخلات اليومية والمهمات، (في الملفات المحلية، خوادم العمل الجماعي وغيرها)، يرجى مراجعة <xref linkend="managing-resources"/>.</para>
+
+<sect1 id="config-main">
+<title
+>الضبط الرئيس لمنظّمك</title>
+
+<para
+>يتيح لك حوار الخيارات ضبط عدد من المناطق المختلفة في منظّمك.</para>
+
+<sect2 id="config-main-general">
+<title
+>صفحة عام</title>
+
+<sect3 id="config-main-general-personal">
+<title
+>لسان شخصي</title>
+
+<para
+>تتعلق الخيارات الشخصية بهويتك الشخصية، وأشياء متنوعة أخرى لا تندرج تحت أي من الفئات العامة الأخرى.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>الاسم الكامل</guilabel
+></term>
+<listitem
+><para
+>يُضبط <guilabel
+>الاسم الكامل</guilabel
+> مبدئيًا على <quote
+>مجهول</quote
+> مع عنوان بريد إلكتروني <quote
+>nobody@nowhere</quote
+>. يمكنك تغيير اسمك بإدخاله مباشرة هنا. سيُعرض هذا الاسم افتراضيًا كـ <guilabel
+>منظم</guilabel
+> في المهمات والأحداث.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>عنوان البريد الإلكتروني</guilabel
+></term>
+<listitem
+><para
+>سيُستخدم <guilabel
+>عنوان البريد الإلكتروني</guilabel
+> لتحديد مالك التقويم. عندما يفتح شخص آخر تقويمك أو أحداثك، فلن يتمكن من تعديلها لأنها ستكون للقراءة فقط.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>طريقة إرفاق البريد الإلكتروني المبدئية</guilabel
+></term>
+<listitem
+><para
+>يتيح لك هذا الخيار تحديد الطريقة التي يتم بها إرفاق بريد إلكتروني بحدث ما. يمكنك إرفاق بريد إلكتروني كبريد كامل بما في ذلك المرفقات، أو البريد باستثناء المرفقات أو رابط للبريد الإلكتروني فقط.</para>
+<para
+>لاحظ أن إرفاق بريد إلكتروني بدون مرفقات قد يؤدي إلى إبطال توقيعه. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>تصنيف الوصول المبدئي</guilabel
+></term>
+<listitem
+><para
+>يتيح لك هذا الخيار اختيار تصنيف الوصول المبدئي (عام، سري، خاص) لاستخدامه عند إنشاء حدث أو مهمة أو يومية. راجع RFC 5545 3.8.1.3. التصنيف للاطلاع على خاصية تصنيف الوصول في iCalendar.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-general-save">
+<title
+>لسان حفظ</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>أكد الحذف</guilabel
+></term>
+<listitem
+><para
+>عند تحديد مربع <guilabel
+>أكد الحذف</guilabel
+>، سيسألك منظّمك عن تأكيد كل عملية حذف. إذا لم يُحدد هذا المربع، فلن يسأل منظّمك قبل حذف الأحداث.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>يجب على الأحداث والمهمات ومدخلات اليومية الجديدة</guilabel
+></term>
+<listitem
+><para
+>يتيح لك هذا الخيار الاختيار بين إضافة عناصر جديدة إلى التقويم المبدئي أو جعل منظّمك يسألك عن التقويم الذي يجب استخدامه لحفظ كل عنصر جديد.</para>
+<para
+>خصوصية خادم Kolab2: يوصى باختيار <guilabel
+>السؤال عن التقويم الذي سيُستخدم</guilabel
+>، إذا كنت تنوي استخدام وظيفة المجلد المشترك لخادم <guilabel
+>Kolab</guilabel
+>. سيسمح لك هذا بالتحكم في المعلومات المتاحة لك فقط، والمعلومات التي تُنشر في المجلدات المشتركة.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<!-- System Tray tab missing-->
+
+<!-- Calendars tab missing-->
+
+</sect2>
+
+<sect2 id="config-main-time-and-date">
+<title
+>الوقت والتاريخ</title>
+
+<sect3 id="config-main-time-and-date-regional">
+<title
+>لسان إقليمي</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>يبدأ اليوم عند</guilabel
+></term>
+<listitem
+><para
+>اختر الوقت الذي تبدأ فيه يومك من القائمة المنسدلة. يمكن أن يكون الوقت الذي تستيقظ فيه عادةً، أو الوقت الذي تبدأ فيه العمل. لا يمنعك هذا الإعداد من إضافة أو عرض العناصر قبل هذا الوقت، بل يحدد فقط الوقت الذي سيُعرض افتراضيًا في الجزء العلوي من عرض التقويم. استخدم شريط التمرير لعرض الأحداث السابقة أو اللاحقة في عرض الأجندة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>مناطق العُطل</guilabel
+></term>
+<listitem
+><para
+>اختر مناطق العطلات من القائمة المنسدلة. بالنسبة لكل منطقة محددة، سيتعرف منظمك على تواريخها المهمة وأيام العطلات الخاصة بها ويعرضها في عرضي الأجندة والشهر. يمكنك تكوين أنواع العطلات المراد عرضها باستخدام القائمة المنسدلة «فئات العطلات» (انظر البند التالي). </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>فئات العُطل</guilabel
+></term>
+<listitem
+><para
+>حدد فئات العطلات من القائمة المنسدلة. مبدئيًا تكون جميع أنواع العطلات مفعّلة. حدد فئات العطلات التي تريد إخفاءها؛ فعلى سبيل المثال، قد لا يهتم بعض الأشخاص بالعطلات الدينية. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>الجدول الأسبوعي</guilabel
+></term>
+<listitem
+><para
+>تتيح لك الخيارات <guilabel
+>ساعة البدء اليومية</guilabel
+> و<guilabel
+>ساعة الانتهاء اليومية</guilabel
+> تحديد وقت بدء يومك المعتاد ووقت انتهائه. يفرّق منظّمك بين هذه الساعات بتمييزها بلون مختلف عن الساعات الخارجة عن روتينك المعتاد وعن العطلات.</para>
+<para
+>بالإضافة إلى ذلك، لديك مربعات اختيار بجانب كل يوم من أيام الأسبوع. حدد أيام الأسبوع التي تشكل جزءًا من جدولك المعتاد، وعادةً ما تستثني عطلات نهاية الأسبوع. سيميز منظّمك الساعات التي هي جزء من جدولك اليومي (ربما جدول عملك الأسبوعي) بشكل مختلف عن الساعات الخارجة عن جدولك المعتاد. يمنع تحديد <guilabel
+>استثنِ العطلات</guilabel
+> منظّمك من تمييز ساعات الجدول المعتادة (أو العمل) لأيام العطلات في المنطقة المحددة في القائمة المنسدلة <guilabel
+>استخدم منطقة العطلات</guilabel
+> أعلاه.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>يوم بدء الأسبوع</guilabel
+></term>
+<listitem
+><para
+>اختر اليوم الأول من كل أسبوع. عادةً، يمكنك تجاهل هذا لأنه مضبوط في لغتك.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-time-and-date-default">
+<title
+>لسان القيم المبدئية</title>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>وقت الموعد المبدئي</guilabel
+></term>
+<listitem
+><para
+>اختر وقت البدء المبدئي للأحداث من القائمة المنسدلة. عندما تختار <link linkend="menu-actions-new-event"
+>حدث جديد</link
+> من <link linkend="entering-data-events"
+>قائمة الإجراءات</link
+>، أو تنشئ حدثًا بطريقة أخرى بحيث لا يستطيع منظّمك تخمين متى تريد بدء حدثك، سيضع منظّمك هذه الساعة في محرر وقت البدء كقيمة مبدئية.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>المدة المبدئية للموعد الجديد (سس:دد):</guilabel
+></term>
+<listitem
+><para
+>اختر المدة المبدئية للأحداث باستخدام الصندوق الدوار. عندما تختار <link linkend="menu-actions-new-event"
+>حدث جديد</link
+> من <link linkend="entering-data-events"
+>قائمة الإجراءات</link
+>، أو تنشئ حدثًا بطريقة أخرى بحيث لا يستطيع منظّمك تخمين مدته، سيستخدم منظّمك هذا كقيمة مبدئية. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>التذكيرات</guilabel
+></term>
+<listitem
+><para
+>اختر <guilabel
+>وقت تذكير مبدئي</guilabel
+> لتحديد المدة التي يسبق فيها التذكير وقت الحدث المجدول الفعلي.</para>
+<para
+>اضبط ملفًا ليُستخدم كملف صوت مبدئي للتذكيرات الجديدة. يمكنك دائمًا تحديد ملف آخر في التذكير المتقدم الذي يمكن الوصول إليه من محرري الأحداث أو المهمات.</para>
+<para
+>حدد المربعين التاليين إذا كنت تريد تمكين التذكيرات لجميع الأحداث أو المهمات المنشأة حديثًا. يمكنك دائمًا إيقاف تشغيل التذكيرات في حوارات المحرر.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-views">
+<title
+>المنظورات</title>
+
+<para
+>تتيح لك هذه الخيارات ضبط منظورات منظّمك:</para>
+
+<sect3 id="config-main-views-general">
+<title
+>لسان عام</title>
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>الـ x يوم القادمة:</guilabel
+></term>
+<listitem
+><para
+>يتيح لك هذا الخيار تغيير عدد الأيام المعروضة بواسطة عنصر القائمة <guimenu
+>الـ x يوم القادمة</guimenu
+> في قائمة <guimenu
+>اذهب</guimenu
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>فعّل تلميحات الأدوات لعرض الملخصات</guilabel
+></term>
+<listitem
+><para
+>إذا كان ملخص الحدث أطول مما يتسع له العرض الحالي، فلن تُعرض الحروف المتبقية. حدد <guilabel
+>فعّل تلميحات الأدوات لعرض الملخصات</guilabel
+> إذا كنت تريد عرض الملخص كاملًا عند تحويم مؤشر الفأرة فوق الموعد لبضع ثوانٍ.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>تستخدم المهام ألوان الوسوم</guilabel
+></term>
+<listitem
+><para
+>حدد هذا المربع لتستخدم المهام ألوان الوسوم وليس الألوان الخاصة بحالات الاستحقاق، أو المستحقة اليوم، أو المتأخرة.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>خيارات <link linkend="description-view"
+>منقل التاريخ</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر العناصر التي تتكرر يوميًا</guilabel
+></term>
+<listitem
+><para
+>إذا حُدد مربع <guilabel
+>أظهر العناصر التي تتكرر يوميًا</guilabel
+>، فستُعرض الأيام التي تحتوي على أحداث متكررة يوميًا بخط عريض في منقل التاريخ.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر العناصر التي تتكرر أسبوعيًا</guilabel
+></term>
+<listitem
+><para
+>إذا حُدد مربع <guilabel
+>أظهر العناصر التي تتكرر أسبوعيًا</guilabel
+>، فستُعرض الأيام التي تحتوي على أحداث متكررة أسبوعيًا بخط عريض في منقل التاريخ.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر المهام بدلًا من الأحداث عند التواجد في عرض المهام</guilabel
+></term>
+<listitem
+><para
+>حدد هذا المربع لإظهار الأيام التي تحتوي على مهام بخط عريض في منقل التاريخ عندما تكون في عرض المهام.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر اليوميات بدلًا من الأحداث عند التواجد في عرض اليوميات</guilabel
+></term>
+<listitem
+><para
+>حدد هذا المربع لإظهار الأيام التي تحتوي على يوميات بخط عريض في منقل التاريخ عندما تكون في عرض اليوميات.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>تحدد أرقام الأسابيع أسبوع عمل عندما تكون في وضع أسبوع العمل</guilabel
+></term>
+<listitem
+><para
+>إذا حُدد مربع <guilabel
+>تحدد أرقام الأسابيع أسبوع عمل عندما تكون في وضع أسبوع العمل</guilabel
+>، فإن النقر على أرقام الأسابيع على جانب منقل التاريخ سينقلك عبر أسابيع العمل بدلًا من الأسابيع العادية المكونة من 7 أيام.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-agenda">
+<title
+>لسان عرض المفكرة</title>
+
+<para
+>خيارات <link linkend="agenda-view"
+>عرض المفكرة</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>حجم الساعة:</guilabel
+></term>
+<listitem
+><para
+>باستخدام هذا يمكنك التحكم في ارتفاع الصفوف في عرض المفكرة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر الأيقونات في عناصر عرض المفكرة</guilabel
+></term>
+<listitem
+><para
+>حدد هذا المربع لعرض الأيقونات (تذكير، تكرار، إلخ) في عناصر عرض المفكرة</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>ارسم خطوط شبكة أفقية عريضة للساعات الزوجية</guilabel
+></term>
+  <listitem
+><para
+>حدد هذا المربع لرسم خطوط شبكة أفقية أعرض/أسمك للساعات الزوجية (12 صباحًا، 2 صباحًا، 4 صباحًا، إلخ).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>أظهر أوصاف الحوادث في عناصر عرض المفكرة</guilabel
+></term>
+  <listitem
+><para
+>حدد هذا المربع لعرض أوصاف الحوادث في عناصر عرض المفكرة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>اعرض أماكن الأحداث في عناصر عرض جدول الأعمال</guilabel
+></term>
+  <listitem
+><para
+>أشّر على هذا المربّع لعرض أماكن الأحداث في عناصر منظور جدول الأعمال.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>لون أيام الانشغال بلون خلفية مختلف</guilabel
+></term>
+  <listitem
+><para
+>حدد هذا المربع إذا كنت تريد ملء خلفية عرض المفكرة بلون مختلف في الأيام التي بها حدث واحد على الأقل طوال اليوم ومُعلم بأنه مشغول.</para>
+    <para
+>يرجى النظر في منطقة تهيئة الألوان لاختيار لون خلفية الانشغال لعرض المفكرة الذي تفضله.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر المهام</guilabel
+></term>
+<listitem
+><para
+>يبدل مربع الاختيار هذا عرض المهام في عروض اليوم والأسبوع والشهر في عرض المفكرة. إذا كان لديك الكثير من المهام المرتبطة بتاريخ استحقاق، فقد ترغب في إيقاف تشغيلها لتجنب الفوضى.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر خط الوقت الحالي (ماركوس بينز)</guilabel
+></term>
+<listitem
+><para
+>يبدل مربع الاختيار هذا تشغيل أو إيقاف خط أحمر في عرض اليوم أو الأسبوع يشير إلى الوقت الحالي (خط ماركوس بينز). يعطيك هذا الخط إشارة إلى مقدار الوقت المتبقي، مثلًا حتى موعد الاجتماع.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر الثواني والمنطقة الزمنية على خط الوقت الحالي (ماركوس بينز)</guilabel
+></term>
+<listitem
+><para
+>يبدل مربع الاختيار هذا تشغيل أو إيقاف الثواني على خط الوقت الحالي (خط ماركوس بينز). قد تُعرض المنطقة الزمنية أيضًا بناءً على محليتك.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>اختيار المدى الزمني في عرض المفكرة يبدأ محرر الأحداث</guilabel
+></term>
+<listitem
+><para
+>حدد هذا المربع لبدء محرر الأحداث آليًا عند اختيار مدى زمني في العرض اليومي والأسبوعي. لاختيار مدى زمني، اسحب الفأرة من وقت البدء إلى وقت الانتهاء للحدث الذي تنوي التخطيط له.</para
+></listitem>
+</varlistentry>
+<!--FIXME Icons to use dropdown box missing-->
+<varlistentry>
+  <term
+><guilabel
+>ألوان عناصر جدول الأعمال</guilabel
+></term>
+  <listitem>
+    <para
+>اختر خيار <guilabel
+>الوسم في الداخل، التقويم في الخارج</guilabel
+> إذا كنت تريد رسم عناصر التقويم بلون الوسم المرتبط بها، مع رسم حدود العنصر بلون التقويم الخاص به.</para>
+
+    <para
+>اختر خيار <guilabel
+>التقويم في الداخل، الوسم في الخارج</guilabel
+> إذا كنت تريد رسم عناصر التقويم بلون التقويم المرتبط بها، مع رسم حدود العنصر بلون الوسم الخاص به.</para>
+
+    <para
+>اختر خيار <guilabel
+>الوسم فقط</guilabel
+> إذا كنت تريد رسم عناصر التقويم (الداخل والحدود معًا) بلون الوسم المرتبط بها.</para>
+
+    <para
+>اختر خيار <guilabel
+>التقويم فقط</guilabel
+> إذا كنت تريد رسم عناصر التقويم (الداخل والحدود معًا) بلون التقويم الخاص بها.</para>
+
+    <para
+>يرجى استخدام صفحة تهيئة <link linkend="config-main-colors"
+>الألوان والخطوط</link
+> لضبط هذه الألوان.</para>
+  </listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>عرض تقاويم متعددة</guilabel
+></term>
+<listitem
+><para
+>اختر ما إذا كان يجب دمج جميع التقاويم في عرض مفكرة واحد، أو يجب عرض كل تقويم في عرض مفكرة خاص به، أو إذا كان كل عرض يجب أن يكون متاحًا عبر ألسنة. يمكن تخصيص العرض جنبًا إلى جنب باستخدام <guimenuitem
+>اضبط العرض</guimenuitem
+> من قائمة السياق. </para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-month">
+<title
+>لسان عرض الشهر</title>
+
+<para
+>خيارات <link linkend="month-view"
+>عرض الشهر</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>خيارات العرض</guilabel
+></term>
+<listitem>
+  <para
+>يسمح مربعا التأشير الأولان بعرض وقت البداية فقط، أو كل من وقت البداية ووقت النهاية.</para>
+  <para
+>حدد هذا خيار <guilabel
+>لوّن أيام الانشغال بلون خلفية مختلف</guilabel
+> إذا كنت تريد ملء خلفية عرض الشهر بلون مختلف في الأيام التي بها حدث واحد على الأقل طوال اليوم ومُعلم بأنه مشغول.</para>
+  <para
+>استخدم مربعات التأشير الأربعة التالية لعرض أيقونات أو مهام أو يوميات أو عطلات في عرض الشهر اختياريًا.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>لون أيام الانشغال بلون خلفية مختلف</guilabel
+></term>
+  <listitem
+><para
+>حدد هذا المربع إذا كنت تريد ملء خلفية عرض الشهر بلون مختلف في الأيام التي بها حدث واحد على الأقل طوال اليوم ومُعلم بأنه مشغول.</para>
+    <para
+>يرجى النظر في منطقة تهيئة الألوان لاختيار لون خلفية الانشغال لعرض المفكرة/الشهر الذي تفضله.</para
+></listitem>
+</varlistentry>
+
+<!--FIXME Icons to use dropdown box missing-->
+
+
+<varlistentry>
+  <term
+><guilabel
+>ألوان عرض الشهر</guilabel
+></term>
+  <listitem>
+    <para
+>اضبط ألوان عرض الشهر كما في <link linkend="config-main-views-agenda"
+>عرض المفكرة</link
+>.</para>
+    </listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+
+<sect3 id="config-main-views-todo">
+<title
+>لسان عرض المهام</title>
+
+<para
+>خيارات <link linkend="todo-view"
+>عرض المهام</link
+>:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>أظهر المهام المكتملة دائمًا في أسفل القائمة</guilabel
+></term>
+<listitem
+><para
+>إذا فعلت هذا الخيار، فستُجمع جميع المهام المكتملة دائمًا في أسفل قائمة المهام.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>سجل المهام المكتملة في مدخلات اليومية</guilabel
+></term>
+<listitem
+><para
+>إذا حددت هذا المربع، فسيضيف منظّمك آليًا مدخلة يومية لكل مهمة مكتملة.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-colors-fonts">
+<title
+>الألوان والخطوط</title>
+
+<sect3 id="config-main-colors">
+<title
+>الألوان</title>
+
+<para
+>اختر اللون المستخدم للعطلات، وللإبراز، ولوسوم الأحداث المحددة. يمكنك اختيار لون مختلف لكل وسم. بالطبع، قد يكون كثرة الألوان مربكًا، لذا استخدم الحس السليم. يعتمد استخدام اللون أيضًا على <link linkend="config-main-views"
+>تفضيلات العرض.</link
+></para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>لون العطلة</guilabel
+></term>
+<listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون العطلة. سيُستخدم لون العطلة لاسم العطلة في عرض الشهر وتاريخ العطلة في منقل التاريخ.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>لون خلفية عرض المفكرة</guilabel
+></term>
+<listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون خلفية عرض المفكرة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>لون خلفية أيام الانشغال</guilabel
+></term>
+<listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون خلفية الانشغال لعرض المفكرة أو الشهر. يُستخدم هذا اللون فقط عندما يكون خيار رسم أيام الانشغال بلون مختلف مفعلًا في أي من هذين العرضين.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>لون خط الوقت الحالي في عرض المفكرة</guilabel
+></term>
+<listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون لخط الوقت الحالي (ماركوس بينز).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>لون ساعات العمل</guilabel
+></term>
+<listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون خلفية ساعات العمل في عرض المفكرة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>لون المهمة المستحقة اليوم</guilabel
+></term>
+<listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون المهمة المستحقة اليوم.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>لون المهمة المتأخرة</guilabel
+></term>
+<listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون المهمة المتأخرة.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+  <term
+><guilabel
+>لون خلفية اليوم في عرض الشهر</guilabel
+></term>
+  <listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون الخلفية لتاريخ اليوم في عرض الشهر.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+   <term
+><guilabel
+>لون تمييز شبكة المتصفح</guilabel
+></term>
+   <listitem
+><para
+>يفتح هذا الزر حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار لون إبراز نطاق التواريخ المحددة في المتصفح.</para
+></listitem>
+ </varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>الأوسمة</guilabel
+></term>
+<listitem
+><para
+>تتيح لك هذه المجموعة تعيين لون لكل وسم. اختر وسمًا من القائمة المنسدلة، واضغط على الزر لفتح حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار اللون لهذا الوسم. <link linkend="config-main-views"
+>بناءً على تفضيلات العرض</link
+>، سيُستخدم هذا اللون لتمييز الأحداث والمهام التي تحمل هذا الوسم في عروض المفكرة والشهر.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>الموارد</guilabel
+></term>
+<listitem
+><para
+>تتيح لك هذه المجموعة تعيين لون لكل مورد. اختر موردًا من القائمة المنسدلة، واضغط على الزر لفتح حوار <guilabel
+>اختر اللون</guilabel
+>، مما يتيح لك اختيار اللون لهذا المورد. <link linkend="config-main-views"
+>بناءً على تفضيلات العرض</link
+>، سيُستخدم هذا اللون لتمييز الأحداث والمهام المخزنة باستخدام هذا المورد في عروض المفكرة والشهر.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-fonts">
+<title
+>لسان الخطوط</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>شريط الوقت</guilabel
+></term>
+<listitem
+><para
+>اضغط على هذا الزر لاختيار الخط، ونمط الخط وحجمه لشريط الوقت.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>عرض الشهر</guilabel
+></term>
+<listitem
+><para
+>اضغط على هذا الزر لاختيار الخط، ونمط الخط وحجمه لعرض الشهر.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>عرض المفكرة</guilabel
+></term>
+<listitem
+><para
+>اضغط على هذا الزر لاختيار الخط، ونمط الخط وحجمه لعرض المفكرة (عروض اليوم، والأسبوع وأسبوع العمل).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>خط الوقت الحالي (ماركوس بينز)</guilabel
+></term>
+<listitem
+><para
+>اضغط على هذا الزر لاختيار الخط، ونمط الخط وحجمه لخط ماركوس بينز (خط ملون في عرض المفكرة يشير إلى الوقت الحالي).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="config-main-groupscheduling">
+<title
+>الجدولة الجماعية</title>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>استخدم تواصل العمل الجماعي</guilabel
+></term>
+<listitem
+><para
+>حدد هذا المربع لإرسال رسائل بريد إلكتروني آليًا عند إنشاء أو تحديث أو حذف أحداث أو مهام تشمل آخرين. يمكن أن يكون هذا البريد دعوة للحاضرين في حدث أنشأته، أو إلغاء لحدث أنشأته، أو ردًا أو تحديثًا لحالة دعوتك، أو طلب تغيير حدث، إلخ. حدد هذا الخيار إذا كنت تريد استخدام وظائف العمل الجماعي (مثل تهيئة متصلك كعميل كيدي <guilabel
+>Kolab</guilabel
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أرسل نسخة للمالك عند مراسلة الأحداث</guilabel
+></term>
+<listitem
+><para
+>عند تحديد مربع <guilabel
+>أرسل نسخة للمالك عند مراسلة الأحداث</guilabel
+>، ستتلقى نسخة من جميع رسائل البريد الإلكتروني التي يرسلها منظّمك بناءً على طلبك إلى الحاضرين في الحدث.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>نقل البريد</guilabel
+></term>
+<listitem
+><para
+>هنا يمكنك اختيار نوع نقل البريد الذي تود استخدامه. يمكنك إما استخدام بريدك أو أمر &Sendmail; (الذي يجب أن يكون مثبتًا على نظامك ليعمل).</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="config-main-free-busy">
+<title
+>حر/مشغول</title>
+
+<para
+>تمثل معلومات حر/مشغول جدول التوفر. من خلال تقديم الفترات التي يكون فيها للشخص التزامات سابقة بالفعل، يمكن للآخرين تجنب ترتيب المواعيد لهذه الفترات. لاحظ أنه يتم نشر الأوقات فقط، وليس الأحداث أو الأسباب أو الحاضرين.</para>
+
+<para
+>يدعم منظّمك نشر واسترجاع معلومات حر/مشغول، إما يدويًا أو آليًا.</para>
+
+<sect3 id="config-main-free-busy-publish">
+<title
+>انشر</title>
+<para
+>عن طريق نشر معلومات التفرغ/الانشغال الخاصة بك، فإنك تسمح للآخرين بأخذ جدول أوقات انشغالك في الاعتبار عند دعوتك لحدث ما.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>انشر معلومات التفرغ/الانشغال آليًا</guilabel
+></term>
+<listitem
+><para
+>فعل هذا الخيار إذا كنت ترغب في رفع معلومات التفرغ/الانشغال الخاصة بك آليًا. لاحظ أنه يمكنك تخطي هذا الخيار واختيار مراسلة أو رفع معلومات التفرغ/الانشغال عبر قائمة <guilabel
+>الجدول</guilabel
+> في منظّمك.</para>
+
+<para
+>إذا كان تطبيقك مضبوطًا للعمل كعميل <guilabel
+>كيدي Kolab</guilabel
+>، فهذا ليس مطلوبًا. يمكن لخادم <guilabel
+>Kolab2</guilabel
+> تولي نشر معلومات التفرغ/الانشغال وإدارة الوصول إليها من المستخدمين الآخرين.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>أقل وقت بين عمليات الرفع (بالدقائق)</guilabel
+></term>
+<listitem
+><para
+>إذا اخترت نشر معلوماتك آليًا، يمكنك ضبط الفاصل الزمني بالدقائق بين كل عملية رفع.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>انشر (مبدئيًا 60) يومًا من معلومات التفرغ/الانشغال</guilabel
+></term>
+<listitem
+><para
+>اضبط عدد أيام التقويم التي ترغب في نشرها وإتاحتها للآخرين</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>عنوان المسار للخادم</guilabel
+></term>
+<listitem
+><para
+>أدخل عنوان المسار للخادم الذي ستُنشر عليه معلومات التفرغ/الانشغال الخاصة بك. اسأل مدير الخادم عن هذه المعلومات.</para>
+<para
+>مثال لخادم Kolab2: <userinput
+>webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>اسم المستخدم</guilabel
+></term>
+<listitem
+><para
+>أدخل معلومات الولوج المتعلقة بحسابك على الخادم</para>
+<para
+>خصوصية خادم Kolab2: المعرف الفريد (UID) المسجل الخاص بك، مبدئيًا، سيكون مشابهًا لعنوان بريدك الإلكتروني على خادم Kolab2 ولكن قد يختلف. في هذه الحالة أدخل معرفك الفريد. اسأل مدير الخادم عن معرفك الفريد إذا كنت لا تعرفه.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>كلمة السر</guilabel
+></term>
+<listitem
+><para
+>أدخل كلمة سرك (كلمة سر الولوج للخادم) هنا.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>تذكر كلمة السر</guilabel
+></term>
+<listitem
+><para
+>حدد هذا الخيار إذا كنت تريد من منظّمك تذكر كلمة سرك وتخطي سؤالك في كل مرة يرفع فيها معلومات التفرغ/الانشغال.</para>
+<warning
+><para
+>لا يُنصح بتخزين كلمة سرك في ملف التهيئة لأسباب أمنية.</para
+></warning
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="config-main-free-busy-retrieve">
+<title
+>استرجع</title>
+
+<para
+>عن طريق استرجاع معلومات التفرغ/الانشغال للآخرين، يمكنك أخذ جدول أوقات انشغالهم في الاعتبار عند دعوتهم لحدث ما.</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guilabel
+>استرجع معلومات التفرغ/الانشغال للآخرين آليًا</guilabel
+></term>
+<listitem
+><para
+>أتمت عملية استرجاع وقت تفرغ/انشغال المستخدمين الآخرين. املأ قسم معلومات الخادم أدناه لتفعيل هذا الخيار.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>استخدم عنوان البريد الإلكتروني الكامل للاسترجاع</guilabel
+></term>
+<listitem
+><para
+>يتيح لك هذا الإعداد تغيير اسم الملف الذي سيُجلب من الخادم. إذا حددت هذا الخيار، فسينزل ملف تفرغ/انشغال يسمى <userinput
+>user@domain.ifb</userinput
+>، وإلا فسيجلب <userinput
+>user.ifb</userinput
+>. اسأل مدير الخادم إذا لم تكن متأكدًا من كيفية ضبط هذا الخيار.</para>
+<para
+><guilabel
+>خصوصية خادم Kolab2:</guilabel
+> إذا كنت تضبط منظّمك كمكون لعميل <guilabel
+>كيدي Kolab (متصلك/Kolab)</guilabel
+> فيجب عليك تحديد هذا الخيار.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>عنوان المسار للخادم</guilabel
+></term>
+<listitem
+><para
+>أدخل عنوان المسار للخادم الذي ستُجلب منه معلومات التفرغ/الانشغال. اسأل مدير الخادم عن هذه المعلومات.</para>
+<para
+><guilabel
+>مثال لخادم Kolab2: </guilabel
+><userinput
+>webdavs://kolab2.com/freebusy/</userinput
+> </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>اسم المستخدم</guilabel
+></term>
+<listitem
+><para
+>أدخل معلومات الولوج المتعلقة بحسابك على الخادم.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>كلمة السر</guilabel
+></term>
+<listitem
+><para
+>أدخل كلمة سرك (كلمة سر الولوج للخادم) هنا. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>تذكر كلمة السر</guilabel
+></term>
+<listitem
+><para
+>حدد هذا الخيار إذا كنت تريد من منظّمك تذكر كلمة سرك وتخطي سؤالك في كل مرة يجلب فيها ملفات التفرغ/الانشغال.</para>
+<warning
+><para
+>لا يُنصح بتخزين كلمة سرك في ملف التهيئة لأسباب أمنية.</para
+></warning>
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect3>
+</sect2>
+
+<sect2 id="config-main-plugins">
+<title
+>الملحقات</title>
+
+<para
+>لمزيد من المعلومات حول ضبط الملحقات، يرجى الرجوع إلى <xref linkend="plugins-chapter"/></para>
+
+</sect2>
+
+<sect2 id="config-custom-pages">
+<title
+>صفحات مخصصة</title>
+
+<para
+>تتيح لك هذه الصفحة إضافة عناصر واجهة مستخدم رسومية خاصة بك لتخزين قيمك الخاصة في منظّمك.</para>
+<para
+>أنشئ عناصرك كما هو موصوف في <guilabel
+>كيف يعمل هذا؟</guilabel
+></para>
+
+</sect2>
+</sect1>
+
+</chapter>
+
+<chapter id="plugins-chapter"
+><!--updated to 5.4.40-->
+
+<title
+>الملحقات</title>
+
+<para
+>يوفر لك منظّمك إمكانية توسيع التطبيق باستخدام الملحقات. </para>
+
+<para
+>يمكن ضبط الملحقات ضمن حوار تهيئة منظّمك الرئيس. اختر <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط منظّمك</guimenuitem
+></menuchoice
+> وانقر على أيقونة <guilabel
+>الملحقات</guilabel
+> في الشريط الجانبي لقائمة الأيقونات في الحوار. </para>
+
+<sect1 id="plugins-chapter-availableplugins">
+<title
+>الملحقات المتاحة</title>
+
+<sect2 id="date-numbers-plugin">
+<title
+>أرقام التاريخ</title>
+<para
+>يضيف هذا المحق رقم اليوم في السنة إلى عرض المفكرة. على سبيل المثال، 1 فبراير هو اليوم رقم 32. </para>
+</sect2>
+
+<sect2 id="lunar-phases-plugin">
+  <title
+>مراحل القمر</title>
+  <para
+>يعرض هذا المحلق مرحلة القمر في اليوم (جديد ، أول ، آخر ، كامل) لكل تاريخ ، تحسب المرحلة للظهر حسب توقيت UTC ؛ لذلك ، يجب أن تتوقع الاختلافات في يوم واحد في أي من الاتجاهين. </para>
+</sect2>
+
+<sect2 id="wikipedia-thisday-plugin">
+<title
+>ويكيبديا  'هذا اليوم في التاريخ'</title>
+<para
+>يوفر هذا الملحق روابط لصفحات ويكيبيديا <quote
+>في مثل هذا اليوم</quote
+>. </para>
+</sect2>
+
+<sect2 id="wikipedia-pictureoftheday-plugin">
+<title
+>ملحق ويكيبيديا 'صورة اليوم' للتقاويم</title>
+<para
+>يوفر هذا الملحق <quote
+>صورة اليوم</quote
+> من ويكيبيديا. </para>
+</sect2>
+
+<sect2 id="jewish-calendar-plugin">
+<title
+>ملحق التقويم اليهودي</title>
+<para
+>يوفر هذا الملحق تواريخ التقويم اليهودي بالإضافة إلى تواريخ التقويم الميلادي. في حوار تهيئة الملحق، يمكنك اختيار ما إذا كنت تريد عرض العطلات الإسرائيلية، والبارشا الأسبوعية، ويوم أومر و/أو شول هامويد. </para>
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="reference">
+<title
+>مرجع</title>
+
+<sect1 id="reference-menus"
+><!--updated to 5.4.40, Send as iCalendar-->
+<title
+>القوائم</title>
+
+<para
+>عندما يبدأ منظّمك، تظهر نافذة منظّمك الرئيسة. تحتوي النافذة على عدة مكونات: شريط قوائم، وشريط أدوات، وتقويم شهري، ولوحة رئيسة بها <quote
+>العرض</quote
+> الحالي للأحداث، وقائمة مهام.</para>
+
+<para
+>توفر القوائم وصولًا إلى جميع العمليات الشائعة التي يمكن إجراؤها باستخدام التقويم، بما في ذلك الحفظ، والتحميل، وإضافة وحذف الأحداث، والمهام ومدخلات اليومية، والطباعة والمزيد.</para>
+
+<para
+>يرجى ملاحظة أنه عند استخدام منظّمك كمكون تقويم في متصلك، تختلف القوائم عن التطبيق المستقل.</para>
+
+<sect2 id="reference-menus-file">
+<title
+>ملف</title>
+
+<para
+>توفر قائمة <guimenu
+>ملف</guimenu
+> وصولًا إلى الوظائف التي تشمل التقويم بأكمله.</para>
+
+<variablelist>
+
+<varlistentry id="menu-file-open">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-open.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> ملف</guimenu
+> <guimenuitem
+>افتح</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>يفتح حوار ملف يتيح لك اختيار ملف vCalendar أو iCalendar جديد لتحميله.</action
+> إذا كنت قد أجريت تغييرات على التقويم الحالي، فسيُعطى لك خيار حفظها قبل تحميل تقويم جديد.</para>
+<para
+>لمزيد من المعلومات حول هذا، يرجى مراجعة <xref linkend="managing-import-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="document-print.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> ملف</guimenu
+> <guimenuitem
+>اطبع</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>اختر <guimenuitem
+>اطبع</guimenuitem
+> أو انقر فوق أيقونة <guilabel
+>اطبع</guilabel
+> لـ <action
+>طباعة التقويم الحالي</action
+>. يمكنك تحديد نطاق التواريخ المراد طباعتها (إما يدويًا أو باستخدام ودجة التقويم) ونمط الطباعة (يوم، أسبوع، شهر أو المهام واليوميات).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-print-preview">
+<term
+><inlinemediaobject
+><imageobject>
+<imagedata fileref="document-print-preview.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> ملف</guimenu
+><guimenuitem
+>معاينة الطباعة</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+>إذا اخترت <guimenuitem
+>معاينة الطباعة</guimenuitem
+> أو نقرت على أيقونة <guiicon
+>معاينة الطباعة</guiicon
+>، <action
+>سيعرض التقويم الحالي على شاشتك بدلًا من طابعته</action
+>. استخدم هذه الميزة للتحقق مما إذا كانت المخرجات ستكون صحيحة قبل بدء الطباعة.</para>
+<para
+>يمكنك تحديد نطاق التواريخ المراد طباعتها (إما يدويًا أو باستخدام ودجة التقويم) ونوع العرض (يوم، أسبوع، شهر أو مهمة).</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-import-calendar">
+<term
+><menuchoice
+><guimenu
+>ملف</guimenu
+> <guisubmenu
+>استورد</guisubmenu
+> <guimenuitem
+>استورد تقويمًا</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>إذا كان لديك ملف iCalendar أو vCalendar مختلف في مكان ما، وترغب في <action
+>دمج محتوياته في تقويمك الخاص، أو إضافته كمورد جديد أو فتحه في نافذة جديدة</action
+>، فاختر عنصر القائمة هذا. الوقت المناسب للقيام بذلك هو إذا تلقيت vCalendar مع بعض المدخلات عبر البريد الإلكتروني مثلًا.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="managing-import"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-export-icalendar">
+<term
+><menuchoice
+><guimenu
+>ملف</guimenu
+> <guisubmenu
+>صدر</guisubmenu
+> <guimenuitem
+>صدر كـ iCalendar</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>سيصدر هذا الإجراء جميع الأحداث النشطة والمهام ومدخلات اليوميات (بغض النظر عن المورد الذي تنتمي إليه) كملف iCalendar جديد.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="managing-export"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-archive-old">
+<term
+><menuchoice
+><guimenu
+>ملف</guimenu
+> <guimenuitem
+>أرشف الأحداث القديمة...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>ينبغي عليك حذف أحداثك القديمة من وقت لآخر.</action
+></para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="managing-purge-archive"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-file-purge">
+<term
+><menuchoice
+><guimenu
+>ملف</guimenu
+> <guimenuitem
+>طهر المهام المكتملة</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>سيزيل هذا الإجراء جميع المهام المكتملة من تقويمك النشط.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="managing-purge-archive"/>.</para>
+</listitem
+></varlistentry>
+
+<varlistentry id="menu-file-quit">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="application-exit.png"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>ملف</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>عندما تختار <guimenuitem
+>أنهِ</guimenuitem
+> أو تنقر على أيقونة <guiicon
+>أنهِ</guiicon
+>، <action
+>ستُغلق نافذة التقويم الحالي، مع مطالبتك بالحفظ إذا عُدل التقويم الحالي ولم يُحفظ بعد.</action
+></para>
+<para
+>ليس لهذا أي تأثير على نوافذ التقويم الأخرى التي قد تكون مفتوحة. يجب عليك إنهاء كل نافذة تقويم بشكل فردي.</para
+> </listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-edit">
+<title
+>حرر</title>
+
+<para
+>باستخدام قائمة <guilabel
+>تحرير</guilabel
+> يمكنك تحرير والبحث عن الأحداث والمهام.</para>
+
+<para
+>عناصر قائمة <guimenuitem
+>قص</guimenuitem
+>، <guimenuitem
+>انسخ</guimenuitem
+>، و <guimenuitem
+>الصق</guimenuitem
+> تتصرف بنفس الطريقة كما في تطبيقات كيدي الأخرى. باستخدام عنصر قائمة <guimenuitem
+>ابحث</guimenuitem
+> يمكنك العثور على الأحداث والمهام عبر التقويم الحالي.</para>
+
+<variablelist>
+
+<varlistentry id="menu-edit-undo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-undo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> تحرير</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>تراجع عن الإجراء الأخير</action
+>، أو بعبارة أخرى، أعد التقويم إلى الحالة التي كان عليها مباشرة قبل الإجراء الأخير.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-redo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-redo.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> تحرير</guimenu
+> <guimenuitem
+>أعد</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>أعد الإجراء الأخير</action
+>، أو بعبارة أخرى، أعد التقويم إلى الحالة التي كان عليها مباشرة قبل التراجع الأخير.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-cut">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-cut.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>X</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> تحرير</guimenu
+> <guimenuitem
+>قص</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>يقص الأحداث المحددة حاليًا إلى الحافظة، ويزيلها من تقويمك.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-copy">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-copy.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>C</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> تحرير</guimenu
+> <guimenuitem
+>انسخ</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>ينسخ العناصر المحددة حاليًا إلى الحافظة، مع تركها دون تغيير.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-paste">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-paste.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>V</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> تحرير</guimenu
+> <guimenuitem
+>الصق</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><guimenuitem
+>الصق</guimenuitem
+> <action
+>يدرج محتويات الحافظة في تقويمك</action
+>. يجب أن تحتوي الحافظة على عنصر vCalendar أو iCalendar صالح، ناتج إما عن عملية قص/نسخ سابقة أو من تحديد أُجري خارج منظّمك. سيُحذرك النظام إذا تعذر فهم محتويات الحافظة.</para>
+<tip
+><para
+>ومع ذلك، يمكنك استخدام مفاتيح الاختصار <keycombo action="simul"
+>&Ctrl; <keycap
+>C</keycap
+></keycombo
+> و <keycombo action="simul"
+>&Ctrl; <keycap
+>V</keycap
+></keycombo
+> بأمان لنسخ البيانات النصية من أي تطبيق خارجي إلى نافذة تحرير الحدث في منظّمك والعكس بالعكس. </para
+></tip
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-delete">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-delete.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> تحرير</guimenu
+> <guimenuitem
+>احذف</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>احذف العناصر المحددة حاليًا، وأزلها من تقويمك.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-edit-find">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="edit-find.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>F</keycap
+></keycombo
+> </shortcut
+> <guimenu
+> تحرير</guimenu
+> <guimenuitem
+>ابحث</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>اختر <guimenuitem
+>ابحث</guimenuitem
+> من قائمة <guimenu
+>تحرير</guimenu
+> أو انقر فوق أيقونة <guiicon
+>ابحث</guiicon
+> لـ <action
+>البحث عن الأحداث والمهام ومدخلات اليوميات وفقًا لملخصها و/أو وصفها و/أو وسومها</action
+>.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="search-view"/>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-view">
+<title
+>عرض</title>
+
+<para
+>تتوفر عدة <quote
+>عروض</quote
+> مختلفة لعرض أحداثك ومهامك ومدخلات يومياتك. منظّمك ذكي بما يكفي ليتذكر بين الجلسات ما كان آخر عرض نشط، وفي المرة القادمة التي يُشغل فيها، سيعرض ذلك العرض.</para>
+
+<para
+>بشكل عام، سيوفر كل عرض طريقة لعرض مدخلات يومياتك ومهامك وأحداثك، مقيدة بفترة زمنية معينة أو نمط عرض محدد. انقر فوق أي عنصر لتحديده لاتخاذ إجراءات أخرى. انقر بـ <mousebutton
+>زر الفأرة الأيمن</mousebutton
+> فوق عنصر لإظهار قائمة بخيارات مثل <guimenuitem
+>حرر</guimenuitem
+>، <guimenuitem
+>احذف</guimenuitem
+>، وما إلى ذلك. يمكنك أيضًا استخدام قائمة <guimenu
+>إجراء</guimenu
+> لأداء عمليات مماثلة.</para>
+
+<variablelist>
+
+<varlistentry id="menu-view-agenda">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-agenda.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>جدول الأعمال</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض جدول الأعمال.</action>
+</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-month">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-month.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>عرض الشهر</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض الشهر.</action>
+</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="month-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-timeline">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-timeline.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>الخط الزمني</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض الخط الزمني.</action>
+</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="timeline-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-todo">
+<term
+> <inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-tasks.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>قائمة المهام</guimenuitem
+></menuchoice>
+ </term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض قائمة المهام.</action
+></para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="todo-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-list">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-list.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> عرض</guimenu
+><guimenuitem
+>قائمة الأحداث</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض القائمة.</action
+></para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="list-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-whatsnext">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-events.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> عرض</guimenu
+><guimenuitem
+>ما التالي</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض ما التالي.</action
+></para>
+<para
+>يعرض هذا العرض أحداثك ومهامك القادمة. تُعرض الأحداث والمهام بمعدل حدث واحد لكل سطر.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="whatsnext-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>اليوميات</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض اليوميات.</action
+></para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="journal-view"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-update">
+<term
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guimenuitem
+>حدث</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>يحدث أو ينعش العرض المعروض حاليًا.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-zoom">
+<term
+><menuchoice
+><guimenu
+>عرض</guimenu
+><guisubmenu
+>كبر</guisubmenu
+></menuchoice
+></term>
+<listitem
+><para
+><action
+>استخدم هذه القائمة الفرعية لضبط العرض الحالي لإظهار بيانات أكثر أو أقل.</action
+></para>
+<para
+>في عرض جدول الأعمال (عرض اليوم (الأيام) أو الأسبوع)، يمكنك استخدام إجراءات التكبير لإظهار أيام أكثر أو أقل (<menuchoice
+><guisubmenu
+>كبر</guisubmenu
+> <guimenuitem
+>قرب أفقيًا</guimenuitem
+></menuchoice
+> و <menuchoice
+> <guisubmenu
+>كبر</guisubmenu
+><guimenuitem
+>بعد أفقيًا</guimenuitem
+></menuchoice
+>)، أو ساعات أكثر أو أقل في اليوم (<menuchoice
+><guisubmenu
+>كبر</guisubmenu
+> <guimenuitem
+>قرب عموديًا</guimenuitem
+></menuchoice
+> و <menuchoice
+><guisubmenu
+>كبر</guisubmenu
+><guimenuitem
+>بعد عموديًا</guimenuitem
+> </menuchoice
+>).</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-filter">
+<term
+><menuchoice
+><guimenu
+>عرض</guimenu
+> <guisubmenu
+>مرشح</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+>توفر هذه القائمة الفرعية إمكانية الوصول إلى المرشحات المنشأة مسبقًا باستخدام مربع حوار <link linkend="menu-settings-edit-filters"
+><guilabel
+>حرر مرشحات التقويم</guilabel
+></link
+>. <action
+>اختر من هذه القائمة الفرعية المرشح الذي سيُستخدم في عرض منظّمك</action
+>. إذا كنت لا تريد استخدام مرشح، فاختر <guilabel
+>لا مرشح</guilabel
+>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-go">
+<title
+>اذهب</title>
+
+<para
+>لمزيد من المعلومات حول تصفح عروض منظّمك، يرجى مراجعة <xref linkend="description-view"/>.</para>
+
+<variablelist>
+<varlistentry id="menu-go-previous-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-previous.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> اذهب</guimenu
+><guimenuitem
+>للخلف</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>اذهب إلى اليوم أو الأسبوع أو الشهر السابق، حسب العرض.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-next-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-next.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> اذهب</guimenu
+><guimenuitem
+>للأمام</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>اذهب إلى اليوم أو الأسبوع أو الشهر التالي، حسب العرض.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-go-goto-today">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> اذهب</guimenu
+><guimenuitem
+>إلى اليوم</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>اذهب إلى الفترة الزمنية التي تتضمن اليوم الحالي.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-day">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump-today.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> اذهب</guimenu
+><guimenuitem
+>يوم</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض اليوم.</action
+></para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-xdays">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-upcoming-days.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> اذهب</guimenu
+><guimenuitem
+>الأيام x القادمة</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض الأيام x القادمة، حيث يُعرف x في تهيئة منظّمك الرئيسة.</action
+></para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-workweek">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata
+ fileref="view-calendar-workweek.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>اذهب</guimenu
+><guimenuitem
+>أسبوع العمل</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض أسبوع العمل.</action
+></para>
+<para
+>هذا هو نفسه عرض الأسبوع، باستثناء أنه تُعرض أيام العمل في الأسبوع فقط.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="agenda-view"/>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry id="menu-view-week">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-calendar-week.png"
+ format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+> اذهب</guimenu
+> <guimenuitem
+>أسبوع</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>حول العرض إلى عرض الأسبوع.</action
+></para>
+<para
+>يوفر عرض الأسبوع عرضًا مشابهًا لعرض اليوم. تُعرض أحداث سبعة أيام بجانب بعضها البعض. جميع الوظائف المتاحة لعرض اليوم متاحة في عرض الأسبوع أيضًا.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="agenda-view"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-actions">
+<title
+>إجراءات</title>
+
+<variablelist>
+<varlistentry id="menu-actions-new-event">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="appointment-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>حدث جديد...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>اختر <guilabel
+>حدث جديد...</guilabel
+> لـ <action
+>إنشاء حدث جديد</action
+>.</para>
+<para
+>يمكنك الحصول على وصف مفصل لنافذة الحدث في قسم <link linkend="entering-data-events"
+>إدخال الأحداث</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-todo">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="view-task.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>مهمة جديدة...</guimenuitem
+> </menuchoice>
+</term>
+<listitem
+><para
+>اختر <guilabel
+>مهمة جديدة...</guilabel
+> لـ <action
+>إنشاء مهمة جديدة</action
+>. في البداية لا يكون للمهمة تاريخ استحقاق، ولكن يمكنك تحديد تاريخ.</para>
+<para
+>يمكنك الحصول على وصف مفصل لنافذة المهام في قسم <link linkend="entering-data-to-do"
+>إدخال المهام</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-subtodo">
+<term
+><menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>مهمة فرعية جديدة...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>اختر <guilabel
+>مهمة فرعية جديدة...</guilabel
+> لـ <action
+>بدء كتابة مهمة فرعية جديدة. ستكون المهمة المحددة حاليًا هي المهمة الأب للمهمة الفرعية</action
+>. في البداية لا يكون للمهمة تاريخ استحقاق، ولكن يمكنك تحديد تاريخ.</para>
+<para
+>يمكنك الحصول على وصف مفصل لنافذة المهام في قسم <link linkend="entering-data-to-do"
+>إدخال المهام</link
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-new-journal">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="journal-new.png"
+format="PNG"/></imageobject
+></inlinemediaobject
+><menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>يومية جديدة...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>اختر <guilabel
+>يومية جديدة...</guilabel
+> لـ <action
+>بدء كتابة مدخلة يومية جديدة</action
+>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-pick-date">
+<term
+><inlinemediaobject
+><imageobject
+><imagedata fileref="go-jump.png" format="PNG"/></imageobject
+></inlinemediaobject>
+<menuchoice
+><guimenu
+>اذهب</guimenu
+><guimenuitem
+>اختر تاريخًا</guimenuitem
+></menuchoice>
+</term>
+<listitem
+><para
+><action
+>يفتح مربع حوار اختيار التاريخ للتنقل بسرعة في العرض.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-show-event">
+<term
+><menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>اعرض</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>اختر <guilabel
+>اعرض</guilabel
+> لـ <action
+>فتح مربع حوار يعرض تفاصيل مدخلة اليومية أو الحدث أو المهمة المحددة حاليًا.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-edit-event">
+<term
+><menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>حرر...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>اختر <guilabel
+>حرر...</guilabel
+> لـ <action
+>تحرير مدخلة اليومية أو الحدث أو المهمة المحددة حاليًا.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-delete-event">
+<term
+><menuchoice
+><shortcut
+> &Del; </shortcut
+> <guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>احذف</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>اختر <guilabel
+>احذف</guilabel
+> لـ <action
+>إزالة مدخلة اليومية أو الحدث أو المهمة المحددة حاليًا.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-actions-make-subtodo-independent">
+<term
+><menuchoice
+><guimenu
+>إجراءات</guimenu
+> <guimenuitem
+>اجعل المهمة الفرعية مستقلة</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>اختر <guilabel
+>اجعل المهمة الفرعية مستقلة</guilabel
+> لفصل عنصر المهمة الفرعية المحدد حاليًا عن المهمة الأب وجعله عنصر مهمة مستقلًا.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-schedule">
+<title
+>جدول</title>
+
+<variablelist>
+
+<varlistentry id="menu-schedule-publish">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>انشر معلومات العنصر...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>أرسل الحدث أو المهمة أو مدخلة اليومية المختارة عبر البريد الإلكتروني بتنسيق iCalendar.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="publish"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-request">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>أرسل دعوة للحاضرين</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>أرسل المهمة أو الحدث المحدد إلى الحاضرين، واطلب ردًا منهم إذا لزم الأمر.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="request"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-reply">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>أرسل تحديثًا للحالة</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>إذا غيرت حالتك كحاضر، فاختر عنصر القائمة هذا لإرسال حالتك المحدثة (مقبول، مؤقت، إلخ.) إلى منظم العنصر.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="reply"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-cancel">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>أرسل إلغاءً للحاضرين</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>إذا كنت تخطط لإلغاء حدث أو مهمة، فحددها واختر عنصر القائمة هذا لإخطار الحاضرين بالإلغاء.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="cancel"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-refresh">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>اطلب تحديثًا</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>اطلب أحدث إصدار من الحدث أو المهمة المحددة من المنظم.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="refresh"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-counter">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>اطلب تغييرًا</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>أرسل مقترحًا بديلًا إلى منظم الحدث أو المهمة المحددة. </para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="counter"/>.</para
+></listitem>
+</varlistentry>
+
+<!--varlistentry id="menu-schedule-mail-icalendar">
+<term
+><menuchoice>
+<guimenu
+>Schedule</guimenu>
+<guimenuitem
+>Send as iCalendar...</guimenuitem>
+</menuchoice
+></term>
+<listitem
+><para
+>.</para>
+<para
+>For more information about this action, please refer to
+<xref linkend="????"/>.</para
+></listitem>
+</varlistentry-->
+
+<varlistentry id="menu-schedule-mail-freebusy">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>أرسل معلومات التفرغ والانشغال بريديًا...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>أرسل معلومات التفرغ والانشغال الخاصة بك إلى عنوان بريد إلكتروني واحد أو أكثر.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-schedule-upload-freebusy">
+<term
+><menuchoice
+><guimenu
+>جدول</guimenu
+> <guimenuitem
+>ارفع معلومات التفرغ والانشغال</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>ارفع معلومات التفرغ والانشغال الخاصة بك إلى خادم العمل الجماعي. سيتمكن المستخدمون الآخرون بعد ذلك من استرداد المعلومات.</para>
+<para
+>لمزيد من المعلومات حول هذا الإجراء، يرجى مراجعة <xref linkend="free-busy"/>.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="reference-menus-settings-help">
+<title
+>الإعدادات والمساعدة</title>
+
+<para
+>بصرف النظر عن قوائم كيدي الشائعة الموصوفة في فصل <ulink url="help:/fundamentals/menus.html"
+>القائمة</ulink
+> من وثائق أساسيات كيدي، يحتوي منظّمك على مدخلات قوائم الإعدادات والمساعدة الخاصة بالتطبيق التالية: </para>
+
+<variablelist>
+
+<varlistentry id="menu-settings-sidebar">
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guisubmenu
+>الشريط الجانبي</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>انقر فوق عناصر هذه القائمة الفرعية لإظهار أو إخفاء مكونات الشريط الجانبي لمنظّمك</action
+>. لاحظ أن الشريط الجانبي لا يظهر إلا عندما <link linkend="config-main-views"
+>لا يستخدم العرض الحالي النافذة كاملة.</link
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-configure-date-time">
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>اضبط التاريخ والوقت...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>انقر فوق عنصر القائمة هذا لضبط تنسيقات التاريخ والوقت لسطح المكتب</action
+>. لاحظ أن هذا الإعداد مشترك مع تطبيقات سطح المكتب الأخرى.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-filters">
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guisubmenu
+>أدر مرشحات العرض...</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>اختر عنصر القائمة هذا لفتح مربع حوار <guilabel
+>حرر المرشحات</guilabel
+></action
+>. باستخدام مربع الحوار هذا، يمكنك إنشاء وحذف وتحرير المرشحات التي ستؤثر على العناصر التي سيعرضها منظّمك.</para
+></listitem>
+</varlistentry>
+
+<varlistentry id="menu-settings-edit-categories">
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>أدر الوسوم...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>اختر عنصر القائمة هذا لفتح مربع حوار <guilabel
+>أدر الوسوم</guilabel
+></action
+>. باستخدام مربع الحوار هذا، يمكنك إنشاء وحذف وتحرير وسوم عناصر التقويم. تُستخدم الوسوم لتنظيم أحداثك ومهامك في مجموعات ذات صلة.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="other-features"
+>  <!--updated to 5.4.40-->
+<title
+>ميزات أخرى</title>
+
+<para
+>في هذا الفصل، ستتعرف على ميزات مفيدة أخرى لمنظّمك: ما الحيل التي يمكنك القيام بها بنقرة من فأرتك.</para>
+
+<sect1 id="other-features-commandline-options">
+<title
+>سطر الأوامر</title>
+
+<para
+>برنامج رائع للوصول إلى تقويم كيدي من سطر الأوامر هو تقويم الطرفية.</para>
+
+</sect1>
+
+<sect1 id="other-features-drag-and-drop">
+<title
+>عمليات السحب والإفلات</title>
+
+<para
+>يمكن التحكم في منظّمك بسهولة باستخدام الفأرة. تفاصيل عمليات السحب والإفلات المدعومة موضحة أدناه.</para>
+
+<itemizedlist>
+<listitem
+><para
+>يمكن تغيير حجم أي حدث باستخدام الفأرة. ما عليك سوى تحريك مؤشر الفأرة بالقرب من الحافة العلوية أو السفلية للحدث، ثم سحب الحافة للأعلى أو الأسفل. بهذه الطريقة يمكنك تعديل وقت بدء وانتهاء موعدك بصريًا. يعمل هذا في عرض اليوم، والأسبوع، وأسبوع العمل.</para
+></listitem>
+<listitem
+><para
+>يمكن إعادة جدولة أي حدث باستخدام الفأرة. حرّك مؤشر الفأرة فوق الحدث، ثم اسحبه إلى موقع زمني جديد. يعمل هذا في عرض اليوم، والأسبوع، وأسبوع العمل.</para
+></listitem>
+<listitem
+><para
+>يمكن نسخ الأحداث إلى تواريخ أخرى غير مرئية حاليًا. حرّك مؤشر الفأرة فوق الحدث، واسحبه إلى منتقي التاريخ على الجانب الأيسر من التقويم الحالي، أو إلى منتقي التاريخ في تقويم مختلف.</para>
+<tip
+><para
+>ومع ذلك، لا يمكنك السحب من عرض جدول الأعمال في تقويم واحد إلى عرض جدول الأعمال في تقويم آخر.</para
+></tip
+></listitem>
+<listitem
+><para
+>يمكن سحب أشرطة الأدوات على الشاشة. حرّك مؤشر الفأرة فوق مقبض شريط الأدوات، واسحبه إلى موقع جديد على شاشتك.</para
+></listitem>
+</itemizedlist>
+
+</sect1>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>أسئلة وأجوبة</title
+> <!-- link to userbase faq? -->
+
+<qandaset id="faq-questions">
+<qandaentry>
+<question>
+<para
+>هل يمكنني استخدام وقت التفرغ/الانشغال مع منظّمك؟</para>
+</question>
+<answer
+><para
+>نعم، اتبع التعليمات في <link linkend="config-main-free-busy"
+>التفرغ/الانشغال</link
+>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>الحقوق والترخيص</title>
+
+<para
+>منظّمك</para>
+
+<para
+>حقوق نشر البرنامج 2000-2010، مطورو كيدي</para>
+
+<para
+>المساهمون:</para>
+
+<itemizedlist>
+  <listitem
+><para
+>ألين وينتر <email
+>winter@kde.org</email
+></para>
+</listitem>
+<listitem
+><para
+>راينهولد كاينهوفر <email
+>reinhold@kainhofer.com</email
+></para>
+</listitem>
+<listitem
+><para
+>&Cornelius.Schumacher; &Cornelius.Schumacher.mail;</para>
+</listitem>
+<listitem
+><para
+>&Preston.Brown; &Preston.Brown.mail;</para>
+</listitem>
+</itemizedlist>
+
+<para
+>حقوق نشر التوثيق 2000 &Milos.Prudek;</para>
+<para
+>حقوق نشر التوثيق 2001 بول إي. ألكويست جونيور <email
+>&Paul.E.Ahlquist.Jr.mail;</email
+></para>
+<para
+>حقوق نشر التوثيق 2004 يورغن ناجل <email
+>juergen.nagel@student.fh-reutlingen.de</email
+></para>
+<para
+>حقوق نشر التوثيق 2005 كارلوس ليونهارد وولنز <email
+>carloswoelz@imap-mail.com</email
+></para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<glossary id="glossary">
+<title
+>مسرد المصطلحات</title>
+
+<glossentry id="gloss-calendar-widget">
+<glossterm
+>ودجة التقويم</glossterm>
+<glossdef>
+
+<para
+>أداة لاختيار التاريخ داخل نوافذ إدخال معينة، مثل نافذة تحرير الحدث. تُعرض كزر صغير إلى يمين حقل التاريخ. عند النقر فوق الزر، سيظهر تقويم شهري. استخدم الأسهم للذهاب إلى التاريخ المطلوب، أو انقر فوق اسم الشهر أو رقم السنة للذهاب مباشرة إلى الشهر أو السنة المطلوبة.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-date-navigator">
+<glossterm
+>منتقي التاريخ</glossterm>
+<glossdef>
+
+<para
+>التقويم الموجود في الزاوية العلوية اليسرى من نافذة منظّمك. هو الوسيلة الرئيسة المتوفرة للتنقل بين التواريخ والاختيار منها. تنقل أيقونات السهم الواحد الوقت للأمام والخلف بزيادات قدرها شهر واحد، بينما تسمح الأسهم المزدوجة بالتحرك بمقدار سنة في كل مرة. سيُحاط تاريخ اليوم بمربع صغير. التواريخ التي جُدولت فيها أحداث ستكون بخط عريض. إذا كنت تريد تحديد تاريخ، فما عليك سوى النقر فوقه. اضغط مع الاستمرار على مفتاح Ctrl وانقر فوق التواريخ إذا كنت ترغب في تحديد تواريخ متجاورة متعددة في وقت واحد. ستُعرض التواريخ في اللوحة الرئيسة.</para>
+
+<para
+>لا تُعرض الأحداث المتكررة دائمًا. يمكنك منع عرض المواعيد المتكررة في منتقي التاريخ. احصل على مزيد من المعلومات في <link linkend="config-main-views"
+>فصل طرق العرض</link
+>.</para>
+
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-due-date">
+<glossterm
+>تاريخ الاستحقاق</glossterm>
+<glossdef>
+
+<para
+>تاريخ الاستحقاق هو ببساطة التاريخ الذي يجب فيه إنهاء مهمتك. على سبيل المثال، إذا كانت مهمتك هي إعادة كتبك إلى المكتبة بحلول 16 نوفمبر، فإن هذا التاريخ يسمى <quote
+>تاريخ استحقاق المهمة</quote
+></para>
+
+</glossdef>
+</glossentry>
+
+<!--<glossentry id="gloss-group-scheduling">
+<glossterm
+>Group scheduling features</glossterm>
+<glossdef>
+
+<para
+>These features are planned for the future versions of &korganizer;. Group
+scheduling will facilitate member roles (attendee, owner, organizer), time
+conflict resolution, event reminder distribution, response collection and
+evaluation. In other words, you will be able to appoint attendees, invite them
+automatically, and see who accepted or refused attending the appointment.</para>
+
+<para
+>Currently, group scheduling features are not working. However, hooks exist
+in the calendar data structures for these features. <guilabel
+>Private</guilabel>
+check box, <guilabel
+>Require response</guilabel
+> check box and
+<guilabel
+>E-mail</guilabel
+> field will then be fully employed. These controls
+are described in more detail in <link linkend="entering-data"
+>Entering
+Data</link
+> chapter, in the <link
+linkend="entering-data-events-attendees"
+>Attendees section</link
+> of Windows
+reference, and in the <link linkend="config-main-personal"
+>Personal
+Preferences</link
+> section.</para>
+
+</glossdef>
+</glossentry>
+-->
+<glossentry id="gloss-main-panel">
+<glossterm
+>اللوحة الرئيسة</glossterm>
+<glossdef>
+<para
+>عادة ما تكون الجزء الأكبر من الشاشة، إلى يمين منتقي التاريخ. وهي تعرض عرض اليوم، أو أيام العمل، أو الأسبوع أو الشهر، أو عرض القائمة أو عرض قائمة المهام.</para>
+<para
+>يمكن استخدام زر الفأرة الأيمن في عرض القائمة وعرض قائمة المهام فقط. وهو يعرض قائمة محلية. يمكن استخدام زر الفأرة الأيسر في أي عرض.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-freebusy">
+<glossterm
+>تفرغ/انشغال</glossterm>
+<glossdef>
+<para
+>معلومات التفرغ/الانشغال هي مجموعة من فترات الوقت المشغولة. من خلال عرض الفترات التي يرتبط فيها الشخص مسبقًا بالتزامات، يمكن للآخرين تجنب ترتيب مواعيد خلال هذه الفترات. لاحظ أنه تُنشر الأوقات فقط، وليس عناوين الأحداث أو أوصافها أو الحاضرين. بعبارة أخرى، معلومات التفرغ/الانشغال هي جدول التوافر.</para>
+<para
+>عند إضافة حضور إلى حدثك، تحتاج إلى معرفة ما إذا كانوا مشغولين أم متفرغين في ذلك الوقت المحدد قبل إرسال الدعوات. إذا جعل الحاضرون معلومات التفرغ/الانشغال الخاصة بهم متاحة، فيمكن لمنظّمك استرداد هذه المعلومات وعرضها في تبويب <guilabel
+>تفرغ/انشغال</guilabel
+> في مربع حوار <guilabel
+>تحرير الحدث</guilabel
+>.</para>
+</glossdef>
+</glossentry>
+
+<!--FIXME: remove this or transform in glossary items
+
+<sect1 id="course-event-types">
+<title
+>Calendar Item Types</title>
+
+<para
+>There are three types of items:</para>
+
+<itemizedlist>
+<listitem
+><para
+>Events start and finish at distinct date. You can also specify
+distinct start and finish times, but you do not have to. While business
+meetings, personal anniversaries and cinema visits are examples of carefully
+planned events with exact time scheduling, a holiday is an event that takes
+several days and thus there is no need to specify exact start and finish
+times.</para
+></listitem>
+
+<listitem
+><para
+>To-do's must take place no later than a
+certain date, but they can also take place sooner.</para
+></listitem>
+</itemizedlist>
+
+<para
+>Naturally, what began as a To-do may later require exact timing.
+Say it is July 1 and you need to go to a hairdresser within a week.
+On July 3 you talk to your hairdresser and agree on an exact time. Thus the
+original To-do becomes similar to an appointment. </para>
+
+<para
+>&korganizer; makes adding exact time to a To-do very easy. If you
+check the <guilabel
+>Due</guilabel
+> check box and/or the <guilabel
+>Start</guilabel>
+check box you can specify the appropriate dates, when you check the
+<guilabel
+>Time associated</guilabel
+> check box and fill in the associated times, your
+To-do becomes very similar to an event.</para>
+
+</sect1>
+
+-->
+
+</glossary>
+
+&documentation.index;
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->
