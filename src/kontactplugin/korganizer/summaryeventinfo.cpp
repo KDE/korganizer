@@ -105,7 +105,7 @@ SummaryEventInfo::List SummaryEventInfo::eventsForRange(QDate start, QDate end, 
     SummaryEventInfo::List eventInfoList;
     KCalendarCore::Event::Ptr ev;
     eventInfoList.reserve(events.count());
-    auto itEnd = events.constEnd();
+    auto const itEnd = events.constEnd();
     for (auto it = events.constBegin(); it != itEnd; ++it) {
         ev = *it;
         // Count number of days remaining in multiday event

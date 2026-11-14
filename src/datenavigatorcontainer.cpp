@@ -244,7 +244,7 @@ void DateNavigatorContainer::resizeAllContents()
         }
 
         while (count < (mExtraViews.count() + 1)) {
-            delete (mExtraViews.last());
+            delete mExtraViews.last();
             mExtraViews.removeLast();
         }
 
@@ -272,7 +272,7 @@ void DateNavigatorContainer::resizeAllContents()
         bar->showButtons(true, true);
     }
 
-    mNavigatorView->setGeometry((((KOGlobals::self()->reverseLayout()) ? (horizontalCount - 1) : 0) * width), 0, width, height);
+    mNavigatorView->setGeometry(((KOGlobals::self()->reverseLayout() ? (horizontalCount - 1) : 0) * width), 0, width, height);
     for (int i = 0; i < mExtraViews.count(); ++i) {
         int const x = (i + 1) % horizontalCount;
         int const y = (i + 1) / horizontalCount;
@@ -288,7 +288,7 @@ void DateNavigatorContainer::resizeAllContents()
                 bar->showButtons(false, false);
             }
         }
-        view->setGeometry((((KOGlobals::self()->reverseLayout()) ? (horizontalCount - 1 - x) : x) * width), y * height, width, height);
+        view->setGeometry(((KOGlobals::self()->reverseLayout() ? (horizontalCount - 1 - x) : x) * width), y * height, width, height);
     }
 }
 

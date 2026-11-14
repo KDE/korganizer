@@ -1149,7 +1149,7 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
         return false;
     }
     const QModelIndexList indexes = selectionModel->selectedIndexes();
-    return (std::ranges::any_of(indexes, [collection](const QModelIndex &index) {
+    return std::ranges::any_of(indexes, [collection](const QModelIndex &index) {
         if (index.isValid()) {
             const auto c = index.data(Akonadi::EntityTreeModel::CollectionRole).value<Akonadi::Collection>();
             if (c.id() == collection.id()) {
@@ -1157,7 +1157,7 @@ bool AkonadiCollectionView::isChecked(const Akonadi::Collection &collection) con
             }
         }
         return false;
-    }));
+    });
 }
 
 Akonadi::EntityTreeModel *AkonadiCollectionView::entityTreeModel() const

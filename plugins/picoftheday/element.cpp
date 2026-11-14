@@ -128,7 +128,7 @@ void POTDElement::handleImagesJsonResponse(KJob *job, PageProtectionState pagePr
 
     const auto pageObject = json.object().value(QLatin1StringView("query")).toObject().value(QLatin1StringView("pages")).toArray().at(0).toObject();
 
-    auto missingIt = pageObject.find(QLatin1StringView("missing"));
+    auto const missingIt = pageObject.find(QLatin1StringView("missing"));
     if ((missingIt != pageObject.end()) && missingIt.value().toBool(false)) {
         // fallback to unprotected variant in case there is no protected variant
         if (pageProtectionState == PageProtectionState::ProtectedPage) {
@@ -249,8 +249,8 @@ void POTDElement::handleThumbImageInfoJsonResponse(KJob *job)
 
     const auto json = QJsonDocument::fromJson(transferJob->data());
     auto pagesObject = json.object().value(QLatin1StringView("query")).toObject().value(QLatin1StringView("pages")).toObject();
-    auto pageObject = pagesObject.isEmpty() ? QJsonObject() : pagesObject.begin()->toObject();
-    auto imageInfo = pageObject.value(QLatin1StringView("imageinfo")).toArray().at(0).toObject();
+    auto const pageObject = pagesObject.isEmpty() ? QJsonObject() : pagesObject.begin()->toObject();
+    auto const imageInfo = pageObject.value(QLatin1StringView("imageinfo")).toArray().at(0).toObject();
 
     const QString thumbUrl = imageInfo.value(QStringLiteral("thumburl")).toString();
     if (thumbUrl.isEmpty()) {

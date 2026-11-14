@@ -287,7 +287,7 @@ void KOPrefsDialogTime::usrReadConfig()
     mReminderTimeSpin->setValue(CalendarSupport::KCalPrefs::instance()->mReminderTime);
     mReminderUnitsCombo->setCurrentIndex(CalendarSupport::KCalPrefs::instance()->mReminderTimeUnits);
     for (int i = 0; i < 7; ++i) {
-        mWorkDays[i]->setChecked((1 << i) & (KOPrefs::instance()->mWorkWeekMask));
+        mWorkDays[i]->setChecked((1 << i) & KOPrefs::instance()->mWorkWeekMask);
     }
 }
 

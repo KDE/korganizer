@@ -369,7 +369,7 @@ void CalendarView::forEachCalendar(std::function<void(Akonadi::CollectionCalenda
 {
     auto it = mCalendars.begin();
     while (it != mCalendars.end()) {
-        auto collection = it->lock();
+        auto const collection = it->lock();
         if (!collection) {
             it = mCalendars.erase(it);
             continue;
@@ -701,7 +701,7 @@ void CalendarView::slotModifyFinished(int changeId, const Akonadi::Item &item, A
     // favor of the todolist. users can mark a task as completed in an editor
     // as well.
     if (incidence->type() == KCalendarCore::Incidence::TypeTodo && KOPrefs::instance()->recordTodosInJournals()
-        && (dirtyFields.contains(KCalendarCore::Incidence::FieldCompleted))) {
+        && dirtyFields.contains(KCalendarCore::Incidence::FieldCompleted)) {
         KCalendarCore::Todo::Ptr const todo = incidence.dynamicCast<KCalendarCore::Todo>();
         if (todo->isCompleted() || todo->recurs()) {
             QString const timeStr = QLocale::system().toString(QTime::currentTime(), QLocale::ShortFormat);
@@ -2314,7 +2314,7 @@ void CalendarView::deleteChildren(const Akonadi::Item &item)
 void CalendarView::deleteRecurringIncidence(const Akonadi::Item &item)
 {
     if (!mChanger->deletedRecently(item.id())) {
-        auto incidence = Akonadi::CalendarUtils::incidence(item);
+        auto const incidence = Akonadi::CalendarUtils::incidence(item);
         auto itemsToDelete = Akonadi::Item::List();
         if (incidence->recurs()) {
             const KCalendarCore::Incidence::List instances = mCalendar->instances(incidence);
@@ -2331,7 +2331,7 @@ void CalendarView::deleteRecurringIncidence(const Akonadi::Item &item)
 int CalendarView::questionIndependentChildren(const Akonadi::Item &item)
 {
     int km;
-    auto incidence = Akonadi::CalendarUtils::incidence(item);
+    auto const incidence = Akonadi::CalendarUtils::incidence(item);
     if (!incidence->hasRecurrenceId() && !mCalendar->childItems(item.id()).isEmpty()) {
         km = KMessageBox::questionTwoActionsCancel(this,
                                                    xi18nc("@info",
@@ -2673,7 +2673,7 @@ void CalendarView::collectionSelected(const Akonadi::Collection &collection)
     }
 
     // NOLINTBEGIN(modernize-use-ranges) to avoid detaching
-    auto enabledCalendar = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
+    auto const enabledCalendar = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
     // NOLINTEND(modernize-use-ranges)
     if (enabledCalendar != mEnabledCalendars.cend()) {
         return;
@@ -2692,7 +2692,7 @@ void CalendarView::collectionDeselected(const Akonadi::Collection &collection)
     }
 
     // NOLINTBEGIN(modernize-use-ranges) to avoid detaching
-    auto calendarIt = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
+    auto const calendarIt = std::find_if(mEnabledCalendars.cbegin(), mEnabledCalendars.cend(), forCollection(collection));
     // NOLINTEND(modernize-use-ranges)
     if (calendarIt == mEnabledCalendars.cend()) {
         return;

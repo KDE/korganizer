@@ -306,7 +306,7 @@ void KDateNavigator::selectDates(const KCalendarCore::DateList &dateList)
 
         updateDates();
 
-        mDayMatrix->setSelectedDaysFrom(*(dateList.begin()), *(--dateList.end()));
+        mDayMatrix->setSelectedDaysFrom(*dateList.begin(), *(--dateList.end()));
 
         updateView();
     }

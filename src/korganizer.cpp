@@ -65,7 +65,7 @@ KOrganizer::KOrganizer()
 
     const KAboutData aboutData = KAboutData::fromAppStreamId(u"org.kde.korganizer"_s);
     QString newFeaturesMD5;
-    auto releasesInfo = aboutData.releases();
+    auto const releasesInfo = aboutData.releases();
     if (!releasesInfo.isEmpty()) {
         newFeaturesMD5 = releasesInfo.constFirst().untranslatedDescription();
     }
@@ -141,7 +141,7 @@ void KOrganizer::readSettings()
     // read settings from the KConfig, supplying reasonable
     // defaults where none are to be found
 
-    KSharedConfig::Ptr config = KSharedConfig::openConfig();
+    KSharedConfig::Ptr const config = KSharedConfig::openConfig();
     mActionManager->readSettings();
 }
 

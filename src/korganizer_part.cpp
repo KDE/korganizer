@@ -63,7 +63,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, QObject *parent, const KPl
     QString newFeaturesMD5;
     const KAboutData aboutData = KAboutData::fromAppStreamId(u"org.kde.korganizer"_s);
 
-    auto releasesInfo = aboutData.releases();
+    auto const releasesInfo = aboutData.releases();
     if (!releasesInfo.isEmpty()) {
         newFeaturesMD5 = releasesInfo.constFirst().untranslatedDescription();
     }

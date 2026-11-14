@@ -144,6 +144,8 @@ QStringList Holiday::findHoliday(int month,
                 }
             }
             break;
+        default:
+            break;
         }
         if ((day > 15) && showOmer) {
             // Count the Omer, starting after the first day of Pesach.
@@ -196,6 +198,8 @@ QStringList Holiday::findHoliday(int month,
         case 18:
             holidays << i18n("Lag BaOmer");
             break;
+        default:
+            break;
         }
         if ((day != 18) && showOmer) {
             // Sfirah the whole month, Lag BaOmer is already mentioned.
@@ -227,6 +231,8 @@ QStringList Holiday::findHoliday(int month,
             if (!useIsraelSettings || (day == 6)) {
                 holidays << i18n("Shavuot");
             }
+            break;
+        default:
             break;
         }
         break;
@@ -321,6 +327,8 @@ QStringList Holiday::findHoliday(int month,
                 holidays << i18n("Simchat Torah");
             }
             break;
+        default:
+            break;
         }
         break;
 
@@ -385,6 +393,8 @@ QStringList Holiday::findHoliday(int month,
             if (isAShabbat && !isLeapYear) {
                 holidays << i18n("Sh. Shekalim");
             }
+            break;
+        default:
             break;
         }
         break;
@@ -468,7 +478,11 @@ QStringList Holiday::findHoliday(int month,
                 holidays << i18n("Sh. HaHodesh");
             }
             break;
+        default:
+            break;
         }
+        break;
+    default:
         break;
     }
     if (isAShabbat && showParsha) {

@@ -23,7 +23,7 @@ KoEventPopupMenuTest::KoEventPopupMenuTest(QObject *parent)
 
 void KoEventPopupMenuTest::createEventFromEvent()
 {
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection{});
+    auto const calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection{});
     KOEventPopupMenu menu;
 
     const KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
@@ -41,7 +41,7 @@ void KoEventPopupMenuTest::createEventFromEvent()
 
 void KoEventPopupMenuTest::createTodoFromTodo()
 {
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    auto const calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
     const KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
@@ -59,7 +59,7 @@ void KoEventPopupMenuTest::createTodoFromTodo()
 
 void KoEventPopupMenuTest::createEventFromTodo()
 {
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    auto const calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
     const KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());
@@ -93,7 +93,7 @@ void KoEventPopupMenuTest::createEventFromTodo()
 
 void KoEventPopupMenuTest::createTodoFromEvent()
 {
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    auto const calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
     const KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
@@ -127,7 +127,7 @@ void KoEventPopupMenuTest::createTodoFromEvent()
 
 void KoEventPopupMenuTest::defaultMenuEventVisible()
 {
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    auto const calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
     const KCalendarCore::Event::Ptr event(new KCalendarCore::Event());
@@ -144,7 +144,7 @@ void KoEventPopupMenuTest::defaultMenuEventVisible()
 
 void KoEventPopupMenuTest::defaultMenuTodoVisible()
 {
-    auto calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
+    auto const calendar = Akonadi::CollectionCalendar::Ptr::create(Akonadi::Collection());
     KOEventPopupMenu menu;
 
     const KCalendarCore::Todo::Ptr todo(new KCalendarCore::Todo());

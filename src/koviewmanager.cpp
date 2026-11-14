@@ -508,7 +508,7 @@ void KOViewManager::showAgendaView()
             connect(mAgendaView, &KOAgendaView::zoomViewHorizontally, this, [this](const QDate &d, int n) {
                 mMainView->dateNavigator()->selectDates(d, n, QDate());
             });
-            auto config = KSharedConfig::openConfig();
+            auto const config = KSharedConfig::openConfig();
             mAgendaView->readSettings(config.data());
         }
         if (showBoth && mAgendaViewTabs->indexOf(mAgendaView) < 0) {

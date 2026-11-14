@@ -274,7 +274,7 @@ void SearchDialog::search(const QRegularExpression &regularExpression)
     const KCalendarCore::Incidence::List incidences = Akonadi::ETMCalendar::mergeIncidenceList(events, todos, journals);
     for (const KCalendarCore::Incidence::Ptr &ev : incidences) {
         Q_ASSERT(ev);
-        auto collectionId = ev->customProperty("VOLATILE", "COLLECTION-ID").toLongLong();
+        auto const collectionId = ev->customProperty("VOLATILE", "COLLECTION-ID").toLongLong();
         Akonadi::Item item;
         const auto enabledCalendars2 = m_calendarview->enabledCalendars();
         for (const auto &calendar : enabledCalendars2) {
