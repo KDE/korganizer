@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-15 00:47+0000\n"
+"POT-Creation-Date: 2026-11-14 11:15+0000\n"
 "PO-Revision-Date: 2026-10-15 12:00+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -424,7 +424,7 @@ msgstr "Шаббат ха-Гадоль"
 msgid "Pesach"
 msgstr "Песах"
 
-#: hebrewcalendar/holiday.cpp:116 hebrewcalendar/holiday.cpp:310
+#: hebrewcalendar/holiday.cpp:116 hebrewcalendar/holiday.cpp:316
 #, kde-format
 msgid "Chol Hamoed"
 msgstr "Холь а-Моэд"
@@ -435,190 +435,190 @@ msgstr "Холь а-Моэд"
 msgid "Yom HaShoah"
 msgstr "Йом Хашоа"
 
-#: hebrewcalendar/holiday.cpp:167 hebrewcalendar/holiday.cpp:174
-#: hebrewcalendar/holiday.cpp:185
+#: hebrewcalendar/holiday.cpp:169 hebrewcalendar/holiday.cpp:176
+#: hebrewcalendar/holiday.cpp:187
 #, kde-format
 msgid "Yom HaAtzmaut"
 msgstr "Йом Хаацмаут"
 
-#: hebrewcalendar/holiday.cpp:169 hebrewcalendar/holiday.cpp:183
+#: hebrewcalendar/holiday.cpp:171 hebrewcalendar/holiday.cpp:185
 #, kde-format
 msgid "Yom HaZikaron"
 msgstr "Йом Хазикарон"
 
-#: hebrewcalendar/holiday.cpp:193
+#: hebrewcalendar/holiday.cpp:195
 #, kde-format
 msgid "Yom Yerushalayim"
 msgstr "Йом Йерушалаим"
 
-#: hebrewcalendar/holiday.cpp:197
+#: hebrewcalendar/holiday.cpp:199
 #, kde-format
 msgid "Lag BaOmer"
 msgstr "Лаг ба-Омер"
 
-#: hebrewcalendar/holiday.cpp:223
+#: hebrewcalendar/holiday.cpp:227
 #, kde-format
 msgid "Erev Shavuot"
 msgstr "Канун Шавуот"
 
-#: hebrewcalendar/holiday.cpp:228
+#: hebrewcalendar/holiday.cpp:232
 #, kde-format
 msgid "Shavuot"
 msgstr "Шавуот"
 
-#: hebrewcalendar/holiday.cpp:237
+#: hebrewcalendar/holiday.cpp:243
 #, kde-format
 msgid "Tzom Tammuz"
 msgstr "Пост 17-го Таммуза"
 
-#: hebrewcalendar/holiday.cpp:245
+#: hebrewcalendar/holiday.cpp:251
 #, kde-format
 msgid "Sh. Hazon"
 msgstr "Шаббат Хазон"
 
-#: hebrewcalendar/holiday.cpp:247
+#: hebrewcalendar/holiday.cpp:253
 #, kde-format
 msgid "Sh. Nahamu"
 msgstr "Шаббат Нахаму"
 
-#: hebrewcalendar/holiday.cpp:251
+#: hebrewcalendar/holiday.cpp:257
 #, kde-format
 msgid "Tisha B'Av"
 msgstr "Тиша бе-Ав"
 
-#: hebrewcalendar/holiday.cpp:257
+#: hebrewcalendar/holiday.cpp:263
 #, kde-format
 msgid "S'lichot"
 msgstr "Слихот"
 
-#: hebrewcalendar/holiday.cpp:259
+#: hebrewcalendar/holiday.cpp:265
 #, kde-format
 msgid "Erev R.H."
 msgstr "Канун Рош а-Шана"
 
-#: hebrewcalendar/holiday.cpp:267
+#: hebrewcalendar/holiday.cpp:273
 #, kde-format
 msgid "Rosh Hashana"
 msgstr "Рош а-Шана"
 
-#: hebrewcalendar/holiday.cpp:271 hebrewcalendar/holiday.cpp:286
+#: hebrewcalendar/holiday.cpp:277 hebrewcalendar/holiday.cpp:292
 #, kde-format
 msgid "Sh. Shuvah"
 msgstr "Шаббат Тшува"
 
-#: hebrewcalendar/holiday.cpp:273 hebrewcalendar/holiday.cpp:278
+#: hebrewcalendar/holiday.cpp:279 hebrewcalendar/holiday.cpp:284
 #, kde-format
 msgid "Tzom Gedalia"
 msgstr "Пост Гедалии"
 
-#: hebrewcalendar/holiday.cpp:290
+#: hebrewcalendar/holiday.cpp:296
 #, kde-format
 msgid "Erev Y.K."
 msgstr "Канун Йом-Кипур"
 
-#: hebrewcalendar/holiday.cpp:293
+#: hebrewcalendar/holiday.cpp:299
 #, kde-format
 msgid "Yom Kippur"
 msgstr "Йом-Кипур"
 
-#: hebrewcalendar/holiday.cpp:296
+#: hebrewcalendar/holiday.cpp:302
 #, kde-format
 msgid "Erev Sukkot"
 msgstr "Канун Суккот"
 
-#: hebrewcalendar/holiday.cpp:301
+#: hebrewcalendar/holiday.cpp:307
 #, kde-format
 msgid "Sukkot"
 msgstr "Суккот"
 
-#: hebrewcalendar/holiday.cpp:314
+#: hebrewcalendar/holiday.cpp:320
 #, kde-format
 msgid "Hoshana Rabah"
 msgstr "Оша-на Раба"
 
-#: hebrewcalendar/holiday.cpp:317
+#: hebrewcalendar/holiday.cpp:323
 #, kde-format
 msgid "Shmini Atzeret"
 msgstr "Шмини Ацерет"
 
-#: hebrewcalendar/holiday.cpp:321
+#: hebrewcalendar/holiday.cpp:327
 #, kde-format
 msgid "Simchat Torah"
 msgstr "Симхат Тора"
 
-#: hebrewcalendar/holiday.cpp:332
+#: hebrewcalendar/holiday.cpp:340
 #, kde-format
 msgid "Erev Hanukah"
 msgstr "Канун Хануки"
 
-#: hebrewcalendar/holiday.cpp:334 hebrewcalendar/holiday.cpp:342
+#: hebrewcalendar/holiday.cpp:342 hebrewcalendar/holiday.cpp:350
 #, kde-format
 msgid "Hanukah"
 msgstr "Ханука"
 
-#: hebrewcalendar/holiday.cpp:345
+#: hebrewcalendar/holiday.cpp:353
 #, kde-format
 msgid "Tzom Tevet"
 msgstr "Пост 10-го Тевета"
 
-#: hebrewcalendar/holiday.cpp:355 hebrewcalendar/holiday.cpp:364
-#: hebrewcalendar/holiday.cpp:369 hebrewcalendar/holiday.cpp:375
+#: hebrewcalendar/holiday.cpp:363 hebrewcalendar/holiday.cpp:372
+#: hebrewcalendar/holiday.cpp:377 hebrewcalendar/holiday.cpp:383
 #, kde-format
 msgid "Sh. Shirah"
 msgstr "Шаббат Шира"
 
-#: hebrewcalendar/holiday.cpp:371
+#: hebrewcalendar/holiday.cpp:379
 #, kde-format
 msgid "Tu B'Shvat"
 msgstr "Ту-би-Шват"
 
-#: hebrewcalendar/holiday.cpp:386 hebrewcalendar/holiday.cpp:398
-#: hebrewcalendar/holiday.cpp:406
+#: hebrewcalendar/holiday.cpp:394 hebrewcalendar/holiday.cpp:408
+#: hebrewcalendar/holiday.cpp:416
 #, kde-format
 msgid "Sh. Shekalim"
 msgstr "Шаббат Шекалим"
 
-#: hebrewcalendar/holiday.cpp:395
+#: hebrewcalendar/holiday.cpp:405
 #, kde-format
 msgid "Purim Katan"
 msgstr "Пурим Катан"
 
-#: hebrewcalendar/holiday.cpp:414 hebrewcalendar/holiday.cpp:434
+#: hebrewcalendar/holiday.cpp:424 hebrewcalendar/holiday.cpp:444
 #, kde-format
 msgid "Ta'anit Ester"
 msgstr "Пост Эстер"
 
-#: hebrewcalendar/holiday.cpp:423 hebrewcalendar/holiday.cpp:428
+#: hebrewcalendar/holiday.cpp:433 hebrewcalendar/holiday.cpp:438
 #, kde-format
 msgid "Sh. Zachor"
 msgstr "Шаббат Захор"
 
-#: hebrewcalendar/holiday.cpp:430
+#: hebrewcalendar/holiday.cpp:440
 #, kde-format
 msgid "Erev Purim"
 msgstr "Канун Пурима"
 
-#: hebrewcalendar/holiday.cpp:438
+#: hebrewcalendar/holiday.cpp:448
 #, kde-format
 msgid "Purim"
 msgstr "Пурим"
 
-#: hebrewcalendar/holiday.cpp:442 hebrewcalendar/holiday.cpp:447
+#: hebrewcalendar/holiday.cpp:452 hebrewcalendar/holiday.cpp:457
 #, kde-format
 msgid "Shushan Purim"
 msgstr "Шушан Пурим"
 
-#: hebrewcalendar/holiday.cpp:458
+#: hebrewcalendar/holiday.cpp:468
 #, kde-format
 msgid "Sh. Parah"
 msgstr "Шаббат Пара"
 
-#: hebrewcalendar/holiday.cpp:468
+#: hebrewcalendar/holiday.cpp:478
 #, kde-format
 msgid "Sh. HaHodesh"
 msgstr "Шаббат ха-Ходеш"
 
-#: hebrewcalendar/holiday.cpp:483
+#: hebrewcalendar/holiday.cpp:497
 #, kde-format
 msgid "%1 Omer"
 msgstr "%1 Омер"
