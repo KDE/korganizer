@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 00:14+0000\n"
-"PO-Revision-Date: 2026-11-03 22:48+0300\n"
+"PO-Revision-Date: 2026-11-15 20:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -3959,7 +3959,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
-msgstr "Yazıtipleri"
+msgstr "Yazı Tipleri"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:191
 #: prefs/koprefsdialogcolorsandfonts.cpp:198
@@ -4967,7 +4967,7 @@ msgstr ""
 "Takvim ögelerini, ilgili etiket rengini kullanarak, ögenin kenarlığı kendi "
 "takviminin renginde çizilecek şekilde çizmek istiyorsanız “Künye içeride, "
 "takvim dışarıda” seçeneğini seçin. Bu renkleri ayarlamak için lütfen Renkler "
-"ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ve Yazı Tipleri yapılandırma sayfasını kullanın."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4999,7 +4999,7 @@ msgstr ""
 "Takvim ögelerini, ilgili takvim renklerini kullanarak ve ögenin kenarlığı "
 "etiketinin rengiyle çizilmiş olarak çizmek istiyorsanız “Takvim içeride, "
 "künye dışarıda” seçeneğini seçin. Bu renkleri ayarlamak için lütfen Renkler "
-"ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ve Yazı Tipleri yapılandırma sayfasını kullanın."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -5323,7 +5323,7 @@ msgid ""
 msgstr ""
 "Takvim ögelerini, ilgili etiket renklerini kullanarak çizmek istiyorsanız "
 "“Yalnızca künye” seçeneğini seçin. Bu renkleri ayarlamak için lütfen Renkler "
-"ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ve Yazı Tipleri yapılandırma sayfasını kullanın."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:300
