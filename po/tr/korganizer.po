@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-10 00:58+0000\n"
-"PO-Revision-Date: 2026-11-03 22:48+0300\n"
+"PO-Revision-Date: 2026-11-15 20:07+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.2\n"
 "(http: //www.transifex.com/projects/p/kdepim-k-tr/language/tr/)\n"
 "X-POOTLE-MTIME: 1413104942.000000\n"
 
@@ -3959,7 +3959,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Fonts"
-msgstr "Yazıtipleri"
+msgstr "Yazı Tipleri"
 
 #: prefs/koprefsdialogcolorsandfonts.cpp:191
 #: prefs/koprefsdialogcolorsandfonts.cpp:198
@@ -4967,7 +4967,7 @@ msgstr ""
 "Takvim ögelerini, ilgili etiket rengini kullanarak, ögenin kenarlığı kendi "
 "takviminin renginde çizilecek şekilde çizmek istiyorsanız “Künye içeride, "
 "takvim dışarıda” seçeneğini seçin. Bu renkleri ayarlamak için lütfen Renkler "
-"ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ve Yazı Tipleri yapılandırma sayfasını kullanın."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -4999,7 +4999,7 @@ msgstr ""
 "Takvim ögelerini, ilgili takvim renklerini kullanarak ve ögenin kenarlığı "
 "etiketinin rengiyle çizilmiş olarak çizmek istiyorsanız “Takvim içeride, "
 "künye dışarıda” seçeneğini seçin. Bu renkleri ayarlamak için lütfen Renkler "
-"ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ve Yazı Tipleri yapılandırma sayfasını kullanın."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -5024,7 +5024,8 @@ msgid ""
 msgstr ""
 "İlişkili künyelerinin rengini kullanarak takvim ögelerini (hem iç hem de "
 "kenarlık) çizmek istiyorsanız “Yalnızca künye” seçeneğini seçin. Bu renkleri "
-"ayarlamak için lütfen Renkler ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ayarlamak için lütfen Renkler ve Yazı Tipleri yapılandırma sayfasını "
+"kullanın."
 
 #. i18n: ectx: label, entry, group (Agenda View)
 #. i18n: ectx: label, entry, group (Month View)
@@ -5049,7 +5050,8 @@ msgid ""
 msgstr ""
 "Takvim ögelerini (hem iç hem de kenarlık) takvimlerinin rengini kullanarak "
 "çizmek istiyorsanız “Yalnızca takvim” seçeneğini seçin. Bu renkleri "
-"ayarlamak için lütfen Renkler ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ayarlamak için lütfen Renkler ve Yazı Tipleri yapılandırma sayfasını "
+"kullanın."
 
 #. i18n: ectx: label, entry (AgendaViewCalendarDisplay), group (Agenda View)
 #: settings/korganizer.kcfg:208
@@ -5279,7 +5281,8 @@ msgid ""
 msgstr ""
 "En az bir tatil bir tarihin üzerine denk geliyorsa tarihin arka plan rengi "
 "olarak özel tatil rengini kullanmak için bu kutuyu işaretleyin. Tatil "
-"rengini özelleştirmek için “Ayarlar → Renkler ve Yazıtipleri” bölümüne gidin."
+"rengini özelleştirmek için “Ayarlar → Renkler ve Yazı Tipleri” bölümüne "
+"gidin."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:281
@@ -5323,7 +5326,7 @@ msgid ""
 msgstr ""
 "Takvim ögelerini, ilgili etiket renklerini kullanarak çizmek istiyorsanız "
 "“Yalnızca künye” seçeneğini seçin. Bu renkleri ayarlamak için lütfen Renkler "
-"ve Yazıtipleri yapılandırma sayfasını kullanın."
+"ve Yazı Tipleri yapılandırma sayfasını kullanın."
 
 #. i18n: ectx: tooltip, entry, group (Month View)
 #: settings/korganizer.kcfg:300
@@ -5341,7 +5344,7 @@ msgid ""
 msgstr ""
 "Takvim ögelerini (hem iç hem de kenarlık) takvimlerinin renginde çizmek "
 "istiyorsanız “Yalnızca takvim” seçeneğini seçin. Bu renkleri ayarlamak için "
-"lütfen Renkler ve Yazıtipleri yapılandırma sayfasını kullanın."
+"lütfen Renkler ve Yazı Tipleri yapılandırma sayfasını kullanın."
 
 #. i18n: ectx: label, entry, group (Month View)
 #: settings/korganizer.kcfg:307
@@ -5685,7 +5688,7 @@ msgstr "Zaman çubuğu"
 #: settings/korganizer.kcfg:407
 #, kde-format
 msgid "Set the Agenda View time bar labels font"
-msgstr "Ajanda görünümü zaman çubuğu etiket yazıtipini ayarla"
+msgstr "Ajanda görünümü zaman çubuğu etiket yazı tipini ayarla"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:408
@@ -5695,9 +5698,9 @@ msgid ""
 "that shows the hours in the Agenda View. This button will open the \"Select "
 "Font\" dialog, allowing you to choose the hour font for the time bar."
 msgstr ""
-"Zaman çubuğu yazıtipini ayarlamak için bu düğmeye basın. Zaman çubuğu, "
-"ajanda görünümünde saatleri gösteren bir ögedir. Bu düğme, “Yazıtipi Seç” "
-"iletişim kutusunu açar ve zaman çubuğu için saat yazıtipini seçmenize izin "
+"Zaman çubuğu yazı tipini ayarlamak için bu düğmeye basın. Zaman çubuğu, "
+"ajanda görünümünde saatleri gösteren bir ögedir. Bu düğme, “Yazı Tipi Seç” "
+"iletişim kutusunu açar ve zaman çubuğu için saat yazı tipini seçmenize izin "
 "verir."
 
 #. i18n: ectx: label, entry, group (Fonts)
@@ -5710,7 +5713,7 @@ msgstr "Ay Görünümü"
 #: settings/korganizer.kcfg:412
 #, kde-format
 msgid "Set the font for Month View items"
-msgstr "Ay görünümü ögeleri yazıtipini ayarla"
+msgstr "Ay görünümü ögeleri yazı tipini ayarla"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:413
@@ -5720,9 +5723,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the items in "
 "the Month View."
 msgstr ""
-"Bu düğmeye tıklayarak, aylık görünüm yazıtipini ayarlayabilirsiniz. Bu "
-"düğme, “Yazıtipi Seç” iletişim kutusunu açar ve aylık görünümde ögeler için "
-"kullanılacak yazıtipini seçmenize izin verir."
+"Bu düğmeye tıklayarak, aylık görünüm yazı tipini ayarlayabilirsiniz. Bu "
+"düğme, “Yazı Tipi Seç” iletişim kutusunu açar ve aylık görünümde ögeler için "
+"kullanılacak yazı tipini seçmenize izin verir."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:416
@@ -5734,7 +5737,7 @@ msgstr "Ajanda Görünümü"
 #: settings/korganizer.kcfg:417
 #, kde-format
 msgid "Set the font for Agenda View items"
-msgstr "Ajanda görünümü ögeleri yazıtipini ayarla"
+msgstr "Ajanda görünümü ögeleri yazı tipini ayarla"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:418
@@ -5744,9 +5747,9 @@ msgid ""
 "the \"Select Font\" dialog, allowing you to choose the font for the events "
 "in the Agenda View."
 msgstr ""
-"Bu düğmeye tıklayarak, ajanda görünümü yazıtipini ayarlayabilirsiniz. Bu "
-"düğme, “Yazıtipi Seç” iletişim kutusunu açar ve ajanda görünümünde "
-"etkinlikler için kullanılacak yazıtipini belirleyebilirsiniz."
+"Bu düğmeye tıklayarak, ajanda görünümü yazı tipini ayarlayabilirsiniz. Bu "
+"düğme, “Yazı Tipi Seç” iletişim kutusunu açar ve ajanda görünümünde "
+"etkinlikler için kullanılacak yazı tipini belirleyebilirsiniz."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:421
@@ -5759,7 +5762,7 @@ msgstr "Geçerli zaman (Marcus Bains) çizgisi"
 #, kde-format
 msgid "Set the font for the current-time (Marcus Bains) line in Agenda View"
 msgstr ""
-"Ajanda görünümünde geçerli zaman akışı (Marcus Bains) yazıtipini ayarla"
+"Ajanda görünümünde geçerli zaman akışı (Marcus Bains) yazı tipini ayarla"
 
 #. i18n: ectx: whatsthis, entry, group (Fonts)
 #: settings/korganizer.kcfg:423
@@ -5769,9 +5772,9 @@ msgid ""
 "This button will open the \"Select Font\" dialog, allowing you to choose the "
 "font for the current-time line in the Agenda View."
 msgstr ""
-"Bu düğmeye tıklayarak, geçerli zaman akışı (Marcus Bains) yazıtipini "
-"ayarlayabilirsiniz. Bu düğme, “Yazıtipi Seç” iletişim kutusunu açar ve "
-"ajanda görünümünde şu andaki zaman akışı için kullanılacak yazıtipini "
+"Bu düğmeye tıklayarak, geçerli zaman akışı (Marcus Bains) yazı tipini "
+"ayarlayabilirsiniz. Bu düğme, “Yazı Tipi Seç” iletişim kutusunu açar ve "
+"ajanda görünümünde şu andaki zaman akışı için kullanılacak yazı tipini "
 "seçmenize izin verir."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)

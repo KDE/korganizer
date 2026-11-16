@@ -1,7 +1,7 @@
 # translation of korganizer.po to Slovenian
 # Translation of korganizer.po to Slovenian
 # Copyright (C) 2001,2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-# $Id: korganizer.po 1752572 2026-11-10 01:43:22Z scripty $
+# $Id$
 # $Source$
 #
 # Roman Maurer <roman.maurer@hermes.si>, 2001.
