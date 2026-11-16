@@ -511,7 +511,7 @@
           <li xml:lang="sk">Navigátor: farbu zvýraznenia mriežky navigátora možno teraz zmeniť. Nastavíte ju voľbou „Farba zvýraznenia mriežky navigátora“ v nastaveniach Farby a písma</li>
           <li xml:lang="sl">Navigator: barvo označevanja navigacijske mreže je zdaj mogoče spremeniti. Za konfiguracijo barve v nastavitvah Barve in pisave nastavite "Barva označevanja navigacijske mreže"</li>
           <li xml:lang="sv">Navigering: Markeringsfärgen för navigeringsrutnätet kan nu ändras. För att ställa in färgen, använd "Färg för markering av navigeringsrutnät" i inställningarna för Färger och teckensnitt.</li>
-          <li xml:lang="tr">Tarih gezgini: Gezgin için olan vurgu rengi artık değiştirilebiliyor. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Gezgin ızgarası vurgu rengi”ni ayarlayın.</li>
+          <li xml:lang="tr">Tarih gezgini: Gezgin için olan vurgu rengi artık değiştirilebiliyor. Rengi yapılandırmak için Renkler ve Yazı Tipleri ayarlarından “Gezgin ızgarası vurgu rengi”ni ayarlayın.</li>
           <li xml:lang="uk">Панель навігації: можна змінювати колір тла підсвічування. Щоб налаштувати колір, встановіть значення для пункту «Колір підсвічування у таблиці навігації» у параметра кольорів і шрифтів програми.</li>
           <li>Kontact summary: ask before deleting incidences</li>
           <li xml:lang="ar">ملخص متراسلك: اسأل قبل حذف الوقائع</li>
@@ -1246,7 +1246,7 @@
           <li xml:lang="sk">Mesačný pohľad: farbu pozadia bunky dnešného dátumu možno zmeniť. Farbu nastavíte voľbou \"Farba pozadia dneška v mesačnom pohľade\" v nastaveniach Farby a písma</li>
           <li xml:lang="sl">Mesečni pogled: barvo ozadja za celico z današnjim datumom je mogoče spremeniti. Če želite konfigurirati barvo, v nastavitvah Barve in pisave nastavite "Barva ozadja mesečnega pogleda za danes"</li>
           <li xml:lang="sv">Månadsvy: bakgrundsfärgen för dagens datumcell kan ändras. För att ställa in färgen, använd "Bakgrundsfärg för idag i månadsvyn" i inställningarna för Färger och teckensnitt.</li>
-          <li xml:lang="tr">Ay görünümü: Bugünün tarih hücre arka plan rengi değiştirilebilir. Rengi yapılandırmak için Renkler ve Yazıtipleri ayarlarından “Ay görünümü bugün arka plan rengi” seçeneğini ayarlayın.</li>
+          <li xml:lang="tr">Ay görünümü: Bugünün tarih hücre arka plan rengi değiştirilebilir. Rengi yapılandırmak için Renkler ve Yazı Tipleri ayarlarından “Ay görünümü bugün arka plan rengi” seçeneğini ayarlayın.</li>
           <li xml:lang="uk">Панель перегляду місяця: можна змінювати колір тла у комірці поточного дня. Щоб налаштувати колір, встановіть значення для пункту «Колір тла поточного дня на панелі перегляду місяця» у параметра кольорів і шрифтів програми.</li>
           <li>Navigator bar: improved by adding week scrolling and showing/hiding the sidebar on a per-view basis</li>
           <li xml:lang="ar">شريط التنقل: تحسين بإضافة التمرير الأسبوعي وإظهار/إخفاء الشريط الجانبي على أساس كل عرض على حدة</li>
