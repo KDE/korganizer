@@ -468,7 +468,7 @@
     <binary>korganizer</binary>
   </provides>
   <releases>
-    <release version="6.8.40" type="snapshot">
+    <release version="6.9.0" date="2026-12-10">
       <description>
         <p>Features</p>
         <p xml:lang="ar">الميزات</p>
