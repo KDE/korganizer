@@ -458,6 +458,10 @@
     <value key="KDE::mailinglist-devel">kde-pim@kde.org</value>
   </custom>
   <content_rating type="oars-1.1"/>
+  <branding>
+    <color type="primary" scheme_preference="light">#d9ecd3</color>
+    <color type="primary" scheme_preference="dark">#2f5527</color>
+  </branding>
   <screenshots>
     <screenshot type="default">
       <image type="source">https://cdn.kde.org/screenshots/korganizer/korganizer.png</image>
