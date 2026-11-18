@@ -220,6 +220,7 @@ GenericName[zh_CN]=个人日程安排工具
 GenericName[zh_TW]=個人行程組織軟體
 StartupNotify=true
 Categories=Qt;KDE;Office;Calendar;
+Keywords=calendar;events;appointments;tasks;todo;schedule;CalDAV;
 InitialPreference=10
 SingleMainWindow=true
 Version=1.5
