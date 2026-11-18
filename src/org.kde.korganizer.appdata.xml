@@ -469,6 +469,15 @@
   </screenshots>
   <project_group>KDE</project_group>
   <launchable type="desktop-id">org.kde.korganizer.desktop</launchable>
+  <keywords>
+    <keyword>calendar</keyword>
+    <keyword>events</keyword>
+    <keyword>appointments</keyword>
+    <keyword>tasks</keyword>
+    <keyword>todo</keyword>
+    <keyword>schedule</keyword>
+    <keyword translate="no">CalDAV</keyword>
+  </keywords>
   <provides>
     <binary>korganizer</binary>
   </provides>
