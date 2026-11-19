@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: none
 # SPDX-License-Identifier: BSD-3-Clause
 set(korganizer_collectionview_icons
-    sc-apps-quickview.svgz
+    sc-apps-quickview.svg
     256-apps-quickview.png
     128-apps-quickview.png
     22-apps-quickview.png
