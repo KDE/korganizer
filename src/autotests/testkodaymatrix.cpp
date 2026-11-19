@@ -22,12 +22,10 @@ void KODayMatrixTest::testMatrixLimits()
     dates.insert(QDate(2011, 4, 1), KODayMatrix::MatrixRange(QDate(2011, 3, 28), QDate(2011, 5, 8)));
     dates.insert(QDate(2011, 5, 1), KODayMatrix::MatrixRange(QDate(2011, 4, 25), QDate(2011, 6, 5)));
 
-    QMapIterator<QDate, KODayMatrix::MatrixRange> iterator(dates);
-    while (iterator.hasNext()) {
-        iterator.next();
-        const KODayMatrix::MatrixRange range = KODayMatrix::matrixLimits(iterator.key());
-        // qCDebug(KORGANIZER_LOG) << "Expected is " << iterator.value() << " and got " << range;
-        QCOMPARE(range, iterator.value());
+    for (auto i = dates.cbegin(), end = dates.cend(); i != end; ++i) {
+        const KODayMatrix::MatrixRange range = KODayMatrix::matrixLimits(i.key());
+        // qCDebug(KORGANIZER_LOG) << "Expected is " << i.value() << " and got " << range;
+        QCOMPARE(range, i.value());
     }
 }
 

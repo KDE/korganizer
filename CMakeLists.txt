@@ -252,6 +252,7 @@ include_directories(
 )
 configure_file(korganizer-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/korganizer-version.h @ONLY)
 
+add_definitions(-DQT_NO_JAVA_STYLE_ITERATORS)
 add_definitions(-DQT_NO_CONTEXTLESS_CONNECT)
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # Not setting for GNU due to too many warnings related to private members of base classes or around lambdas
