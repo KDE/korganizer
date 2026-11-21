@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: korganizer\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 00:14+0000\n"
-"PO-Revision-Date: 2026-10-27 10:20+0100\n"
+"PO-Revision-Date: 2026-11-20 16:51+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -5782,7 +5782,7 @@ msgid ""
 msgstr ""
 "Premeu aquest botó per a configurar la lletra de la barra d'hores. La barra "
 "d'hores és el giny que mostra les hores a la vista d'agenda. Aquest botó "
-"obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra de l'hora "
+"obrirà el diàleg «Tria una lletra», que us permet triar la lletra de l'hora "
 "per a la barra d'hores."
 
 #. i18n: ectx: label, entry, group (Fonts)
@@ -5806,8 +5806,8 @@ msgid ""
 "the Month View."
 msgstr ""
 "Premeu aquest botó per a configurar la lletra de la vista mensual. Aquest "
-"botó obrirà el diàleg «Tria una lletra», permetent-vos triar la lletra per "
-"als elements a la vista mensual."
+"botó obrirà el diàleg «Tria una lletra», que us permet triar la lletra dels "
+"elements a la vista mensual."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:416
@@ -5830,8 +5830,8 @@ msgid ""
 "in the Agenda View."
 msgstr ""
 "Premeu aquest botó per a configurar la lletra per a la vista d'agenda. "
-"Aquest botó obrirà el diàleg «Tria una lletra», permetent-vos triar la "
-"lletra per als esdeveniments a la vista d'agenda."
+"Aquest botó obrirà el diàleg «Tria una lletra», que us permet triar la "
+"lletra dels esdeveniments a la vista d'agenda."
 
 #. i18n: ectx: label, entry, group (Fonts)
 #: settings/korganizer.kcfg:421
@@ -5856,8 +5856,8 @@ msgid ""
 "font for the current-time line in the Agenda View."
 msgstr ""
 "Premeu aquest botó per a configurar la lletra de la línia de temps actual "
-"(Marcus Bains). Aquest botó obrirà el diàleg «Tria una lletra», permetent-"
-"vos triar la lletra per a la línia de temps actual a la vista d'agenda."
+"(Marcus Bains). Aquest botó obrirà el diàleg «Tria una lletra», que us "
+"permet triar la lletra de la línia de temps actual a la vista d'agenda."
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:436
