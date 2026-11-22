@@ -7,8 +7,11 @@
 #pragma once
 
 #include <Akonadi/Collection>
+
+#include <QHash>
 #include <QObject>
 #include <QPointer>
+
 namespace Akonadi
 {
 class CollectionPropertiesDialog;
