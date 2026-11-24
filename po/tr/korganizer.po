@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kdepim-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-10 00:58+0000\n"
-"PO-Revision-Date: 2026-11-18 19:21+0300\n"
+"PO-Revision-Date: 2026-11-23 18:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1524,13 +1524,13 @@ msgstr "%1 (Çevrim Dışı)"
 #, kde-format
 msgctxt "@item this is the default event calendar"
 msgid "%1 (Default Event)"
-msgstr "%1 (Öntanımlı Etkinlik)"
+msgstr "%1 (Varsayılan Etkinlik)"
 
 #: akonadicollectionview.cpp:304
 #, kde-format
 msgctxt "@item this is the default todo calendar"
 msgid "%1 (Default Todo)"
-msgstr "%1 (Öntanımlı Yapılacak)"
+msgstr "%1 (Varsayılan Yapılacak)"
 
 #: akonadicollectionview.cpp:392
 #, kde-format
@@ -1567,7 +1567,7 @@ msgstr "Kla&sör Rengini Ayarla…"
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Calendar"
-msgstr "Ö&ntanımlı Takvim Olarak Ayarla"
+msgstr "&Varsayılan Takvim Olarak Ayarla"
 
 #: akonadicollectionview.cpp:537
 #, kde-format
@@ -1589,9 +1589,9 @@ msgid ""
 "calendar folder?<para>This will replace <filename>%3</filename> as the "
 "default %4 calendar folder.</para>"
 msgstr ""
-"<filename>%1</filename> ögesini öntanımlı %2 takvimi klasörü olarak "
+"<filename>%1</filename> ögesini varsayılan %2 takvimi klasörü olarak "
 "ayarlamayı gerçekten istiyor musunuz?<para>Bu, <filename>%3</filename> "
-"ögesini öntanımlı %4 takvimi klasörü olarak değiştirecektir.</para>"
+"ögesini varsayılan %4 takvimi klasörü olarak değiştirecektir.</para>"
 
 #: akonadicollectionview.cpp:610
 #, kde-kuit-format
@@ -1600,32 +1600,32 @@ msgid ""
 "Do you really want to set <filename>%1</filename> as your default %2 "
 "calendar folder?"
 msgstr ""
-"<filename>%1</filename> ögesini öntanımlı %2 takvim klasörünüz olarak "
+"<filename>%1</filename> ögesini varsayılan %2 takvim klasörünüz olarak "
 "ayarlamayı gerçekten istiyor musunuz?"
 
 #: akonadicollectionview.cpp:613
 #, kde-format
 msgctxt "@title:window"
 msgid "Replace Default %1 Calendar?"
-msgstr "Öntanımlı %1 Takvimini Değiştir?"
+msgstr "Varsayılan %1 Takvimini Değiştir?"
 
 #: akonadicollectionview.cpp:617 akonadicollectionview.cpp:1049
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<filename>%1</filename> is now your default %2 calendar"
-msgstr "<filename>%1</filename>. artık öntanımlı %2 takviminiz"
+msgstr "<filename>%1</filename>. artık varsayılan %2 takviminiz"
 
 #: akonadicollectionview.cpp:770
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Event Calendar"
-msgstr "Ö&ntanımlı Etkinlik Takvimi Olarak Ayarla"
+msgstr "&Varsayılan Etkinlik Takvimi Olarak Ayarla"
 
 #: akonadicollectionview.cpp:773
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Set as &Default Todo Calendar"
-msgstr "Ö&ntanımlı Yapılacaklar Takvimi Olarak Ayarla"
+msgstr "&Varsayılan Yapılacaklar Takvimi Olarak Ayarla"
 
 #: akonadicollectionview.cpp:791
 #, kde-format
@@ -1667,8 +1667,8 @@ msgstr ""
 "<filename>%1</filename> takvimini silmeyi gerçekten istiyor musunuz?"
 "<para><note>Ne takvim verisi ne de takvimin kendisi çevrim içi özkaynaktan "
 "kaldırılacaktır. <filename>%1</filename> takvimi istenen herhangi bir "
-"zamanda eklenebilir.</note></para><para><warning>Bu takvim bir öntanımlı "
-"takvim klasörü içeriyor. Onu silerseniz yeni bir öntanımlı takvim klasörü "
+"zamanda eklenebilir.</note></para><para><warning>Bu takvim bir varsayılan "
+"takvim klasörü içeriyor. Onu silerseniz yeni bir varsayılan takvim klasörü "
 "seçmeniz istenecektir.</warning></para>"
 
 #: akonadicollectionview.cpp:910
@@ -1685,8 +1685,8 @@ msgstr ""
 "<filename>%1</filename> takvimini silmeyi gerçekten istiyor musunuz?"
 "<para><note>Ne takvim verisi ne de takvimin kendisi çevrim içi özkaynaktan "
 "kaldırılacaktır. <filename>%1</filename> takvimi istenen herhangi bir "
-"zamanda eklenebilir.</note></para><para><warning>Bu, sizin öntanımlı %2 "
-"takviminizdir. Onu silerseniz yeni bir öntanımlı %2 takvimi seçmeniz "
+"zamanda eklenebilir.</note></para><para><warning>Bu, sizin varsayılan %2 "
+"takviminizdir. Onu silerseniz yeni bir varsayılan %2 takvimi seçmeniz "
 "istenecektir.</warning></para>"
 
 #: akonadicollectionview.cpp:923
@@ -1713,9 +1713,9 @@ msgid ""
 msgstr ""
 "<filename>%1</filename> klasörünü silmeyi gerçekten istiyor musunuz?"
 "<para><warning>Bu işlem geri alınamaz. %2 düğmesine basmadan önce lütfen bir "
-"kez daha düşünün.</warning></para><para><warning>Bu, sizin öntanımlı %3 "
-"takvimi klasörünüzdür. Onu silerseniz yeni bir öntanımlı %4 takvimi seçmeniz "
-"istenecektir.</warning></para>"
+"kez daha düşünün.</warning></para><para><warning>Bu, sizin varsayılan %3 "
+"takvimi klasörünüzdür. Onu silerseniz yeni bir varsayılan %4 takvimi "
+"seçmeniz istenecektir.</warning></para>"
 
 #: akonadicollectionview.cpp:944 akonadicollectionview.cpp:975
 #, kde-format
@@ -1747,7 +1747,7 @@ msgstr "Takvim silinemedi: <message>Geçersiz Akonadi aracısı örneği</messag
 #, kde-format
 msgctxt "@info"
 msgid "Consider setting a default %1 calendar"
-msgstr "Öntanımlı bir %1 takvimi ayarlamayı düşünün"
+msgstr "Varsayılan bir %1 takvimi ayarlamayı düşünün"
 
 #: akonadicollectionview.cpp:1057
 #, kde-format
@@ -3990,7 +3990,7 @@ msgstr "E-posta Ayarları"
 #, kde-format
 msgctxt "@title:group"
 msgid "Default Access Classification"
-msgstr "Öntanımlı Erişim Sınıflandırması"
+msgstr "Varsayılan Erişim Sınıflandırması"
 
 #: prefs/koprefsdialogmain.cpp:77 prefs/koprefsdialogtime.cpp:237
 #, kde-format
@@ -4204,7 +4204,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab"
 msgid "Default Values"
-msgstr "Öntanımlı Değerler"
+msgstr "Varsayılan Değerler"
 
 #: prefs/koprefsdialogtime.cpp:222
 #, kde-format
@@ -4216,7 +4216,7 @@ msgstr "Randevular"
 #, kde-format
 msgctxt "@label"
 msgid "Default reminder time:"
-msgstr "Öntanımlı anımsatma zamanı:"
+msgstr "Varsayılan anımsatma zamanı:"
 
 #: prefs/koprefsdialogtime.cpp:255
 #, kde-format
@@ -4316,20 +4316,20 @@ msgid ""
 "You are about to set all preferences to default values. All custom "
 "modifications will be lost."
 msgstr ""
-"Bütün tercihleri öntanımlı değerlerine döndürmek üzeresiniz. Bütün özel "
+"Bütün tercihleri varsayılan değerlerine döndürmek üzeresiniz. Bütün özel "
 "değişiklikler kaybolacaktır."
 
 #: prefs/kprefsdialog.cpp:707
 #, kde-format
 msgctxt "@title:window"
 msgid "Setting Default Preferences"
-msgstr "Öntanımlı Tercihleri Ayarlamak"
+msgstr "Varsayılan Tercihleri Ayarlamak"
 
 #: prefs/kprefsdialog.cpp:708
 #, kde-format
 msgctxt "@action:button"
 msgid "Reset to Defaults"
-msgstr "Öntanımlı Ayarlara Sıfırla"
+msgstr "Varsayılan Ayarlara Sıfırla"
 
 #. i18n: ectx: label, entry (Confirm), group (Save Settings)
 #: settings/korganizer.kcfg:9
@@ -4359,13 +4359,13 @@ msgstr "Yeni Etkinlikler, Yapılacaklar ve Günce Girdileri"
 #: settings/korganizer.kcfg:18
 #, kde-format
 msgid "Be added to the default calendar"
-msgstr "Öntanımlı takvime ekle"
+msgstr "Varsayılan takvime ekle"
 
 #. i18n: ectx: tooltip, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:19
 #, kde-format
 msgid "Always save to the default calendar"
-msgstr "Her zaman öntanımlı takvime kaydet"
+msgstr "Her zaman varsayılan takvime kaydet"
 
 #. i18n: ectx: whatsthis, entry (Destination), group (Save Settings)
 #: settings/korganizer.kcfg:20
@@ -4374,7 +4374,7 @@ msgid ""
 "Select this option to always record new events, to-dos and journal entries "
 "using the current default calendar."
 msgstr ""
-"Yeni etkinlikleri, yapılacakları ve günce girdilerini her zaman öntanımlı "
+"Yeni etkinlikleri, yapılacakları ve günce girdilerini her zaman varsayılan "
 "takvim kullanarak kaydetmek için bu seçeneği seçin."
 
 #. i18n: ectx: label, entry (Destination), group (Save Settings)
@@ -5781,13 +5781,13 @@ msgstr ""
 #: settings/korganizer.kcfg:436
 #, kde-format
 msgid "Default todo attachment method"
-msgstr "Öntanımlı yapılacak eki yöntemi"
+msgstr "Varsayılan yapılacak eki yöntemi"
 
 #. i18n: ectx: whatsthis, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:437
 #, kde-format
 msgid "The default way of attaching dropped emails to a task"
-msgstr "Bir göreve yollanan e-postaları eklemenin öntanımlı yolu"
+msgstr "Bir göreve yollanan e-postaları eklemenin varsayılan yolu"
 
 #. i18n: ectx: label, entry (DefaultTodoAttachMethod), group (Hidden Options)
 #: settings/korganizer.kcfg:440
@@ -6130,7 +6130,7 @@ msgid ""
 msgstr ""
 "Sunucudaki hesabınızla ilişkili oturum açma bilgisini buraya girin.\n"
 "\n"
-"Kolab2 sunucu özelliği olarak UID (Eşsiz Tanımlayıcı) kaydı: Öntanımlı ayar "
+"Kolab2 sunucu özelliği olarak UID (Eşsiz Tanımlayıcı) kaydı: Varsayılan ayar "
 "olarak UID’niz Kolab2 sunucusunda e-posta adresiniz olacaktır; ancak farklı "
 "da olabilir. Böyle bir durumda UID’nizi girin."
 
