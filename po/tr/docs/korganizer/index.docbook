@@ -593,14 +593,14 @@
 >Takvim Özkaynakları</title>
 
 <para
->&korganizer;, öntanımlı özkaynak olarak bir yerel dosya kullanır. Bu, sizin tek seçeneğiniz değildir; ekleyebileceğiniz birden çok özkaynak türü bulunur: Grup yazılımı sunucuları, blog olarak günce girdileri, ağ dosyaları gibi. Birden çok özkaynak kullanıyorsanız &korganizer; <link linkend="config-main-general-personal"
->öntanımlı özkaynak olarak neyi kullanacağı konusunda veya yeni etkinlikleri, yapılacakları veya günce girdilerini kaydederken hangi özkaynağı kullanması gerektiği konusunda</link
+>&korganizer;, varsayılan özkaynak olarak bir yerel dosya kullanır. Bu, sizin tek seçeneğiniz değildir; ekleyebileceğiniz birden çok özkaynak türü bulunur: Grup yazılımı sunucuları, blog olarak günce girdileri, ağ dosyaları gibi. Birden çok özkaynak kullanıyorsanız &korganizer; <link linkend="config-main-general-personal"
+>varsayılan özkaynak olarak neyi kullanacağı konusunda veya yeni etkinlikleri, yapılacakları veya günce girdilerini kaydederken hangi özkaynağı kullanması gerektiği konusunda</link
 > yapılandırılabilir. &korganizer;, <link linkend="description-view"
 >görünümlerindeki</link
 > iki veya daha çok özkaynağı sorunsuzca birleştirebilir. </para>
 
 <para
->Öntanımlı özkaynak birçok kullanım durumu için iyi bir seçimdir; ancak özellikle desteklenen bir grup yazılımı sunucusu kullanıyorsanız başka bir özkaynak kullanmak isteyebilirsiniz. Lütfen sunucu yöneticisinden uygun/meşgûl bilgisini yayınlama ve alma içerilmek üzere grup yazılımı özkaynağını yapılandırmak için gereken bilgileri isteyin. Uygun/meşgûl bilgilerine erişim, bir etkinlik organizatörünün katılımcıyı etkinliğin katılımcı listesine eklerken onun takvimini dikkate almasını sağlar.</para>
+>Varsayılan özkaynak birçok kullanım durumu için iyi bir seçimdir; ancak özellikle desteklenen bir grup yazılımı sunucusu kullanıyorsanız başka bir özkaynak kullanmak isteyebilirsiniz. Lütfen sunucu yöneticisinden uygun/meşgûl bilgisini yayınlama ve alma içerilmek üzere grup yazılımı özkaynağını yapılandırmak için gereken bilgileri isteyin. Uygun/meşgûl bilgilerine erişim, bir etkinlik organizatörünün katılımcıyı etkinliğin katılımcı listesine eklerken onun takvimini dikkate almasını sağlar.</para>
 
 <note
 ><para
@@ -758,22 +758,22 @@
 <varlistentry>
 <term
 ><guilabel
->K Alarm Takvim Dosyası</guilabel
+>KAlarm Takvim Dosyası</guilabel
 ></term>
 <listitem
 ><para
->K Alarm takvim dosyasından veri yükler.</para
+>KAlarm takvim dosyasından veri yükler.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry>
 <term
 ><guilabel
->K Alarm Takvim Dizini</guilabel
+>KAlarm Takvim Dizini</guilabel
 ></term>
 <listitem
 ><para
->Yerel K Alarm dizininden veri yükler.</para
+>Yerel KAlarm dizininden veri yükler.</para
 ></listitem>
 </varlistentry>
 
@@ -1088,7 +1088,7 @@
 >Etkinlikler eklemek için iki kullanışlı kısayol vardır: <itemizedlist>
 <listitem
 ><para
->Herhangi bir açık zaman bölgesine çift tıkladığınızda &korganizer; kendiliğinden öntanımlı süreye sahip (tercihler iletişim kutusunda özelleştirilebilir) bir etkinlik oluşturacaktır. Özeti hemen ekleyebilirsiniz. Etkinlikler, tıkladığınız yerden itibaren en yakın yarım saate <quote
+>Herhangi bir açık zaman bölgesine çift tıkladığınızda &korganizer; kendiliğinden varsayılan süreye sahip (tercihler iletişim kutusunda özelleştirilebilir) bir etkinlik oluşturacaktır. Özeti hemen ekleyebilirsiniz. Etkinlikler, tıkladığınız yerden itibaren en yakın yarım saate <quote
 >yuvarlanarak</quote
 > yarım saatlik artışlarla gerçekleşir.</para
 ></listitem>
@@ -1166,7 +1166,7 @@
 >Ajanda Görünümü</link
 >’nü sunar. <link linkend="config-main-views"
 >&korganizer; görünüm yapılandırmasından</link
-> görüntülenecek günlerin sayısını seçebilirsiniz. Öntanımlı değer 3’tür.</para>
+> görüntülenecek günlerin sayısını seçebilirsiniz. Varsayılan değer 3’tür.</para>
 
 <para
 >Sonraki günler görünümüne <menuchoice
@@ -1771,7 +1771,7 @@
 ></term>
 <listitem
 ><para
->Bu yapılacak işin veya etkinliğin organizatörüne karşılık gelen kimliği ayarlar. Eğer &korganizer; davet e-postaları gönderecek şekilde yapılandırılmışsa bu e-postalar gönderilirken bu açılan kutuda seçilen kimlik kullanılacaktır. Öntanımlı kimlik, &korganizer; yapılandırmasının <guilabel
+>Bu yapılacak işin veya etkinliğin organizatörüne karşılık gelen kimliği ayarlar. Eğer &korganizer; davet e-postaları gönderecek şekilde yapılandırılmışsa bu e-postalar gönderilirken bu açılan kutuda seçilen kimlik kullanılacaktır. Varsayılan kimlik, &korganizer; yapılandırmasının <guilabel
 >Kişisel</guilabel
 > bölümünde ayarlanabilir. Ayrıca, kimlikler &kmail; ayarlarınızdan ve adres defterinizden toplanır.</para
 ></listitem>
@@ -1837,7 +1837,7 @@
 >Anımsatıcı</term>
 <listitem
 ><para
->Açılır kutudan öntanımlı bir anımsatıcı seçin ve &korganizer; size bir etkinliği anımsatacaksa <guibutton
+>Açılır kutudan varsayılan bir anımsatıcı seçin ve &korganizer; size bir etkinliği anımsatacaksa <guibutton
 >Ekle</guibutton
 > düğmesine basın.</para>
 <para
@@ -1923,7 +1923,7 @@
 ></term>
 <listitem
 ><para
->Etkinliğin ayın aynı gününde veya haftanın belirli bir gününde belirli bir haftada gerçekleşmesini sağlayabilirsiniz. Bu iki olasılık arasında seçim yapmanız gerekir. Öntanımlı olarak &korganizer;, ayın aynı takvim gününde (örneğin 15’inde) yinelemek istediğinizi varsayar. Periyodu da ayarlayabilirsiniz, böylece aylık, üç aylık ve benzeri şekilde yineleyebilirsiniz.</para
+>Etkinliğin ayın aynı gününde veya haftanın belirli bir gününde belirli bir haftada gerçekleşmesini sağlayabilirsiniz. Bu iki olasılık arasında seçim yapmanız gerekir. Varsayılan olarak &korganizer;, ayın aynı takvim gününde (örneğin 15’inde) yinelemek istediğinizi varsayar. Periyodu da ayarlayabilirsiniz, böylece aylık, üç aylık ve benzeri şekilde yineleyebilirsiniz.</para
 ></listitem>
 </varlistentry>
 
@@ -1934,7 +1934,7 @@
 ></term>
 <listitem>
 <para
->Bu, Aylık ile benzerdir. Yılın bir takvim gününü mü (&eg;, yılın 250. günü), ayın haftanın belirli bir günündeki belirli bir haftayı mı (&eg;, Mart ayının 2. Salı günü), yoksa yılın belirli bir ayındaki ayın gününü mü belirttiğinizi seçmeniz gerekir. Öntanımlı olarak &korganizer;, ayın gününü kastettiğinizi varsayar. Periyodu iki yılda bir, dört yılda bir vb. gerçekleşen olayları yansıtacak şekilde ayarlayabilirsiniz.</para>
+>Bu, Aylık ile benzerdir. Yılın bir takvim gününü mü (&eg;, yılın 250. günü), ayın haftanın belirli bir günündeki belirli bir haftayı mı (&eg;, Mart ayının 2. Salı günü), yoksa yılın belirli bir ayındaki ayın gününü mü belirttiğinizi seçmeniz gerekir. Varsayılan olarak &korganizer;, ayın gününü kastettiğinizi varsayar. Periyodu iki yılda bir, dört yılda bir vb. gerçekleşen olayları yansıtacak şekilde ayarlayabilirsiniz.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -1945,7 +1945,7 @@
 >Yineleme Erimi</title>
 
 <para
->Öntanımlı olarak, yineleyen olaylar bunu sonsuza kadar yapacaktır; yineleme için bir <quote
+>Varsayılan olarak, yineleyen olaylar bunu sonsuza kadar yapacaktır; yineleme için bir <quote
 >son</quote
 > yoktur. Bu istenilen bir durum olabilir veya olmayabilir, bu nedenle bir bitiş tarihi veya yineleme sayısı seçerek yinelemeyi sonlandırabilirsiniz.</para>
 
@@ -2666,7 +2666,7 @@
 > yinelemeyi seçin.</para>
 <note
 ><para
->İşin çoğu sizin için kendiliğinden yapılır. &korganizer; öntanımlı olarak haftalık yineleme kullanır. Ayrıca, <guilabel
+>İşin çoğu sizin için kendiliğinden yapılır. &korganizer; varsayılan olarak haftalık yineleme kullanır. Ayrıca, <guilabel
 >Bitiş:</guilabel
 > bölümünün <guilabel
 >asla</guilabel
@@ -2837,7 +2837,7 @@
 >Anonim</quote
 > adına ve <quote
 >hiçkimse@hiçbiryer</quote
-> olarak ayarlıdır. Adınızı, doğrudan buraya girerek değiştirebilirsiniz. Bu ad, yapılacaklarda ve etkinliklerde öntanımlı <guilabel
+> olarak ayarlıdır. Adınızı, doğrudan buraya girerek değiştirebilirsiniz. Bu ad, yapılacaklarda ve etkinliklerde varsayılan <guilabel
 >Organizatör</guilabel
 > olarak görüntülenecektir.</para
 ></listitem>
@@ -2859,7 +2859,7 @@
 <varlistentry>
 <term
 ><guilabel
->Öntanımlı e-posta eki yöntemi</guilabel
+>Varsayılan e-posta eki yöntemi</guilabel
 ></term>
 <listitem
 ><para
@@ -2872,11 +2872,11 @@
 <varlistentry>
 <term
 ><guilabel
->Öntanımlı Erişim Sınıflandırması</guilabel
+>Varsayılan Erişim Sınıflandırması</guilabel
 ></term>
 <listitem
 ><para
->Bu seçenek, etkinlik, yapılacaklar listesi veya günce oluştururken kullanılacak öntanımlı erişim sınıflandırmasını (Genel, Gizli, Özel) seçmenize olanak tanır. iCalendar erişim sınıflandırma özelliği hakkında bilgi edinmek için lütfen RFC 5545 3.8.1.3. Sınıflandırma bölümüne bakın.</para>
+>Bu seçenek, etkinlik, yapılacaklar listesi veya günce oluştururken kullanılacak varsayılan erişim sınıflandırmasını (Genel, Gizli, Özel) seçmenize olanak tanır. iCalendar erişim sınıflandırma özelliği hakkında bilgi edinmek için lütfen RFC 5545 3.8.1.3. Sınıflandırma bölümüne bakın.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -2909,7 +2909,7 @@
 ></term>
 <listitem
 ><para
->Bu seçenek, yeni ögeleri doğrudan öntanımlı takvime eklenip eklenmeyeceğini veya &korganizer;’ın her bir yeni ögenin hangi takvime kaydedileceğini sormasını sağlar.</para>
+>Bu seçenek, yeni ögeleri doğrudan varsayılan takvime eklenip eklenmeyeceğini veya &korganizer;’ın her bir yeni ögenin hangi takvime kaydedileceğini sormasını sağlar.</para>
 <para
 >Kolab2 sunucusu belirliliği: <guilabel
 >Kolab</guilabel
@@ -2946,7 +2946,7 @@
 ></term>
 <listitem
 ><para
->Açılır listeden güne başladığınız saati seçin. Bu, normalde uyandığınız saat veya çalışmaya başladığınız saat olabilir. Bu ayar, bu saatten önce öge eklemenizi veya görüntülemenizi engellemez; yalnızca takvim görünümünün en üstünde öntanımlı olarak görüntülenecek saati ayarlar. Ajanda görünümünde önceki veya sonraki etkinlikleri görüntülemek için sarma çubuğunu kullanın.</para
+>Açılır listeden güne başladığınız saati seçin. Bu, normalde uyandığınız saat veya çalışmaya başladığınız saat olabilir. Bu ayar, bu saatten önce öge eklemenizi veya görüntülemenizi engellemez; yalnızca takvim görünümünün en üstünde varsayılan olarak görüntülenecek saati ayarlar. Ajanda görünümünde önceki veya sonraki etkinlikleri görüntülemek için sarma çubuğunu kullanın.</para
 ></listitem>
 </varlistentry>
 
@@ -2968,7 +2968,7 @@
 ></term>
 <listitem
 ><para
->Açılır listeden tatil kategorilerini seçin. Öntanımlı olarak tüm tatil türleri etkindir. Gizlemek istediğiniz tatil kategorilerini seçin; örneğin, bazı kişiler dinî bayramlarla ilgilenmez. </para
+>Açılır listeden tatil kategorilerini seçin. Varsayılan olarak tüm tatil türleri etkindir. Gizlemek istediğiniz tatil kategorilerini seçin; örneğin, bazı kişiler dinî bayramlarla ilgilenmez. </para
 ></listitem>
 </varlistentry>
 
@@ -3009,36 +3009,36 @@
 
 <sect3 id="config-main-time-and-date-default">
 <title
->Öntanımlı Değerler sekmesi</title>
+>Varsayılan Değerler sekmesi</title>
 
 <variablelist>
 <varlistentry>
 <term
 ><guilabel
->Öntanımlı randevu zamanı</guilabel
+>Varsayılan randevu zamanı</guilabel
 ></term>
 <listitem
 ><para
->Etkinliklerin öntanımlı başlangıç saatini açılır listeden seçin. <link linkend="entering-data-events"
+>Etkinliklerin varsayılan başlangıç saatini açılır listeden seçin. <link linkend="entering-data-events"
 >Eylemler</link
 > menüsünden <link linkend="menu-actions-new-event"
 >Yeni Etkinlik</link
->’i seçtiğinizde veya &korganizer;’ın etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar.</para
+>’i seçtiğinizde veya &korganizer;’ın etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına varsayılan olarak bu değeri koyar.</para
 ></listitem>
 </varlistentry>
 
 <varlistentry>
 <term
 ><guilabel
->Yeni randevunun öntanımlı süresi (SS:DD):</guilabel
+>Yeni randevunun varsayılan süresi (SS:DD):</guilabel
 ></term>
 <listitem
 ><para
->Olaylar için öntanımlı süreyi dönen kutuyu kullanarak seçin. <link linkend="entering-data-events"
+>Olaylar için varsayılan süreyi dönen kutuyu kullanarak seçin. <link linkend="entering-data-events"
 >Eylemler</link
 > menüsünden <link linkend="menu-actions-new-event"
 >Yeni Etkinlik</link
->’i seçtiğinizde veya &korganizer;’ın etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına öntanımlı olarak bu değeri koyar. </para
+>’i seçtiğinizde veya &korganizer;’ın etkinliğinizin ne zaman başlamasını istediğizi tahmin edemediği bir durumda &korganizer;, başlangıç zamanına varsayılan olarak bu değeri koyar. </para
 ></listitem>
 </varlistentry>
 
@@ -3050,10 +3050,10 @@
 <listitem
 ><para
 >Anımsatıcının gerçek etkinliğin planlanan saatinden ne kadar önce etkinleştirileceğini belirlemek için <guilabel
->Öntanımlı anımsatma zamanı</guilabel
+>Varsayılan anımsatma zamanı</guilabel
 >’nı seçin.</para>
 <para
->Yeni anımsatıcılar için öntanımlı ses dosyası olarak kullanılacak bir dosya ayarlayın. Etkinlik veya yapılacaklar düzenleyicilerinden erişilebilen Gelişmiş Anımsatıcı’da istediğiniz zaman başka bir dosya belirleyebilirsiniz.</para>
+>Yeni anımsatıcılar için varsayılan ses dosyası olarak kullanılacak bir dosya ayarlayın. Etkinlik veya yapılacaklar düzenleyicilerinden erişilebilen Gelişmiş Anımsatıcı’da istediğiniz zaman başka bir dosya belirleyebilirsiniz.</para>
 <para
 >Yeni oluşturulan tüm etkinlikler veya yapılacaklar için anımsatıcıları etkinleştirmek istiyorsanız sonraki iki kutuyu işaretleyin. Anımsatıcıları istediğiniz zaman düzenleyici iletişim kutularından kapatabilirsiniz.</para>
 </listitem>
@@ -3337,7 +3337,7 @@
 
     <para
 >Bu renkleri ayarlamak için <link linkend="config-main-colors"
->Renkler ve Yazıtipleri</link
+>Renkler ve Yazı Tipleri</link
 > yapılandırma sayfasını kullanın.</para>
   </listitem>
 </varlistentry>
@@ -3457,7 +3457,7 @@
 
 <sect2 id="config-main-colors-fonts">
 <title
->Renkler ve Yazıtipleri</title>
+>Renkler ve Yazı Tipleri</title>
 
 <sect3 id="config-main-colors">
 <title
@@ -3623,7 +3623,7 @@
 
 <sect3 id="config-main-fonts">
 <title
->Yazıtipi sekmesi</title>
+>Yazı tipi sekmesi</title>
 
 <variablelist>
 
@@ -3634,7 +3634,7 @@
 ></term>
 <listitem
 ><para
->Zaman çubuğunun yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+>Zaman çubuğunun yazı tipini, yazı stilini ve puntosunu seçmek için bu düğmeye basın.</para
 ></listitem>
 </varlistentry>
 
@@ -3645,7 +3645,7 @@
 ></term>
 <listitem
 ><para
->Ay görünümünün yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+>Ay görünümünün yazı tipini, yazı stilini ve puntosunu seçmek için bu düğmeye basın.</para
 ></listitem>
 </varlistentry>
 
@@ -3656,7 +3656,7 @@
 ></term>
 <listitem
 ><para
->Ajanda görünümünün (gün, hafta, çalışma haftası görünümleri) yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+>Ajanda görünümünün (gün, hafta, çalışma haftası görünümleri) yazı tipini, yazı stilini ve puntosunu seçmek için bu düğmeye basın.</para
 ></listitem>
 </varlistentry>
 
@@ -3667,7 +3667,7 @@
 ></term>
 <listitem
 ><para
->Marcus Bains çizgisinin (geçerli zamanı gösteren, ajanda görünümündeki bir renkli çizgi) yazıtipini, yazı biçemini ve puntosunu seçmek için bu düğmeye basın.</para
+>Marcus Bains çizgisinin (geçerli zamanı gösteren, ajanda görünümündeki bir renkli çizgi) yazı tipini, yazı stilini ve puntosunu seçmek için bu düğmeye basın.</para
 ></listitem>
 </varlistentry>
 
@@ -3776,7 +3776,7 @@
 <varlistentry>
 <term
 ><guilabel
->(Öntanımlı 60) günlük uygun/meşgûl bilgisini yayınla</guilabel
+>(Varsayılan 60) günlük uygun/meşgûl bilgisini yayınla</guilabel
 ></term>
 <listitem
 ><para
@@ -3808,7 +3808,7 @@
 ><para
 >Sunucudaki hesabınıza ait giriş bilgilerini girin.</para>
 <para
->Kolab2 sunucusuna özgü: Kayıtlı UID’niz (Benzersiz Tanımlayıcı), öntanımlı olarak Kolab2 sunucusundaki e-posta adresinize benzer olacaktır; ancak farklı olabilir. Bu durumda UID’nizi girin. UID’nizi bilmiyorsanız sunucu yöneticisine sorun.</para
+>Kolab2 sunucusuna özgü: Kayıtlı UID’niz (Benzersiz Tanımlayıcı), varsayılan olarak Kolab2 sunucusundaki e-posta adresinize benzer olacaktır; ancak farklı olabilir. Bu durumda UID’nizi girin. UID’nizi bilmiyorsanız sunucu yöneticisine sorun.</para
 ></listitem>
 </varlistentry>
 
@@ -4135,17 +4135,17 @@ format="PNG"/></imageobject
 ></inlinemediaobject
 ><menuchoice
 ><guimenu
-> Dosya</guimenu
+>Dosya</guimenu
 ><guimenuitem
->Yazdırma Önizlemesi</guimenuitem
+>Baskı Ön İzleme</guimenuitem
 ></menuchoice>
 </term>
 <listitem
 ><para
 ><guimenuitem
->Yazdırma Önizlemesi</guimenuitem
->’ni seçerseniz veya <guiicon
->Yazdırma Önizlemesi</guiicon
+>Baskı Ön İzleme</guimenuitem
+>’yi seçerseniz veya <guiicon
+>Baskı Ön İzleme</guiicon
 > simgesine tıklarsanız <action
 >geçerli takvim yazıcınız yerine ekranınıza yazdırılır</action
 >. Yazdırmaya başlamadan önce çıktının doğru olup olmadığını denetlemek için bu özelliği kullanın.</para>
