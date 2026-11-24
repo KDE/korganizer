@@ -896,7 +896,7 @@
           <li xml:lang="sk">Možno určiť predvolený kalendár úloh, aby bolo vytváranie nových úloh rýchlejšie a jednoduchšie s menšou pravdepodobnosťou ich zaradenia do nesprávneho priečinka. Nastavenie predvoleného kalendára udalostí je podporované už dlho. Pozri kontextovú ponuku Správcu kalendárov \"Nastaviť ako predvolený kalendár úloh\"</li>
           <li xml:lang="sl">Določiti je mogoče privzeti koledar opravil, da je ustvarjanje novih opravil hitrejše in lažje ter da je manj možnosti, da bi jih shranili v napačno mapo, manj. Nastavitev privzetega koledarja dogodkov je podprta že dolgo časa. Glejte kontekstni meni Upravljalnika koledarjev "Nastavi kot privzeti koledar opravil".</li>
           <li xml:lang="sv">En standardkalender med uppgifter kan anges för att göra det snabbare och enklare att skapa nya uppgifter, med mindre risk att de hamnar i fel katalog. Att ställa in en standardkalender för händelser har sedan länge varit möjligt. Se Kalenderhanterarens sammanhangsberoende meny "Använd som standardkalender med uppgifter".</li>
-          <li xml:lang="tr">Yeni yapılacakların daha hızlı ve kolay oluşturulması ve yanlış klasöre kaydedilme olasılığının azaltılması için öntanımlı bir Yapılacaklar takvimi belirlenebilir. Öntanımlı bir etkinlik takvimi ayarlama özelliği uzun süredir desteklenmektedir. Takvim Yöneticisi sağ tık menüsündeki Öntanımlı Yapılacaklar Takvimi Olarak Ayarla” seçeneğine göz atın.</li>
+          <li xml:lang="tr">Yeni yapılacakların daha hızlı ve kolay oluşturulması ve yanlış klasöre kaydedilme olasılığının azaltılması için varsayılan bir Yapılacaklar takvimi belirlenebilir. Varsayılan bir etkinlik takvimi ayarlama özelliği uzun süredir desteklenmektedir. Takvim Yöneticisi sağ tık menüsündeki Varsayılan Yapılacaklar Takvimi Olarak Ayarla” seçeneğine göz atın.</li>
           <li xml:lang="uk">Можна вказати типовий календар для завдань, щоб пришвидшити та спростити створення записів завдань, зменшивши ризик їх потрапляння до помилкової теки. Підтримку визначення типового календаря подій реалізовано вже доволі давно. Див. пункт контекстного меню керування календарями «Зробити типовим календарем записів Завдання».</li>
           <li>Agenda view: optionally draw bolder/fatter horizontal grid lines every two hours. To enable this behaviour, check the "Draw bold horizontal grid lines for the even hours" option in the View-&gt;Agenda View tab</li>
           <li xml:lang="ar">عرض جدول الأعمال: يمكنك اختياريًا رسم خطوط شبكية أفقية أكثر سمكًا كل ساعتين. لتمكين هذه الميزة، حدد الخيار ”ارسم خطوطًا أفقية سميكة للساعات الزوجية“ في علامة التبويب ”عرض-&gt;عرض جدول الأعمال“</li>
@@ -1082,7 +1082,7 @@
           <li xml:lang="sk">Pridané voľby na nastavenie predvolených klasifikácií prístupu (Verejné, Dôverné alebo Súkromné) pri vytváraní nových udalostí, úloh a denníkov. Svoje predvoľby vyberte v rozbaľovacích zoznamoch \"Všeobecné-&gt;Osobná predvolená klasifikácia prístupu\".</li>
           <li xml:lang="sl">Dodane so bile možnosti za nastavitev privzetih klasifikacij dostopa (javno, zaupno ali zasebno) pri ustvarjanju novih dogodkov, opravil in dnevnikov. Izberite svoje nastavitve v kombiniranih poljih "Splošno-&gt;Osebna privzeta klasifikacija dostopa".</li>
           <li xml:lang="sv">Alternativ för att ställa in standardklassificering av åtkomst (öppen, konfidentiell eller privat) när nya händelser, uppgifter och journalanteckningar skapas har lagts till. Välj inställning i kombinationsrutorna under "Allmänt -&gt; Personligt Standardklassificering av åtkomst".</li>
-          <li xml:lang="tr">Yeni Etkinlikler, Yapılacaklar ve Günlükler oluştururken öntanımlı erişim sınıflandırmalarını (Genel, Gizli veya Özel) ayarlama seçenekleri eklendi. Tercihlerinizi “Genel → Kişisel Öntanımlı Erişim Sınıflandırması” açılır kutularından seçin.</li>
+          <li xml:lang="tr">Yeni Etkinlikler, Yapılacaklar ve Günlükler oluştururken varsayılan erişim sınıflandırmalarını (Genel, Gizli veya Özel) ayarlama seçenekleri eklendi. Tercihlerinizi “Genel → Kişisel Varsayılan Erişim Sınıflandırması” açılır kutularından seçin.</li>
           <li xml:lang="uk">Додано варіанти встановлення типової класифікації доступу (Відкритий, Конфіденційний або Приватний) під час створення записів подій, завдань та журналів. Виберіть свій варіант у спадному списку «Загальне-&gt;Типова особиста класифікація доступу».</li>
           <li>Todo view: the mini todolist is no longer shown in the sidebar; the mini todolist can still be shown in all the other views if the Settings-&gt;Sidebar-&gt;Show Todo List option is enabled</li>
           <li xml:lang="ar">عرض قائمة المهام: لم تعد قائمة المهام المصغرة معروضة في الشريط الجانبي؛ ولكن يمكن عرضها في جميع العروض الأخرى إذا فُعل خيار "الإعدادات -&lt; الشريط الجانبي &lt; عرض قائمة المهام".</li>
@@ -1176,7 +1176,7 @@
           <li xml:lang="sk">Pripomienky sú predvolene zapnuté pre všetky nové udalosti a úlohy. Toto správanie vypnete zrušením zaškrtnutia voľby Povoliť pripomienky v nastaveniach na karte Čas&gt;Predvolené hodnoty</li>
           <li xml:lang="sl">Opomniki so privzeto omogočeni za vse nove dogodke in opravila. Če želite to delovanje onemogočiti, počistite polje pri možnosti Omogoči opomnike v nastavitvah zavihka Čas-&gt;Privzete vrednosti</li>
           <li xml:lang="sv">Påminnelser är normalt aktiverade för alla nya händelser och uppgifter. För att inaktivera beteendet, avmarkera alternativen Aktivera påminnelser i inställningarna under fliken Tid -&gt; Standardvärden</li>
-          <li xml:lang="tr">Anımsatıcılar tüm yeni etkinlikler ve yapılacaklar için öntanımlı olarak etkindir. Bu davranışı devre dışı bırakmak için Zaman → Öntanımlı Değerler ayarlar sekmesindeki Anımsatıcıları etkinleştir seçeneğinin işaretini kaldırın.</li>
+          <li xml:lang="tr">Anımsatıcılar tüm yeni etkinlikler ve yapılacaklar için varsayılan olarak etkindir. Bu davranışı devre dışı bırakmak için Zaman → Varsayılan Değerler ayarlar sekmesindeki Anımsatıcıları etkinleştir seçeneğinin işaretini kaldırın.</li>
           <li xml:lang="uk">Типово нагадування увімкнено для усіх нових записів подій та завдань. Щоб вимкнути таку поведінку, зніміть позначки з пунктів нагадувань на вкладці параметрів «Час і дата-&gt;Типові значення»</li>
           <li>Month view: no longer display the month year header to save vertical space and remove redundancy</li>
           <li xml:lang="ar">عرض الشهر: لم يعد يُعرض عنوان الشهر والسنة لتوفير المساحة العمودية وإزالة التكرار</li>
@@ -1597,7 +1597,7 @@
           <li xml:lang="sk">Zlepšené spracovanie predvoleného kalendára udalostí</li>
           <li xml:lang="sl">Izboljšano upravljanje privzetega koledarja dogodkov</li>
           <li xml:lang="sv">Förbättrad kalenderhantering av standardhändelser</li>
-          <li xml:lang="tr">İyileştirilmiş öntanımlı takvim işleme</li>
+          <li xml:lang="tr">İyileştirilmiş varsayılan takvim işleme</li>
           <li xml:lang="uk">Удосконалено обробку типового календаря подій</li>
         </ul>
         <p>Bug Fixes</p>
@@ -1937,7 +1937,7 @@
           <li xml:lang="sk">Navigátor dátumov: nastavenie \"Čísla týždňov vyberajú pracovný týždeň v režime pracovného týždňa\" je predvolene zapnuté</li>
           <li xml:lang="sl">Navigator datuma: nastavitev "Številke tednov izberejo delovni teden v načinu delovnega tedna" je privzeto nastavljena na true</li>
           <li xml:lang="sv">Datumnavigering: inställningen "Veckonummer väljer en arbetsvecka i arbetsveckoläge" är normalt sann</li>
-          <li xml:lang="tr">Tarih gezgini: “Çalışma haftası kipindeyken hafta numaraları bir çalışma haftasını seçer” ayarı öntanımlı olarak doğrudur.</li>
+          <li xml:lang="tr">Tarih gezgini: “Çalışma haftası kipindeyken hafta numaraları bir çalışma haftasını seçer” ayarı varsayılan olarak doğrudur.</li>
           <li xml:lang="uk">Навігація датами: типовим значенням параметра «Вибір тижня призводить до вибору робочого тижня у режимі робочого тижня» тепер є «істина»</li>
           <li>Incidence editor: remember/restore the template manager geometry</li>
           <li xml:lang="ar">محرر الأحداث: تذكّر/استعادة شكل مدير القالب</li>
